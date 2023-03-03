@@ -577,7 +577,7 @@ border: none</string>
          <widget class="QLineEdit" name="schedulingAppointmentsWindow_StaffIDLineEdit">
           <property name="geometry">
            <rect>
-            <x>100</x>
+            <x>130</x>
             <y>100</y>
             <width>361</width>
             <height>31</height>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SchedulingAppointmentsWindow</class>
- <widget class="QMainWindow" name="SchedulingAppointmentsWindow">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -28,7 +28,7 @@
   <property name="styleSheet">
    <string notr="true">border-image: url(:/newPrefix/imgs/app-bg.png);
 
-QGroupBox {
+QGroupBox, QFrame {
 	border-image: none;
 	border: none;
 }</string>
@@ -415,8 +415,12 @@ QPushButton::hover {
 	border-image: none;
 	background-color: rgb(52, 77, 103);
 }
+
+
+
 QLineEdit, QComboBox, QDateEdit, QDateTimeEdit {
 	border-image: none;
+    border: none;
 	min-width: 200px;
 	height: 30px;
 	background-color: #F3ECB0;
@@ -435,160 +439,180 @@ QLabel {
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QFrame" name="InputFrame">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>70</y>
-       <width>404</width>
-       <height>160</height>
+       <x>-1</x>
+       <y>0</y>
+       <width>1251</width>
+       <height>561</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <layout class="QHBoxLayout" name="Layout_PatientFirstName">
-        <item>
-         <widget class="QLabel" name="Label_PatientFirstName">
-          <property name="font">
-           <font>
-            <family>Lato</family>
-            <pointsize>12</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>Patient First Name:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="LineEdit_PatientFirstName">
-          <property name="font">
-           <font>
-            <family>MS Shell Dlg 2</family>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>First Name</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="Layout_PatientLastName">
-        <item>
-         <widget class="QLabel" name="Label_PatientLastName">
-          <property name="font">
-           <font>
-            <family>Lato</family>
-            <pointsize>12</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>Patient Last Name:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="LineEdit_PatientLastName">
-          <property name="font">
-           <font>
-            <family>MS Shell Dlg 2</family>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>Last Name</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="Layout_DOB">
-        <item>
-         <widget class="QLabel" name="Label_DOB">
-          <property name="font">
-           <font>
-            <family>Lato</family>
-            <pointsize>12</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>DOB:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QDateEdit" name="dateEdit_DOB"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="Layout_comboBox_TEMPLATE">
-        <item>
-         <widget class="QLabel" name="Label_Dropbox_TEMPLATE">
-          <property name="font">
-           <font>
-            <family>Lato</family>
-            <pointsize>12</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>Dropbox Example:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboBox_TEMPLATE">
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <item>
-           <property name="text">
-            <string>First Item</string>
+     <property name="styleSheet">
+      <string notr="true">border-image: none;
+</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>404</width>
+        <height>174</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="Layout_PatientFirstName">
+         <item>
+          <widget class="QLabel" name="Label_PatientFirstName">
+           <property name="font">
+            <font>
+             <family>Lato</family>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
            </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Item 2</string>
+           <property name="styleSheet">
+            <string notr="true"/>
            </property>
-          </item>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
+           <property name="text">
+            <string>Patient First Name:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="LineEdit_PatientFirstName">
+           <property name="font">
+            <font>
+             <family>MS Shell Dlg 2</family>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>First Name</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="Layout_PatientLastName">
+         <item>
+          <widget class="QLabel" name="Label_PatientLastName">
+           <property name="font">
+            <font>
+             <family>Lato</family>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>Patient Last Name:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="LineEdit_PatientLastName">
+           <property name="font">
+            <font>
+             <family>MS Shell Dlg 2</family>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>Last Name</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="Layout_DOB">
+         <item>
+          <widget class="QLabel" name="Label_DOB">
+           <property name="font">
+            <font>
+             <family>Lato</family>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>DOB:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDateEdit" name="dateEdit_DOB"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="Layout_comboBox_TEMPLATE">
+         <item>
+          <widget class="QLabel" name="Label_Dropbox_TEMPLATE">
+           <property name="font">
+            <font>
+             <family>Lato</family>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>Dropbox Example:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_TEMPLATE">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <item>
+            <property name="text">
+             <string>First Item</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Item 2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
   </widget>

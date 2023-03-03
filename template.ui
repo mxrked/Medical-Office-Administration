@@ -26,7 +26,12 @@
    <string>Forsyth Family Practice Center - [ TEMPLATE ]</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">border-image: url(:/newPrefix/imgs/app-bg.png);</string>
+   <string notr="true">border-image: url(:/newPrefix/imgs/app-bg.png);
+
+QGroupBox {
+	border-image: none;
+	border: none;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox">
@@ -39,7 +44,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image: none; border: none;</string>
+     <string notr="true"/>
     </property>
     <property name="title">
      <string/>
@@ -410,6 +415,13 @@ border: none</string>
           <string notr="true">QFrame {
 	border-image: none;
 	background-color: rgb(52, 77, 103);
+}
+QLineEdit {
+	border-image: none;
+	padding-left: 20px;
+	padding-right: 10px;
+	background-color: #F3ECB0;
+	color: #344D67;
 }</string>
          </property>
          <property name="frameShape">
@@ -538,11 +550,7 @@ border: none</string>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QLineEdit {
-	border-image: none;
-	padding-left: 20px;
-	padding-right: 10px;
-}</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>s</string>
@@ -564,10 +572,7 @@ border: none</string>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QLineEdit {
-	border-image: none;
-	padding-left: 20px;
-}</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>s</string>
@@ -589,11 +594,7 @@ border: none</string>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QLineEdit {
-	border-image: none;
-	padding-left: 20px;
-	padding-right: 10px;
-}</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>s</string>
@@ -854,11 +855,7 @@ border: none</string>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QLineEdit {
-	border-image: none;
-	padding-left: 20px;
-	padding-right: 10px;
-}</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>s</string>
@@ -906,13 +903,7 @@ border: none</string>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QLineEdit {
-	border-image: none;
-	padding-left: 20px;
-	padding-right: 10px;
-	background-color: #F3ECB0;
-	color: #344D67;
-}</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>saf</string>

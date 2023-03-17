@@ -1096,11 +1096,13 @@ QCalendarWidget QTableView QLabel {
        </property>
        <property name="styleSheet">
         <string notr="true">QListWidget {
-	background-color: white;
+	background-color:#F3ECB0;
 	padding: 5px;
 }
 
 QListWidget::item {
+	color: #344D67;
+	font-family: &quot;MS Shell Dlg 2&quot;;
 	border: 1px solid rgb(186, 186, 186);
 	height: 40px;
 }

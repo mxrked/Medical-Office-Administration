@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e7cd4914-828a-4172-861a-aca1ac389688" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchedulingAppointmentsWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/SchedulingAppointmentsWindow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

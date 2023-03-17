@@ -1110,21 +1110,6 @@ QListWidget::item:selected {
 	color: black;
 }</string>
        </property>
-       <item>
-        <property name="text">
-         <string>Test Date/Time 1</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Test Date/Time 2</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Test Date/Time 3</string>
-        </property>
-       </item>
       </widget>
      </widget>
      <widget class="QPushButton" name="CheckAvailableTimesBtn">
@@ -1168,7 +1153,7 @@ QPushButton::hover {
      </widget>
      <widget class="QPushButton" name="ScheduleAppointmentBtn">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -1192,15 +1177,17 @@ QPushButton::hover {
       <property name="styleSheet">
        <string notr="true">QPushButton {
 	border-image: none;
-	background-color: rgba(110, 204, 175, .2);
-	color: rgba(0, 0, 0, .2);
-	border: 2px solid rgba(0, 0, 0, .2);
+	background-color: #6ECCAF;
+	color: black;
+	border: 2px solid black;
 }
 
 QPushButton::hover {
 	background-color: rgb(139, 231, 100);
 	color: white;
-}</string>
+}
+
+</string>
       </property>
       <property name="text">
        <string>Schedule Appointment</string>

@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StartWindow</class>
+ <widget class="QMainWindow" name="StartWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>900</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>900</width>
+    <height>900</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Forsyth Family Practice Center - MOA</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">border-image: url(:/newPrefix/imgs/app-bg.png);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="startWindow_Heading1">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>120</y>
+      <width>901</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>48</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border-image: none;
+	color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>Medical Office</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="startWindow_Heading2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>220</y>
+      <width>901</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>48</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border-image: none;
+	color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>Administration</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="startWindow_SubHeading">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>340</y>
+      <width>901</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>22</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border-image: none;
+	color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>Forsyth Family Practice Center</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="startWindow_UsernameLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>460</y>
+      <width>321</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+	border-image: none;
+	background-color: #344D67;
+	border: none;
+	border-radius: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: white;
+}</string>
+    </property>
+    <property name="placeholderText">
+     <string>Enter Username</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="startWindow_PasswordLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>560</y>
+      <width>321</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+	border-image: none;
+	background-color: #344D67;
+	border: none;
+	border-radius: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: white;
+}</string>
+    </property>
+    <property name="placeholderText">
+     <string>Enter Password</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="startWindow_LoginBtn">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>650</y>
+      <width>81</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	border-image: none;
+	background-color: #ADE792;
+	border: none;
+	color: #344D67;
+	border-radius: 10px;
+}
+
+QPushButton::hover {
+	background-color: rgb(139, 231, 100);
+	color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>LOGIN</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="startWindow_ExitBtn">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>650</y>
+      <width>71</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	border-image: none;
+	background-color: #ADE792;
+	border: none;
+	color: #344D67;
+	border-radius: 10px;
+}
+
+QPushButton::hover {
+	background-color: rgb(139, 231, 100);
+	color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>EXIT</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="startWindow_InvalidUsernameLabel">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>430</y>
+      <width>321</width>
+      <height>0</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>11</pointsize>
+      <italic>false</italic>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border-image: none;
+	color: rgb(0, 255, 127);
+}</string>
+    </property>
+    <property name="text">
+     <string>INVALID USERNAME</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="startWindow_InvalidPasswordLabel">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>530</y>
+      <width>321</width>
+      <height>0</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>11</pointsize>
+      <italic>false</italic>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border-image: none;
+	color: rgb(0, 255, 127);
+}</string>
+    </property>
+    <property name="text">
+     <string>INVALID PASSWORD</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="startWindow_InfoBtn">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>840</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>28</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	border-image: none;
+	color: #F3ECB0;
+	background-color: transparent;
+	padding-bottom: 3px;
+}
+
+QPushButton::hover {
+	color: rgb(241, 243, 103);
+}</string>
+    </property>
+    <property name="text">
+     <string>🛈</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="assets/qrc/app-bg.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -130,19 +130,22 @@
     </property>
     <property name="font">
      <font>
-      <family>Lato</family>
+      <family>MS Shell Dlg 2</family>
       <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit {
 	border-image: none;
-	background-color: #344D67;
-	border: none;
-	border-radius: 10px;
+    border: none;
+	min-width: 200px;
+	height: 30px;
+	background-color: #F3ECB0;
+	color: #344D67;
+	font-family: &quot;MS Shell Dlg 2&quot;;
+	font-size: 11;
 	padding-left: 10px;
-	padding-right: 10px;
-	color: white;
+	paddding-right: 10px;
 }</string>
     </property>
     <property name="placeholderText">
@@ -153,26 +156,29 @@
     <property name="geometry">
      <rect>
       <x>290</x>
-      <y>560</y>
+      <y>540</y>
       <width>321</width>
       <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Lato</family>
+      <family>MS Shell Dlg 2</family>
       <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit {
 	border-image: none;
-	background-color: #344D67;
-	border: none;
-	border-radius: 10px;
+    border: none;
+	min-width: 200px;
+	height: 30px;
+	background-color: #F3ECB0;
+	color: #344D67;
+	font-family: &quot;MS Shell Dlg 2&quot;;
+	font-size: 11;
 	padding-left: 10px;
-	padding-right: 10px;
-	color: white;
+	paddding-right: 10px;
 }</string>
     </property>
     <property name="placeholderText">
@@ -202,10 +208,9 @@
     <property name="styleSheet">
      <string notr="true">QPushButton {
 	border-image: none;
-	background-color: #ADE792;
-	border: none;
-	color: #344D67;
-	border-radius: 10px;
+	background-color: #6ECCAF;
+	color: black;
+	border: 2px solid black;
 }
 
 QPushButton::hover {
@@ -240,14 +245,13 @@ QPushButton::hover {
     <property name="styleSheet">
      <string notr="true">QPushButton {
 	border-image: none;
-	background-color: #ADE792;
-	border: none;
-	color: #344D67;
-	border-radius: 10px;
+	background-color: rgb(30, 147, 143);
+	color: black;
+	border: 2px solid black;
 }
 
 QPushButton::hover {
-	background-color: rgb(139, 231, 100);
+	background-color: rgb(14, 81, 85);
 	color: white;
 }</string>
     </property>

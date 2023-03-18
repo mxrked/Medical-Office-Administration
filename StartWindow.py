@@ -1,13 +1,10 @@
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-from sqlalchemy import *
 from assets.qrc import app_bg, doctor
+from assets.files.GLOBALS import *
 from assets.files import GLOBALS
 
-import sys
 import urllib
-
+import sqlalchemy
 
 
 class Ui_StartWindow(object):
@@ -54,7 +51,6 @@ class Ui_StartWindow(object):
             
             """)
             infoDialogCloseBtn.setFont(QtGui.QFont("Lato", 12))
-
             infoDialogCloseBtn.clicked.connect(infoDialog.close) # Closes the dialog box
 
             # Creating the team member names
@@ -102,7 +98,7 @@ class Ui_StartWindow(object):
                     print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
                     raise e
 
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 17 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
                 conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
                 engine = sql.create_engine(conn_str)
 
@@ -128,7 +124,7 @@ class Ui_StartWindow(object):
                     print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
                     raise e
 
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 17 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
                 conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
                 engine = sql.create_engine(conn_str)
 
@@ -157,22 +153,20 @@ class Ui_StartWindow(object):
             usernameCheck = checkUsername()
             passwordCheck = checkPassword()
 
-
-        # connectToDB()
-        # closeDBConnection()
+        connectToDB()
 
         StartWindow.setObjectName("StartWindow")
-        StartWindow.resize(900, 1100)
-        StartWindow.setMinimumSize(QtCore.QSize(900, 1100))
-        StartWindow.setMaximumSize(QtCore.QSize(900, 1100))
+        StartWindow.resize(900, 900)
+        StartWindow.setMinimumSize(QtCore.QSize(900, 900))
+        StartWindow.setMaximumSize(QtCore.QSize(900, 900))
         StartWindow.setStyleSheet("border-image: url(:/newPrefix/imgs/app-bg.png);")
         self.centralwidget = QtWidgets.QWidget(StartWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.startWindow_Heading1 = QtWidgets.QLabel(self.centralwidget)
-        self.startWindow_Heading1.setGeometry(QtCore.QRect(0, 80, 901, 181))
+        self.startWindow_Heading1.setGeometry(QtCore.QRect(0, 20, 901, 181))
         font = QtGui.QFont()
-        font.setFamily("Lato")
-        font.setPointSize(48)
+        font.setFamily("MS Shell Dlg 2")
+        font.setPointSize(28)
         font.setBold(True)
         font.setWeight(75)
         self.startWindow_Heading1.setFont(font)
@@ -183,10 +177,10 @@ class Ui_StartWindow(object):
         self.startWindow_Heading1.setAlignment(QtCore.Qt.AlignCenter)
         self.startWindow_Heading1.setObjectName("startWindow_Heading1")
         self.startWindow_Heading2 = QtWidgets.QLabel(self.centralwidget)
-        self.startWindow_Heading2.setGeometry(QtCore.QRect(0, 180, 901, 121))
+        self.startWindow_Heading2.setGeometry(QtCore.QRect(0, 100, 901, 121))
         font = QtGui.QFont()
-        font.setFamily("Lato")
-        font.setPointSize(48)
+        font.setFamily("MS Shell Dlg 2")
+        font.setPointSize(28)
         font.setBold(True)
         font.setWeight(75)
         self.startWindow_Heading2.setFont(font)
@@ -197,7 +191,7 @@ class Ui_StartWindow(object):
         self.startWindow_Heading2.setAlignment(QtCore.Qt.AlignCenter)
         self.startWindow_Heading2.setObjectName("startWindow_Heading2")
         self.startWindow_SubHeading = QtWidgets.QLabel(self.centralwidget)
-        self.startWindow_SubHeading.setGeometry(QtCore.QRect(0, 510, 901, 91))
+        self.startWindow_SubHeading.setGeometry(QtCore.QRect(0, 380, 901, 91))
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(22)
@@ -211,7 +205,7 @@ class Ui_StartWindow(object):
         self.startWindow_SubHeading.setAlignment(QtCore.Qt.AlignCenter)
         self.startWindow_SubHeading.setObjectName("startWindow_SubHeading")
         self.startWindow_UsernameLineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.startWindow_UsernameLineEdit.setGeometry(QtCore.QRect(290, 620, 321, 51))
+        self.startWindow_UsernameLineEdit.setGeometry(QtCore.QRect(290, 490, 321, 51))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
         font.setPointSize(12)
@@ -230,7 +224,7 @@ class Ui_StartWindow(object):
 "}")
         self.startWindow_UsernameLineEdit.setObjectName("startWindow_UsernameLineEdit")
         self.startWindow_PasswordLineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.startWindow_PasswordLineEdit.setGeometry(QtCore.QRect(290, 700, 321, 51))
+        self.startWindow_PasswordLineEdit.setGeometry(QtCore.QRect(290, 570, 321, 51))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
         font.setPointSize(12)
@@ -250,7 +244,7 @@ class Ui_StartWindow(object):
         self.startWindow_PasswordLineEdit.setObjectName("startWindow_PasswordLineEdit")
         self.startWindow_LoginBtn = QtWidgets.QPushButton(self.centralwidget)
         self.startWindow_LoginBtn.clicked.connect(loginUser)
-        self.startWindow_LoginBtn.setGeometry(QtCore.QRect(360, 810, 81, 51))
+        self.startWindow_LoginBtn.setGeometry(QtCore.QRect(360, 680, 81, 51))
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(11)
@@ -271,14 +265,14 @@ class Ui_StartWindow(object):
 "}")
         self.startWindow_LoginBtn.setObjectName("startWindow_LoginBtn")
         self.startWindow_ExitBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.startWindow_ExitBtn.clicked.connect(closeApp)
-        self.startWindow_ExitBtn.setGeometry(QtCore.QRect(460, 810, 71, 51))
+        self.startWindow_ExitBtn.setGeometry(QtCore.QRect(460, 680, 71, 51))
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
         self.startWindow_ExitBtn.setFont(font)
+        self.startWindow_ExitBtn.clicked.connect(closeApp)
         self.startWindow_ExitBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.startWindow_ExitBtn.setStyleSheet("QPushButton {\n"
 "    border-image: none;\n"
@@ -320,7 +314,7 @@ class Ui_StartWindow(object):
         self.startWindow_InvalidPasswordLabel.setObjectName("startWindow_InvalidPasswordLabel")
         self.startWindow_InfoBtn = QtWidgets.QPushButton(self.centralwidget)
         self.startWindow_InfoBtn.clicked.connect(displayInfoDialog)
-        self.startWindow_InfoBtn.setGeometry(QtCore.QRect(420, 1000, 51, 51))
+        self.startWindow_InfoBtn.setGeometry(QtCore.QRect(420, 820, 51, 51))
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(28)
@@ -338,7 +332,7 @@ class Ui_StartWindow(object):
 "}")
         self.startWindow_InfoBtn.setObjectName("startWindow_InfoBtn")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(340, 300, 221, 211))
+        self.label.setGeometry(QtCore.QRect(350, 190, 221, 211))
         self.label.setStyleSheet("QLabel {\n"
 "    border-image: none;\n"
 "    background-color: none;\n"
@@ -365,6 +359,7 @@ class Ui_StartWindow(object):
         self.startWindow_InvalidUsernameLabel.setText(_translate("StartWindow", "INVALID USERNAME"))
         self.startWindow_InvalidPasswordLabel.setText(_translate("StartWindow", "INVALID PASSWORD"))
         self.startWindow_InfoBtn.setText(_translate("StartWindow", "🛈"))
+
 
 
 if __name__ == "__main__":

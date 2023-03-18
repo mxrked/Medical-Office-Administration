@@ -33,6 +33,10 @@ class Ui_SchedulingAppointmentsWindow(object):
                 ' This is used to get the patients DOB in the DB '
                 print()
 
+        def connectToDB():
+                ' This is used to connect to the database '
+                print()
+
         def checkAvailableTimes():
                 ' This is used to display/filter the possible available times '
 

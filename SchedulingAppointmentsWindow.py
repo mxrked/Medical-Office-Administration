@@ -4,11 +4,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from assets.qrc import app_bg
 from assets.files.GLOBALS import *
 
+import urllib
+
+
 
 class Ui_SchedulingAppointmentsWindow(object):
-    def setupUi(self, SchedulingAppointmentsWindow):
 
-        ''' FUNCTIONS '''
+    def setupUi(self, SchedulingAppointmentsWindow):
+        ' FUNCTIONS '
         def clearInputs():
                 ' This is used to clear/reset the inputs '
                 self.LineEdit_PatientFirstName_2.setText("")
@@ -23,6 +26,173 @@ class Ui_SchedulingAppointmentsWindow(object):
 
                 self.ListWidget_MeetDateTimes.clearSelection()
 
+        def connectToDB():
+                ' This is used to connect to the DB '
+
+                try:
+                    import sqlalchemy as sql
+                    import pyodbc
+                    import urllib
+                    from sqlalchemy.pool import QueuePool
+
+                except ImportError as e:
+                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
+                    raise e
+
+                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 17 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
+                engine = sql.create_engine(conn_str)
+
+                engine.connect()
+
+                print("Connected to database. . .")
+
+
+                with engine.connect() as conn:
+                    result = conn.execute(sql.text("SELECT * FROM Appointment"))
+                    for key in result.keys():
+                        print(key)
+        def closeDBConnection():
+                ' This is used to close the connection to the DB '
+
+                try:
+                    import sqlalchemy as sql
+                    import pyodbc
+                    import urllib
+                    from sqlalchemy.pool import QueuePool
+
+                except ImportError as e:
+                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
+                    raise e
+
+                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 17 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
+                engine = sql.create_engine(conn_str)
+
+                engine.dispose()
+
+                if engine.dispose:
+                        print("Closed database. . .")
+
+        def hideAllFrames():
+                ' This is used to hide the different frames '
+
+                self.InputsFrame.setVisible(False)
+                self.RescheduleAppointment_Frame.setVisible(False)
+                self.CancelAppointment_Frame.setVisible(False)
+
+                self.DisplaySchedule_Btn.setEnabled(True)
+                self.DisplayReschedule_Btn.setEnabled(True)
+                self.DisplayCancel_Btn.setEnabled(True)
+
+                # Resetting styles for buttons
+                self.DisplaySchedule_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: #6ECCAF;\n"
+"    color: black;\n"
+"    border: 2px solid black;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"")
+                self.DisplayReschedule_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: #6ECCAF;\n"
+"    color: black;\n"
+"    border: 2px solid black;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"")
+                self.DisplayCancel_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: #6ECCAF;\n"
+"    color: black;\n"
+"    border: 2px solid black;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"")
+
+        def checkAvailableTimes():
+                ' This is used to display/filter the possible available times '
+        def checkCurrentAppointments():
+                ' This is used to check the current appointments '
+                print()
+
+        def displayScheduling():
+                ' This is used to display the scheduling module '
+
+                hideAllFrames()
+
+                self.InputsFrame.setVisible(True)
+                self.DisplaySchedule_Btn.setEnabled(False)
+
+                self.DisplaySchedule_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: rgba(110, 204, 175, .2);\n"
+"    color: rgba(0, 0, 0, .2);\n"
+"    border: 2px solid rgba(0, 0, 0, .2);\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}")
+        def displayReschedule():
+                ' This is used to display the rescheduling module '
+
+                hideAllFrames()
+
+                self.RescheduleAppointment_Frame.setVisible(True)
+                self.DisplayReschedule_Btn.setEnabled(False)
+
+                # Refreshes the available times
+                checkAvailableTimes()
+
+                self.DisplayReschedule_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: rgba(110, 204, 175, .2);\n"
+"    color: rgba(0, 0, 0, .2);\n"
+"    border: 2px solid rgba(0, 0, 0, .2);\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}")
+        def displayCancel():
+                ' This is used to display the cancel module '
+
+                hideAllFrames()
+
+                self.CancelAppointment_Frame.setVisible(True)
+                self.DisplayCancel_Btn.setEnabled(False)
+
+                self.DisplayCancel_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: rgba(110, 204, 175, .2);\n"
+"    color: rgba(0, 0, 0, .2);\n"
+"    border: 2px solid rgba(0, 0, 0, .2);\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}")
+
         def getPatientFN():
                 ' This is used to get the patients first name in the DB '
                 print()
@@ -33,24 +203,20 @@ class Ui_SchedulingAppointmentsWindow(object):
                 ' This is used to get the patients DOB in the DB '
                 print()
 
-        def connectToDB():
-                ' This is used to connect to the database '
-                print()
-
-        def checkAvailableTimes():
-                ' This is used to display/filter the possible available times '
-
         def scheduleAppointment():
                 print()
 
+        # connectToDB()
+        # closeDBConnection()
+
         SchedulingAppointmentsWindow.setObjectName("SchedulingAppointmentsWindow")
-        SchedulingAppointmentsWindow.resize(1400, 900)
-        SchedulingAppointmentsWindow.setMinimumSize(QtCore.QSize(1400, 900))
-        SchedulingAppointmentsWindow.setMaximumSize(QtCore.QSize(1400, 900))
+        SchedulingAppointmentsWindow.resize(1430, 925)
+        SchedulingAppointmentsWindow.setMinimumSize(QtCore.QSize(1420, 925))
+        SchedulingAppointmentsWindow.setMaximumSize(QtCore.QSize(1430, 925))
         self.centralwidget = QtWidgets.QWidget(SchedulingAppointmentsWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.MainFrame = QtWidgets.QFrame(self.centralwidget)
-        self.MainFrame.setGeometry(QtCore.QRect(0, -1, 1411, 901))
+        self.MainFrame.setGeometry(QtCore.QRect(0, -1, 1500, 941))
         self.MainFrame.setStyleSheet("QFrame {\n"
 "    border-image: url(:/newPrefix/imgs/app-bg.png);\n"
 "}")
@@ -58,7 +224,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.MainFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.MainFrame.setObjectName("MainFrame")
         self.layoutWidget = QtWidgets.QWidget(self.MainFrame)
-        self.layoutWidget.setGeometry(QtCore.QRect(110, 40, 1181, 42))
+        self.layoutWidget.setGeometry(QtCore.QRect(110, 41, 1181, 51))
         self.layoutWidget.setObjectName("layoutWidget")
         self.Layout_NavBar = QtWidgets.QHBoxLayout(self.layoutWidget)
         self.Layout_NavBar.setContentsMargins(0, 0, 0, 0)
@@ -236,7 +402,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.Nav_ApproveAppointmentsBtn.setObjectName("Nav_ApproveAppointmentsBtn")
         self.Layout_NavBar.addWidget(self.Nav_ApproveAppointmentsBtn)
         self.InputsFrame = QtWidgets.QFrame(self.MainFrame)
-        self.InputsFrame.setGeometry(QtCore.QRect(110, 130, 1181, 721))
+        self.InputsFrame.setGeometry(QtCore.QRect(110, 200, 1181, 681))
         self.InputsFrame.setStyleSheet("QFrame {\n"
 "    border-image: none;\n"
 "    background-color: rgb(52, 77, 103);\n"
@@ -614,7 +780,6 @@ class Ui_SchedulingAppointmentsWindow(object):
 "")
         self.ScheduleAppointmentBtn.setObjectName("ScheduleAppointmentBtn")
         self.ClearInputsBtn = QtWidgets.QPushButton(self.InputsFrame)
-        self.ClearInputsBtn.clicked.connect(clearInputs)
         self.ClearInputsBtn.setGeometry(QtCore.QRect(310, 580, 111, 51))
         font = QtGui.QFont()
         font.setFamily("Lato")
@@ -635,6 +800,324 @@ class Ui_SchedulingAppointmentsWindow(object):
 "    color: white;\n"
 "}")
         self.ClearInputsBtn.setObjectName("ClearInputsBtn")
+        self.CurrentAvailableTimes_Label = QtWidgets.QLabel(self.InputsFrame)
+        self.CurrentAvailableTimes_Label.setGeometry(QtCore.QRect(730, 200, 341, 16))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(14)
+        self.CurrentAvailableTimes_Label.setFont(font)
+        self.CurrentAvailableTimes_Label.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.CurrentAvailableTimes_Label.setAlignment(QtCore.Qt.AlignCenter)
+        self.CurrentAvailableTimes_Label.setObjectName("CurrentAvailableTimes_Label")
+        self.CancelAppointment_Frame = QtWidgets.QFrame(self.MainFrame)
+        self.CancelAppointment_Frame.setGeometry(QtCore.QRect(340, 200, 721, 681))
+        self.CancelAppointment_Frame.setStyleSheet("QFrame {\n"
+"    border-image: none;\n"
+"    background-color: rgb(52, 77, 103);\n"
+"}")
+        self.CancelAppointment_Frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.CancelAppointment_Frame.setVisible(False)
+        self.CancelAppointment_Frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.CancelAppointment_Frame.setObjectName("CancelAppointment_Frame")
+        self.CancelAppointment_HeadingLabel = QtWidgets.QLabel(self.CancelAppointment_Frame)
+        self.CancelAppointment_HeadingLabel.setGeometry(QtCore.QRect(0, 0, 721, 151))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(22)
+        font.setBold(True)
+        font.setWeight(75)
+        self.CancelAppointment_HeadingLabel.setFont(font)
+        self.CancelAppointment_HeadingLabel.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.CancelAppointment_HeadingLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.CancelAppointment_HeadingLabel.setObjectName("CancelAppointment_HeadingLabel")
+        self.CurrentAppointments_Frame_3 = QtWidgets.QFrame(self.CancelAppointment_Frame)
+        self.CurrentAppointments_Frame_3.setGeometry(QtCore.QRect(140, 250, 451, 281))
+        self.CurrentAppointments_Frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.CurrentAppointments_Frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.CurrentAppointments_Frame_3.setObjectName("CurrentAppointments_Frame_3")
+        self.ListWidget_CurrentAppointments_3 = QtWidgets.QListWidget(self.CurrentAppointments_Frame_3)
+        self.ListWidget_CurrentAppointments_3.setGeometry(QtCore.QRect(0, 0, 451, 281))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(11)
+        self.ListWidget_CurrentAppointments_3.setFont(font)
+        self.ListWidget_CurrentAppointments_3.setStyleSheet("QListWidget {\n"
+"    background-color:#F3ECB0;\n"
+"    padding: 5px;\n"
+"}\n"
+"\n"
+"QListWidget::item {\n"
+"    color: #344D67;\n"
+"    font-family: \"MS Shell Dlg 2\";\n"
+"    border: 1px solid rgb(186, 186, 186);\n"
+"    height: 40px;\n"
+"}\n"
+"\n"
+"QListWidget::item:selected {\n"
+"    background-color: rgb(0, 177, 171);\n"
+"    color: black;\n"
+"}")
+        self.ListWidget_CurrentAppointments_3.setObjectName("ListWidget_CurrentAppointments_3")
+        self.UnderHeadingTextLabel_4 = QtWidgets.QLabel(self.CancelAppointment_Frame)
+        self.UnderHeadingTextLabel_4.setGeometry(QtCore.QRect(90, 100, 541, 61))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(14)
+        self.UnderHeadingTextLabel_4.setFont(font)
+        self.UnderHeadingTextLabel_4.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.UnderHeadingTextLabel_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.UnderHeadingTextLabel_4.setWordWrap(True)
+        self.UnderHeadingTextLabel_4.setObjectName("UnderHeadingTextLabel_4")
+        self.CurrentAppointments_Label_5 = QtWidgets.QLabel(self.CancelAppointment_Frame)
+        self.CurrentAppointments_Label_5.setGeometry(QtCore.QRect(140, 200, 451, 51))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(14)
+        self.CurrentAppointments_Label_5.setFont(font)
+        self.CurrentAppointments_Label_5.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.CurrentAppointments_Label_5.setAlignment(QtCore.Qt.AlignCenter)
+        self.CurrentAppointments_Label_5.setObjectName("CurrentAppointments_Label_5")
+        self.CancelAppointment_Btn = QtWidgets.QPushButton(self.CancelAppointment_Frame)
+        self.CancelAppointment_Btn.setEnabled(True)
+        self.CancelAppointment_Btn.setGeometry(QtCore.QRect(280, 580, 181, 51))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.CancelAppointment_Btn.setFont(font)
+        self.CancelAppointment_Btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.CancelAppointment_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: #6ECCAF;\n"
+"    color: black;\n"
+"    border: 2px solid black;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"")
+        self.CancelAppointment_Btn.setObjectName("CancelAppointment_Btn")
+        self.DisplaySchedule_Btn = QtWidgets.QPushButton(self.MainFrame)
+        self.DisplaySchedule_Btn.clicked.connect(displayScheduling)
+        self.DisplaySchedule_Btn.setEnabled(False)
+        self.DisplaySchedule_Btn.setGeometry(QtCore.QRect(490, 140, 131, 41))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.DisplaySchedule_Btn.setFont(font)
+        self.DisplaySchedule_Btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.DisplaySchedule_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: rgba(110, 204, 175, .2);\n"
+"    color: rgba(0, 0, 0, .2);\n"
+"    border: 2px solid rgba(0, 0, 0, .2);\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}")
+        self.DisplaySchedule_Btn.setObjectName("DisplaySchedule_Btn")
+        self.RescheduleAppointment_Frame = QtWidgets.QFrame(self.MainFrame)
+        self.RescheduleAppointment_Frame.setVisible(False)
+        self.RescheduleAppointment_Frame.setGeometry(QtCore.QRect(340, 200, 721, 681))
+        self.RescheduleAppointment_Frame.setStyleSheet("QFrame {\n"
+"    border-image: none;\n"
+"    background-color: rgb(52, 77, 103);\n"
+"}")
+        self.RescheduleAppointment_Frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.RescheduleAppointment_Frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.RescheduleAppointment_Frame.setObjectName("RescheduleAppointment_Frame")
+        self.RescheduleAppointment_HeadingLabel_3 = QtWidgets.QLabel(self.RescheduleAppointment_Frame)
+        self.RescheduleAppointment_HeadingLabel_3.setGeometry(QtCore.QRect(0, 0, 701, 151))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(22)
+        font.setBold(True)
+        font.setWeight(75)
+        self.RescheduleAppointment_HeadingLabel_3.setFont(font)
+        self.RescheduleAppointment_HeadingLabel_3.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.RescheduleAppointment_HeadingLabel_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.RescheduleAppointment_HeadingLabel_3.setObjectName("RescheduleAppointment_HeadingLabel_3")
+        self.CurrentAppointments_Frame_4 = QtWidgets.QFrame(self.RescheduleAppointment_Frame)
+        self.CurrentAppointments_Frame_4.setGeometry(QtCore.QRect(120, 250, 451, 121))
+        self.CurrentAppointments_Frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.CurrentAppointments_Frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.CurrentAppointments_Frame_4.setObjectName("CurrentAppointments_Frame_4")
+        self.ListWidget_CurrentAppointments_4 = QtWidgets.QListWidget(self.CurrentAppointments_Frame_4)
+        self.ListWidget_CurrentAppointments_4.setGeometry(QtCore.QRect(0, 0, 451, 171))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(11)
+        self.ListWidget_CurrentAppointments_4.setFont(font)
+        self.ListWidget_CurrentAppointments_4.setStyleSheet("QListWidget {\n"
+"    background-color:#F3ECB0;\n"
+"    padding: 5px;\n"
+"}\n"
+"\n"
+"QListWidget::item {\n"
+"    color: #344D67;\n"
+"    font-family: \"MS Shell Dlg 2\";\n"
+"    border: 1px solid rgb(186, 186, 186);\n"
+"    height: 40px;\n"
+"}\n"
+"\n"
+"QListWidget::item:selected {\n"
+"    background-color: rgb(0, 177, 171);\n"
+"    color: black;\n"
+"}")
+        self.ListWidget_CurrentAppointments_4.setObjectName("ListWidget_CurrentAppointments_4")
+        self.TimesHolderFrame_4 = QtWidgets.QFrame(self.RescheduleAppointment_Frame)
+        self.TimesHolderFrame_4.setGeometry(QtCore.QRect(120, 440, 451, 121))
+        self.TimesHolderFrame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.TimesHolderFrame_4.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.TimesHolderFrame_4.setObjectName("TimesHolderFrame_4")
+        self.ListWidget_MeetDateTimes_4 = QtWidgets.QListWidget(self.TimesHolderFrame_4)
+        self.ListWidget_MeetDateTimes_4.setGeometry(QtCore.QRect(0, 0, 451, 121))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(11)
+        self.ListWidget_MeetDateTimes_4.setFont(font)
+        self.ListWidget_MeetDateTimes_4.setStyleSheet("QListWidget {\n"
+"    background-color:#F3ECB0;\n"
+"    padding: 5px;\n"
+"}\n"
+"\n"
+"QListWidget::item {\n"
+"    color: #344D67;\n"
+"    font-family: \"MS Shell Dlg 2\";\n"
+"    border: 1px solid rgb(186, 186, 186);\n"
+"    height: 40px;\n"
+"}\n"
+"\n"
+"QListWidget::item:selected {\n"
+"    background-color: rgb(0, 177, 171);\n"
+"    color: black;\n"
+"}")
+        self.ListWidget_MeetDateTimes_4.setObjectName("ListWidget_MeetDateTimes_4")
+        self.CurrentAppointments_Label_6 = QtWidgets.QLabel(self.RescheduleAppointment_Frame)
+        self.CurrentAppointments_Label_6.setGeometry(QtCore.QRect(120, 410, 451, 21))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(14)
+        self.CurrentAppointments_Label_6.setFont(font)
+        self.CurrentAppointments_Label_6.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.CurrentAppointments_Label_6.setAlignment(QtCore.Qt.AlignCenter)
+        self.CurrentAppointments_Label_6.setObjectName("CurrentAppointments_Label_6")
+        self.UnderHeadingTextLabel_5 = QtWidgets.QLabel(self.RescheduleAppointment_Frame)
+        self.UnderHeadingTextLabel_5.setGeometry(QtCore.QRect(40, 110, 611, 61))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(14)
+        self.UnderHeadingTextLabel_5.setFont(font)
+        self.UnderHeadingTextLabel_5.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.UnderHeadingTextLabel_5.setAlignment(QtCore.Qt.AlignCenter)
+        self.UnderHeadingTextLabel_5.setWordWrap(True)
+        self.UnderHeadingTextLabel_5.setObjectName("UnderHeadingTextLabel_5")
+        self.CurrentAppointments_Label_7 = QtWidgets.QLabel(self.RescheduleAppointment_Frame)
+        self.CurrentAppointments_Label_7.setGeometry(QtCore.QRect(120, 210, 451, 31))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(14)
+        self.CurrentAppointments_Label_7.setFont(font)
+        self.CurrentAppointments_Label_7.setStyleSheet("QLabel {\n"
+"    color: white;\n"
+"}")
+        self.CurrentAppointments_Label_7.setAlignment(QtCore.Qt.AlignCenter)
+        self.CurrentAppointments_Label_7.setObjectName("CurrentAppointments_Label_7")
+        self.RescheduleAppointment_Btn_3 = QtWidgets.QPushButton(self.RescheduleAppointment_Frame)
+        self.RescheduleAppointment_Btn_3.setGeometry(QtCore.QRect(270, 590, 201, 51))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.RescheduleAppointment_Btn_3.setFont(font)
+        self.RescheduleAppointment_Btn_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.RescheduleAppointment_Btn_3.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: #6ECCAF;\n"
+"    color: black;\n"
+"    border: 2px solid black;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"")
+        self.RescheduleAppointment_Btn_3.setObjectName("RescheduleAppointment_Btn_3")
+        self.DisplayReschedule_Btn = QtWidgets.QPushButton(self.MainFrame)
+        self.DisplayReschedule_Btn.clicked.connect(displayReschedule)
+        self.DisplayReschedule_Btn.setEnabled(True)
+        self.DisplayReschedule_Btn.setGeometry(QtCore.QRect(630, 140, 121, 41))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.DisplayReschedule_Btn.setFont(font)
+        self.DisplayReschedule_Btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.DisplayReschedule_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: #6ECCAF;\n"
+"    color: black;\n"
+"    border: 2px solid black;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"")
+        self.DisplayReschedule_Btn.setObjectName("DisplayReschedule_Btn")
+        self.DisplayCancel_Btn = QtWidgets.QPushButton(self.MainFrame)
+        self.DisplayCancel_Btn.clicked.connect(displayCancel)
+        self.DisplayCancel_Btn.setEnabled(True)
+        self.DisplayCancel_Btn.setGeometry(QtCore.QRect(760, 140, 71, 41))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.DisplayCancel_Btn.setFont(font)
+        self.DisplayCancel_Btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.DisplayCancel_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: #6ECCAF;\n"
+"    color: black;\n"
+"    border: 2px solid black;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"")
+        self.DisplayCancel_Btn.setObjectName("DisplayCancel_Btn")
         SchedulingAppointmentsWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(SchedulingAppointmentsWindow)
@@ -650,7 +1133,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.Nav_MakeReferralBtn.setText(_translate("SchedulingAppointmentsWindow", "Make Referral"))
         self.Nav_LabOrdersBtn.setText(_translate("SchedulingAppointmentsWindow", "Lab Orders"))
         self.Nav_ApproveAppointmentsBtn.setText(_translate("SchedulingAppointmentsWindow", "App. Approve via Portal"))
-        self.HeadingLabel.setText(_translate("SchedulingAppointmentsWindow", "Scheduling Appointments Window"))
+        self.HeadingLabel.setText(_translate("SchedulingAppointmentsWindow", "Schedule Appointment"))
         self.UnderHeadingTextLabel.setText(_translate("SchedulingAppointmentsWindow", "This window is where you can input information related to scheduling and booking an appointment with a patient."))
         self.Label_PatientFirstName_2.setText(_translate("SchedulingAppointmentsWindow", "Patient First Name:"))
         self.LineEdit_PatientFirstName_2.setPlaceholderText(_translate("SchedulingAppointmentsWindow", "Enter First Name"))
@@ -666,6 +1149,19 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.CheckAvailableTimesBtn.setText(_translate("SchedulingAppointmentsWindow", "Check Available Times"))
         self.ScheduleAppointmentBtn.setText(_translate("SchedulingAppointmentsWindow", "Schedule Appointment"))
         self.ClearInputsBtn.setText(_translate("SchedulingAppointmentsWindow", "Clear Inputs"))
+        self.CurrentAvailableTimes_Label.setText(_translate("SchedulingAppointmentsWindow", "Current Available Times"))
+        self.CancelAppointment_HeadingLabel.setText(_translate("SchedulingAppointmentsWindow", "Cancel Appointment"))
+        self.UnderHeadingTextLabel_4.setText(_translate("SchedulingAppointmentsWindow", "To cancel an appointment, just click on one of the appointments you would like to cancel."))
+        self.CurrentAppointments_Label_5.setText(_translate("SchedulingAppointmentsWindow", "Current Appointments"))
+        self.CancelAppointment_Btn.setText(_translate("SchedulingAppointmentsWindow", "Cancel Appointment"))
+        self.DisplaySchedule_Btn.setText(_translate("SchedulingAppointmentsWindow", "Make/Schedule"))
+        self.RescheduleAppointment_HeadingLabel_3.setText(_translate("SchedulingAppointmentsWindow", "Reschedule Appointment"))
+        self.CurrentAppointments_Label_6.setText(_translate("SchedulingAppointmentsWindow", "Current Available Times"))
+        self.UnderHeadingTextLabel_5.setText(_translate("SchedulingAppointmentsWindow", "To reschedule an appointment, click on one of your current appointments and a different available time that you would like to have."))
+        self.CurrentAppointments_Label_7.setText(_translate("SchedulingAppointmentsWindow", "Current Appointments"))
+        self.RescheduleAppointment_Btn_3.setText(_translate("SchedulingAppointmentsWindow", "Reschedule Appointment"))
+        self.DisplayReschedule_Btn.setText(_translate("SchedulingAppointmentsWindow", "Rescheduling"))
+        self.DisplayCancel_Btn.setText(_translate("SchedulingAppointmentsWindow", "Cancel"))
 
 
 if __name__ == "__main__":

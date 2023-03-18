@@ -5,11 +5,9 @@ from assets.qrc import app_bg
 from assets.files.GLOBALS import *
 
 import urllib
-
-
+import sqlalchemy
 
 class Ui_SchedulingAppointmentsWindow(object):
-
     def setupUi(self, SchedulingAppointmentsWindow):
         ' FUNCTIONS '
         def clearInputs():
@@ -39,7 +37,7 @@ class Ui_SchedulingAppointmentsWindow(object):
                     print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
                     raise e
 
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 17 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
                 conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
                 engine = sql.create_engine(conn_str)
 
@@ -159,8 +157,9 @@ class Ui_SchedulingAppointmentsWindow(object):
                 self.RescheduleAppointment_Frame.setVisible(True)
                 self.DisplayReschedule_Btn.setEnabled(False)
 
-                # Refreshes the available times
+                # Refreshes the available times and appointments
                 checkAvailableTimes()
+                checkCurrentAppointments()
 
                 self.DisplayReschedule_Btn.setStyleSheet("QPushButton {\n"
 "    border-image: none;\n"
@@ -205,9 +204,14 @@ class Ui_SchedulingAppointmentsWindow(object):
 
         def scheduleAppointment():
                 print()
+        def rescheduleAppointment():
+                ' This is used to reschedule an appointment '
+        def cancelAppointment():
+                ' This is used to cancel an appointment '
 
-        # connectToDB()
-        # closeDBConnection()
+
+        connectToDB()
+        closeDBConnection()
 
         SchedulingAppointmentsWindow.setObjectName("SchedulingAppointmentsWindow")
         SchedulingAppointmentsWindow.resize(1430, 925)
@@ -428,8 +432,8 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.UnderHeadingTextLabel = QtWidgets.QLabel(self.InputsFrame)
         self.UnderHeadingTextLabel.setGeometry(QtCore.QRect(0, 110, 1181, 61))
         font = QtGui.QFont()
-        font.setFamily("Lato")
-        font.setPointSize(14)
+        font.setFamily("MS Shell Dlg 2")
+        font.setPointSize(12)
         self.UnderHeadingTextLabel.setFont(font)
         self.UnderHeadingTextLabel.setStyleSheet("QLabel {\n"
 "    color: white;\n"
@@ -732,7 +736,7 @@ class Ui_SchedulingAppointmentsWindow(object):
 "}")
         self.ListWidget_MeetDateTimes.setObjectName("ListWidget_MeetDateTimes")
         self.CheckAvailableTimesBtn = QtWidgets.QPushButton(self.InputsFrame)
-        self.CheckAvailableTimesBtn.setGeometry(QtCore.QRect(810, 580, 181, 51))
+        self.CheckAvailableTimesBtn.setGeometry(QtCore.QRect(780, 580, 241, 51))
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(11)
@@ -755,9 +759,8 @@ class Ui_SchedulingAppointmentsWindow(object):
 "")
         self.CheckAvailableTimesBtn.setObjectName("CheckAvailableTimesBtn")
         self.ScheduleAppointmentBtn = QtWidgets.QPushButton(self.InputsFrame)
-        self.ScheduleAppointmentBtn.clicked.connect(scheduleAppointment)
         self.ScheduleAppointmentBtn.setEnabled(True)
-        self.ScheduleAppointmentBtn.setGeometry(QtCore.QRect(110, 580, 181, 51))
+        self.ScheduleAppointmentBtn.setGeometry(QtCore.QRect(110, 580, 241, 51))
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(11)
@@ -780,7 +783,8 @@ class Ui_SchedulingAppointmentsWindow(object):
 "")
         self.ScheduleAppointmentBtn.setObjectName("ScheduleAppointmentBtn")
         self.ClearInputsBtn = QtWidgets.QPushButton(self.InputsFrame)
-        self.ClearInputsBtn.setGeometry(QtCore.QRect(310, 580, 111, 51))
+        self.ClearInputsBtn.clicked.connect(clearInputs)
+        self.ClearInputsBtn.setGeometry(QtCore.QRect(360, 580, 151, 51))
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(11)
@@ -801,7 +805,7 @@ class Ui_SchedulingAppointmentsWindow(object):
 "}")
         self.ClearInputsBtn.setObjectName("ClearInputsBtn")
         self.CurrentAvailableTimes_Label = QtWidgets.QLabel(self.InputsFrame)
-        self.CurrentAvailableTimes_Label.setGeometry(QtCore.QRect(730, 200, 341, 16))
+        self.CurrentAvailableTimes_Label.setGeometry(QtCore.QRect(730, 195, 341, 21))
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(14)
@@ -812,13 +816,13 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.CurrentAvailableTimes_Label.setAlignment(QtCore.Qt.AlignCenter)
         self.CurrentAvailableTimes_Label.setObjectName("CurrentAvailableTimes_Label")
         self.CancelAppointment_Frame = QtWidgets.QFrame(self.MainFrame)
+        self.CancelAppointment_Frame.setVisible(False)
         self.CancelAppointment_Frame.setGeometry(QtCore.QRect(340, 200, 721, 681))
         self.CancelAppointment_Frame.setStyleSheet("QFrame {\n"
 "    border-image: none;\n"
 "    background-color: rgb(52, 77, 103);\n"
 "}")
         self.CancelAppointment_Frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.CancelAppointment_Frame.setVisible(False)
         self.CancelAppointment_Frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.CancelAppointment_Frame.setObjectName("CancelAppointment_Frame")
         self.CancelAppointment_HeadingLabel = QtWidgets.QLabel(self.CancelAppointment_Frame)
@@ -865,8 +869,8 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.UnderHeadingTextLabel_4 = QtWidgets.QLabel(self.CancelAppointment_Frame)
         self.UnderHeadingTextLabel_4.setGeometry(QtCore.QRect(90, 100, 541, 61))
         font = QtGui.QFont()
-        font.setFamily("Lato")
-        font.setPointSize(14)
+        font.setFamily("MS Shell Dlg 2")
+        font.setPointSize(12)
         self.UnderHeadingTextLabel_4.setFont(font)
         self.UnderHeadingTextLabel_4.setStyleSheet("QLabel {\n"
 "    color: white;\n"
@@ -886,8 +890,9 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.CurrentAppointments_Label_5.setAlignment(QtCore.Qt.AlignCenter)
         self.CurrentAppointments_Label_5.setObjectName("CurrentAppointments_Label_5")
         self.CancelAppointment_Btn = QtWidgets.QPushButton(self.CancelAppointment_Frame)
+        self.CancelAppointment_Btn.clicked.connect(cancelAppointment)
         self.CancelAppointment_Btn.setEnabled(True)
-        self.CancelAppointment_Btn.setGeometry(QtCore.QRect(280, 580, 181, 51))
+        self.CancelAppointment_Btn.setGeometry(QtCore.QRect(250, 580, 231, 51))
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(11)
@@ -909,29 +914,6 @@ class Ui_SchedulingAppointmentsWindow(object):
 "\n"
 "")
         self.CancelAppointment_Btn.setObjectName("CancelAppointment_Btn")
-        self.DisplaySchedule_Btn = QtWidgets.QPushButton(self.MainFrame)
-        self.DisplaySchedule_Btn.clicked.connect(displayScheduling)
-        self.DisplaySchedule_Btn.setEnabled(False)
-        self.DisplaySchedule_Btn.setGeometry(QtCore.QRect(490, 140, 131, 41))
-        font = QtGui.QFont()
-        font.setFamily("Lato")
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
-        self.DisplaySchedule_Btn.setFont(font)
-        self.DisplaySchedule_Btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.DisplaySchedule_Btn.setStyleSheet("QPushButton {\n"
-"    border-image: none;\n"
-"    background-color: rgba(110, 204, 175, .2);\n"
-"    color: rgba(0, 0, 0, .2);\n"
-"    border: 2px solid rgba(0, 0, 0, .2);\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"    background-color: rgb(139, 231, 100);\n"
-"    color: white;\n"
-"}")
-        self.DisplaySchedule_Btn.setObjectName("DisplaySchedule_Btn")
         self.RescheduleAppointment_Frame = QtWidgets.QFrame(self.MainFrame)
         self.RescheduleAppointment_Frame.setVisible(False)
         self.RescheduleAppointment_Frame.setGeometry(QtCore.QRect(340, 200, 721, 681))
@@ -1023,10 +1005,10 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.CurrentAppointments_Label_6.setAlignment(QtCore.Qt.AlignCenter)
         self.CurrentAppointments_Label_6.setObjectName("CurrentAppointments_Label_6")
         self.UnderHeadingTextLabel_5 = QtWidgets.QLabel(self.RescheduleAppointment_Frame)
-        self.UnderHeadingTextLabel_5.setGeometry(QtCore.QRect(40, 110, 611, 61))
+        self.UnderHeadingTextLabel_5.setGeometry(QtCore.QRect(30, 110, 661, 61))
         font = QtGui.QFont()
-        font.setFamily("Lato")
-        font.setPointSize(14)
+        font.setFamily("MS Shell Dlg 2")
+        font.setPointSize(12)
         self.UnderHeadingTextLabel_5.setFont(font)
         self.UnderHeadingTextLabel_5.setStyleSheet("QLabel {\n"
 "    color: white;\n"
@@ -1046,7 +1028,8 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.CurrentAppointments_Label_7.setAlignment(QtCore.Qt.AlignCenter)
         self.CurrentAppointments_Label_7.setObjectName("CurrentAppointments_Label_7")
         self.RescheduleAppointment_Btn_3 = QtWidgets.QPushButton(self.RescheduleAppointment_Frame)
-        self.RescheduleAppointment_Btn_3.setGeometry(QtCore.QRect(270, 590, 201, 51))
+        self.RescheduleAppointment_Btn_3.clicked.connect(rescheduleAppointment)
+        self.RescheduleAppointment_Btn_3.setGeometry(QtCore.QRect(200, 590, 291, 51))
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(11)
@@ -1068,10 +1051,24 @@ class Ui_SchedulingAppointmentsWindow(object):
 "\n"
 "")
         self.RescheduleAppointment_Btn_3.setObjectName("RescheduleAppointment_Btn_3")
-        self.DisplayReschedule_Btn = QtWidgets.QPushButton(self.MainFrame)
+        self.ViewBtns_Frame = QtWidgets.QFrame(self.MainFrame)
+        self.ViewBtns_Frame.setGeometry(QtCore.QRect(380, 110, 641, 91))
+        self.ViewBtns_Frame.setStyleSheet("QFrame {\n"
+"    border-image: none;\n"
+"    background-color: none;\n"
+"}")
+        self.ViewBtns_Frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.ViewBtns_Frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ViewBtns_Frame.setObjectName("ViewBtns_Frame")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.ViewBtns_Frame)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.DisplayReschedule_Btn = QtWidgets.QPushButton(self.ViewBtns_Frame)
         self.DisplayReschedule_Btn.clicked.connect(displayReschedule)
         self.DisplayReschedule_Btn.setEnabled(True)
-        self.DisplayReschedule_Btn.setGeometry(QtCore.QRect(630, 140, 121, 41))
+        self.DisplayReschedule_Btn.setMinimumSize(QtCore.QSize(170, 40))
+        self.DisplayReschedule_Btn.setMaximumSize(QtCore.QSize(120, 16777215))
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(11)
@@ -1093,10 +1090,37 @@ class Ui_SchedulingAppointmentsWindow(object):
 "\n"
 "")
         self.DisplayReschedule_Btn.setObjectName("DisplayReschedule_Btn")
-        self.DisplayCancel_Btn = QtWidgets.QPushButton(self.MainFrame)
+        self.horizontalLayout.addWidget(self.DisplayReschedule_Btn)
+        self.DisplaySchedule_Btn = QtWidgets.QPushButton(self.ViewBtns_Frame)
+        self.DisplaySchedule_Btn.clicked.connect(displayScheduling)
+        self.DisplaySchedule_Btn.setEnabled(False)
+        self.DisplaySchedule_Btn.setMinimumSize(QtCore.QSize(200, 40))
+        self.DisplaySchedule_Btn.setMaximumSize(QtCore.QSize(200, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.DisplaySchedule_Btn.setFont(font)
+        self.DisplaySchedule_Btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.DisplaySchedule_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: rgba(110, 204, 175, .2);\n"
+"    color: rgba(0, 0, 0, .2);\n"
+"    border: 2px solid rgba(0, 0, 0, .2);\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}")
+        self.DisplaySchedule_Btn.setObjectName("DisplaySchedule_Btn")
+        self.horizontalLayout.addWidget(self.DisplaySchedule_Btn)
+        self.DisplayCancel_Btn = QtWidgets.QPushButton(self.ViewBtns_Frame)
         self.DisplayCancel_Btn.clicked.connect(displayCancel)
         self.DisplayCancel_Btn.setEnabled(True)
-        self.DisplayCancel_Btn.setGeometry(QtCore.QRect(760, 140, 71, 41))
+        self.DisplayCancel_Btn.setMinimumSize(QtCore.QSize(100, 40))
+        self.DisplayCancel_Btn.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(11)
@@ -1118,6 +1142,13 @@ class Ui_SchedulingAppointmentsWindow(object):
 "\n"
 "")
         self.DisplayCancel_Btn.setObjectName("DisplayCancel_Btn")
+        self.horizontalLayout.addWidget(self.DisplayCancel_Btn)
+        self.horizontalLayout_2.addLayout(self.horizontalLayout)
+        self.layoutWidget.raise_()
+        self.InputsFrame.raise_()
+        self.RescheduleAppointment_Frame.raise_()
+        self.CancelAppointment_Frame.raise_()
+        self.ViewBtns_Frame.raise_()
         SchedulingAppointmentsWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(SchedulingAppointmentsWindow)
@@ -1154,15 +1185,14 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.UnderHeadingTextLabel_4.setText(_translate("SchedulingAppointmentsWindow", "To cancel an appointment, just click on one of the appointments you would like to cancel."))
         self.CurrentAppointments_Label_5.setText(_translate("SchedulingAppointmentsWindow", "Current Appointments"))
         self.CancelAppointment_Btn.setText(_translate("SchedulingAppointmentsWindow", "Cancel Appointment"))
-        self.DisplaySchedule_Btn.setText(_translate("SchedulingAppointmentsWindow", "Make/Schedule"))
         self.RescheduleAppointment_HeadingLabel_3.setText(_translate("SchedulingAppointmentsWindow", "Reschedule Appointment"))
         self.CurrentAppointments_Label_6.setText(_translate("SchedulingAppointmentsWindow", "Current Available Times"))
         self.UnderHeadingTextLabel_5.setText(_translate("SchedulingAppointmentsWindow", "To reschedule an appointment, click on one of your current appointments and a different available time that you would like to have."))
         self.CurrentAppointments_Label_7.setText(_translate("SchedulingAppointmentsWindow", "Current Appointments"))
         self.RescheduleAppointment_Btn_3.setText(_translate("SchedulingAppointmentsWindow", "Reschedule Appointment"))
         self.DisplayReschedule_Btn.setText(_translate("SchedulingAppointmentsWindow", "Rescheduling"))
+        self.DisplaySchedule_Btn.setText(_translate("SchedulingAppointmentsWindow", "Make/Schedule"))
         self.DisplayCancel_Btn.setText(_translate("SchedulingAppointmentsWindow", "Cancel"))
-
 
 if __name__ == "__main__":
     import sys

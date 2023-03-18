@@ -1,6 +1,8 @@
 
 # Medical Office Administration Program
 
+![Front Screen of this program](./assets/imgs/front_screen.png)
+
 ## Features 
  - Set and Cancel Appointments
  - Check-In/Check-Out A Patients Appointment

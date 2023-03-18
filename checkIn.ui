@@ -418,7 +418,7 @@ QPushButton::hover {
 
 
 
-QLineEdit, QComboBox, QDateEdit, QDateTimeEdit {
+QLineEdit, QComboBox, QDateEdit, QDateTimeEdit, QListView {
 	border-image: none;
     border: none;
 	min-width: 200px;
@@ -458,25 +458,64 @@ QLabel {
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QWidget" name="horizontalLayoutWidget">
+     <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>130</y>
+        <y>2</y>
         <width>1221</width>
-        <height>341</height>
+        <height>441</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item alignment="Qt::AlignHCenter">
-        <widget class="QListView" name="listView_2">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="HeadingLabel">
          <property name="minimumSize">
           <size>
-           <width>300</width>
-           <height>0</height>
+           <width>0</width>
+           <height>150</height>
           </size>
          </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>150</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Lato</family>
+           <pointsize>22</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+	color: white;
+}</string>
+         </property>
+         <property name="text">
+          <string>Avaliable Check-in's</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item alignment="Qt::AlignHCenter">
+          <widget class="QListView" name="listView_2">
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>

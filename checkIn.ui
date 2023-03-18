@@ -469,7 +469,7 @@ QLabel {
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QLabel" name="HeadingLabel">
+        <widget class="QLabel" name="Lable_CheckIns">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -506,7 +506,7 @@ QLabel {
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item alignment="Qt::AlignHCenter">
-          <widget class="QListView" name="listView_2">
+          <widget class="QListView" name="listView_CheckIns">
            <property name="minimumSize">
             <size>
              <width>300</width>
@@ -518,6 +518,45 @@ QLabel {
         </layout>
        </item>
       </layout>
+     </widget>
+     <widget class="QPushButton" name="Btn_CheckIn">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>470</y>
+        <width>181</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lato</family>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	border-image: none;
+	background-color: #6ECCAF;
+	color: black;
+	border: 2px solid black;
+}
+
+QPushButton::hover {
+	background-color: rgb(139, 231, 100);
+	color: white;
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string>Check In</string>
+      </property>
      </widget>
     </widget>
    </widget>

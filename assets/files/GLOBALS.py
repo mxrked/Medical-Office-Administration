@@ -15,3 +15,5 @@ validMeetTimeDate = False
 allowLogin = [False]
 scheduleAppointment = [False]
 teamMembers = ["Parker Phelps - Product Owner", "Christian Fortin - Scrum Master", "Matthew Burrus - Program Analyst", "Jessica Weeks - QA Developer", "Destan Hutcherson - Program Analyst", "Flora Cherotich - Database Technician", "Adia Chue - Web Developer"]
+userName = []
+passWord = []

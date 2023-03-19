@@ -3,6 +3,7 @@ db.py - A library for accessing the Office Administration Database
 Author: Jessica Weeks
 """
 
+
 try:
     import sqlalchemy as sql
     import pyodbc
@@ -11,6 +12,9 @@ try:
     from datetime import datetime, time, date
 
     from objects import *
+
+    import db_get as get
+    import db_appointment as appt
 
 except ImportError as e:
     print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
@@ -28,117 +32,6 @@ DB = "Driver={ODBC Driver 17 for SQL Server};" \
 engine = sql.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
 print("Connected to database. . .")
 
-
-def get_todays_appointments(conn) -> list[Appointment]:
-    """
-    Returns a list of `Appointment` objects for all appointments that 
-    occurred today and up to one hour ago.
-
-    :param conn: A database connection object.
-    :type conn: pyodbc.Connection
-    :return: A list of `Appointment` objects.
-    :rtype: list
-    """
-
-    stmt = sql.text(
-        """
-    SELECT * 
-    FROM Appointment 
-    WHERE ApptDate = Cast(GETDATE() AS DATE)
-    AND ApptTime >= DATEADD(HOUR, -1, CAST(GETDATE() AS TIME));
-    """)
-    results = conn.execute(stmt).fetchall()
-
-    return results_to_appointments(results)
-
-
-def get_pending_appointments(conn) -> list[Appointment]:
-    """
-    Returns a list of pending appointments from the Appointment table.
-
-    :param conn: A database connection object.
-    :type conn: Connection
-    :return: A list of Appointment objects.
-    :rtype: list
-    """
-
-    stmt = sql.text(
-        """
-    SELECT *
-    FROM Appointment
-    WHERE ApptStatus = "pending";
-    """)
-    results = conn.execute(stmt).fetchall()
-
-    return results_to_appointments(results)
-
-def get_current_appointments(conn) -> list[Appointment]:
-    """
-    Returns a list of pending appointments from the Appointment table.
-
-    :param conn: A database connection object.
-    :type conn: Connection
-    :return: A list of Appointment objects.
-    :rtype: list
-    """
-
-    stmt = sql.text(
-        """
-    SELECT *
-    FROM Appointment
-    WHERE ApptStatus = "in progress";
-    """)
-    results = conn.execute(stmt).fetchall()
-
-    return results_to_appointments(results)
-
-def appointment_check_in(conn, appointment):
-    """
-    Update the status of an appointment to 'checked in' in the database.
-
-    :param conn: Connection object to the database.
-    :param appointment: Appointment object to be checked in.
-    """
-
-    stmt = sql.text(
-        f""" 
-    UPDATE appointments
-    SET appt_status = 'checked in'
-    WHERE appointment_id = {appointment.id}
-    """)
-    conn.execute(stmt)
-
-def appointment_check_out(conn, appointment):
-    """
-    Update the status of an appointment to 'completed' in the database.
-
-    :param conn: Connection object to the database.
-    :param appointment: Appointment object to be checked in.
-    """
-
-    stmt = sql.text(
-        f""" 
-    UPDATE appointments
-    SET appt_status = 'completed'
-    WHERE appointment_id = {appointment.id}
-    """)
-    conn.execute(stmt)
-
-def appointment_start(conn, appointment):
-    """
-    Update the status of an appointment to 'in progress' in the database.
-
-    :param conn: Connection object to the database.
-    :param appointment: Appointment object to be checked in.
-    """
-
-    stmt = sql.text(
-        f""" 
-    UPDATE appointments
-    SET appt_status = 'in progress'
-    WHERE appointment_id = {appointment.id}
-    """)
-    conn.execute(stmt)
 
 def results_to_appointments(sql_results) -> list[Appointment]:
     """ Turns results from a SQL query into a list of Appointment objects"""
@@ -165,6 +58,35 @@ def results_to_appointments(sql_results) -> list[Appointment]:
 
 
 
+def check_username(conn, user_name, password) -> User:
+    stmt = sql.text(
+        f""" 
+    SELECT TOP 1 *
+    FROM Users
+    WHERE user_name = {user_name};
+    """)
+
+    results = conn.execute(stmt).fetchall()
+
+    assert len(results) > 0, "No Users Found!"
+
+    result = results[0]
+    
+    user_id = result[0]
+    user_name = result[1]
+    assert password == result[2], "Password Does not match!"
+    employee_id = result[3]
+
+    employee = get.employee(conn, employee_id)
+    
+    current_user = User(user_id, user_name, employee)
+
+    return current_user
+
+
+
+ 
+
 ### UNFINISHED: I WROTE THESE IN, THEY MUST BE DONE IN FUTURE ###
 
 def find_patients(conn, first_name, last_name, dob) -> list[Patient]:
@@ -189,7 +111,7 @@ def find_avaliable_appointments(conn, date) -> list[time]:
     """
     pass
 
-def find_doctors(conn) -> list[Employee]:
+def find_all_doctors(conn) -> list[Employee]:
     """
     Here I just need a list of doctors, this is used for the dropdown box in the appointments
     screen
@@ -202,14 +124,14 @@ def find_locations(conn) -> list[Location]:
     """
     pass
 
-def create_appointment(conn, appointment: Appointment):
+def appointment_create(conn, appointment: Appointment):
     """ 
     We want you to add a appointment entry using our Appointment Object 
     Remember to ignore setting appointmentID, that should be handled Automatticaly by our database
     """
     pass
 
-def cancel_appointment(conn, appointment: Appointment):
+def appointment_cancel(conn, appointment: Appointment):
     """ Here you are gonna remove an appointment, all you really need is the AppointmentID"""
     pass
 
@@ -225,10 +147,13 @@ def create_lab_order(conn, lab_order: LabOrder):
     pass
 
 
+
 ### MAIN ###
 
 def main():
     with engine.connect() as conn:
-        get_todays_appointments(conn)
+        get.todays_appointments(conn)
 
-main()
+
+if __name__ == "__main__":
+    main()

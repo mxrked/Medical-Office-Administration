@@ -11,6 +11,7 @@ Current Objects:
     LabOrder,
     Employee,
     Location,
+    User,
 """
 
 from datetime import date, time, datetime
@@ -251,7 +252,7 @@ class Referral:
         self._patient_id = patient_id
 
 
- ### WHAT IS LAB TEST, BE SURE TO ASK
+### WHAT IS LAB TEST, BE SURE TO ASK
 class LabOrder:
     """
     Represents a lab order made by an employee for a patient.
@@ -480,3 +481,49 @@ class Location:
         if len(address) > 50:
             raise ValueError('Address cannot be longer than 50 characters')
         self._address = address
+
+
+class User:
+    """
+    Represents a user
+
+    :param user_id: int, the unique identifier of the user.
+    :param user_name: str, the name of the user.
+    :param employee: Employee, Refers to an Employee.
+    """
+    def __init__(self,
+                 user_id: int,
+                 user_name: str,
+                 employee: Employee):
+        self.user_id = user_id
+        self.user_name = user_name
+        self.employee = employee
+
+    @property
+    def user_id(self):
+        """ Refers to a user_id """
+        return self._user_id
+
+    @user_id.setter
+    def user_id(self, user_id):
+        self._user_id = user_id
+
+    @property
+    def user_name(self):
+        """ Refers to a user's name"""
+        return self._user_name
+
+    @user_name.setter
+    def user_name(self, user_name):
+        if len(user_name) > 50:
+            raise ValueError('User name cannot be longer than 50 characters')
+        self._user_name = user_name
+
+    @property
+    def employee(self):
+        """ Refers to an employee """
+        return self._employee
+
+    @employee.setter
+    def employee(self, employee):
+        self._employee = employee

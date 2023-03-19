@@ -26,9 +26,10 @@ engine = sql.create_engine(f"mssql+pyodbc:///?odbc_connect={db}")
 print("Connected to database. . .")
 
 
-def getTodaysAppointments(conn):
+def get_todays_appointments(conn) -> list:
     """
-    Returns a list of `Appointment` objects for all appointments that occurred today and up to one hour ago.
+    Returns a list of `Appointment` objects for all appointments that 
+    occurred today and up to one hour ago.
 
     :param conn: A database connection object.
     :type conn: pyodbc.Connection
@@ -47,24 +48,31 @@ def getTodaysAppointments(conn):
     return results_to_appointments(results)
 
 
-def getPendingAppointments(conn):
+def get_pending_appointments(conn) -> list:
+    """
+    Returns a list of pending appointments from the Appointment table.
 
+    :param conn: A database connection object.
+    :type conn: Connection
+    :return: A list of Appointment objects.
+    :rtype: list
+    """
     stmt = sql.text(
         """
     SELECT *
     FROM Appointment
     WHERE ApptStatus = "pending";
     """)
-
     results = conn.execute(stmt).fetchall()
 
     return results_to_appointments(results)
 
 
 
-def results_to_appointments(sql_results):
+def results_to_appointments(sql_results) -> list:
+    """ Turns results from a SQL query into a list of Appointment objects"""
     appointments = []
-    for row in results:
+    for row in sql_results:
         appointment_id = row[0]
         appt_date = row[1].date()
         appt_time = row[2].time()
@@ -86,6 +94,6 @@ def results_to_appointments(sql_results):
 
 def main():
     with engine.connect() as conn:
-        getTodaysAppointments(conn)
+        get_todays_appointments(conn)
 
 main()

@@ -7,8 +7,11 @@ try:
     import sqlalchemy as sql
     import pyodbc
     from sqlalchemy.pool import QueuePool
-
+    
     from datetime import datetime
+
+    from objects import Appointment
+
 except ImportError as e:
     print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
     raise e
@@ -67,9 +70,26 @@ def get_pending_appointments(conn) -> list:
 
     return results_to_appointments(results)
 
+def get_current_appointments(conn) -> list[Appointment]:
+    """
+    Returns a list of pending appointments from the Appointment table.
 
+    :param conn: A database connection object.
+    :type conn: Connection
+    :return: A list of Appointment objects.
+    :rtype: list
+    """
+    stmt = sql.text(
+        """
+    SELECT *
+    FROM Appointment
+    WHERE ApptStatus = "in progress";
+    """)
+    results = conn.execute(stmt).fetchall()
 
-def results_to_appointments(sql_results) -> list:
+    return results_to_appointments(results)
+
+def results_to_appointments(sql_results) -> list[Appointment]:
     """ Turns results from a SQL query into a list of Appointment objects"""
     appointments = []
     for row in sql_results:
@@ -88,9 +108,16 @@ def results_to_appointments(sql_results) -> list:
                                   appt_status, 
                                   visit_reason)
         
-        appointment.append(appointment)
+        appointments.append(appointment)
 
     return appointments
+
+
+def find_patients(conn, first_name, last_name, DOB) -> list:
+    """ Returns a list of patient objects that match these attributes """
+    pass
+
+
 
 def main():
     with engine.connect() as conn:

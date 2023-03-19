@@ -7,6 +7,7 @@ import urllib
 import sqlalchemy
 
 
+
 class Ui_StartWindow(object):
     def setupUi(self, StartWindow):
         ''' FUNCTIONS '''
@@ -104,13 +105,16 @@ class Ui_StartWindow(object):
 
                 engine.connect()
 
-                print("Connected to database. . .")
+                # This is used to check if the database is connected
+                if engine.connect():
+                    print("Connected to database. . .")
 
+                    return engine
 
-                with engine.connect() as conn:
-                    result = conn.execute(sql.text("SELECT * FROM Appointment"))
-                    for key in result.keys():
-                        print(key)
+                # with engine.connect() as conn:
+                #     result = conn.execute(sql.text("SELECT * FROM Appointment"))
+                #     for key in result.keys():
+                #         print(key)
         def closeDBConnection():
                 ' This is used to close the connection to the DB '
 
@@ -139,21 +143,150 @@ class Ui_StartWindow(object):
 
             sys.exit()
 
-        def checkUsername():
+        def checkUser():
             ' This is used to check if there is a username in the DB based on what the user input '
 
-            usernameInputValue = self.startWindow_UsernameLineEdit.text()
-        def checkPassword():
-            ' This is used to check if there is a password in the DB based on what the user input '
+            # Connecting to Database
+            checkDBConnection = connectToDB()
 
+            # Import checking
+            try:
+
+                from sqlalchemy.orm import sessionmaker, declarative_base
+                from sqlalchemy import Column, String, Integer, NCHAR, Numeric, Null
+
+            except ImportError as e:
+                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
+                    raise e
+
+
+            # Grabbing the data entry(s)
+            Base = declarative_base()
+            class UsersTable(Base):
+                __tablename__ = "Users"
+
+                UserID = Column(Integer, primary_key=True)
+                EmployeeID = Column(Integer)
+                UserName = Column(NCHAR(10))
+                EmailAddress = Column(NCHAR(10))
+                Password = Column(Numeric(18, 0))
+            Session = sessionmaker(bind=checkDBConnection)
+            session = Session()
+            result = session.query(UsersTable).all()
+
+            # Checking if data entry matches the user and password inputs
+            usernameInputValue = self.startWindow_UsernameLineEdit.text()
             passwordInputValue = self.startWindow_PasswordLineEdit.text()
+
+
+
+
+            # Going through each entry to see which one matches
+            if usernameInputValue != None and usernameInputValue != "" and passwordInputValue != None and passwordInputValue != "":
+                for row in result:
+                    print(row.UserID, row.EmployeeID, row.UserName, row.EmailAddress, row.Password)
+
+
+                    #Hiding borders on inputs
+                    self.startWindow_UsernameLineEdit.setStyleSheet("QLineEdit {\n"
+    "    border-image: none;\n"
+    "    border: none;\n"
+    "    min-width: 200px;\n"
+    "    height: 30px;\n"
+    "    background-color: #F3ECB0;\n"
+    "    color: #344D67;\n"
+    "    font-family: \"MS Shell Dlg 2\";\n"
+    "    font-size: 11;\n"
+    "    padding-left: 10px;\n"
+    "    paddding-right: 10px;\n"
+    "}")
+                    self.startWindow_PasswordLineEdit.setStyleSheet("QLineEdit {\n"
+    "    border-image: none;\n"
+    "    border: none;\n"
+    "    min-width: 200px;\n"
+    "    height: 30px;\n"
+    "    background-color: #F3ECB0;\n"
+    "    color: #344D67;\n"
+    "    font-family: \"MS Shell Dlg 2\";\n"
+    "    font-size: 11;\n"
+    "    padding-left: 10px;\n"
+    "    paddding-right: 10px;\n"
+    "}")
+
+                    if row.UserName == usernameInputValue and row.Password == passwordInputValue:
+                            # User exists/was found!
+                            userFound = True
+
+                            if userFound:
+                                # Storing the current users username and password
+                                GLOBALS.userName.clear()
+                                GLOBALS.passWord.clear()
+
+                                GLOBALS.userName.append(String(row.UserName))
+                                GLOBALS.passWord.append(String(row.Password))
+
+
+                    else:
+                            # User does not exist/was not found
+                            userFound = False
+
+                    return userFound
+
+            # Making sure the inputs arent empty
+            if usernameInputValue == None or usernameInputValue == "":
+                    self.startWindow_UsernameLineEdit.setStyleSheet("QLineEdit {\n"
+"    border-image: none;\n"
+"    border: 2px solid red;\n"
+"    min-width: 200px;\n"
+"    height: 30px;\n"
+"    background-color: #F3ECB0;\n"
+"    color: #344D67;\n"
+"    font-family: \"MS Shell Dlg 2\";\n"
+"    font-size: 11;\n"
+"    padding-left: 10px;\n"
+"    paddding-right: 10px;\n"
+"}")
+                    print("You cannot have the username input empty..")
+            if passwordInputValue == None or passwordInputValue == "":
+                    self.startWindow_PasswordLineEdit.setStyleSheet("QLineEdit {\n"
+"    border-image: none;\n"
+"    border: 2px solid red;\n"
+"    min-width: 200px;\n"
+"    height: 30px;\n"
+"    background-color: #F3ECB0;\n"
+"    color: #344D67;\n"
+"    font-family: \"MS Shell Dlg 2\";\n"
+"    font-size: 11;\n"
+"    padding-left: 10px;\n"
+"    paddding-right: 10px;\n"
+"}")
+                    print("You cannot have the password input empty..")
+
 
         def loginUser():
             ' This is used to login the user '
-            usernameCheck = checkUsername()
-            passwordCheck = checkPassword()
+            userCheck = checkUser()
+            usernameInputValue = self.startWindow_UsernameLineEdit.text()
+            passwordInputValue = self.startWindow_PasswordLineEdit.text()
 
-        connectToDB()
+            # Making sure the inputs arent empty
+            if usernameInputValue != None and usernameInputValue != "" and passwordInputValue != None and passwordInputValue != "":
+                if userCheck:
+                    print("Welcome, " + GLOBALS.userName[0])
+
+                    # Route user to scheduling appointments screen
+                    print("Routing to next window..")
+
+
+
+                if not userCheck:
+                    print(self.startWindow_UsernameLineEdit.text() + " does not exist..")
+
+
+
+        # connectToDB()
+
+
 
         StartWindow.setObjectName("StartWindow")
         StartWindow.resize(900, 900)

@@ -237,3 +237,110 @@ class Referral:
     @patient_id.setter
     def patient_id(self, patient_id):
         self._patient_id = patient_id
+
+class LabOrder:
+    """
+    Represents a lab order made by an employee for a patient.
+
+    :param lab_order_id: int, the unique identifier of the lab order.
+    :param order_name: str, the name of the lab order.
+    :param employee_id: int, the unique identifier of the employee who created the lab order.
+    :param patient_id: int, the unique identifier of the patient who the lab order is for.
+    :param lab_date: date, the date the lab order was created.
+    :param results: str, the results of the lab order.
+    :param lab_id: int, the unique identifier of the lab.
+    :param location_id: int, the unique identifier of the location.
+    """
+    def __init__(self,
+                 lab_order_id: int,
+                 order_name: str,
+                 employee_id: int,
+                 patient_id: int,
+                 lab_date: date,
+                 results: str,
+                 lab_id: int,
+                 location_id: int):
+        self.lab_order_id = lab_order_id
+        self.employee_id = employee_id
+        self.patient_id = patient_id
+        self.lab_date = lab_date
+        self.lab_id = lab_id
+        self.location_id = location_id
+        self.order_name = order_name
+        self.results = results
+
+    @property
+    def lab_order_id(self):
+        """ Refers to a lab order's ID """
+        return self._lab_order_id
+
+    @lab_order_id.setter
+    def lab_order_id(self, lab_order_id):
+        self._lab_order_id = lab_order_id
+
+    @property
+    def order_name(self):
+        """ Refers to a lab order's name """
+        return self._order_name
+
+    @order_name.setter
+    def order_name(self, order_name):
+        if len(order_name) > 50:
+            raise ValueError("Order name must be less than 50 characters.")
+        self._order_name = order_name
+
+    @property
+    def employee_id(self):
+        """ Refers to the employee's ID who created the lab order """
+        return self._employee_id
+
+    @employee_id.setter
+    def employee_id(self, employee_id):
+        self._employee_id = employee_id
+
+    @property
+    def patient_id(self):
+        """ Refers to the patient's ID who the lab order is for """
+        return self._patient_id
+
+    @patient_id.setter
+    def patient_id(self, patient_id):
+        self._patient_id = patient_id
+
+    @property
+    def lab_date(self):
+        """ Refers to the lab order's date """
+        return self._lab_date
+
+    @lab_date.setter
+    def lab_date(self, lab_date):
+        self._lab_date = lab_date
+
+    @property
+    def results(self):
+        """ Refers to the lab order's results """
+        return self._results
+
+    @results.setter
+    def results(self, results):
+        if len(results) > 50:
+            raise ValueError("Results must be less than 50 characters.")
+        self._results = results
+
+    @property
+    def lab_id(self):
+        """ Refers to the lab's ID """
+        return self._lab_id
+
+    @lab_id.setter
+    def lab_id(self, lab_id):
+        self._lab_id = lab_id
+
+    @property
+    def location_id(self):
+        """ Refers to the location's ID """
+        return self._location_id
+
+    @location_id.setter
+    def location_id(self, location_id):
+        self._location_id = location_id

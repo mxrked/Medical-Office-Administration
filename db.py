@@ -10,7 +10,7 @@ try:
 
     from datetime import datetime, time, date
 
-    from objects import Appointment, Patient, Employee, Referral, LabOrder
+    from objects import *
 
 except ImportError as e:
     print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
@@ -196,7 +196,7 @@ def find_doctors(conn) -> list[Employee]:
     """
     pass
 
-def find_locations(conn) -> list:
+def find_locations(conn) -> list[Location]:
     """
     We need a list of locations, this is for the dropdown box in the appointments screen
     """

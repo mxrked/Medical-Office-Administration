@@ -71,21 +71,21 @@ def check_username(conn, user_name, password) -> User:
     assert len(results) > 0, "No Users Found!"
 
     result = results[0]
-    
+
     user_id = result[0]
     user_name = result[1]
     assert password == result[2], "Password Does not match!"
     employee_id = result[3]
 
     employee = get.employee(conn, employee_id)
-    
+
     current_user = User(user_id, user_name, employee)
 
     return current_user
 
 
 
- 
+
 
 ### UNFINISHED: I WROTE THESE IN, THEY MUST BE DONE IN FUTURE ###
 
@@ -118,11 +118,6 @@ def find_all_doctors(conn) -> list[Employee]:
     """
     pass
 
-def find_locations(conn) -> list[Location]:
-    """
-    We need a list of locations, this is for the dropdown box in the appointments screen
-    """
-    pass
 
 def appointment_create(conn, appointment: Appointment):
     """ 

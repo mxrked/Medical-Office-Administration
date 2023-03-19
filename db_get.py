@@ -7,7 +7,7 @@ from db import *
 def employee(conn, employee_id) -> Employee:
     stmt = sql.text(
         f""" 
-    SELECT TOP 1 EmployeeTypeID, LastName, MiddleName, FirstName
+    SELECT TOP 1 LastName, MiddleName, FirstName, EmployeeTypeID
     FROM Employee
     WHERE EmployeeID = {employee_id};
     """)
@@ -16,7 +16,11 @@ def employee(conn, employee_id) -> Employee:
 
     result = results[0]
 
-    return Employee(employee_id, result[0], result[1], result[2], result[3])
+    return Employee(employee_id,
+                    last_name=result[0],
+                    middle_name=result[1],
+                    first_name=result[2],
+                    employee_type_id=result[3])
 
 def todays_appointments(conn) -> list[Appointment]:
     """
@@ -79,3 +83,27 @@ def current_appointments(conn) -> list[Appointment]:
     results = conn.execute(stmt).fetchall()
 
     return results_to_appointments(results)
+
+
+def locations(conn) -> list[Location]:
+    """
+    Returns a list of all locations
+
+    :param conn: A database connection object.
+    :return: A list of Location objects.
+    """
+
+    stmt = sql.text(
+        """
+    SELECT *
+    FROM HospitalLocation;
+    """)
+
+    results = conn.execute(stmt).fetchall()
+
+    locs = [
+        Location(location_id=row[0], location_name=row[1], address=row[4]) for row in results
+        ]
+
+    return locs
+

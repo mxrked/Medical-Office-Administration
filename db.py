@@ -113,11 +113,18 @@ def results_to_appointments(sql_results) -> list[Appointment]:
     return appointments
 
 
+""" UNFINISHED: I WROTE THESE IN, THEY MUST BE DONE IN FUTURE"""
+
 def find_patients(conn, first_name, last_name, DOB) -> list:
     """ Returns a list of patient objects that match these attributes """
     pass
 
 
+
+
+
+
+""" MAIN """
 
 def main():
     with engine.connect() as conn:

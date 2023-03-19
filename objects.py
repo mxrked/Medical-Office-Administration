@@ -1,6 +1,16 @@
 """
 objects.py - objects used to help model relationships within the Medical Office Admin database
 Author: Jessica Weeks
+
+This file is used for representing tables in the MOA database.
+
+Current Objects:
+    Appointment,
+    Patient,
+    Referral,
+    LabOrder,
+    Employee,
+    Location,
 """
 
 from datetime import date, time, datetime
@@ -424,3 +434,49 @@ class Employee:
         self._employee_type_id = employee_type_id
 
 
+class Location:
+    """
+    Represents a location
+
+    :param location_id: int, the unique identifier of the location.
+    :param location_name: str, the name of the location.
+    :param address: str, the address of the location.
+    """
+    def __init__(self,
+                 location_id: int,
+                 location_name: str,
+                 address: str):
+        self.location_id = location_id
+        self.location_name = location_name
+        self.address = address
+
+    @property
+    def location_id(self):
+        """ Refers to a location_id """
+        return self._location_id
+
+    @location_id.setter
+    def location_id(self, location_id):
+        self._location_id = location_id
+
+    @property
+    def location_name(self):
+        """ Refers to a location's name"""
+        return self._location_name
+
+    @location_name.setter
+    def location_name(self, location_name):
+        if len(location_name) > 50:
+            raise ValueError('Location name cannot be longer than 50 characters')
+        self._location_name = location_name
+
+    @property
+    def address(self):
+        """ Refers to a location's address"""
+        return self._address
+
+    @address.setter
+    def address(self, address):
+        if len(address) > 50:
+            raise ValueError('Address cannot be longer than 50 characters')
+        self._address = address

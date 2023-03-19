@@ -241,6 +241,7 @@ class Referral:
         self._patient_id = patient_id
 
 
+ ### WHAT IS LAB TEST, BE SURE TO ASK
 class LabOrder:
     """
     Represents a lab order made by an employee for a patient.
@@ -347,3 +348,79 @@ class LabOrder:
     @location_id.setter
     def location_id(self, location_id):
         self._location_id = location_id
+
+
+class Employee:
+    """
+    Represents an employee.
+
+    :param employee_id: int, the unique identifier of the employee.
+    :param last_name: str, the last name of the employee.
+    :param middle_name: str, the middle name of the employee.
+    :param first_name: str, the first name of the employee.
+    :param employee_type_id: int, the unique identifier of the employee's type.
+    """
+    def __init__(self,
+                 employee_id: int,
+                 last_name: str,
+                 middle_name: str,
+                 first_name: str,
+                 employee_type_id: int):
+        self.employee_id = employee_id
+        self.employee_type_id = employee_type_id
+        self.last_name = last_name
+        self.middle_name = middle_name
+        self.first_name = first_name
+
+    @property
+    def employee_id(self):
+        """ Refers to an employee's ID """
+        return self._employee_id
+
+    @employee_id.setter
+    def employee_id(self, employee_id):
+        self._employee_id = employee_id
+
+    @property
+    def last_name(self):
+        """ Refers to an employee's last name """
+        return self._last_name
+
+    @last_name.setter
+    def last_name(self, last_name):
+        if len(last_name) > 50:
+            raise ValueError("Last name must be less than 50 characters.")
+        self._last_name = last_name
+
+    @property
+    def middle_name(self):
+        """ Refers to an employee's middle name """
+        return self._middle_name
+
+    @middle_name.setter
+    def middle_name(self, middle_name):
+        if len(middle_name) > 50:
+            raise ValueError("Middle name must be less than 50 characters.")
+        self._middle_name = middle_name
+
+    @property
+    def first_name(self):
+        """ Refers to an employee's first name """
+        return self._first_name
+
+    @first_name.setter
+    def first_name(self, first_name):
+        if len(first_name) > 50:
+            raise ValueError("First name must be less than 50 characters.")
+        self._first_name = first_name
+
+    @property
+    def employee_type_id(self):
+        """ Refers to an employee's type ID """
+        return self._employee_type_id
+
+    @employee_type_id.setter
+    def employee_type_id(self, employee_type_id):
+        self._employee_type_id = employee_type_id
+
+

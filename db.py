@@ -3,20 +3,20 @@ db.py - A library for accessing the Office Administration Database
 Author: Jessica Weeks
 """
 
-try: 
+try:
     import sqlalchemy as sql
     import pyodbc
     from sqlalchemy.pool import QueuePool
-    
+
     from datetime import datetime
 
-    from objects import Appointment
+    from objects import Appointment, Patient
 
 except ImportError as e:
     print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
     raise e
 
-db = "Driver={ODBC Driver 17 for SQL Server};" \
+DB = "Driver={ODBC Driver 17 for SQL Server};" \
                  "Server=tcp:capstone2023.database.windows.net,1433;" \
                  "Database=capstone2023;" \
                  "Uid=MOAuser;" \
@@ -25,11 +25,11 @@ db = "Driver={ODBC Driver 17 for SQL Server};" \
                  "TrustServerCertificate=no;" \
                  "Connection Timeout=30;"
 
-engine = sql.create_engine(f"mssql+pyodbc:///?odbc_connect={db}")
+engine = sql.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
 print("Connected to database. . .")
 
 
-def get_todays_appointments(conn) -> list:
+def get_todays_appointments(conn) -> list[Appointment]:
     """
     Returns a list of `Appointment` objects for all appointments that 
     occurred today and up to one hour ago.
@@ -39,6 +39,7 @@ def get_todays_appointments(conn) -> list:
     :return: A list of `Appointment` objects.
     :rtype: list
     """
+
     stmt = sql.text(
         """
     SELECT * 
@@ -51,7 +52,7 @@ def get_todays_appointments(conn) -> list:
     return results_to_appointments(results)
 
 
-def get_pending_appointments(conn) -> list:
+def get_pending_appointments(conn) -> list[Appointment]:
     """
     Returns a list of pending appointments from the Appointment table.
 
@@ -60,6 +61,7 @@ def get_pending_appointments(conn) -> list:
     :return: A list of Appointment objects.
     :rtype: list
     """
+
     stmt = sql.text(
         """
     SELECT *
@@ -79,6 +81,7 @@ def get_current_appointments(conn) -> list[Appointment]:
     :return: A list of Appointment objects.
     :rtype: list
     """
+
     stmt = sql.text(
         """
     SELECT *
@@ -88,6 +91,22 @@ def get_current_appointments(conn) -> list[Appointment]:
     results = conn.execute(stmt).fetchall()
 
     return results_to_appointments(results)
+
+def check_in(conn, appointment):
+    """
+    Update the status of an appointment to 'checked in' in the database.
+
+    :param conn: Connection object to the database.
+    :param appointment: Appointment object to be checked in.
+    """
+
+    stmt = sql.text(
+        f""" 
+    UPDATE appointments
+    SET appt_status = 'checked in'
+    WHERE appointment_id = {appointment.id}
+    """)
+    conn.execute(stmt)
 
 def results_to_appointments(sql_results) -> list[Appointment]:
     """ Turns results from a SQL query into a list of Appointment objects"""
@@ -100,31 +119,29 @@ def results_to_appointments(sql_results) -> list[Appointment]:
         patient_id = row[4]
         appt_status = row[5]
         visit_reason = row[6]
-        appointment = Appointment(appointment_id, 
-                                  appt_date, 
+        appointment = Appointment(appointment_id,
+                                  appt_date,
                                   appt_time,
                                   appt_type_id,
                                   patient_id,
-                                  appt_status, 
+                                  appt_status,
                                   visit_reason)
-        
+
         appointments.append(appointment)
 
     return appointments
 
 
-""" UNFINISHED: I WROTE THESE IN, THEY MUST BE DONE IN FUTURE"""
 
-def find_patients(conn, first_name, last_name, DOB) -> list:
+### UNFINISHED: I WROTE THESE IN, THEY MUST BE DONE IN FUTURE ###
+
+def find_patients(conn, first_name, last_name, dob) -> list[Patient]:
     """ Returns a list of patient objects that match these attributes """
     pass
 
 
 
-
-
-
-""" MAIN """
+### MAIN ###
 
 def main():
     with engine.connect() as conn:

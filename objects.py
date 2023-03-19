@@ -169,3 +169,71 @@ class Patient:
         except ValueError as exc:
             raise ValueError("Incorrect date format, should be YYYY-MM-DD") from exc
         self._date_of_birth = value
+
+
+class Referral:
+    """
+    Represents a referral made by an employee for a patient.
+
+    :param referral_id: int, the unique identifier of the referral.
+    :param referral_reason: str, the reason for the referral as provided by the employee.
+    :param creation_date: date, the date the referral was created.
+    :param employee_id: int, the unique identifier of the employee who created the referral.
+    :param patient_id: int, the unique identifier of the patient who the referral is for.
+    """
+    def __init__(self,
+                 referral_id: int,
+                 referral_reason: str,
+                 creation_date: date,
+                 employee_id: int,
+                 patient_id: int):
+        self.referral_id = referral_id
+        self.referral_reason = referral_reason
+        self.creation_date = creation_date
+        self.employee_id = employee_id
+        self.patient_id = patient_id
+
+    @property
+    def referral_id(self):
+        """ Refers to a referral's ID """
+        return self._referral_id
+
+    @referral_id.setter
+    def referral_id(self, referral_id):
+        self._referral_id = referral_id
+
+    @property
+    def referral_reason(self):
+        """ Refers to a referral's reason """
+        return self._referral_reason
+
+    @referral_reason.setter
+    def referral_reason(self, referral_reason):
+        self._referral_reason = referral_reason
+
+    @property
+    def creation_date(self):
+        """ Refers to a referral's creation date """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, creation_date):
+        self._creation_date = creation_date
+
+    @property
+    def employee_id(self):
+        """ Refers to the employee's ID who created the referral """
+        return self._employee_id
+
+    @employee_id.setter
+    def employee_id(self, employee_id):
+        self._employee_id = employee_id
+
+    @property
+    def patient_id(self):
+        """ Refers to the patient's ID who the referral is for """
+        return self._patient_id
+
+    @patient_id.setter
+    def patient_id(self, patient_id):
+        self._patient_id = patient_id

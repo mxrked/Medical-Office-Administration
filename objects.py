@@ -5,6 +5,7 @@ Author: Jessica Weeks
 
 from datetime import date, time, datetime
 
+
 class Appointment:
     """
     Represents a appointment made by a patient
@@ -107,6 +108,7 @@ class Appointment:
     @visit_reason.setter
     def visit_reason(self, visit_reason):
         self._visit_reason = visit_reason
+
 
 class Patient:
     """ Represents a patient
@@ -237,6 +239,7 @@ class Referral:
     @patient_id.setter
     def patient_id(self, patient_id):
         self._patient_id = patient_id
+
 
 class LabOrder:
     """

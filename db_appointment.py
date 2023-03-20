@@ -68,10 +68,12 @@ def schedule_pending(conn, appointment: Appointment):
     conn.execute(stmt)
 
 
-def appointment_create(conn, appointment: Appointment):
-    """ 
-    We want you to add a appointment entry using our Appointment Object 
-    Remember to ignore setting appointmentID, that should be handled Automatticaly by our database
+def create(conn, appointment: Appointment):
+    """
+    Creates an appointment in the db with the given object
+
+    :param conn: Connection object to the database.
+    :param appointment: Appointment object to set.
     """
 
     appt_time = appointment.appt_time.strftime("%H:%M:%S")

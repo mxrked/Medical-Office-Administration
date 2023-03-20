@@ -7,6 +7,7 @@ Author: Jessica Weeks
 try:
     import sqlalchemy as sql
     from sqlalchemy.pool import QueuePool
+    import pyodbc
 
     from datetime import datetime, time, date
 
@@ -22,7 +23,7 @@ except ImportError as e:
 
     import subprocess
     subprocess.call(["pip", "install", "-r", "requirements.txt"])
-    
+
     raise e
 
 DB = "Driver={ODBC Driver 17 for SQL Server};" \
@@ -110,7 +111,7 @@ def create_refferal(conn, referral: Referral):
     """)
 
     conn.execute(stmt)
- 
+
 
 def create_lab_order(conn, lab_order: LabOrder):
     """ Add a lab order to the database using the lab_order object!

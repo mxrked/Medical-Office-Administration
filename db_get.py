@@ -107,3 +107,30 @@ def locations(conn) -> list[Location]:
 
     return locs
 
+def patients(conn, first_name, last_name, dob:date) -> list[Patient]:
+    """
+    Returns a list of patient objects that match the given attributes.
+
+    :param conn: Connection object
+    :param first_name: First name of the patient
+    :param last_name: Last name of the patient
+    :param dob: Date of birth of the patient
+    :return: List of patient objects
+    """
+
+    dob = dob.strftime("%Y-%m-%d")
+    stmt = sql.text(
+        f"""
+    SELECT (PatientID, FirstName, LastName, DateOfBirth)
+    FROM Patient
+    WHERE FirstName = {first_name} AND LastName = {last_name} AND dob = {dob};
+    """)
+
+    results = conn.execute(stmt).fetchall()
+
+    patientsList = [
+        Patient(patient_id=row[0], first_name=row[1], last_name=row[2], date_of_birth=row[3])
+        for row in results
+    ]
+
+    return patientsList

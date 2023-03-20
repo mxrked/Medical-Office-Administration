@@ -57,7 +57,6 @@ def results_to_appointments(sql_results) -> list[Appointment]:
     return appointments
 
 
-
 def check_username(conn, user_name, password) -> User:
     stmt = sql.text(
         f""" 
@@ -84,14 +83,47 @@ def check_username(conn, user_name, password) -> User:
     return current_user
 
 
+def create_refferal(conn, referral: Referral):
+    """ 
+    Add a referral to the database using the referral object.
 
+    :param conn: The database connection object.
+    :param referral: The referral object to add to the database.
+    """
+
+    formatted_date = referral.creation_date.strftime("%Y-%m-%d")
+    stmt = sql.text(
+        f""" 
+    INSERT INTO Referral (ReferralReason, CreationDate, EmployeeID, PatientID)
+    VALUES ('{referral.referral_reason}', '{formatted_date}', {referral.employee_id}, {referral.patient_id})
+    """)
+
+    conn.execute(stmt)
+ 
+
+def create_lab_order(conn, lab_order: LabOrder):
+    """ Add a lab order to the database using the lab_order object!
+    the lab_order id should be handled by the Database
+    """
+
+    formatted_date = lab_order.lab_date.strftime("%Y-%m-%d")
+    stmt = sql.text(
+        f""" 
+    INSERT INTO LabOrder (OrderName, EmployeeID, PatientID, LabDate, Results, LabID, LocationID)
+    VALUES ('{lab_order.order_name}',
+    {lab_order.employee_id},
+    {lab_order.patient_id}
+    '{formatted_date}',
+    '{lab_order.results}',
+    {lab_order.lab_id}, 
+    {lab_order.location_id};)
+    """)
+
+    conn.execute(stmt)
 
 
 ### UNFINISHED: I WROTE THESE IN, THEY MUST BE DONE IN FUTURE ###
 
-def find_patients(conn, first_name, last_name, dob) -> list[Patient]:
-    """ Returns a list of patient objects that match these attributes """
-    pass
 
 def find_avaliable_appointments(conn, date) -> list[time]:
     """ 
@@ -130,16 +162,8 @@ def appointment_cancel(conn, appointment: Appointment):
     """ Here you are gonna remove an appointment, all you really need is the AppointmentID"""
     pass
 
-def create_refferal(conn, referral: Referral):
-    """ Add a refferal to the database using the referral object!
-    Refferal id should be handled by the Database"""
-    pass
 
-def create_lab_order(conn, lab_order: LabOrder):
-    """ Add a lab order to the database using the lab_order object!
-    the lab_order id should be handled by the Database
-    """
-    pass
+
 
 
 

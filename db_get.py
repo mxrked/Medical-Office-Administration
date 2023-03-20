@@ -5,6 +5,14 @@ Author: Jessica Weeks
 from db import *
 
 def employee(conn, employee_id) -> Employee:
+    """
+    Retrieve an employee from the database.
+
+    :param conn: Connection object.
+    :param employee_id: int, ID of the employee to retrieve.
+    :return: Employee object representing the retrieved employee.
+    """
+    
     stmt = sql.text(
         f""" 
     SELECT TOP 1 LastName, MiddleName, FirstName, EmployeeTypeID
@@ -35,8 +43,7 @@ def todays_appointments(conn) -> list[Appointment]:
 
     stmt = sql.text(
         """
-    SELECT (AppointmentID, ApptDate, ApptTime, ApptTypeID, PatientID,
-     ApptStatus, VisitReason, EmployeeID, LocationID)
+    SELECT *
     FROM Appointment 
     WHERE ApptDate = Cast(GETDATE() AS DATE)
     AND ApptTime >= DATEADD(HOUR, -1, CAST(GETDATE() AS TIME));

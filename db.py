@@ -36,23 +36,27 @@ print("Connected to database. . .")
 def results_to_appointments(sql_results) -> list[Appointment]:
     """ Turns results from a SQL query into a list of Appointment objects"""
     appointments = []
+
     for row in sql_results:
+        # This must match ordering in the database
         appointment_id = row[0]
         appt_date = row[1].date()
         appt_time = row[2].time()
         appt_type_id = row[3]
         patient_id = row[4]
         appt_status = row[5]
-        visit_reason = row[6]
-        employee_id = row[7]
-        appointment = Appointment(appointment_id,
-                                  appt_date,
-                                  appt_time,
-                                  appt_type_id,
-                                  patient_id,
-                                  appt_status,
-                                  visit_reason,
-                                  employee_id)
+        employee_id = row[6]
+        visit_reason = row[7]
+        location_id = row[8]
+        appointment = Appointment(appointment_id=appointment_id,
+                                  appt_date=appt_date,
+                                  appt_time=appt_time,
+                                  appt_type_id=appt_type_id,
+                                  patient_id=patient_id,
+                                  appt_status=appt_status,
+                                  visit_reason=visit_reason,
+                                  employee_id=employee_id, 
+                                  location_id=location_id)
 
         appointments.append(appointment)
 
@@ -163,7 +167,8 @@ def appointment_cancel(conn, appointment: Appointment):
 
 def main():
     with engine.connect() as conn:
-        get.todays_appointments(conn)
+        print(get.todays_appointments(conn))
+
 
 
 if __name__ == "__main__":

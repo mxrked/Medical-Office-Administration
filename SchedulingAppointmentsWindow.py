@@ -43,13 +43,18 @@ class Ui_SchedulingAppointmentsWindow(object):
 
                 engine.connect()
 
-                print("Connected to database. . .")
+                # This is used to check if the database is connected
+                if engine.connect():
+                        print("Connected to database. . .")
+
+                        return engine
 
 
-                with engine.connect() as conn:
-                    result = conn.execute(sql.text("SELECT * FROM Appointment"))
-                    for key in result.keys():
-                        print(key)
+
+                # with engine.connect() as conn:
+                #     result = conn.execute(sql.text("SELECT * FROM Appointment"))
+                #     for key in result.keys():
+                #         print(key)
         def closeDBConnection():
                 ' This is used to close the connection to the DB '
 
@@ -128,7 +133,6 @@ class Ui_SchedulingAppointmentsWindow(object):
                 ' This is used to display/filter the possible available times '
         def checkCurrentAppointments():
                 ' This is used to check the current appointments '
-                print()
 
         def displayScheduling():
                 ' This is used to display the scheduling module '
@@ -194,16 +198,32 @@ class Ui_SchedulingAppointmentsWindow(object):
 
         def getPatientFN():
                 ' This is used to get the patients first name in the DB '
-                print()
+
+                # Connecting to Database
+                checkDBConnection = connectToDB()
         def getPatientLN():
                 ' This is used to get the patients last name in the DB '
-                print()
+
+                # Connecting to Database
+                checkDBConnection = connectToDB()
         def getPatientDOB():
                 ' This is used to get the patients DOB in the DB '
                 print()
+        def getAppointmentType():
+                ' This is used to get the Appointment Type in the DB '
+                print()
+        def getAppointmentReason():
+                ' This is used to get the Appointment Reason in the DB '
+                print()
+        def getAppointmentDate():
+                ' This is used to get the Appointment Date in the DB '
+                print()
+        def getAppointmentTime():
+                ' This is used to get the Appointment Time in the DB '
+                print()
 
         def scheduleAppointment():
-                print()
+                ' This is used to schedule an appointment '
         def rescheduleAppointment():
                 ' This is used to reschedule an appointment '
         def cancelAppointment():
@@ -211,7 +231,7 @@ class Ui_SchedulingAppointmentsWindow(object):
 
 
         connectToDB()
-        closeDBConnection()
+        # closeDBConnection()
 
         SchedulingAppointmentsWindow.setObjectName("SchedulingAppointmentsWindow")
         SchedulingAppointmentsWindow.resize(1430, 925)

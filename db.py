@@ -6,7 +6,6 @@ Author: Jessica Weeks
 
 try:
     import sqlalchemy as sql
-    import pyodbc
     from sqlalchemy.pool import QueuePool
 
     from datetime import datetime, time, date

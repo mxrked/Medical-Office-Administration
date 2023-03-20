@@ -35,7 +35,8 @@ def todays_appointments(conn) -> list[Appointment]:
 
     stmt = sql.text(
         """
-    SELECT * 
+    SELECT (AppointmentID, ApptDate, ApptTime, ApptTypeID, PatientID,
+     ApptStatus, VisitReason, EmployeeID, LocationID)
     FROM Appointment 
     WHERE ApptDate = Cast(GETDATE() AS DATE)
     AND ApptTime >= DATEADD(HOUR, -1, CAST(GETDATE() AS TIME));
@@ -56,7 +57,8 @@ def pending_appointments(conn) -> list[Appointment]:
 
     stmt = sql.text(
         """
-    SELECT *
+    SELECT (AppointmentID, ApptDate, ApptTime, ApptTypeID, PatientID,
+    ApptStatus, VisitReason, EmployeeID, LocationID)
     FROM Appointment
     WHERE ApptStatus = "pending";
     """)
@@ -76,7 +78,8 @@ def current_appointments(conn) -> list[Appointment]:
 
     stmt = sql.text(
         """
-    SELECT *
+    SELECT (AppointmentID, ApptDate, ApptTime, ApptTypeID, PatientID,
+    ApptStatus, VisitReason, EmployeeID, LocationID)
     FROM Appointment
     WHERE ApptStatus = "in progress";
     """)
@@ -128,9 +131,9 @@ def patients(conn, first_name, last_name, dob:date) -> list[Patient]:
 
     results = conn.execute(stmt).fetchall()
 
-    patientsList = [
+    patients_list = [
         Patient(patient_id=row[0], first_name=row[1], last_name=row[2], date_of_birth=row[3])
         for row in results
     ]
 
-    return patientsList
+    return patients_list

@@ -28,6 +28,7 @@ class Appointment:
     :param patient_id: int, the unique identifier of the patient who scheduled the appointment.
     :param appt_status: str, the status of the appointment, e.g. 'scheduled', 'cancelled', etc.
     :param visit_reason: str, the reason for the visit as provided by the patient.
+    :param employee_id: int, the unique identifier for employees
     """
     def __init__(self,
                  appointment_id: int,
@@ -36,7 +37,9 @@ class Appointment:
                  appt_type_id: int,
                  patient_id: int,
                  appt_status: str,
-                 visit_reason: str):
+                 visit_reason: str,
+                 employee_id: int,
+                 location_id: int):
         self.appointment_id = appointment_id
         self.appt_date = appt_date
         self.appt_time = appt_time
@@ -44,6 +47,8 @@ class Appointment:
         self.patient_id = patient_id
         self.appt_status = appt_status
         self.visit_reason = visit_reason
+        self.employee_id = employee_id
+        self.location_id = location_id
 
     @property
     def appointment_id(self):
@@ -120,6 +125,23 @@ class Appointment:
     def visit_reason(self, visit_reason):
         self._visit_reason = visit_reason
 
+    @property
+    def employee_id(self):
+        """ A id refering to a employee """
+        return self._employee_id
+
+    @employee_id.setter
+    def employee_id(self, employee_id):
+        self._employee_id = employee_id
+
+    @property
+    def location_id(self):
+        """ Refers to a location_id """
+        return self._location_id
+
+    @location_id.setter
+    def location_id(self, location_id):
+        self._location_id = location_id
 
 class Patient:
     """ Represents a patient

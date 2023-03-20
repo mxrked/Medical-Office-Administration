@@ -44,13 +44,15 @@ def results_to_appointments(sql_results) -> list[Appointment]:
         patient_id = row[4]
         appt_status = row[5]
         visit_reason = row[6]
+        employee_id = row[7]
         appointment = Appointment(appointment_id,
                                   appt_date,
                                   appt_time,
                                   appt_type_id,
                                   patient_id,
                                   appt_status,
-                                  visit_reason)
+                                  visit_reason,
+                                  employee_id)
 
         appointments.append(appointment)
 
@@ -141,7 +143,7 @@ def find_avaliable_appointments(conn, date) -> list[time]:
 
     Godspeed - Jessica
     """
-    pass
+    
 
 def find_all_doctors(conn) -> list[Employee]:
     """
@@ -151,19 +153,9 @@ def find_all_doctors(conn) -> list[Employee]:
     pass
 
 
-def appointment_create(conn, appointment: Appointment):
-    """ 
-    We want you to add a appointment entry using our Appointment Object 
-    Remember to ignore setting appointmentID, that should be handled Automatticaly by our database
-    """
-    pass
-
 def appointment_cancel(conn, appointment: Appointment):
     """ Here you are gonna remove an appointment, all you really need is the AppointmentID"""
     pass
-
-
-
 
 
 

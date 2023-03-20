@@ -67,3 +67,28 @@ def schedule_pending(conn, appointment: Appointment):
     """)
     conn.execute(stmt)
 
+
+def appointment_create(conn, appointment: Appointment):
+    """ 
+    We want you to add a appointment entry using our Appointment Object 
+    Remember to ignore setting appointmentID, that should be handled Automatticaly by our database
+    """
+
+    appt_time = appointment.appt_time.strftime("%H:%M:%S")
+    appt_date = appointment.appt_date.strftime("%Y-%m-%d")
+
+    stmt = sql.text(
+        f""" 
+    INSERT INTO 
+    Appointment (ApptDate, ApptTime, ApptTypeID, PatientID,ApptStatus, EmployeeID, VisitReason, LocationID)
+    VALUES ('{appt_date}',
+    '{appt_time}',
+    {appointment.appt_type_id}, 
+    {appointment.patient_id},
+    {appointment.appt_status},
+    {appointment.employee_id},
+    {appointment.visit_reason},
+    {appointment.location_id})
+    """)
+
+    conn.execute(stmt)

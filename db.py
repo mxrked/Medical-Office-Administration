@@ -17,6 +17,12 @@ try:
 
 except ImportError as e:
     print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
+
+    print("Installing requirements.txt...")
+
+    import subprocess
+    subprocess.call(["pip", "install", "-r", "requirements.txt"])
+    
     raise e
 
 DB = "Driver={ODBC Driver 17 for SQL Server};" \

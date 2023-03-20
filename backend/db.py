@@ -161,6 +161,24 @@ def appointment_cancel(conn, appointment: Appointment):
     """ Here you are gonna remove an appointment, all you really need is the AppointmentID"""
     pass
 
+def appointment_after_visit_summary(conn, appointment: Appointment) -> dict:
+    """
+    We need a bunch of information to print this out, all this will do is print out a object
+    with a bunch of attirbutes
+    
+    UNFINISHED PENDING Database bening done
+    """
+    provider = get.Employee(appointment.employee_id)
+
+    name_of_provider = f"{provider.first_name} {provider.middle_name} {provider.last_name}"
+    
+    appt_date = appointment.appt_date.strftime("%B %d, %Y")
+    appt_time = appointment.appt_time.strftime("%I:%M %p")
+    appointment_time_date = f"{appt_date} {appt_time}"
+
+
+
+    return medical_record
 
 
 ### MAIN ###

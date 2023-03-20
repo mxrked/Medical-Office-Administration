@@ -168,7 +168,10 @@ def appointment_after_visit_summary(conn, appointment: Appointment) -> dict:
     
     UNFINISHED PENDING Database bening done
     """
-    provider = get.Employee(appointment.employee_id)
+    
+    medical_record = {}
+
+    provider = get.employee(conn, appointment.employee_id)
 
     name_of_provider = f"{provider.first_name} {provider.middle_name} {provider.last_name}"
     

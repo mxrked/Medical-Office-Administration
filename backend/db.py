@@ -20,18 +20,6 @@ except ImportError as e:
     print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
     raise e
 
-DB = "Driver={ODBC Driver 17 for SQL Server};" \
-                 "Server=tcp:capstone2023.database.windows.net,1433;" \
-                 "Database=capstone2023;" \
-                 "Uid=MOAuser;" \
-                 "Pwd=Password01!;" \
-                 "Encrypt=yes;" \
-                 "TrustServerCertificate=no;" \
-                 "Connection Timeout=30;"
-
-engine = sql.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
-print("Connected to database. . .")
-
 
 def results_to_appointments(sql_results) -> list[Appointment]:
     """ Turns results from a SQL query into a list of Appointment objects"""
@@ -186,10 +174,23 @@ def appointment_after_visit_summary(conn, appointment: Appointment) -> dict:
 ### MAIN ###
 
 def main():
+
+    DB = "Driver={ODBC Driver 17 for SQL Server};" \
+                 "Server=tcp:capstone2023.database.windows.net,1433;" \
+                 "Database=capstone2023;" \
+                 "Uid=MOAuser;" \
+                 "Pwd=Password01!;" \
+                 "Encrypt=yes;" \
+                 "TrustServerCertificate=no;" \
+                 "Connection Timeout=30;"
+
+    engine = sql.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
+    print("Connected to database. . .")
+
     with engine.connect() as conn:
         print(get.todays_appointments(conn))
 
-
+    engine.dispose()
 
 if __name__ == "__main__":
     main()

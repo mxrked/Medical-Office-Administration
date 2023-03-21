@@ -131,7 +131,7 @@ def create_lab_order(conn, lab_order: LabOrder):
 ### UNFINISHED: I WROTE THESE IN, THEY MUST BE DONE IN FUTURE ###
 
 
-def find_avaliable_appointments(conn, date) -> list[time]:
+def find_avaliable_appointments(conn, date: date, for_appointment: Appointment) -> list[time]:
     """ 
     This will be one of the hardest parts of the backend.
 
@@ -147,6 +147,30 @@ def find_avaliable_appointments(conn, date) -> list[time]:
 
     Godspeed - Jessica
     """
+
+    # STEPS
+
+    # Get Every Appointment for a Given Day, for a Given doctor (appointment.employee_id)
+    # This is in the Appointment table
+
+    # For every appt_type_id match it with an appointment time into a dict
+    # This is in the AppointmentType table
+    # Something like appointment_times = { appointment : appointment_time }
+
+    # Find the Hours of operation (Start - End)
+
+    # Find the length of the appointment you are adding
+
+    # Create a range appointments, given the hours of operation, date and times.
+    # Increment every one by the difference of your current appointment time
+    # Use the time datatype, for example:
+    # [07:00, 07:15, 07:30, 07:45, 08:00] etc.
+
+    # Ok, now look at your appointment_times dict,
+    # For every appointment in appointment_times
+        # Create another range of appointment times between the your start time and end time
+        # i.e The appointment we are testing is at {07:15,7:25}
+        # f
     
 
 def find_all_doctors(conn) -> list[Employee]:

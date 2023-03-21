@@ -48,6 +48,8 @@ def results_to_appointments(sql_results) -> list[Appointment]:
 
         appointments.append(appointment)
 
+    appointments.sort(key=lambda x: datetime.combine(datetime.today(), x.appt_time))
+
     return appointments
 
 
@@ -170,10 +172,7 @@ def appointment_after_visit_summary(conn, appointment: Appointment) -> dict:
 
     return medical_record
 
-
-### MAIN ###
-
-def main():
+def give_engine() -> sql.Engine:
 
     DB = "Driver={ODBC Driver 17 for SQL Server};" \
                  "Server=tcp:capstone2023.database.windows.net,1433;" \
@@ -185,6 +184,14 @@ def main():
                  "Connection Timeout=30;"
 
     engine = sql.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
+
+    return engine
+
+### MAIN ###
+
+def main():
+
+    engine = give_engine()
     print("Connected to database. . .")
 
     with engine.connect() as conn:

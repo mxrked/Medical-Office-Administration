@@ -1,6 +1,6 @@
-from datetime import time, datetime, timedelta
+from datetime import time, datetime, timedelta, date
 
-
+from objects import Appointment
 
 
 taken_appointments_dict = {

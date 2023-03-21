@@ -1,11 +1,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from assets.qrc import app_bg, doctor
+from assets.qrc import app_bg, doctor, show, hide
 from assets.files.GLOBALS import *
 from assets.files import GLOBALS
 
 import urllib
 import sqlalchemy
-
 
 
 class Ui_StartWindow(object):
@@ -136,22 +135,53 @@ class Ui_StartWindow(object):
 
                 if engine.dispose:
                         print("Closed database. . .")
+
         def closeApp():
             ' This is used to close the app... duh! '
             closeDBConnection()
 
             sys.exit()
 
+        def getUsername_Text():
+            return self.startWindow_UsernameLineEdit.text()
+        def getPassword_Text():
+            return self.startWindow_PasswordLineEdit.text()
+
+        def showPassword():
+            ' This is used to show the password '
+
+            # Hiding/Showing btns
+            self.ShowPassword_Label.setFixedHeight(0)
+            self.HidePassword_Label.setFixedHeight(31)
+
+            # Changing echomode
+            self.startWindow_PasswordLineEdit.setEchoMode(QtWidgets.QLineEdit.Normal)
+        def hidePassword():
+            ' This is used to hide the password '
+
+            # Hiding/Showing btns
+            self.ShowPassword_Label.setFixedHeight(31)
+            self.HidePassword_Label.setFixedHeight(0)
+
+            # Changing echomode
+            self.startWindow_PasswordLineEdit.setEchoMode(QtWidgets.QLineEdit.Password)
+
         def checkUser():
             ' This is used to check if there is a username in the DB based on what the user input '
 
             # Connecting to Database
             checkDBConnection = connectToDB()
+
+            userName_Text = getUsername_Text()
+            password_Text = getPassword_Text()
         def loginUser():
             ' This is used to login the user '
 
-        # connectToDB()
+            # Connecting to Database
+            checkDBConnection = connectToDB()
 
+            userName_Text = getUsername_Text()
+            password_Text = getPassword_Text()
 
 
         StartWindow.setObjectName("StartWindow")
@@ -223,7 +253,7 @@ class Ui_StartWindow(object):
 "}")
         self.startWindow_UsernameLineEdit.setObjectName("startWindow_UsernameLineEdit")
         self.startWindow_PasswordLineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.startWindow_PasswordLineEdit.setGeometry(QtCore.QRect(290, 570, 321, 51))
+        self.startWindow_PasswordLineEdit.setGeometry(QtCore.QRect(290, 570, 281, 51))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
         font.setPointSize(12)
@@ -240,9 +270,9 @@ class Ui_StartWindow(object):
 "    padding-left: 10px;\n"
 "    paddding-right: 10px;\n"
 "}")
+        self.startWindow_PasswordLineEdit.setEchoMode(QtWidgets.QLineEdit.Password)
         self.startWindow_PasswordLineEdit.setObjectName("startWindow_PasswordLineEdit")
         self.startWindow_LoginBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.startWindow_LoginBtn.clicked.connect(loginUser)
         self.startWindow_LoginBtn.setGeometry(QtCore.QRect(360, 680, 81, 51))
         font = QtGui.QFont()
         font.setFamily("Lato")
@@ -264,6 +294,7 @@ class Ui_StartWindow(object):
 "}")
         self.startWindow_LoginBtn.setObjectName("startWindow_LoginBtn")
         self.startWindow_ExitBtn = QtWidgets.QPushButton(self.centralwidget)
+        self.startWindow_ExitBtn.clicked.connect(closeApp)
         self.startWindow_ExitBtn.setGeometry(QtCore.QRect(460, 680, 71, 51))
         font = QtGui.QFont()
         font.setFamily("Lato")
@@ -271,7 +302,6 @@ class Ui_StartWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.startWindow_ExitBtn.setFont(font)
-        self.startWindow_ExitBtn.clicked.connect(closeApp)
         self.startWindow_ExitBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.startWindow_ExitBtn.setStyleSheet("QPushButton {\n"
 "    border-image: none;\n"
@@ -340,6 +370,34 @@ class Ui_StartWindow(object):
         self.label.setPixmap(QtGui.QPixmap(":/newPrefix/imgs/doctor.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
+        self.ShowPassword_Label = QtWidgets.QLabel(self.centralwidget)
+        self.ShowPassword_Label.mousePressEvent = lambda event: showPassword()
+        self.ShowPassword_Label.setGeometry(QtCore.QRect(580, 580, 31, 31))
+        self.ShowPassword_Label.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ShowPassword_Label.setStyleSheet("QLabel {\n"
+"    border-image: none;\n"
+"    border-radius: 5px;\n"
+"    background-color: white;\n"
+"}")
+        self.ShowPassword_Label.setText("")
+        self.ShowPassword_Label.setPixmap(QtGui.QPixmap(":/newPrefix/imgs/show.png"))
+        self.ShowPassword_Label.setScaledContents(True)
+        self.ShowPassword_Label.setObjectName("ShowPassword_Label")
+        self.HidePassword_Label = QtWidgets.QLabel(self.centralwidget)
+        self.HidePassword_Label.mousePressEvent = lambda event: hidePassword()
+        self.HidePassword_Label.setGeometry(QtCore.QRect(580, 580, 31, 0))
+        self.HidePassword_Label.setMinimumSize(QtCore.QSize(0, 0))
+        self.HidePassword_Label.setMaximumSize(QtCore.QSize(16777215, 0))
+        self.HidePassword_Label.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.HidePassword_Label.setStyleSheet("QLabel {\n"
+"    border-image: none;\n"
+"    border-radius: 5px;\n"
+"    background-color: white;\n"
+"}")
+        self.HidePassword_Label.setText("")
+        self.HidePassword_Label.setPixmap(QtGui.QPixmap(":/newPrefix/imgs/hide.png"))
+        self.HidePassword_Label.setScaledContents(True)
+        self.HidePassword_Label.setObjectName("HidePassword_Label")
         StartWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(StartWindow)

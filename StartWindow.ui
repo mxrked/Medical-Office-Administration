@@ -157,7 +157,7 @@
      <rect>
       <x>290</x>
       <y>570</y>
-      <width>321</width>
+      <width>281</width>
       <height>51</height>
      </rect>
     </property>
@@ -180,6 +180,9 @@
 	padding-left: 10px;
 	paddding-right: 10px;
 }</string>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
     </property>
     <property name="placeholderText">
      <string>Enter Password</string>
@@ -382,10 +385,82 @@ QPushButton::hover {
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="ShowPassword_Label">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>580</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border-image: none;
+	border-radius: 5px;
+	background-color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="assets/qrc/show.qrc">:/newPrefix/imgs/show.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="HidePassword_Label">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>580</y>
+      <width>31</width>
+      <height>0</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border-image: none;
+	border-radius: 5px;
+	background-color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="assets/qrc/hide.qrc">:/newPrefix/imgs/hide.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources>
   <include location="assets/qrc/app-bg.qrc"/>
+  <include location="assets/qrc/hide.qrc"/>
+  <include location="assets/qrc/show.qrc"/>
   <include location="assets/qrc/doctor.qrc"/>
  </resources>
  <connections/>

@@ -108,7 +108,7 @@ def locations(conn) -> list[Location]:
     SELECT *
     FROM HospitalLocation;
     """)
-
+    
     results = conn.execute(stmt).fetchall()
 
     locs = [

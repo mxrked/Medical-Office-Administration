@@ -1252,7 +1252,9 @@ QCalendarWidget QTableView QLabel {
 	background-color: #F3ECB0;
 	color: #344D67;
 	font-family: &quot;MS Shell Dlg 2&quot;;
-	font-size: 11;
+	font-size: 11;	
+	padding-left: 10px;
+	padding-right: 10px;
 }</string>
              </property>
             </widget>
@@ -1278,13 +1280,13 @@ QCalendarWidget QTableView QLabel {
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QListWidget" name="ListWidget_MeetDateTimes_SA">
+      <widget class="QListWidget" name="ListWidget_AvailableTimes_SA">
        <property name="geometry">
         <rect>
          <x>0</x>
          <y>40</y>
          <width>341</width>
-         <height>381</height>
+         <height>291</height>
         </rect>
        </property>
        <property name="font">
@@ -1324,7 +1326,7 @@ QListWidget::item:selected {
        <property name="font">
         <font>
          <family>Lato</family>
-         <pointsize>12</pointsize>
+         <pointsize>14</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -2097,7 +2099,7 @@ QPushButton::hover {
           </spacer>
          </item>
          <item>
-          <widget class="QDateTimeEdit" name="DateTimeEdit_AppDate_CA">
+          <widget class="QDateEdit" name="DateEdit_AppDate_CA">
            <property name="minimumSize">
             <size>
              <width>280</width>
@@ -2111,11 +2113,15 @@ QPushButton::hover {
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QDateTimeEdit {	
+            <string notr="true">QDateEdit{
 	border-image: none;
     border: none;
 	background-color: #F3ECB0;
 	color: #344D67;
+	font-family: &quot;MS Shell Dlg 2&quot;;
+	font-size: 11;
+	padding-left: 10px;
+	padding-right: 10px;
 }</string>
            </property>
           </widget>
@@ -2583,9 +2589,9 @@ QListWidget::item:selected {
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-10</y>
+         <y>-20</y>
          <width>331</width>
-         <height>41</height>
+         <height>51</height>
         </rect>
        </property>
        <property name="font">
@@ -2736,7 +2742,7 @@ QListWidget::item:selected {
           </spacer>
          </item>
          <item>
-          <widget class="QDateEdit" name="DateEdit_AppDates_RA">
+          <widget class="QDateEdit" name="DateEdit_AppDate_RA">
            <property name="minimumSize">
             <size>
              <width>280</width>

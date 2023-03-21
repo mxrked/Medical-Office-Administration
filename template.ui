@@ -90,7 +90,7 @@ QGroupBox, QFrame {
         <property name="styleSheet">
          <string notr="true">QPushButton {
 	border-image: none;
-	background-color: #6ECCAF;
+	background-color: rgb(30, 147, 143);
 	color: black;
 	border: 2px solid black;
 }
@@ -317,7 +317,7 @@ QPushButton::hover {
         <property name="styleSheet">
          <string notr="true">QPushButton {
 	border-image: none;
-	background-color: rgb(30, 147, 143);
+	background-color: #6ECCAF;
 	color: black;
 	border: 2px solid black;
 }

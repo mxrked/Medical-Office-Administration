@@ -1,20 +1,19 @@
-import datetime
-
 from datetime import time, datetime, timedelta
 
 
 
 
 taken_appointments_dict = {
-    #time(hour=9, minute=10) : timedelta(minutes=100),
-    #time(hour=9, minute=40) : timedelta(minutes=10),
-    #time(hour=9, minute=50) : timedelta(minutes=30),
-    #time(hour=10, minute=45) : timedelta(minutes=10),
-    # time(hour=10, minute=50) : timedelta(minutes=10),
-    # time(hour=11, minute=00) : timedelta(minutes=10),
-    #time(hour=10, minute=55) : timedelta(minutes=20),
-    #time(hour=11, minute=20) : timedelta(minutes=20)
+    time(hour=9, minute=00) : timedelta(minutes=10),
+    time(hour=9, minute=10) : timedelta(minutes=10),
+    time(hour=9, minute=20) : timedelta(minutes=10),
+    time(hour=9, minute=30) : timedelta(minutes=10),
+    time(hour=9, minute=40) : timedelta(minutes=10),
+    time(hour=9, minute=50) : timedelta(minutes=10),
+    time(hour=10, minute=0) : timedelta(minutes=10),
+    time(hour=10, minute=10) : timedelta(minutes=10)
 }
+taken_appointments_dict = {}
 
 
 possible_appointment_times = []
@@ -46,9 +45,9 @@ while possible_time < last_possible_time :
 
         possible_endtime = possible_time + appointment_length
 
-        # We first check if the possible starting time if it is inbetween our appointment
+        # We first check if the possible starting time if it is inbe6tween our appointment
         # Then we check if the possible endtime is inbetween our appointment
-        if ((possible_time > taken_appt_start_time and possible_time < taken_appt_end_time) or
+        if ((possible_time >= taken_appt_start_time and possible_time < taken_appt_end_time) or
             (possible_endtime > taken_appt_start_time and possible_endtime < taken_appt_end_time)):
             # If its in between It means we can't use this time!
             # We must skip ahead to the end of this appointment to look for avaliable times!

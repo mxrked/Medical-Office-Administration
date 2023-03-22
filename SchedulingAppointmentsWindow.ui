@@ -2449,7 +2449,7 @@ QPushButton::hover {
       <property name="font">
        <font>
         <family>MS Shell Dlg 2</family>
-        <pointsize>10</pointsize>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -2479,7 +2479,7 @@ QPushButton::hover {
       <property name="font">
        <font>
         <family>MS Shell Dlg 2</family>
-        <pointsize>10</pointsize>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -2763,6 +2763,8 @@ QListWidget::item:selected {
 	color: #344D67;
 	font-family: &quot;MS Shell Dlg 2&quot;;
 	font-size: 11;
+	padding-left: 10px;
+	padding-right: 10px;
 }</string>
            </property>
           </widget>

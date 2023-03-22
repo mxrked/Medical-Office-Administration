@@ -461,13 +461,13 @@ QLabel {
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>100</y>
-        <width>511</width>
-        <height>304</height>
+        <x>200</x>
+        <y>50</y>
+        <width>801</width>
+        <height>361</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_LeftSide">
+      <layout class="QVBoxLayout" name="verticalLayout_Top_2">
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
@@ -502,7 +502,7 @@ QLabel {
               <string notr="true"/>
              </property>
              <property name="text">
-              <string>First Name</string>
+              <string/>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -543,7 +543,7 @@ QLabel {
               <string notr="true"/>
              </property>
              <property name="text">
-              <string>Last Name</string>
+              <string/>
              </property>
             </widget>
            </item>
@@ -575,41 +575,56 @@ QLabel {
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="Layout_comboBox_TEMPLATE">
+          <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
-            <widget class="QLabel" name="Label_Dropbox_TEMPLATE">
-             <property name="font">
-              <font>
-               <family>Lato</family>
-               <pointsize>12</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Gender:</string>
-             </property>
-            </widget>
+            <layout class="QHBoxLayout" name="Layout_Practitioner">
+             <item>
+              <widget class="QLabel" name="Label_Practitioner">
+               <property name="font">
+                <font>
+                 <family>Lato</family>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Practitioner:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_Practitioner"/>
+             </item>
+            </layout>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox_TEMPLATE">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
+            <layout class="QHBoxLayout" name="Layout_LocationID">
              <item>
-              <property name="text">
-               <string>Female</string>
-              </property>
+              <widget class="QLabel" name="Label_LocationID">
+               <property name="font">
+                <font>
+                 <family>Lato</family>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Location ID:</string>
+               </property>
+              </widget>
              </item>
              <item>
-              <property name="text">
-               <string>Male</string>
-              </property>
+              <widget class="QComboBox" name="comboBox_LocationID"/>
              </item>
-            </widget>
+            </layout>
            </item>
           </layout>
          </item>
@@ -618,50 +633,51 @@ QLabel {
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <layout class="QHBoxLayout" name="Layout_LabTestTemplate">
+          <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
-            <widget class="QLabel" name="Label_LabTestTemplate">
-             <property name="font">
-              <font>
-               <family>Lato</family>
-               <pointsize>12</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Test Template:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="LineEdit_LabTestTemplate">
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-             </property>
-            </widget>
+            <layout class="QHBoxLayout" name="Layout_LabDate">
+             <item>
+              <widget class="QLabel" name="Label_LabDate">
+               <property name="font">
+                <font>
+                 <family>Lato</family>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Lab Date:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="LineEdit_LabDate">
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="Layout_LabTestName">
+          <layout class="QHBoxLayout" name="Layout_PossibleLabs">
            <item>
-            <widget class="QLabel" name="Label_LabTestName">
+            <widget class="QLabel" name="Label_PossibleLabs">
              <property name="font">
               <font>
                <family>Lato</family>
@@ -674,23 +690,17 @@ QLabel {
               <string notr="true"/>
              </property>
              <property name="text">
-              <string>Test Name:</string>
+              <string>Labs:</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="LineEdit_LabTestName">
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string/>
+            <widget class="QComboBox" name="comboBox_PossibleLabs">
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>0</height>
+              </size>
              </property>
             </widget>
            </item>
@@ -734,324 +744,6 @@ QLabel {
            </item>
           </layout>
          </item>
-         <item>
-          <layout class="QHBoxLayout" name="Layout_comboBox_TEMPLATE_2">
-           <item>
-            <widget class="QLabel" name="Label_Dropbox_TEMPLATE_2">
-             <property name="font">
-              <font>
-               <family>Lato</family>
-               <pointsize>12</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Report Preference:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="comboBox_TEMPLATE_2">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <item>
-              <property name="text">
-               <string>Email</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Mail</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="verticalLayoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>680</x>
-        <y>100</y>
-        <width>511</width>
-        <height>304</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_RightSide">
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_5">
-         <item>
-          <layout class="QHBoxLayout" name="Layout_LabCompany">
-           <item>
-            <widget class="QLabel" name="Label_LabCompany">
-             <property name="font">
-              <font>
-               <family>Lato</family>
-               <pointsize>12</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Company:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="LineEdit_LabCompany">
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="Layout_LabStatus">
-           <item>
-            <widget class="QLabel" name="Label_LabStatus">
-             <property name="font">
-              <font>
-               <family>Lato</family>
-               <pointsize>12</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Status:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="LineEdit_LabStatus">
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="Layout_LabResultDate">
-           <item>
-            <widget class="QLabel" name="Label_LabResultDate">
-             <property name="font">
-              <font>
-               <family>Lato</family>
-               <pointsize>12</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Result Date:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QDateEdit" name="dateEdit_LabResultDate"/>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_6">
-         <item>
-          <layout class="QHBoxLayout" name="Layout_LabTestTemplate_2">
-           <item>
-            <widget class="QLabel" name="Label_LabTestTemplate_2">
-             <property name="font">
-              <font>
-               <family>Lato</family>
-               <pointsize>12</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Requesting Practitioner ID:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="LineEdit_LabTestTemplate_2">
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="Layout_RequestingPractitioner">
-           <item>
-            <widget class="QLabel" name="Label_RequestingPractitioner">
-             <property name="font">
-              <font>
-               <family>Lato</family>
-               <pointsize>12</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Requesting Practitioner:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="LineEdit_RequestingPractitioner">
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="Layout_EmployeeID">
-           <item>
-            <widget class="QLabel" name="Label_EmployeeID">
-             <property name="font">
-              <font>
-               <family>Lato</family>
-               <pointsize>12</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Employee ID (Lab Technician):</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="LineEdit_EmployeeID">
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="Layout_LabTechnicianName">
-           <item>
-            <widget class="QLabel" name="Label_LabTechnicianName">
-             <property name="font">
-              <font>
-               <family>Lato</family>
-               <pointsize>12</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Lab Technician Name:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="LineEdit_LabTechnicianName">
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
         </layout>
        </item>
       </layout>
@@ -1059,7 +751,7 @@ QLabel {
      <widget class="QPushButton" name="pushButton_SubmitLabOrder">
       <property name="geometry">
        <rect>
-        <x>470</x>
+        <x>430</x>
         <y>460</y>
         <width>131</width>
         <height>61</height>
@@ -1092,7 +784,7 @@ QPushButton::hover {
      <widget class="QPushButton" name="pushButton_ClearLabOrders">
       <property name="geometry">
        <rect>
-        <x>620</x>
+        <x>630</x>
         <y>460</y>
         <width>131</width>
         <height>61</height>

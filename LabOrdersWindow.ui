@@ -597,7 +597,14 @@ QLabel {
             </widget>
            </item>
            <item>
-            <widget class="QDateEdit" name="dateEdit_DOB"/>
+            <widget class="QDateEdit" name="dateEdit_DOB">
+             <property name="font">
+              <font>
+               <family>MS Shell Dlg 2</family>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -624,7 +631,14 @@ QLabel {
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBox_Practitioner"/>
+              <widget class="QComboBox" name="comboBox_Practitioner">
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
@@ -649,7 +663,14 @@ QLabel {
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBox_LocationID"/>
+              <widget class="QComboBox" name="comboBox_LocationID">
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
@@ -740,6 +761,12 @@ QLabel {
                <width>200</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>MS Shell Dlg 2</family>
+               <pointsize>11</pointsize>
+              </font>
              </property>
             </widget>
            </item>

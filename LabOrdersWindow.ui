@@ -320,9 +320,9 @@ QPushButton::hover {
         <property name="styleSheet">
          <string notr="true">QPushButton {
 	border-image: none;
-	background-color: #6ECCAF;
-	color: black;
-	border: 2px solid black;
+	background-color: rgba(110, 204, 175, .2);
+	color: rgba(0, 0, 0, .2);
+	border: 2px solid rgba(0, 0, 0, .2);
 }
 
 QPushButton::hover {
@@ -497,13 +497,13 @@ QLabel {
             <widget class="QLineEdit" name="LineEdit_PatientFirstName">
              <property name="minimumSize">
               <size>
-               <width>395</width>
+               <width>200</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>200</width>
+               <width>394</width>
                <height>16777215</height>
               </size>
              </property>
@@ -550,13 +550,13 @@ QLabel {
             <widget class="QLineEdit" name="LineEdit_PatientLastName">
              <property name="minimumSize">
               <size>
-               <width>395</width>
+               <width>200</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>200</width>
+               <width>394</width>
                <height>16777215</height>
               </size>
              </property>

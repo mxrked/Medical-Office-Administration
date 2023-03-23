@@ -492,6 +492,18 @@ QLabel {
            </item>
            <item>
             <widget class="QLineEdit" name="LineEdit_PatientFirstName">
+             <property name="minimumSize">
+              <size>
+               <width>395</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>MS Shell Dlg 2</family>
@@ -533,6 +545,18 @@ QLabel {
            </item>
            <item>
             <widget class="QLineEdit" name="LineEdit_PatientLastName">
+             <property name="minimumSize">
+              <size>
+               <width>395</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>MS Shell Dlg 2</family>
@@ -656,6 +680,18 @@ QLabel {
              </item>
              <item>
               <widget class="QLineEdit" name="LineEdit_LabDate">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>394</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>MS Shell Dlg 2</family>
@@ -728,6 +764,12 @@ QLabel {
            </item>
            <item>
             <widget class="QLineEdit" name="LineEdit_LabDepartment">
+             <property name="maximumSize">
+              <size>
+               <width>394</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>MS Shell Dlg 2</family>

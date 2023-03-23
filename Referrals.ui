@@ -523,7 +523,7 @@ QLabel {
         <height>38</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="Layout_comboBox_TEMPLATE">
+      <layout class="QHBoxLayout" name="Layout_DocOrPrac">
        <item>
         <widget class="QLabel" name="Label_Dropbox_TEMPLATE">
          <property name="font">
@@ -538,7 +538,7 @@ QLabel {
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>:</string>
+          <string>Doctor or Practitioner:</string>
          </property>
         </widget>
        </item>
@@ -594,9 +594,9 @@ QLabel {
      <widget class="QPushButton" name="Nav_CreateReferral">
       <property name="geometry">
        <rect>
-        <x>470</x>
-        <y>450</y>
-        <width>151</width>
+        <x>30</x>
+        <y>320</y>
+        <width>411</width>
         <height>61</height>
        </rect>
       </property>
@@ -649,7 +649,7 @@ QPushButton::hover {
         <height>41</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="Layout_PatientFirstName_2">
+      <layout class="QHBoxLayout" name="Layout_LastName">
        <property name="spacing">
         <number>7</number>
        </property>
@@ -701,7 +701,7 @@ QPushButton::hover {
         <height>41</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="Layout_PatientFirstName_3">
+      <layout class="QHBoxLayout" name="Layout_DateOfBirth">
        <property name="spacing">
         <number>7</number>
        </property>
@@ -731,9 +731,9 @@ QPushButton::hover {
      <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>240</y>
-        <width>411</width>
+        <x>550</x>
+        <y>180</y>
+        <width>451</width>
         <height>201</height>
        </rect>
       </property>

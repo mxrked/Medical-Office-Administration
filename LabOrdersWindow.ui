@@ -96,7 +96,7 @@ QGroupBox, QFrame {
 }
 
 QPushButton::hover {
-	background-color: rgb(14, 81, 85);
+	background-color: rgb(139, 231, 100);
 	color: white;
 }</string>
         </property>
@@ -291,6 +291,9 @@ QPushButton::hover {
       </item>
       <item>
        <widget class="QPushButton" name="Nav_LabOrdersBtn">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="minimumSize">
          <size>
           <width>120</width>
@@ -323,7 +326,7 @@ QPushButton::hover {
 }
 
 QPushButton::hover {
-	background-color: rgb(139, 231, 100);
+	background-color: rgb(14, 81, 85);
 	color: white;
 }</string>
         </property>

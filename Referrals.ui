@@ -442,7 +442,7 @@ QLabel {
     <widget class="QFrame" name="InputFrame">
      <property name="geometry">
       <rect>
-       <x>-1</x>
+       <x>30</x>
        <y>0</y>
        <width>1251</width>
        <height>561</height>
@@ -487,7 +487,7 @@ QLabel {
             <string notr="true"/>
            </property>
            <property name="text">
-            <string>Patient ID:</string>
+            <string>First Name:</string>
            </property>
           </widget>
          </item>
@@ -514,7 +514,7 @@ QLabel {
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>550</x>

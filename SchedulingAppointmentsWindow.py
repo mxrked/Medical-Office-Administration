@@ -1,302 +1,13 @@
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from assets.qrc import app_bg
 from assets.files.GLOBALS import *
 
 import urllib
-import sqlalchemy
+
 
 class Ui_SchedulingAppointmentsWindow(object):
     def setupUi(self, SchedulingAppointmentsWindow):
-        ' FUNCTIONS '
-        def clearInputs():
-                ' This is used to clear/reset the form '
-
-                # Clearing line edits
-                self.LineEdit_PatientFirstName_SA.setText("")
-                self.LineEdit_PatientLastName_SA.setText("")
-                self.LineEdit_AppointmentReason_SA.setText("")
-
-                # Resetting date edits
-                defaultDate = QtCore.QDate(2000, 1, 1)
-                self.dateEdit_DOB_SA.setDate(defaultDate)
-                self.DateEdit_AppDate_SA.setDate(defaultDate)
-
-                # Resetting combo boxes
-                self.ComboBox_OfficeLocations_SA.setCurrentIndex(0)
-                self.ComboBox_DoctorNames_SA.setCurrentIndex(0)
-                self.ComboBox_AppointmentType_SA.setCurrentIndex(0)
-
-                # Deselecting list edit
-                self.ListWidget_AvailableTimes_SA.clearSelection()
-
-        def connectToDB():
-                ' This is used to connect to the DB '
-
-                try:
-                    import sqlalchemy as sql
-                    import pyodbc
-                    import urllib
-                    from sqlalchemy.pool import QueuePool
-
-                except ImportError as e:
-                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
-                    raise e
-
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
-                engine = sql.create_engine(conn_str)
-
-                engine.connect()
-
-                # This is used to check if the database is connected
-                if engine.connect():
-                        print("Connected to database. . .")
-
-                        return engine
-
-
-
-                # with engine.connect() as conn:
-                #     result = conn.execute(sql.text("SELECT * FROM Appointment"))
-                #     for key in result.keys():
-                #         print(key)
-        def closeDBConnection():
-                ' This is used to close the connection to the DB '
-
-                try:
-                    import sqlalchemy as sql
-                    import pyodbc
-                    import urllib
-                    from sqlalchemy.pool import QueuePool
-
-                except ImportError as e:
-                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
-                    raise e
-
-                # Getting connection
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 17 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
-                engine = sql.create_engine(conn_str)
-
-                # Closing the connection
-                engine.dispose()
-
-                if engine.dispose:
-                        print("Closed database. . .")
-
-        def hideAllViews():
-                ' This is used to hide all the views and resets view togglers '
-
-                # Hides views
-                self.InputsFrame.setFixedHeight(0)
-                self.RescheduleAppointment_Frame.setFixedHeight(0)
-                self.CancelAppointment_Frame.setFixedHeight(0)
-
-                # Resetting view togglers enable
-                self.DisplaySchedule_Btn.setEnabled(True)
-                self.DisplayReschedule_Btn.setEnabled(True)
-                self.DisplayCancel_Btn.setEnabled(True)
-
-                # Resetting view toggler styles
-                self.DisplaySchedule_Btn.setStyleSheet("QPushButton {\n"
-"    border-image: none;\n"
-"    background-color: #6ECCAF;\n"
-"    color: black;\n"
-"    border: 2px solid black;\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"    background-color: rgb(139, 231, 100);\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"")
-                self.DisplayReschedule_Btn.setStyleSheet("QPushButton {\n"
-"    border-image: none;\n"
-"    background-color: #6ECCAF;\n"
-"    color: black;\n"
-"    border: 2px solid black;\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"    background-color: rgb(139, 231, 100);\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"")
-                self.DisplayCancel_Btn.setStyleSheet("QPushButton {\n"
-"    border-image: none;\n"
-"    background-color: #6ECCAF;\n"
-"    color: black;\n"
-"    border: 2px solid black;\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"    background-color: rgb(139, 231, 100);\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"")
-        def displayView(view):
-                ' This is used to display a specific view based on what toggler the user clicks '
-
-                hideAllViews()
-
-                if view == "Schedule":
-                        self.InputsFrame.setFixedHeight(681)
-                        self.DisplaySchedule_Btn.setEnabled(False)
-                        self.DisplaySchedule_Btn.setStyleSheet("QPushButton {\n"
-"    border-image: none;\n"
-"    background-color: rgba(110, 204, 175, .2);\n"
-"    color: rgba(0, 0, 0, .2);\n"
-"    border: 2px solid rgba(0, 0, 0, .2);\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"    background-color: rgb(139, 231, 100);\n"
-"    color: white;\n"
-"}")
-                if view == "Reschedule":
-                        self.RescheduleAppointment_Frame.setFixedHeight(681)
-                        self.DisplayReschedule_Btn.setEnabled(False)
-                        self.DisplayReschedule_Btn.setStyleSheet("QPushButton {\n"
-"    border-image: none;\n"
-"    background-color: rgba(110, 204, 175, .2);\n"
-"    color: rgba(0, 0, 0, .2);\n"
-"    border: 2px solid rgba(0, 0, 0, .2);\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"    background-color: rgb(139, 231, 100);\n"
-"    color: white;\n"
-"}")
-                if view == "Cancel":
-                        self.CancelAppointment_Frame.setFixedHeight(681)
-                        self.DisplayCancel_Btn.setEnabled(False)
-                        self.DisplayCancel_Btn.setStyleSheet("QPushButton {\n"
-"    border-image: none;\n"
-"    background-color: rgba(110, 204, 175, .2);\n"
-"    color: rgba(0, 0, 0, .2);\n"
-"    border: 2px solid rgba(0, 0, 0, .2);\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"    background-color: rgb(139, 231, 100);\n"
-"    color: white;\n"
-"}")
-
-        def listAvailableTimes_SA():
-                ' This is used to list the current available times into the list widget '
-
-                dBConnection = connectToDB()
-                aTListWidget = self.ListWidget_AvailableTimes_SA
-
-                closeDBConnection() # Prevents connection lag
-        def listAvailableTimes_RA():
-                ' This is used to list the current available times into the list widget '
-
-                dBConnection = connectToDB()
-                aTListWidget = self.ListWidget_CurrentAvailableTimes_RA
-
-                closeDBConnection() # Prevents connection lag
-        def listSearchedAppointments_RA():
-                ' This is used to list the searched appointments into the list widget '
-
-                dBConnection = connectToDB()
-                sAListWidget = self.ListWidget_SearchedAppointments_RA
-
-                closeDBConnection() # Prevents connection lag
-        def listSearchedAppointments_CA():
-                ' This is used to list the searched appointments into the list widget '
-
-                dBConnection = connectToDB()
-                sAListWidget = self.ListWidget_SearchedAppointments_CA
-
-                closeDBConnection() # Prevents connection lag
-
-        def getPFN_SA():
-                return self.LineEdit_PatientFirstName_SA.text()
-        def getPLN_SA():
-                return self.LineEdit_PatientLastName_SA.text()
-        def getPDOB_SA():
-                return self.dateEdit_DOB_SA.date()
-        def getOfficeLocation_SA():
-                return self.ComboBox_OfficeLocations_SA.currentIndex()
-        def getDoctorName_SA():
-                return self.ComboBox_DoctorNames_SA.currentIndex()
-        def getAppReason_SA():
-                return self.LineEdit_AppointmentReason_SA.text()
-        def getAppType_SA():
-                return self.ComboBox_AppointmentType_SA.currentIndex()
-        def getAppDate_SA():
-                return self.DateEdit_AppDate_SA.date()
-        def getCurrentAvailableTimesSelection_SA():
-                return self.ListWidget_AvailableTimes_SA.currentRow()
-
-        def getOfficeLocation_RA():
-                return self.ComboBox_OfficeLocations_RA.currentIndex()
-        def getDoctorName_RA():
-                return self.ComboBox_DoctorNames_RA.currentIndex()
-        def getAppDate_RA():
-                return self.DateEdit_AppDate_RA.date()
-        def getSearchedAppointmentsSelection_RA():
-                return self.ListWidget_SearchedAppointments_RA.currentRow()
-        def getCurrentAvailableTimesSelection_RA():
-                return self.ListWidget_CurrentAvailableTimes_RA.currentRow()
-
-        def getOfficeLocation_CA():
-                return self.ComboBox_OfficeLocations_CA.currentIndex()
-        def getDoctorName_CA():
-                return self.ComboBox_DoctorNames_CA.currentIndex()
-        def getAppDate_CA():
-                return self.DateEdit_AppDate_CA.date()
-        def getSearchAppointmentsSelection_CA():
-                return self.ListWidget_SearchedAppointments_CA.currentRow()
-
-        def scheduleAppointment():
-                ' This is used to schedule an appointment '
-
-                dBConnection = connectToDB()
-
-                patientFN_Text = getPFN_SA()
-                patientLN_Text = getPLN_SA()
-                patientDOB_Date = getPDOB_SA()
-                officeLocation_Index = getOfficeLocation_SA()
-                doctorName_Index = getDoctorName_SA()
-                appointmentReason_Text = getAppReason_SA()
-                appointmentType_Index = getAppType_SA()
-                appointmentDate_Date = getAppDate_SA()
-                currentAvailableTimes_Row = getCurrentAvailableTimesSelection_SA()
-
-                closeDBConnection() # Prevents connection lag
-        def rescheduleAppointment():
-                ' This is used to reschedule an appointment '
-
-                dBConnection = connectToDB()
-
-                officeLocation_Index = getOfficeLocation_RA()
-                doctorName_Index = getDoctorName_RA()
-                appointmentDate_Date = getAppDate_RA()
-                searchedAppointments_Row = getSearchedAppointmentsSelection_RA()
-                currentAvailableTimes_Row = getCurrentAvailableTimesSelection_RA()
-
-                closeDBConnection() # Prevents connection lag
-        def cancelAppointment():
-                ' This is used to cancel an appointment '
-
-                dBConnection = connectToDB()
-
-                officeLocation_Index = getOfficeLocation_CA()
-                doctorName_Index = getDoctorName_CA()
-                appointmentDate_Date = getAppDate_CA()
-                searchedAppointments_Row = getSearchAppointmentsSelection_CA()
-
-                closeDBConnection() # Prevents connection lag
-
-
-
         SchedulingAppointmentsWindow.setObjectName("SchedulingAppointmentsWindow")
         SchedulingAppointmentsWindow.resize(1430, 925)
         SchedulingAppointmentsWindow.setMinimumSize(QtCore.QSize(1420, 925))
@@ -934,7 +645,6 @@ class Ui_SchedulingAppointmentsWindow(object):
 "")
         self.ScheduleAppointmentBtn.setObjectName("ScheduleAppointmentBtn")
         self.ClearInputsBtn = QtWidgets.QPushButton(self.InputsFrame)
-        self.ClearInputsBtn.clicked.connect(clearInputs)
         self.ClearInputsBtn.setGeometry(QtCore.QRect(350, 580, 141, 51))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
@@ -980,7 +690,7 @@ class Ui_SchedulingAppointmentsWindow(object):
 "")
         self.DisplayAvailableTimes_Btn_SA.setObjectName("DisplayAvailableTimes_Btn_SA")
         self.ViewBtns_Frame = QtWidgets.QFrame(self.MainFrame)
-        self.ViewBtns_Frame.setGeometry(QtCore.QRect(420, 110, 541, 91))
+        self.ViewBtns_Frame.setGeometry(QtCore.QRect(290, 110, 791, 91))
         self.ViewBtns_Frame.setStyleSheet("QFrame {\n"
 "    border-image: none;\n"
 "    background-color: none;\n"
@@ -992,8 +702,33 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+        self.NewPatient_Btn = QtWidgets.QPushButton(self.ViewBtns_Frame)
+        self.NewPatient_Btn.setEnabled(True)
+        self.NewPatient_Btn.setMinimumSize(QtCore.QSize(170, 40))
+        self.NewPatient_Btn.setMaximumSize(QtCore.QSize(120, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.NewPatient_Btn.setFont(font)
+        self.NewPatient_Btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.NewPatient_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: #6ECCAF;\n"
+"    color: black;\n"
+"    border: 2px solid black;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"")
+        self.NewPatient_Btn.setObjectName("NewPatient_Btn")
+        self.horizontalLayout.addWidget(self.NewPatient_Btn)
         self.DisplayReschedule_Btn = QtWidgets.QPushButton(self.ViewBtns_Frame)
-        self.DisplayReschedule_Btn.mousePressEvent = lambda event: displayView("Reschedule")
         self.DisplayReschedule_Btn.setEnabled(True)
         self.DisplayReschedule_Btn.setMinimumSize(QtCore.QSize(170, 40))
         self.DisplayReschedule_Btn.setMaximumSize(QtCore.QSize(120, 16777215))
@@ -1020,7 +755,6 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.DisplayReschedule_Btn.setObjectName("DisplayReschedule_Btn")
         self.horizontalLayout.addWidget(self.DisplayReschedule_Btn)
         self.DisplaySchedule_Btn = QtWidgets.QPushButton(self.ViewBtns_Frame)
-        self.DisplaySchedule_Btn.mousePressEvent = lambda event: displayView("Schedule")
         self.DisplaySchedule_Btn.setEnabled(False)
         self.DisplaySchedule_Btn.setMinimumSize(QtCore.QSize(200, 40))
         self.DisplaySchedule_Btn.setMaximumSize(QtCore.QSize(200, 16777215))
@@ -1045,7 +779,6 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.DisplaySchedule_Btn.setObjectName("DisplaySchedule_Btn")
         self.horizontalLayout.addWidget(self.DisplaySchedule_Btn)
         self.DisplayCancel_Btn = QtWidgets.QPushButton(self.ViewBtns_Frame)
-        self.DisplayCancel_Btn.mousePressEvent = lambda event: displayView("Cancel")
         self.DisplayCancel_Btn.setEnabled(True)
         self.DisplayCancel_Btn.setMinimumSize(QtCore.QSize(100, 40))
         self.DisplayCancel_Btn.setMaximumSize(QtCore.QSize(100, 16777215))
@@ -1702,6 +1435,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.ScheduleAppointmentBtn.setText(_translate("SchedulingAppointmentsWindow", "Schedule Appointment"))
         self.ClearInputsBtn.setText(_translate("SchedulingAppointmentsWindow", "Clear Inputs"))
         self.DisplayAvailableTimes_Btn_SA.setText(_translate("SchedulingAppointmentsWindow", "Display Available Time(s)"))
+        self.NewPatient_Btn.setText(_translate("SchedulingAppointmentsWindow", "New Patient"))
         self.DisplayReschedule_Btn.setText(_translate("SchedulingAppointmentsWindow", "Rescheduling"))
         self.DisplaySchedule_Btn.setText(_translate("SchedulingAppointmentsWindow", "Make/Schedule"))
         self.DisplayCancel_Btn.setText(_translate("SchedulingAppointmentsWindow", "Cancel"))
@@ -1730,6 +1464,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.Label_AppDate_RA.setText(_translate("SchedulingAppointmentsWindow", "App. Date:"))
         self.SearchForAppointments_Btn_RA.setText(_translate("SchedulingAppointmentsWindow", "Search For Appointment(s)"))
         self.DisplayCurrentTimes_Btn_RA.setText(_translate("SchedulingAppointmentsWindow", "Display Current Times"))
+
 
 
 if __name__ == "__main__":

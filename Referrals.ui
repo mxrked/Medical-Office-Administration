@@ -538,45 +538,23 @@ QLabel {
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>Employee ID:</string>
+          <string>:</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit"/>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>120</y>
-        <width>456</width>
-        <height>38</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="Layout_comboBox_TEMPLATE_2">
-       <item>
-        <widget class="QLabel" name="Label_Dropbox_Referral_ID">
-         <property name="font">
-          <font>
-           <family>Lato</family>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string>Referral ID:</string>
-         </property>
+        <widget class="QComboBox" name="comboBox">
+         <item>
+          <property name="text">
+           <string>First Item</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Second Item</string>
+          </property>
+         </item>
         </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_2"/>
        </item>
       </layout>
      </widget>
@@ -584,7 +562,7 @@ QLabel {
       <property name="geometry">
        <rect>
         <x>550</x>
-        <y>190</y>
+        <y>110</y>
         <width>456</width>
         <height>38</height>
        </rect>
@@ -662,35 +640,138 @@ QPushButton::hover {
        </size>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QWidget" name="layoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>250</y>
-        <width>421</width>
-        <height>151</height>
+        <x>30</x>
+        <y>110</y>
+        <width>411</width>
+        <height>41</height>
        </rect>
       </property>
+      <layout class="QHBoxLayout" name="Layout_PatientFirstName_2">
+       <property name="spacing">
+        <number>7</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="Label_PatientFirstName_2">
+         <property name="font">
+          <font>
+           <family>Lato</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Last Name:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="LineEdit_PatientFirstName_2">
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
-     <widget class="QLabel" name="label">
+     <widget class="QWidget" name="layoutWidget_4">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>200</y>
-        <width>211</width>
-        <height>31</height>
+        <x>30</x>
+        <y>171</y>
+        <width>411</width>
+        <height>41</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
+      <layout class="QHBoxLayout" name="Layout_PatientFirstName_3">
+       <property name="spacing">
+        <number>7</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="Label_PatientFirstName_3">
+         <property name="font">
+          <font>
+           <family>Lato</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Date of Birth:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateEdit" name="dateEdit_2"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>240</y>
+        <width>411</width>
+        <height>201</height>
+       </rect>
       </property>
-      <property name="text">
-       <string>Reason for Referral</string>
-      </property>
+      <layout class="QVBoxLayout" name="ReferralReason">
+       <item>
+        <widget class="QLabel" name="Label_Reason">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Reason for Referral</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="LineEdit_Reason">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>

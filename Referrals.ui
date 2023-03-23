@@ -503,7 +503,7 @@ QLabel {
             <string notr="true"/>
            </property>
            <property name="text">
-            <string/>
+            <string>Example</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -544,6 +544,11 @@ QLabel {
        </item>
        <item>
         <widget class="QComboBox" name="comboBox">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
          <item>
           <property name="text">
            <string>First Item</string>
@@ -587,7 +592,13 @@ QLabel {
         </widget>
        </item>
        <item>
-        <widget class="QDateEdit" name="dateEdit"/>
+        <widget class="QDateEdit" name="dateEdit">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -683,7 +694,7 @@ QPushButton::hover {
           <string notr="true"/>
          </property>
          <property name="text">
-          <string/>
+          <string>Example</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -696,9 +707,9 @@ QPushButton::hover {
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>171</y>
+        <y>180</y>
         <width>411</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="Layout_DateOfBirth">
@@ -724,7 +735,13 @@ QPushButton::hover {
         </widget>
        </item>
        <item>
-        <widget class="QDateEdit" name="dateEdit_2"/>
+        <widget class="QDateEdit" name="dateEdit_2">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -738,6 +755,9 @@ QPushButton::hover {
        </rect>
       </property>
       <layout class="QVBoxLayout" name="ReferralReason">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QLabel" name="Label_Reason">
          <property name="sizePolicy">
@@ -768,6 +788,17 @@ QPushButton::hover {
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Example</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
         </widget>
        </item>

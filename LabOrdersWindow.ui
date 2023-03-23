@@ -90,13 +90,13 @@ QGroupBox, QFrame {
         <property name="styleSheet">
          <string notr="true">QPushButton {
 	border-image: none;
-	background-color: #6ECCAF;
+	background-color: rgb(30, 147, 143);
 	color: black;
 	border: 2px solid black;
 }
 
 QPushButton::hover {
-	background-color: rgb(139, 231, 100);
+	background-color: rgb(14, 81, 85);
 	color: white;
 }</string>
         </property>
@@ -320,13 +320,13 @@ QPushButton::hover {
         <property name="styleSheet">
          <string notr="true">QPushButton {
 	border-image: none;
-	background-color: rgb(30, 147, 143);
+	background-color: #6ECCAF;
 	color: black;
 	border: 2px solid black;
 }
 
 QPushButton::hover {
-	background-color: rgb(14, 81, 85);
+	background-color: rgb(139, 231, 100);
 	color: white;
 }</string>
         </property>

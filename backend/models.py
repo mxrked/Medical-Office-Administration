@@ -1,4 +1,7 @@
-
+"""
+models.py - a set of sqlalchemy models for working with the clinics Database.
+Author: Jessica Weeks, Christian Fortin
+"""
 from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy import Column, Integer, String, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, Float, NCHAR
 
@@ -13,7 +16,7 @@ class Appointment(Base):
     # nullable is set to FALSE by default unless a primary_key
     ApptDate = Column(Date)
     ApptTime = Column(Time)
-    ApptTypeID = Column(Integer, ForeignKey("AppointmentType.ApptTypeID"))
+    ApptTypeID = Column(Integer, ForeignKey("AppointmentType.ApptTypeID")) 
     PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
     ApptStatus = Column(VARCHAR(50))
     EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
@@ -42,6 +45,8 @@ class AppointmentType(Base):
 class EmpUserRoleCross(Base):
     __tablename__ = "EmpUserRoleCross"
 
+    DummyID = Column(Integer, primary_key=True) # Sqlalchemy requires a primary key in all tables
+
     EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     RoleID = Column(Integer, ForeignKey("Role.RoleID"))   # Check later for table name change
     DepartmentID = Column(Integer, ForeignKey("Departments.DepartmentID"))
@@ -55,6 +60,8 @@ class EmpUserRoleCross(Base):
 class EmpGroupCross(Base):
     __tablename__ = "EmpGroupCross"
 
+    DummyID = Column(Integer, primary_key=True)
+
     EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     GroupID = Column(Integer, ForeignKey("Group.GroupID"))
 
@@ -63,6 +70,8 @@ class EmpGroupCross(Base):
 
 class EmpLocReferralCross(Base):
     __tablename__ = "EmpLocReferralCross"
+
+    DummyID = Column(Integer, primary_key=True)
 
     EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID "))
     LocationID = Column(Integer, ForeignKey("Location.LocationID"))
@@ -96,7 +105,9 @@ class Employee(Base):
 class EmployeeCredintials(Base):
     __tablename__ = "EmployeeCredintials"
 
-    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID")) # Child
+    DummyID = Column(Integer, primary_key=True)
+
+    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     Title = Column(NCHAR(10), nullable=True)
     Status = Column(NCHAR(10))
     StartDate = Column(Date)

@@ -1,0 +1,25 @@
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+# Define the SQL table
+Base = declarative_base()
+
+class MyTable(Base):
+    __tablename__ = 'my_table'
+    id = Column(Integer, primary_key=True)
+    first_name = Column(String)
+    last_name = Column(String)
+
+# Connect to the database
+engine = create_engine('database://username:password@host:port/dbname')
+Session = sessionmaker(bind=engine)
+session = Session()
+
+# Retrieve the rows with matching first name
+first_name_value = lineedit.text() # get the value entered in the QLineEdit widget
+results = session.query(MyTable).filter(MyTable.first_name == first_name_value).all()
+
+# Display the results
+for row in results:
+    print(row.id, row.first_name, row.last_name)

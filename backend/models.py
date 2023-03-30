@@ -3,7 +3,7 @@ models.py - a set of sqlalchemy models for working with the clinics Database.
 Author: Jessica Weeks, Christian Fortin
 """
 from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy import Column, Integer, String, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, Float, NCHAR
+from sqlalchemy import Column, Table, Integer, String, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, Float, NCHAR
 
 Base = declarative_base()
 
@@ -134,4 +134,54 @@ class EmployeeType(Base):
     EmployeeTypeID = Column(Integer, primary_key=True, nullable=False)
 
     TypeDescription = Column(VARCHAR(50))
+
+EmployeeRoleCross = Table(
+    "EmployeeRoleCross",
+    Base.metadata,
+    Column("EmployeeID", ForeignKey("Employee.EmployeeID")),
+    Column("RoleID", ForeignKey("Role.RoleID"))
+)
+
+class Event(Base):
+    __tablename__ = "Event"
+
+    EventID = Column(Integer, primary_key=True, nullable=False)
+
+    EventName = Column(VARCHAR(50), nullable=False)
+    StartDate = Column(Date, nullable=False)
+    EndDate = Column(Date, nullable=False)
+    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
+    WorkingDays = Column(VARCHAR(10))
+
+    Employee = relationship("Employee", backref="Employee")
+
+class Lab(Base):
+    __tablename__ = "Lab"
+
+    LabID = Column(Integer, primary_key=True, nullable=False)
+
+    LabTest = Column(String, nullable=False)
+
+class LabOrder(Base):
+    __tablename__ = "LabOrder"
+
+    LabOrderID = Column(Integer, primary_key=True, nullable=False)
+
+    OrderName = Column(VARCHAR(50), nullable=True)
+    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
+    PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
+    LabDate = Column(Date, nullable=False)
+    Results = Column(String, nullable=True)
+    LabID = Column(Integer, ForeignKey("Lab.LabID"))
+    LocationID = Column(Integer, ForeignKey("HospitalLocation.LocationID"))
+
+    Employee = relationship("Employee", backref="Employee")
+    Patient = relationship("Patient", backref="Patient")
+    Location = relationship("Location", backref="HospitalLocation")
+
+class Patient(Base):
+    __tablename__ = "Patient"
+
+    PatientID = Column(Integer, primary_key=True, nullable=False)
+
 

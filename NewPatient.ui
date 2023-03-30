@@ -614,10 +614,16 @@ QPushButton::hover {
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>III</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -629,7 +635,7 @@ QPushButton::hover {
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>N/A</string>
@@ -644,7 +650,7 @@ QPushButton::hover {
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>Jr</string>
@@ -659,7 +665,7 @@ QPushButton::hover {
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>I</string>
@@ -674,7 +680,7 @@ QPushButton::hover {
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>II</string>
@@ -689,7 +695,7 @@ QPushButton::hover {
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>Sr</string>
@@ -1342,7 +1348,7 @@ color: rgb(255, 255, 255);</string>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>Male</string>
@@ -1357,7 +1363,7 @@ color: rgb(255, 255, 255);</string>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>Female</string>
@@ -1365,14 +1371,14 @@ color: rgb(255, 255, 255);</string>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButtonGenderO">
+          <widget class="QRadioButton" name="radioButtonOther">
            <property name="font">
             <font>
              <pointsize>11</pointsize>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>Other</string>

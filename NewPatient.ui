@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SchedulingAppointmentsWindow</class>
- <widget class="QMainWindow" name="SchedulingAppointmentsWindow">
+ <class>NewPatientWindow</class>
+ <widget class="QMainWindow" name="NewPatientWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -24,6 +24,34 @@
   </property>
   <property name="windowTitle">
    <string>Forsyth Family Practice Center - Scheduling Appointments</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QFrame {
+	border-image: none;
+	background-color: rgb(52, 77, 103);
+}
+
+
+
+QLineEdit, QComboBox, QDateEdit, QDateTimeEdit {
+	border-image: none;
+    border: none;
+	min-width: 200px;
+	height: 30px;
+	background-color: #F3ECB0;
+	color: #344D67;
+	font-family: &quot;MS Shell Dlg 2&quot;;
+	font-size: 11;
+}
+
+QLineEdit {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+QLabel {
+	color: white;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QFrame" name="MainFrame">
@@ -402,6 +430,23 @@ QPushButton::hover {
       <string notr="true">QFrame {
 	border-image: none;
 	background-color: rgb(52, 77, 103);
+}
+
+
+
+QLineEdit, QComboBox, QDateEdit, QDateTimeEdit {
+	border-image: none;
+    border: none;
+	min-width: 200px;
+	height: 30px;
+	background-color: #F3ECB0;
+	color: #344D67;
+	font-family: &quot;MS Shell Dlg 2&quot;;
+	font-size: 11;
+}
+
+QLabel {
+	color: white;
 }</string>
      </property>
      <property name="frameShape">
@@ -450,11 +495,12 @@ QPushButton::hover {
            </property>
            <property name="font">
             <font>
+             <family>MS Shell Dlg 2</family>
              <pointsize>11</pointsize>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(249, 249, 249);</string>
+            <string notr="true"/>
            </property>
           </widget>
          </item>
@@ -490,11 +536,12 @@ QPushButton::hover {
            </property>
            <property name="font">
             <font>
+             <family>MS Shell Dlg 2</family>
              <pointsize>11</pointsize>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(249, 249, 249);</string>
+            <string notr="true"/>
            </property>
            <property name="readOnly">
             <bool>false</bool>
@@ -533,11 +580,12 @@ QPushButton::hover {
            </property>
            <property name="font">
             <font>
+             <family>MS Shell Dlg 2</family>
              <pointsize>11</pointsize>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(249, 249, 249);</string>
+            <string notr="true"/>
            </property>
            <property name="readOnly">
             <bool>false</bool>
@@ -576,11 +624,12 @@ QPushButton::hover {
            </property>
            <property name="font">
             <font>
+             <family>MS Shell Dlg 2</family>
              <pointsize>11</pointsize>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(249, 249, 249);</string>
+            <string notr="true"/>
            </property>
           </widget>
          </item>
@@ -734,11 +783,12 @@ QPushButton::hover {
            </property>
            <property name="font">
             <font>
+             <family>MS Shell Dlg 2</family>
              <pointsize>11</pointsize>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(249, 249, 249);</string>
+            <string notr="true"/>
            </property>
           </widget>
          </item>
@@ -774,11 +824,12 @@ QPushButton::hover {
            </property>
            <property name="font">
             <font>
+             <family>MS Shell Dlg 2</family>
              <pointsize>11</pointsize>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(249, 249, 249);</string>
+            <string notr="true"/>
            </property>
           </widget>
          </item>
@@ -814,11 +865,12 @@ QPushButton::hover {
            </property>
            <property name="font">
             <font>
+             <family>MS Shell Dlg 2</family>
              <pointsize>11</pointsize>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(249, 249, 249);</string>
+            <string notr="true"/>
            </property>
           </widget>
          </item>
@@ -854,7 +906,7 @@ color: rgb(255, 255, 255);</string>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(249, 249, 249);</string>
+            <string notr="true"/>
            </property>
           </widget>
          </item>
@@ -896,11 +948,12 @@ color: rgb(255, 255, 255);</string>
            </property>
            <property name="font">
             <font>
+             <family>MS Shell Dlg 2</family>
              <pointsize>11</pointsize>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(249, 249, 249);</string>
+            <string notr="true"/>
            </property>
            <property name="readOnly">
             <bool>true</bool>
@@ -944,7 +997,7 @@ color: rgb(255, 255, 255);</string>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(52, 77, 103);</string>
+            <string notr="true"/>
            </property>
            <item>
             <property name="text">
@@ -1230,11 +1283,12 @@ color: rgb(255, 255, 255);</string>
            </property>
            <property name="font">
             <font>
+             <family>MS Shell Dlg 2</family>
              <pointsize>11</pointsize>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(249, 249, 249);</string>
+            <string notr="true"/>
            </property>
           </widget>
          </item>
@@ -1270,11 +1324,12 @@ color: rgb(255, 255, 255);</string>
            </property>
            <property name="font">
             <font>
+             <family>MS Shell Dlg 2</family>
              <pointsize>11</pointsize>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(249, 249, 249);</string>
+            <string notr="true"/>
            </property>
           </widget>
          </item>
@@ -1310,11 +1365,12 @@ color: rgb(255, 255, 255);</string>
            </property>
            <property name="font">
             <font>
+             <family>MS Shell Dlg 2</family>
              <pointsize>11</pointsize>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(249, 249, 249);</string>
+            <string notr="true"/>
            </property>
           </widget>
          </item>

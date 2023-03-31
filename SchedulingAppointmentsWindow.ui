@@ -1223,7 +1223,7 @@ QCalendarWidget QTableView QLabel {
 }</string>
              </property>
              <property name="text">
-              <string>Doctor Name:</string>
+              <string> Physicians:</string>
              </property>
             </widget>
            </item>
@@ -1275,7 +1275,7 @@ QCalendarWidget QTableView QLabel {
              </property>
              <item>
               <property name="text">
-               <string>-- SELECT A DOCTOR --</string>
+               <string>-- SELECT A PHYSICIAN --</string>
               </property>
              </item>
             </widget>

@@ -662,30 +662,6 @@ QLabel {
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="III_radioButton_3">
-           <property name="font">
-            <font>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>III</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="checked">
-            <bool>false</bool>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">buttonGroup_Suffix</string>
-           </attribute>
-          </widget>
-         </item>
-         <item>
           <widget class="QRadioButton" name="radioButton_8">
            <property name="font">
             <font>
@@ -751,6 +727,30 @@ QLabel {
            </property>
            <property name="text">
             <string>II</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup_Suffix</string>
+           </attribute>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="III_radioButton_3">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>III</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">buttonGroup_Suffix</string>
@@ -1802,7 +1802,7 @@ QPushButton::hover {
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_Suffix"/>
   <buttongroup name="buttonGroup_Gender"/>
+  <buttongroup name="buttonGroup_Suffix"/>
  </buttongroups>
 </ui>

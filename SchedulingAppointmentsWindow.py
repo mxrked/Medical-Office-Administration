@@ -13,7 +13,6 @@ import StartWindow
 
 class Ui_SchedulingAppointmentsWindow(object):
     def setupUi(self, SchedulingAppointmentsWindow):
-
         ''' FUNCTIONS '''
         def connectToDB():
                 ' This is used to connect to the DB '
@@ -275,7 +274,7 @@ class Ui_SchedulingAppointmentsWindow(object):
                 self.ComboBox_OfficeLocations_SA.setCurrentIndex(0)
                 self.LineEdit_AppointmentReason_SA.setText("")
                 self.LineEdit_AppointmentType_SA.setText("")
-                self.ComboBox_DoctorNames_SA.setCurrentIndex(0)
+                self.ComboBox_PhysicianNames_SA.setCurrentIndex(0)
                 self.DateEdit_AppDate_SA.setDate(defaultDate)
 
                 self.ListWidget_AppointmentTypes_SA.clear()
@@ -294,8 +293,6 @@ class Ui_SchedulingAppointmentsWindow(object):
                 print("Displaying searched appointments.. (CA)")
         def cancelAppointment_CA():
                 print("Cancelling appointment.. (CA)")
-
-
 
         SchedulingAppointmentsWindow.setObjectName("SchedulingAppointmentsWindow")
         SchedulingAppointmentsWindow.resize(1420, 925)
@@ -802,20 +799,20 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.InputsInnerVLayout.addItem(spacerItem11)
         self.InputsRowHLayout_11 = QtWidgets.QHBoxLayout()
         self.InputsRowHLayout_11.setObjectName("InputsRowHLayout_11")
-        self.Label_AppointmentLength_SA = QtWidgets.QLabel(self.InputsInnerFrame)
-        self.Label_AppointmentLength_SA.setMinimumSize(QtCore.QSize(0, 0))
-        self.Label_AppointmentLength_SA.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.Label_AppointmentType_SA_2 = QtWidgets.QLabel(self.InputsInnerFrame)
+        self.Label_AppointmentType_SA_2.setMinimumSize(QtCore.QSize(0, 0))
+        self.Label_AppointmentType_SA_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.Label_AppointmentLength_SA.setFont(font)
-        self.Label_AppointmentLength_SA.setStyleSheet("QLabel {\n"
+        self.Label_AppointmentType_SA_2.setFont(font)
+        self.Label_AppointmentType_SA_2.setStyleSheet("QLabel {\n"
 "    color: white;\n"
 "}")
-        self.Label_AppointmentLength_SA.setObjectName("Label_AppointmentType_SA_2")
-        self.InputsRowHLayout_11.addWidget(self.Label_AppointmentLength_SA)
+        self.Label_AppointmentType_SA_2.setObjectName("Label_AppointmentType_SA_2")
+        self.InputsRowHLayout_11.addWidget(self.Label_AppointmentType_SA_2)
         spacerItem12 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.InputsRowHLayout_11.addItem(spacerItem12)
         self.LineEdit_AppointmentLength_SA = QtWidgets.QLineEdit(self.InputsInnerFrame)
@@ -836,38 +833,38 @@ class Ui_SchedulingAppointmentsWindow(object):
 "    padding-left: 10px;\n"
 "    padding-right: 10px;\n"
 "}")
-        self.LineEdit_AppointmentLength_SA.setObjectName("LineEdit_AppointmentType_SA_2")
+        self.LineEdit_AppointmentLength_SA.setObjectName("LineEdit_AppointmentLength_SA")
         self.InputsRowHLayout_11.addWidget(self.LineEdit_AppointmentLength_SA)
         self.InputsInnerVLayout.addLayout(self.InputsRowHLayout_11)
         spacerItem13 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.InputsInnerVLayout.addItem(spacerItem13)
         self.InputsRowHLayout_6 = QtWidgets.QHBoxLayout()
         self.InputsRowHLayout_6.setObjectName("InputsRowHLayout_6")
-        self.Label_DoctorName_SA = QtWidgets.QLabel(self.InputsInnerFrame)
-        self.Label_DoctorName_SA.setMinimumSize(QtCore.QSize(140, 0))
-        self.Label_DoctorName_SA.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.Label_PhysicianName_SA = QtWidgets.QLabel(self.InputsInnerFrame)
+        self.Label_PhysicianName_SA.setMinimumSize(QtCore.QSize(140, 0))
+        self.Label_PhysicianName_SA.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.Label_DoctorName_SA.setFont(font)
-        self.Label_DoctorName_SA.setStyleSheet("QLabel {\n"
+        self.Label_PhysicianName_SA.setFont(font)
+        self.Label_PhysicianName_SA.setStyleSheet("QLabel {\n"
 "    color: white;\n"
 "}")
-        self.Label_DoctorName_SA.setObjectName("Label_DoctorName_SA")
-        self.InputsRowHLayout_6.addWidget(self.Label_DoctorName_SA)
+        self.Label_PhysicianName_SA.setObjectName("Label_PhysicianName_SA")
+        self.InputsRowHLayout_6.addWidget(self.Label_PhysicianName_SA)
         spacerItem14 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.InputsRowHLayout_6.addItem(spacerItem14)
-        self.ComboBox_DoctorNames_SA = QtWidgets.QComboBox(self.InputsInnerFrame)
-        self.ComboBox_DoctorNames_SA.setMinimumSize(QtCore.QSize(350, 30))
-        self.ComboBox_DoctorNames_SA.setMaximumSize(QtCore.QSize(350, 40))
+        self.ComboBox_PhysicianNames_SA = QtWidgets.QComboBox(self.InputsInnerFrame)
+        self.ComboBox_PhysicianNames_SA.setMinimumSize(QtCore.QSize(350, 30))
+        self.ComboBox_PhysicianNames_SA.setMaximumSize(QtCore.QSize(350, 40))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
         font.setPointSize(11)
-        self.ComboBox_DoctorNames_SA.setFont(font)
-        self.ComboBox_DoctorNames_SA.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.ComboBox_DoctorNames_SA.setStyleSheet("QComboBox {    \n"
+        self.ComboBox_PhysicianNames_SA.setFont(font)
+        self.ComboBox_PhysicianNames_SA.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ComboBox_PhysicianNames_SA.setStyleSheet("QComboBox {    \n"
 "    border-image: none;\n"
 "    border: none;\n"
 "    background-color: #F3ECB0;\n"
@@ -875,9 +872,9 @@ class Ui_SchedulingAppointmentsWindow(object):
 "    font-family: \"MS Shell Dlg 2\";\n"
 "    font-size: 11;\n"
 "}")
-        self.ComboBox_DoctorNames_SA.setObjectName("ComboBox_DoctorNames_SA")
-        self.ComboBox_DoctorNames_SA.addItem("")
-        self.InputsRowHLayout_6.addWidget(self.ComboBox_DoctorNames_SA)
+        self.ComboBox_PhysicianNames_SA.setObjectName("ComboBox_PhysicianNames_SA")
+        self.ComboBox_PhysicianNames_SA.addItem("")
+        self.InputsRowHLayout_6.addWidget(self.ComboBox_PhysicianNames_SA)
         self.InputsInnerVLayout.addLayout(self.InputsRowHLayout_6)
         spacerItem15 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.InputsInnerVLayout.addItem(spacerItem15)
@@ -957,6 +954,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.CurrentAvailableTimes_Label_SA.setAlignment(QtCore.Qt.AlignCenter)
         self.CurrentAvailableTimes_Label_SA.setObjectName("CurrentAvailableTimes_Label_SA")
         self.ScheduleAppointmentBtn = QtWidgets.QPushButton(self.InputsFrame)
+        self.ScheduleAppointmentBtn.clicked.connect(scheduleAppointment_SA)
         self.ScheduleAppointmentBtn.setEnabled(True)
         self.ScheduleAppointmentBtn.setGeometry(QtCore.QRect(780, 580, 221, 51))
         font = QtGui.QFont()
@@ -981,6 +979,7 @@ class Ui_SchedulingAppointmentsWindow(object):
 "")
         self.ScheduleAppointmentBtn.setObjectName("ScheduleAppointmentBtn")
         self.ClearInputsBtn = QtWidgets.QPushButton(self.InputsFrame)
+        self.ClearInputsBtn.clicked.connect(clearInputs_SA)
         self.ClearInputsBtn.setGeometry(QtCore.QRect(210, 580, 141, 51))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
@@ -1001,17 +1000,18 @@ class Ui_SchedulingAppointmentsWindow(object):
 "    color: white;\n"
 "}")
         self.ClearInputsBtn.setObjectName("ClearInputsBtn")
-        self.DisplayAvailableTimes_Btn_SA = QtWidgets.QPushButton(self.InputsFrame)
-        self.DisplayAvailableTimes_Btn_SA.setEnabled(True)
-        self.DisplayAvailableTimes_Btn_SA.setGeometry(QtCore.QRect(110, 580, 81, 51))
+        self.Search_Btn_SA = QtWidgets.QPushButton(self.InputsFrame)
+        self.Search_Btn_SA.clicked.connect(search_SA)
+        self.Search_Btn_SA.setEnabled(True)
+        self.Search_Btn_SA.setGeometry(QtCore.QRect(110, 580, 81, 51))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
         font.setPointSize(9)
         font.setBold(True)
         font.setWeight(75)
-        self.DisplayAvailableTimes_Btn_SA.setFont(font)
-        self.DisplayAvailableTimes_Btn_SA.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.DisplayAvailableTimes_Btn_SA.setStyleSheet("QPushButton {\n"
+        self.Search_Btn_SA.setFont(font)
+        self.Search_Btn_SA.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.Search_Btn_SA.setStyleSheet("QPushButton {\n"
 "    border-image: none;\n"
 "    background-color: #6ECCAF;\n"
 "    color: black;\n"
@@ -1024,7 +1024,7 @@ class Ui_SchedulingAppointmentsWindow(object):
 "}\n"
 "\n"
 "")
-        self.DisplayAvailableTimes_Btn_SA.setObjectName("DisplayAvailableTimes_Btn_SA")
+        self.Search_Btn_SA.setObjectName("DisplayAvailableTimes_Btn_SA")
         self.TimesHolderFrame_SA_2 = QtWidgets.QFrame(self.InputsFrame)
         self.TimesHolderFrame_SA_2.setGeometry(QtCore.QRect(720, 180, 341, 181))
         self.TimesHolderFrame_SA_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -1052,7 +1052,7 @@ class Ui_SchedulingAppointmentsWindow(object):
 "    background-color: rgb(0, 177, 171);\n"
 "    color: black;\n"
 "}")
-        self.ListWidget_AppointmentTypes_SA.setObjectName("ListWidget_SelectADoctor_SA")
+        self.ListWidget_AppointmentTypes_SA.setObjectName("ListWidget_AppointmentTypes_SA")
         self.AppointmentTypesLabel_SA = QtWidgets.QLabel(self.TimesHolderFrame_SA_2)
         self.AppointmentTypesLabel_SA.setGeometry(QtCore.QRect(0, -10, 341, 41))
         font = QtGui.QFont()
@@ -1063,7 +1063,7 @@ class Ui_SchedulingAppointmentsWindow(object):
 "    color: white;\n"
 "}")
         self.AppointmentTypesLabel_SA.setAlignment(QtCore.Qt.AlignCenter)
-        self.AppointmentTypesLabel_SA.setObjectName("SelectADoctor_Label_SA")
+        self.AppointmentTypesLabel_SA.setObjectName("AppointmentTypesLabel_SA")
         self.ViewBtns_Frame = QtWidgets.QFrame(self.MainFrame)
         self.ViewBtns_Frame.setGeometry(QtCore.QRect(290, 110, 791, 91))
         self.ViewBtns_Frame.setStyleSheet("QFrame {\n"
@@ -1229,27 +1229,27 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.horizontalLayout_19.setObjectName("horizontalLayout_19")
         self.horizontalLayout_20 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_20.setObjectName("horizontalLayout_20")
-        self.Label_SelectDoctor_CA = QtWidgets.QLabel(self.Frame_SelectDoctor_CA)
+        self.Label_SelectPhysician_CA = QtWidgets.QLabel(self.Frame_SelectDoctor_CA)
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.Label_SelectDoctor_CA.setFont(font)
-        self.Label_SelectDoctor_CA.setStyleSheet("QLabel {\n"
+        self.Label_SelectPhysician_CA.setFont(font)
+        self.Label_SelectPhysician_CA.setStyleSheet("QLabel {\n"
 "    color: white;\n"
 "}")
-        self.Label_SelectDoctor_CA.setObjectName("Label_SelectDoctor_CA")
-        self.horizontalLayout_20.addWidget(self.Label_SelectDoctor_CA)
+        self.Label_SelectPhysician_CA.setObjectName("Label_SelectPhysician_CA")
+        self.horizontalLayout_20.addWidget(self.Label_SelectPhysician_CA)
         spacerItem17 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_20.addItem(spacerItem17)
-        self.ComboBox_DoctorNames_CA = QtWidgets.QComboBox(self.Frame_SelectDoctor_CA)
-        self.ComboBox_DoctorNames_CA.setMinimumSize(QtCore.QSize(280, 30))
+        self.ComboBox_PhysicianNames_CA = QtWidgets.QComboBox(self.Frame_SelectDoctor_CA)
+        self.ComboBox_PhysicianNames_CA.setMinimumSize(QtCore.QSize(280, 30))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
         font.setPointSize(11)
-        self.ComboBox_DoctorNames_CA.setFont(font)
-        self.ComboBox_DoctorNames_CA.setStyleSheet("QComboBox {    \n"
+        self.ComboBox_PhysicianNames_CA.setFont(font)
+        self.ComboBox_PhysicianNames_CA.setStyleSheet("QComboBox {    \n"
 "    border-image: none;\n"
 "    border: none;\n"
 "    background-color: #F3ECB0;\n"
@@ -1257,9 +1257,9 @@ class Ui_SchedulingAppointmentsWindow(object):
 "    font-family: \"MS Shell Dlg 2\";\n"
 "    font-size: 11;\n"
 "}")
-        self.ComboBox_DoctorNames_CA.setObjectName("ComboBox_DoctorNames_CA")
-        self.ComboBox_DoctorNames_CA.addItem("")
-        self.horizontalLayout_20.addWidget(self.ComboBox_DoctorNames_CA)
+        self.ComboBox_PhysicianNames_CA.setObjectName("ComboBox_PhysicianNames_CA")
+        self.ComboBox_PhysicianNames_CA.addItem("")
+        self.horizontalLayout_20.addWidget(self.ComboBox_PhysicianNames_CA)
         self.horizontalLayout_19.addLayout(self.horizontalLayout_20)
         self.Frame_SelectDoctor_CA_2 = QtWidgets.QFrame(self.CancelAppointment_Frame)
         self.Frame_SelectDoctor_CA_2.setGeometry(QtCore.QRect(90, 210, 481, 61))
@@ -1342,6 +1342,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.SearchedAppointments_Label_CA.setAlignment(QtCore.Qt.AlignCenter)
         self.SearchedAppointments_Label_CA.setObjectName("SearchedAppointments_Label_CA")
         self.CancelAppointment_Btn_CA = QtWidgets.QPushButton(self.CancelAppointment_Frame)
+        self.CancelAppointment_Btn_CA.clicked.connect(cancelAppointment_CA)
         self.CancelAppointment_Btn_CA.setEnabled(True)
         self.CancelAppointment_Btn_CA.setGeometry(QtCore.QRect(100, 530, 181, 51))
         font = QtGui.QFont()
@@ -1420,6 +1421,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.horizontalLayout_30.addWidget(self.DateEdit_AppDate_CA)
         self.horizontalLayout_29.addLayout(self.horizontalLayout_30)
         self.SearchForAppointments_Btn_CA = QtWidgets.QPushButton(self.CancelAppointment_Frame)
+        self.SearchForAppointments_Btn_CA.clicked.connect(displaySearchedAppointments_CA)
         self.SearchForAppointments_Btn_CA.setEnabled(True)
         self.SearchForAppointments_Btn_CA.setGeometry(QtCore.QRect(100, 400, 241, 51))
         font = QtGui.QFont()
@@ -1488,27 +1490,27 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.horizontalLayout_23.setObjectName("horizontalLayout_23")
         self.horizontalLayout_24 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_24.setObjectName("horizontalLayout_24")
-        self.Label_SelectDoctor_RA = QtWidgets.QLabel(self.Frame_SelectDoctor_RA)
+        self.Label_SelectPhysician_RA = QtWidgets.QLabel(self.Frame_SelectDoctor_RA)
         font = QtGui.QFont()
         font.setFamily("Lato")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.Label_SelectDoctor_RA.setFont(font)
-        self.Label_SelectDoctor_RA.setStyleSheet("QLabel {\n"
+        self.Label_SelectPhysician_RA.setFont(font)
+        self.Label_SelectPhysician_RA.setStyleSheet("QLabel {\n"
 "    color: white;\n"
 "}")
-        self.Label_SelectDoctor_RA.setObjectName("Label_SelectDoctor_RA")
-        self.horizontalLayout_24.addWidget(self.Label_SelectDoctor_RA)
+        self.Label_SelectPhysician_RA.setObjectName("Label_SelectPhysician_RA")
+        self.horizontalLayout_24.addWidget(self.Label_SelectPhysician_RA)
         spacerItem20 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_24.addItem(spacerItem20)
-        self.ComboBox_DoctorNames_RA = QtWidgets.QComboBox(self.Frame_SelectDoctor_RA)
-        self.ComboBox_DoctorNames_RA.setMinimumSize(QtCore.QSize(280, 30))
+        self.ComboBox_PhysicianNames_RA = QtWidgets.QComboBox(self.Frame_SelectDoctor_RA)
+        self.ComboBox_PhysicianNames_RA.setMinimumSize(QtCore.QSize(280, 30))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
         font.setPointSize(11)
-        self.ComboBox_DoctorNames_RA.setFont(font)
-        self.ComboBox_DoctorNames_RA.setStyleSheet("QComboBox {    \n"
+        self.ComboBox_PhysicianNames_RA.setFont(font)
+        self.ComboBox_PhysicianNames_RA.setStyleSheet("QComboBox {    \n"
 "    border-image: none;\n"
 "    border: none;\n"
 "    background-color: #F3ECB0;\n"
@@ -1516,9 +1518,9 @@ class Ui_SchedulingAppointmentsWindow(object):
 "    font-family: \"MS Shell Dlg 2\";\n"
 "    font-size: 11;\n"
 "}")
-        self.ComboBox_DoctorNames_RA.setObjectName("ComboBox_DoctorNames_RA")
-        self.ComboBox_DoctorNames_RA.addItem("")
-        self.horizontalLayout_24.addWidget(self.ComboBox_DoctorNames_RA)
+        self.ComboBox_PhysicianNames_RA.setObjectName("ComboBox_PhysicianNames_RA")
+        self.ComboBox_PhysicianNames_RA.addItem("")
+        self.horizontalLayout_24.addWidget(self.ComboBox_PhysicianNames_RA)
         self.horizontalLayout_23.addLayout(self.horizontalLayout_24)
         self.Frame_SelectOfficeLocation_RA = QtWidgets.QFrame(self.RescheduleAppointment_Frame)
         self.Frame_SelectOfficeLocation_RA.setGeometry(QtCore.QRect(160, 180, 481, 61))
@@ -1586,6 +1588,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.UnderHeadingTextLabel_RA_3.setWordWrap(True)
         self.UnderHeadingTextLabel_RA_3.setObjectName("UnderHeadingTextLabel_RA_3")
         self.RescheduleAppointment_Btn_RA = QtWidgets.QPushButton(self.RescheduleAppointment_Frame)
+        self.RescheduleAppointment_Btn_RA.clicked.connect(rescheduleAppointment_RA)
         self.RescheduleAppointment_Btn_RA.setGeometry(QtCore.QRect(170, 560, 211, 51))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
@@ -1729,6 +1732,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.horizontalLayout_28.addWidget(self.DateEdit_AppDate_RA)
         self.horizontalLayout_27.addLayout(self.horizontalLayout_28)
         self.DisplayCurrentTimes_Btn_RA = QtWidgets.QPushButton(self.RescheduleAppointment_Frame)
+        self.DisplayCurrentTimes_Btn_RA.clicked.connect(displayCurrentAvailableTimesAndSearchedAppointments_RA)
         self.DisplayCurrentTimes_Btn_RA.setGeometry(QtCore.QRect(170, 430, 211, 51))
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
@@ -1826,15 +1830,15 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.LineEdit_AppointmentReason_SA.setPlaceholderText(_translate("SchedulingAppointmentsWindow", "Patient has the chills"))
         self.Label_AppointmentType_SA.setText(_translate("SchedulingAppointmentsWindow", "Appointment Type:"))
         self.LineEdit_AppointmentType_SA.setPlaceholderText(_translate("SchedulingAppointmentsWindow", "Search appointment type.."))
-        self.Label_AppointmentLength_SA.setText(_translate("SchedulingAppointmentsWindow", "Appointment Length:"))
+        self.Label_AppointmentType_SA_2.setText(_translate("SchedulingAppointmentsWindow", "Appointment Length:"))
         self.LineEdit_AppointmentLength_SA.setPlaceholderText(_translate("SchedulingAppointmentsWindow", "Enter appointment length based on minutes"))
-        self.Label_DoctorName_SA.setText(_translate("SchedulingAppointmentsWindow", "Doctor Name:"))
-        self.ComboBox_DoctorNames_SA.setItemText(0, _translate("SchedulingAppointmentsWindow", "-- SELECT A DOCTOR --"))
+        self.Label_PhysicianName_SA.setText(_translate("SchedulingAppointmentsWindow", "Physician Name:"))
+        self.ComboBox_PhysicianNames_SA.setItemText(0, _translate("SchedulingAppointmentsWindow", "-- SELECT A PHYSICIAN --"))
         self.Label_AppDate_SA.setText(_translate("SchedulingAppointmentsWindow", "App. Date:"))
         self.CurrentAvailableTimes_Label_SA.setText(_translate("SchedulingAppointmentsWindow", "Current Available Times"))
         self.ScheduleAppointmentBtn.setText(_translate("SchedulingAppointmentsWindow", "Schedule Appointment"))
         self.ClearInputsBtn.setText(_translate("SchedulingAppointmentsWindow", "Clear Inputs"))
-        self.DisplayAvailableTimes_Btn_SA.setText(_translate("SchedulingAppointmentsWindow", "Search"))
+        self.Search_Btn_SA.setText(_translate("SchedulingAppointmentsWindow", "Search"))
         self.AppointmentTypesLabel_SA.setText(_translate("SchedulingAppointmentsWindow", "Appointment Types"))
         self.NewPatient_Btn.setText(_translate("SchedulingAppointmentsWindow", "New Patient"))
         self.DisplayReschedule_Btn.setText(_translate("SchedulingAppointmentsWindow", "Rescheduling"))
@@ -1842,8 +1846,8 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.DisplayCancel_Btn.setText(_translate("SchedulingAppointmentsWindow", "Cancel"))
         self.CancelAppointment_HeadingLabel.setText(_translate("SchedulingAppointmentsWindow", "Cancel Appointment"))
         self.UnderHeadingTextLabel_CA.setText(_translate("SchedulingAppointmentsWindow", "To cancel an appointment, just click on one of the appointments you would like to cancel."))
-        self.Label_SelectDoctor_CA.setText(_translate("SchedulingAppointmentsWindow", "Doctor Name:"))
-        self.ComboBox_DoctorNames_CA.setItemText(0, _translate("SchedulingAppointmentsWindow", "-- SELECT A DOCTOR --"))
+        self.Label_SelectPhysician_CA.setText(_translate("SchedulingAppointmentsWindow", "Physician Name:"))
+        self.ComboBox_PhysicianNames_CA.setItemText(0, _translate("SchedulingAppointmentsWindow", "-- SELECT A PHYSICIAN --"))
         self.Label_OfficeLocation_CA.setText(_translate("SchedulingAppointmentsWindow", "Office Location:"))
         self.ComboBox_OfficeLocations_CA.setItemText(0, _translate("SchedulingAppointmentsWindow", "-- SELECT A LOCATION --"))
         self.SearchedAppointments_Label_CA.setText(_translate("SchedulingAppointmentsWindow", "Searched Appointments"))
@@ -1853,8 +1857,8 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.SearchForAppointments_Btn_CA.setText(_translate("SchedulingAppointmentsWindow", "Search For Appointment(s)"))
         self.RescheduleAppointment_HeadingLabel.setText(_translate("SchedulingAppointmentsWindow", "Reschedule Appointment"))
         self.UnderHeadingTextLabel_RA_2.setText(_translate("SchedulingAppointmentsWindow", "To reschedule an appointment, click on one of your current appointments and a different available time that you would like to have."))
-        self.Label_SelectDoctor_RA.setText(_translate("SchedulingAppointmentsWindow", "Doctor Name:"))
-        self.ComboBox_DoctorNames_RA.setItemText(0, _translate("SchedulingAppointmentsWindow", "-- SELECT A DOCTOR --"))
+        self.Label_SelectPhysician_RA.setText(_translate("SchedulingAppointmentsWindow", "Physician Name:"))
+        self.ComboBox_PhysicianNames_RA.setItemText(0, _translate("SchedulingAppointmentsWindow", "-- SELECT A PHYSICIAN  --"))
         self.Label_OfficeLocation_RA.setText(_translate("SchedulingAppointmentsWindow", "Office Location:"))
         self.ComboBox_OfficeLocations_RA.setItemText(0, _translate("SchedulingAppointmentsWindow", "-- SELECT A LOCATION --"))
         self.UnderHeadingTextLabel_RA_1.setText(_translate("SchedulingAppointmentsWindow", "Click on an appointment you want to change on the right."))
@@ -1863,14 +1867,14 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.SearchedAppointments_Label_RA.setText(_translate("SchedulingAppointmentsWindow", "Searched Appointments"))
         self.CurrentAvailableTimes_Label_RA.setText(_translate("SchedulingAppointmentsWindow", "Current Available Times"))
         self.Label_AppDate_RA.setText(_translate("SchedulingAppointmentsWindow", "App. Date:"))
-        self.DisplayCurrentTimes_Btn_RA.setText(_translate("SchedulingAppointmentsWindow", "Display Times"))
+        self.DisplayCurrentTimes_Btn_RA.setText(_translate("SchedulingAppointmentsWindow", "Display Times/Apps."))
         self.Label_RescheduleDate_RA.setText(_translate("SchedulingAppointmentsWindow", "Reschedule Date:"))
-
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
+    SchedulingAppointmentsWindow = QtWidgets.QMainWindow()
     # This will check if the user is not logged in and they will be sent to the StartScreen
     if len(currentUsername) == 1:
             SchedulingAppointmentsWindow = QtWidgets.QMainWindow()

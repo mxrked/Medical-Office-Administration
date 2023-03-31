@@ -1196,7 +1196,7 @@ QCalendarWidget QTableView QLabel {
          <item>
           <layout class="QHBoxLayout" name="InputsRowHLayout_6">
            <item>
-            <widget class="QLabel" name="Label_DoctorName_SA">
+            <widget class="QLabel" name="Label_PhysicianName_SA">
              <property name="minimumSize">
               <size>
                <width>140</width>
@@ -1223,7 +1223,7 @@ QCalendarWidget QTableView QLabel {
 }</string>
              </property>
              <property name="text">
-              <string> Physicians:</string>
+              <string>Physician Name:</string>
              </property>
             </widget>
            </item>
@@ -1241,7 +1241,7 @@ QCalendarWidget QTableView QLabel {
             </spacer>
            </item>
            <item>
-            <widget class="QComboBox" name="ComboBox_DoctorNames_SA">
+            <widget class="QComboBox" name="ComboBox_PhysicianNames_SA">
              <property name="minimumSize">
               <size>
                <width>350</width>
@@ -1969,7 +1969,7 @@ QPushButton::hover {
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_20">
          <item>
-          <widget class="QLabel" name="Label_SelectDoctor_CA">
+          <widget class="QLabel" name="Label_SelectPhysician_CA">
            <property name="font">
             <font>
              <family>Lato</family>
@@ -1984,7 +1984,7 @@ QPushButton::hover {
 }</string>
            </property>
            <property name="text">
-            <string>Doctor Name:</string>
+            <string>Physician Name:</string>
            </property>
           </widget>
          </item>
@@ -2002,7 +2002,7 @@ QPushButton::hover {
           </spacer>
          </item>
          <item>
-          <widget class="QComboBox" name="ComboBox_DoctorNames_CA">
+          <widget class="QComboBox" name="ComboBox_PhysicianNames_CA">
            <property name="minimumSize">
             <size>
              <width>280</width>
@@ -2027,7 +2027,7 @@ QPushButton::hover {
            </property>
            <item>
             <property name="text">
-             <string>-- SELECT A DOCTOR --</string>
+             <string>-- SELECT A PHYSICIAN --</string>
             </property>
            </item>
           </widget>
@@ -2403,7 +2403,7 @@ QPushButton::hover {
        <x>110</x>
        <y>200</y>
        <width>1171</width>
-       <height>0</height>
+       <height>681</height>
       </rect>
      </property>
      <property name="minimumSize">
@@ -2508,7 +2508,7 @@ QPushButton::hover {
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_24">
          <item>
-          <widget class="QLabel" name="Label_SelectDoctor_RA">
+          <widget class="QLabel" name="Label_SelectPhysician_RA">
            <property name="font">
             <font>
              <family>Lato</family>
@@ -2523,7 +2523,7 @@ QPushButton::hover {
 }</string>
            </property>
            <property name="text">
-            <string>Doctor Name:</string>
+            <string>Physician Name:</string>
            </property>
           </widget>
          </item>
@@ -2541,7 +2541,7 @@ QPushButton::hover {
           </spacer>
          </item>
          <item>
-          <widget class="QComboBox" name="ComboBox_DoctorNames_RA">
+          <widget class="QComboBox" name="ComboBox_PhysicianNames_RA">
            <property name="minimumSize">
             <size>
              <width>280</width>
@@ -2566,7 +2566,7 @@ QPushButton::hover {
            </property>
            <item>
             <property name="text">
-             <string>-- SELECT A DOCTOR --</string>
+             <string>-- SELECT A PHYSICIAN  --</string>
             </property>
            </item>
           </widget>
@@ -3033,7 +3033,7 @@ QPushButton::hover {
 </string>
       </property>
       <property name="text">
-       <string>Display Times</string>
+       <string>Display Times/Apps.</string>
       </property>
      </widget>
      <widget class="QFrame" name="Frame_SelectDoctor_RA_3">

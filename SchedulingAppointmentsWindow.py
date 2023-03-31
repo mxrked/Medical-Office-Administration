@@ -297,6 +297,7 @@ class Ui_SchedulingAppointmentsWindow(object):
                 print("Cancelling appointment.. (CA)")
 
 
+
         SchedulingAppointmentsWindow.setObjectName("SchedulingAppointmentsWindow")
         SchedulingAppointmentsWindow.resize(1420, 925)
         SchedulingAppointmentsWindow.setMinimumSize(QtCore.QSize(1420, 925))
@@ -1871,8 +1872,14 @@ class Ui_SchedulingAppointmentsWindow(object):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    SchedulingAppointmentsWindow = QtWidgets.QMainWindow()
-    ui = Ui_SchedulingAppointmentsWindow()
-    ui.setupUi(SchedulingAppointmentsWindow)
-    SchedulingAppointmentsWindow.show()
+    # This will check if the user is not logged in and they will be sent to the StartScreen
+    if len(currentUsername) == 1:
+            SchedulingAppointmentsWindow = QtWidgets.QMainWindow()
+            ui = Ui_SchedulingAppointmentsWindow()
+            ui.setupUi(SchedulingAppointmentsWindow)
+            SchedulingAppointmentsWindow.show()
+    if len(currentUsername) == 0:
+            print("You are not logged in.. Please run the StartWindow.py to login")
+            sys.exit()
+
     sys.exit(app.exec_())

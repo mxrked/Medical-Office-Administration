@@ -788,7 +788,7 @@ QLabel {
               <string notr="true"/>
              </property>
              <property name="text">
-              <string>Order Name</string>
+              <string>Order Name:</string>
              </property>
             </widget>
            </item>

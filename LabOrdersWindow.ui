@@ -773,9 +773,9 @@ QLabel {
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="Layout_LabDepartment">
+          <layout class="QHBoxLayout" name="Layout_LabOrderName">
            <item>
-            <widget class="QLabel" name="Label_LabDepartment">
+            <widget class="QLabel" name="Label_LabOrderName">
              <property name="font">
               <font>
                <family>Lato</family>
@@ -788,12 +788,12 @@ QLabel {
               <string notr="true"/>
              </property>
              <property name="text">
-              <string>Order Name</string>
+              <string>Order Name:</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="LineEdit_LabDepartment">
+            <widget class="QLineEdit" name="LineEdit_LabOrderName">
              <property name="maximumSize">
               <size>
                <width>394</width>

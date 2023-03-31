@@ -3,7 +3,7 @@ models.py - a set of sqlalchemy models for working with the clinics Database.
 Author: Jessica Weeks, Christian Fortin
 """
 from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy import Column, Table, Integer, String, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, Float, NCHAR
+from sqlalchemy import BLOB, Column, Table, Integer, String, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, Float, NCHAR
 
 Base = declarative_base()
 
@@ -153,7 +153,7 @@ class Event(Base):
     EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     WorkingDays = Column(VARCHAR(10))
 
-    Employee = relationship("Employee", backref="Employee")
+    Employee = relationship("Employee", backref="EvEmployee")
 
 class Lab(Base):
     __tablename__ = "Lab"
@@ -175,13 +175,98 @@ class LabOrder(Base):
     LabID = Column(Integer, ForeignKey("Lab.LabID"))
     LocationID = Column(Integer, ForeignKey("HospitalLocation.LocationID"))
 
-    Employee = relationship("Employee", backref="Employee")
-    Patient = relationship("Patient", backref="Patient")
-    Location = relationship("Location", backref="HospitalLocation")
+    Employee = relationship("Employee", backref="LOEmployee")
+    Patient = relationship("Patient", backref="LOPatient")
+    Location = relationship("Location", backref="LOHospitalLocation")
 
 class Patient(Base):
     __tablename__ = "Patient"
 
     PatientID = Column(Integer, primary_key=True, nullable=False)
 
+    LastName = Column(VARCHAR(50), nullable=False)
+    FirstName = Column(VARCHAR(50), nullable=False)
+    MiddleName = Column(VARCHAR(50), nullable=True)
+    Suffix = Column(VARCHAR(10), nullable=True)
+    Gender = Column(VARCHAR(10), nullable=True)
+    DateOfBirth = Column(Date, nullable=False)
+    Phone = Column(NVARCHAR(12), nullable=True)
+    Email = Column(VARCHAR(50), nullable=true)
+    MaritalStatus = Column(VARCHAR(10), nullable=True)
+    # ProviderID = Column(Integer, ForeignKey("") nullable=)
+    PatientPhoto = Column(BLOB, nullable=True)
+    RecordStatus = Column(Integer, nullable=True)
 
+class Group(Base):
+    __tablename__ = "Group"
+
+    GroupID = Column(Integer, primary_key=True, nullable=False)
+
+    GroupName = Column(VARCHAR(50), nullable=False)
+    Description = Column(String, nullable=False)
+
+GroupRoleCross = Table(
+    "GroupRoleCross",
+    Base.metadata,
+    Column("GroupID", ForeignKey("Group.GroupID")),
+    Column("RoleID", ForeignKey("Role.RoleID"))
+)
+
+class HospitalHours(Base):
+    __tablename__ = "HospitalHours"
+
+    HospitalHoursID = Column(Integer, primary_key=True, nullable=False)
+
+    LocationID = Column(Integer, ForeignKey("HospitalLocation.LocationID"))
+    DayOfWeek = Column(VARCHAR(50), nullable=False)
+    OpenTime = Column(Time, nullable=False)
+    CloseTime = Column(Time, nullable=False)
+
+    Location = relationship("Location", backref="HHHospitalLocation")
+
+class HospitalLocation(Base):
+    __tablename__ = "HospitalLocation"
+
+    HospitalLocationID = Column(Integer, primary_key=True, nullable=False)
+
+    LocationName = Column(VARCHAR(50), nullable=False)
+    Phone = Column(NVARCHAR(12), nullable=False)
+    Email = Column(VARCHAR(50), nullable=False)
+    Address = Column(VARCHAR(50), nullable=False)
+    ZipCode = Column(VARCHAR(5), nullable=False)
+
+class MessagingThread(Base):
+    __tablename__ = "MessagingThread"
+
+    MessageID = Column(Integer, primary_key=True, nullable=False)
+
+    MessageSubject = Column(VARCHAR(50), nullable=False)
+    MessageBody = Column(VARCHAR(), nullable=False)
+    SenderName = Column(VARCHAR(50), nullable=False)
+    SenderEmail = Column(VARCHAR(50), nullable=False)
+    RecipientName = Column(VARCHAR(50), nullable=False)
+    RecipientEmail = Column(VARCHAR(50), nullable=False)
+    Date = Column(Date, nullable=False)
+    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
+    PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
+
+    Employee = relationship("Employee", backref="MTEmployee")
+    Patient = relationship("Patient", backref="MTPatient")
+
+class Role(Base):
+    __tablename__ = "Role"
+
+    RoleID = Column(Integer, primary_key=True, nullable=False)
+
+    RoleName = Column(VARCHAR(50), nullable=False)
+    RoleDescription = Column(VARCHAR, nullable=True)
+
+class User(Base):
+    __tablename__ = "User"
+
+    UserID = Column(Integer, primary_key=True, nullable=False)
+
+    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
+    Username = Column(NCHAR(10), nullable=False)
+    EmailAddress = Column(VARCHAR(), nullable=False)
+    Password = Column(VARCHAR(), nullable=False)

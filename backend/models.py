@@ -266,7 +266,21 @@ class User(Base):
 
     UserID = Column(Integer, primary_key=True, nullable=False)
 
-    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
+    # EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     Username = Column(NCHAR(10), nullable=False)
     EmailAddress = Column(VARCHAR(), nullable=False)
     Password = Column(VARCHAR(), nullable=False)
+
+
+class Referral(Base):
+    __tablename__ = "Referral"
+
+    ReferralID = Column(Integer, primary_key=True, nullable=False)
+
+    ReferralReason = Column(String, nullable=False)
+    PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
+    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
+    CreationDate = Column(Date, nullable=False)
+
+    Patient = relationship("Patient", backref="RefPatient")
+    Employee = relationship("Employee", backref="RefEmployee")

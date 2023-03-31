@@ -515,7 +515,7 @@ QListView::item:selected {
         <x>640</x>
         <y>210</y>
         <width>349</width>
-        <height>73</height>
+        <height>82</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -574,7 +574,7 @@ QListView::item:selected {
             <string notr="true"/>
            </property>
            <property name="text">
-            <string>Doctor Name:</string>
+            <string>Provider:</string>
            </property>
           </widget>
          </item>
@@ -599,12 +599,12 @@ QListView::item:selected {
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>50</x>
         <y>170</y>
-        <width>531</width>
+        <width>559</width>
         <height>371</height>
        </rect>
       </property>
@@ -949,11 +949,8 @@ QPushButton::hover {
        </item>
       </layout>
      </widget>
+     <zorder>layoutWidget</zorder>
      <zorder>verticalLayoutWidget</zorder>
-     <zorder>listView_PendingAppts</zorder>
-     <zorder>Btn_Approve</zorder>
-     <zorder>Btn_Deny</zorder>
-     <zorder>Btn_Refresh</zorder>
      <zorder>layoutWidget_2</zorder>
     </widget>
    </widget>

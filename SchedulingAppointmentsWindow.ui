@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1430</width>
+    <width>1420</width>
     <height>925</height>
    </rect>
   </property>
@@ -415,7 +415,7 @@ QPushButton::hover {
        <rect>
         <x>0</x>
         <y>-10</y>
-        <width>1181</width>
+        <width>1171</width>
         <height>150</height>
        </rect>
       </property>
@@ -482,9 +482,9 @@ QPushButton::hover {
       <property name="geometry">
        <rect>
         <x>100</x>
-        <y>180</y>
+        <y>160</y>
         <width>591</width>
-        <height>391</height>
+        <height>401</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -893,108 +893,6 @@ QCalendarWidget QTableView QLabel {
           </layout>
          </item>
          <item>
-          <spacer name="verticalSpacer_5">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="InputsRowHLayout_6">
-           <item>
-            <widget class="QLabel" name="Label_DoctorName_SA">
-             <property name="minimumSize">
-              <size>
-               <width>140</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Lato</family>
-               <pointsize>12</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-	color: white;
-}</string>
-             </property>
-             <property name="text">
-              <string>Doctor Name:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_6">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QComboBox" name="ComboBox_DoctorNames_SA">
-             <property name="minimumSize">
-              <size>
-               <width>350</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>350</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="cursor">
-              <cursorShape>PointingHandCursor</cursorShape>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QComboBox {	
-	border-image: none;
-    border: none;
-	background-color: #F3ECB0;
-	color: #344D67;
-	font-family: &quot;MS Shell Dlg 2&quot;;
-	font-size: 11;
-}</string>
-             </property>
-             <item>
-              <property name="text">
-               <string>-- SELECT A DOCTOR --</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
           <spacer name="verticalSpacer_3">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -1142,7 +1040,208 @@ QCalendarWidget QTableView QLabel {
             </spacer>
            </item>
            <item>
-            <widget class="QComboBox" name="ComboBox_AppointmentType_SA">
+            <widget class="QLineEdit" name="LineEdit_AppointmentType_SA">
+             <property name="minimumSize">
+              <size>
+               <width>350</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>350</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>MS Shell Dlg 2</family>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+	border-image: none;
+    border: none;
+	background-color: #F3ECB0;
+	color: #344D67;
+	font-family: &quot;MS Shell Dlg 2&quot;;
+	font-size: 11;
+	padding-left: 10px;
+	padding-right: 10px;
+}</string>
+             </property>
+             <property name="placeholderText">
+              <string>Search appointment type..</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="InputsRowHLayout_11">
+           <item>
+            <widget class="QLabel" name="Label_AppointmentType_SA_2">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Lato</family>
+               <pointsize>12</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+	color: white;
+}</string>
+             </property>
+             <property name="text">
+              <string>Appointment Length:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_11">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LineEdit_AppointmentType_SA_2">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>350</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>350</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>MS Shell Dlg 2</family>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+	border-image: none;
+    border: none;
+	background-color: #F3ECB0;
+	color: #344D67;
+	font-family: &quot;MS Shell Dlg 2&quot;;
+	font-size: 11;
+	padding-left: 10px;
+	padding-right: 10px;
+}</string>
+             </property>
+             <property name="placeholderText">
+              <string>Enter appointment length based on minutes</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="InputsRowHLayout_6">
+           <item>
+            <widget class="QLabel" name="Label_DoctorName_SA">
+             <property name="minimumSize">
+              <size>
+               <width>140</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Lato</family>
+               <pointsize>12</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+	color: white;
+}</string>
+             </property>
+             <property name="text">
+              <string>Doctor Name:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_6">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QComboBox" name="ComboBox_DoctorNames_SA">
              <property name="minimumSize">
               <size>
                <width>350</width>
@@ -1176,7 +1275,7 @@ QCalendarWidget QTableView QLabel {
              </property>
              <item>
               <property name="text">
-               <string>-- SELECT A TYPE --</string>
+               <string>-- SELECT A DOCTOR --</string>
               </property>
              </item>
             </widget>
@@ -1184,7 +1283,7 @@ QCalendarWidget QTableView QLabel {
           </layout>
          </item>
          <item>
-          <spacer name="verticalSpacer_4">
+          <spacer name="verticalSpacer_8">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
@@ -1269,9 +1368,9 @@ QCalendarWidget QTableView QLabel {
       <property name="geometry">
        <rect>
         <x>720</x>
-        <y>220</y>
+        <y>370</y>
         <width>341</width>
-        <height>331</height>
+        <height>181</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -1284,9 +1383,9 @@ QCalendarWidget QTableView QLabel {
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>40</y>
+         <y>30</y>
          <width>341</width>
-         <height>291</height>
+         <height>141</height>
         </rect>
        </property>
        <property name="font">
@@ -1460,7 +1559,7 @@ QPushButton::hover {
 </string>
       </property>
       <property name="text">
-       <string>Display Available Time(s)</string>
+       <string>Search</string>
       </property>
      </widget>
      <widget class="QPushButton" name="DisplayAvailableTimes_Btn_SA_2">
@@ -1504,6 +1603,83 @@ QPushButton::hover {
       <property name="text">
        <string>Search Patient(s)</string>
       </property>
+     </widget>
+     <widget class="QFrame" name="TimesHolderFrame_SA_2">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>180</y>
+        <width>341</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QListWidget" name="ListWidget_SelectADoctor_SA">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>341</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lato</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QListWidget {
+	background-color:#F3ECB0;
+	padding: 5px;
+}
+
+QListWidget::item {
+	color: #344D67;
+	font-family: &quot;MS Shell Dlg 2&quot;;
+	border: 1px solid rgb(186, 186, 186);
+	height: 40px;
+}
+
+QListWidget::item:selected {
+	background-color: rgb(0, 177, 171);
+	color: black;
+}</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="SelectADoctor_Label_SA">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>-10</y>
+         <width>341</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+	color: white;
+}</string>
+       </property>
+       <property name="text">
+        <string>Appointment Types</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QFrame" name="ViewBtns_Frame">
@@ -1730,7 +1906,7 @@ QPushButton::hover {
        <x>110</x>
        <y>200</y>
        <width>1171</width>
-       <height>0</height>
+       <height>681</height>
       </rect>
      </property>
      <property name="minimumSize">
@@ -2269,7 +2445,7 @@ QPushButton::hover {
        <x>110</x>
        <y>200</y>
        <width>1171</width>
-       <height>0</height>
+       <height>681</height>
       </rect>
      </property>
      <property name="minimumSize">
@@ -2531,7 +2707,7 @@ QPushButton::hover {
       <property name="geometry">
        <rect>
         <x>170</x>
-        <y>440</y>
+        <y>480</y>
         <width>441</width>
         <height>51</height>
        </rect>
@@ -2561,9 +2737,9 @@ QPushButton::hover {
       <property name="geometry">
        <rect>
         <x>170</x>
-        <y>480</y>
-        <width>471</width>
-        <height>51</height>
+        <y>520</y>
+        <width>501</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="font">
@@ -2863,50 +3039,11 @@ QListWidget::item:selected {
        </item>
       </layout>
      </widget>
-     <widget class="QPushButton" name="SearchForAppointments_Btn_RA">
-      <property name="geometry">
-       <rect>
-        <x>170</x>
-        <y>380</y>
-        <width>241</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>9</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
-	border-image: none;
-	background-color: #6ECCAF;
-	color: black;
-	border: 2px solid black;
-}
-
-QPushButton::hover {
-	background-color: rgb(139, 231, 100);
-	color: white;
-}
-
-</string>
-      </property>
-      <property name="text">
-       <string>Search For Appointment(s)</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="DisplayCurrentTimes_Btn_RA">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>380</y>
+        <x>170</x>
+        <y>430</y>
         <width>211</width>
         <height>51</height>
        </rect>
@@ -2938,8 +3075,91 @@ QPushButton::hover {
 </string>
       </property>
       <property name="text">
-       <string>Display Current Times</string>
+       <string>Display Times</string>
       </property>
+     </widget>
+     <widget class="QFrame" name="Frame_SelectDoctor_RA_3">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>360</y>
+        <width>481</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_31">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_32">
+         <item>
+          <widget class="QLabel" name="Label_RescheduleDate_RA">
+           <property name="font">
+            <font>
+             <family>Lato</family>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+	color: white;
+}</string>
+           </property>
+           <property name="text">
+            <string>Reschedule Date:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_26">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QDateEdit" name="DateEdit_RescheduleDate_RA">
+           <property name="minimumSize">
+            <size>
+             <width>280</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>MS Shell Dlg 2</family>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QDateEdit {
+	border-image: none;
+    border: none;
+	background-color: #F3ECB0;
+	color: #344D67;
+	font-family: &quot;MS Shell Dlg 2&quot;;
+	font-size: 11;
+	padding-left: 10px;
+	padding-right: 10px;
+}</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </widget>
     </widget>
     <zorder>layoutWidget</zorder>

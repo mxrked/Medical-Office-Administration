@@ -2,12 +2,191 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from assets.qrc import app_bg
 from assets.files.GLOBALS import *
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
 
 import urllib
+import sqlalchemy
 
+import StartWindow
 
 class Ui_SchedulingAppointmentsWindow(object):
     def setupUi(self, SchedulingAppointmentsWindow):
+        ''' FUNCTIONS '''
+        def connectToDB():
+                ' This is used to connect to the DB '
+
+                try:
+                    import sqlalchemy as sql
+                    import pyodbc
+                    import urllib
+                    from sqlalchemy.pool import QueuePool
+
+                except ImportError as e:
+                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
+                    raise e
+
+                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
+                engine = sql.create_engine(conn_str)
+
+                engine.connect()
+
+                # This is used to check if the database is connected
+                if engine.connect():
+                    print("Connected to database. . .")
+
+                    return engine
+
+                # with engine.connect() as conn:
+                #     result = conn.execute(sql.text("SELECT * FROM Appointment"))
+                #     for key in result.keys():
+                #         print(key)
+        def closeDBConnection():
+                ' This is used to close the connection to the DB '
+
+                try:
+                    import sqlalchemy as sql
+                    import pyodbc
+                    import urllib
+                    from sqlalchemy.pool import QueuePool
+
+                except ImportError as e:
+                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
+                    raise e
+
+                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
+                engine = sql.create_engine(conn_str)
+
+                engine.dispose()
+
+                if engine.dispose:
+                        print("Closed database. . .")
+
+        def enterStartWindow():
+                self.ui = StartWindow.Ui_StartWindow()
+                self.window = QtWidgets.QMainWindow()
+                self.ui.setupUi(self.window)
+                self.window.show()
+
+                SchedulingAppointmentsWindow.hide()
+
+        def logoutUser():
+
+                # Clearing array values
+                currentUsername.clear()
+                currentUserID.clear()
+                currentEmployeeID.clear()
+
+                # Routing user back to the start window
+                enterStartWindow()
+
+        # Frame functions
+        def hideAllFrames():
+
+                # All frames have a height of 681
+                self.InputsFrame.setFixedHeight(0)
+                self.CancelAppointment_Frame.setFixedHeight(0)
+                self.RescheduleAppointment_Frame.setFixedHeight(0)
+
+                # Re-enabling the frame btn togglers
+                self.DisplaySchedule_Btn.setEnabled(True)
+                self.DisplayCancel_Btn.setEnabled(True)
+                self.DisplayReschedule_Btn.setEnabled(True)
+
+                # Restyling frame btn togglers
+                self.DisplaySchedule_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: #6ECCAF;\n"
+"    color: black;\n"
+"    border: 2px solid black;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}")
+                self.DisplayCancel_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: #6ECCAF;\n"
+"    color: black;\n"
+"    border: 2px solid black;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}")
+                self.DisplayReschedule_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: #6ECCAF;\n"
+"    color: black;\n"
+"    border: 2px solid black;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}")
+
+        def displayInputsFrame():
+
+                hideAllFrames()
+                self.InputsFrame.setFixedHeight(681)
+
+                # Disabling the toggler btn
+                self.DisplaySchedule_Btn.setEnabled(False)
+                self.DisplaySchedule_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: rgba(110, 204, 175, .2);\n"
+"    color: rgba(0, 0, 0, .2);\n"
+"    border: 2px solid rgba(0, 0, 0, .2);\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}")
+        def displayCancelAppointmentFrame():
+
+                hideAllFrames()
+                self.CancelAppointment_Frame.setFixedHeight(681)
+
+                # Disabling the toggler btn
+                self.DisplayCancel_Btn.setEnabled(False)
+                self.DisplayCancel_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: rgba(110, 204, 175, .2);\n"
+"    color: rgba(0, 0, 0, .2);\n"
+"    border: 2px solid rgba(0, 0, 0, .2);\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}")
+        def displayRescheduleAppointmentFrame():
+
+                hideAllFrames()
+                self.RescheduleAppointment_Frame.setFixedHeight(681)
+
+                # Disabling the toggler btn
+                self.DisplayReschedule_Btn.setEnabled(False)
+                self.DisplayReschedule_Btn.setStyleSheet("QPushButton {\n"
+"    border-image: none;\n"
+"    background-color: rgba(110, 204, 175, .2);\n"
+"    color: rgba(0, 0, 0, .2);\n"
+"    border: 2px solid rgba(0, 0, 0, .2);\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"    background-color: rgb(139, 231, 100);\n"
+"    color: white;\n"
+"}")
+
         SchedulingAppointmentsWindow.setObjectName("SchedulingAppointmentsWindow")
         SchedulingAppointmentsWindow.resize(1430, 925)
         SchedulingAppointmentsWindow.setMinimumSize(QtCore.QSize(1420, 925))
@@ -30,6 +209,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.Layout_NavBar.setSpacing(20)
         self.Layout_NavBar.setObjectName("Layout_NavBar")
         self.Nav_LogoutBtn = QtWidgets.QPushButton(self.layoutWidget)
+        self.Nav_LogoutBtn.clicked.connect(logoutUser)
         self.Nav_LogoutBtn.setMinimumSize(QtCore.QSize(80, 40))
         self.Nav_LogoutBtn.setMaximumSize(QtCore.QSize(60, 16777215))
         font = QtGui.QFont()
@@ -295,6 +475,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.Label_PatientLastName_SA = QtWidgets.QLabel(self.InputsInnerFrame)
         font = QtGui.QFont()
         font.setFamily("Lato")
+        font.setPointSize(12)
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
@@ -729,6 +910,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.NewPatient_Btn.setObjectName("NewPatient_Btn")
         self.horizontalLayout.addWidget(self.NewPatient_Btn)
         self.DisplayReschedule_Btn = QtWidgets.QPushButton(self.ViewBtns_Frame)
+        self.DisplayReschedule_Btn.clicked.connect(displayRescheduleAppointmentFrame)
         self.DisplayReschedule_Btn.setEnabled(True)
         self.DisplayReschedule_Btn.setMinimumSize(QtCore.QSize(170, 40))
         self.DisplayReschedule_Btn.setMaximumSize(QtCore.QSize(120, 16777215))
@@ -755,6 +937,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.DisplayReschedule_Btn.setObjectName("DisplayReschedule_Btn")
         self.horizontalLayout.addWidget(self.DisplayReschedule_Btn)
         self.DisplaySchedule_Btn = QtWidgets.QPushButton(self.ViewBtns_Frame)
+        self.DisplaySchedule_Btn.clicked.connect(displayInputsFrame)
         self.DisplaySchedule_Btn.setEnabled(False)
         self.DisplaySchedule_Btn.setMinimumSize(QtCore.QSize(200, 40))
         self.DisplaySchedule_Btn.setMaximumSize(QtCore.QSize(200, 16777215))
@@ -779,6 +962,7 @@ class Ui_SchedulingAppointmentsWindow(object):
         self.DisplaySchedule_Btn.setObjectName("DisplaySchedule_Btn")
         self.horizontalLayout.addWidget(self.DisplaySchedule_Btn)
         self.DisplayCancel_Btn = QtWidgets.QPushButton(self.ViewBtns_Frame)
+        self.DisplayCancel_Btn.clicked.connect(displayCancelAppointmentFrame)
         self.DisplayCancel_Btn.setEnabled(True)
         self.DisplayCancel_Btn.setMinimumSize(QtCore.QSize(100, 40))
         self.DisplayCancel_Btn.setMaximumSize(QtCore.QSize(100, 16777215))

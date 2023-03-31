@@ -1,5 +1,5 @@
-**/.venv
-**/venv
-**/.idea
-**/__pycache__
-**/ignore
+/.venv
+/venv
+/.idea
+/__pycache__
+/ignore

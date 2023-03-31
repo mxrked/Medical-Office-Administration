@@ -2,9 +2,15 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from assets.qrc import app_bg, doctor, show, hide
 from assets.files.GLOBALS import *
 from assets.files import GLOBALS
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
 
 import urllib
 import sqlalchemy
+
+import SchedulingAppointmentsWindow
 
 
 class Ui_StartWindow(object):
@@ -142,6 +148,15 @@ class Ui_StartWindow(object):
 
             sys.exit()
 
+        def enterSchedulingAppointmentsWindow():
+
+            self.ui = SchedulingAppointmentsWindow.Ui_SchedulingAppointmentsWindow()
+            self.window = QtWidgets.QMainWindow()
+            self.ui.setupUi(self.window)
+            self.window.show()
+
+            StartWindow.hide()
+
         def getUsername_Text():
             return self.startWindow_UsernameLineEdit.text()
         def getPassword_Text():
@@ -166,14 +181,6 @@ class Ui_StartWindow(object):
             # Changing echomode
             self.startWindow_PasswordLineEdit.setEchoMode(QtWidgets.QLineEdit.Password)
 
-        def checkUser():
-            ' This is used to check if there is a username in the DB based on what the user input '
-
-            # Connecting to Database
-            checkDBConnection = connectToDB()
-
-            userName_Text = getUsername_Text()
-            password_Text = getPassword_Text()
         def loginUser():
             ' This is used to login the user '
 
@@ -183,6 +190,49 @@ class Ui_StartWindow(object):
             userName_Text = getUsername_Text()
             password_Text = getPassword_Text()
 
+            # Declaring the login screen model
+            Base = declarative_base()
+
+            class UsersTable(Base):
+
+                __tablename__ = "hold 5"
+                Employee_ID = Column(Integer, primary_key=True)
+                User_ID = Column(Integer)
+                User_Name = Column(String)
+                Email_Address = Column(String)
+                Password = Column(String)
+
+            # Connecting to database for data
+            Session = sessionmaker(bind=checkDBConnection)
+            session = Session()
+
+            # Grabbing data entry
+            user = session.query(UsersTable).filter(UsersTable.User_Name == userName_Text, UsersTable.Password == password_Text).first()
+
+            # This is used to check if the user is available and will move the user to the scheduling window or not
+            if user:
+
+                # This is used to store certain values and make use of them later
+                GLOBALS.currentEmployeeID.clear()
+                GLOBALS.currentUserID.clear()
+                GLOBALS.currentUsername.clear()
+
+                GLOBALS.currentEmployeeID.append(user.Employee_ID)
+                GLOBALS.currentUserID.append(user.User_ID)
+                GLOBALS.currentUsername.append(user.User_Name)
+
+                # Routing the user to the scheduling window
+                print("Welcome, " + currentUsername[0])
+                enterSchedulingAppointmentsWindow()
+
+                # closeDBConnection() # Closes to prevent infinite connection/lag
+            else:
+
+                GLOBALS.currentEmployeeID.clear()
+                GLOBALS.currentUserID.clear()
+                GLOBALS.currentUsername.clear()
+
+                print("That user does not exist..")
 
         StartWindow.setObjectName("StartWindow")
         StartWindow.resize(900, 900)
@@ -273,6 +323,7 @@ class Ui_StartWindow(object):
         self.startWindow_PasswordLineEdit.setEchoMode(QtWidgets.QLineEdit.Password)
         self.startWindow_PasswordLineEdit.setObjectName("startWindow_PasswordLineEdit")
         self.startWindow_LoginBtn = QtWidgets.QPushButton(self.centralwidget)
+        self.startWindow_LoginBtn.clicked.connect(loginUser)
         self.startWindow_LoginBtn.setGeometry(QtCore.QRect(360, 680, 81, 51))
         font = QtGui.QFont()
         font.setFamily("Lato")

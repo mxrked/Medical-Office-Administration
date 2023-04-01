@@ -82,7 +82,7 @@ class Employee(Base):
     apto = Column(Float, nullable=True)
     EmployeeTypeID = Column(Integer, ForeignKey("EmployeeType.EmployeeTypeID"), nullable=True)
 
-    EmployeeType = relationship("EmployeeType", backref="EmployeeType")
+    EmployeeType = relationship("EmployeeType", backref="EmpEmployeeType")
 
 class EmployeeCredintials(Base):
     __tablename__ = "EmployeeCredintials"
@@ -98,7 +98,7 @@ class EmployeeCredintials(Base):
     State = Column(NCHAR(10), nullable=True)
     Renewel = Column(NCHAR(10))
 
-    Employee = relationship("Employee", backref="EmployeeCredintials")
+    Employee = relationship("Employee", backref="ECEmployeeCredintials")
 
 class EmployeeRoles(Base):
     __tablename__ = "EmployeeRoles"

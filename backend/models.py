@@ -173,7 +173,7 @@ class Patient(Base):
     Gender = Column(VARCHAR(10), nullable=True)
     DateOfBirth = Column(Date, nullable=False)
     Phone = Column(NVARCHAR(12), nullable=True)
-    Email = Column(VARCHAR(50), nullable=true)
+    Email = Column(VARCHAR(50), nullable=True)
     MaritalStatus = Column(VARCHAR(10), nullable=True)
     # ProviderID = Column(Integer, ForeignKey("") nullable=)
     PatientPhoto = Column(BLOB, nullable=True)

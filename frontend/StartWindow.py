@@ -1,7 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from assets.qrc import app_bg, doctor, show, hide
-from assets.files.GLOBALS import *
-from assets.files import GLOBALS
+from frontend.ui.assets.qrc import app_bg, doctor, show, hide
+from frontend.ui.assets.files.GLOBALS import *
+from frontend.ui.assets.files import GLOBALS
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker, declarative_base
 

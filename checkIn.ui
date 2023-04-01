@@ -497,7 +497,7 @@ QLabel {
      <widget class="QPushButton" name="Btn_CheckIn">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>60</x>
         <y>470</y>
         <width>181</width>
         <height>51</height>
@@ -536,7 +536,7 @@ QPushButton::hover {
      <widget class="QPushButton" name="Btn_Refresh">
       <property name="geometry">
        <rect>
-        <x>370</x>
+        <x>250</x>
         <y>470</y>
         <width>181</width>
         <height>51</height>
@@ -594,7 +594,7 @@ QPushButton::hover {
 </string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>630</x>
@@ -659,7 +659,7 @@ QPushButton::hover {
             <string notr="true"/>
            </property>
            <property name="text">
-            <string>Doctor Name:</string>
+            <string>Provider:</string>
            </property>
           </widget>
          </item>
@@ -683,6 +683,45 @@ QPushButton::hover {
         </layout>
        </item>
       </layout>
+     </widget>
+     <widget class="QPushButton" name="Btn_CheckIn_2">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>470</y>
+        <width>181</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lato</family>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	border-image: none;
+	background-color: #6ECCAF;
+	color: black;
+	border: 2px solid black;
+}
+
+QPushButton::hover {
+	background-color: rgb(139, 231, 100);
+	color: white;
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string>No Show</string>
+      </property>
      </widget>
     </widget>
    </widget>

@@ -10,9 +10,9 @@ Base = declarative_base()
 
 class Appointment(Base):
     __tablename__ = "Appointment"
-    
+
     AppointmentID = Column(Integer, primary_key=True, nullable=False)
-    
+
     # nullable is set to FALSE by default unless a primary_key
     ApptDate = Column(Date)
     ApptTime = Column(Time)
@@ -23,10 +23,10 @@ class Appointment(Base):
     VisitReason = Column(String)
     LocationID = Column(Integer, ForeignKey("HospitalLocation.LocationID"))
 
-    AppointmentType= relationship("AppointmentType", backref="AppointmentType")
-    Patient = relationship("Patient", backref="Patient")
-    Employee = relationship("Employee", backref="Employee")
-    HospitalLocation = relationship("HospitalLocation", backref="HospitalLocation")
+    AppointmentType= relationship("AppointmentType", backref="ApptAppointmentType")
+    Patient = relationship("Patient", backref="ApptPatient")
+    Employee = relationship("Employee", backref="ApptEmployee")
+    HospitalLocation = relationship("HospitalLocation", backref="ApptHospitalLocation")
 
     def __str__(self) -> str:
         return f"Appointment on {self.ApptDate} at {self.ApptTime} for {self.Patient.FirstName} {self.Patient.LastName}"
@@ -42,44 +42,26 @@ class AppointmentType(Base):
     def __str__(self) -> str:
         return f"{self.ApptName}"
 
-class EmpUserRoleCross(Base):
-    __tablename__ = "EmpUserRoleCross"
+EmpUserRoleCross = Table('EmpUserRoleCross', Base.metadata,
+    Column('DummyID', Integer, primary_key=True),
+    Column('EmployeeID', Integer, ForeignKey("Employee.EmployeeID")),
+    Column('RoleID', Integer, ForeignKey("Role.RoleID")),
+    Column('DepartmentID', Integer, ForeignKey("Departments.DepartmentID")),
+    Column('OfficeID', Integer, ForeignKey("Offices.OfficeID"))
+)
 
-    DummyID = Column(Integer, primary_key=True) # Sqlalchemy requires a primary key in all tables
+EmpGroupCross = Table('EmpGroupCross', Base.metadata,
+    Column('DummyID', Integer, primary_key=True),
+    Column('EmployeeID', Integer, ForeignKey("Employee.EmployeeID")),
+    Column('GroupID', Integer, ForeignKey("Group.GroupID"))
+)
 
-    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
-    RoleID = Column(Integer, ForeignKey("Role.RoleID"))   # Check later for table name change
-    DepartmentID = Column(Integer, ForeignKey("Departments.DepartmentID"))
-    OfficeID = Column(Integer, ForeignKey("Offices.OfficeID"))
-
-    Employee = relationship("Employee", backref="Employee")
-    Role = relationship("Role", backref="Role")
-    Department = relationship("Department", backref="Department")
-    Office = relationship("Offices", backref="Offices")
-
-class EmpGroupCross(Base):
-    __tablename__ = "EmpGroupCross"
-
-    DummyID = Column(Integer, primary_key=True)
-
-    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
-    GroupID = Column(Integer, ForeignKey("Group.GroupID"))
-
-    Employee = relationship("Employee", backref="Employee")
-    Group = relationship("Group", backref="Group")
-
-class EmpLocReferralCross(Base):
-    __tablename__ = "EmpLocReferralCross"
-
-    DummyID = Column(Integer, primary_key=True)
-
-    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID "))
-    LocationID = Column(Integer, ForeignKey("Location.LocationID"))
-    ReferralID = Column(Integer, ForeignKey("Referral.ReferralID"))
-
-    Employee = relationship("Employee", backref="Employee")
-    Location = relationship("Location", backref="Location")
-    Referral = relationship("Referral", backref="Referral")
+EmpLocReferralCross = Table('EmpLocReferralCross', Base.metadata,
+    Column('DummyID', Integer, primary_key=True),
+    Column('EmployeeID', Integer, ForeignKey("Employee.EmployeeID ")),
+    Column('LocationID', Integer, ForeignKey("Location.LocationID")),
+    Column('ReferralID', Integer, ForeignKey("Referral.ReferralID"))
+)
 
 class Employee(Base):
     __tablename__ = "Employee"
@@ -266,21 +248,7 @@ class User(Base):
 
     UserID = Column(Integer, primary_key=True, nullable=False)
 
-    # EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
+    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     Username = Column(NCHAR(10), nullable=False)
     EmailAddress = Column(VARCHAR(), nullable=False)
     Password = Column(VARCHAR(), nullable=False)
-
-
-class Referral(Base):
-    __tablename__ = "Referral"
-
-    ReferralID = Column(Integer, primary_key=True, nullable=False)
-
-    ReferralReason = Column(String, nullable=False)
-    PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
-    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
-    CreationDate = Column(Date, nullable=False)
-
-    Patient = relationship("Patient", backref="RefPatient")
-    Employee = relationship("Employee", backref="RefEmployee")

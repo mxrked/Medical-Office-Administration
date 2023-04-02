@@ -1520,7 +1520,7 @@ QPushButton::hover {
        <string>Clear Inputs</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="DisplayAvailableTimes_Btn_SA">
+     <widget class="QPushButton" name="Search_Btn_SA">
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -2396,6 +2396,43 @@ QPushButton::hover {
        <string>Search For Appointment(s)</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="CA_ClearInputsBtn">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>530</y>
+        <width>141</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	border-image: none;
+	background-color: rgb(30, 147, 143);
+	color: black;
+	border: 2px solid black;
+}
+
+QPushButton::hover {
+	background-color: rgb(14, 81, 85);
+	color: white;
+}</string>
+      </property>
+      <property name="text">
+       <string>Clear Inputs</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QFrame" name="RescheduleAppointment_Frame">
      <property name="geometry">
@@ -3118,6 +3155,43 @@ QPushButton::hover {
         </layout>
        </item>
       </layout>
+     </widget>
+     <widget class="QPushButton" name="RA_ClearInputsBtn">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>560</y>
+        <width>141</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	border-image: none;
+	background-color: rgb(30, 147, 143);
+	color: black;
+	border: 2px solid black;
+}
+
+QPushButton::hover {
+	background-color: rgb(14, 81, 85);
+	color: white;
+}</string>
+      </property>
+      <property name="text">
+       <string>Clear Inputs</string>
+      </property>
      </widget>
     </widget>
     <zorder>layoutWidget</zorder>

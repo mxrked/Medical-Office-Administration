@@ -8,7 +8,7 @@ from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 import sys
-import SchedulingAppointmentWindow
+import SchedulingAppointmentsWindow
 
 class UI(QMainWindow):
     def __init__(self):
@@ -150,8 +150,8 @@ class UI(QMainWindow):
 
         def enterSchedulingAppointmentsWindow():
             self.hide()
-            print(SchedulingAppointmentWindow)
-            SchedulingAppointmentWindow.UIWindow.show()
+            print(SchedulingAppointmentsWindow)
+            SchedulingAppointmentsWindow.UIWindow.show()
 
 
         def getUsername_Text():

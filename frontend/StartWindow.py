@@ -6,6 +6,7 @@ from frontend.ui.assets.files.GLOBALS import *
 from frontend.ui.assets.files import GLOBALS
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker, declarative_base
+from backend.db import get_session
 
 import sys
 import SchedulingAppointmentsWindow
@@ -92,60 +93,10 @@ class UI(QMainWindow):
             # Displaying the dialog
             infoDialog.exec_()
 
-        def connectToDB():
-                ' This is used to connect to the DB '
 
-                try:
-                    import sqlalchemy as sql
-                    import pyodbc
-                    import urllib.parse
-                    from sqlalchemy.pool import QueuePool
-
-                except ImportError as e:
-                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
-                    raise e
-
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
-                engine = sql.create_engine(conn_str)
-
-                engine.connect()
-
-                # This is used to check if the database is connected
-                if engine.connect():
-                    print("Connected to database. . .")
-
-                    return engine
-
-                # with engine.connect() as conn:
-                #     result = conn.execute(sql.text("SELECT * FROM Appointment"))
-                #     for key in result.keys():
-                #         print(key)
-        def closeDBConnection():
-                ' This is used to close the connection to the DB '
-
-                try:
-                    import sqlalchemy as sql
-                    import pyodbc
-                    import urllib.parse
-                    from sqlalchemy.pool import QueuePool
-
-                except ImportError as e:
-                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
-                    raise e
-
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
-                engine = sql.create_engine(conn_str)
-
-                engine.dispose()
-
-                if engine.dispose:
-                        print("Closed database. . .")
 
         def closeApp():
             ' This is used to close the app... duh! '
-            closeDBConnection()
             app.exit()
 
         def enterSchedulingAppointmentsWindow():
@@ -181,8 +132,6 @@ class UI(QMainWindow):
         def loginUser():
             ' This is used to login the user '
 
-            # Connecting to Database
-            checkDBConnection = connectToDB()
 
             userName_Text = getUsername_Text()
             password_Text = getPassword_Text()
@@ -200,8 +149,7 @@ class UI(QMainWindow):
                 Password = Column(String)
 
             # Connecting to database for data
-            Session = sessionmaker(bind=checkDBConnection)
-            session = Session()
+            session = get_session()
 
             # Grabbing data entry
             user = session.query(UsersTable).filter(UsersTable.User_Name == userName_Text, UsersTable.Password == password_Text).first()

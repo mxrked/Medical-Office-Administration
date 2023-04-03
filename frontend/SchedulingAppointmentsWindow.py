@@ -9,6 +9,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 import urllib
 import sqlalchemy
 import sys
+import Referrals, LabOrders, NewPatient, CheckIn, CheckOut, ApptRequest
 
 class UI(QMainWindow):
     def __init__(self):
@@ -83,6 +84,10 @@ class UI(QMainWindow):
                 if len(currentUsername) == 1:
                         print("Current User: " + currentUsername[0])
 
+                        NewPatient.UIWindow.show()
+                        self.hide()
+
+
                 # Display new window code here
         def enterCheckInWindow():
                 print("Routing to check in screen")
@@ -91,6 +96,9 @@ class UI(QMainWindow):
                         print("There is nobody logged in..")
                 if len(currentUsername) == 1:
                         print("Current User: " + currentUsername[0])
+
+                        CheckIn.UIWindow.show()
+                        self.hide()
 
                 # Display new window code here
         def enterCheckOutWindow():
@@ -101,6 +109,9 @@ class UI(QMainWindow):
                 if len(currentUsername) == 1:
                         print("Current User: " + currentUsername[0])
 
+                        CheckOut.UIWindow.show()
+                        self.hide()
+
                 # Display new window code here
         def enterMakeReferralWindow():
                 print("Routing to make referral screen")
@@ -109,6 +120,12 @@ class UI(QMainWindow):
                         print("There is nobody logged in..")
                 if len(currentUsername) == 1:
                         print("Current User: " + currentUsername[0])
+
+                        Referrals.UIWindow.show()
+                        self.hide()
+
+                        Referrals.UIWindow.show()
+                        self.hide()
 
                 # Display new window code here
         def enterLabOrdersWindow():
@@ -119,6 +136,9 @@ class UI(QMainWindow):
                 if len(currentUsername) == 1:
                         print("Current User: " + currentUsername[0])
 
+                        LabOrders.UIWindow.show()
+                        self.hide()
+
                 # Display new window code here
         def enterAppointmentApproveViaPortalWindow():
                 print("Routing to appointment approve via portal screen")
@@ -128,7 +148,9 @@ class UI(QMainWindow):
                 if len(currentUsername) == 1:
                         print("Current User: " + currentUsername[0])
 
-                # Display new window code here
+                        ApptRequest.UIWindow.show()
+                        self.hide()
+
 
         def logoutUser():
 
@@ -395,6 +417,8 @@ class UI(QMainWindow):
     def closeEvent(self, event):
         QApplication.closeAllWindows()
         event.accept()
+        app.exit()
+
 
 #initializing app
 app = QApplication(sys.argv)

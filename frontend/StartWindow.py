@@ -260,6 +260,7 @@ class UI(QMainWindow):
     def closeEvent(self, event):
         QApplication.closeAllWindows()
         event.accept()
+        app.exit()
 
 #initializing app
 app = QApplication(sys.argv)

@@ -14,15 +14,13 @@ def get_session() -> Session:
     :returns: A Sqlalchemy Session
     """
 
-    with open('backend/connection_string.txt', 'r') as file:
+    with open('backend/connection_string.txt', 'r', encoding="utf-8") as file:
         DB = file.read()
 
-    print(DB)
     engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
 
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    return session
+    session_maker = sessionmaker(bind=engine)
+    return session_maker()
 
 def close_session(session: Session):
     session.close()
@@ -81,7 +79,7 @@ def get_avaliable_appointments(session,
                                date: date,
                                provider: Employee,
                                location: HospitalLocation,
-                               appointment_length: timedelta):
+                               appointment_length: timedelta) -> list[Appointment]:
     # Be sure to check if the provider is on Vacation (in event table)
     # Be sure to check if the Location is closed (Check event table & HospitalHours table)
     # Be Sure to check if its the weekend (might be in HospitalHours?)
@@ -93,13 +91,13 @@ def get_avaliable_appointments(session,
 
 def set_appointment_time(session, appt: Appointment, new_time: time, new_date: date):
 
-    assert __check_appointment_avaliable(session, Appointment, new_time=new_time, new_date=new_date), "Appointment time not available"
+    assert __check_appointment_available(session, Appointment, new_time=new_time, new_date=new_date), "Appointment time not available"
     
     # Now we can set the correct time
 
 def check_username_password(session, username: String, password: String) -> bool:
     
-    validated = False 
+    validated = False
 
     # Besure to global the CURRENT_USER as a User Object
     return validated
@@ -136,13 +134,15 @@ def add_patient(session, patient: Patient):
 
 def add_appointment(session, appointment: Appointment):
     
-    assert __check_appointment_avaliable(session, Appointment), "Appointment time not available"
+    assert __check_appointment_available(session, Appointment), "Appointment time not available"
     
     # Now we can add the appointment
 
 
-def __check_appointment_avaliable(session, appt: Appointment, new_time=Appointment.ApptTime, new_date=Appointment.ApptDate) -> bool:
-    pass
+def __check_appointment_available(session, appt: Appointment, new_time=None, new_date=None) -> bool:
+
+    new_time = new_time or appt.ApptTime
+    new_date = new_date or appt.ApptDate
 
 def __set_appointment_status(session, appt: Appointment, status: String):
     pass

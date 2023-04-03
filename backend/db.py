@@ -6,6 +6,7 @@ from datetime import datetime, date, time, timedelta
 from models import *
 from sqlalchemy.orm import Session, sessionmaker, joinedload
 import sqlalchemy as sa
+import os
 
 def get_session() -> Session:
     """
@@ -14,8 +15,8 @@ def get_session() -> Session:
     :returns: A Sqlalchemy Session
     """
 
-    with open("backend/connection_string.txt", "r", encoding="utf-8") as file:
-        DB = file.read()
+    assert os.path.isfile("backend/connection_string.py"), "connection_string.py not found!"
+    from connection_string import DB
 
     engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
 
@@ -160,4 +161,5 @@ if __name__ == "__main__":
 
     session = get_session()
     print("Connected...")
+    print(get_locations(session))
     close_session(session)

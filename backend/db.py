@@ -27,7 +27,9 @@ def close_session(session: Session):
     session.bind.dispose()
 
 def get_locations(session) -> list[HospitalLocation]:
-    locations = session.query(HospitalLocation).all()
+    locations = session.query(HospitalLocation)\
+        .order_by(HospitalLocation.LocationName)\
+        .all()
     return locations
 
 
@@ -37,6 +39,7 @@ def get_physicians(session) -> list[Employee]:
         .join(EmployeeType)\
         .options(joinedload(Employee.EmployeeType))\
         .filter(EmployeeType.TypeDescription.in_(valid_types))\
+        .order_by(Employee.LastName, Employee.FirstName)\
         .all()
     return physicians
 

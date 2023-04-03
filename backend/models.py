@@ -159,7 +159,7 @@ class LabOrder(Base):
 
     Employee = relationship("Employee", backref="LOEmployee")
     Patient = relationship("Patient", backref="LOPatient")
-    Location = relationship("Location", backref="LOHospitalLocation")
+    Location = relationship("HospitalLocation", backref="LOHospitalLocation")
 
 class Patient(Base):
     __tablename__ = "Patient"
@@ -204,12 +204,12 @@ class HospitalHours(Base):
     OpenTime = Column(Time, nullable=False)
     CloseTime = Column(Time, nullable=False)
 
-    Location = relationship("Location", backref="HHHospitalLocation")
+    Location = relationship("HospitalLocation", backref="HHHospitalLocation")
 
 class HospitalLocation(Base):
     __tablename__ = "HospitalLocation"
 
-    HospitalLocationID = Column(Integer, primary_key=True, nullable=False)
+    LocationID = Column(Integer, primary_key=True, nullable=False)
 
     LocationName = Column(VARCHAR(50), nullable=False)
     Phone = Column(NVARCHAR(12), nullable=False)

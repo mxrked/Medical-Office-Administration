@@ -14,15 +14,10 @@ def get_session() -> Session:
     :returns: A Sqlalchemy Session
     """
 
-    DB = "Driver={ODBC Driver 17 for SQL Server};" \
-                 "Server=tcp:capstone2023.database.windows.net,1433;" \
-                 "Database=capstone2023;" \
-                 "Uid=MOAuser;" \
-                 "Pwd=Password01!;" \
-                 "Encrypt=yes;" \
-                 "TrustServerCertificate=no;" \
-                 "Connection Timeout=30;"
+    with open('backend/connection_string.txt', 'r') as file:
+        DB = file.read()
 
+    print(DB)
     engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
 
     Session = sessionmaker(bind=engine)

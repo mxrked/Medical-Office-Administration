@@ -6,7 +6,7 @@ from frontend.ui.assets.files.GLOBALS import *
 from frontend.ui.assets.files import GLOBALS
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker, declarative_base
-from backend.db import get_session
+from backend.db import get_session, close_session
 
 import sys
 import SchedulingAppointmentsWindow
@@ -16,6 +16,8 @@ class UI(QMainWindow):
         super(UI, self).__init__()
 
         uic.loadUi("ui/StartWindow.ui", self)
+
+        session = get_session()
 
         # Functions
         def displayInfoDialog():
@@ -98,6 +100,7 @@ class UI(QMainWindow):
         def closeApp():
             ' This is used to close the app... duh! '
             app.exit()
+            close_session(session)
 
         def enterSchedulingAppointmentsWindow():
             self.hide()
@@ -149,8 +152,6 @@ class UI(QMainWindow):
                 Password = Column(String)
 
             # Connecting to database for data
-            session = get_session()
-
             # Grabbing data entry
             user = session.query(UsersTable).filter(UsersTable.User_Name == userName_Text, UsersTable.Password == password_Text).first()
 

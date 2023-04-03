@@ -252,3 +252,16 @@ class User(Base):
     Username = Column(NCHAR(10), nullable=False)
     EmailAddress = Column(VARCHAR(), nullable=False)
     Password = Column(VARCHAR(), nullable=False)
+
+class Referrals(Base): ### THIS MAY NEED TO CHANGE DEPENDING ON STUFF
+    __tablename__ = "Referrals"
+
+    DummyID = Column(Integer, primary_key=True)
+
+    PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
+    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
+    DateofReferal = Column(Date)  # sic
+    PatientCondition = Column(VARCHAR(50), nullable=True)
+    ReferralReason = Column(VARCHAR(50), nullable=True)
+    ReferralExpirationDate = Column(Date, nullable=True)
+

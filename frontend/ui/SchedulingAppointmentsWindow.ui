@@ -2245,15 +2245,15 @@ QPushButton::hover {
       <property name="geometry">
        <rect>
         <x>100</x>
-        <y>470</y>
-        <width>411</width>
+        <y>460</y>
+        <width>501</width>
         <height>51</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>MS Shell Dlg 2</family>
-        <pointsize>11</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -2702,15 +2702,15 @@ QPushButton::hover {
       <property name="geometry">
        <rect>
         <x>170</x>
-        <y>480</y>
+        <y>490</y>
         <width>441</width>
-        <height>51</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>MS Shell Dlg 2</family>
-        <pointsize>11</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -2740,7 +2740,7 @@ QPushButton::hover {
       <property name="font">
        <font>
         <family>MS Shell Dlg 2</family>
-        <pointsize>11</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -2762,7 +2762,7 @@ QPushButton::hover {
       <property name="geometry">
        <rect>
         <x>170</x>
-        <y>560</y>
+        <y>580</y>
         <width>211</width>
         <height>51</height>
        </rect>
@@ -2878,7 +2878,7 @@ QListWidget::item:selected {
       <property name="geometry">
        <rect>
         <x>720</x>
-        <y>410</y>
+        <y>430</y>
         <width>331</width>
         <height>201</height>
        </rect>
@@ -3160,7 +3160,7 @@ QPushButton::hover {
       <property name="geometry">
        <rect>
         <x>400</x>
-        <y>560</y>
+        <y>580</y>
         <width>141</width>
         <height>51</height>
        </rect>
@@ -3193,6 +3193,19 @@ QPushButton::hover {
        <string>Clear Inputs</string>
       </property>
      </widget>
+     <zorder>RescheduleAppointment_HeadingLabel</zorder>
+     <zorder>UnderHeadingTextLabel_RA_2</zorder>
+     <zorder>Frame_SelectDoctor_RA</zorder>
+     <zorder>Frame_SelectOfficeLocation_RA</zorder>
+     <zorder>UnderHeadingTextLabel_RA_3</zorder>
+     <zorder>RescheduleAppointment_Btn_RA</zorder>
+     <zorder>CurrentAppointments_Frame_RA</zorder>
+     <zorder>TimesHolderFrame_RA</zorder>
+     <zorder>Frame_SelectDoctor_RA_2</zorder>
+     <zorder>DisplayCurrentTimes_Btn_RA</zorder>
+     <zorder>Frame_SelectDoctor_RA_3</zorder>
+     <zorder>RA_ClearInputsBtn</zorder>
+     <zorder>UnderHeadingTextLabel_RA_1</zorder>
     </widget>
     <zorder>layoutWidget</zorder>
     <zorder>ViewBtns_Frame</zorder>

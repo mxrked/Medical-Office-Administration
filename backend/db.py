@@ -4,7 +4,7 @@ Author: Jessica Weeks, Christian Fortin
 """
 from datetime import datetime, date, time, timedelta
 from models import *
-from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy.orm import Session, sessionmaker, joinedload
 import sqlalchemy as sa
 
 def get_session() -> Session:
@@ -14,7 +14,7 @@ def get_session() -> Session:
     :returns: A Sqlalchemy Session
     """
 
-    with open('backend/connection_string.txt', 'r', encoding="utf-8") as file:
+    with open("backend/connection_string.txt", "r", encoding="utf-8") as file:
         DB = file.read()
 
     engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
@@ -27,13 +27,18 @@ def close_session(session: Session):
     session.bind.dispose()
 
 def get_locations(session) -> list[HospitalLocation]:
-    locations = []
+    locations = session.query(HospitalLocation).all()
     return locations
 
 
 def get_physicians(session) -> list[Employee]:
-    employees = []
-    return employees
+    valid_types = ["physcian"]
+    physicians = session.query(Employee)\
+        .join(EmployeeType)\
+        .options(joinedload(Employee.EmployeeType))\
+        .filter(EmployeeType.TypeDescription.in_(valid_types))\
+        .all()
+    return physicians
 
 def get_pending_appointments(session, location: HospitalLocation=None, provider: Employee=None) -> list[Appointment]:
     pass
@@ -132,10 +137,10 @@ def add_lab_order(session, lab_order: LabOrder):
 def add_patient(session, patient: Patient):
     pass
 
-def add_appointment(session, appointment: Appointment):
-    
-    assert __check_appointment_available(session, Appointment), "Appointment time not available"
-    
+def add_appointment(session, appt: Appointment):
+
+    assert __check_appointment_available(session, appt), "Appointment time not available"
+
     # Now we can add the appointment
 
 

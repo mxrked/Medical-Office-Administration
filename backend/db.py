@@ -3,10 +3,11 @@ db.py - A set of functions for working with the clinics database.
 Author: Jessica Weeks, Christian Fortin
 """
 from datetime import datetime, date, time, timedelta
-from models import *
+from backend.models import *
 from sqlalchemy.orm import Session, sessionmaker, joinedload
 import sqlalchemy as sa
 import os
+import backend.connection_string
 
 def get_session() -> Session:
     """
@@ -15,10 +16,10 @@ def get_session() -> Session:
     :returns: A Sqlalchemy Session
     """
 
-    assert os.path.isfile("backend/connection_string.py"), "connection_string.py not found!"
-    from connection_string import DB
+    #assert os.path.isfile("backend/connection_string.py"), "connection_string.py not found!"
+    from backend.connection_string import DB
 
-    engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
+    engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={backend.connection_string.DB}")
 
     session_maker = sessionmaker(bind=engine)
     return session_maker()
@@ -27,14 +28,14 @@ def close_session(session: Session):
     session.close()
     session.bind.dispose()
 
-def get_locations(session) -> list[HospitalLocation]:
+def get_locations(session) -> [HospitalLocation]:
     locations = session.query(HospitalLocation)\
         .order_by(HospitalLocation.LocationName)\
         .all()
     return locations
 
 
-def get_physicians(session) -> list[Employee]:
+def get_physicians(session) -> [Employee]:
     valid_types = ["physcian"]
     physicians = session.query(Employee)\
         .join(EmployeeType)\
@@ -44,27 +45,27 @@ def get_physicians(session) -> list[Employee]:
         .all()
     return physicians
 
-def get_pending_appointments(session, location: HospitalLocation=None, provider: Employee=None) -> list[Appointment]:
+def get_pending_appointments(session, location: HospitalLocation=None, provider: Employee=None) -> [Appointment]:
     pass
 
-def get_todays_appointments(session, location: HospitalLocation=None, provider: Employee=None) -> list[Appointment]:
+def get_todays_appointments(session, location: HospitalLocation=None, provider: Employee=None) -> [Appointment]:
     # We only want "Scheduled" or "Rescheduled" status
     pass
 
-def get_in_progress_appointments(session, location: HospitalLocation=None, provider: Employee=None) -> list[Appointment]:
+def get_in_progress_appointments(session, location: HospitalLocation=None, provider: Employee=None) -> [Appointment]:
     # Assume we are looking at today
     pass
 
-def get_lab_tests(session) -> list[Lab]:
+def get_lab_tests(session) -> [Lab]:
     labs = []
     return labs
 
 
-def get_appointment_types(session, search_text: String) -> list[AppointmentType]:
+def get_appointment_types(session, search_text: String) -> [AppointmentType]:
     appointment_types = []
     return appointment_types
 
-def get_patient(session, first_name: String, last_name: String, dob: String) -> list[Patient]:
+def get_patient(session, first_name: String, last_name: String, dob: String) -> [Patient]:
     """
     Returns a list of patients whose name contains the search text.
     NOTE TO FRONTEND: THERE CAN BE MULTIPLE PATIENTS THAT ARE RETURNED. BE SURE TO HANDLE THIS.
@@ -77,10 +78,10 @@ def get_patient(session, first_name: String, last_name: String, dob: String) -> 
 
     return patients
 
-def get_appointments_for_date(session, date: date) -> list[Appointment]: # Check Reschedule/Canceling appointment screen first
+def get_appointments_for_date(session, date: date) -> [Appointment]: # Check Reschedule/Canceling appointment screen first
     pass
 
-def get_physicians_for_appointment_type(session, apptType: AppointmentType) -> list[Employee]:
+def get_physicians_for_appointment_type(session, apptType: AppointmentType) -> [Employee]:
     # I have no idea how this will get done
     pass
 
@@ -88,7 +89,7 @@ def get_avaliable_appointments(session,
                                date: date,
                                provider: Employee,
                                location: HospitalLocation,
-                               appointment_length: timedelta) -> list[Appointment]:
+                               appointment_length: timedelta) -> [Appointment]:
     # Be sure to check if the provider is on Vacation (in event table)
     # Be sure to check if the Location is closed (Check event table & HospitalHours table)
     # Be Sure to check if its the weekend (might be in HospitalHours?)

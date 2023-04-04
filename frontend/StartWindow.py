@@ -1,29 +1,27 @@
 from PyQt5.QtWidgets import *
 from PyQt5 import uic, QtCore, QtGui
 from PyQt5.QtGui import QCursor
+
+import data_manager
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide
 from frontend.ui.assets.files.GLOBALS import *
 from frontend.ui.assets.files import GLOBALS
-from sqlalchemy import BLOB, Column, Table, Integer, String, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, Float, NCHAR
-from sqlalchemy.orm import sessionmaker, declarative_base
+from frontend.ui.assets.files.NAVIGATION_FUNCS import enterSchedulingAppointmentsWindow
 
 import temp_classes
-import backend.db
 import sys
-import SchedulingAppointmentsWindow
 
 class UI(QMainWindow):
     def __init__(self):
         super(UI, self).__init__()
 
+        print(currentUsername[0])
         uic.loadUi("ui/StartWindow.ui", self)
 
-<<<<<<< HEAD
-        # Session for connecting to the Database
-        session = backend.db.get_session()
 
-=======
->>>>>>> 27c856e01ce4d214ce2525371f2191e63e2773fc
+        # Session for connecting to the Database
+        session = data_manager.DataManger().session
+
         # Functions
         def displayInfoDialog():
             ' This is used to display a dialog popup listing the different team members and their roles'
@@ -100,73 +98,15 @@ class UI(QMainWindow):
             # Displaying the dialog
             infoDialog.exec_()
 
-<<<<<<< HEAD
-=======
-        def connectToDB():
-                ' This is used to connect to the DB '
-
-                try:
-                    import sqlalchemy as sql
-                    import pyodbc
-                    import urllib.parse
-                    from sqlalchemy.pool import QueuePool
-
-                except ImportError as e:
-                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
-                    raise e
-
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
-                engine = sql.create_engine(conn_str)
-
-                engine.connect()
-
-                # This is used to check if the database is connected
-                if engine.connect():
-                    print("Connected to database. . .")
-
-                    return engine
-
-                # with engine.connect() as conn:
-                #     result = conn.execute(sql.text("SELECT * FROM Appointment"))
-                #     for key in result.keys():
-                #         print(key)
-        def closeDBConnection():
-                ' This is used to close the connection to the DB '
-
-                try:
-                    import sqlalchemy as sql
-                    import pyodbc
-                    import urllib.parse
-                    from sqlalchemy.pool import QueuePool
-
-                except ImportError as e:
-                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
-                    raise e
-
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
-                engine = sql.create_engine(conn_str)
-
-                engine.dispose()
-
-                if engine.dispose:
-                        print("Closed database. . .")
-
->>>>>>> 27c856e01ce4d214ce2525371f2191e63e2773fc
         def closeApp():
             ' This is used to close the app... duh! '
-            closeDBConnection()
             app.exit()
-<<<<<<< HEAD
-            backend.db.close_session(session)
-=======
->>>>>>> 27c856e01ce4d214ce2525371f2191e63e2773fc
 
-        def enterSchedulingAppointmentsWindow():
-            self.hide()
-            print(SchedulingAppointmentsWindow)
-            SchedulingAppointmentsWindow.UIWindow.show()
+        # def enterSchedulingAppointmentsWindow():
+        #     from frontend import SchedulingAppointmentsWindow
+        #     self.hide()
+        #     print(SchedulingAppointmentsWindow)
+        #     SchedulingAppointmentsWindow.UIWindow.show()
 
         def getUsername_Text():
             return self.startWindow_UsernameLineEdit.text()
@@ -194,34 +134,13 @@ class UI(QMainWindow):
 
         def loginUser():
             ' This is used to login the user '
-<<<<<<< HEAD
-=======
 
-            # Connecting to Database
-            checkDBConnection = connectToDB()
 
->>>>>>> 27c856e01ce4d214ce2525371f2191e63e2773fc
             userName_Text = getUsername_Text()
             password_Text = getPassword_Text()
 
             from temp_classes import TempUser
 
-<<<<<<< HEAD
-=======
-            class UsersTable(Base):
-
-                __tablename__ = "hold 5"
-                Employee_ID = Column(Integer, primary_key=True)
-                User_ID = Column(Integer)
-                User_Name = Column(String)
-                Email_Address = Column(String)
-                Password = Column(String)
-
-            # Connecting to database for data
-            Session = sessionmaker(bind=checkDBConnection)
-            session = Session()
-
->>>>>>> 27c856e01ce4d214ce2525371f2191e63e2773fc
             # Grabbing data entry
             user = session.query(TempUser).filter(TempUser.User_Name == userName_Text, TempUser.Password == password_Text).first()
 
@@ -231,15 +150,17 @@ class UI(QMainWindow):
                 # This is used to store certain values and make use of them later
                 GLOBALS.currentEmployeeID.clear()
                 GLOBALS.currentUserID.clear()
-                GLOBALS.currentUsername.clear()
+                # GLOBALS.currentUsername.clear()
 
                 GLOBALS.currentEmployeeID.append(user.Employee_ID)
                 GLOBALS.currentUserID.append(user.User_ID)
-                GLOBALS.currentUsername.append(user.User_Name)
+                # GLOBALS.currentUsername.append(user.User_Name)
 
                 # Routing the user to the scheduling window
-                print("Welcome, " + currentUsername[0])
-                enterSchedulingAppointmentsWindow()
+                currentUsername[0] = str(user.User_Name)
+
+
+                enterSchedulingAppointmentsWindow(self)
 
             else:
 

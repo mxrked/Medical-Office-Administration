@@ -1,171 +1,45 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5 import uic
+
+import data_manager
 from frontend.ui.assets.qrc import app_bg
 from frontend.ui.assets.files.GLOBALS import *
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.orm import sessionmaker, declarative_base
+from frontend import StartWindow
+from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 
 import urllib
 import sqlalchemy
 import sys
-import Referrals, LabOrders, NewPatient, CheckIn, CheckOut, ApptRequest
-import backend.db
+
+
+
 
 class UI(QMainWindow):
     def __init__(self):
+
+
         super(UI, self).__init__()
 
         uic.loadUi("ui/SchedulingAppointmentsWindow.ui", self)
 
         # Session for connecting to the Database
-        session = backend.db.get_session()
+        session = data_manager.DataManger().session
 
         # Functions
-        def connectToDB():
-                ' This is used to connect to the DB '
-
-                try:
-                    import sqlalchemy as sql
-                    import pyodbc
-                    import urllib.parse
-                    from sqlalchemy.pool import QueuePool
-
-                except ImportError as e:
-                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
-                    raise e
-
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
-                engine = sql.create_engine(conn_str)
-
-                engine.connect()
-
-                # This is used to check if the database is connected
-                if engine.connect():
-                    print("Connected to database. . .")
-
-                    return engine
-
-                # with engine.connect() as conn:
-                #     result = conn.execute(sql.text("SELECT * FROM Appointment"))
-                #     for key in result.keys():
-                #         print(key)
-        def closeDBConnection():
-                ' This is used to close the connection to the DB '
-
-                try:
-                    import sqlalchemy as sql
-                    import pyodbc
-                    import urllib.parse
-                    from sqlalchemy.pool import QueuePool
-
-                except ImportError as e:
-                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
-                    raise e
-
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
-                engine = sql.create_engine(conn_str)
-
-                engine.dispose()
-
-                if engine.dispose:
-                        print("Closed database. . .")
-
-        # Window Functions
-        def enterStartWindow():
-                from frontend import StartWindow
-
-                print("Routing to start screen")
-                StartWindow.UIWindow.show()
-                self.hide()
-        def enterNewPatientWindow():
-                print("Routing to new patient screen")
-
-                if len(currentUsername) == 0:
-                        print("There is nobody logged in..")
-                if len(currentUsername) == 1:
-                        print("Current User: " + currentUsername[0])
-
-                        NewPatient.UIWindow.show()
-                        self.hide()
-
-
-                # Display new window code here
-        def enterCheckInWindow():
-                print("Routing to check in screen")
-
-                if len(currentUsername) == 0:
-                        print("There is nobody logged in..")
-                if len(currentUsername) == 1:
-                        print("Current User: " + currentUsername[0])
-
-                        CheckIn.UIWindow.show()
-                        self.hide()
-
-                # Display new window code here
-        def enterCheckOutWindow():
-                print("Routing to check out screen")
-
-                if len(currentUsername) == 0:
-                        print("There is nobody logged in..")
-                if len(currentUsername) == 1:
-                        print("Current User: " + currentUsername[0])
-
-                        CheckOut.UIWindow.show()
-                        self.hide()
-
-                # Display new window code here
-        def enterMakeReferralWindow():
-                print("Routing to make referral screen")
-
-                if len(currentUsername) == 0:
-                        print("There is nobody logged in..")
-                if len(currentUsername) == 1:
-                        print("Current User: " + currentUsername[0])
-
-                        Referrals.UIWindow.show()
-                        self.hide()
-
-                        Referrals.UIWindow.show()
-                        self.hide()
-
-                # Display new window code here
-        def enterLabOrdersWindow():
-                print("Routing to lab orders screen")
-
-                if len(currentUsername) == 0:
-                        print("There is nobody logged in..")
-                if len(currentUsername) == 1:
-                        print("Current User: " + currentUsername[0])
-
-                        LabOrders.UIWindow.show()
-                        self.hide()
-
-                # Display new window code here
-        def enterAppointmentApproveViaPortalWindow():
-                print("Routing to appointment approve via portal screen")
-
-                if len(currentUsername) == 0:
-                        print("There is nobody logged in..")
-                if len(currentUsername) == 1:
-                        print("Current User: " + currentUsername[0])
-
-                        ApptRequest.UIWindow.show()
-                        self.hide()
-
-        def logoutUser():
-
-                # Clearing array values
-                currentUsername.clear()
-                currentUserID.clear()
-                currentEmployeeID.clear()
-
-                print("LOGGED OUT")
-
-                # Routing user back to the start window
-                enterStartWindow()
+        # def logoutUser():
+        #
+        #         # Clearing array values
+        #         # currentUsername.clear()
+        #
+        #         currentUsername[0] = "Test"
+        #         currentUserID.clear()
+        #         currentEmployeeID.clear()
+        #
+        #         print("LOGGED OUT")
+        #
+        #         # Routing user back to the start window
+        #         enterStartWindow(self)
 
         # Frame functions
         def hideAllFrames():
@@ -395,14 +269,14 @@ class UI(QMainWindow):
         self.CA_ClearInputsPushButton = self.findChild(QPushButton, "CA_ClearInputsBtn")
 
         #Do something
-        self.logoutPushButton.clicked.connect(logoutUser)
-        self.checkinPushButton.clicked.connect(enterCheckInWindow)
-        self.checkoutPushButton.clicked.connect(enterCheckOutWindow)
-        self.makeReferralPushButton.clicked.connect(enterMakeReferralWindow)
-        self.labOrdersPushButton.clicked.connect(enterLabOrdersWindow)
-        self.approveAppointmentsPushButton.clicked.connect(enterAppointmentApproveViaPortalWindow)
+        self.logoutPushButton.mousePressEvent = lambda event: logoutUser(self)
+        self.checkinPushButton.mousePressEvent = lambda event: enterCheckInWindow(self)
+        self.checkoutPushButton.mousePressEvent = lambda event: enterCheckOutWindow(self)
+        self.makeReferralPushButton.mousePressEvent = lambda event: enterMakeReferralWindow(self)
+        self.labOrdersPushButton.mousePressEvent = lambda event: enterLabOrdersWindow(self)
+        self.approveAppointmentsPushButton.mousePressEvent = lambda event: enterAppointmentApproveViaPortalWindow(self)
 
-        self.newPatientPushButton.clicked.connect(enterNewPatientWindow)
+        self.newPatientPushButton.mousePressEvent = lambda event: enterNewPatientWindow(self)
         self.reschedulingPushButton.clicked.connect(displayRescheduleAppointmentFrame)
         self.makeSchedulePushButton.clicked.connect(displayInputsFrame)
         self.cancelPushButton.clicked.connect(displayCancelAppointmentFrame)
@@ -415,15 +289,27 @@ class UI(QMainWindow):
 
         #Hide the app
         self.hide()
+        StartWindow.UIWindow.hide()
+
+
+        # Changing the title to show a user is logged in
+        if StartWindow.UI.isHidden:
+                print("Start Window is hidden!")
+
+                currentTitle = self.windowTitle()
+                self.setWindowTitle(currentTitle + " -|- User: " + currentUsername[0])
+
 
     # This will make it so when the user clicks the red x, it closes all windows
     def closeEvent(self, event):
         QApplication.closeAllWindows()
         event.accept()
-        app.exit()
+        # app.exit()
 
 
 #initializing app
 app = QApplication(sys.argv)
 UIWindow = UI()
-# app.exec()
+
+
+# app.exit()

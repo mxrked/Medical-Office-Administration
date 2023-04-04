@@ -133,7 +133,7 @@ QPushButton::hover {
       <item>
        <widget class="QPushButton" name="Nav_Appointments">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -170,15 +170,17 @@ QPushButton::hover {
         <property name="styleSheet">
          <string notr="true">QPushButton {
 	border-image: none;
-	background-color: rgba(110, 204, 175, .2);
-	color: rgba(0, 0, 0, .2);
-	border: 2px solid rgba(0, 0, 0, .2);
+	background-color: #6ECCAF;
+	color: black;
+	border: 2px solid black;
 }
 
 QPushButton::hover {
 	background-color: rgb(139, 231, 100);
 	color: white;
-}</string>
+}
+
+</string>
         </property>
         <property name="text">
          <string>Appointments</string>
@@ -1565,149 +1567,6 @@ QPushButton::hover {
           </property>
           <property name="text">
            <string>New Patient</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="DisplayReschedule_Btn">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>170</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Lato</family>
-            <pointsize>11</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-	border-image: none;
-	background-color: #6ECCAF;
-	color: black;
-	border: 2px solid black;
-}
-
-QPushButton::hover {
-	background-color: rgb(139, 231, 100);
-	color: white;
-}
-
-</string>
-          </property>
-          <property name="text">
-           <string>Rescheduling</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="DisplaySchedule_Btn">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>200</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>200</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Lato</family>
-            <pointsize>11</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-	border-image: none;
-	background-color: #6ECCAF;
-	color: black;
-	border: 2px solid black;
-}
-
-QPushButton::hover {
-	background-color: rgb(139, 231, 100);
-	color: white;
-}
-</string>
-          </property>
-          <property name="text">
-           <string>Make/Schedule</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="DisplayCancel_Btn">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>100</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Lato</family>
-            <pointsize>11</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-	border-image: none;
-	background-color: #6ECCAF;
-	color: black;
-	border: 2px solid black;
-}
-
-QPushButton::hover {
-	background-color: rgb(139, 231, 100);
-	color: white;
-}
-
-</string>
-          </property>
-          <property name="text">
-           <string>Cancel</string>
           </property>
          </widget>
         </item>

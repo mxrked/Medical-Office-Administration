@@ -10,10 +10,10 @@ class DataManger():
     def __init__(self):
 
 
-        try: 
+        try:
             from connection_string import DB
         except ImportError:
-            try: 
+            try:
                 from backend.connection_string import DB
             except ImportError:
                 assert False, "connection_string.py not found!"

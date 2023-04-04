@@ -22,24 +22,48 @@ class AppointmentDataManger(DataManger):
     def set_appointment_time(self, appt: Appointment, new_time: time, new_date: date):
 
         assert self.__check_appointment_available(appt, new_time, new_date), "Appointment time not available"
-    
-        # Now we can set the correct time
+
+        stmt = sa.update(Appointment)\
+            .where(Appointment.AppointmentID == appt.AppointmentID)\
+            .values(ApptTime=new_time, ApptDate=new_date)
+        self.session.execute(stmt)
+        self.session.commit()
 
     def add_appointment(self, appt: Appointment):
 
         assert self.__check_appointment_available(appt), "Appointment time not available"
-
-    # Now we can add the appointment
+        self.session.add(appt)
+        self.session.commit()
 
     def get_appointment_types(self, search_text: String) -> list[AppointmentType]:
-        appointment_types = []
-        return appointment_types
-    
+        return self.session.query(AppointmentType)\
+            .filter(AppointmentType.ApptName\
+            .like(f'%{search_text}%'))\
+            .all()
+
     def get_appointments_for_date(self, date: date) -> list[Appointment]: # Check Reschedule/Canceling appointment screen first
-        pass
+        return self.session.query(Appointment)\
+            .filter_by(date=date)\
+            .order_by(Appointment.ApptTime)\
+            .all()
 
     def __check_appointment_available(self, appt: Appointment, new_time=None, new_date=None) -> bool:
 
-        new_time = new_time or appt.ApptTime
-        new_date = new_date or appt.ApptDate
+        appointment_not_taken = True
 
+        taken_appointments = self.session.query(Appointment).filter(
+            sa.and_(
+                Appointment.ApptDate == new_date,
+                Appointment.ApptTime == new_time,
+                Appointment.Physician == appt.EmployeeID
+            )
+        ).first()
+
+        # Check HospitalHours for hours
+
+        # Check in the events table in the physisician is out
+        
+        if taken_appointments is None:
+            appointment_not_taken = False
+
+        return appointment_not_taken

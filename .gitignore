@@ -4,3 +4,4 @@
 **/__pycache__
 **/ignore
 **/connection_string.py
+**/temp_classes.py

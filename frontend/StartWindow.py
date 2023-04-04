@@ -2,20 +2,20 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic, QtCore, QtGui
 from PyQt5.QtGui import QCursor
 
-import data_manager
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide
 from frontend.ui.assets.files.GLOBALS import *
 from frontend.ui.assets.files import GLOBALS
-from frontend.ui.assets.files.NAVIGATION_FUNCS import enterSchedulingAppointmentsWindow
 
 import temp_classes
+import data_manager
 import sys
+import SchedulingAppointmentsWindow
 
 class UI(QMainWindow):
     def __init__(self):
         super(UI, self).__init__()
 
-        print(currentUsername[0])
+        # print(currentUsername[0])
         uic.loadUi("ui/StartWindow.ui", self)
 
 
@@ -102,12 +102,6 @@ class UI(QMainWindow):
             ' This is used to close the app... duh! '
             app.exit()
 
-        # def enterSchedulingAppointmentsWindow():
-        #     from frontend import SchedulingAppointmentsWindow
-        #     self.hide()
-        #     print(SchedulingAppointmentsWindow)
-        #     SchedulingAppointmentsWindow.UIWindow.show()
-
         def getUsername_Text():
             return self.startWindow_UsernameLineEdit.text()
         def getPassword_Text():
@@ -135,7 +129,6 @@ class UI(QMainWindow):
         def loginUser():
             ' This is used to login the user '
 
-
             userName_Text = getUsername_Text()
             password_Text = getPassword_Text()
 
@@ -143,6 +136,7 @@ class UI(QMainWindow):
 
             # Grabbing data entry
             user = session.query(TempUser).filter(TempUser.User_Name == userName_Text, TempUser.Password == password_Text).first()
+            currentUsername.clear()
 
             # This is used to check if the user is available and will move the user to the scheduling window or not
             if user:
@@ -150,15 +144,23 @@ class UI(QMainWindow):
                 # This is used to store certain values and make use of them later
                 GLOBALS.currentEmployeeID.clear()
                 GLOBALS.currentUserID.clear()
-                # GLOBALS.currentUsername.clear()
+                GLOBALS.currentUsername.clear()
 
                 GLOBALS.currentEmployeeID.append(user.Employee_ID)
                 GLOBALS.currentUserID.append(user.User_ID)
-                # GLOBALS.currentUsername.append(user.User_Name)
 
                 # Routing the user to the scheduling window
-                currentUsername[0] = str(user.User_Name)
+                currentUsername.append(str(user.User_Name))
 
+
+                # Resetting inputs
+                self.enterUsernameLineEdit.setText("")
+                self.enterPasswordLineEdit.setText("")
+                hidePassword()
+
+                from frontend.ui.assets.files.NAVIGATION_FUNCS import enterSchedulingAppointmentsWindow
+
+                self.hide()
 
                 enterSchedulingAppointmentsWindow(self)
 
@@ -167,6 +169,7 @@ class UI(QMainWindow):
                 GLOBALS.currentEmployeeID.clear()
                 GLOBALS.currentUserID.clear()
                 GLOBALS.currentUsername.clear()
+                GLOBALS.currentUsername.append("Test")
 
                 print("That user does not exist..")
 
@@ -193,13 +196,12 @@ class UI(QMainWindow):
         self.show()
 
 
-    # This will make it so when the user clicks the red x, it closes all windows
+    # This will make it so when the user clicks the red x, it closes the app
     def closeEvent(self, event):
-        QApplication.closeAllWindows()
-        event.accept()
-        app.exit()
+        sys.exit()
 
 #initializing app
 app = QApplication(sys.argv)
 UIWindow = UI()
-app.exec()
+
+app.exec_()

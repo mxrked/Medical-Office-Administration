@@ -39,20 +39,10 @@ class UI(QMainWindow):
         # Hide the app
         self.hide()
 
-        # Changing the title to show a user is logged in
-        from frontend import SchedulingAppointmentsWindow
-        if SchedulingAppointmentsWindow.UI.isHidden:
-                print("Scheduling Appointments Window is hidden!")
 
-                self.setWindowTitle("Forsyth Family Practice Center - Check Out") # Resetting the title
-                currentTitle = self.windowTitle()
-                self.setWindowTitle(currentTitle + " -|- User: " + currentUsername[0])
-
-    # This will make it so when the user clicks the red x, it closes all windows
+    # This will make it so when the user clicks the red x, it closes the app
     def closeEvent(self, event):
-        QApplication.closeAllWindows()
-        event.accept()
-        app.exit()
+        sys.exit()
 
 
 #initializing app

@@ -26,6 +26,7 @@ class UI(QMainWindow):
         self.makeReferralPushButton = self.findChild(QPushButton, "Nav_MakeReferralBtn")
         self.labOrdersPushButton = self.findChild(QPushButton, "Nav_LabOrdersBtn")
         self.approveAppointmentsPushButton = self.findChild(QPushButton, "Nav_ApproveAppointmentsBtn")
+        self.currentUserLabel = self.findChild(QLabel, "currentUserLabel")
 
         # Do something (Use functions for buttons and stuff)
         self.logoutPushButton.mousePressEvent = lambda event: logoutUser(self)
@@ -40,20 +41,10 @@ class UI(QMainWindow):
         # Hide the app
         self.hide()
 
-        # Changing the title to show a user is logged in
-        from frontend import SchedulingAppointmentsWindow
-        if SchedulingAppointmentsWindow.UI.isHidden:
-                print("Scheduling Appointments Window is hidden!")
 
-                self.setWindowTitle("Forsyth Family Practice Center - Approve Appointment via Portal") # Resetting the title
-                currentTitle = self.windowTitle()
-                self.setWindowTitle(currentTitle + " -|- User: " + currentUsername[0])
-
-    # This will make it so when the user clicks the red x, it closes all windows
+    # This will make it so when the user clicks the red x, it closes the app
     def closeEvent(self, event):
-        QApplication.closeAllWindows()
-        event.accept()
-        app.exit()
+        sys.exit()
 
 
 #initializing app

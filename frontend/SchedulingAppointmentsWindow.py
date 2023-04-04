@@ -220,6 +220,13 @@ class UI(QMainWindow):
         self.CA_SearchForAppointmentsPushButton = self.findChild(QPushButton, "SearchForAppointments_Btn_CA")
         self.CA_CancelAppointmentPushButton = self.findChild(QPushButton, "CancelAppointment_Btn_CA")
         self.CA_ClearInputsPushButton = self.findChild(QPushButton, "CA_ClearInputsBtn")
+        self.currentUserLabel = self.findChild(QLabel, "currentUserLabel")
+
+        # Displaying current user in label and title
+        self.currentUserLabel.setText("")
+        self.currentUserLabel.setText("Current User: " + currentUsername[0])
+        self.setWindowTitle("")
+        self.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments -|- User: " + currentUsername[0])
 
         #Do something
         self.logoutPushButton.mousePressEvent = lambda event: logoutUser(self)
@@ -229,6 +236,7 @@ class UI(QMainWindow):
         self.makeReferralPushButton.mousePressEvent = lambda event: enterMakeReferralWindow(self)
         self.labOrdersPushButton.mousePressEvent = lambda event: enterLabOrdersWindow(self)
         self.approveAppointmentsPushButton.mousePressEvent = lambda event: enterAppointmentApproveViaPortalWindow(self)
+
 
 
         self.newPatientPushButton.mousePressEvent = lambda event: enterNewPatientWindow(self)
@@ -241,6 +249,7 @@ class UI(QMainWindow):
         self.RA_ClearInputsPushButton.clicked.connect(clearInputs_RA)
 
         self.CA_ClearInputsPushButton.clicked.connect(clearInputs_CA)
+
 
         #Hide the app
         self.hide()

@@ -14,11 +14,11 @@ class MiscDataManager(DataManger):
     def add_patient(self, patient: Patient):
         pass
 
-    def get_lab_tests(self) -> list[Lab]:
+    def get_lab_tests(self) -> [Lab]:
         labs = []
         return labs
 
-    def get_locations(self) -> list[HospitalLocation]:
+    def get_locations(self) -> [HospitalLocation]:
         locations = self.session.query(HospitalLocation)\
             .order_by(HospitalLocation.LocationName)\
             .all()

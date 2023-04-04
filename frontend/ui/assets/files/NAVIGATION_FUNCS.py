@@ -42,7 +42,7 @@ def enterStartWindow(self):
                 self.hide()
                 StartWindow.UIWindow.show()
 
-def enterSchedulingAppointmentsWindow(self):
+def enterSchedulingAppointmentsWindow():
                 from frontend import SchedulingAppointmentsWindow
 
                 print("Routing to scheduling appointments screen")
@@ -128,7 +128,7 @@ def enterAppointmentApproveViaPortalWindow(self):
                         changeCurrentUserLabelText(ApptRequest)
                         changeTitleText(6, ApptRequest)
 
-def enterNewPatientWindow():
+def enterNewPatientWindow(self):
                 from frontend import NewPatient, SchedulingAppointmentsWindow
                 print("Routing to new patient screen")
 
@@ -137,9 +137,13 @@ def enterNewPatientWindow():
                 if len(currentUsername) == 1:
                         print("Current User: " + currentUsername[0])
 
-                        SchedulingAppointmentsWindow.UIWindow.hide()
+                        # hideAllWindowsExceptForAppointments()
+                        # SchedulingAppointmentsWindow.UIWindow.hide()
+                        # NewPatient.UIWindow.show()
+                        # SchedulingAppointmentsWindow.UIWindow.hide()
+
+                        self.hide()
                         NewPatient.UIWindow.show()
-                        SchedulingAppointmentsWindow.UIWindow.hide()
 
                         changeCurrentUserLabelText(NewPatient)
                         changeTitleText(7, NewPatient)

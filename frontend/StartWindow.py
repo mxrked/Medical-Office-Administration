@@ -161,7 +161,10 @@ class UI(QMainWindow):
 
                 import SchedulingAppointmentsWindow
 
-                self.hide()
+                # If user logins into a different/same account, displays username in title and label
+                SchedulingAppointmentsWindow.UIWindow.currentUserLabel.setText("Current User: " + currentUsername[0])
+                SchedulingAppointmentsWindow.UIWindow.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments -|- User: " + currentUsername[0])
+
                 SchedulingAppointmentsWindow.UIWindow.show()
                 self.hide()
 

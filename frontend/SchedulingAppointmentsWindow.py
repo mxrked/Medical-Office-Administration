@@ -22,6 +22,57 @@ class UI(QMainWindow):
         session = backend.db.get_session()
 
         # Functions
+        def connectToDB():
+                ' This is used to connect to the DB '
+
+                try:
+                    import sqlalchemy as sql
+                    import pyodbc
+                    import urllib.parse
+                    from sqlalchemy.pool import QueuePool
+
+                except ImportError as e:
+                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
+                    raise e
+
+                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
+                engine = sql.create_engine(conn_str)
+
+                engine.connect()
+
+                # This is used to check if the database is connected
+                if engine.connect():
+                    print("Connected to database. . .")
+
+                    return engine
+
+                # with engine.connect() as conn:
+                #     result = conn.execute(sql.text("SELECT * FROM Appointment"))
+                #     for key in result.keys():
+                #         print(key)
+        def closeDBConnection():
+                ' This is used to close the connection to the DB '
+
+                try:
+                    import sqlalchemy as sql
+                    import pyodbc
+                    import urllib.parse
+                    from sqlalchemy.pool import QueuePool
+
+                except ImportError as e:
+                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
+                    raise e
+
+                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
+                engine = sql.create_engine(conn_str)
+
+                engine.dispose()
+
+                if engine.dispose:
+                        print("Closed database. . .")
+
         # Window Functions
         def enterStartWindow():
                 from frontend import StartWindow

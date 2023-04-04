@@ -4,10 +4,11 @@ from PyQt5.QtGui import QCursor
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide
 from frontend.ui.assets.files.GLOBALS import *
 from frontend.ui.assets.files import GLOBALS
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import BLOB, Column, Table, Integer, String, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, Float, NCHAR
 from sqlalchemy.orm import sessionmaker, declarative_base
-import backend.db
 
+import temp_classes
+import backend.db
 import sys
 import SchedulingAppointmentsWindow
 
@@ -96,8 +97,6 @@ class UI(QMainWindow):
             # Displaying the dialog
             infoDialog.exec_()
 
-
-
         def closeApp():
             ' This is used to close the app... duh! '
             app.exit()
@@ -107,7 +106,6 @@ class UI(QMainWindow):
             self.hide()
             print(SchedulingAppointmentsWindow)
             SchedulingAppointmentsWindow.UIWindow.show()
-
 
         def getUsername_Text():
             return self.startWindow_UsernameLineEdit.text()
@@ -135,27 +133,13 @@ class UI(QMainWindow):
 
         def loginUser():
             ' This is used to login the user '
-
-
             userName_Text = getUsername_Text()
             password_Text = getPassword_Text()
 
-            # Declaring the login screen model
-            Base = declarative_base()
+            from temp_classes import TempUser
 
-            class UsersTable(Base):
-
-                __tablename__ = "hold 5"
-                Employee_ID = Column(Integer, primary_key=True)
-                User_ID = Column(Integer)
-                User_Name = Column(String)
-                Email_Address = Column(String)
-                Password = Column(String)
-
-            # Connecting to database for data
             # Grabbing data entry
-            user = session.query(UsersTable).filter(UsersTable.User_Name == userName_Text, UsersTable.Password == password_Text).first()
-
+            user = session.query(TempUser).filter(TempUser.User_Name == userName_Text, TempUser.Password == password_Text).first()
 
             # This is used to check if the user is available and will move the user to the scheduling window or not
             if user:
@@ -180,8 +164,6 @@ class UI(QMainWindow):
                 GLOBALS.currentUsername.clear()
 
                 print("That user does not exist..")
-
-
 
 
         #define widgets

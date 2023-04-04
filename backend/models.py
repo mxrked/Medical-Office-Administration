@@ -203,6 +203,7 @@ class HospitalHours(Base):
     DayOfWeek = Column(VARCHAR(50), nullable=False)
     OpenTime = Column(Time, nullable=False)
     CloseTime = Column(Time, nullable=False)
+    WeekNumber = Column(VARCHAR(50), nullable=False)
 
     Location = relationship("HospitalLocation", backref="HHHospitalLocation")
 

@@ -152,13 +152,9 @@ def logoutUser(self):
                 currentUserID.clear()
                 currentEmployeeID.clear()
 
-
                 print("LOGGED OUT")
 
-                print(currentUsername[0])
-
-                self.session.close()
-                self.session.bind.dispose()
+                print("Resetted currentUsername: " + currentUsername[0])
 
                 # Routing user back to the start window
                 self.currentUserLabel.setText("No User Logged In")

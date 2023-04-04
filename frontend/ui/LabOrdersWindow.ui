@@ -888,6 +888,47 @@ QPushButton::hover {
      </widget>
     </widget>
    </widget>
+   <widget class="QGroupBox" name="horizontalGroupBox">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>670</y>
+      <width>1221</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox {
+	border: none;
+	border-image: none;
+	background-color: none;
+}</string>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QLabel" name="currentUserLabel">
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+	background-color: none;
+	border-image: none;
+	color: white;
+}</string>
+       </property>
+       <property name="text">
+        <string>No User Logged In</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
  </widget>
  <resources>

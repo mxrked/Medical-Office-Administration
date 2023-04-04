@@ -104,7 +104,6 @@ class UI(QMainWindow):
                         ApptRequest.UIWindow.show()
                         self.hide()
 
-
         def logoutUser():
 
                 # Clearing array values

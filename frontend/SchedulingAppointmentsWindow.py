@@ -2,7 +2,6 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5 import uic
 
-import data_manager
 from frontend.ui.assets.qrc import app_bg
 from frontend.ui.assets.files.GLOBALS import *
 from frontend import StartWindow
@@ -10,6 +9,8 @@ from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 
 import urllib
 import sqlalchemy
+import data_manager
+import frontend.ui.assets.files.NAVIGATION_FUNCS
 import sys
 
 
@@ -24,23 +25,9 @@ class UI(QMainWindow):
         uic.loadUi("ui/SchedulingAppointmentsWindow.ui", self)
 
         # Session for connecting to the Database
-        session = data_manager.DataManger().session
+        self.session = data_manager.DataManger().session
 
         # Functions
-        # def logoutUser():
-        #
-        #         # Clearing array values
-        #         # currentUsername.clear()
-        #
-        #         currentUsername[0] = "Test"
-        #         currentUserID.clear()
-        #         currentEmployeeID.clear()
-        #
-        #         print("LOGGED OUT")
-        #
-        #         # Routing user back to the start window
-        #         enterStartWindow(self)
-
         # Frame functions
         def hideAllFrames():
 
@@ -149,26 +136,7 @@ class UI(QMainWindow):
 "    color: white;\n"
 "}")
 
-        # Getting widget values
-        def getLineEditValue(widget):
-                return widget.text()
-        def getDateEditValue(widget):
-                return widget.date()
-        def getComboBoxValue(widget):
-                return widget.currentIndex()
-        def getListWidgetValue(widget, type):
-                if type == "Text": # This will get the text of the item and not its index
-                        return widget.currentItem()
-                if type == "Index": # This will get the index of the item and not its text
-                        return widget.currentRow()
-
         # Schedule Appointment functions
-        def displayAppointmentTypes_SA():
-                print("Displaying appointment types.. (SA)")
-        def displayCurrentAvailableTimes_SA():
-                print("Displaying current available times.. (SA)")
-        def search_SA():
-                print("Searching.. (SA)")
         def clearInputs_SA():
 
                 defaultDate = QDate(2000, 1, 1)
@@ -185,14 +153,8 @@ class UI(QMainWindow):
 
                 self.SA_AppointmentTypesListWidget.clear()
                 self.SA_CurrentAvailableTimesListWidget.clear()
-        def scheduleAppointment_SA():
-                print("Scheduling appointment.. (SA)")
 
         # Reschedule Appointment functions
-        def displayCurrentAvailableTimesAndSearchedAppointments_RA():
-                print("Displaying current available times and searched appointments.. (RA)")
-        def rescheduleAppointment_RA():
-                print("Rescheduling appointment.. (RA)")
         def clearInputs_RA():
 
                 defaultDate = QDate(2000, 1, 1)
@@ -206,10 +168,6 @@ class UI(QMainWindow):
                 self.RA_CurrentAvailableTimesListWidget.clear()
 
         # Cancel Appointment functions
-        def displaySearchedAppointments_CA():
-                print("Displaying searched appointments.. (CA)")
-        def cancelAppointment_CA():
-                print("Cancelling appointment.. (CA)")
         def clearInputs_CA():
 
                 defaultDate = QDate(2000, 1, 1)
@@ -270,13 +228,14 @@ class UI(QMainWindow):
 
         #Do something
         self.logoutPushButton.mousePressEvent = lambda event: logoutUser(self)
+
         self.checkinPushButton.mousePressEvent = lambda event: enterCheckInWindow(self)
         self.checkoutPushButton.mousePressEvent = lambda event: enterCheckOutWindow(self)
         self.makeReferralPushButton.mousePressEvent = lambda event: enterMakeReferralWindow(self)
         self.labOrdersPushButton.mousePressEvent = lambda event: enterLabOrdersWindow(self)
         self.approveAppointmentsPushButton.mousePressEvent = lambda event: enterAppointmentApproveViaPortalWindow(self)
 
-        self.newPatientPushButton.mousePressEvent = lambda event: enterNewPatientWindow(self)
+        self.newPatientPushButton.mousePressEvent = lambda event: enterNewPatientWindow()
         self.reschedulingPushButton.clicked.connect(displayRescheduleAppointmentFrame)
         self.makeSchedulePushButton.clicked.connect(displayInputsFrame)
         self.cancelPushButton.clicked.connect(displayCancelAppointmentFrame)
@@ -291,13 +250,6 @@ class UI(QMainWindow):
         self.hide()
         StartWindow.UIWindow.hide()
 
-
-        # Changing the title to show a user is logged in
-        if StartWindow.UI.isHidden:
-                print("Start Window is hidden!")
-
-                currentTitle = self.windowTitle()
-                self.setWindowTitle(currentTitle + " -|- User: " + currentUsername[0])
 
 
     # This will make it so when the user clicks the red x, it closes all windows

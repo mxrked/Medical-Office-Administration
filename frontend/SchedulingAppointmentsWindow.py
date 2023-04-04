@@ -4,14 +4,13 @@ from PyQt5 import uic
 
 from frontend.ui.assets.qrc import app_bg
 from frontend.ui.assets.files.GLOBALS import *
-from frontend import StartWindow
 from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 
 import urllib
 import sqlalchemy
 import data_manager
-import frontend.ui.assets.files.NAVIGATION_FUNCS
 import sys
+import StartWindow
 
 
 
@@ -146,12 +145,10 @@ class UI(QMainWindow):
                 self.SA_PatientDOBDateEdit.setDate(defaultDate)
                 self.SA_OfficeLocationsComboBox.setCurrentIndex(0)
                 self.SA_AppointmentReasonLineEdit.setText("")
-                self.SA_AppointmentTypeLineEdit.setText("")
-                self.SA_AppointmentLengthLineEdit.setText("")
+                self.SA_AppointmentTypesComboBox.setCurrentIndex(0)
                 self.SA_PhysicianNamesComboBox.setCurrentIndex(0)
                 self.SA_AppointmentDateDateEdit.setDate(defaultDate)
 
-                self.SA_AppointmentTypesListWidget.clear()
                 self.SA_CurrentAvailableTimesListWidget.clear()
 
         # Reschedule Appointment functions
@@ -198,11 +195,9 @@ class UI(QMainWindow):
         self.SA_PatientDOBDateEdit = self.findChild(QDateEdit, "dateEdit_DOB_SA")
         self.SA_OfficeLocationsComboBox = self.findChild(QComboBox, "ComboBox_OfficeLocations_SA")
         self.SA_AppointmentReasonLineEdit = self.findChild(QLineEdit, "LineEdit_AppointmentReason_SA")
-        self.SA_AppointmentTypeLineEdit = self.findChild(QLineEdit, "LineEdit_AppointmentType_SA")
-        self.SA_AppointmentLengthLineEdit = self.findChild(QLineEdit, "LineEdit_AppointmentLength_SA")
         self.SA_PhysicianNamesComboBox = self.findChild(QComboBox, "ComboBox_PhysicianNames_SA")
+        self.SA_AppointmentTypesComboBox = self.findChild(QComboBox, "ComboBox_AppointmentTypes_SA")
         self.SA_AppointmentDateDateEdit = self.findChild(QDateEdit, "DateEdit_AppDate_SA")
-        self.SA_AppointmentTypesListWidget = self.findChild(QListWidget, "ListWidget_AppointmentTypes_SA")
         self.SA_CurrentAvailableTimesListWidget = self.findChild(QListWidget, "ListWidget_AvailableTimes_SA")
         self.SA_SearchPushButton = self.findChild(QPushButton, "Search_Btn_SA")
         self.SA_ClearInputsPushButton = self.findChild(QPushButton, "ClearInputsBtn")
@@ -235,7 +230,8 @@ class UI(QMainWindow):
         self.labOrdersPushButton.mousePressEvent = lambda event: enterLabOrdersWindow(self)
         self.approveAppointmentsPushButton.mousePressEvent = lambda event: enterAppointmentApproveViaPortalWindow(self)
 
-        self.newPatientPushButton.mousePressEvent = lambda event: enterNewPatientWindow()
+
+        self.newPatientPushButton.mousePressEvent = lambda event: enterNewPatientWindow(self)
         self.reschedulingPushButton.clicked.connect(displayRescheduleAppointmentFrame)
         self.makeSchedulePushButton.clicked.connect(displayInputsFrame)
         self.cancelPushButton.clicked.connect(displayCancelAppointmentFrame)
@@ -249,6 +245,7 @@ class UI(QMainWindow):
         #Hide the app
         self.hide()
         StartWindow.UIWindow.hide()
+        self.hide()
 
 
 

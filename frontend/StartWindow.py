@@ -9,7 +9,7 @@ from frontend.ui.assets.files import GLOBALS
 import temp_classes
 import data_manager
 import sys
-import SchedulingAppointmentsWindow
+
 
 class UI(QMainWindow):
     def __init__(self):
@@ -152,17 +152,18 @@ class UI(QMainWindow):
                 # Routing the user to the scheduling window
                 currentUsername.append(str(user.User_Name))
 
-
                 # Resetting inputs
                 self.enterUsernameLineEdit.setText("")
                 self.enterPasswordLineEdit.setText("")
                 hidePassword()
 
-                from frontend.ui.assets.files.NAVIGATION_FUNCS import enterSchedulingAppointmentsWindow
+
+
+                import SchedulingAppointmentsWindow
 
                 self.hide()
-
-                enterSchedulingAppointmentsWindow(self)
+                SchedulingAppointmentsWindow.UIWindow.show()
+                self.hide()
 
             else:
 

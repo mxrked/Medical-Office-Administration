@@ -28,7 +28,8 @@ class UI(QMainWindow):
 
         # Do something (Use functions for buttons and stuff)
         self.logoutPushButton.mousePressEvent = lambda event: logoutUser(self)
-        self.appointmentsPushButton.mousePressEvent = lambda event: enterSchedulingAppointmentsWindow(self)
+        # self.appointmentsPushButton.clicked.connect(enterSchedulingAppointmentsWindow)
+        self.appointmentsPushButton.mousePressEvent = lambda event: enterSchedulingAppointmentsWindow()
         self.checkinPushButton.mousePressEvent = lambda event: enterCheckInWindow(self)
         self.checkoutPushButton.mousePressEvent = lambda event: enterCheckOutWindow(self)
         self.makeReferralPushButton.mousePressEvent = lambda event: enterMakeReferralWindow(self)

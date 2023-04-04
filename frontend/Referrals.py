@@ -7,7 +7,6 @@ from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 import urllib
 import sqlalchemy
 import sys
-import SchedulingAppointmentsWindow
 
 class UI(QMainWindow):
     def __init__(self):
@@ -29,7 +28,8 @@ class UI(QMainWindow):
 
         # Do something (Use functions for buttons and stuff)
         self.logoutPushButton.mousePressEvent = lambda event: logoutUser(self)
-        self.appointmentsPushButton.mousePressEvent = lambda event: enterSchedulingAppointmentsWindow(self)
+        # self.appointmentsPushButton.clicked.connect(enterSchedulingAppointmentsWindow)
+        self.appointmentsPushButton.mousePressEvent = lambda event: enterSchedulingAppointmentsWindow()
         self.checkinPushButton.mousePressEvent = lambda event: enterCheckInWindow(self)
         self.checkoutPushButton.mousePressEvent = lambda event: enterCheckOutWindow(self)
         self.makeReferralPushButton.mousePressEvent = lambda event: enterMakeReferralWindow(self)

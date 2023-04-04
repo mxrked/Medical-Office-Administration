@@ -10,12 +10,16 @@ import urllib
 import sqlalchemy
 import sys
 import Referrals, LabOrders, NewPatient, CheckIn, CheckOut, ApptRequest
+import backend.db
 
 class UI(QMainWindow):
     def __init__(self):
         super(UI, self).__init__()
 
         uic.loadUi("ui/SchedulingAppointmentsWindow.ui", self)
+
+        # Session for connecting to the Database
+        session = backend.db.get_session()
 
         # Functions
         # Window Functions

@@ -7,7 +7,7 @@ from backend.models import *
 from sqlalchemy.orm import Session, sessionmaker, joinedload
 import sqlalchemy as sa
 import os
-import backend.connection_string
+import connection_string
 
 def get_session() -> Session:
     """
@@ -17,9 +17,9 @@ def get_session() -> Session:
     """
 
     #assert os.path.isfile("backend/connection_string.py"), "connection_string.py not found!"
-    from backend.connection_string import DB
+    from connection_string import DB
 
-    engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={backend.connection_string.DB}")
+    engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
 
     session_maker = sessionmaker(bind=engine)
     return session_maker()

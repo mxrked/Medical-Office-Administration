@@ -150,6 +150,8 @@ def enterNewPatientWindow(self):
 
 def logoutUser(self):
 
+                import SchedulingAppointmentsWindow
+
                 # Clearing array values
                 currentUsername.clear()
                 currentUsername.append("Test")
@@ -160,7 +162,8 @@ def logoutUser(self):
 
                 print("Resetted currentUsername: " + currentUsername[0])
 
-                # Routing user back to the start window
+                # Routing user back to the start window and resetting scheduling window and current username label
+                SchedulingAppointmentsWindow.UIWindow.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments")
                 self.currentUserLabel.setText("No User Logged In")
 
                 enterStartWindow(self)

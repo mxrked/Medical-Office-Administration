@@ -42,11 +42,9 @@ class UI(QMainWindow):
 
 
 
-    # This will make it so when the user clicks the red x, it closes all windows
+    # This will make it so when the user clicks the red x, it closes the app
     def closeEvent(self, event):
-        QApplication.closeAllWindows()
-        event.accept()
-        app.exit()
+        sys.exit()
 
 
 #initializing app

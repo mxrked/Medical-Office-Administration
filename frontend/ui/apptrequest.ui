@@ -607,7 +607,7 @@ QListView::item:selected {
        <rect>
         <x>50</x>
         <y>170</y>
-        <width>559</width>
+        <width>561</width>
         <height>371</height>
        </rect>
       </property>
@@ -990,7 +990,7 @@ QPushButton::hover {
       <x>20</x>
       <y>670</y>
       <width>1221</width>
-      <height>41</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">

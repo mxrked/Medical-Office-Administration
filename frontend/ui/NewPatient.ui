@@ -1614,7 +1614,7 @@ QPushButton::hover {
        <x>110</x>
        <y>880</y>
        <width>1171</width>
-       <height>41</height>
+       <height>61</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -1662,7 +1662,7 @@ QPushButton::hover {
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_Suffix"/>
   <buttongroup name="buttonGroup_Gender"/>
+  <buttongroup name="buttonGroup_Suffix"/>
  </buttongroups>
 </ui>

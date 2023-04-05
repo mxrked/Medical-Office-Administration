@@ -823,9 +823,9 @@ QLabel {
      <widget class="QPushButton" name="pushButton_SubmitLabOrder">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>470</x>
         <y>460</y>
-        <width>131</width>
+        <width>91</width>
         <height>61</height>
        </rect>
       </property>
@@ -856,9 +856,9 @@ QPushButton::hover {
      <widget class="QPushButton" name="pushButton_ClearLabOrders">
       <property name="geometry">
        <rect>
-        <x>630</x>
+        <x>620</x>
         <y>460</y>
-        <width>131</width>
+        <width>141</width>
         <height>61</height>
        </rect>
       </property>
@@ -894,7 +894,7 @@ QPushButton::hover {
       <x>20</x>
       <y>670</y>
       <width>1221</width>
-      <height>41</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">

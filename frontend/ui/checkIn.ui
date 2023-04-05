@@ -601,7 +601,7 @@ QPushButton::hover {
         <x>630</x>
         <y>210</y>
         <width>340</width>
-        <height>72</height>
+        <height>73</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -732,7 +732,7 @@ QPushButton::hover {
       <x>20</x>
       <y>670</y>
       <width>1221</width>
-      <height>41</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">

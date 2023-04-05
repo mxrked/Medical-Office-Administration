@@ -10,7 +10,6 @@ import temp_classes
 import data_manager
 import sys
 
-
 class UI(QMainWindow):
     def __init__(self):
         super(UI, self).__init__()
@@ -152,11 +151,45 @@ class UI(QMainWindow):
                 # Routing the user to the scheduling window
                 currentUsername.append(str(user.User_Name))
 
+                # Hiding login error label
+                self.loginErrorLabel.hide()
+
                 # Resetting inputs
                 self.enterUsernameLineEdit.setText("")
                 self.enterPasswordLineEdit.setText("")
                 hidePassword()
-
+                self.enterUsernameLineEdit.setStyleSheet("""
+                
+                    QLineEdit {
+                        border-image: none;
+                        border: none;
+                        min-width: 200px;
+                        height: 30px;
+                        background-color: #F3ECB0;
+                        color: #344D67;
+                        font-family: "MS Shell Dlg 2";
+                        font-size: 11;
+                        padding-left: 10px;
+                        paddding-right: 10px;
+                    }
+                
+                """)
+                self.enterPasswordLineEdit.setStyleSheet("""
+                
+                    QLineEdit {
+                        border-image: none;
+                        border: none;
+                        min-width: 200px;
+                        height: 30px;
+                        background-color: #F3ECB0;
+                        color: #344D67;
+                        font-family: "MS Shell Dlg 2";
+                        font-size: 11;
+                        padding-left: 10px;
+                        paddding-right: 10px;
+                    }
+                
+                """)
 
 
                 import SchedulingAppointmentsWindow
@@ -175,6 +208,43 @@ class UI(QMainWindow):
                 GLOBALS.currentUsername.clear()
                 GLOBALS.currentUsername.append("Test")
 
+                # Displaying login error label
+                self.loginErrorLabel.show()
+
+                # Adding red border to invalid inputs
+                self.enterUsernameLineEdit.setStyleSheet("""
+                
+                    QLineEdit {
+                        border-image: none;
+                        border: 2px solid red;
+                        min-width: 200px;
+                        height: 30px;
+                        background-color: #F3ECB0;
+                        color: #344D67;
+                        font-family: "MS Shell Dlg 2";
+                        font-size: 11;
+                        padding-left: 10px;
+                        paddding-right: 10px;
+                    }
+                
+                """)
+                self.enterPasswordLineEdit.setStyleSheet("""
+                
+                    QLineEdit {
+                        border-image: none;
+                        border: 2px solid red;
+                        min-width: 200px;
+                        height: 30px;
+                        background-color: #F3ECB0;
+                        color: #344D67;
+                        font-family: "MS Shell Dlg 2";
+                        font-size: 11;
+                        padding-left: 10px;
+                        paddding-right: 10px;
+                    }
+                
+                """)
+
                 print("That user does not exist..")
 
 
@@ -183,12 +253,15 @@ class UI(QMainWindow):
         self.enterPasswordLineEdit = self.findChild(QLineEdit, "startWindow_PasswordLineEdit")
         self.showPasswordLabel = self.findChild(QLabel, "ShowPassword_Label")
         self.hidePasswordLabel = self.findChild(QLabel, "HidePassword_Label")
+        self.loginErrorLabel = self.findChild(QLabel, "loginErrorLabel")
         self.loginPushButton = self.findChild(QPushButton, "startWindow_LoginBtn")
         self.exitPushButton = self.findChild(QPushButton, "startWindow_ExitBtn")
         self.infoPushButton = self.findChild(QPushButton, "startWindow_InfoBtn")
 
 
+
         #Do something
+        self.loginErrorLabel.hide()
         self.showPasswordLabel.mousePressEvent = lambda event: showPassword()
         self.hidePasswordLabel.mousePressEvent = lambda event: hidePassword()
         self.loginPushButton.clicked.connect(loginUser)

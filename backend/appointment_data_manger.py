@@ -24,7 +24,7 @@ class AppointmentDataManger(DataManger):
                                location: HospitalLocation,
                                appt_type: AppointmentType,
                                patient: Patient,
-                               visit_reason: str,) -> list[Appointment]:
+                               visit_reason: str) -> list[Appointment]:
         """
             Returns a list of available appointment times for the given 
             date, provider, location, appointment type, patient, and visit reason.
@@ -38,6 +38,11 @@ class AppointmentDataManger(DataManger):
 
             :return: A list of Appointment objects representing the available appointment times.
         """
+
+        ### Make sure appt_date is not before today
+
+        if appt_date < datetime.now().date():
+            raise ValueError("Appoinment date cannot be before today's date")
 
         avaliable_appointments = []
 

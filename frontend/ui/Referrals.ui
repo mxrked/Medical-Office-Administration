@@ -822,7 +822,7 @@ QPushButton::hover {
       <x>20</x>
       <y>670</y>
       <width>1221</width>
-      <height>41</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">

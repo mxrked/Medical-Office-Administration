@@ -192,7 +192,7 @@
     <property name="geometry">
      <rect>
       <x>360</x>
-      <y>680</y>
+      <y>690</y>
       <width>81</width>
       <height>51</height>
      </rect>
@@ -229,7 +229,7 @@ QPushButton::hover {
     <property name="geometry">
      <rect>
       <x>460</x>
-      <y>680</y>
+      <y>690</y>
       <width>71</width>
       <height>51</height>
      </rect>
@@ -453,6 +453,40 @@ QPushButton::hover {
     </property>
     <property name="scaledContents">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="loginErrorLabel">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>630</y>
+      <width>321</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border-image: none;
+	background-color: none;
+	color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>Login Error: That user does not exist..</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

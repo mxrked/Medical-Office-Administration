@@ -24,7 +24,7 @@ class AppointmentDataManger(DataManger):
                                location: HospitalLocation,
                                appt_type: AppointmentType,
                                patient: Patient,
-                               visit_reason: str,) -> list[Appointment]:
+                               visit_reason: str) -> list[Appointment]:
         """
             Returns a list of available appointment times for the given 
             date, provider, location, appointment type, patient, and visit reason.
@@ -38,6 +38,11 @@ class AppointmentDataManger(DataManger):
 
             :return: A list of Appointment objects representing the available appointment times.
         """
+
+        ### Make sure appt_date is not before today
+
+        if appt_date < datetime.datetime.now().date():
+            raise ValueError("Appoinment date cannot be before today's date")
 
         avaliable_appointments = []
 
@@ -299,7 +304,7 @@ class AppointmentDataManger(DataManger):
         return True
 
     def __get_hours_for(self, check_date: date, location: HospitalLocation) -> HospitalHours:
-
+        """ Gets hours for a given check_date & location object """
         # In the DB its either "Week1" or "Week2"
         week_number = "Week"
         week_number += self.__get_week_number(check_date)
@@ -319,6 +324,7 @@ class AppointmentDataManger(DataManger):
         return hours
 
     def __get_events_for(self, employee: Employee, check_date: date) -> Event:
+        """ Get if an employee has an event on a certain date """
         events = self.session.query(Event)\
                     .filter(
                        sa.or_(Event.EmployeeID == employee.EmployeeID, Event.EmployeeID.is_(None)),

@@ -5,6 +5,7 @@ from PyQt5 import uic
 from ui.assets.qrc import app_bg
 from ui.assets.files.GLOBALS import *
 from ui.assets.files.NAVIGATION_FUNCS import *
+from backend import *
 
 import urllib
 import sqlalchemy

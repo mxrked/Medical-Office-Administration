@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import *
 # from PyQt5.QtCore import *
 from PyQt5 import uic
-# from frontend.ui.assets.qrc import app_bg
-# from frontend.ui.assets.files.GLOBALS import *
+# from ui.assets.qrc import app_bg
+# from ui.assets.files.GLOBALS import *
 #from ui.assets.files.NAVIGATION_FUNCS import enterSchedulingAppointmentsWindow, logoutUser, enterStartWindow, enterCheckInWindow, enterCheckOutWindow, enterNewPatientWindow, enterLabOrdersWindow, enterMakeReferralWindow, enterAppointmentApproveViaPortalWindow
 from ui.assets.files.NAVIGATION_FUNCS import *
 # from sqlalchemy import create_engine, Column, Integer, String

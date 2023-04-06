@@ -11,6 +11,7 @@ import temp_classes
 import data_manager
 import sys
 
+from backend import *
 
 class UI(QMainWindow):
     def __init__(self):

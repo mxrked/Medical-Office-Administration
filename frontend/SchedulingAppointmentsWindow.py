@@ -1,172 +1,32 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5 import uic
-from frontend.ui.assets.qrc import app_bg
-from frontend.ui.assets.files.GLOBALS import *
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.orm import sessionmaker, declarative_base
+
+from ui.assets.qrc import app_bg
+from ui.assets.files.GLOBALS import *
+from ui.assets.files.NAVIGATION_FUNCS import *
 
 import urllib
 import sqlalchemy
+import data_manager
 import sys
-import Referrals, LabOrders, NewPatient, CheckIn, CheckOut, ApptRequest
-import backend.db
+import StartWindow
+
+
+
 
 class UI(QMainWindow):
     def __init__(self):
+
+
         super(UI, self).__init__()
 
         uic.loadUi("ui/SchedulingAppointmentsWindow.ui", self)
 
         # Session for connecting to the Database
-        session = backend.db.get_session()
+        self.session = data_manager.DataManger().session
 
         # Functions
-        def connectToDB():
-                ' This is used to connect to the DB '
-
-                try:
-                    import sqlalchemy as sql
-                    import pyodbc
-                    import urllib.parse
-                    from sqlalchemy.pool import QueuePool
-
-                except ImportError as e:
-                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
-                    raise e
-
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
-                engine = sql.create_engine(conn_str)
-
-                engine.connect()
-
-                # This is used to check if the database is connected
-                if engine.connect():
-                    print("Connected to database. . .")
-
-                    return engine
-
-                # with engine.connect() as conn:
-                #     result = conn.execute(sql.text("SELECT * FROM Appointment"))
-                #     for key in result.keys():
-                #         print(key)
-        def closeDBConnection():
-                ' This is used to close the connection to the DB '
-
-                try:
-                    import sqlalchemy as sql
-                    import pyodbc
-                    import urllib.parse
-                    from sqlalchemy.pool import QueuePool
-
-                except ImportError as e:
-                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
-                    raise e
-
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
-                engine = sql.create_engine(conn_str)
-
-                engine.dispose()
-
-                if engine.dispose:
-                        print("Closed database. . .")
-
-        # Window Functions
-        def enterStartWindow():
-                from frontend import StartWindow
-
-                print("Routing to start screen")
-                StartWindow.UIWindow.show()
-                self.hide()
-        def enterNewPatientWindow():
-                print("Routing to new patient screen")
-
-                if len(currentUsername) == 0:
-                        print("There is nobody logged in..")
-                if len(currentUsername) == 1:
-                        print("Current User: " + currentUsername[0])
-
-                        NewPatient.UIWindow.show()
-                        self.hide()
-
-
-                # Display new window code here
-        def enterCheckInWindow():
-                print("Routing to check in screen")
-
-                if len(currentUsername) == 0:
-                        print("There is nobody logged in..")
-                if len(currentUsername) == 1:
-                        print("Current User: " + currentUsername[0])
-
-                        CheckIn.UIWindow.show()
-                        self.hide()
-
-                # Display new window code here
-        def enterCheckOutWindow():
-                print("Routing to check out screen")
-
-                if len(currentUsername) == 0:
-                        print("There is nobody logged in..")
-                if len(currentUsername) == 1:
-                        print("Current User: " + currentUsername[0])
-
-                        CheckOut.UIWindow.show()
-                        self.hide()
-
-                # Display new window code here
-        def enterMakeReferralWindow():
-                print("Routing to make referral screen")
-
-                if len(currentUsername) == 0:
-                        print("There is nobody logged in..")
-                if len(currentUsername) == 1:
-                        print("Current User: " + currentUsername[0])
-
-                        Referrals.UIWindow.show()
-                        self.hide()
-
-                        Referrals.UIWindow.show()
-                        self.hide()
-
-                # Display new window code here
-        def enterLabOrdersWindow():
-                print("Routing to lab orders screen")
-
-                if len(currentUsername) == 0:
-                        print("There is nobody logged in..")
-                if len(currentUsername) == 1:
-                        print("Current User: " + currentUsername[0])
-
-                        LabOrders.UIWindow.show()
-                        self.hide()
-
-                # Display new window code here
-        def enterAppointmentApproveViaPortalWindow():
-                print("Routing to appointment approve via portal screen")
-
-                if len(currentUsername) == 0:
-                        print("There is nobody logged in..")
-                if len(currentUsername) == 1:
-                        print("Current User: " + currentUsername[0])
-
-                        ApptRequest.UIWindow.show()
-                        self.hide()
-
-        def logoutUser():
-
-                # Clearing array values
-                currentUsername.clear()
-                currentUserID.clear()
-                currentEmployeeID.clear()
-
-                print("LOGGED OUT")
-
-                # Routing user back to the start window
-                enterStartWindow()
-
         # Frame functions
         def hideAllFrames():
 
@@ -275,26 +135,7 @@ class UI(QMainWindow):
 "    color: white;\n"
 "}")
 
-        # Getting widget values
-        def getLineEditValue(widget):
-                return widget.text()
-        def getDateEditValue(widget):
-                return widget.date()
-        def getComboBoxValue(widget):
-                return widget.currentIndex()
-        def getListWidgetValue(widget, type):
-                if type == "Text": # This will get the text of the item and not its index
-                        return widget.currentItem()
-                if type == "Index": # This will get the index of the item and not its text
-                        return widget.currentRow()
-
         # Schedule Appointment functions
-        def displayAppointmentTypes_SA():
-                print("Displaying appointment types.. (SA)")
-        def displayCurrentAvailableTimes_SA():
-                print("Displaying current available times.. (SA)")
-        def search_SA():
-                print("Searching.. (SA)")
         def clearInputs_SA():
 
                 defaultDate = QDate(2000, 1, 1)
@@ -304,21 +145,13 @@ class UI(QMainWindow):
                 self.SA_PatientDOBDateEdit.setDate(defaultDate)
                 self.SA_OfficeLocationsComboBox.setCurrentIndex(0)
                 self.SA_AppointmentReasonLineEdit.setText("")
-                self.SA_AppointmentTypeLineEdit.setText("")
-                self.SA_AppointmentLengthLineEdit.setText("")
+                self.SA_AppointmentTypesComboBox.setCurrentIndex(0)
                 self.SA_PhysicianNamesComboBox.setCurrentIndex(0)
                 self.SA_AppointmentDateDateEdit.setDate(defaultDate)
 
-                self.SA_AppointmentTypesListWidget.clear()
                 self.SA_CurrentAvailableTimesListWidget.clear()
-        def scheduleAppointment_SA():
-                print("Scheduling appointment.. (SA)")
 
         # Reschedule Appointment functions
-        def displayCurrentAvailableTimesAndSearchedAppointments_RA():
-                print("Displaying current available times and searched appointments.. (RA)")
-        def rescheduleAppointment_RA():
-                print("Rescheduling appointment.. (RA)")
         def clearInputs_RA():
 
                 defaultDate = QDate(2000, 1, 1)
@@ -332,10 +165,6 @@ class UI(QMainWindow):
                 self.RA_CurrentAvailableTimesListWidget.clear()
 
         # Cancel Appointment functions
-        def displaySearchedAppointments_CA():
-                print("Displaying searched appointments.. (CA)")
-        def cancelAppointment_CA():
-                print("Cancelling appointment.. (CA)")
         def clearInputs_CA():
 
                 defaultDate = QDate(2000, 1, 1)
@@ -366,11 +195,9 @@ class UI(QMainWindow):
         self.SA_PatientDOBDateEdit = self.findChild(QDateEdit, "dateEdit_DOB_SA")
         self.SA_OfficeLocationsComboBox = self.findChild(QComboBox, "ComboBox_OfficeLocations_SA")
         self.SA_AppointmentReasonLineEdit = self.findChild(QLineEdit, "LineEdit_AppointmentReason_SA")
-        self.SA_AppointmentTypeLineEdit = self.findChild(QLineEdit, "LineEdit_AppointmentType_SA")
-        self.SA_AppointmentLengthLineEdit = self.findChild(QLineEdit, "LineEdit_AppointmentLength_SA")
         self.SA_PhysicianNamesComboBox = self.findChild(QComboBox, "ComboBox_PhysicianNames_SA")
+        self.SA_AppointmentTypesComboBox = self.findChild(QComboBox, "ComboBox_AppointmentTypes_SA")
         self.SA_AppointmentDateDateEdit = self.findChild(QDateEdit, "DateEdit_AppDate_SA")
-        self.SA_AppointmentTypesListWidget = self.findChild(QListWidget, "ListWidget_AppointmentTypes_SA")
         self.SA_CurrentAvailableTimesListWidget = self.findChild(QListWidget, "ListWidget_AvailableTimes_SA")
         self.SA_SearchPushButton = self.findChild(QPushButton, "Search_Btn_SA")
         self.SA_ClearInputsPushButton = self.findChild(QPushButton, "ClearInputsBtn")
@@ -393,16 +220,26 @@ class UI(QMainWindow):
         self.CA_SearchForAppointmentsPushButton = self.findChild(QPushButton, "SearchForAppointments_Btn_CA")
         self.CA_CancelAppointmentPushButton = self.findChild(QPushButton, "CancelAppointment_Btn_CA")
         self.CA_ClearInputsPushButton = self.findChild(QPushButton, "CA_ClearInputsBtn")
+        self.currentUserLabel = self.findChild(QLabel, "currentUserLabel")
+
+        # Displaying current user in label and title
+        self.currentUserLabel.setText("")
+        self.currentUserLabel.setText("Current User: " + currentUsername[0])
+        self.setWindowTitle("")
+        self.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments -|- User: " + currentUsername[0])
 
         #Do something
-        self.logoutPushButton.clicked.connect(logoutUser)
-        self.checkinPushButton.clicked.connect(enterCheckInWindow)
-        self.checkoutPushButton.clicked.connect(enterCheckOutWindow)
-        self.makeReferralPushButton.clicked.connect(enterMakeReferralWindow)
-        self.labOrdersPushButton.clicked.connect(enterLabOrdersWindow)
-        self.approveAppointmentsPushButton.clicked.connect(enterAppointmentApproveViaPortalWindow)
+        self.logoutPushButton.mousePressEvent = lambda event: logoutUser(self)
 
-        self.newPatientPushButton.clicked.connect(enterNewPatientWindow)
+        self.checkinPushButton.mousePressEvent = lambda event: enterCheckInWindow(self)
+        self.checkoutPushButton.mousePressEvent = lambda event: enterCheckOutWindow(self)
+        self.makeReferralPushButton.mousePressEvent = lambda event: enterMakeReferralWindow(self)
+        self.labOrdersPushButton.mousePressEvent = lambda event: enterLabOrdersWindow(self)
+        self.approveAppointmentsPushButton.mousePressEvent = lambda event: enterAppointmentApproveViaPortalWindow(self)
+
+
+
+        self.newPatientPushButton.mousePressEvent = lambda event: enterNewPatientWindow(self)
         self.reschedulingPushButton.clicked.connect(displayRescheduleAppointmentFrame)
         self.makeSchedulePushButton.clicked.connect(displayInputsFrame)
         self.cancelPushButton.clicked.connect(displayCancelAppointmentFrame)
@@ -413,17 +250,22 @@ class UI(QMainWindow):
 
         self.CA_ClearInputsPushButton.clicked.connect(clearInputs_CA)
 
+
         #Hide the app
         self.hide()
+        StartWindow.UIWindow.hide()
+        self.hide()
 
-    # This will make it so when the user clicks the red x, it closes all windows
+
+
+    # This will make it so when the user clicks the red x, it closes the app
     def closeEvent(self, event):
-        QApplication.closeAllWindows()
-        event.accept()
-        app.exit()
+        sys.exit()
 
 
 #initializing app
 app = QApplication(sys.argv)
 UIWindow = UI()
-# app.exec()
+
+
+# app.exit()

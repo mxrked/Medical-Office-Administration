@@ -1,29 +1,28 @@
 from PyQt5.QtWidgets import *
 from PyQt5 import uic, QtCore, QtGui
 from PyQt5.QtGui import QCursor
-from frontend.ui.assets.qrc import app_bg, doctor, show, hide
-from frontend.ui.assets.files.GLOBALS import *
-from frontend.ui.assets.files import GLOBALS
-from sqlalchemy import BLOB, Column, Table, Integer, String, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, Float, NCHAR
-from sqlalchemy.orm import sessionmaker, declarative_base
+
+from ui.assets.qrc import app_bg, doctor, show, hide
+from ui.assets.files.GLOBALS import *
+from ui.assets.files import GLOBALS
 
 import temp_classes
-import backend.db
+import data_manager
 import sys
-import SchedulingAppointmentsWindow
+
 
 class UI(QMainWindow):
     def __init__(self):
         super(UI, self).__init__()
 
+        # print(currentUsername[0])
         uic.loadUi("ui/StartWindow.ui", self)
 
-<<<<<<< HEAD
-        # Session for connecting to the Database
-        session = backend.db.get_session()
+        pos = self.pos()
 
-=======
->>>>>>> 27c856e01ce4d214ce2525371f2191e63e2773fc
+        # Session for connecting to the Database
+        session = data_manager.DataManger().session
+
         # Functions
         def displayInfoDialog():
             ' This is used to display a dialog popup listing the different team members and their roles'
@@ -100,73 +99,9 @@ class UI(QMainWindow):
             # Displaying the dialog
             infoDialog.exec_()
 
-<<<<<<< HEAD
-=======
-        def connectToDB():
-                ' This is used to connect to the DB '
-
-                try:
-                    import sqlalchemy as sql
-                    import pyodbc
-                    import urllib.parse
-                    from sqlalchemy.pool import QueuePool
-
-                except ImportError as e:
-                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
-                    raise e
-
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
-                engine = sql.create_engine(conn_str)
-
-                engine.connect()
-
-                # This is used to check if the database is connected
-                if engine.connect():
-                    print("Connected to database. . .")
-
-                    return engine
-
-                # with engine.connect() as conn:
-                #     result = conn.execute(sql.text("SELECT * FROM Appointment"))
-                #     for key in result.keys():
-                #         print(key)
-        def closeDBConnection():
-                ' This is used to close the connection to the DB '
-
-                try:
-                    import sqlalchemy as sql
-                    import pyodbc
-                    import urllib.parse
-                    from sqlalchemy.pool import QueuePool
-
-                except ImportError as e:
-                    print(f"LIBRARY MISSING: {e} \nMake sure your using the correct enviorment")
-                    raise e
-
-                params = urllib.parse.quote_plus(r'DRIVER={ODBC Driver 18 for SQL Server};SERVER=tcp:capstone2023.database.windows.net,1433;DATABASE=capstone2023;Trusted_Connection=no;Uid=MOAuser;Pwd=Password01!;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-                conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
-                engine = sql.create_engine(conn_str)
-
-                engine.dispose()
-
-                if engine.dispose:
-                        print("Closed database. . .")
-
->>>>>>> 27c856e01ce4d214ce2525371f2191e63e2773fc
         def closeApp():
             ' This is used to close the app... duh! '
-            closeDBConnection()
             app.exit()
-<<<<<<< HEAD
-            backend.db.close_session(session)
-=======
->>>>>>> 27c856e01ce4d214ce2525371f2191e63e2773fc
-
-        def enterSchedulingAppointmentsWindow():
-            self.hide()
-            print(SchedulingAppointmentsWindow)
-            SchedulingAppointmentsWindow.UIWindow.show()
 
         def getUsername_Text():
             return self.startWindow_UsernameLineEdit.text()
@@ -194,36 +129,15 @@ class UI(QMainWindow):
 
         def loginUser():
             ' This is used to login the user '
-<<<<<<< HEAD
-=======
 
-            # Connecting to Database
-            checkDBConnection = connectToDB()
-
->>>>>>> 27c856e01ce4d214ce2525371f2191e63e2773fc
             userName_Text = getUsername_Text()
             password_Text = getPassword_Text()
 
             from temp_classes import TempUser
 
-<<<<<<< HEAD
-=======
-            class UsersTable(Base):
-
-                __tablename__ = "hold 5"
-                Employee_ID = Column(Integer, primary_key=True)
-                User_ID = Column(Integer)
-                User_Name = Column(String)
-                Email_Address = Column(String)
-                Password = Column(String)
-
-            # Connecting to database for data
-            Session = sessionmaker(bind=checkDBConnection)
-            session = Session()
-
->>>>>>> 27c856e01ce4d214ce2525371f2191e63e2773fc
             # Grabbing data entry
             user = session.query(TempUser).filter(TempUser.User_Name == userName_Text, TempUser.Password == password_Text).first()
+            currentUsername.clear()
 
             # This is used to check if the user is available and will move the user to the scheduling window or not
             if user:
@@ -235,17 +149,103 @@ class UI(QMainWindow):
 
                 GLOBALS.currentEmployeeID.append(user.Employee_ID)
                 GLOBALS.currentUserID.append(user.User_ID)
-                GLOBALS.currentUsername.append(user.User_Name)
 
                 # Routing the user to the scheduling window
-                print("Welcome, " + currentUsername[0])
-                enterSchedulingAppointmentsWindow()
+                currentUsername.append(str(user.User_Name))
+
+                # Hiding login error label
+                self.loginErrorLabel.hide()
+
+                # Resetting inputs
+                self.enterUsernameLineEdit.setText("")
+                self.enterPasswordLineEdit.setText("")
+                hidePassword()
+                self.enterUsernameLineEdit.setStyleSheet("""
+                
+                    QLineEdit {
+                        border-image: none;
+                        border: none;
+                        min-width: 200px;
+                        height: 30px;
+                        background-color: #F3ECB0;
+                        color: #344D67;
+                        font-family: "MS Shell Dlg 2";
+                        font-size: 11;
+                        padding-left: 10px;
+                        paddding-right: 10px;
+                    }
+                
+                """)
+                self.enterPasswordLineEdit.setStyleSheet("""
+                
+                    QLineEdit {
+                        border-image: none;
+                        border: none;
+                        min-width: 200px;
+                        height: 30px;
+                        background-color: #F3ECB0;
+                        color: #344D67;
+                        font-family: "MS Shell Dlg 2";
+                        font-size: 11;
+                        padding-left: 10px;
+                        paddding-right: 10px;
+                    }
+                
+                """)
+
+
+                import SchedulingAppointmentsWindow
+
+                # If user logins into a different/same account, displays username in title and label
+                SchedulingAppointmentsWindow.UIWindow.currentUserLabel.setText("Current User: " + currentUsername[0])
+                SchedulingAppointmentsWindow.UIWindow.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments -|- User: " + currentUsername[0])
+
+                SchedulingAppointmentsWindow.UIWindow.show()
+                self.hide()
 
             else:
 
                 GLOBALS.currentEmployeeID.clear()
                 GLOBALS.currentUserID.clear()
                 GLOBALS.currentUsername.clear()
+                GLOBALS.currentUsername.append("Test")
+
+                # Displaying login error label
+                self.loginErrorLabel.show()
+
+                # Adding red border to invalid inputs
+                self.enterUsernameLineEdit.setStyleSheet("""
+                
+                    QLineEdit {
+                        border-image: none;
+                        border: 2px solid red;
+                        min-width: 200px;
+                        height: 30px;
+                        background-color: #F3ECB0;
+                        color: #344D67;
+                        font-family: "MS Shell Dlg 2";
+                        font-size: 11;
+                        padding-left: 10px;
+                        paddding-right: 10px;
+                    }
+                
+                """)
+                self.enterPasswordLineEdit.setStyleSheet("""
+                
+                    QLineEdit {
+                        border-image: none;
+                        border: 2px solid red;
+                        min-width: 200px;
+                        height: 30px;
+                        background-color: #F3ECB0;
+                        color: #344D67;
+                        font-family: "MS Shell Dlg 2";
+                        font-size: 11;
+                        padding-left: 10px;
+                        paddding-right: 10px;
+                    }
+                
+                """)
 
                 print("That user does not exist..")
 
@@ -255,30 +255,33 @@ class UI(QMainWindow):
         self.enterPasswordLineEdit = self.findChild(QLineEdit, "startWindow_PasswordLineEdit")
         self.showPasswordLabel = self.findChild(QLabel, "ShowPassword_Label")
         self.hidePasswordLabel = self.findChild(QLabel, "HidePassword_Label")
+        self.loginErrorLabel = self.findChild(QLabel, "loginErrorLabel")
         self.loginPushButton = self.findChild(QPushButton, "startWindow_LoginBtn")
         self.exitPushButton = self.findChild(QPushButton, "startWindow_ExitBtn")
         self.infoPushButton = self.findChild(QPushButton, "startWindow_InfoBtn")
 
 
+
         #Do something
+        self.loginErrorLabel.hide()
         self.showPasswordLabel.mousePressEvent = lambda event: showPassword()
         self.hidePasswordLabel.mousePressEvent = lambda event: hidePassword()
         self.loginPushButton.clicked.connect(loginUser)
         self.exitPushButton.clicked.connect(closeApp)
         self.infoPushButton.clicked.connect(displayInfoDialog)
 
+        print(f"Current position: ({pos.x()}, {pos.y()})")
 
         #Show the app
         self.show()
 
 
-    # This will make it so when the user clicks the red x, it closes all windows
+    # This will make it so when the user clicks the red x, it closes the app
     def closeEvent(self, event):
-        QApplication.closeAllWindows()
-        event.accept()
-        app.exit()
+        sys.exit()
 
 #initializing app
 app = QApplication(sys.argv)
 UIWindow = UI()
-app.exec()
+
+app.exec_()

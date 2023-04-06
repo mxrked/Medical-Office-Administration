@@ -5,4 +5,4 @@ teamMembers = ["Parker Phelps - Product Owner", "Christian Fortin - Scrum Master
 # This is used to store certain values and make use of them later
 currentEmployeeID = []
 currentUserID = []
-currentUsername = []
+currentUsername = ["Test"]

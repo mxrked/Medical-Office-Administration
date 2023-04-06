@@ -2,13 +2,14 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic, QtCore, QtGui
 from PyQt5.QtGui import QCursor
 
-from frontend.ui.assets.qrc import app_bg, doctor, show, hide
-from frontend.ui.assets.files.GLOBALS import *
-from frontend.ui.assets.files import GLOBALS
+from ui.assets.qrc import app_bg, doctor, show, hide
+from ui.assets.files.GLOBALS import *
+from ui.assets.files import GLOBALS
 
 import temp_classes
 import data_manager
 import sys
+
 
 class UI(QMainWindow):
     def __init__(self):
@@ -17,6 +18,7 @@ class UI(QMainWindow):
         # print(currentUsername[0])
         uic.loadUi("ui/StartWindow.ui", self)
 
+        pos = self.pos()
 
         # Session for connecting to the Database
         session = data_manager.DataManger().session
@@ -268,6 +270,7 @@ class UI(QMainWindow):
         self.exitPushButton.clicked.connect(closeApp)
         self.infoPushButton.clicked.connect(displayInfoDialog)
 
+        print(f"Current position: ({pos.x()}, {pos.y()})")
 
         #Show the app
         self.show()

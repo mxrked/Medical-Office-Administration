@@ -3,6 +3,9 @@ import SchedulingAppointmentsWindow, StartWindow, ApptRequest, NewPatient, Refer
 from frontend.ui.assets.files.GLOBALS import currentUsername, currentUserID, currentEmployeeID
 from backend.data_manager import DataManger
 
+def __keepCurrentCoords():
+    pass
+
 def hideAllWindowsExceptForAppointments():
         from frontend import ApptRequest, NewPatient, Referrals, LabOrders, CheckIn, CheckOut
 

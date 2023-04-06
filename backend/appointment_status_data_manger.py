@@ -10,9 +10,23 @@ from models import Appointment, HospitalLocation, Employee
 
 class AppointmentStatusDataManger(DataManger):
     """
-    A DataManager for modifying and reading appointment statu. 
+        A DataManager for modifying and reading appointment status
+        
+            • Setting appointment status to
+                • Scheduled
+                • In Progress
+                • No Show
+                • Canceled
+            
+            • Get appointments by 
+                • In Progress Status
+                • Pending Status
+                • Todays Appointments (For Checkin)
+
+        It uses self.session for DB interactions
     """
     def __init__(self):
+        """ Our superclass has self.session """
         super().__init__()
 
     def set_appointment_scheduled(self, appt: Appointment):

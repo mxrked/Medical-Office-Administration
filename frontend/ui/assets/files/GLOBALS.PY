@@ -6,3 +6,5 @@ teamMembers = ["Parker Phelps - Product Owner", "Christian Fortin - Scrum Master
 currentEmployeeID = []
 currentUserID = []
 currentUsername = ["Test"]
+
+prevWindowCoords = [0, 0]

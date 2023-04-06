@@ -4,7 +4,8 @@ from PyQt5.QtGui import QCursor
 
 from ui.assets.qrc import app_bg, doctor, show, hide
 from ui.assets.files.GLOBALS import *
-from ui.assets.files import GLOBALS
+from ui.assets.files.NAVIGATION_FUNCS import *
+from ui.assets.files import GLOBALS, NAVIGATION_FUNCS
 
 import temp_classes
 import data_manager
@@ -18,7 +19,7 @@ class UI(QMainWindow):
         # print(currentUsername[0])
         uic.loadUi("ui/StartWindow.ui", self)
 
-        pos = self.pos()
+        # self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 
         # Session for connecting to the Database
         session = data_manager.DataManger().session
@@ -127,6 +128,7 @@ class UI(QMainWindow):
             # Changing echomode
             self.startWindow_PasswordLineEdit.setEchoMode(QLineEdit.Password)
 
+
         def loginUser():
             ' This is used to login the user '
 
@@ -194,14 +196,18 @@ class UI(QMainWindow):
                 """)
 
 
-                import SchedulingAppointmentsWindow
 
-                # If user logins into a different/same account, displays username in title and label
-                SchedulingAppointmentsWindow.UIWindow.currentUserLabel.setText("Current User: " + currentUsername[0])
-                SchedulingAppointmentsWindow.UIWindow.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments -|- User: " + currentUsername[0])
+                # import SchedulingAppointmentsWindow
+                #
+                # # If user logins into a different/same account, displays username in title and label
+                # SchedulingAppointmentsWindow.UIWindow.currentUserLabel.setText("Current User: " + currentUsername[0])
+                # SchedulingAppointmentsWindow.UIWindow.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments -|- User: " + currentUsername[0])
+                #
+                # self.hide()
+                # SchedulingAppointmentsWindow.UIWindow.show()
 
-                SchedulingAppointmentsWindow.UIWindow.show()
                 self.hide()
+                enterSchedulingAppointmentsWindow()
 
             else:
 
@@ -261,7 +267,6 @@ class UI(QMainWindow):
         self.infoPushButton = self.findChild(QPushButton, "startWindow_InfoBtn")
 
 
-
         #Do something
         self.loginErrorLabel.hide()
         self.showPasswordLabel.mousePressEvent = lambda event: showPassword()
@@ -270,8 +275,6 @@ class UI(QMainWindow):
         self.exitPushButton.clicked.connect(closeApp)
         self.infoPushButton.clicked.connect(displayInfoDialog)
 
-        print(f"Current position: ({pos.x()}, {pos.y()})")
-
         #Show the app
         self.show()
 
@@ -279,6 +282,14 @@ class UI(QMainWindow):
     # This will make it so when the user clicks the red x, it closes the app
     def closeEvent(self, event):
         sys.exit()
+
+
+    def moveEvent(self, event):
+        prevWindowCoords.clear()
+
+        prevWindowCoords.append(self.geometry().x())
+        prevWindowCoords.append(self.geometry().y())
+
 
 #initializing app
 app = QApplication(sys.argv)

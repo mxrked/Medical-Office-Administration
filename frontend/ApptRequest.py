@@ -48,6 +48,16 @@ class UI(QMainWindow):
         sys.exit()
 
 
+    def moveEvent(self, event):
+        prevWindowCoords.clear()
+
+        coords = self.pos()
+
+        prevWindowCoords.append(coords.x())
+        prevWindowCoords.append(coords.y())
+
+        print(prevWindowCoords)
+
 #initializing app
 app = QApplication(sys.argv)
 UIWindow = UI()

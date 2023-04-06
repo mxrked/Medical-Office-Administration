@@ -1,21 +1,27 @@
 from data_manager import *
 
+
 class MiscDataManager(DataManger):
 
     def __init__(self):
         super().__init__()
 
-    def add_refferal(self, referral: Referrals):
-        pass
+    def add_referral(self, referral: Referrals):
+        self.session.add(referral)
+        self.session.commit()
 
     def add_lab_order(self, lab_order: LabOrder):
-        pass
+        self.session.add(lab_order)
+        self.session.commit()
 
     def add_patient(self, patient: Patient):
-        pass
+        self.session.add(patient)
+        self.session.commit()
 
     def get_lab_tests(self) -> list[Lab]:
-        labs = []
+        labs = self.session.query(Lab)\
+            .order_by(Lab.LabTest)\
+            .all()
         return labs
 
     def get_locations(self) -> list[HospitalLocation]:

@@ -14,6 +14,7 @@ class UserDataManager(DataManger):
         validated = False
 
         # Besure to global the CURRENT_USER as a User Object
+        # will need to validate group for screen access
         return validated
 
     def check_user_role(self, current_user: User, role: String) -> bool:
@@ -32,15 +33,19 @@ class UserDataManager(DataManger):
             .all()
         return physicians
 
-    def get_patient(self, first_name: String, last_name: String, dob: String) -> list[Patient]:
+    def get_patient(self, first_name: String, last_name: String, dob: Date) -> list[Patient]:
         """
         Returns a list of patients whose name contains the search text.
         NOTE TO FRONTEND: THERE CAN BE MULTIPLE PATIENTS THAT ARE RETURNED. BE SURE TO HANDLE THIS.
 
-        :param session: A SQLAlchemy session object.
-        :param search_text: A string representing the search text.
+        :param dob: a date selected by user
+        :param first_name: a String representing a FirstName
+        :param last_name: a String representing a LastName
         :return: A list of Patient objects.
         """
-        patients = []
+
+        patients = self.session.query(Patient)\
+            .where(dob == Patient.DateOfBirth, first_name == Patient.FirstName, last_name == Patient.LastName)\
+            .all()
 
         return patients

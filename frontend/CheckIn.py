@@ -1,15 +1,18 @@
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
+# from PyQt5.QtCore import *
 from PyQt5 import uic
-from frontend.ui.assets.qrc import app_bg
-from frontend.ui.assets.files.GLOBALS import *
-from frontend.ui.assets.files.NAVIGATION_FUNCS import *
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.orm import sessionmaker, declarative_base
+# from frontend.ui.assets.qrc import app_bg
+# from frontend.ui.assets.files.GLOBALS import *
+#from ui.assets.files.NAVIGATION_FUNCS import enterSchedulingAppointmentsWindow, logoutUser, enterStartWindow, enterCheckInWindow, enterCheckOutWindow, enterNewPatientWindow, enterLabOrdersWindow, enterMakeReferralWindow, enterAppointmentApproveViaPortalWindow
+from ui.assets.files.NAVIGATION_FUNCS import *
+# from sqlalchemy import create_engine, Column, Integer, String
+# from sqlalchemy.orm import sessionmaker, declarative_base
 
-import urllib
-import sqlalchemy
+
+# import urllib
+# import sqlalchemy
 import sys
+
 
 class UI(QMainWindow):
     def __init__(self):
@@ -31,8 +34,8 @@ class UI(QMainWindow):
 
         # Do something (Use functions for buttons and stuff)
         self.logoutPushButton.mousePressEvent = lambda event: logoutUser(self)
-        # self.appointmentsPushButton.clicked.connect(enterSchedulingAppointmentsWindow)
-        self.appointmentsPushButton.mousePressEvent = lambda event: enterSchedulingAppointmentsWindow()
+        self.appointmentsPushButton.clicked.connect(enterSchedulingAppointmentsWindow)
+        # self.appointmentsPushButton.mousePressEvent = lambda event: enterSchedulingAppointmentsWindow()
         self.checkinPushButton.mousePressEvent = lambda event: enterCheckInWindow(self)
         self.checkoutPushButton.mousePressEvent = lambda event: enterCheckOutWindow(self)
         self.makeReferralPushButton.mousePressEvent = lambda event: enterMakeReferralWindow(self)
@@ -49,6 +52,16 @@ class UI(QMainWindow):
     def closeEvent(self, event):
         sys.exit()
 
+
+    def moveEvent(self, event):
+        prevWindowCoords.clear()
+
+        coords = self.pos()
+
+        prevWindowCoords.append(coords.x())
+        prevWindowCoords.append(coords.y())
+
+        print(prevWindowCoords)
 
 #initializing app
 app = QApplication(sys.argv)

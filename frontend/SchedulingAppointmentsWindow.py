@@ -14,7 +14,6 @@ import StartWindow
 
 
 
-
 class UI(QMainWindow):
     def __init__(self):
 
@@ -151,6 +150,7 @@ class UI(QMainWindow):
 
                 self.SA_CurrentAvailableTimesListWidget.clear()
 
+
         # Reschedule Appointment functions
         def clearInputs_RA():
 
@@ -174,6 +174,9 @@ class UI(QMainWindow):
                 self.CA_AppointmentDateDateEdit.setDate(defaultDate)
 
                 self.CA_SearchedAppointmentsListWidget.clear()
+
+
+
 
 
         #define widgets
@@ -252,15 +255,25 @@ class UI(QMainWindow):
 
 
         #Hide the app
-        self.hide()
+        # self.hide()
         StartWindow.UIWindow.hide()
-        self.hide()
+
 
 
 
     # This will make it so when the user clicks the red x, it closes the app
     def closeEvent(self, event):
         sys.exit()
+
+    def moveEvent(self, event):
+        prevWindowCoords.clear()
+
+        coords = self.pos()
+
+        prevWindowCoords.append(coords.x())
+        prevWindowCoords.append(coords.y())
+
+        print(prevWindowCoords)
 
 
 #initializing app

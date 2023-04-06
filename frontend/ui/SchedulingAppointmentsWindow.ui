@@ -1542,11 +1542,16 @@ QPushButton::hover {
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>720</x>
+        <x>700</x>
         <y>550</y>
-        <width>341</width>
-        <height>20</height>
+        <width>381</width>
+        <height>21</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>7</pointsize>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QLabel {

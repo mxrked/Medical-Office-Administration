@@ -1,28 +1,19 @@
 # import StartWindow, ApptRequest, NewPatient, Referrals, LabOrders, CheckIn, CheckOut
 
-import frontend.StartWindow
+# import frontend.StartWindow
 from frontend.ui.assets.files.GLOBALS import prevWindowCoords, currentUsername, currentUserID, currentEmployeeID
 from backend.data_manager import DataManger
-
-# def getCurrentCoords(self):
-#     currentCoords = self.pos()
-#
-#     prevWindowCoords.clear()
-#     prevWindowCoords.append(currentCoords.x())
-#     prevWindowCoords.append(currentCoords.y())
-#
-#     return prevWindowCoords
 
 def hideAllWindowsExceptForAppointments():
         from frontend import StartWindow, ApptRequest, NewPatient, Referrals, LabOrders, CheckIn, CheckOut
 
-        # StartWindow.UIWindow.hide()
-        # NewPatient.UIWindow.hide()
-        # Referrals.UIWindow.hide()
-        # CheckIn.UIWindow.hide()
-        # CheckOut.UIWindow.hide()
-        # ApptRequest.UIWindow.hide()
-        # LabOrders.UIWindow.hide()
+        StartWindow.UIWindow.hide()
+        NewPatient.UIWindow.hide()
+        Referrals.UIWindow.hide()
+        CheckIn.UIWindow.hide()
+        CheckOut.UIWindow.hide()
+        ApptRequest.UIWindow.hide()
+        LabOrders.UIWindow.hide()
 
 def changeTitleText(num, window):
                 # Title
@@ -56,8 +47,7 @@ def enterStartWindow(self):
 
 
 def enterSchedulingAppointmentsWindow():
-
-                from frontend import SchedulingAppointmentsWindow, StartWindow
+                from frontend import SchedulingAppointmentsWindow
 
 
                 print("Routing to scheduling appointments screen")

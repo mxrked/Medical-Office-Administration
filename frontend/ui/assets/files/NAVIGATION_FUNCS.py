@@ -2,12 +2,7 @@
 
 # import frontend.StartWindow
 from frontend.ui.assets.files.GLOBALS import prevWindowCoords, currentUsername, currentUserID, currentEmployeeID
-<<<<<<< HEAD
-
-from backend.data_manager import DataManger
-=======
 from backend.private.data_manager import DataManger
->>>>>>> 237c2070c5a747b8ac9b4e9e50dd64d740ea8280
 
 def hideAllWindowsExceptForAppointments():
         from frontend import StartWindow, ApptRequest, NewPatient, Referrals, LabOrders, CheckIn, CheckOut

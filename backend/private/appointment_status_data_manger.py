@@ -3,9 +3,9 @@ appointment_status_data_manager.py - A data manager for interacting with appoint
 Author: Jessica Weeks
 """
 from datetime import date
-from data_manager import DataManger
 import sqlalchemy as sa
-from models import Appointment, HospitalLocation, Employee
+from backend.private.data_manager import DataManger
+from backend.models import Appointment, HospitalLocation, Employee
 
 
 class AppointmentStatusDataManger(DataManger):

@@ -4,7 +4,7 @@ from PyQt5 import uic
 from frontend.ui.assets.qrc import app_bg
 from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 
-import backend.data_manager
+import backend.private.data_manager
 import urllib
 import sqlalchemy
 import sys
@@ -17,7 +17,7 @@ class UI(QMainWindow):
         uic.loadUi("frontend/ui/LabOrdersWindow.ui", self)
 
         # Session for connecting to the Database
-        self.session = backend.data_manager.DataManger().session
+        self.session = backend.private.data_manager.DataManger().session
 
         # Functions
 

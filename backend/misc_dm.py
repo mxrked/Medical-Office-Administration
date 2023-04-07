@@ -5,7 +5,7 @@ Author: Christian Fortin
 from backend.private.data_manager import DataManger
 from backend.models import Referrals, LabOrder, Lab, Patient, HospitalLocation
 
-class MiscDataManager(DataManger):
+class MiscDM(DataManger):
     """
     Handles miscellaneous tasks for interacting with the DB
     Includes:

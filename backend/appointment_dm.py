@@ -10,7 +10,7 @@ from backend.models import HospitalHours, AppointmentType, Appointment,\
 from backend.private.appointment_status_data_manger import AppointmentStatusDataManger
 
 
-class AppointmentDataManger(AppointmentStatusDataManger):
+class AppointmentDM(AppointmentStatusDataManger):
     """
         A DataManager for modifying, adding and reading appointments. 
     """

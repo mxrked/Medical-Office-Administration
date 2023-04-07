@@ -209,6 +209,9 @@ class UI(QMainWindow):
         self.makeSchedulePushButton.clicked.connect(displayInputsFrame)
         self.cancelPushButton.clicked.connect(displayCancelAppointmentFrame)
 
+        self.SA_PatientDOBDateEdit.setDate(QDate.currentDate())
+        self.SA_AppointmentDateDateEdit.setDate(QDate.currentDate())
+        self.SA_AppointmentDateDateEdit.setMinimumDate(QDate.currentDate())
         self.SA_ClearInputsPushButton.mousePressEvent = lambda event: clearInputs_SA(self)
         self.SA_NoCustomTimePushButton.setVisible(False)
         self.SA_NoCustomTimePushButton.mousePressEvent = lambda event: disableCustomTime(self)
@@ -216,10 +219,16 @@ class UI(QMainWindow):
         self.SA_SearchPushButton.mousePressEvent = lambda event: search_SA(self)
         self.SA_ScheduleAppointmentPushButton.mousePressEvent = lambda event: scheduleAppointment(self)
 
+        self.RA_AppointmentDateDateEdit.setDate(QDate.currentDate())
+        self.RA_AppointmentDateDateEdit.setMinimumDate(QDate.currentDate())
+        self.RA_RescheduleDateDateEdit.setDate(QDate.currentDate())
+        self.RA_RescheduleDateDateEdit.setMinimumDate(QDate.currentDate())
         self.RA_ClearInputsPushButton.mousePressEvent = lambda event: clearInputs_RA(self)
         self.RA_DisplayTimesAppointmentsPushButton.mousePressEvent = lambda event: displayTimesApps_RA(self)
         self.RA_RescheduleAppointmentPushButton.mousePressEvent = lambda event: rescheduleAppointment(self)
 
+        self.CA_AppointmentDateDateEdit.setDate(QDate.currentDate())
+        self.CA_AppointmentDateDateEdit.setMinimumDate(QDate.currentDate())
         self.CA_ClearInputsPushButton.mousePressEvent = lambda event: clearInputs_CA(self)
         self.CA_SearchForAppointmentsPushButton.mousePressEvent = lambda event: search_CA(self)
         self.CA_CancelAppointmentPushButton.mousePressEvent = lambda event: cancelAppointment(self)

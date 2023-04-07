@@ -11,7 +11,6 @@ import urllib
 import sqlalchemy
 import backend.data_manager
 import sys
-import frontend.StartWindow
 
 
 
@@ -214,6 +213,7 @@ class UI(QMainWindow):
         self.SA_NoCustomTimePushButton.setVisible(False)
         self.SA_NoCustomTimePushButton.mousePressEvent = lambda event: disableCustomTime(self)
         self.SA_YesCustomTimePushButton.mousePressEvent = lambda event: enableCustomTime(self)
+        self.SA_SearchPushButton.mousePressEvent = lambda event: search_SA(self)
 
         self.RA_ClearInputsPushButton.mousePressEvent = lambda event: clearInputs_RA(self)
 
@@ -222,7 +222,6 @@ class UI(QMainWindow):
 
         #Hide the app
         # self.hide()
-        frontend.StartWindow.UIWindow.hide()
 
 
 

@@ -1,3 +1,4 @@
+from daettime import date
 from backend.data_manager import DataManger
 from backend.models import AppointmentType, Employee, User, EmployeeType, Patient
 
@@ -10,7 +11,7 @@ class UserDataManager(DataManger):
         # I have no idea how this will get done
         pass
 
-    def check_username_password(self, username: String, password: String) -> bool:
+    def check_username_password(self, username: str, password: str) -> bool:
     
         validated = False
 
@@ -18,7 +19,7 @@ class UserDataManager(DataManger):
         # will need to validate group for screen access
         return validated
 
-    def check_user_role(self, current_user: User, role: String) -> bool:
+    def check_user_role(self, current_user: User, role: str) -> bool:
         has_role = False
         # Check if their group has that role
         # Check if the user has that role
@@ -34,7 +35,7 @@ class UserDataManager(DataManger):
             .all()
         return physicians
 
-    def get_patient(self, first_name: String, last_name: String, dob: Date) -> list[Patient]:
+    def get_patient(self, first_name: str, last_name: str, dob: date) -> list[Patient]:
         """
         Returns a list of patients whose name contains the search text.
         NOTE TO FRONTEND: THERE CAN BE MULTIPLE PATIENTS THAT ARE RETURNED. BE SURE TO HANDLE THIS.

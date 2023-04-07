@@ -84,6 +84,9 @@ class Employee(Base):
 
     EmployeeType = relationship("EmployeeType", backref="EmpEmployeeType")
 
+    def __str__(self) -> str:
+        return f"{self.FirstName}, {self.LastName}"
+
 class EmployeeCredintials(Base):
     __tablename__ = "EmployeeCredintials"
 
@@ -218,6 +221,9 @@ class HospitalLocation(Base):
     Address = Column(VARCHAR(50), nullable=False)
     ZipCode = Column(VARCHAR(5), nullable=False)
 
+    def __str__(self) -> str:
+        return f"{self.LocationName}"
+
 class MessagingThread(Base):
     __tablename__ = "MessagingThread"
 
@@ -253,6 +259,9 @@ class User(Base):
     Username = Column(NCHAR(10), nullable=False)
     EmailAddress = Column(VARCHAR(), nullable=False)
     Password = Column(VARCHAR(), nullable=False)
+
+    def __str__(self) -> str:
+        return f"{self.Username}"
 
 class Referrals(Base): ### THIS MAY NEED TO CHANGE DEPENDING ON STUFF
     __tablename__ = "Referrals"

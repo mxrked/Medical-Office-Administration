@@ -5,6 +5,7 @@ from PyQt5 import uic
 from frontend.ui.assets.qrc import app_bg
 from frontend.ui.assets.files.GLOBALS import *
 from frontend.ui.assets.files.NAVIGATION_FUNCS import *
+from frontend.ui.assets.files.SCHEDULING_LISTENERS import *
 
 import urllib
 import sqlalchemy
@@ -75,9 +76,9 @@ class UI(QMainWindow):
 "}")
 
                 # Clearing all the fields
-                clearInputs_SA()
-                clearInputs_RA()
-                clearInputs_CA()
+                clearInputs_SA(self)
+                clearInputs_RA(self)
+                clearInputs_CA(self)
 
         def displayInputsFrame():
 
@@ -134,48 +135,6 @@ class UI(QMainWindow):
 "    color: white;\n"
 "}")
 
-        # Schedule Appointment functions
-        def clearInputs_SA():
-
-                defaultDate = QDate(2000, 1, 1)
-
-                self.SA_PatientFNLineEdit.setText("")
-                self.SA_PatientLNLineEdit.setText("")
-                self.SA_PatientDOBDateEdit.setDate(defaultDate)
-                self.SA_OfficeLocationsComboBox.setCurrentIndex(0)
-                self.SA_AppointmentReasonLineEdit.setText("")
-                self.SA_AppointmentTypesComboBox.setCurrentIndex(0)
-                self.SA_PhysicianNamesComboBox.setCurrentIndex(0)
-                self.SA_AppointmentDateDateEdit.setDate(defaultDate)
-
-                self.SA_CurrentAvailableTimesListWidget.clear()
-
-
-        # Reschedule Appointment functions
-        def clearInputs_RA():
-
-                defaultDate = QDate(2000, 1, 1)
-
-                self.RA_OfficeLocationsComboBox.setCurrentIndex(0)
-                self.RA_PhysicianNamesComboBox.setCurrentIndex(0)
-                self.RA_AppointmentDateDateEdit.setDate(defaultDate)
-                self.RA_RescheduleDateDateEdit.setDate(defaultDate)
-
-                self.RA_SearchedAppointmentsListWidget.clear()
-                self.RA_CurrentAvailableTimesListWidget.clear()
-
-        # Cancel Appointment functions
-        def clearInputs_CA():
-
-                defaultDate = QDate(2000, 1, 1)
-
-                self.CA_OfficeLocationsComboBox.setCurrentIndex(0)
-                self.CA_PhysicianNamesComboBox.setCurrentIndex(0)
-                self.CA_AppointmentDateDateEdit.setDate(defaultDate)
-
-                self.CA_SearchedAppointmentsListWidget.clear()
-
-
 
 
 
@@ -202,6 +161,10 @@ class UI(QMainWindow):
         self.SA_AppointmentTypesComboBox = self.findChild(QComboBox, "ComboBox_AppointmentTypes_SA")
         self.SA_AppointmentDateDateEdit = self.findChild(QDateEdit, "DateEdit_AppDate_SA")
         self.SA_CurrentAvailableTimesListWidget = self.findChild(QListWidget, "ListWidget_AvailableTimes_SA")
+        self.SA_CustomTimeTimeEdit = self.findChild(QTimeEdit, "timeEdit_CustomTime_SA")
+        self.SA_YesCustomTimePushButton = self.findChild(QPushButton, "yesCustomTimePushButton_SA")
+        self.SA_NoCustomTimePushButton = self.findChild(QPushButton, "noCustomTimePushButton_SA")
+
         self.SA_SearchPushButton = self.findChild(QPushButton, "Search_Btn_SA")
         self.SA_ClearInputsPushButton = self.findChild(QPushButton, "ClearInputsBtn")
         self.SA_ScheduleAppointmentPushButton = self.findChild(QPushButton, "ScheduleAppointmentBtn")
@@ -247,16 +210,19 @@ class UI(QMainWindow):
         self.makeSchedulePushButton.clicked.connect(displayInputsFrame)
         self.cancelPushButton.clicked.connect(displayCancelAppointmentFrame)
 
-        self.SA_ClearInputsPushButton.clicked.connect(clearInputs_SA)
+        self.SA_ClearInputsPushButton.mousePressEvent = lambda event: clearInputs_SA(self)
+        self.SA_NoCustomTimePushButton.setVisible(False)
+        self.SA_NoCustomTimePushButton.mousePressEvent = lambda event: disableCustomTime(self)
+        self.SA_YesCustomTimePushButton.mousePressEvent = lambda event: enableCustomTime(self)
 
-        self.RA_ClearInputsPushButton.clicked.connect(clearInputs_RA)
+        self.RA_ClearInputsPushButton.mousePressEvent = lambda event: clearInputs_RA(self)
 
-        self.CA_ClearInputsPushButton.clicked.connect(clearInputs_CA)
+        self.CA_ClearInputsPushButton.mousePressEvent = lambda event: clearInputs_CA(self)
 
 
         #Hide the app
         # self.hide()
-        # frontend.StartWindow.UI.hide()
+        frontend.StartWindow.UIWindow.hide()
 
 
 

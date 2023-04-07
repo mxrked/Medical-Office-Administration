@@ -5,3 +5,5 @@
 **/ignore
 **/connection_string.py
 **/temp_classes.py
+**/.env
+**/Medical-Office-Administration.code-workspace

@@ -31,6 +31,9 @@ class UI(QMainWindow):
         self.approveAppointmentsPushButton = self.findChild(QPushButton, "Nav_ApproveAppointmentsBtn")
         self.currentUserLabel = self.findChild(QLabel, "currentUserLabel")
 
+        self.list_widget = QListWidget()
+        self.list_widget.setObjectName("listView_PendingAppts")
+
         # Do something (Use functions for buttons and stuff)
         self.logoutPushButton.mousePressEvent = lambda event: logoutUser(self)
 
@@ -46,7 +49,27 @@ class UI(QMainWindow):
         # Hide the app
         self.hide()
 
+        example_objects = []
 
+        class test_object():
+            
+            def __init__(self):
+                self.name = "Name"
+                self.description = "Description"
+
+            def __str__(self):
+                return f"My name is {self.name} and I am {self.description}"
+
+        for i in range(0,10):
+            example_objects.append(
+                    test_object()
+                )
+
+        from backend.data_handler import place_objects_into_list
+
+        
+        place_objects_into_list(example_objects, self.list_view)
+        
     # This will make it so when the user clicks the red x, it closes the app
     def closeEvent(self, event):
         sys.exit()

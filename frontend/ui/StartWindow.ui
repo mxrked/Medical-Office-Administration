@@ -417,17 +417,11 @@ QPushButton::hover {
    <widget class="QLabel" name="HidePassword_Label">
     <property name="geometry">
      <rect>
-      <x>780</x>
-      <y>610</y>
-      <width>0</width>
+      <x>830</x>
+      <y>670</y>
+      <width>31</width>
       <height>0</height>
      </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
     </property>
     <property name="maximumSize">
      <size>

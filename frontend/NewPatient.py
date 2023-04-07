@@ -4,6 +4,7 @@ from PyQt5 import uic
 from frontend.ui.assets.qrc import app_bg
 from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 
+import backend.private.data_manager
 import urllib
 import sqlalchemy
 import sys
@@ -13,6 +14,9 @@ class UI(QMainWindow):
         super(UI, self).__init__()
 
         uic.loadUi("frontend/ui/NewPatient.ui", self)
+
+        # Session for connecting to the Database
+        self.session = backend.private.data_manager.DataManger().session
 
         # Functions
 

@@ -8,7 +8,7 @@ import backend.private.data_manager
 import urllib
 import sqlalchemy
 import sys
-import frontend.SchedulingAppointmentsWindow
+# import frontend.SchedulingAppointmentsWindow
 
 class UI(QMainWindow):
     def __init__(self):

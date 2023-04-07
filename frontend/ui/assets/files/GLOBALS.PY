@@ -19,3 +19,12 @@ validAppointmentReason_SA = [False]
 validAppointmentType_SA = [False]
 validPhysicianName_SA = [False]
 validAppointmentDate_SA = [False]
+
+validOfficeLocation_RA = [False]
+validPhysicianName_RA = [False]
+validAppointmentDate_RA = [False]
+validRescheduleDate_RA = [False]
+
+validOfficeLocation_CA = [False]
+validPhysicianName_CA = [False]
+validAppointmentDate_CA = [False]

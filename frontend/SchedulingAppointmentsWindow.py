@@ -214,11 +214,15 @@ class UI(QMainWindow):
         self.SA_NoCustomTimePushButton.mousePressEvent = lambda event: disableCustomTime(self)
         self.SA_YesCustomTimePushButton.mousePressEvent = lambda event: enableCustomTime(self)
         self.SA_SearchPushButton.mousePressEvent = lambda event: search_SA(self)
+        self.SA_ScheduleAppointmentPushButton.mousePressEvent = lambda event: scheduleAppointment(self)
 
         self.RA_ClearInputsPushButton.mousePressEvent = lambda event: clearInputs_RA(self)
+        self.RA_DisplayTimesAppointmentsPushButton.mousePressEvent = lambda event: displayTimesApps_RA(self)
+        self.RA_RescheduleAppointmentPushButton.mousePressEvent = lambda event: rescheduleAppointment(self)
 
         self.CA_ClearInputsPushButton.mousePressEvent = lambda event: clearInputs_CA(self)
-
+        self.CA_SearchForAppointmentsPushButton.mousePressEvent = lambda event: search_CA(self)
+        self.CA_CancelAppointmentPushButton.mousePressEvent = lambda event: cancelAppointment(self)
 
         #Hide the app
         # self.hide()

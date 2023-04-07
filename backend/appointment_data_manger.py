@@ -5,13 +5,12 @@ from datetime import timedelta, date, time
 import datetime
 from sqlalchemy.orm import joinedload
 import sqlalchemy as sa
-from backend.data_manager import DataManger
 from backend.models import HospitalHours, AppointmentType, Appointment,\
                     Employee, HospitalLocation, Event, Patient
+from backend.private.appointment_status_data_manger import AppointmentStatusDataManger
 
 
-
-class AppointmentDataManger(DataManger):
+class AppointmentDataManger(AppointmentStatusDataManger):
     """
         A DataManager for modifying, adding and reading appointments. 
     """

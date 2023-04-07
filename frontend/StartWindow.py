@@ -8,7 +8,7 @@ from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 from frontend.ui.assets.files import GLOBALS, NAVIGATION_FUNCS
 
 import temp_classes
-import backend.data_manager
+import backend.private.data_manager
 import sys
 
 
@@ -22,7 +22,7 @@ class UI(QMainWindow):
         # self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 
         # Session for connecting to the Database
-        session = backend.data_manager.DataManger().session
+        session = backend.private.data_manager.DataManger().session
 
         # Functions
         def displayInfoDialog():
@@ -295,4 +295,4 @@ class UI(QMainWindow):
 app = QApplication(sys.argv)
 UIWindow = UI()
 #
-# app.exec_()
+app.exec_()

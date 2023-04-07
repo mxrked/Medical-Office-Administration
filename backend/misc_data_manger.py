@@ -1,4 +1,4 @@
-from backend.data_manager import DataManger
+from backend.private.data_manager import DataManger
 from backend.models import Referrals, LabOrder, Lab, Patient, HospitalLocation
 import sqlalchemy as sa
 

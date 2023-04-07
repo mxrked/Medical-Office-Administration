@@ -4,7 +4,7 @@ Author: Jessica Weeks
 """
 from datetime import date
 import sqlalchemy as sa
-from backend.data_manager import DataManger
+from backend.private.data_manager import DataManger
 from backend.models import Appointment, HospitalLocation, Employee
 
 

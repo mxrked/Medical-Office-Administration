@@ -1,6 +1,7 @@
 from datetime import date
-from backend.data_manager import DataManger
+from backend.private.data_manager import DataManger
 from backend.models import AppointmentType, Employee, User, EmployeeType, Patient
+from sqlalchemy.orm import joinedload
 
 class UserDataManager(DataManger):
 

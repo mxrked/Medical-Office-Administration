@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5 import uic
-from ui.assets.qrc import app_bg
-from ui.assets.files.NAVIGATION_FUNCS import *
+from frontend.ui.assets.qrc import app_bg
+from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 
 import urllib
 import sqlalchemy
@@ -12,7 +12,7 @@ class UI(QMainWindow):
     def __init__(self):
         super(UI, self).__init__()
 
-        uic.loadUi("ui/NewPatient.ui", self)
+        uic.loadUi("frontend/ui/NewPatient.ui", self)
 
         # Functions
 

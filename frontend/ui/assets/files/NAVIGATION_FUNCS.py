@@ -1,7 +1,8 @@
 # import StartWindow, ApptRequest, NewPatient, Referrals, LabOrders, CheckIn, CheckOut
 
-from ui.assets.files.GLOBALS import prevWindowCoords, currentUsername, currentUserID, currentEmployeeID
-from data_manager import DataManger
+import frontend.StartWindow
+from frontend.ui.assets.files.GLOBALS import prevWindowCoords, currentUsername, currentUserID, currentEmployeeID
+from backend.data_manager import DataManger
 
 # def getCurrentCoords(self):
 #     currentCoords = self.pos()
@@ -13,15 +14,15 @@ from data_manager import DataManger
 #     return prevWindowCoords
 
 def hideAllWindowsExceptForAppointments():
-        import StartWindow, ApptRequest, NewPatient, Referrals, LabOrders, CheckIn, CheckOut
+        from frontend import StartWindow, ApptRequest, NewPatient, Referrals, LabOrders, CheckIn, CheckOut
 
-        StartWindow.UIWindow.hide()
-        NewPatient.UIWindow.hide()
-        Referrals.UIWindow.hide()
-        CheckIn.UIWindow.hide()
-        CheckOut.UIWindow.hide()
-        ApptRequest.UIWindow.hide()
-        LabOrders.UIWindow.hide()
+        # StartWindow.UIWindow.hide()
+        # NewPatient.UIWindow.hide()
+        # Referrals.UIWindow.hide()
+        # CheckIn.UIWindow.hide()
+        # CheckOut.UIWindow.hide()
+        # ApptRequest.UIWindow.hide()
+        # LabOrders.UIWindow.hide()
 
 def changeTitleText(num, window):
                 # Title
@@ -44,8 +45,7 @@ def changeCurrentUserLabelText(window):
                 window.UIWindow.currentUserLabel.setText("Current User: " + currentUsername[0])
 
 def enterStartWindow(self):
-
-                import StartWindow
+                from frontend import StartWindow
 
                 print("Routing to start screen")
                 self.hide()
@@ -57,7 +57,7 @@ def enterStartWindow(self):
 
 def enterSchedulingAppointmentsWindow():
 
-                import SchedulingAppointmentsWindow, StartWindow
+                from frontend import SchedulingAppointmentsWindow, StartWindow
 
 
                 print("Routing to scheduling appointments screen")
@@ -72,7 +72,7 @@ def enterSchedulingAppointmentsWindow():
 
 
 def enterCheckInWindow(self):
-                import CheckIn
+                from frontend import CheckIn
                 print("Routing to check in screen")
 
                 if len(currentUsername) == 0:
@@ -90,7 +90,7 @@ def enterCheckInWindow(self):
 
 
 def enterCheckOutWindow(self):
-                import CheckOut
+                from frontend import CheckOut
 
                 print("Routing to check out screen")
 
@@ -109,7 +109,7 @@ def enterCheckOutWindow(self):
 
 
 def enterMakeReferralWindow(self):
-                import Referrals
+                from frontend import Referrals
                 print("Routing to make referral screen")
 
                 if len(currentUsername) == 0:
@@ -127,7 +127,7 @@ def enterMakeReferralWindow(self):
 
 
 def enterLabOrdersWindow(self):
-                import LabOrders
+                from frontend import LabOrders
                 print("Routing to lab orders screen")
 
                 if len(currentUsername) == 0:
@@ -145,7 +145,7 @@ def enterLabOrdersWindow(self):
 
 
 def enterAppointmentApproveViaPortalWindow(self):
-                import ApptRequest
+                from frontend import ApptRequest
                 print("Routing to appointment approve via portal screen")
 
                 if len(currentUsername) == 0:
@@ -162,7 +162,7 @@ def enterAppointmentApproveViaPortalWindow(self):
 
 
 def enterNewPatientWindow(self):
-                import NewPatient
+                from frontend import NewPatient
                 print("Routing to new patient screen")
 
                 if len(currentUsername) == 0:
@@ -185,7 +185,7 @@ def enterNewPatientWindow(self):
 
 def logoutUser(self):
 
-                import SchedulingAppointmentsWindow
+                from frontend import SchedulingAppointmentsWindow
 
                 # Clearing array values
                 currentUsername.clear()

@@ -1,19 +1,23 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5 import uic
-from ui.assets.qrc import app_bg
-from ui.assets.files.NAVIGATION_FUNCS import *
+from frontend.ui.assets.qrc import app_bg
+from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 
+import backend.data_manager
 import urllib
 import sqlalchemy
 import sys
-import SchedulingAppointmentsWindow
+import frontend.SchedulingAppointmentsWindow
 
 class UI(QMainWindow):
     def __init__(self):
         super(UI, self).__init__()
 
-        uic.loadUi("ui/LabOrdersWindow.ui", self)
+        uic.loadUi("frontend/ui/LabOrdersWindow.ui", self)
+
+        # Session for connecting to the Database
+        self.session = backend.data_manager.DataManger().session
 
         # Functions
 

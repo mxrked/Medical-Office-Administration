@@ -2,13 +2,13 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic, QtCore, QtGui
 from PyQt5.QtGui import QCursor
 
-from ui.assets.qrc import app_bg, doctor, show, hide
-from ui.assets.files.GLOBALS import *
-from ui.assets.files.NAVIGATION_FUNCS import *
-from ui.assets.files import GLOBALS, NAVIGATION_FUNCS
+from frontend.ui.assets.qrc import app_bg, doctor, show, hide
+from frontend.ui.assets.files.GLOBALS import *
+from frontend.ui.assets.files.NAVIGATION_FUNCS import *
+from frontend.ui.assets.files import GLOBALS, NAVIGATION_FUNCS
 
 import temp_classes
-import data_manager
+import backend.data_manager
 import sys
 
 
@@ -17,12 +17,12 @@ class UI(QMainWindow):
         super(UI, self).__init__()
 
         # print(currentUsername[0])
-        uic.loadUi("ui/StartWindow.ui", self)
+        uic.loadUi("frontend/ui/StartWindow.ui", self)
 
         # self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 
         # Session for connecting to the Database
-        session = data_manager.DataManger().session
+        session = backend.data_manager.DataManger().session
 
         # Functions
         def displayInfoDialog():
@@ -102,7 +102,7 @@ class UI(QMainWindow):
 
         def closeApp():
             ' This is used to close the app... duh! '
-            app.exit()
+            sys.exit()
 
         def getUsername_Text():
             return self.startWindow_UsernameLineEdit.text()
@@ -294,5 +294,5 @@ class UI(QMainWindow):
 #initializing app
 app = QApplication(sys.argv)
 UIWindow = UI()
-
-app.exec_()
+#
+# app.exec_()

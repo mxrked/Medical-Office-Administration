@@ -2,15 +2,15 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5 import uic
 
-from ui.assets.qrc import app_bg
-from ui.assets.files.GLOBALS import *
-from ui.assets.files.NAVIGATION_FUNCS import *
+from frontend.ui.assets.qrc import app_bg
+from frontend.ui.assets.files.GLOBALS import *
+from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 
 import urllib
 import sqlalchemy
-import data_manager
+import backend.data_manager
 import sys
-import StartWindow
+import frontend.StartWindow
 
 
 
@@ -20,10 +20,10 @@ class UI(QMainWindow):
 
         super(UI, self).__init__()
 
-        uic.loadUi("ui/SchedulingAppointmentsWindow.ui", self)
+        uic.loadUi("frontend/ui/SchedulingAppointmentsWindow.ui", self)
 
         # Session for connecting to the Database
-        self.session = data_manager.DataManger().session
+        self.session = backend.data_manager.DataManger().session
 
         # Functions
         # Frame functions
@@ -256,7 +256,7 @@ class UI(QMainWindow):
 
         #Hide the app
         # self.hide()
-        StartWindow.UIWindow.hide()
+        # frontend.StartWindow.UI.hide()
 
 
 

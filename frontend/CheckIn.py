@@ -1,14 +1,14 @@
 from PyQt5.QtWidgets import *
 # from PyQt5.QtCore import *
 from PyQt5 import uic
-# from ui.assets.qrc import app_bg
-# from ui.assets.files.GLOBALS import *
-#from ui.assets.files.NAVIGATION_FUNCS import enterSchedulingAppointmentsWindow, logoutUser, enterStartWindow, enterCheckInWindow, enterCheckOutWindow, enterNewPatientWindow, enterLabOrdersWindow, enterMakeReferralWindow, enterAppointmentApproveViaPortalWindow
-from ui.assets.files.NAVIGATION_FUNCS import *
+# from frontend.ui.assets.qrc import app_bg
+# from frontend.ui.assets.files.GLOBALS import *
+#from frontend.ui.assets.files.NAVIGATION_FUNCS import enterSchedulingAppointmentsWindow, logoutUser, enterStartWindow, enterCheckInWindow, enterCheckOutWindow, enterNewPatientWindow, enterLabOrdersWindow, enterMakeReferralWindow, enterAppointmentApproveViaPortalWindow
+from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 # from sqlalchemy import create_engine, Column, Integer, String
 # from sqlalchemy.orm import sessionmaker, declarative_base
 
-
+import backend.data_manager
 # import urllib
 # import sqlalchemy
 import sys
@@ -18,7 +18,10 @@ class UI(QMainWindow):
     def __init__(self):
         super(UI, self).__init__()
 
-        uic.loadUi("ui/checkin.ui", self)
+        uic.loadUi("frontend/ui/checkin.ui", self)
+
+        # Session for connecting to the Database
+        self.session = backend.data_manager.DataManger().session
 
         # Functions
 

@@ -4,7 +4,7 @@ This will hold all of the different listeners for the scheduling/rescheduling/ca
 
 '''
 
-from frontend.ui.assets.files.GLOBALS import customTime
+from frontend.ui.assets.files.GLOBALS import *
 
 from PyQt5.QtCore import QDate
 
@@ -84,12 +84,137 @@ def disableCustomTime(self):
 "}\n")
         print("Disabled Custom Time")
 
-
-
-
-
 def search_SA(self):
-    pass
+
+    patientFN = getPatientFN_SA(self)
+    patientLN = getPatientLN_SA(self)
+    patientDOB = getPatientDOB_SA(self)
+    officeLocation = getOfficeLocation_SA(self)
+    appointmentReason = getAppointmentReason_SA(self)
+    appointmentType = getAppointmentType_SA(self)
+    physicianName = getPhysicianName_SA(self)
+    appointmentDate = getAppointmentDate_SA(self)
+
+    # Checking if inputs are/are not empty
+    if patientFN != "" and patientFN != None:
+
+        # If value exists in db/object
+        print()
+            # validPatientFN_SA.clear()
+            # validPatientFN_SA.append(True)
+
+            # self.SA_PatientFNLineEdit.setStyleSheet("""
+            #
+            #             QLineEdit {
+            #                 border-image: none;
+            #                 border: none;
+            #                 background-color: #F3ECB0;
+            #                 color: #344D67;
+            #                 font-family: "MS Shell Dlg 2";
+            #                 font-size: 11;
+            #                 padding-left: 10px;
+            #                 padding-right: 10px;
+            #             }
+            #
+            # """)
+    if patientFN == "" or patientFN == None:
+        validPatientFN_SA.clear()
+        validPatientFN_SA.append(False)
+
+        self.SA_PatientFNLineEdit.setStyleSheet("""
+                
+                    QLineEdit {
+                        border-image: none;
+                        border: 2px solid red;
+                        background-color: #F3ECB0;
+                        color: #344D67;
+                        font-family: "MS Shell Dlg 2";
+                        font-size: 11;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                    }
+                
+        """)
+
+    if patientLN != "" and patientLN != None:
+
+        # If value exists in db/object
+        print()
+            # validPatientLN_SA.clear()
+            # validPatientLN_SA.append(True)
+
+            # self.SA_PatientLNLineEdit.setStyleSheet("""
+            #
+            #             QLineEdit {
+            #                 border-image: none;
+            #                 border: none;
+            #                 background-color: #F3ECB0;
+            #                 color: #344D67;
+            #                 font-family: "MS Shell Dlg 2";
+            #                 font-size: 11;
+            #                 padding-left: 10px;
+            #                 padding-right: 10px;
+            #             }
+            #
+            # """)
+    if patientLN == "" or patientLN == None:
+        validPatientLN_SA.clear()
+        validPatientLN_SA.append(False)
+
+        self.SA_PatientLNLineEdit.setStyleSheet("""
+                
+                    QLineEdit {
+                        border-image: none;
+                        border: 2px solid red;
+                        background-color: #F3ECB0;
+                        color: #344D67;
+                        font-family: "MS Shell Dlg 2";
+                        font-size: 11;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                    }
+                
+        """)
+
+    if appointmentReason != "" and appointmentReason != None:
+        # If value exists in db/object
+        print()
+            # validAppointmentReason_SA.clear()
+            # validAppointmentReason_SA.append(True)
+
+            # self.SA_AppointmentReasonLineEdit.setStyleSheet("""
+            #
+            #             QLineEdit {
+            #                 border-image: none;
+            #                 border: none;
+            #                 background-color: #F3ECB0;
+            #                 color: #344D67;
+            #                 font-family: "MS Shell Dlg 2";
+            #                 font-size: 11;
+            #                 padding-left: 10px;
+            #                 padding-right: 10px;
+            #             }
+            #
+            # """)
+    if appointmentReason == "" or appointmentReason == None:
+
+        validAppointmentReason_SA.clear()
+        validAppointmentReason_SA.append(False)
+
+        self.SA_AppointmentReasonLineEdit.setStyleSheet("""
+
+                        QLineEdit {
+                            border-image: none;
+                            border: 2px solid red;
+                            background-color: #F3ECB0;
+                            color: #344D67;
+                            font-family: "MS Shell Dlg 2";
+                            font-size: 11;
+                            padding-left: 10px;
+                            padding-right: 10px;
+                        }
+
+            """)
 
 # Rescheduling
 def clearInputs_RA(self):

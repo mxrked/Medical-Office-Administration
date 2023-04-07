@@ -5,8 +5,8 @@ from datetime import timedelta, date, time
 import datetime
 from sqlalchemy.orm import joinedload
 import sqlalchemy as sa
-from data_manager import DataManger
-from models import HospitalHours, AppointmentType, Appointment,\
+from backend.data_manager import DataManger
+from backend.models import HospitalHours, AppointmentType, Appointment,\
                     Employee, HospitalLocation, Event, Patient
 
 

@@ -1,5 +1,6 @@
-from data_manager import *
-
+from backend.data_manager import DataManger
+from backend.models import Referrals, LabOrder, Lab, Patient, HospitalLocation
+import sqlalchemy as sa
 
 class MiscDataManager(DataManger):
 

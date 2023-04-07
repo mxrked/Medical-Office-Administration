@@ -1,4 +1,5 @@
-from data_manager import *
+from backend.data_manager import DataManger
+from backend.models import AppointmentType, Employee, User, EmployeeType, Patient
 
 class UserDataManager(DataManger):
 

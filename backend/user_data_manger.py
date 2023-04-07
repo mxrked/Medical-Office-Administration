@@ -14,7 +14,8 @@ class UserDataManager(DataManger):
 
     def check_username_password(self, username: str, password: str) -> bool:
     
-        validated = False
+        validated = self.session.query(User)\
+            .where(username == User.Username, password == User.Password)
 
         # Besure to global the CURRENT_USER as a User Object
         # will need to validate group for screen access
@@ -24,6 +25,8 @@ class UserDataManager(DataManger):
         has_role = False
         # Check if their group has that role
         # Check if the user has that role
+
+
         return has_role
 
     def get_physicians(self) -> list[Employee]:

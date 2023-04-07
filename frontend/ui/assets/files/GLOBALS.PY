@@ -10,3 +10,12 @@ currentUsername = ["Test"]
 customTime = [False]
 
 prevWindowCoords = [0, 0]
+
+validPatientFN_SA = [False]
+validPatientLN_SA = [False]
+validPatientDOB_SA = [False]
+validOfficeLocation_SA = [False]
+validAppointmentReason_SA = [False]
+validAppointmentType_SA = [False]
+validPhysicianName_SA = [False]
+validAppointmentDate_SA = [False]

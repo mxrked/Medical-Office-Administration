@@ -757,7 +757,6 @@ QPushButton::hover {
                </property>
                <property name="styleSheet">
                 <string notr="true">QDateEdit {
-	QLineEdit 
 	border-image: none;
     border: none;
 	background-color: #F3ECB0;

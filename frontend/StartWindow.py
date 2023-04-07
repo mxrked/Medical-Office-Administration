@@ -305,8 +305,4 @@ class UI(QMainWindow):
 #initializing app
 app = QApplication(sys.argv)
 UIWindow = UI()
-<<<<<<< HEAD
-=======
-#
->>>>>>> 237c2070c5a747b8ac9b4e9e50dd64d740ea8280
 app.exec_()

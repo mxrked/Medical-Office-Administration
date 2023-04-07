@@ -4,7 +4,6 @@ Authors: Jessica Weeks,
 """
 
 from PyQt5.QtWidgets import QListWidget, QListWidgetItem
-from datetime import date, time
 
 example_objects = []
 
@@ -23,22 +22,17 @@ for i in range(0,10):
         )
 
 
-
-def place_objects_into_list(objects: list[object], list_widget: QListWidget):
+def place_objects_into_list(objects: list[object], list_widget: QListWidget) -> list[str]:
     
+    list_widget.clear()
+    object_strings = []
 
-    for object in objects:
-        
-        dictionary = {
-            str(object) : object
-        }
+    for obj in objects:
+        object_strings.append(str(obj))
 
-    for object_str in list(dictionary.keys()):
+    for object_str in object_strings:
+        list_widget.addItem(QListWidgetItem(object_str))
 
-        list_widget.addItem(QListWidgetItem(
-            object_str
-        ))
 
-list_widget = QListWidget()
+    return object_strings
 
-place_objects_into_list(test_object, list_widget)

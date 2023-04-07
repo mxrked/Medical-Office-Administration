@@ -1388,6 +1388,9 @@ QListWidget::item:selected {
         </item>
         <item>
          <widget class="QTimeEdit" name="timeEdit_CustomTime_SA">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -1398,7 +1401,7 @@ QListWidget::item:selected {
            <string notr="true">QTimeEdit {
 	border-image: none;
     border: none;
-	background-color: #F3ECB0;
+	background-color: rgba(243, 236, 176, 133);
 	color: #344D67;
 	font-family: &quot;MS Shell Dlg 2&quot;;
 	font-size: 15;
@@ -1424,9 +1427,9 @@ QListWidget::item:selected {
       </property>
       <property name="geometry">
        <rect>
-        <x>870</x>
+        <x>880</x>
         <y>580</y>
-        <width>191</width>
+        <width>181</width>
         <height>51</height>
        </rect>
       </property>
@@ -1565,29 +1568,86 @@ QPushButton::hover {
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox">
+     <widget class="QPushButton" name="yesCustomTimePushButton_SA">
       <property name="geometry">
        <rect>
         <x>720</x>
         <y>580</y>
-        <width>131</width>
-        <height>50</height>
+        <width>141</width>
+        <height>51</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">QCheckBox {
+       <string notr="true">QPushButton {
 	border-image: none;
-    border: none;
-	background-color: #F3ECB0;
-	color: #344D67;
-	font-family: &quot;MS Shell Dlg 2&quot;;
-	font-size: 15;
-	padding-left: 10px;
-	padding-right: 10px;
-}</string>
+	background-color: #6ECCAF;
+	color: black;
+	border: 2px solid black;
+}
+
+QPushButton::hover {
+	background-color: rgb(139, 231, 100);
+	color: white;
+}
+
+</string>
       </property>
       <property name="text">
-       <string>Custom Time?</string>
+       <string>Add Custom Time</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="noCustomTimePushButton_SA">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>580</y>
+        <width>141</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	border-image: none;
+	background-color: #6ECCAF;
+	color: black;
+	border: 2px solid black;
+}
+
+QPushButton::hover {
+	background-color: rgb(139, 231, 100);
+	color: white;
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string>No Custom Time</string>
       </property>
      </widget>
     </widget>

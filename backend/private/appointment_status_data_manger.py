@@ -33,6 +33,8 @@ class AppointmentStatusDataManger(DataManger):
         """ Changes the appointment status of the given appointment to 'Scheduled' """
         self.__set_appointment_status(appt, "Scheduled")
 
+        Appointment( Apptname= "")
+
 
     def set_appointment_in_progress(self, appt: Appointment):
         """ Changes the appointment status of the given appointment to 'In Progress' """

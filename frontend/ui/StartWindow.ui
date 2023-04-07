@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1400</width>
-    <height>1000</height>
+    <width>900</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1400</width>
-    <height>1000</height>
+    <width>900</width>
+    <height>900</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1400</width>
-    <height>1000</height>
+    <width>900</width>
+    <height>900</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -32,8 +32,8 @@
    <widget class="QLabel" name="startWindow_Heading1">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>40</y>
+      <x>0</x>
+      <y>0</y>
       <width>901</width>
       <height>181</height>
      </rect>
@@ -41,7 +41,7 @@
     <property name="font">
      <font>
       <family>MS Shell Dlg 2</family>
-      <pointsize>48</pointsize>
+      <pointsize>36</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -62,8 +62,8 @@
    <widget class="QLabel" name="startWindow_Heading2">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>140</y>
+      <x>0</x>
+      <y>80</y>
       <width>901</width>
       <height>121</height>
      </rect>
@@ -71,7 +71,7 @@
     <property name="font">
      <font>
       <family>MS Shell Dlg 2</family>
-      <pointsize>48</pointsize>
+      <pointsize>36</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -92,8 +92,8 @@
    <widget class="QLabel" name="startWindow_SubHeading">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>470</y>
+      <x>0</x>
+      <y>380</y>
       <width>901</width>
       <height>91</height>
      </rect>
@@ -101,7 +101,7 @@
     <property name="font">
      <font>
       <family>Lato</family>
-      <pointsize>22</pointsize>
+      <pointsize>18</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
@@ -122,9 +122,9 @@
    <widget class="QLineEdit" name="startWindow_UsernameLineEdit">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>580</y>
-      <width>381</width>
+      <x>290</x>
+      <y>490</y>
+      <width>321</width>
       <height>51</height>
      </rect>
     </property>
@@ -155,9 +155,9 @@
    <widget class="QLineEdit" name="startWindow_PasswordLineEdit">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>660</y>
-      <width>341</width>
+      <x>290</x>
+      <y>570</y>
+      <width>281</width>
       <height>51</height>
      </rect>
     </property>
@@ -191,8 +191,8 @@
    <widget class="QPushButton" name="startWindow_LoginBtn">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>800</y>
+      <x>360</x>
+      <y>710</y>
       <width>81</width>
       <height>51</height>
      </rect>
@@ -228,8 +228,8 @@ QPushButton::hover {
    <widget class="QPushButton" name="startWindow_ExitBtn">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>800</y>
+      <x>460</x>
+      <y>710</y>
       <width>71</width>
       <height>51</height>
      </rect>
@@ -329,8 +329,8 @@ QPushButton::hover {
    <widget class="QPushButton" name="startWindow_InfoBtn">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>910</y>
+      <x>420</x>
+      <y>820</y>
       <width>51</width>
       <height>51</height>
      </rect>
@@ -363,8 +363,8 @@ QPushButton::hover {
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>280</y>
+      <x>350</x>
+      <y>190</y>
       <width>221</width>
       <height>211</height>
      </rect>
@@ -388,8 +388,8 @@ QPushButton::hover {
    <widget class="QLabel" name="ShowPassword_Label">
     <property name="geometry">
      <rect>
-      <x>830</x>
-      <y>670</y>
+      <x>580</x>
+      <y>580</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -417,15 +417,21 @@ QPushButton::hover {
    <widget class="QLabel" name="HidePassword_Label">
     <property name="geometry">
      <rect>
-      <x>830</x>
-      <y>670</y>
+      <x>580</x>
+      <y>580</y>
       <width>31</width>
       <height>0</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>31</width>
+      <height>0</height>
+     </size>
+    </property>
     <property name="maximumSize">
      <size>
-      <width>16777215</width>
+      <width>31</width>
       <height>0</height>
      </size>
     </property>
@@ -452,8 +458,8 @@ QPushButton::hover {
    <widget class="QLabel" name="loginErrorLabel">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>740</y>
+      <x>260</x>
+      <y>650</y>
       <width>381</width>
       <height>41</height>
      </rect>

@@ -182,6 +182,17 @@ class UI(QMainWindow):
                 
                     QLineEdit {
                         border-image: none;
+                        border: 2px solid red;
+                        background-color: #F3ECB0;
+                        color: #344D67;
+                        font-family: "MS Shell Dlg 2";
+                        font-size: 11;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                    }
+                
+                    QLineEdit {
+                        border-image: none;
                         border: none;
                         min-width: 200px;
                         height: 30px;
@@ -294,5 +305,4 @@ class UI(QMainWindow):
 #initializing app
 app = QApplication(sys.argv)
 UIWindow = UI()
-#
-# app.exec_()
+app.exec_()

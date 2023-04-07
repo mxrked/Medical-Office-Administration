@@ -36,3 +36,6 @@ def place_objects_into_list(objects: list[object], list_widget: QListWidget) -> 
 
     return object_strings
 
+
+def place_objects_into_combo_box(objects, combo_widget):
+    pass

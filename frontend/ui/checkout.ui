@@ -575,7 +575,7 @@ QPushButton::hover {
        <string>Refresh</string>
       </property>
      </widget>
-     <widget class="QListView" name="listView_Check_ins">
+     <widget class="QListWidget" name="listWidget_Check_ins">
       <property name="geometry">
        <rect>
         <x>60</x>

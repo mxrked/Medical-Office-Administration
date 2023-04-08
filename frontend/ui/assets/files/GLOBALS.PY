@@ -7,6 +7,8 @@ currentEmployeeID = []
 currentUserID = []
 currentUsername = ["Test"]
 
+isPhysician = [False]
+
 customTime = [False]
 
 prevWindowCoords = [0, 0]

@@ -167,7 +167,7 @@ class AppointmentDM(AppointmentStatusDataManger):
     def set_appointment_time(self, appt:Appointment,
                                    new_time:time,
                                    new_date:date,
-                                   custom_time:bool):
+                                   custom_time:bool=None):
         """
             Sets the appointment time and date to the given values if they are available.
 
@@ -189,7 +189,7 @@ class AppointmentDM(AppointmentStatusDataManger):
         self.session.execute(stmt)
         self.session.commit()
 
-    def add_appointment(self, appt: Appointment, custom_time):
+    def add_appointment(self, appt: Appointment, custom_time=None):
         """
             Adds an appointment to the database if the requested time is available
 

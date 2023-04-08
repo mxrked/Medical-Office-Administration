@@ -42,6 +42,9 @@ class UI(QMainWindow):
         self.labOrdersPushButton.mousePressEvent = lambda event: enterLabOrdersWindow(self)
         self.approveAppointmentsPushButton.mousePressEvent = lambda event: enterAppointmentApproveViaPortalWindow(self)
 
+
+        greyOutReferralsAndLabOrdersForPhysicians(self)
+
         # Hide the app
         self.hide()
 

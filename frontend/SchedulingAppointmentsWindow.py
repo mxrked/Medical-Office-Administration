@@ -233,6 +233,8 @@ class UI(QMainWindow):
         self.CA_SearchForAppointmentsPushButton.mousePressEvent = lambda event: search_CA(self)
         self.CA_CancelAppointmentPushButton.mousePressEvent = lambda event: cancelAppointment(self)
 
+
+        greyOutReferralsAndLabOrdersForPhysicians(self)
         #Hide the app
         # self.hide()
 

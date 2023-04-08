@@ -23,13 +23,14 @@ class Appointment(Base):
     VisitReason = Column(String)
     LocationID = Column(Integer, ForeignKey("HospitalLocation.LocationID"))
 
-    AppointmentType= relationship("AppointmentType", backref="ApptAppointmentType")
+    AppointmentType = relationship("AppointmentType", backref="ApptAppointmentType")
     Patient = relationship("Patient", backref="ApptPatient")
     Employee = relationship("Employee", backref="ApptEmployee")
     HospitalLocation = relationship("HospitalLocation", backref="ApptHospitalLocation")
 
     def __str__(self) -> str:
         return f"Appointment on {self.ApptDate} at {self.ApptTime} for {self.Patient.FirstName} {self.Patient.LastName}"
+
 
 class AppointmentType(Base):
     __tablename__ = "AppointmentType"
@@ -42,7 +43,10 @@ class AppointmentType(Base):
     def __str__(self) -> str:
         return f"{self.ApptName}"
 
-EmpUserRoleCross = Table('EmpUserRoleCross', Base.metadata,
+
+EmpUserRoleCross = Table(
+    'EmpUserRoleCross',
+    Base.metadata,
     Column('DummyID', Integer, primary_key=True),
     Column('EmployeeID', Integer, ForeignKey("Employee.EmployeeID")),
     Column('RoleID', Integer, ForeignKey("Role.RoleID")),
@@ -50,18 +54,23 @@ EmpUserRoleCross = Table('EmpUserRoleCross', Base.metadata,
     Column('OfficeID', Integer, ForeignKey("Offices.OfficeID"))
 )
 
-EmpGroupCross = Table('EmpGroupCross', Base.metadata,
+EmpGroupCross = Table(
+    'EmpGroupCross',
+    Base.metadata,
     Column('DummyID', Integer, primary_key=True),
     Column('EmployeeID', Integer, ForeignKey("Employee.EmployeeID")),
     Column('GroupID', Integer, ForeignKey("Group.GroupID"))
 )
 
-EmpLocReferralCross = Table('EmpLocReferralCross', Base.metadata,
+EmpLocReferralCross = Table(
+    'EmpLocReferralCross',
+    Base.metadata,
     Column('DummyID', Integer, primary_key=True),
     Column('EmployeeID', Integer, ForeignKey("Employee.EmployeeID ")),
     Column('LocationID', Integer, ForeignKey("Location.LocationID")),
     Column('ReferralID', Integer, ForeignKey("Referral.ReferralID"))
 )
+
 
 class Employee(Base):
     __tablename__ = "Employee"
@@ -81,11 +90,14 @@ class Employee(Base):
     Salary = Column(Numeric)
     apto = Column(Float, nullable=True)
     EmployeeTypeID = Column(Integer, ForeignKey("EmployeeType.EmployeeTypeID"), nullable=True)
+    UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
 
+    UserType = relationship("UserType", backref="EmpUserType")
     EmployeeType = relationship("EmployeeType", backref="EmpEmployeeType")
 
     def __str__(self) -> str:
         return f"{self.FirstName}, {self.LastName}"
+
 
 class EmployeeCredintials(Base):
     __tablename__ = "EmployeeCredintials"
@@ -102,6 +114,7 @@ class EmployeeCredintials(Base):
     Renewel = Column(NCHAR(10))
 
     Employee = relationship("Employee", backref="ECEmployeeCredintials")
+
 
 class EmployeeRoles(Base):
     __tablename__ = "EmployeeRoles"
@@ -120,12 +133,14 @@ class EmployeeType(Base):
 
     TypeDescription = Column(VARCHAR(50))
 
+
 EmployeeRoleCross = Table(
     "EmployeeRoleCross",
     Base.metadata,
     Column("EmployeeID", ForeignKey("Employee.EmployeeID")),
     Column("RoleID", ForeignKey("Role.RoleID"))
 )
+
 
 class Event(Base):
     __tablename__ = "Event"
@@ -140,12 +155,14 @@ class Event(Base):
 
     Employee = relationship("Employee", backref="EvEmployee")
 
+
 class Lab(Base):
     __tablename__ = "Lab"
 
     LabID = Column(Integer, primary_key=True, nullable=False)
 
     LabTest = Column(String, nullable=False)
+
 
 class LabOrder(Base):
     __tablename__ = "LabOrder"
@@ -164,6 +181,7 @@ class LabOrder(Base):
     Patient = relationship("Patient", backref="LOPatient")
     Location = relationship("HospitalLocation", backref="LOHospitalLocation")
 
+
 class Patient(Base):
     __tablename__ = "Patient"
 
@@ -181,6 +199,10 @@ class Patient(Base):
     # ProviderID = Column(Integer, ForeignKey("") nullable=)
     PatientPhoto = Column(BLOB, nullable=True)
     RecordStatus = Column(Integer, nullable=True)
+    UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
+
+    UserType = relationship("UserType", backref="PUserType")
+
 
 class Group(Base):
     __tablename__ = "Group"
@@ -190,12 +212,14 @@ class Group(Base):
     GroupName = Column(VARCHAR(50), nullable=False)
     Description = Column(String, nullable=False)
 
+
 GroupRoleCross = Table(
     "GroupRoleCross",
     Base.metadata,
     Column("GroupID", ForeignKey("Group.GroupID")),
     Column("RoleID", ForeignKey("Role.RoleID"))
 )
+
 
 class HospitalHours(Base):
     __tablename__ = "HospitalHours"
@@ -210,6 +234,7 @@ class HospitalHours(Base):
 
     Location = relationship("HospitalLocation", backref="HHHospitalLocation")
 
+
 class HospitalLocation(Base):
     __tablename__ = "HospitalLocation"
 
@@ -223,6 +248,7 @@ class HospitalLocation(Base):
 
     def __str__(self) -> str:
         return f"{self.LocationName}"
+
 
 class MessagingThread(Base):
     __tablename__ = "MessagingThread"
@@ -242,6 +268,7 @@ class MessagingThread(Base):
     Employee = relationship("Employee", backref="MTEmployee")
     Patient = relationship("Patient", backref="MTPatient")
 
+
 class Role(Base):
     __tablename__ = "Role"
 
@@ -250,12 +277,13 @@ class Role(Base):
     RoleName = Column(VARCHAR(50), nullable=False)
     RoleDescription = Column(VARCHAR, nullable=True)
 
+
 class User(Base):
     __tablename__ = "User"
 
     UserID = Column(Integer, primary_key=True, nullable=False)
 
-    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
+    UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
     Username = Column(NCHAR(10), nullable=False)
     EmailAddress = Column(VARCHAR(), nullable=False)
     Password = Column(VARCHAR(), nullable=False)
@@ -263,15 +291,23 @@ class User(Base):
     def __str__(self) -> str:
         return f"{self.Username}"
 
-class Referrals(Base): ### THIS MAY NEED TO CHANGE DEPENDING ON STUFF
+
+class Referrals(Base):  # THIS MAY NEED TO CHANGE DEPENDING ON STUFF
     __tablename__ = "Referrals"
 
     DummyID = Column(Integer, primary_key=True)
 
     PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
     EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
-    DateofReferal = Column(Date)  # sic
+    DateofReferral = Column(Date)  # sic
     PatientCondition = Column(VARCHAR(50), nullable=True)
     ReferralReason = Column(VARCHAR(50), nullable=True)
     ReferralExpirationDate = Column(Date, nullable=True)
 
+
+class UserType(Base):
+    __tablename__ = "UserType"
+
+    UserTypeID = Column(Integer, primary_key=True, nullable=False)
+
+    UserType = Column(String, nullable=False)

@@ -12,10 +12,10 @@ class UserDM(DataManger):
         # I have no idea how this will get done
         pass
 
-    def check_username_password(self, username: str, password: str) -> bool:
+    def check_username_password(self, usertypeID: int, username: str, password: str) -> bool:
     
         validated = self.session.query(User)\
-            .where(username == User.Username, password == User.Password)
+            .where(usertypeID == 1, username == User.Username, password == User.Password)
 
         # Besure to global the CURRENT_USER as a User Object
         # will need to validate group for screen access

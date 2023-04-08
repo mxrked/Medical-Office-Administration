@@ -10,7 +10,7 @@ def greyOutReferralsAndLabOrdersForPhysicians(self):
         grey out referrals and lab orders buttons
     '''
 
-    if isPhysician:
+    if isPhysician[0] == True:
         self.makeReferralPushButton.setStyleSheet("QPushButton {\n"
 "    border-image: none;\n"
 "    background-color: rgba(110, 204, 175, .2);\n"

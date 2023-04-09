@@ -8,7 +8,6 @@ from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 from frontend.ui.assets.files.SCHEDULING_LISTENERS import *
 
 from abstract_main_window import AppointmentMainWindow
-import backend.private.data_manager
 import sys
 
 
@@ -21,9 +20,6 @@ class UI(AppointmentMainWindow):
 
         uic.loadUi("frontend/ui/SchedulingAppointmentsWindow.ui", self)
 
-        # Session for connecting to the Database
-        self.session = backend.private.data_manager.DataManger().session
-        
         self.load_nav()
 
 

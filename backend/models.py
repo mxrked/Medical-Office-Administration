@@ -204,6 +204,9 @@ class Patient(Base):
 
     #UserType = relationship("UserType", backref="PUserType")
 
+    def __str__(self) -> str:
+        return f"{self.FirstName}, {self.LastName}"
+
 
 class Group(Base):
     __tablename__ = "Group"
@@ -306,8 +309,11 @@ class Referrals(Base):  # THIS MAY NEED TO CHANGE DEPENDING ON STUFF
     ReferralReason = Column(VARCHAR(50), nullable=True)
     ReferralExpirationDate = Column(Date, nullable=True)
 
+    Patient = relationship("Patient", backref="RePatient")
+    Employee = relationship("Employee", backref="ReEmployee")
+
     def __str__(self) -> str:
-        return "Referral"
+        return f"Referral for {self.Patient} by {self.Employee}"
 
 
 class UserType(Base):

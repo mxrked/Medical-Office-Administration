@@ -1,12 +1,8 @@
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
+from PyQt5.QtWidgets import QApplication
 from PyQt5 import uic
 from frontend.ui.assets.qrc import app_bg
-from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 
-from abstract_main_window import AMainWindow
-import urllib
-import sqlalchemy
+from frontend.abstract_main_window import AMainWindow
 import sys
 
 class UI(AMainWindow):

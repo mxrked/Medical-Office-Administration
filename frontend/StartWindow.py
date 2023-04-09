@@ -1,13 +1,9 @@
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QApplication, QLineEdit, QLabel, QPushButton, QDialog, QVBoxLayout, QFrame
 from PyQt5 import uic, QtCore, QtGui
-from PyQt5.QtGui import QCursor
 
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide
-from frontend.ui.assets.files.GLOBALS import *
-from frontend.ui.assets.files.NAVIGATION_FUNCS import *
-from frontend.ui.assets.files import GLOBALS, NAVIGATION_FUNCS
-
 from frontend.abstract_main_window import AMainWindow
+from frontend.ui.assets.files.GLOBALS import teamMembers
 import sys
 
 
@@ -15,10 +11,7 @@ class UI(AMainWindow):
     def __init__(self):
         super(UI, self).__init__()
 
-        # print(currentUsername[0])
         uic.loadUi("frontend/ui/StartWindow.ui", self)
-
-        # Functions
 
         #define widgets
         self.enterUsernameLineEdit = self.findChild(QLineEdit, "startWindow_UsernameLineEdit")
@@ -33,8 +26,8 @@ class UI(AMainWindow):
 
         #Do something
         self.loginErrorLabel.hide()
-        self.showPasswordLabel.mousePressEvent = lambda event: showPassword()
-        self.hidePasswordLabel.mousePressEvent = lambda event: hidePassword()
+        self.showPasswordLabel.mousePressEvent = lambda event: self.showPassword()
+        self.hidePasswordLabel.mousePressEvent = lambda event: self.hidePassword()
         self.loginPushButton.clicked.connect(self.loginUser)
         self.exitPushButton.clicked.connect(self.closeEvent)
         self.infoPushButton.clicked.connect(self.displayInfoDialog)
@@ -56,7 +49,6 @@ class UI(AMainWindow):
 
         # Dialog settings
         infoDialog.setWindowFlags(QtCore.Qt.FramelessWindowHint) # Hides the title bar
-        infoDialog.setWindowTitle("Meet the team.")
         infoDialog.setFixedSize(400, 400)
 
         # Dialog widgets
@@ -90,17 +82,11 @@ class UI(AMainWindow):
         infoDialogNamesLayout = QVBoxLayout()
 
 
-        for name in GLOBALS.teamMembers:
+        for name in teamMembers:
 
             infoDialogName = QLabel(name)
 
-            infoDialogName.setStyleSheet("""
-            
-                QLabel {
-                    color: white;
-                }
-            
-            """)
+            infoDialogName.setStyleSheet("QLabel {color: white}")
 
             infoDialogName.setFont(QtGui.QFont("Lato", 13))
             infoDialogLayout.addWidget(infoDialogName, alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -215,7 +201,7 @@ class UI(AMainWindow):
             # SchedulingAppointmentsWindow.UIWindow.show()
 
             self.hide()
-            enterSchedulingAppointmentsWindow()
+            self.enterSchedulingAppointmentsWindow()
 
         else:
 

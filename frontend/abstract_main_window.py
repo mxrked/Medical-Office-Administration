@@ -1,10 +1,9 @@
-from PyQt5.QtWidgets import QMainWindow, QPushButton, QLabel
-from frontend.ui.assets.files.NAVIGATION_FUNCS import logoutUser, enterSchedulingAppointmentsWindow, enterCheckInWindow,\
-enterCheckInWindow, enterMakeReferralWindow, enterCheckOutWindow, enterLabOrdersWindow, enterAppointmentApproveViaPortalWindow
+from PyQt5.QtWidgets import QMainWindow, QPushButton, QLabel, QLineEdit, QTimeEdit
 from frontend.ui.assets.files.SCHEDULING_LISTENERS import clearInputs_SA, clearInputs_RA, clearInputs_CA
 from sys import exit
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide
 from frontend.ui.assets.files.GLOBALS import prevWindowCoords
+
 
 class AMainWindow(QMainWindow):
 
@@ -23,21 +22,31 @@ class AMainWindow(QMainWindow):
         self.currentUserLabel = self.findChild(QLabel, "currentUserLabel")
 
         # Do something (Use functions for buttons and stuff)
-        self.logoutPushButton.mousePressEvent = lambda event: logoutUser(self)
+        self.logoutPushButton.mousePressEvent = lambda event: self.logoutUser()
 
         # self.appointmentsPushButton.clicked.connect(enterSchedulingAppointmentsWindow)
-        self.appointmentsPushButton.mousePressEvent = lambda event: enterSchedulingAppointmentsWindow()
-        self.checkinPushButton.mousePressEvent = lambda event: enterCheckInWindow(self)
-        self.checkoutPushButton.mousePressEvent = lambda event: enterCheckOutWindow(self)
-        self.makeReferralPushButton.mousePressEvent = lambda event: enterMakeReferralWindow(self)
-        self.labOrdersPushButton.mousePressEvent = lambda event: enterLabOrdersWindow(self)
-        self.approveAppointmentsPushButton.mousePressEvent = lambda event: enterAppointmentApproveViaPortalWindow(self)
+        self.appointmentsPushButton.mousePressEvent = lambda event: self.enterSchedulingAppointmentsWindow()
+        self.checkinPushButton.mousePressEvent = lambda event: self.enterCheckInWindow()
+        self.checkoutPushButton.mousePressEvent = lambda event: self.enterCheckOutWindow()
+        self.makeReferralPushButton.mousePressEvent = lambda event: self.enterMakeReferralWindow()
+        self.labOrdersPushButton.mousePressEvent = lambda event: self.enterLabOrdersWindow()
+        self.approveAppointmentsPushButton.mousePressEvent = lambda event: self.enterAppointmentApproveViaPortalWindow()
 
 
         self.currentUserLabel.setText("")
         self.currentUserLabel.setText("Current User: " + "USERNAME")
         self.setWindowTitle("")
         self.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments -|- User: " + "USERNAME")
+
+    def clearInputs(self):
+        for widget in self.findChildren(QLineEdit):
+            widget.clear()
+
+    def check_inputs(self, list_of_QLineEdit: list[QLineEdit]) -> bool:
+        for widget in list_of_QLineEdit:
+            if widget.text() == "":
+                return False
+        return True
 
     def closeEvent(self, event):
         exit()
@@ -51,117 +60,248 @@ class AMainWindow(QMainWindow):
         prevWindowCoords.append(coords.y())
 
 
-class AppointmentMainWindow(AMainWindow):
-    def __init__(self):
-        super(AppointmentMainWindow, self).__init__()
-        
-    def hideAllFrames(self):
+    def changeTitleText(self, num, window):
+        '''
 
-        # All frames have a height of 681
-        self.InputsFrame.setFixedHeight(0)
-        self.CancelAppointment_Frame.setFixedHeight(0)
-        self.RescheduleAppointment_Frame.setFixedHeight(0)
+            This changes the title to include both the window name
+            and the current username that is logged in
 
-        # Re-enabling the frame btn togglers
-        self.DisplaySchedule_Btn.setEnabled(True)
-        self.DisplayCancel_Btn.setEnabled(True)
-        self.DisplayReschedule_Btn.setEnabled(True)
+        '''
+        username = "USERNAME"
+        # Title
+        if num == 1:
+            window.UIWindow.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments -|- User: " + username)
+        if num == 2:
+            window.UIWindow.setWindowTitle("Forsyth Family Practice Center - Check In -|- User: " + username)
+        if num == 3:
+            window.UIWindow.setWindowTitle("Forsyth Family Practice Center - Check Out -|- User: " + username)
+        if num == 4:
+            window.UIWindow.setWindowTitle("Forsyth Family Practice Center - Make Referral -|- User: " + username)
+        if num == 5:
+            window.UIWindow.setWindowTitle("Forsyth Family Practice Center - Lab Orders -|- User: " + username)
+        if num == 6:
+            window.UIWindow.setWindowTitle("Forsyth Family Practice Center - Approve Appointment via Portal -|- User: " + username)
+        if num == 7:
+            window.UIWindow.setWindowTitle("Forsyth Family Practice Center - New Patient -|- User: " + username)
 
-        # Restyling frame btn togglers
-        self.DisplaySchedule_Btn.setStyleSheet("QPushButton {\n"
-                                            "    border-image: none;\n"
-                                            "    background-color: #6ECCAF;\n"
-                                            "    color: black;\n"
-                                            "    border: 2px solid black;\n"
-                                            "}\n"
-                                            "\n"
-                                            "QPushButton::hover {\n"
-                                            "    background-color: rgb(139, 231, 100);\n"
-                                            "    color: white;\n"
-                                            "}")
-        
-        self.DisplayCancel_Btn.setStyleSheet("QPushButton {\n"
-                                            "    border-image: none;\n"
-                                            "    background-color: #6ECCAF;\n"
-                                            "    color: black;\n"
-                                            "    border: 2px solid black;\n"
-                                            "}\n"
-                                            "\n"
-                                            "QPushButton::hover {\n"
-                                            "    background-color: rgb(139, 231, 100);\n"
-                                            "    color: white;\n"
-                                            "}")
-        
-        self.DisplayReschedule_Btn.setStyleSheet("QPushButton {\n"
-                                                "    border-image: none;\n"
-                                                "    background-color: #6ECCAF;\n"
-                                                "    color: black;\n"
-                                                "    border: 2px solid black;\n"
-                                                "}\n"
-                                                "\n"
-                                                "QPushButton::hover {\n"
-                                                "    background-color: rgb(139, 231, 100);\n"
-                                                "    color: white;\n"
-                                                "}")
 
-        # Clearing all the fields
-        clearInputs_SA(self)
-        clearInputs_RA(self)
-        clearInputs_CA(self)
+    def greyOutReferralsAndLabOrdersForPhysicians(self):
+        '''
+            This will check if the isPhysician array is true and then it will
+            grey out referrals and lab orders buttons
+        '''
+
+        if False == True:
+            self.makeReferralPushButton.setStyleSheet("QPushButton {\n"
+    "    border-image: none;\n"
+    "    background-color: rgba(110, 204, 175, .2);\n"
+    "    color: rgba(0, 0, 0, .2);\n"
+    "    border: 2px solid rgba(0, 0, 0, .2);\n"
+    "}\n"
+    "\n"
+    "QPushButton::hover {\n"
+    "    background-color: rgb(139, 231, 100);\n"
+    "    color: white;\n"
+    "}")
+            self.labOrdersPushButton.setStyleSheet("QPushButton {\n"
+    "    border-image: none;\n"
+    "    background-color: rgba(110, 204, 175, .2);\n"
+    "    color: rgba(0, 0, 0, .2);\n"
+    "    border: 2px solid rgba(0, 0, 0, .2);\n"
+    "}\n"
+    "\n"
+    "QPushButton::hover {\n"
+    "    background-color: rgb(139, 231, 100);\n"
+    "    color: white;\n"
+    "}")
+
+    def hideAllWindowsExceptForAppointments(self):
+        '''
+
+            This hides all of the current windows excluding the appointments window
+            as it prevents duplication
+
+        '''
+
+        from frontend import StartWindow, ApptRequest, NewPatient, Referrals, LabOrders, CheckIn, CheckOut
+
+        StartWindow.UIWindow.hide()
+        NewPatient.UIWindow.hide()
+        Referrals.UIWindow.hide()
+        CheckIn.UIWindow.hide()
+        CheckOut.UIWindow.hide()
+        ApptRequest.UIWindow.hide()
+        LabOrders.UIWindow.hide()
+
+
+
+    def changeCurrentUserLabelText(self, window):
+        '''
+
+            Similar for the title, instead this changes the bottom labels
+
+        '''
+
+        window.UIWindow.currentUserLabel.setText("Current User: " + "User")
+
+    def enterStartWindow(self):
+        '''
+
+            This enters the StartWindow
+
+        '''
+
+        from frontend import StartWindow
+
+        print("Routing to start screen")
+        self.hide()
+
+        StartWindow.UIWindow.move(prevWindowCoords[0], prevWindowCoords[1])
+        StartWindow.UIWindow.show()
+
+    def enterSchedulingAppointmentsWindow(self):
+        '''
+
+            This enters the SchedulingAppointmentsWindow
+
+        '''
+
+        from frontend import SchedulingAppointmentsWindow
+
+
+        print("Routing to scheduling appointments screen")
+        self.hideAllWindowsExceptForAppointments()
+
+        SchedulingAppointmentsWindow.UIWindow.move(prevWindowCoords[0], prevWindowCoords[1])
+        SchedulingAppointmentsWindow.UIWindow.show()
+
+        self.changeCurrentUserLabelText(SchedulingAppointmentsWindow)
+        self.changeTitleText(1, SchedulingAppointmentsWindow)
+
+    def enterCheckInWindow(self):
+        '''
+
+            This enters the CheckInWindow
+
+        '''
+
+        from frontend import CheckIn
+        print("Routing to check in screen")
+
+        self.hide()
+        CheckIn.UIWindow.move(prevWindowCoords[0], prevWindowCoords[1])
+        CheckIn.UIWindow.show()
+
+        self.changeCurrentUserLabelText(CheckIn)
+        self.changeTitleText(2, CheckIn)
+
+    def enterCheckOutWindow(self):
+        '''
+
+        This enters the CheckOutWindow
+
+        '''
+
+        from frontend import CheckOut
+
+        print("Routing to check out screen")
+
+        self.hide()
+        CheckOut.UIWindow.move(prevWindowCoords[0], prevWindowCoords[1])
+        CheckOut.UIWindow.show()
+
+        self.changeCurrentUserLabelText(CheckOut)
+        self.changeTitleText(3, CheckOut)
+
+    def enterMakeReferralWindow(self):
+        '''
+
+            This enters the CheckInWindow
+
+        '''
+
+        from frontend import Referrals
+        print("Routing to make referral screen")
+
+
+        self.hide()
+        Referrals.UIWindow.move(prevWindowCoords[0], prevWindowCoords[1])
+        Referrals.UIWindow.show()
+
+        self.changeCurrentUserLabelText(Referrals)
+        self.changeTitleText(4, Referrals)
+
+    def enterLabOrdersWindow(self):
+        '''
+
+            This enters the LabOrdersWindow
+
+        '''
+
+        from frontend import LabOrders
+        print("Routing to lab orders screen")
+
+
+
+        self.hide()
+        LabOrders.UIWindow.move(prevWindowCoords[0], prevWindowCoords[1])
+        LabOrders.UIWindow.show()
+
+        self.changeCurrentUserLabelText(LabOrders)
+        self.changeTitleText(5, LabOrders)
+
+    def enterAppointmentApproveViaPortalWindow(self):
+        '''
+
+            This enters the ApptRequestWindow
+
+        '''
+
+        from frontend import ApptRequest
+        print("Routing to appointment approve via portal screen")
+
+        self.hide()
+        ApptRequest.UIWindow.move(prevWindowCoords[0], prevWindowCoords[1])
+        ApptRequest.UIWindow.show()
+
+        self.changeCurrentUserLabelText(ApptRequest)
+        self.changeTitleText(6, ApptRequest)
+
+    def enterNewPatientWindow(self):
+        '''
+
+            This enters the NewPatientWindow
+
+        '''
+
+        from frontend import NewPatient
+
+        print("Routing to new patient screen")
+
+        self.hide()
+        NewPatient.UIWindow.move(prevWindowCoords[0], prevWindowCoords[1])
+        NewPatient.UIWindow.show()
+
+        self.changeCurrentUserLabelText(NewPatient)
+        self.changeTitleText(7, NewPatient)
+
+    def logoutUser(self):
+        '''
+
+            This is used to log out the user and sends them back to the login screen
+
+        '''
+
+        from frontend import SchedulingAppointmentsWindow
+
+        # Routing user back to the start window and resetting scheduling window and current username label
+        SchedulingAppointmentsWindow.UIWindow.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments")
+        self.currentUserLabel.setText("No User Logged In")
+
+        self.enterStartWindow()
+
+
+
+
+
     
-    def displayInputsFrame(self):
-
-        self.hideAllFrames()
-        self.InputsFrame.setFixedHeight(681)
-
-        # Disabling the toggler btn
-        self.DisplaySchedule_Btn.setEnabled(False)
-        self.DisplaySchedule_Btn.setStyleSheet("QPushButton {\n"
-                                            "    border-image: none;\n"
-                                            "    background-color: rgba(110, 204, 175, .2);\n"
-                                            "    color: rgba(0, 0, 0, .2);\n"
-                                            "    border: 2px solid rgba(0, 0, 0, .2);\n"
-                                            "}\n"
-                                            "\n"
-                                            "QPushButton::hover {\n"
-                                            "    background-color: rgb(139, 231, 100);\n"
-                                            "    color: white;\n"
-                                            "}")
-    
-    def displayCancelAppointmentFrame(self):
-
-        self.hideAllFrames()
-        self.CancelAppointment_Frame.setFixedHeight(681)
-
-         # Disabling the toggler btn
-        self.DisplayCancel_Btn.setEnabled(False)
-        self.DisplayCancel_Btn.setStyleSheet("QPushButton {\n"
-                                            "    border-image: none;\n"
-                                            "    background-color: rgba(110, 204, 175, .2);\n"
-                                            "    color: rgba(0, 0, 0, .2);\n"
-                                            "    border: 2px solid rgba(0, 0, 0, .2);\n"
-                                            "}\n"
-                                            "\n"
-                                            "QPushButton::hover {\n"
-                                            "    background-color: rgb(139, 231, 100);\n"
-                                            "    color: white;\n"
-                                            "}")
-        
-    def displayRescheduleAppointmentFrame(self):
-
-        self.hideAllFrames()
-        self.RescheduleAppointment_Frame.setFixedHeight(681)
-
-        # Disabling the toggler btn
-        self.DisplayReschedule_Btn.setEnabled(False)
-        self.DisplayReschedule_Btn.setStyleSheet("QPushButton {\n"
-                                                "    border-image: none;\n"
-                                                "    background-color: rgba(110, 204, 175, .2);\n"
-                                                "    color: rgba(0, 0, 0, .2);\n"
-                                                "    border: 2px solid rgba(0, 0, 0, .2);\n"
-                                                "}\n"
-                                                "\n"
-                                                "QPushButton::hover {\n"
-                                                "    background-color: rgb(139, 231, 100);\n"
-                                                "    color: white;\n"
-                                                "}")

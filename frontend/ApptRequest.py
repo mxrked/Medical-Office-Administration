@@ -1,9 +1,7 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication
-from abstract_main_window import AMainWindow
+from frontend.abstract_main_window import AMainWindow
 import sys
-
-from backend.appointment_dm import AppointmentDM
 
 class UI(AMainWindow):
     def __init__(self):

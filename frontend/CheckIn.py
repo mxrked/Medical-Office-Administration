@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import QApplication
 from PyQt5 import uic
-from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 from frontend.abstract_main_window import AMainWindow
 
 import sys

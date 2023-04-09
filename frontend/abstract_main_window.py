@@ -1,6 +1,7 @@
-from PyQt5.QtWidgets import QMainWindow, QPushButton, QLabel, QLineEdit, QTimeEdit
+from PyQt5.QtWidgets import QMainWindow, QPushButton, QLabel, QLineEdit, QVBoxLayout, QDialog
 from frontend.ui.assets.files.SCHEDULING_LISTENERS import clearInputs_SA, clearInputs_RA, clearInputs_CA
 from sys import exit
+from PyQt5 import QtCore, QtGui
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide
 from frontend.ui.assets.files.GLOBALS import prevWindowCoords
 
@@ -38,11 +39,56 @@ class AMainWindow(QMainWindow):
         self.setWindowTitle("")
         self.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments -|- User: " + "USERNAME")
 
+    def load_error(self, error_text: str):
+
+        infoDialog = QDialog()
+        infoDialog.setStyleSheet("QDialog {background-color: #344D67}")
+
+        # Dialog settings
+        infoDialog.setWindowFlags(QtCore.Qt.FramelessWindowHint) # Hides the title bar
+        infoDialog.setFixedSize(400, 400)
+
+        infoDialogLayout = QVBoxLayout()
+        infoDialogCloseBtn = QPushButton("CLOSE", infoDialog)
+        infoDialogCloseBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+
+        infoDialogCloseBtn.setStyleSheet("""
+        QPushButton {
+            background-color: #ADE792; 
+            border: none; 
+            color: #344D67; 
+            height: 44px; 
+            width: 69px; 
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        QPushButton::hover {
+            color: white;
+            background-color: rgb(139, 231, 100);
+        }
+
+        """)
+        infoDialogCloseBtn.setFont(QtGui.QFont("Lato", 12))
+        infoDialogCloseBtn.clicked.connect(infoDialog.close) # Closes the dialog box
+
+        infoDialogName = QLabel(error_text)
+        infoDialogName.setStyleSheet("QLabel {color: white}")
+        infoDialogName.setFont(QtGui.QFont("Lato", 13))
+        infoDialogLayout.addWidget(infoDialogName, alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
+        infoDialogLayout.addWidget(infoDialogCloseBtn, alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
+
+        infoDialog.setLayout(infoDialogLayout)
+
+        # Displaying the dialog
+        infoDialog.exec_()
+
+
     def clearInputs(self):
         for widget in self.findChildren(QLineEdit):
             widget.clear()
 
-    def check_inputs(self, list_of_QLineEdit: list[QLineEdit]) -> bool:
+    def checkInputs(self, list_of_QLineEdit: list[QLineEdit]) -> bool:
         for widget in list_of_QLineEdit:
             if widget.text() == "":
                 return False

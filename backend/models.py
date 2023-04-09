@@ -305,6 +305,9 @@ class Referrals(Base):  # THIS MAY NEED TO CHANGE DEPENDING ON STUFF
     ReferralReason = Column(VARCHAR(50), nullable=True)
     ReferralExpirationDate = Column(Date, nullable=True)
 
+    def __str__(self) -> str:
+        return "Referral"
+
 
 class UserType(Base):
     __tablename__ = "UserType"

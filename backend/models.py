@@ -91,9 +91,9 @@ class Employee(Base):
     Salary = Column(Numeric)
     apto = Column(Float, nullable=True)
     EmployeeTypeID = Column(Integer, ForeignKey("EmployeeType.EmployeeTypeID"), nullable=True)
-    UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
+    #UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
 
-    UserType = relationship("UserType", backref="EmpUserType")
+    #UserType = relationship("UserType", backref="EmpUserType")
     EmployeeType = relationship("EmployeeType", backref="EmpEmployeeType")
 
     def __str__(self) -> str:
@@ -200,9 +200,9 @@ class Patient(Base):
     # ProviderID = Column(Integer, ForeignKey("") nullable=)
     PatientPhoto = Column(BLOB, nullable=True)
     RecordStatus = Column(Integer, nullable=True)
-    UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
+    #UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
 
-    UserType = relationship("UserType", backref="PUserType")
+    #UserType = relationship("UserType", backref="PUserType")
 
 
 class Group(Base):
@@ -284,7 +284,7 @@ class User(Base):
 
     UserID = Column(Integer, primary_key=True, nullable=False)
 
-    UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
+    #UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
     Username = Column(NCHAR(10), nullable=False)
     EmailAddress = Column(VARCHAR(), nullable=False)
     Password = Column(VARCHAR(), nullable=False)

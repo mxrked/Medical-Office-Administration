@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QDateEdit, QLineEdit, QComboBox, QListWidget, QTimeEdit, QPushButton, QWidget
 from PyQt5.QtCore import QDate
 from frontend.abstract_main_window import AMainWindow
-
+from backend.data_handler import get_selected_combo_box_object
 
 class ScheduleAppt_AMW(AMainWindow):
     
@@ -32,32 +32,72 @@ class ScheduleAppt_AMW(AMainWindow):
         self.SA_AppointmentDateDateEdit.setMinimumDate(QDate.currentDate())
         self.SA_ClearInputsPushButton.mousePressEvent = lambda event: self.clearInputs()
         self.SA_NoCustomTimePushButton.setVisible(False)
-        self.SA_NoCustomTimePushButton.mousePressEvent = lambda event: self.disableCustomTime()
-        self.SA_YesCustomTimePushButton.mousePressEvent = lambda event: self.enableCustomTime()
-        self.SA_SearchPushButton.mousePressEvent = lambda event: self.search()
-        self.SA_ScheduleAppointmentPushButton.mousePressEvent = lambda event: self.scheduleAppointment()
+        self.SA_NoCustomTimePushButton.mousePressEvent = self.disableCustomTime
+        self.SA_YesCustomTimePushButton.mousePressEvent = self.enableCustomTime
+        self.SA_SearchPushButton.mousePressEvent = self.search_SA
+        self.SA_ScheduleAppointmentPushButton.mousePressEvent = self.scheduleAppointment
 
-    def disableCustomTime(self):
-        pass
+    def disableCustomTime(self, event):
+        
+        # Appending false to customTime
+        self.custom_time = False
 
-    def enableCustomTime(self):
-        pass
+        self.SA_YesCustomTimePushButton.setVisible(True)
+        self.SA_NoCustomTimePushButton.setVisible(False)
+        self.SA_CustomTimeTimeEdit.setEnabled(False)
+        self.SA_CustomTimeTimeEdit.setStyleSheet("QTimeEdit {\n"
+                                                "    border-image: none;\n"
+                                                "    background-color: rgba(243, 236, 176, 133);\n"
+                                                "    font-family: 'MS Shell Dlg 2';\n"
+                                                "    color: #344D67;;\n"
+                                                "    border: none;\n"
+                                                "    font-size: 15;\n"
+                                                "    padding-left: 10px;\n"
+                                                "    padding-right: 10px;\n"
+                                                "}\n")
 
-    def search(self):
-        entered_inputs = self.checkInputs(self, [
-            self.SA_PatientFNLineEdit,
+    def enableCustomTime(self, event):
+        
+        # Appending true to customTime
+        self.custom_time = True
+
+        self.SA_YesCustomTimePushButton.setVisible(False)
+        self.SA_NoCustomTimePushButton.setVisible(True)
+        self.SA_CurrentAvailableTimesListWidget.clearSelection()
+        self.SA_CustomTimeTimeEdit.setEnabled(True)
+        self.SA_CustomTimeTimeEdit.setStyleSheet("QTimeEdit {\n"
+                                                "    border-image: none;\n"
+                                                "    background-color: rgb(243, 236, 176);\n"
+                                                "    font-family: 'MS Shell Dlg 2';\n"
+                                                "    color: #344D67;;\n"
+                                                "    border: none;\n"
+                                                "    font-size: 15;\n"
+                                                "    padding-left: 10px;\n"
+                                                "    padding-right: 10px;\n"
+                                                "}\n")
+
+    def search_SA(self, event):
+
+        lines_to_check = [self.SA_PatientFNLineEdit,
             self.SA_PatientLNLineEdit,
             self.SA_PatientDOBDateEdit,
-            self.SA_AppointmentReasonLineEdit,
-        ])
+            self.SA_AppointmentReasonLineEdit]
+        entered_inputs = self.checkInputs(lines_to_check)
 
-        if not entered_inputs:
-            # Error Box Stuff
-            return False
-        
-        # Do searching stuff
+        # Check if combo_boxes correspond to object:
+        if (get_selected_combo_box_object(self.SA_OfficeLocationsComboBox) and
+            get_selected_combo_box_object(self.SA_PhysicianNamesComboBox) and
+            get_selected_combo_box_object(self.SA_AppointmentTypesComboBox)):
 
-    def scheduleAppointment(self):
+            combo_boxes_entered = True
+        else:
+            combo_boxes_entered = False
+
+        if (not entered_inputs) or (not combo_boxes_entered):
+            self.load_error("Please Enter in all inputs")
+            return
+
+    def scheduleAppointment(self, event):
         pass
 
 class RescheduleAppt_AMW(ScheduleAppt_AMW):
@@ -110,10 +150,10 @@ class CancelAppt_AMW(RescheduleAppt_AMW):
         self.CA_AppointmentDateDateEdit.setDate(QDate.currentDate())
         self.CA_AppointmentDateDateEdit.setMinimumDate(QDate.currentDate())
         self.CA_ClearInputsPushButton.mousePressEvent = lambda event: self.clearInputs()
-        self.CA_SearchForAppointmentsPushButton.mousePressEvent = lambda event: self.search()
+        self.CA_SearchForAppointmentsPushButton.mousePressEvent = lambda event: self.search_CA()
         self.CA_CancelAppointmentPushButton.mousePressEvent = lambda event: self.cancelAppointment()
 
-    def search(self):
+    def search_CA(self):
         pass
 
     def cancelAppointment(self):

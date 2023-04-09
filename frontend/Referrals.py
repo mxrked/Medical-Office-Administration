@@ -54,7 +54,7 @@ class UI(AMainWindow):
         if (not entered_inputs) or (not combo_boxes_entered):
             self.load_error("Please input all data")
             return
-        
+
         # All inputs are there!
 
         # Resolve Patient
@@ -102,7 +102,10 @@ class UI(AMainWindow):
             PatientID = patient.PatientID,
             EmployeeID = employee.EmployeeID,
             DateofReferal = self.CreationDate.date().toPyDate(),
-            ReferralReason = self.Reason.text()
+            ReferralReason = self.Reason.text(),
+
+            Patient=patient,
+            Employee=employee
         )
 
         print(referral)

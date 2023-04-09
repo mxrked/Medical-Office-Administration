@@ -39,13 +39,7 @@ class UI(AMainWindow):
         ' This is used to display a dialog popup listing the different team members and their roles'
 
         infoDialog = QDialog()
-        infoDialog.setStyleSheet("""
-        
-            QDialog {
-                background-color: #344D67;
-            }
-        
-        """)
+        infoDialog.setStyleSheet("QDialog {background-color: #344D67}")
 
         # Dialog settings
         infoDialog.setWindowFlags(QtCore.Qt.FramelessWindowHint) # Hides the title bar

@@ -1,6 +1,7 @@
 """
 models.py - a set of sqlalchemy models for working with the clinics Database.
 Author: Jessica Weeks, Christian Fortin
+Author: Jessica Weeks, Christina Fortin
 """
 from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy import BLOB, Column, Table, Integer, String, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, Float, NCHAR

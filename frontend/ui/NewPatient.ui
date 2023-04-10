@@ -513,6 +513,9 @@ QLabel {
            <property name="readOnly">
             <bool>false</bool>
            </property>
+           <property name="placeholderText">
+            <string>Enter First Name</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -557,6 +560,9 @@ QLabel {
            <property name="readOnly">
             <bool>false</bool>
            </property>
+           <property name="placeholderText">
+            <string>Enter Middle Name</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -597,6 +603,9 @@ QLabel {
            </property>
            <property name="styleSheet">
             <string notr="true"/>
+           </property>
+           <property name="placeholderText">
+            <string>Enter Last Name</string>
            </property>
           </widget>
          </item>
@@ -775,6 +784,9 @@ QLabel {
            <property name="styleSheet">
             <string notr="true"/>
            </property>
+           <property name="placeholderText">
+            <string>Etner Date Of Birth</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -815,6 +827,9 @@ QLabel {
            </property>
            <property name="styleSheet">
             <string notr="true"/>
+           </property>
+           <property name="placeholderText">
+            <string>Enter Social Security Number</string>
            </property>
           </widget>
          </item>
@@ -857,6 +872,9 @@ QLabel {
            <property name="styleSheet">
             <string notr="true"/>
            </property>
+           <property name="placeholderText">
+            <string>Enter Street Address</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -890,8 +908,17 @@ color: rgb(255, 255, 255);</string>
              <height>16777215</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <family>MS Shell Dlg 2</family>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true"/>
+           </property>
+           <property name="placeholderText">
+            <string>Enter Appointment Number</string>
            </property>
           </widget>
          </item>
@@ -943,6 +970,9 @@ color: rgb(255, 255, 255);</string>
            <property name="readOnly">
             <bool>true</bool>
            </property>
+           <property name="placeholderText">
+            <string>Enter City Name</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -990,6 +1020,11 @@ color: rgb(255, 255, 255);</string>
            <property name="toolTipDuration">
             <number>-1</number>
            </property>
+           <item>
+            <property name="text">
+             <string>-- SELECT STATE --</string>
+            </property>
+           </item>
            <item>
             <property name="text">
              <string>Alabama</string>
@@ -1281,6 +1316,9 @@ color: rgb(255, 255, 255);</string>
            <property name="styleSheet">
             <string notr="true"/>
            </property>
+           <property name="placeholderText">
+            <string>Enter Zip Code</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -1322,6 +1360,9 @@ color: rgb(255, 255, 255);</string>
            <property name="styleSheet">
             <string notr="true"/>
            </property>
+           <property name="placeholderText">
+            <string>Enter Phone Number</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -1362,6 +1403,9 @@ color: rgb(255, 255, 255);</string>
            </property>
            <property name="styleSheet">
             <string notr="true"/>
+           </property>
+           <property name="placeholderText">
+            <string>Enter Email</string>
            </property>
           </widget>
          </item>
@@ -1662,7 +1706,7 @@ QPushButton::hover {
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_Gender"/>
   <buttongroup name="buttonGroup_Suffix"/>
+  <buttongroup name="buttonGroup_Gender"/>
  </buttongroups>
 </ui>

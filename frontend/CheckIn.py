@@ -1,3 +1,8 @@
+"""
+CheckIn.py - A window to handle in checking in appointments for the clinic
+UI Designed by: Jessica Weeks
+Authors: Jessica Weeks
+"""
 from PyQt5.QtWidgets import QApplication, QComboBox, QListWidget, QPushButton
 from PyQt5 import uic
 from frontend.abstract_main_window import AMainWindow

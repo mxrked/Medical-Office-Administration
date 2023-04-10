@@ -1,3 +1,8 @@
+"""
+Checkout.py - A window to handle in checking out appointments for the clinic
+UI Designed by: Jessica Weeks
+Authors: Parker Phelps
+"""
 from PyQt5.QtWidgets import QApplication, QListWidget, QComboBox, QPushButton
 from PyQt5 import uic
 from frontend.ui.assets.qrc import app_bg

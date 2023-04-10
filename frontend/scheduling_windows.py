@@ -1,3 +1,8 @@
+"""
+scheduling_windows.py - A set of classes that all inherit eachother for
+    the purpose of making different screens in the Appointment window easier
+Authors: Parker Phelps, Jessica Weeks
+"""
 from PyQt5.QtWidgets import QDateEdit, QLineEdit, QComboBox, QListWidget, QTimeEdit, QPushButton
 from PyQt5.QtCore import QDate
 from frontend.abstract_main_window import AMainWindow

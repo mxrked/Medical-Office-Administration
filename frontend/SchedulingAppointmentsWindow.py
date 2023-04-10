@@ -1,3 +1,8 @@
+"""
+SchedulingAppointmentsWindow.py A window for scheduling/rescheduling and canceling appointments
+UI Designed by: Parker Phelps
+Author: Jessica Weeks
+"""
 from PyQt5.QtWidgets import QApplication
 from PyQt5 import uic
 from frontend.ui.assets.qrc import app_bg

@@ -1,3 +1,8 @@
+"""
+StarWindow.py - Window for the login screen of the db
+UI Designer: Parker Phelps
+Authors: Parker Phelps, Jessica Weeks
+"""
 from PyQt5.QtWidgets import QApplication, QLineEdit, QLabel, QPushButton, QDialog, QVBoxLayout, QFrame
 from PyQt5 import uic, QtCore, QtGui
 

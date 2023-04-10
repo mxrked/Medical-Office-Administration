@@ -1,6 +1,6 @@
 """
 data_handler.py - A data handler for placing backend models into front end widgets for P
-Authors: Jessica Weeks,
+Authors: Jessica Weeks
 """
 from PyQt5.QtWidgets import QListWidget, QListWidgetItem, QComboBox
 

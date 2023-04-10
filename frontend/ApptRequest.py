@@ -1,3 +1,8 @@
+"""
+ApptRequest.py - Window to handle appointment requests from the web portal.
+UI Designed by: Christian Fortin
+Authors: 
+"""
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication
 from frontend.abstract_main_window import AMainWindow

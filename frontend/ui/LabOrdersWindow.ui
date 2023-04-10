@@ -522,6 +522,9 @@ QLabel {
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
+             <property name="placeholderText">
+              <string>Enter First Name</string>
+             </property>
             </widget>
            </item>
           </layout>
@@ -572,6 +575,9 @@ QLabel {
              <property name="text">
               <string/>
              </property>
+             <property name="placeholderText">
+              <string>Enter Last Name</string>
+             </property>
             </widget>
            </item>
           </layout>
@@ -603,6 +609,13 @@ QLabel {
                <family>MS Shell Dlg 2</family>
                <pointsize>11</pointsize>
               </font>
+             </property>
+             <property name="date">
+              <date>
+               <year>2000</year>
+               <month>2</month>
+               <day>1</day>
+              </date>
              </property>
             </widget>
            </item>
@@ -638,6 +651,11 @@ QLabel {
                  <pointsize>11</pointsize>
                 </font>
                </property>
+               <item>
+                <property name="text">
+                 <string>-- SELECT PRACTITIONER --</string>
+                </property>
+               </item>
               </widget>
              </item>
             </layout>
@@ -670,6 +688,11 @@ QLabel {
                  <pointsize>11</pointsize>
                 </font>
                </property>
+               <item>
+                <property name="text">
+                 <string>-- SELECT LOCATION --</string>
+                </property>
+               </item>
               </widget>
              </item>
             </layout>
@@ -703,30 +726,19 @@ QLabel {
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="LineEdit_LabDate">
-               <property name="minimumSize">
-                <size>
-                 <width>200</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>394</width>
-                 <height>16777215</height>
-                </size>
-               </property>
+              <widget class="QDateEdit" name="dateEdit_LabDate">
                <property name="font">
                 <font>
                  <family>MS Shell Dlg 2</family>
                  <pointsize>11</pointsize>
                 </font>
                </property>
-               <property name="styleSheet">
-                <string notr="true"/>
-               </property>
-               <property name="text">
-                <string/>
+               <property name="date">
+                <date>
+                 <year>2000</year>
+                 <month>2</month>
+                 <day>1</day>
+                </date>
                </property>
               </widget>
              </item>
@@ -768,6 +780,11 @@ QLabel {
                <pointsize>11</pointsize>
               </font>
              </property>
+             <item>
+              <property name="text">
+               <string>-- SELECT LAB --</string>
+              </property>
+             </item>
             </widget>
            </item>
           </layout>
@@ -811,6 +828,9 @@ QLabel {
              </property>
              <property name="text">
               <string/>
+             </property>
+             <property name="placeholderText">
+              <string>Enter Order Name</string>
              </property>
             </widget>
            </item>

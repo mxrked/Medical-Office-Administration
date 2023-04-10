@@ -20,7 +20,6 @@ class UI(Appointments_AMW):
         self.load_appointment_nav()
 
         self.load_SA()
-        #define widgets
 
 
 

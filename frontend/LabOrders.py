@@ -35,12 +35,8 @@ class UI(AMainWindow):
 
         self.load_nav()
 
-
-
-
-
-        def submitInformation(self):
-            pass
+    def submitInformation(self):
+        pass
 
 
 

@@ -17,11 +17,6 @@ class UI(AMainWindow):
 
         self.load_nav()
 
-        # Load relevant data_manager
-
-        self.Mdm = MiscDM()
-        self.Udm = UserDM()
-
         # Initalized Input Widgets
         self.FName = self.findChild(QLineEdit, "LineEdit_PatientFirstName")
         self.LName = self.findChild(QLineEdit, "LineEdit_PatientLastName")
@@ -36,8 +31,11 @@ class UI(AMainWindow):
         # Button Listeners
         self.CreateReferral.mousePressEvent = self.create_referral
 
-        # Populate Practitioner comobo box
+        # Load relevant data_manager
+        self.Mdm = MiscDM()
+        self.Udm = UserDM()
 
+        # Populate Practitioner comobo box
         physcians = self.Udm.get_physicians()
         set_objects_to_combo_box(physcians, self.Practitioner)
 
@@ -52,7 +50,6 @@ class UI(AMainWindow):
             combo_boxes_entered = True
 
         if (not entered_inputs) or (not combo_boxes_entered):
-            self.load_error("Please input all data")
             return
 
         # All inputs are there!

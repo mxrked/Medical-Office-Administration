@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QDateEdit, QLineEdit, QComboBox, QListWidget, QTimeEdit, QPushButton, QWidget
+from PyQt5.QtWidgets import QDateEdit, QLineEdit, QComboBox, QListWidget, QTimeEdit, QPushButton
 from PyQt5.QtCore import QDate
 from frontend.abstract_main_window import AMainWindow
 from backend.data_handler import get_selected_combo_box_object
@@ -98,6 +98,7 @@ class ScheduleAppt_AMW(AMainWindow):
             return
 
     def scheduleAppointment(self, event):
+        
         pass
 
 class RescheduleAppt_AMW(ScheduleAppt_AMW):
@@ -160,6 +161,11 @@ class CancelAppt_AMW(RescheduleAppt_AMW):
         pass
 
 class Appointments_AMW(CancelAppt_AMW):
+    """
+    The one to interface with and make a window out of,
+
+    This initalized all the window specific nav stuff
+    """
     def __init__(self):
         super(Appointments_AMW, self).__init__()
     
@@ -231,7 +237,8 @@ class Appointments_AMW(CancelAppt_AMW):
                                             "    background-color: rgb(139, 231, 100);\n"
                                             "    color: white;\n"
                                             "}")
-    
+
+
     def displayCancelAppointmentFrame(self):
 
         self.hideAllFrames()
@@ -252,7 +259,8 @@ class Appointments_AMW(CancelAppt_AMW):
                                             "}")
         
         self.load_CA()
-        
+
+
     def displayRescheduleAppointmentFrame(self):
 
         self.hideAllFrames()
@@ -273,7 +281,8 @@ class Appointments_AMW(CancelAppt_AMW):
                                                 "}")
 
         self.load_RA()
-        
+
+
     def load_appointment_nav(self):
         # Appiontment Nav 
         self.newPatientPushButton = self.findChild(QPushButton, "NewPatient_Btn")

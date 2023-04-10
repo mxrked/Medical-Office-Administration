@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QDateEdit, QLineEdit, QComboBox, QListWidget, QTimeEdit, QPushButton
 from PyQt5.QtCore import QDate
 from frontend.abstract_main_window import AMainWindow
+from frontend.ui.assets.files.STYLING import *
 from backend.data_handler import get_selected_combo_box_object
 
 class ScheduleAppt_AMW(AMainWindow):
@@ -45,16 +46,7 @@ class ScheduleAppt_AMW(AMainWindow):
         self.SA_YesCustomTimePushButton.setVisible(True)
         self.SA_NoCustomTimePushButton.setVisible(False)
         self.SA_CustomTimeTimeEdit.setEnabled(False)
-        self.SA_CustomTimeTimeEdit.setStyleSheet("QTimeEdit {\n"
-                                                "    border-image: none;\n"
-                                                "    background-color: rgba(243, 236, 176, 133);\n"
-                                                "    font-family: 'MS Shell Dlg 2';\n"
-                                                "    color: #344D67;;\n"
-                                                "    border: none;\n"
-                                                "    font-size: 15;\n"
-                                                "    padding-left: 10px;\n"
-                                                "    padding-right: 10px;\n"
-                                                "}\n")
+        self.SA_CustomTimeTimeEdit.setStyleSheet(disableCustomTime_Style)
 
     def enableCustomTime(self, event):
         
@@ -65,16 +57,7 @@ class ScheduleAppt_AMW(AMainWindow):
         self.SA_NoCustomTimePushButton.setVisible(True)
         self.SA_CurrentAvailableTimesListWidget.clearSelection()
         self.SA_CustomTimeTimeEdit.setEnabled(True)
-        self.SA_CustomTimeTimeEdit.setStyleSheet("QTimeEdit {\n"
-                                                "    border-image: none;\n"
-                                                "    background-color: rgb(243, 236, 176);\n"
-                                                "    font-family: 'MS Shell Dlg 2';\n"
-                                                "    color: #344D67;;\n"
-                                                "    border: none;\n"
-                                                "    font-size: 15;\n"
-                                                "    padding-left: 10px;\n"
-                                                "    padding-right: 10px;\n"
-                                                "}\n")
+        self.SA_CustomTimeTimeEdit.setStyleSheet(enableCustomTime_Style)
 
     def search_SA(self, event):
 
@@ -182,41 +165,9 @@ class Appointments_AMW(CancelAppt_AMW):
         self.DisplayReschedule_Btn.setEnabled(True)
 
         # Restyling frame btn togglers
-        self.DisplaySchedule_Btn.setStyleSheet("QPushButton {\n"
-                                            "    border-image: none;\n"
-                                            "    background-color: #6ECCAF;\n"
-                                            "    color: black;\n"
-                                            "    border: 2px solid black;\n"
-                                            "}\n"
-                                            "\n"
-                                            "QPushButton::hover {\n"
-                                            "    background-color: rgb(139, 231, 100);\n"
-                                            "    color: white;\n"
-                                            "}")
-
-        self.DisplayCancel_Btn.setStyleSheet("QPushButton {\n"
-                                            "    border-image: none;\n"
-                                            "    background-color: #6ECCAF;\n"
-                                            "    color: black;\n"
-                                            "    border: 2px solid black;\n"
-                                            "}\n"
-                                            "\n"
-                                            "QPushButton::hover {\n"
-                                            "    background-color: rgb(139, 231, 100);\n"
-                                            "    color: white;\n"
-                                            "}")
-
-        self.DisplayReschedule_Btn.setStyleSheet("QPushButton {\n"
-                                                "    border-image: none;\n"
-                                                "    background-color: #6ECCAF;\n"
-                                                "    color: black;\n"
-                                                "    border: 2px solid black;\n"
-                                                "}\n"
-                                                "\n"
-                                                "QPushButton::hover {\n"
-                                                "    background-color: rgb(139, 231, 100);\n"
-                                                "    color: white;\n"
-                                                "}")
+        self.DisplaySchedule_Btn.setStyleSheet(enableFrameBtn_Style)
+        self.DisplayCancel_Btn.setStyleSheet(enableFrameBtn_Style)
+        self.DisplayReschedule_Btn.setStyleSheet(enableFrameBtn_Style)
 
     
     def displayInputsFrame(self):
@@ -226,17 +177,7 @@ class Appointments_AMW(CancelAppt_AMW):
 
         # Disabling the toggler btn
         self.DisplaySchedule_Btn.setEnabled(False)
-        self.DisplaySchedule_Btn.setStyleSheet("QPushButton {\n"
-                                            "    border-image: none;\n"
-                                            "    background-color: rgba(110, 204, 175, .2);\n"
-                                            "    color: rgba(0, 0, 0, .2);\n"
-                                            "    border: 2px solid rgba(0, 0, 0, .2);\n"
-                                            "}\n"
-                                            "\n"
-                                            "QPushButton::hover {\n"
-                                            "    background-color: rgb(139, 231, 100);\n"
-                                            "    color: white;\n"
-                                            "}")
+        self.DisplaySchedule_Btn.setStyleSheet(disableFrameBtn_Style)
 
 
     def displayCancelAppointmentFrame(self):
@@ -246,17 +187,7 @@ class Appointments_AMW(CancelAppt_AMW):
 
          # Disabling the toggler btn
         self.DisplayCancel_Btn.setEnabled(False)
-        self.DisplayCancel_Btn.setStyleSheet("QPushButton {\n"
-                                            "    border-image: none;\n"
-                                            "    background-color: rgba(110, 204, 175, .2);\n"
-                                            "    color: rgba(0, 0, 0, .2);\n"
-                                            "    border: 2px solid rgba(0, 0, 0, .2);\n"
-                                            "}\n"
-                                            "\n"
-                                            "QPushButton::hover {\n"
-                                            "    background-color: rgb(139, 231, 100);\n"
-                                            "    color: white;\n"
-                                            "}")
+        self.DisplayCancel_Btn.setStyleSheet(disableFrameBtn_Style)
         
         self.load_CA()
 
@@ -268,17 +199,7 @@ class Appointments_AMW(CancelAppt_AMW):
 
         # Disabling the toggler btn
         self.DisplayReschedule_Btn.setEnabled(False)
-        self.DisplayReschedule_Btn.setStyleSheet("QPushButton {\n"
-                                                "    border-image: none;\n"
-                                                "    background-color: rgba(110, 204, 175, .2);\n"
-                                                "    color: rgba(0, 0, 0, .2);\n"
-                                                "    border: 2px solid rgba(0, 0, 0, .2);\n"
-                                                "}\n"
-                                                "\n"
-                                                "QPushButton::hover {\n"
-                                                "    background-color: rgb(139, 231, 100);\n"
-                                                "    color: white;\n"
-                                                "}")
+        self.DisplayReschedule_Btn.setStyleSheet(disableFrameBtn_Style)
 
         self.load_RA()
 

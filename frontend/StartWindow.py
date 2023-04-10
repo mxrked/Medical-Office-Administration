@@ -4,6 +4,7 @@ from PyQt5 import uic, QtCore, QtGui
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide
 from frontend.abstract_main_window import AMainWindow
 from frontend.ui.assets.files.GLOBALS import teamMembers
+from frontend.ui.assets.files.STYLING import *
 import sys
 
 
@@ -39,7 +40,7 @@ class UI(AMainWindow):
         ' This is used to display a dialog popup listing the different team members and their roles'
 
         infoDialog = QDialog()
-        infoDialog.setStyleSheet("QDialog {background-color: #344D67}")
+        infoDialog.setStyleSheet(infoDialog_Style)
 
         # Dialog settings
         infoDialog.setWindowFlags(QtCore.Qt.FramelessWindowHint) # Hides the title bar
@@ -50,24 +51,7 @@ class UI(AMainWindow):
         infoDialogCloseBtn = QPushButton("CLOSE", infoDialog)
         infoDialogCloseBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
 
-        infoDialogCloseBtn.setStyleSheet("""
-        
-        QPushButton {
-            background-color: #ADE792; 
-            border: none; 
-            color: #344D67; 
-            height: 44px; 
-            width: 69px; 
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        
-        QPushButton::hover {
-            color: white;
-            background-color: rgb(139, 231, 100);
-        }
-        
-        """)
+        infoDialogCloseBtn.setStyleSheet(infoDialogCloseBtn_Style)
         infoDialogCloseBtn.setFont(QtGui.QFont("Lato", 12))
         infoDialogCloseBtn.clicked.connect(infoDialog.close) # Closes the dialog box
 
@@ -80,7 +64,7 @@ class UI(AMainWindow):
 
             infoDialogName = QLabel(name)
 
-            infoDialogName.setStyleSheet("QLabel {color: white}")
+            infoDialogName.setStyleSheet(infoDialogName_Style)
 
             infoDialogName.setFont(QtGui.QFont("Lato", 13))
             infoDialogLayout.addWidget(infoDialogName, alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -130,8 +114,6 @@ class UI(AMainWindow):
         # This is used to check if the user is available and will move the user to the scheduling window or not
         if user:
 
-
-
             # Hiding login error label
             self.loginErrorLabel.hide()
 
@@ -139,60 +121,8 @@ class UI(AMainWindow):
             self.enterUsernameLineEdit.setText("")
             self.enterPasswordLineEdit.setText("")
             self.hidePassword()
-            self.enterUsernameLineEdit.setStyleSheet("""
-            
-                QLineEdit {
-                    border-image: none;
-                    border: none;
-                    min-width: 200px;
-                    height: 30px;
-                    background-color: #F3ECB0;
-                    color: #344D67;
-                    font-family: "MS Shell Dlg 2";
-                    font-size: 11;
-                    padding-left: 10px;
-                    paddding-right: 10px;
-                }
-            
-            """)
-            self.enterPasswordLineEdit.setStyleSheet("""
-            
-                QLineEdit {
-                    border-image: none;
-                    border: 2px solid red;
-                    background-color: #F3ECB0;
-                    color: #344D67;
-                    font-family: "MS Shell Dlg 2";
-                    font-size: 11;
-                    padding-left: 10px;
-                    padding-right: 10px;
-                }
-            
-                QLineEdit {
-                    border-image: none;
-                    border: none;
-                    min-width: 200px;
-                    height: 30px;
-                    background-color: #F3ECB0;
-                    color: #344D67;
-                    font-family: "MS Shell Dlg 2";
-                    font-size: 11;
-                    padding-left: 10px;
-                    paddding-right: 10px;
-                }
-            
-            """)
-
-
-
-            # import SchedulingAppointmentsWindow
-            #
-            # # If user logins into a different/same account, displays username in title and label
-            # SchedulingAppointmentsWindow.UIWindow.currentUserLabel.setText("Current User: " + currentUsername[0])
-            # SchedulingAppointmentsWindow.UIWindow.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments -|- User: " + currentUsername[0])
-            #
-            # self.hide()
-            # SchedulingAppointmentsWindow.UIWindow.show()
+            self.enterUsernameLineEdit.setStyleSheet(validEnterLE_Style)
+            self.enterPasswordLineEdit.setStyleSheet(validEnterLE_Style)
 
             self.hide()
             self.enterSchedulingAppointmentsWindow()
@@ -203,38 +133,8 @@ class UI(AMainWindow):
             self.loginErrorLabel.show()
 
             # Adding red border to invalid inputs
-            self.enterUsernameLineEdit.setStyleSheet("""
-            
-                QLineEdit {
-                    border-image: none;
-                    border: 2px solid red;
-                    min-width: 200px;
-                    height: 30px;
-                    background-color: #F3ECB0;
-                    color: #344D67;
-                    font-family: "MS Shell Dlg 2";
-                    font-size: 11;
-                    padding-left: 10px;
-                    paddding-right: 10px;
-                }
-            
-            """)
-            self.enterPasswordLineEdit.setStyleSheet("""
-            
-                QLineEdit {
-                    border-image: none;
-                    border: 2px solid red;
-                    min-width: 200px;
-                    height: 30px;
-                    background-color: #F3ECB0;
-                    color: #344D67;
-                    font-family: "MS Shell Dlg 2";
-                    font-size: 11;
-                    padding-left: 10px;
-                    paddding-right: 10px;
-                }
-            
-            """)
+            self.enterUsernameLineEdit.setStyleSheet(invalidEnterLE_Style)
+            self.enterPasswordLineEdit.setStyleSheet(invalidEnterLE_Style)
 
             print("That user does not exist..")
 

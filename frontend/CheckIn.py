@@ -42,7 +42,7 @@ class UI(AMainWindow):
         set_objects_to_combo_box(physcians, self.providers)
         
         locations = self.MiscDataManager.get_locations()
-        set_objects_to_combo_box(locations, self.locations)
+        set_objects_to_combo_box(locations, self.location)
 
     def checkIn(self, event):
         pass

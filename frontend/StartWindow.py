@@ -145,8 +145,14 @@ class UI(AMainWindow):
 
 
 #initializing app
+
+
 app = QApplication(sys.argv)
 UIWindow = UI()
-if __name__ == "__main__":
+
+def main():
     UIWindow.show()
     app.exec_()
+
+if __name__ == "__main__":
+    main()

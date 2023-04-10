@@ -16,6 +16,8 @@ class UI(AMainWindow):
 
         uic.loadUi("frontend/ui/LabOrdersWindow.ui", self)
 
+        self.load_nav()
+
         # define widgets
         self.submitPushButton = self.findChild(QPushButton, "pushButton_ClearLabOrders")
         self.clearPushbutton = self.findChild(QPushButton, "pushButton_SubmitLabOrder")
@@ -30,10 +32,7 @@ class UI(AMainWindow):
 
         # Do something
         self.submitPushButton.clicked.connect(self.submitInformation)
-
-
-
-        self.load_nav()
+        
 
     def submitInformation(self):
         pass

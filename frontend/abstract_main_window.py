@@ -59,7 +59,7 @@ class AMainWindow(QMainWindow):
         :param error_text: str to be displayed as errors 
         """
         infoDialog = QDialog()
-        infoDialog.setStyleSheet("QDialog {background-color: #344D67}")
+        infoDialog.setStyleSheet(infoDialog_Style)
 
         # Dialog settings
         infoDialog.setWindowFlags(QtCore.Qt.FramelessWindowHint) # Hides the title bar

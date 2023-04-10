@@ -3,6 +3,7 @@ from sys import exit
 from PyQt5 import QtCore, QtGui
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide
 from frontend.ui.assets.files.GLOBALS import prevWindowCoords
+from frontend.ui.assets.files.STYLING import *
 
 
 class AMainWindow(QMainWindow):
@@ -68,28 +69,12 @@ class AMainWindow(QMainWindow):
         infoDialogCloseBtn = QPushButton("CLOSE", infoDialog)
         infoDialogCloseBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
 
-        infoDialogCloseBtn.setStyleSheet("""
-        QPushButton {
-            background-color: #ADE792; 
-            border: none; 
-            color: #344D67; 
-            height: 44px; 
-            width: 69px; 
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        QPushButton::hover {
-            color: white;
-            background-color: rgb(139, 231, 100);
-        }
-
-        """)
+        infoDialogCloseBtn.setStyleSheet(infoDialogCloseBtn_Style)
         infoDialogCloseBtn.setFont(QtGui.QFont("Lato", 12))
         infoDialogCloseBtn.clicked.connect(infoDialog.close) # Closes the dialog box
 
         infoDialogName = QLabel(error_text)
-        infoDialogName.setStyleSheet("QLabel {color: white}")
+        infoDialogName.setStyleSheet(infoDialogName_Style)
         infoDialogName.setFont(QtGui.QFont("Lato", 13))
         infoDialogLayout.addWidget(infoDialogName, alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
         infoDialogLayout.addWidget(infoDialogCloseBtn, alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -154,28 +139,8 @@ class AMainWindow(QMainWindow):
         '''
 
         if False == True:
-            self.makeReferralPushButton.setStyleSheet("QPushButton {\n"
-    "    border-image: none;\n"
-    "    background-color: rgba(110, 204, 175, .2);\n"
-    "    color: rgba(0, 0, 0, .2);\n"
-    "    border: 2px solid rgba(0, 0, 0, .2);\n"
-    "}\n"
-    "\n"
-    "QPushButton::hover {\n"
-    "    background-color: rgb(139, 231, 100);\n"
-    "    color: white;\n"
-    "}")
-            self.labOrdersPushButton.setStyleSheet("QPushButton {\n"
-    "    border-image: none;\n"
-    "    background-color: rgba(110, 204, 175, .2);\n"
-    "    color: rgba(0, 0, 0, .2);\n"
-    "    border: 2px solid rgba(0, 0, 0, .2);\n"
-    "}\n"
-    "\n"
-    "QPushButton::hover {\n"
-    "    background-color: rgb(139, 231, 100);\n"
-    "    color: white;\n"
-    "}")
+            self.makeReferralPushButton.setStyleSheet(greyOutBtn_Style)
+            self.labOrdersPushButton.setStyleSheet(greyOutBtn_Style)
 
     def hideAllWindowsExceptForAppointments(self):
         '''
@@ -366,4 +331,3 @@ class AMainWindow(QMainWindow):
 
 
 
-    

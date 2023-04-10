@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QLabel, QLineEdit, QVBoxLayout, QDialog
-from frontend.ui.assets.files.SCHEDULING_LISTENERS import clearInputs_SA, clearInputs_RA, clearInputs_CA
 from sys import exit
 from PyQt5 import QtCore, QtGui
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide
@@ -12,7 +11,12 @@ class AMainWindow(QMainWindow):
         super(AMainWindow, self).__init__()
 
     def load_nav(self):
-        # Nav widgets
+        """
+        Loads all navigation widgets.
+        Use if you are on one of the screens with a nav bar right after init
+        """
+
+        # Declare widgets
         self.logoutPushButton = self.findChild(QPushButton, "Nav_LogoutBtn")
         self.appointmentsPushButton = self.findChild(QPushButton, "Nav_Appointments")
         self.checkinPushButton = self.findChild(QPushButton, "Nav_CheckinBtn")
@@ -40,7 +44,19 @@ class AMainWindow(QMainWindow):
         self.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments -|- User: " + "USERNAME")
 
     def load_error(self, error_text: str):
+        """
+        Loads simple error text box popup with the error_text and a
+        close button
 
+        This can be used for db calls that may return error:
+        try: 
+            add_appointment(appointment)
+        except AssertionError as e: 
+            load_error(error_text=e)
+            return
+        
+        :param error_text: str to be displayed as errors 
+        """
         infoDialog = QDialog()
         infoDialog.setStyleSheet("QDialog {background-color: #344D67}")
 

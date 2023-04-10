@@ -261,18 +261,7 @@ def checkValidValues_SA(self):
 
         """)
 
-def search_SA(self):
 
-    patientFN = getPatientFN_SA(self)
-    patientLN = getPatientLN_SA(self)
-    patientDOB = getPatientDOB_SA(self)
-    officeLocation = getOfficeLocation_SA(self)
-    appointmentReason = getAppointmentReason_SA(self)
-    appointmentType = getAppointmentType_SA(self)
-    physicianName = getPhysicianName_SA(self)
-    appointmentDate = getAppointmentDate_SA(self)
-
-    checkValidValues_SA(self)
 
     # Appointment Date
 def scheduleAppointment(self):

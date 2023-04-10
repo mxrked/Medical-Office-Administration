@@ -40,7 +40,7 @@ class UI(AMainWindow):
 
 
         def submitInformation(self):
-            ""
+            pass
 
 
 

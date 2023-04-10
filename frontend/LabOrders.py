@@ -1,69 +1,54 @@
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
+"""
+LabOrders.py - A window to submit lab orders for a clinic
+UI Designed by: Destan Hutcherson
+Authors: 
+"""
+from PyQt5.QtWidgets import QApplication, QPushButton, QLineEdit, QDateEdit, QComboBox
 from PyQt5 import uic
 from frontend.ui.assets.qrc import app_bg
-from frontend.ui.assets.files.NAVIGATION_FUNCS import *
 
-import backend.private.data_manager
-import urllib
-import sqlalchemy
+from frontend.abstract_main_window import AMainWindow
 import sys
-# import frontend.SchedulingAppointmentsWindow
 
-class UI(QMainWindow):
+class UI(AMainWindow):
     def __init__(self):
         super(UI, self).__init__()
 
         uic.loadUi("frontend/ui/LabOrdersWindow.ui", self)
 
-        # Session for connecting to the Database
-        self.session = backend.private.data_manager.DataManger().session
+        # define widgets
+        self.submitPushButton = self.findChild(QPushButton, "pushButton_ClearLabOrders")
+        self.clearPushbutton = self.findChild(QPushButton, "pushButton_SubmitLabOrder")
+        self.enterFirstName = self.findChild(QLineEdit, "LineEdit_PatientFirstName")
+        self.enterLastName = self.findChild(QLineEdit, "LineEdit_PatientLastName")
+        self.selectDateOfBirth = self.findChild(QDateEdit, "dateEdit_DOB")
+        self.selectPractitioner = self.findChild(QComboBox, "comboBox_Practitioner")
+        self.selectLocation = self.findChild(QComboBox, "comboBox_LocationID")
+        self.selectLabDate = self.findChild(QDateEdit, "dateEdit_LabDate")
+        self.selectLab = self.findChild(QComboBox, "comboBox_PossibleLabs")
+        self.enterOrderName = self.findChild(QLineEdit, "LineEdit_LabOrderName")
 
-        # Functions
-
-        # Define widgets
-        self.logoutPushButton = self.findChild(QPushButton, "Nav_LogoutBtn")
-        self.appointmentsPushButton = self.findChild(QPushButton, "Nav_Appointments")
-        self.checkinPushButton = self.findChild(QPushButton, "Nav_CheckinBtn")
-        self.checkoutPushButton = self.findChild(QPushButton, "Nav_CheckoutBtn")
-        self.makeReferralPushButton = self.findChild(QPushButton, "Nav_MakeReferralBtn")
-        self.labOrdersPushButton = self.findChild(QPushButton, "Nav_LabOrdersBtn")
-        self.approveAppointmentsPushButton = self.findChild(QPushButton, "Nav_ApproveAppointmentsBtn")
-
-        # Do something (Use functions for buttons and stuff)
-        self.logoutPushButton.mousePressEvent = lambda event: logoutUser(self)
-        # self.appointmentsPushButton.clicked.connect(enterSchedulingAppointmentsWindow)
-        self.appointmentsPushButton.mousePressEvent = lambda event: enterSchedulingAppointmentsWindow()
-        self.checkinPushButton.mousePressEvent = lambda event: enterCheckInWindow(self)
-        self.checkoutPushButton.mousePressEvent = lambda event: enterCheckOutWindow(self)
-        self.makeReferralPushButton.mousePressEvent = lambda event: enterMakeReferralWindow(self)
-        self.labOrdersPushButton.mousePressEvent = lambda event: enterLabOrdersWindow(self)
-        self.approveAppointmentsPushButton.mousePressEvent = lambda event: enterAppointmentApproveViaPortalWindow(self)
-
-
-        greyOutReferralsAndLabOrdersForPhysicians(self)
-
-        # Hide the app
-        self.hide()
+        # Do something
+        self.submitPushButton.clicked.connect(self.submitInformation)
 
 
 
-    # This will make it so when the user clicks the red x, it closes the app
-    def closeEvent(self, event):
-        sys.exit()
+        self.load_nav()
 
 
-    def moveEvent(self, event):
-        prevWindowCoords.clear()
 
-        coords = self.pos()
 
-        prevWindowCoords.append(coords.x())
-        prevWindowCoords.append(coords.y())
 
-        print(prevWindowCoords)
+        def submitInformation(self):
+            pass
+
+
+
+
 
 #initializing app
 app = QApplication(sys.argv)
 UIWindow = UI()
-# app.exec()
+if __name__ == "__main__":
+    UIWindow.show()
+    app.exec_()

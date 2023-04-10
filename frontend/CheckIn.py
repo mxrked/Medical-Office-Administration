@@ -1,75 +1,67 @@
-from PyQt5.QtWidgets import *
-# from PyQt5.QtCore import *
+"""
+CheckIn.py - A window to handle in checking in appointments for the clinic
+UI Designed by: Jessica Weeks
+Authors: Jessica Weeks
+"""
+from PyQt5.QtWidgets import QApplication, QComboBox, QListWidget, QPushButton
 from PyQt5 import uic
-# from frontend.ui.assets.qrc import app_bg
-# from frontend.ui.assets.files.GLOBALS import *
-#from frontend.ui.assets.files.NAVIGATION_FUNCS import enterSchedulingAppointmentsWindow, logoutUser, enterStartWindow, enterCheckInWindow, enterCheckOutWindow, enterNewPatientWindow, enterLabOrdersWindow, enterMakeReferralWindow, enterAppointmentApproveViaPortalWindow
-from frontend.ui.assets.files.NAVIGATION_FUNCS import *
-# from sqlalchemy import create_engine, Column, Integer, String
-# from sqlalchemy.orm import sessionmaker, declarative_base
-
-import backend.private.data_manager
-# import urllib
-# import sqlalchemy
+from frontend.abstract_main_window import AMainWindow
+from backend.appointment_dm import AppointmentDM
+from backend.user_dm import UserDM
+from backend.misc_dm import MiscDM
+from backend.data_handler import get_selected_combo_box_object, set_objects_to_combo_box
 import sys
 
 
-class UI(QMainWindow):
+class UI(AMainWindow):
     def __init__(self):
         super(UI, self).__init__()
 
         uic.loadUi("frontend/ui/checkin.ui", self)
 
         # Session for connecting to the Database
-        self.session = backend.private.data_manager.DataManger().session
+        self.load_nav()
 
-        # Functions
+        # Load Input Widgets
+        self.location = self.findChild(QComboBox, "comboBox_Locations")
+        self.providers = self.findChild(QComboBox, "comboBox_Doctors")
+        self.check_ins_list = self.findChild(QListWidget, "listWidget_CheckIns")
+        
+        # Load Buttons
+        self.check_in_btn = self.findChild(QPushButton, "Btn_CheckIn")
+        self.no_show_btn = self.findChild(QPushButton, "Btn_CheckIn_2")
+        self.refresh_btn = self.findChild(QPushButton, "Btn_Refresh")
 
+        # Connect buttons
+        self.check_in_btn.mousePressEvent = self.checkIn
+        self.no_show_btn.mousePressEvent = self.noShow
+        self.refresh_btn.mousePressEvent = self.refresh
 
-        # Define widgets
-        self.logoutPushButton = self.findChild(QPushButton, "Nav_LogoutBtn")
-        self.appointmentsPushButton = self.findChild(QPushButton, "Nav_Appointments")
-        self.checkinPushButton = self.findChild(QPushButton, "Nav_CheckinBtn")
-        self.checkoutPushButton = self.findChild(QPushButton, "Nav_CheckoutBtn")
-        self.makeReferralPushButton = self.findChild(QPushButton, "Nav_MakeReferralBtn")
-        self.labOrdersPushButton = self.findChild(QPushButton, "Nav_LabOrdersBtn")
-        self.approveAppointmentsPushButton = self.findChild(QPushButton, "Nav_ApproveAppointmentsBtn")
+        # Load db managers
+        self.ApptDataManger = AppointmentDM()
+        self.UserDataManager = UserDM()
+        self.MiscDataManager = MiscDM()
 
-        # Do something (Use functions for buttons and stuff)
-        self.logoutPushButton.mousePressEvent = lambda event: logoutUser(self)
-        self.appointmentsPushButton.clicked.connect(enterSchedulingAppointmentsWindow)
-        # self.appointmentsPushButton.mousePressEvent = lambda event: enterSchedulingAppointmentsWindow()
-        self.checkinPushButton.mousePressEvent = lambda event: enterCheckInWindow(self)
-        self.checkoutPushButton.mousePressEvent = lambda event: enterCheckOutWindow(self)
-        self.makeReferralPushButton.mousePressEvent = lambda event: enterMakeReferralWindow(self)
-        self.labOrdersPushButton.mousePressEvent = lambda event: enterLabOrdersWindow(self)
-        self.approveAppointmentsPushButton.mousePressEvent = lambda event: enterAppointmentApproveViaPortalWindow(self)
+        # Load Comobo Boxes
+        physcians = self.UserDataManager.get_physicians()
+        set_objects_to_combo_box(physcians, self.providers)
+        
+        locations = self.MiscDataManager.get_locations()
+        set_objects_to_combo_box(locations, self.location)
 
+    def checkIn(self, event):
+        pass
 
+    def noShow(self, event):
+        pass
 
-        greyOutReferralsAndLabOrdersForPhysicians(self)
+    def refresh(self, event):
+        pass
 
-        # Hide the app
-        self.hide()
-
-
-
-    # This will make it so when the user clicks the red x, it closes the app
-    def closeEvent(self, event):
-        sys.exit()
-
-
-    def moveEvent(self, event):
-        prevWindowCoords.clear()
-
-        coords = self.pos()
-
-        prevWindowCoords.append(coords.x())
-        prevWindowCoords.append(coords.y())
-
-        print(prevWindowCoords)
 
 #initializing app
 app = QApplication(sys.argv)
 UIWindow = UI()
-# app.exec()
+if __name__ == "__main__":
+    UIWindow.show()
+    app.exec_()

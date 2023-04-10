@@ -1,6 +1,7 @@
 """
 models.py - a set of sqlalchemy models for working with the clinics Database.
 Author: Jessica Weeks, Christian Fortin
+Author: Jessica Weeks, Christina Fortin
 """
 from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy import BLOB, Column, Table, Integer, String, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, Float, NCHAR
@@ -90,9 +91,9 @@ class Employee(Base):
     Salary = Column(Numeric)
     apto = Column(Float, nullable=True)
     EmployeeTypeID = Column(Integer, ForeignKey("EmployeeType.EmployeeTypeID"), nullable=True)
-    UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
+    #UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
 
-    UserType = relationship("UserType", backref="EmpUserType")
+    #UserType = relationship("UserType", backref="EmpUserType")
     EmployeeType = relationship("EmployeeType", backref="EmpEmployeeType")
 
     def __str__(self) -> str:
@@ -199,9 +200,12 @@ class Patient(Base):
     # ProviderID = Column(Integer, ForeignKey("") nullable=)
     PatientPhoto = Column(BLOB, nullable=True)
     RecordStatus = Column(Integer, nullable=True)
-    UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
+    #UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
 
-    UserType = relationship("UserType", backref="PUserType")
+    #UserType = relationship("UserType", backref="PUserType")
+
+    def __str__(self) -> str:
+        return f"{self.FirstName}, {self.LastName}"
 
 
 class Group(Base):
@@ -283,7 +287,7 @@ class User(Base):
 
     UserID = Column(Integer, primary_key=True, nullable=False)
 
-    UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
+    #UserTypeID = Column(Integer, ForeignKey("UserType.UserTypeID"))
     Username = Column(NCHAR(10), nullable=False)
     EmailAddress = Column(VARCHAR(), nullable=False)
     Password = Column(VARCHAR(), nullable=False)
@@ -300,9 +304,16 @@ class Referrals(Base):  # THIS MAY NEED TO CHANGE DEPENDING ON STUFF
     PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
     EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     DateofReferral = Column(Date)  # sic
+    DateofReferal = Column(Date)  # sic
     PatientCondition = Column(VARCHAR(50), nullable=True)
     ReferralReason = Column(VARCHAR(50), nullable=True)
     ReferralExpirationDate = Column(Date, nullable=True)
+
+    Patient = relationship("Patient", backref="RePatient")
+    Employee = relationship("Employee", backref="ReEmployee")
+
+    def __str__(self) -> str:
+        return f"Referral for {self.Patient} by {self.Employee}"
 
 
 class UserType(Base):

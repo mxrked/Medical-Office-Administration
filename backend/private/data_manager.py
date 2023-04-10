@@ -1,7 +1,12 @@
+"""
+data_manager.py - A abstract class that handles listeners for other DM's to
+    work with. Be sure to use .close or __del__ methods to break connections
+Author: Jessica Weeks, Christian Fortin
+"""
 from sqlalchemy.orm import sessionmaker
 import sqlalchemy as sa
 
-class DataManger():
+class DataManager():
 
     def __init__(self):
 

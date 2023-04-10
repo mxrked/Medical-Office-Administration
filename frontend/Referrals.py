@@ -1,68 +1,123 @@
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
+"""
+Referrals.py - A window to submit referrals for a clinic
+UI Designed by: Matthew Burrus
+Authors: Jessica Weeks
+"""
+from PyQt5.QtWidgets import QApplication, QLineEdit, QDateEdit, QComboBox, QPushButton
 from PyQt5 import uic
+from datetime import date
 from frontend.ui.assets.qrc import app_bg
-from frontend.ui.assets.files.NAVIGATION_FUNCS import *
-
-import backend.private.data_manager
-import urllib
-import sqlalchemy
+from backend.data_handler import get_selected_combo_box_object, set_objects_to_combo_box
+from backend.misc_dm import MiscDM
+from backend.user_dm import UserDM
+from backend.models import Referrals, Patient, Employee
+from frontend.abstract_main_window import AMainWindow
 import sys
 
-class UI(QMainWindow):
+class UI(AMainWindow):
     def __init__(self):
         super(UI, self).__init__()
 
         uic.loadUi("frontend/ui/Referrals.ui", self)
 
-        # Session for connecting to the Database
-        self.session = backend.private.data_manager.DataManger().session
+        self.load_nav()
 
-        # Functions
+        # Initalized Input Widgets
+        self.FName = self.findChild(QLineEdit, "LineEdit_PatientFirstName")
+        self.LName = self.findChild(QLineEdit, "LineEdit_PatientLastName")
+        self.dob = self.findChild(QDateEdit, "DateEdit_DOB")
+        self.Practitioner = self.findChild(QComboBox, "ComboBox_DoctorPractitioner")
+        self.CreationDate = self.findChild(QDateEdit, "DateEdit_CreationDate")
+        self.Reason = self.findChild(QLineEdit, "LineEdit_Reason")
 
+        # Initalized Buttons
+        self.CreateReferral = self.findChild(QPushButton, "Btn_CreateReferral")
 
-        # Define widgets
-        self.logoutPushButton = self.findChild(QPushButton, "Nav_LogoutBtn")
-        self.appointmentsPushButton = self.findChild(QPushButton, "Nav_Appointments")
-        self.checkinPushButton = self.findChild(QPushButton, "Nav_CheckinBtn")
-        self.checkoutPushButton = self.findChild(QPushButton, "Nav_CheckoutBtn")
-        self.makeReferralPushButton = self.findChild(QPushButton, "Nav_MakeReferralBtn")
-        self.labOrdersPushButton = self.findChild(QPushButton, "Nav_LabOrdersBtn")
-        self.approveAppointmentsPushButton = self.findChild(QPushButton, "Nav_ApproveAppointmentsBtn")
+        # Button Listeners
+        self.CreateReferral.mousePressEvent = self.create_referral
 
-        # Do something (Use functions for buttons and stuff)
-        self.logoutPushButton.mousePressEvent = lambda event: logoutUser(self)
-        # self.appointmentsPushButton.clicked.connect(enterSchedulingAppointmentsWindow)
-        self.appointmentsPushButton.mousePressEvent = lambda event: enterSchedulingAppointmentsWindow()
-        self.checkinPushButton.mousePressEvent = lambda event: enterCheckInWindow(self)
-        self.checkoutPushButton.mousePressEvent = lambda event: enterCheckOutWindow(self)
-        self.makeReferralPushButton.mousePressEvent = lambda event: enterMakeReferralWindow(self)
-        self.labOrdersPushButton.mousePressEvent = lambda event: enterLabOrdersWindow(self)
-        self.approveAppointmentsPushButton.mousePressEvent = lambda event: enterAppointmentApproveViaPortalWindow(self)
+        # Load relevant data_manager
+        self.Mdm = MiscDM()
+        self.Udm = UserDM()
 
+        # Populate Practitioner comobo box
+        physcians = self.Udm.get_physicians()
+        set_objects_to_combo_box(physcians, self.Practitioner)
 
-        greyOutReferralsAndLabOrdersForPhysicians(self)
+    def create_referral(self, event):
+        
+        entered_inputs = self.checkInputs([self.FName, self.LName, self.Reason])
 
-        # Hide the app
-        self.hide()
+        if (get_selected_combo_box_object(self.Practitioner)):
 
+            combo_boxes_entered = True
+        else:
+            combo_boxes_entered = True
 
-    # This will make it so when the user clicks the red x, it closes the app
-    def closeEvent(self, event):
-        sys.exit()
+        if (not entered_inputs) or (not combo_boxes_entered):
+            return
 
+        # All inputs are there!
 
-    def moveEvent(self, event):
-        prevWindowCoords.clear()
+        # Resolve Patient
+        """
+        patients = self.Udm.get_patient(
+            first_name=self.Fname.text(),
+            last_name=self.LName.text(),
+            dob=self.dob.date().toPyDate()
+        )
+        
 
-        coords = self.pos()
+        if len(patients) > 1:
+            # Do Error handeling stuff
+            return
+            pass
+        elif len(patients) == 0:
+            # No patient found, do error handeling
+            return
+            pass
+        
+        patient = patients[0]
 
-        prevWindowCoords.append(coords.x())
-        prevWindowCoords.append(coords.y())
+        employee = get_selected_combo_box_object(self.Practitioner)
+        """
 
-        print(prevWindowCoords)
+        da = date(2000,2,17)
+
+        patient = Patient(
+            PatientID=1,
+            LastName="Weeks",
+            FirstName = "Jessica",
+            DateOfBirth = da,
+        )
+
+        employee = Employee(
+            EmployeeID=1,
+            LastName="Fortin",
+            FirstName="Christina",
+            DateOfBirth=date(2000,3,20),
+            StartDate=date(2010,1,1),
+            EmployeeTypeID=1
+        )
+
+        referral = Referrals(
+            PatientID = patient.PatientID,
+            EmployeeID = employee.EmployeeID,
+            DateofReferal = self.CreationDate.date().toPyDate(),
+            ReferralReason = self.Reason.text(),
+
+            Patient=patient,
+            Employee=employee
+        )
+
+        print(referral)
+
+        #self.dm.add_referral(referral)
+        
 
 #initializing app
 app = QApplication(sys.argv)
 UIWindow = UI()
-# app.exec()
+if __name__ == "__main__":
+    UIWindow.show()
+    app.exec_()

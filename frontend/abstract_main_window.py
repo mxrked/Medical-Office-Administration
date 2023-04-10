@@ -1,19 +1,29 @@
+"""
+abstract_main_window.py - AMainWindow that stores useful functions that apply to all windows.
+Author: Jessica Weeks, Parker Phelps
+"""
+
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QLabel, QLineEdit, QVBoxLayout, QDialog
-from sys import exit
 from PyQt5 import QtCore, QtGui
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide
 from frontend.ui.assets.files.GLOBALS import prevWindowCoords
-
+from backend.private.data_manager import DataManager
 
 class AMainWindow(QMainWindow):
+    """
+        Handles window navigation and methods that are used by all screens
+    """
 
     def __init__(self):
         super(AMainWindow, self).__init__()
 
+
     def load_nav(self):
         """
-        Loads all navigation widgets.
-        Use if you are on one of the screens with a nav bar right after init
+            Loads all navigation widgets.
+            Use if you are on one of the screens with a nav bar right after init
+
+            This should only be used on screens with navigation
         """
 
         # Declare widgets
@@ -45,17 +55,17 @@ class AMainWindow(QMainWindow):
 
     def load_error(self, error_text: str):
         """
-        Loads simple error text box popup with the error_text and a
-        close button
+            Loads simple error text box popup with the error_text and a
+            close button
 
-        This can be used for db calls that may return error:
-        try: 
-            add_appointment(appointment)
-        except AssertionError as e: 
-            load_error(error_text=e)
-            return
-        
-        :param error_text: str to be displayed as errors 
+            This can be used for db calls that may return error:
+            try: 
+                add_appointment(appointment)
+            except AssertionError as e: 
+                load_error(error_text=e)
+                return
+            
+            :param error_text: str to be displayed as errors 
         """
         infoDialog = QDialog()
         infoDialog.setStyleSheet("QDialog {background-color: #344D67}")
@@ -101,19 +111,45 @@ class AMainWindow(QMainWindow):
 
 
     def clearInputs(self):
+        """
+            Clears all widgets on the screen no matter what!
+            Use with caution and feel free to redefine if needed in your
+            class declarations
+        """
         for widget in self.findChildren(QLineEdit):
             widget.clear()
 
     def checkInputs(self, list_of_QLineEdit: list[QLineEdit]) -> bool:
+        """
+            Checks if all the inputs given in a list were entered in with something
+            Use to check if anythings missing
+
+            :params list_of_QLineEdit: A list of QLineEdit widgets
+
+            :returns: bool
+        """
         for widget in list_of_QLineEdit:
             if widget.text() == "":
                 return False
         return True
 
     def closeEvent(self, event):
+        """
+            Closes all data managers before exiting the program
+        """
+
+        for var_name in vars(self):
+
+            if isinstance( getattr(self, var_name), DataManager):
+                delattr(self, var_name)
+
         exit()
-    
+
     def moveEvent(self, event):
+        """
+            Stores the coords of the window so when we switch windows it doesn't
+            go back to the center
+        """
         prevWindowCoords.clear()
 
         coords = self.pos()
@@ -123,67 +159,64 @@ class AMainWindow(QMainWindow):
 
 
     def changeTitleText(self, num, window):
-        '''
-
+        """
             This changes the title to include both the window name
             and the current username that is logged in
 
-        '''
+            :param: window_num, this is janky but this gets use around circular imports
+            :param: window, the window to manipulate
+        """
         username = "USERNAME"
-        # Title
-        if num == 1:
-            window.UIWindow.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments -|- User: " + username)
-        if num == 2:
-            window.UIWindow.setWindowTitle("Forsyth Family Practice Center - Check In -|- User: " + username)
-        if num == 3:
-            window.UIWindow.setWindowTitle("Forsyth Family Practice Center - Check Out -|- User: " + username)
-        if num == 4:
-            window.UIWindow.setWindowTitle("Forsyth Family Practice Center - Make Referral -|- User: " + username)
-        if num == 5:
-            window.UIWindow.setWindowTitle("Forsyth Family Practice Center - Lab Orders -|- User: " + username)
-        if num == 6:
-            window.UIWindow.setWindowTitle("Forsyth Family Practice Center - Approve Appointment via Portal -|- User: " + username)
-        if num == 7:
-            window.UIWindow.setWindowTitle("Forsyth Family Practice Center - New Patient -|- User: " + username)
+        titles = {
+            1: "Forsyth Family Practice Center - Scheduling Appointments -|- User: {username}",
+            2: "Forsyth Family Practice Center - Check In -|- User: {username}",
+            3: "Forsyth Family Practice Center - Check Out -|- User: {username}",
+            4: "Forsyth Family Practice Center - Make Referral -|- User: {username}",
+            5: "Forsyth Family Practice Center - Lab Orders -|- User: {username}",
+            6: "Forsyth Family Practice Center - Approve Appointment via Portal -|- User: {username}",
+            7: "Forsyth Family Practice Center - New Patient -|- User: {username}"
+        }
+        if num in titles:
+            title = titles[num].format(username=username)
+            window.UIWindow.setWindowTitle(title)
 
 
     def greyOutReferralsAndLabOrdersForPhysicians(self):
-        '''
+        """
             This will check if the isPhysician array is true and then it will
             grey out referrals and lab orders buttons
-        '''
+        """
 
         if False == True:
             self.makeReferralPushButton.setStyleSheet("QPushButton {\n"
-    "    border-image: none;\n"
-    "    background-color: rgba(110, 204, 175, .2);\n"
-    "    color: rgba(0, 0, 0, .2);\n"
-    "    border: 2px solid rgba(0, 0, 0, .2);\n"
-    "}\n"
-    "\n"
-    "QPushButton::hover {\n"
-    "    background-color: rgb(139, 231, 100);\n"
-    "    color: white;\n"
-    "}")
+                                                    "    border-image: none;\n"
+                                                    "    background-color: rgba(110, 204, 175, .2);\n"
+                                                    "    color: rgba(0, 0, 0, .2);\n"
+                                                    "    border: 2px solid rgba(0, 0, 0, .2);\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "QPushButton::hover {\n"
+                                                    "    background-color: rgb(139, 231, 100);\n"
+                                                    "    color: white;\n"
+                                                    "}")
+
             self.labOrdersPushButton.setStyleSheet("QPushButton {\n"
-    "    border-image: none;\n"
-    "    background-color: rgba(110, 204, 175, .2);\n"
-    "    color: rgba(0, 0, 0, .2);\n"
-    "    border: 2px solid rgba(0, 0, 0, .2);\n"
-    "}\n"
-    "\n"
-    "QPushButton::hover {\n"
-    "    background-color: rgb(139, 231, 100);\n"
-    "    color: white;\n"
-    "}")
+                                                    "    border-image: none;\n"
+                                                    "    background-color: rgba(110, 204, 175, .2);\n"
+                                                    "    color: rgba(0, 0, 0, .2);\n"
+                                                    "    border: 2px solid rgba(0, 0, 0, .2);\n"
+                                                    "}\n"
+                                                    "\n"
+                                                    "QPushButton::hover {\n"
+                                                    "    background-color: rgb(139, 231, 100);\n"
+                                                    "    color: white;\n"
+                                                    "}")
 
     def hideAllWindowsExceptForAppointments(self):
-        '''
-
+        """
             This hides all of the current windows excluding the appointments window
             as it prevents duplication
-
-        '''
+        """
 
         from frontend import StartWindow, ApptRequest, NewPatient, Referrals, LabOrders, CheckIn, CheckOut
 
@@ -198,20 +231,16 @@ class AMainWindow(QMainWindow):
 
 
     def changeCurrentUserLabelText(self, window):
-        '''
-
-            Similar for the title, instead this changes the bottom labels
-
-        '''
+        """
+            Changes User Label
+        """
 
         window.UIWindow.currentUserLabel.setText("Current User: " + "User")
-
+    
     def enterStartWindow(self):
-        '''
-
-            This enters the StartWindow
-
-        '''
+        """
+            Enter start window and moves it to the previous coords
+        """
 
         from frontend import StartWindow
 
@@ -222,11 +251,9 @@ class AMainWindow(QMainWindow):
         StartWindow.UIWindow.show()
 
     def enterSchedulingAppointmentsWindow(self):
-        '''
-
-            This enters the SchedulingAppointmentsWindow
-
-        '''
+        """
+            Enter Schedule window and moves it to the previous coords
+        """
 
         from frontend import SchedulingAppointmentsWindow
 
@@ -241,11 +268,9 @@ class AMainWindow(QMainWindow):
         self.changeTitleText(1, SchedulingAppointmentsWindow)
 
     def enterCheckInWindow(self):
-        '''
-
-            This enters the CheckInWindow
-
-        '''
+        """
+            Enter check-in window and moves it to the previous coords
+        """
 
         from frontend import CheckIn
         print("Routing to check in screen")
@@ -258,16 +283,14 @@ class AMainWindow(QMainWindow):
         self.changeTitleText(2, CheckIn)
 
     def enterCheckOutWindow(self):
-        '''
-
-        This enters the CheckOutWindow
-
-        '''
+        """
+            Enter check-out window and moves it to the previous coords
+        """
 
         from frontend import CheckOut
 
         print("Routing to check out screen")
-
+  
         self.hide()
         CheckOut.UIWindow.move(prevWindowCoords[0], prevWindowCoords[1])
         CheckOut.UIWindow.show()
@@ -276,11 +299,9 @@ class AMainWindow(QMainWindow):
         self.changeTitleText(3, CheckOut)
 
     def enterMakeReferralWindow(self):
-        '''
-
-            This enters the CheckInWindow
-
-        '''
+        """
+            Enter start window and moves it to the previous coords
+        """
 
         from frontend import Referrals
         print("Routing to make referral screen")
@@ -294,15 +315,12 @@ class AMainWindow(QMainWindow):
         self.changeTitleText(4, Referrals)
 
     def enterLabOrdersWindow(self):
-        '''
-
-            This enters the LabOrdersWindow
-
-        '''
+        """
+            Enter lab order window and moves it to the previous coords
+        """
 
         from frontend import LabOrders
         print("Routing to lab orders screen")
-
 
 
         self.hide()
@@ -313,11 +331,9 @@ class AMainWindow(QMainWindow):
         self.changeTitleText(5, LabOrders)
 
     def enterAppointmentApproveViaPortalWindow(self):
-        '''
-
-            This enters the ApptRequestWindow
-
-        '''
+        """
+            Enter approve appointment window and moves it to the previous coords
+        """
 
         from frontend import ApptRequest
         print("Routing to appointment approve via portal screen")
@@ -330,11 +346,9 @@ class AMainWindow(QMainWindow):
         self.changeTitleText(6, ApptRequest)
 
     def enterNewPatientWindow(self):
-        '''
-
-            This enters the NewPatientWindow
-
-        '''
+        """
+            Enter new patient window and moves it to the previous coords
+        """
 
         from frontend import NewPatient
 
@@ -348,11 +362,9 @@ class AMainWindow(QMainWindow):
         self.changeTitleText(7, NewPatient)
 
     def logoutUser(self):
-        '''
-
-            This is used to log out the user and sends them back to the login screen
-
-        '''
+        """
+            Logs out the user
+        """
 
         from frontend import SchedulingAppointmentsWindow
 

@@ -1,7 +1,7 @@
 from sqlalchemy.orm import sessionmaker
 import sqlalchemy as sa
 
-class DataManger():
+class DataManager():
 
     def __init__(self):
 

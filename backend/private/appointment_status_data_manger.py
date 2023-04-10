@@ -4,11 +4,11 @@ Author: Jessica Weeks
 """
 from datetime import date
 import sqlalchemy as sa
-from backend.private.data_manager import DataManger
+from backend.private.data_manager import DataManager
 from backend.models import Appointment, HospitalLocation, Employee
 
 
-class AppointmentStatusDataManger(DataManger):
+class AppointmentStatusDataManger(DataManager):
     """
         A DataManager for modifying and reading appointment status
         

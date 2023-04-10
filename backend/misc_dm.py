@@ -2,10 +2,10 @@
 misc_data_manger.py - Handles miscellaneous tasks for interacting with the DB
 Author: Christian Fortin
 """
-from backend.private.data_manager import DataManger
+from backend.private.data_manager import DataManager
 from backend.models import Referrals, LabOrder, Lab, Patient, HospitalLocation
 
-class MiscDM(DataManger):
+class MiscDM(DataManager):
     """
     Handles miscellaneous tasks for interacting with the DB
     Includes:

@@ -3,8 +3,8 @@
 
 #define MyAppName "Medical Office"
 #define MyAppVersion "0.1"
-#define MyAppPublisher "My Company, Inc."
-#define MyAppURL "http://www.example.com/"
+#define MyAppPublisher "Medical Office Administration"
+#define MyAppURL "https://github.com/mxrked/Medical-Office-Administration"
 #define MyAppExeName "main.exe"
 
 [Setup]

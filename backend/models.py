@@ -303,7 +303,7 @@ class Location(Base):
         You should only be pulling these, not creating them
 
         :column LocationID:
-        :column LocationName:
+        :column Location_Name:
 
         is stringable
     """

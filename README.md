@@ -25,6 +25,9 @@
 
 ## Installer
  Alternatively you can use our setup installer that will be avaliable at project completion
+ 
+## How to use
+ Pending Project completion
 
 ## Credits
  - Parker Phelps (Project Owner)

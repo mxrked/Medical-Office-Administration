@@ -34,7 +34,7 @@ class UserDM(DataManager):
         physicians = self.session.query(Employee)\
             .join(EmployeeType)\
             .options(joinedload(Employee.EmployeeType))\
-            .filter(EmployeeType.TypeDescription.in_(valid_types))\
+            .filter(EmployeeType.Type.in_(valid_types))\
             .order_by(Employee.LastName, Employee.FirstName)\
             .all()
         return physicians

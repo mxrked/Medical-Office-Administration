@@ -10,7 +10,7 @@ from frontend.ui.assets.qrc import app_bg
 from backend.data_handler import get_selected_combo_box_object, set_objects_to_combo_box
 from backend.misc_dm import MiscDM
 from backend.user_dm import UserDM
-from backend.models import Referrals, Patient, Employee
+from backend.models import Referral, Patient, Employee
 from frontend.abstract_main_window import AMainWindow
 import sys
 
@@ -100,7 +100,7 @@ class UI(AMainWindow):
             EmployeeTypeID=1
         )
 
-        referral = Referrals(
+        referral = Referral(
             PatientID = patient.PatientID,
             EmployeeID = employee.EmployeeID,
             DateofReferal = self.CreationDate.date().toPyDate(),

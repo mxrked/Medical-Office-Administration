@@ -17,7 +17,9 @@ In Powershell
  ```
  ```powershell
   cd .\Medical-Office-Administration\
-  .\build.bat
+ ```
+ ```
+ .\build.bat
  ```
 A link is created in the directory
 

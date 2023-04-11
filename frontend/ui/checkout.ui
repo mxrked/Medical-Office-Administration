@@ -453,9 +453,9 @@ QLabel {
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>350</x>
+        <x>0</x>
         <y>0</y>
-        <width>531</width>
+        <width>1121</width>
         <height>161</height>
        </rect>
       </property>

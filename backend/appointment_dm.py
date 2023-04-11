@@ -6,7 +6,7 @@ import datetime
 from sqlalchemy.orm import joinedload
 import sqlalchemy as sa
 from backend.models import HospitalHours, AppointmentType, Appointment,\
-                    Employee, HospitalLocation, Event, Patient
+                    Employee, Location, Event, Patient
 from backend.private.appointment_status_data_manger import AppointmentStatusDataManger
 
 
@@ -20,7 +20,7 @@ class AppointmentDM(AppointmentStatusDataManger):
     def get_avaliable_appointments(self,
                                appt_date: date,
                                provider: Employee,
-                               location: HospitalLocation,
+                               location: Location,
                                appt_type: AppointmentType,
                                patient: Patient,
                                visit_reason: str) -> list[Appointment]:
@@ -302,7 +302,7 @@ class AppointmentDM(AppointmentStatusDataManger):
         # Everything above is asserted. We wont get here without errors unless its true
         return True
 
-    def __get_hours_for(self, check_date: date, location: HospitalLocation) -> HospitalHours:
+    def __get_hours_for(self, check_date: date, location: Location) -> HospitalHours:
         """ Gets hours for a given check_date & location object """
         # In the DB its either "Week1" or "Week2"
         week_number = "Week"

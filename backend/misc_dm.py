@@ -3,7 +3,7 @@ misc_data_manger.py - Handles miscellaneous tasks for interacting with the DB
 Author: Christian Fortin
 """
 from backend.private.data_manager import DataManager
-from backend.models import Referrals, LabOrder, Lab, Patient, HospitalLocation
+from backend.models import Referrals, LabOrder, Lab, Patient, Location
 
 class MiscDM(DataManager):
     """
@@ -41,9 +41,9 @@ class MiscDM(DataManager):
             .all()
         return labs
 
-    def get_locations(self) -> list[HospitalLocation]:
+    def get_locations(self) -> list[Location]:
         """ Returns list of all locations """
-        locations = self.session.query(HospitalLocation)\
-            .order_by(HospitalLocation.LocationName)\
+        locations = self.session.query(Location)\
+            .order_by(Location.LocationName)\
             .all()
         return locations

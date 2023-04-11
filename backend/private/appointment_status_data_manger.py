@@ -5,7 +5,7 @@ Author: Jessica Weeks
 from datetime import date
 import sqlalchemy as sa
 from backend.private.data_manager import DataManager
-from backend.models import Appointment, HospitalLocation, Employee
+from backend.models import Appointment, Location, Employee
 
 
 class AppointmentStatusDataManger(DataManager):
@@ -59,7 +59,7 @@ class AppointmentStatusDataManger(DataManager):
         self.session.commit()
 
     def get_in_progress_appointments(self,
-                                     location: HospitalLocation=None,
+                                     location: Location=None,
                                      provider: Employee=None) -> list[Appointment]:
         """
             Get appointments that are currently in progress, for today. 
@@ -78,7 +78,7 @@ class AppointmentStatusDataManger(DataManager):
 
 
     def get_pending_appointments(self,
-                                 location: HospitalLocation=None,
+                                 location: Location=None,
                                  provider: Employee=None) -> list[Appointment]:
         """
             Get appointments that are currently pending.
@@ -95,7 +95,7 @@ class AppointmentStatusDataManger(DataManager):
         ).all()
 
     def get_todays_appointments(self,
-                                location: HospitalLocation=None,
+                                location: Location=None,
                                 provider: Employee=None) -> list[Appointment]:
         """
             Get appointments that are for today. 

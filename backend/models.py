@@ -4,7 +4,7 @@ Author: Jessica Weeks, Christian Fortin
 Author: Jessica Weeks, Christina Fortin
 """
 from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy import BLOB, Column, Table, Integer, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, MAX, CHAR
+from sqlalchemy import Column, Table, Integer, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, MAX, CHAR
 
 Base = declarative_base()
 

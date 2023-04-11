@@ -63,7 +63,7 @@ class AppointmentStatusDataManger(DataManager):
                                      provider: Employee=None) -> list[Appointment]:
         """
             Get appointments that are currently in progress, for today. 
-            You can use either HospitalLocation or Employee to search
+            You can use either Location or Employee to search
 
             :param location: Use for searching this particular Location
             :param provider: Use for searching this particular Employee (Usually a provider)
@@ -73,7 +73,7 @@ class AppointmentStatusDataManger(DataManager):
             Appointment.ApptStatus == "In Progress",
             Appointment.ApptDate == date.today(),
             Appointment.LocationID == location.LocationID if location else True,
-            Appointment.EmployeeID == provider.EmployeeID if provider else True,
+            Appointment.ProviderID == provider.EmployeeID if provider else True,
         )
 
 
@@ -82,7 +82,7 @@ class AppointmentStatusDataManger(DataManager):
                                  provider: Employee=None) -> list[Appointment]:
         """
             Get appointments that are currently pending.
-            You can use either HospitalLocation or Employee to search
+            You can use either Location or Employee to search
 
             :param location: Use for searching this particular Location
             :param provider: Use for searching this particular Employee (Usually a provider)
@@ -91,7 +91,7 @@ class AppointmentStatusDataManger(DataManager):
         return self.session.query(Appointment).filter(
             Appointment.ApptStatus == "Pending",
             Appointment.LocationID == location.LocationID if location else True,
-            Appointment.EmployeeID == provider.EmployeeID if provider else True,
+            Appointment.ProviderID == provider.EmployeeID if provider else True,
         ).all()
 
     def get_todays_appointments(self,
@@ -99,7 +99,7 @@ class AppointmentStatusDataManger(DataManager):
                                 provider: Employee=None) -> list[Appointment]:
         """
             Get appointments that are for today. 
-            You can use either HospitalLocation or Employee to search
+            You can use either Location or Employee to search
             We search for the statuses "Scheduled" & "Rescheduled"
 
             :param location: Use for searching this particular Location
@@ -110,5 +110,5 @@ class AppointmentStatusDataManger(DataManager):
             Appointment.ApptStatus.in_(["Scheduled", "Rescheduled"]),
             Appointment.ApptDate == date.today(),
             Appointment.LocationID == location.LocationID if location else True,
-            Appointment.EmployeeID == provider.EmployeeID if provider else True
+            Appointment.ProviderID == provider.EmployeeID if provider else True
             ).all()

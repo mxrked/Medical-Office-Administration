@@ -4,10 +4,9 @@ Author: Jessica Weeks, Christian Fortin
 Author: Jessica Weeks, Christina Fortin
 """
 from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy import Column, Table, Integer, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, MAX, CHAR
+from sqlalchemy import Column, Table, Integer, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, CHAR
 
 Base = declarative_base()
-
 
 class Appointment(Base):
     """
@@ -47,7 +46,7 @@ class Appointment(Base):
     PhysicianID = Column(Integer, nullable=False)
     ApptTypeID = Column(Integer, ForeignKey("AppointmentType.ApptTypeID")) 
     LocationID = Column(Integer, ForeignKey("Location.LocationID"))
-    ApptReason = Column(VARCHAR(MAX))
+    ApptReason = Column(VARCHAR(65535))
 
     AppointmentType = relationship("AppointmentType", backref="ApptAppointmentType")
     Patient = relationship("Patient", backref="ApptPatient")
@@ -328,7 +327,7 @@ class Role(Base):
 
     RoleID = Column(Integer, primary_key=True)
 
-    Role = Column(VARCHAR(MAX), nullable=False)
+    Role = Column(VARCHAR(65535), nullable=False)
 
 class User(Base):
     """
@@ -371,7 +370,7 @@ class Referral(Base):
     PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
     PhysicianID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     ReferralDate = Column(Date)
-    PatientCondition = Column(VARCHAR(MAX))
+    PatientCondition = Column(VARCHAR(65535))
 
     Patient = relationship("Patient", backref="RePatient")
     Employee = relationship("Employee", backref="ReEmployee")

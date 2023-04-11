@@ -44,6 +44,6 @@ class MiscDM(DataManager):
     def get_locations(self) -> list[Location]:
         """ Returns list of all locations """
         locations = self.session.query(Location)\
-            .order_by(Location.LocationName)\
+            .order_by(Location.Location_Name)\
             .all()
         return locations

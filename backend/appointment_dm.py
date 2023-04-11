@@ -84,7 +84,7 @@ class AppointmentDM(AppointmentStatusDataManger):
         for taken_appt in taken_appointments:
 
             taken_appt_start = taken_appt.ApptTime
-            taken_appt_length = taken_appt.AppointmentType.ApptLength
+            taken_appt_length = taken_appt.ApptLength
 
             taken_appointment_times_dict[
                 datetime.time(taken_appt_start)] = timedelta(taken_appt_length)
@@ -157,7 +157,12 @@ class AppointmentDM(AppointmentStatusDataManger):
                     PhysicianID=provider.EmployeeID,
                     ApptTypeID=appt_type.ApptTypeID,
                     LocationID = location.LocationID,
-                    ApptReason=appt_reason
+                    ApptReason=appt_reason,
+
+                    Patient=patient,
+                    AppointmentType=appt_type,
+                    Employee=provider,
+                    Location=location
                 )
             )
 
@@ -246,11 +251,10 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         ### First We check if there are any taken appointments ###
 
-        appt_end_time = appt.ApptTime + timedelta(minutes= appt.AppointmentType.ApptLength)
+        appt_end_time = appt.ApptTime + timedelta(minutes= appt.ApptLength)
 
         # Used to finding the end time of a appointment in the DB
-        appointment_end_time = Appointment.ApptTime+\
-              timedelta(minutes=Appointment.AppointmentType.ApptLength)
+        appointment_end_time = Appointment.ApptLength
 
         is_appointment_time_conflicted = (
              # Check if the appointment start time is in between an existing appointment

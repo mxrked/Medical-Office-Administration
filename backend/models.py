@@ -291,7 +291,7 @@ class HospitalHours(Base):
     DayOfWeek = Column(NVARCHAR(50), nullable=False)
     OpenTime = Column(Time, nullable=True)
     CloseTime = Column(Time, nullable=True)
-   
+
 
     Location = relationship("Location", backref="HHLocation")
 

@@ -51,7 +51,7 @@ class UserDM(DataManager):
         """
 
         patients = self.session.query(Patient)\
-            .where(dob == Patient.DateOfBirth, first_name == Patient.FirstName, last_name == Patient.LastName)\
+            .where(dob == Patient.DateOfBirth, first_name == Patient.First_Name, last_name == Patient.Last_Name)\
             .all()
 
         return patients

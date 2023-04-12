@@ -4265,26 +4265,7 @@ QPushButton::hover {
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="date_of_birth_lineEdit_3">
-             <property name="maximumSize">
-              <size>
-               <width>325</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="placeholderText">
-              <string>Etner Date Of Birth</string>
-             </property>
-            </widget>
+            <widget class="QDateEdit" name="dateEdit"/>
            </item>
           </layout>
          </item>

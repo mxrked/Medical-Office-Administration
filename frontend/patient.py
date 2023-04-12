@@ -4,7 +4,7 @@ UI Designed by: Destan Hutcherson
 Authors: 
 """
 
-from PyQt5.QtWidgets import QComboBox, QLineEdit, QRadioButton
+from PyQt5.QtWidgets import QComboBox, QLineEdit, QRadioButton, QDateEdit, QPushButton
 from frontend.schedule import Cancel
 
 class Patient(Cancel):
@@ -18,7 +18,10 @@ class Patient(Cancel):
         self.zip = self.findChild(QLineEdit, "zip_code_lineEdit")
         self.phone_number = self.findChild(QLineEdit, "phone_number_lineEdit")
         self.email = self.findChild(QLineEdit, "email_lineEdit")
-        
+        self.p_dob = self.findChild(QDateEdit, "p_dob_dateEdit")
+        self.p_snn = self.findChild(QLineEdit, "p_ssn")
+        self.p_street = self.findChild(QLineEdit, "p_street_address")
+
         # Name
         self.patient_fname = self.findChild(QLineEdit, "p_fname")
         self.patient_mname = self.findChild(QLineEdit, "p_mname")
@@ -36,4 +39,16 @@ class Patient(Cancel):
         self.jr_radioButton = self.findChild(QRadioButton, "jr_radioButton_5")
         self.na_radioButton = self.findChild(QRadioButton, "radioButton_10")
         self.sr_radioButton = self.findChild(QRadioButton, "sr_radioButton_5")
-        
+
+        # Buttons
+        self.p_submit_btn = self.findChild(QPushButton, "btnSubmitNewPatient")
+
+        # Connect buttons
+        self.p_submit_btn.mousePressEvent = self.submit
+
+
+    def submit(self, event):
+        pass
+
+
+

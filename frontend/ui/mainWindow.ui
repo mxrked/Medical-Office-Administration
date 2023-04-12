@@ -1122,7 +1122,7 @@ QPushButton::hover {
 	font-family: &quot;MS Shell Dlg 2&quot;;
 	font-size: 11;
 	padding-left: 10px;
-	padding-right: 10px;
+	
 }</string>
              </property>
             </widget>
@@ -1406,7 +1406,7 @@ QPushButton::hover {
 	font-family: &quot;MS Shell Dlg 2&quot;;
 	font-size: 11;
 	padding-left: 10px;
-	padding-right: 10px;
+	
 }</string>
                </property>
                <property name="text">
@@ -1501,7 +1501,7 @@ QPushButton::hover {
 	font-family: &quot;MS Shell Dlg 2&quot;;
 	font-size: 11;
 	padding-left: 10px;
-	padding-right: 10px;
+	
 }</string>
                  </property>
                  <property name="text">
@@ -1598,7 +1598,7 @@ QPushButton::hover {
 	font-family: &quot;MS Shell Dlg 2&quot;;
 	font-size: 11;
 	padding-left: 10px;
-	padding-right: 10px;
+	
 }
 
 /** 
@@ -1802,7 +1802,7 @@ QCalendarWidget QTableView QLabel {
 	font-family: &quot;MS Shell Dlg 2&quot;;
 	font-size: 11;
 	padding-left: 10px;
-	padding-right: 10px;
+	
 }</string>
                </property>
                <property name="placeholderText">
@@ -2090,7 +2090,7 @@ QCalendarWidget QTableView QLabel {
 	font-family: &quot;MS Shell Dlg 2&quot;;
 	font-size: 11;	
 	padding-left: 10px;
-	padding-right: 10px;
+	
 }</string>
                </property>
               </widget>
@@ -2239,7 +2239,7 @@ QListWidget::item:selected {
 	font-family: &quot;MS Shell Dlg 2&quot;;
 	font-size: 15;
 	padding-left: 10px;
-	padding-right: 10px;
+	
 }</string>
             </property>
             <property name="time">
@@ -3075,7 +3075,7 @@ QListWidget::item:selected {
 	font-family: &quot;MS Shell Dlg 2&quot;;
 	font-size: 11;
 	padding-left: 10px;
-	padding-right: 10px;
+	
 }</string>
              </property>
             </widget>
@@ -3197,7 +3197,7 @@ QPushButton::hover {
 	font-family: &quot;MS Shell Dlg 2&quot;;
 	font-size: 11;
 	padding-left: 10px;
-	padding-right: 10px;
+	
 }</string>
              </property>
             </widget>

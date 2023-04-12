@@ -7,10 +7,24 @@ from PyQt5.QtWidgets import QListWidget, QPushButton, QComboBox
 from frontend.lab import Lab
 
 class Approve(Lab):
+    """
+        Handles the Approve Appointment Buttons/Functions
+
+        First initalizes widgets
+
+        Then grabs locations from the misc_dm 
+        and providers from the user_dm
+
+        then uses the data_handlers to 
+            set_objects_to_combo_box(locations, self.a_location)
+        does this for both
+        
+        lastly it runs self.a_refresh to fill up list
+    """
     def __init__(self):
         super(Approve, self).__init__()
 
-        self.approve_list = self.findChild(QListWidget, "Approve_List")
+        self.a_list = self.findChild(QListWidget, "Approve_List")
         self.a_btn_approve = self.findChild(QPushButton, "Approve_Btn_Approve")
         self.a_btn_deny = self.findChild(QPushButton, "Approve_Btn_Deny")
         self.a_btn_refresh = self.findChild(QPushButton, "Approve_Btn_Refresh")
@@ -22,11 +36,45 @@ class Approve(Lab):
         self.a_btn_refresh.mousePressEvent = self.a_refresh
 
     
-    def approve(self):
-        pass
+    def approve(self, event):
+        """
+            Gets the selected item from self.approve_list
+                Using the data_handler
 
-    def deny(self):
-        pass
+            NOTE: Check if that data corresponds to data.
+                If it doesn't use self.load_error()
+            
+            Then uses the Appointment_Data_Manager To add_appointment
 
-    def a_refresh(self):
-        pass
+            NOTE: Put this in a try catch, if the appointment is taken
+                it will give you a Assertion error
+
+            try:
+                add_appointment()
+            catch AssertionError as e:
+                self.load_error(e)
+        """
+        print(self.approve.__doc__)
+
+    def deny(self, event):
+        """
+            Sets the status of the given appointment to deny
+
+            Gets the selected item from self.approve_list
+                Using the data_handler
+
+            NOTE: Check if that data corresponds to data.
+                If it doesn't use self.load_error()
+            
+            Then uses appointment_data_manager to set_appointment_canceled
+        """
+        print(self.deny.__doc__)
+
+    def a_refresh(self, event):
+        """
+            Refreshes self.a_list with pending appointments
+
+            Get list of appointments using Appointment_Data_Manager
+            Then use the data handler to set_objects_to_list(appointments, self.a_list) 
+        """
+        print(self.a_refresh.__doc__)

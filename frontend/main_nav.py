@@ -2,7 +2,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QLineEdit, QStackedWidget, QFrame
 import sys
 from frontend.ui.assets.files.STYLING import *
-from frontend.ui.assets.qrc import app_bg, doctor, show, hide
+from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo
 from backend.private.data_manager import DataManager
 
 

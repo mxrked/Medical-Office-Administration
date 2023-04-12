@@ -35,7 +35,7 @@ class UserDM(DataManager):
             .join(EmployeeType)\
             .options(joinedload(Employee.EmployeeType))\
             .filter(EmployeeType.Type.in_(valid_types))\
-            .order_by(Employee.LastName, Employee.FirstName)\
+            .order_by(Employee.Last_Name, Employee.First_Name)\
             .all()
         return physicians
 

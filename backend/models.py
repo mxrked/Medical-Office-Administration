@@ -43,7 +43,7 @@ class Appointment(Base):
     PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
     ApptStatus = Column(VARCHAR(50))
     ApptLength = Column(Numeric(18,0), nullable=True)
-    PhysicianID = Column(Integer, nullable=False)
+    PhysicianID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     ApptTypeID = Column(Integer, ForeignKey("AppointmentType.ApptTypeID")) 
     LocationID = Column(Integer, ForeignKey("Location.LocationID"))
     ApptReason = Column(VARCHAR(65535))
@@ -122,7 +122,7 @@ class Employee(Base):
     EmployeeID = Column(Integer, primary_key=True)
 
     Title = Column(VARCHAR(10))
-    LastName = Column(VARCHAR(50))
+    Last_Name = Column(VARCHAR(50))
     FirstName = Column(VARCHAR(50))
     Address = Column(NVARCHAR(50))
     City = Column(NVARCHAR(50))
@@ -139,7 +139,7 @@ class Employee(Base):
     User = relationship("User", backref="EmpUser")
 
     def __str__(self) -> str:
-        return f"{self.FirstName}, {self.LastName}"
+        return f"{self.FirstName}, {self.Last_Name}"
 
 class EmployeeType(Base):
     __tablename__ = "EmployeeType"
@@ -164,7 +164,7 @@ class Event(Base):
     EventName = Column(VARCHAR(50), nullable=False)
     StartDate = Column(Date, nullable=False)
     EndDate = Column(Date, nullable=False)
-    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"))
+    EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"), nullable=True)
     WorkingDays = Column(VARCHAR(50))
 
     Employee = relationship("Employee", backref="EvEmployee")
@@ -220,6 +220,7 @@ class LabOrder(Base):
     Employee = relationship("Employee", backref="LOEmployee")
     Patient = relationship("Patient", backref="LOPatient")
     Location = relationship("Location", backref="LOLocation")
+    Lab = relationship("Lab", backref="LOLab")
 
 class Patient(Base):
     """

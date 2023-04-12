@@ -430,7 +430,6 @@ QPushButton::hover {
 border-image: transparent;</string>
      </property>
      <property name="currentIndex">
-      <number>4</number>
       <number>0</number>
      </property>
      <widget class="QWidget" name="Appointments">

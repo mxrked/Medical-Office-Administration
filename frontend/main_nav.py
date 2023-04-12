@@ -1,8 +1,8 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QLabel, QStackedWidget, QFrame
-from frontend.abstract_main_window import AMainWindow
+from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QLineEdit, QStackedWidget, QFrame
 import sys
 from frontend.ui.assets.files.STYLING import *
+from frontend.ui.assets.qrc import app_bg, doctor, show, hide
 
 class Nav(QMainWindow):
     def __init__(self):
@@ -185,7 +185,14 @@ class Nav(QMainWindow):
         self.enable_all()
         self.disable_nav(self.approveAppointmentsPushButton)
 
-
+    def clearInputs(self):
+        """
+            Clears all widgets on the screen no matter what!
+            Use with caution and feel free to redefine if needed in your
+            class declarations
+        """
+        for widget in self.findChildren(QLineEdit):
+            widget.clear()
 
 #initializing app
 app = QApplication(sys.argv)

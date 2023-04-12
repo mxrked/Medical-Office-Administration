@@ -3,7 +3,7 @@ NewPatient.py - A window to add a new patient to the database
 UI Designed by: Destan Hutcherson
 Authors: 
 """
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import uic
 from frontend.ui.assets.qrc import app_bg
 

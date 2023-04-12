@@ -3,17 +3,16 @@ StarWindow.py - Window for the login screen of the db
 UI Designer: Parker Phelps
 Authors: Parker Phelps, Jessica Weeks
 """
-from PyQt5.QtWidgets import QApplication, QLineEdit, QLabel, QPushButton, QDialog, QVBoxLayout, QFrame
+from PyQt5.QtWidgets import QApplication, QLineEdit, QLabel, QPushButton, QDialog, QVBoxLayout, QFrame, QMainWindow
 from PyQt5 import uic, QtCore, QtGui
 
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide
-from frontend.abstract_main_window import AMainWindow
 from frontend.ui.assets.files.GLOBALS import teamMembers
 from frontend.ui.assets.files.STYLING import *
 import sys
 
 
-class UI(AMainWindow):
+class UI(QMainWindow):
     def __init__(self):
         super(UI, self).__init__()
 
@@ -129,8 +128,12 @@ class UI(AMainWindow):
             self.enterUsernameLineEdit.setStyleSheet(validEnterLE_Style)
             self.enterPasswordLineEdit.setStyleSheet(validEnterLE_Style)
 
+            from frontend.main import MainWindow
+
             self.hide()
-            self.enterSchedulingAppointmentsWindow()
+
+            self.main_window = MainWindow()
+            self.main_window.show()
 
         else:
 

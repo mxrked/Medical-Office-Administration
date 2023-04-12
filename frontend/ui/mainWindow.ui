@@ -431,6 +431,7 @@ border-image: transparent;</string>
      </property>
      <property name="currentIndex">
       <number>4</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="Appointments">
       <widget class="QWidget" name="layoutWidget">
@@ -4009,7 +4010,7 @@ QPushButton::hover {
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="first_name_lineEdit_3">
+            <widget class="QLineEdit" name="p_fname">
              <property name="maximumSize">
               <size>
                <width>325</width>
@@ -4056,7 +4057,7 @@ QPushButton::hover {
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="middle_name_lineEdit_3">
+            <widget class="QLineEdit" name="p_mname">
              <property name="maximumSize">
               <size>
                <width>325</width>
@@ -4103,7 +4104,7 @@ QPushButton::hover {
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="last_name_lineEdit_3">
+            <widget class="QLineEdit" name="p_lname">
              <property name="maximumSize">
               <size>
                <width>325</width>

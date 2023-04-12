@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QLineEdit, Q
 import sys
 from frontend.ui.assets.files.STYLING import *
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide
+from backend.private.data_manager import DataManager
+
 
 class Nav(QMainWindow):
     def __init__(self):
@@ -41,15 +43,14 @@ class Nav(QMainWindow):
         self.makeReferralPushButton.mousePressEvent = lambda event: self.enterMakeReferralWindow()
         self.labOrdersPushButton.mousePressEvent = lambda event: self.enterLabOrdersWindow()
         self.approveAppointmentsPushButton.mousePressEvent = lambda event: self.enterAppointmentApproveViaPortalWindow()
-
-        self.enterSchedulingAppointmentsWindow()
+        self.logoutPushButton.mousePressEvent = lambda event: self.logout()
 
         # Appointment Nav
         self.newPatientPushButton = self.findChild(QPushButton, "NewPatient_Btn")
         self.reschedulingPushButton = self.findChild(QPushButton, "DisplayReschedule_Btn")
         self.makeSchedulePushButton = self.findChild(QPushButton, "DisplaySchedule_Btn")
         self.cancelPushButton = self.findChild(QPushButton, "DisplayCancel_Btn")
-
+        
         # Nav Frames
 
         self.InputsFrame = self.findChild(QFrame, "InputsFrame")
@@ -63,8 +64,18 @@ class Nav(QMainWindow):
         self.makeSchedulePushButton.clicked.connect(self.displayInputsFrame)
         self.cancelPushButton.clicked.connect(self.displayCancelAppointmentFrame)
 
-
+        # Starting Window
+        self.enterSchedulingAppointmentsWindow()
     
+    def logout(self):
+        from frontend.StartWindow import UI
+        
+        new_window = UI()
+
+        new_window.show()
+
+        self.hide()
+
     def hideAllFrames(self):
 
         # All frames have a height of 681
@@ -193,6 +204,18 @@ class Nav(QMainWindow):
         """
         for widget in self.findChildren(QLineEdit):
             widget.clear()
+
+    def closeEvent(self, event):
+        """
+            Closes all data managers before exiting the program
+        """
+
+        for var_name in vars(self):
+
+            if isinstance( getattr(self, var_name), DataManager):
+                delattr(self, var_name)
+
+        sys.exit()
 
 #initializing app
 app = QApplication(sys.argv)

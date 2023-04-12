@@ -26,10 +26,13 @@ class CheckIn(Patient):
         self.refresh_btn.mousePressEvent = self.refresh
 
     def checkIn(self, event):
+        print("Check In")
         pass
 
     def noShow(self, event):
+        print("No Show")
         pass
 
     def refresh(self, event):
+        print("Refresh Checkin")
         pass

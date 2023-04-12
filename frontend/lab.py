@@ -26,4 +26,5 @@ class Lab(Referral):
         
 
     def submitInformation(self):
+        print("Submit Information")
         pass

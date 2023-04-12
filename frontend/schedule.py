@@ -57,6 +57,7 @@ class Schedule(Nav):
         self.SA_CustomTimeTimeEdit.setStyleSheet(enableCustomTime_Style)
 
     def search_SA(self, event):
+        print("Search_SA")
         return
         lines_to_check = [self.SA_PatientFNLineEdit,
             self.SA_PatientLNLineEdit,
@@ -78,7 +79,7 @@ class Schedule(Nav):
             return
 
     def scheduleAppointment(self, event):
-        
+        print("Schedule Appointment")
         pass
 
 class Reschedule(Schedule):
@@ -104,9 +105,11 @@ class Reschedule(Schedule):
         self.RA_RescheduleAppointmentPushButton.mousePressEvent = lambda event: self.rescheduleAppointment()
 
     def displayTimesApps(self):
+        print("DisplayTimesApps")
         pass
 
     def rescheduleAppointment(self):
+        print("RescheduleAppointments")
         pass
 
 class Cancel(Reschedule):
@@ -129,7 +132,9 @@ class Cancel(Reschedule):
         self.CA_CancelAppointmentPushButton.mousePressEvent = lambda event: self.cancelAppointment()
 
     def search_CA(self):
+        print("Search SA")
         pass
 
     def cancelAppointment(self):
+        print("Cancel Appointment")
         pass

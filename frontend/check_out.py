@@ -27,10 +27,13 @@ class CheckOut(CheckIn):
         self.downloadSummaryPushButton.mousePressEvent = self.downloadSummary
 
     def checkOut(self):
+        print("Check Out")
         pass
     
     def refresh_checkOut(self):
+        print("Refresh")
         pass
 
     def downloadSummary(self):
+        print("Download")
         pass

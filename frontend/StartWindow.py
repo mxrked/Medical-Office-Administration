@@ -9,6 +9,7 @@ from PyQt5 import uic, QtCore, QtGui
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide
 from frontend.ui.assets.files.GLOBALS import teamMembers
 from frontend.ui.assets.files.STYLING import *
+from backend.private.data_manager import DataManager
 import sys
 
 
@@ -38,7 +39,6 @@ class UI(QMainWindow):
         self.infoPushButton.clicked.connect(self.displayInfoDialog)
 
         #Show the app
-        self.show()
 
     def displayInfoDialog(self):
         ' This is used to display a dialog popup listing the different team members and their roles'
@@ -84,6 +84,18 @@ class UI(QMainWindow):
 
         # Displaying the dialog
         infoDialog.exec_()
+    
+    def closeEvent(self, event):
+        """
+            Closes all data managers before exiting the program
+        """
+
+        for var_name in vars(self):
+
+            if isinstance( getattr(self, var_name), DataManager):
+                delattr(self, var_name)
+
+        sys.exit()
 
 
     def showPassword(self):
@@ -132,8 +144,8 @@ class UI(QMainWindow):
 
             self.hide()
 
-            self.main_window = MainWindow()
-            self.main_window.show()
+            main_window = MainWindow()
+            main_window.show()
 
         else:
 

@@ -426,7 +426,7 @@ QPushButton::hover {
 border-image: transparent;</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="Appointments">
       <widget class="QWidget" name="layoutWidget">
@@ -4642,7 +4642,7 @@ QPushButton::hover {
 </string>
           </property>
           <property name="text">
-           <string>Refresh</string>
+           <string>No Show</string>
           </property>
          </widget>
          <widget class="QListWidget" name="CheckIn_ListWidget">
@@ -4793,7 +4793,7 @@ QPushButton::hover {
 </string>
           </property>
           <property name="text">
-           <string>No Show</string>
+           <string>Refresh</string>
           </property>
          </widget>
         </widget>

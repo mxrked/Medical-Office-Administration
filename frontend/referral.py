@@ -27,4 +27,5 @@ class Referral(CheckOut):
 
 
     def create_referral(self, event):
+        print("Create Referral")
         pass

@@ -1,0 +1,195 @@
+from PyQt5 import uic
+from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QLabel, QStackedWidget, QFrame
+from frontend.abstract_main_window import AMainWindow
+import sys
+from frontend.ui.assets.files.STYLING import *
+
+class Nav(QMainWindow):
+    def __init__(self):
+        super(Nav, self).__init__()
+
+        uic.loadUi("frontend/ui/mainWindow.ui", self)
+
+        self.main_stacked_widget = self.findChild(QStackedWidget, "main_stacked_widget")
+
+        # Define Main Nav
+        self.logoutPushButton = self.findChild(QPushButton, "Nav_LogoutBtn")
+        self.appointmentsPushButton = self.findChild(QPushButton, "Nav_Appointments")
+        self.checkinPushButton = self.findChild(QPushButton, "Nav_CheckinBtn")
+        self.checkoutPushButton = self.findChild(QPushButton, "Nav_CheckoutBtn")
+        self.makeReferralPushButton = self.findChild(QPushButton, "Nav_MakeReferralBtn")
+        self.labOrdersPushButton = self.findChild(QPushButton, "Nav_LabOrdersBtn")
+        self.approveAppointmentsPushButton = self.findChild(QPushButton, "Nav_ApproveAppointmentsBtn")
+        
+        # Define needed labels
+        #self.currentUserLabel = self.findChild(QLabel, "currentUserLabel")
+
+        self.windows_indexes = {
+
+            "Appointment" : 0,
+            "CheckIn" : 1,
+            "CheckOut" : 2,
+            "Referral" : 3,
+            "Lab" : 4,
+            "Approve" : 5
+        }
+
+        # Connect Nav Buttons
+        self.appointmentsPushButton.mousePressEvent = lambda event: self.enterSchedulingAppointmentsWindow()
+        self.checkinPushButton.mousePressEvent = lambda event: self.enterCheckInWindow()
+        self.checkoutPushButton.mousePressEvent = lambda event: self.enterCheckOutWindow()
+        self.makeReferralPushButton.mousePressEvent = lambda event: self.enterMakeReferralWindow()
+        self.labOrdersPushButton.mousePressEvent = lambda event: self.enterLabOrdersWindow()
+        self.approveAppointmentsPushButton.mousePressEvent = lambda event: self.enterAppointmentApproveViaPortalWindow()
+
+        self.enterSchedulingAppointmentsWindow()
+
+        # Appointment Nav
+        self.newPatientPushButton = self.findChild(QPushButton, "NewPatient_Btn")
+        self.reschedulingPushButton = self.findChild(QPushButton, "DisplayReschedule_Btn")
+        self.makeSchedulePushButton = self.findChild(QPushButton, "DisplaySchedule_Btn")
+        self.cancelPushButton = self.findChild(QPushButton, "DisplayCancel_Btn")
+
+        # Nav Frames
+
+        self.InputsFrame = self.findChild(QFrame, "InputsFrame")
+        self.CancelAppointment_Frame = self.findChild(QFrame, "CancelAppointment_Frame")
+        self.RescheduleAppointment_Frame = self.findChild(QFrame, "RescheduleAppointment_Frame")
+        self.PatientFrame = self.findChild(QFrame, "PatientFrame")
+
+        # Events for buttons
+        self.newPatientPushButton.mousePressEvent = lambda event: self.enterNewPatientWindow()
+        self.reschedulingPushButton.clicked.connect(self.displayRescheduleAppointmentFrame)
+        self.makeSchedulePushButton.clicked.connect(self.displayInputsFrame)
+        self.cancelPushButton.clicked.connect(self.displayCancelAppointmentFrame)
+
+
+    
+    def hideAllFrames(self):
+
+        # All frames have a height of 681
+        self.InputsFrame.setFixedHeight(0)
+        self.CancelAppointment_Frame.setFixedHeight(0)
+        self.RescheduleAppointment_Frame.setFixedHeight(0)
+        self.PatientFrame.setFixedHeight(0)
+
+        # Re-enabling the frame btn togglers
+        self.enable_nav(self.DisplaySchedule_Btn)
+        self.enable_nav(self.DisplayCancel_Btn)
+        self.enable_nav(self.DisplayReschedule_Btn)
+        self.enable_nav(self.newPatientPushButton)
+
+    
+    def displayInputsFrame(self):
+
+        self.hideAllFrames()
+        self.InputsFrame.setFixedHeight(681)
+        self.InputsFrame.setFixedWidth(1171)
+
+        # Disabling the toggler btn
+        self.disable_nav(self.DisplaySchedule_Btn)
+
+
+    def displayCancelAppointmentFrame(self):
+
+        self.hideAllFrames()
+        self.CancelAppointment_Frame.setFixedHeight(681)
+        self.CancelAppointment_Frame.setFixedWidth(1171)
+
+         # Disabling the toggler btn
+        self.disable_nav(self.DisplayCancel_Btn)
+
+
+
+    def displayRescheduleAppointmentFrame(self):
+
+        self.hideAllFrames()
+        self.RescheduleAppointment_Frame.setFixedHeight(681)
+        self.RescheduleAppointment_Frame.setFixedWidth(1171)
+
+        # Disabling the toggler btn
+        self.disable_nav(self.DisplayReschedule_Btn)
+
+    def enterNewPatientWindow(self):
+        self.hideAllFrames()
+        self.PatientFrame.setFixedHeight(681)
+        self.PatientFrame.setFixedWidth(1171)
+
+        self.disable_nav(self.newPatientPushButton)
+
+
+
+        
+    def disable_nav(self, btn):
+        btn.setStyleSheet(disableFrameBtn_Style)
+        btn.setEnabled(False)
+
+    def enable_all(self):
+
+        nav_buttons = [
+            self.appointmentsPushButton,
+            self.checkinPushButton,
+            self.checkoutPushButton,
+            self.makeReferralPushButton,
+            self.labOrdersPushButton,
+            self.approveAppointmentsPushButton
+        ]
+
+        for btn in nav_buttons:
+            self.enable_nav(btn)
+
+    def enable_nav(self, btn):
+        btn.setStyleSheet(enableFrameBtn_Style)
+        btn.setEnabled(True)
+
+    def enterSchedulingAppointmentsWindow(self):
+        self.main_stacked_widget.setCurrentIndex(
+            self.windows_indexes["Appointment"]
+        )
+        self.enable_all()
+        self.disable_nav(self.appointmentsPushButton)
+
+
+    def enterCheckInWindow(self):
+        self.main_stacked_widget.setCurrentIndex(
+            self.windows_indexes["CheckIn"]
+        )
+        self.enable_all()
+        self.disable_nav(self.checkinPushButton)
+
+    def enterCheckOutWindow(self):
+        self.main_stacked_widget.setCurrentIndex(
+            self.windows_indexes["CheckOut"]
+        )
+        self.enable_all()
+        self.disable_nav(self.checkoutPushButton)
+    
+    def enterMakeReferralWindow(self):
+        self.main_stacked_widget.setCurrentIndex(
+            self.windows_indexes["Referral"]
+        )
+        self.enable_all()
+        self.disable_nav(self.makeReferralPushButton)
+
+    def enterLabOrdersWindow(self):
+        self.main_stacked_widget.setCurrentIndex(
+            self.windows_indexes["Lab"]
+        )
+        self.enable_all()
+        self.disable_nav(self.labOrdersPushButton)
+
+    def enterAppointmentApproveViaPortalWindow(self):
+        self.main_stacked_widget.setCurrentIndex(
+            self.windows_indexes["Approve"]
+        )
+        self.enable_all()
+        self.disable_nav(self.approveAppointmentsPushButton)
+
+
+
+#initializing app
+app = QApplication(sys.argv)
+UIWindow = Nav()
+if __name__ == "__main__":
+    UIWindow.show()
+    app.exec_()

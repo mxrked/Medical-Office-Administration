@@ -3,24 +3,21 @@ LabOrders.py - A window to submit lab orders for a clinic
 UI Designed by: Destan Hutcherson
 Authors: 
 """
-from PyQt5.QtWidgets import QApplication, QPushButton, QLineEdit, QDateEdit, QComboBox
+from PyQt5.QtWidgets import QApplication, QPushButton, QLineEdit, QDateEdit, QComboBox, QMainWindow
 from PyQt5 import uic
 from frontend.ui.assets.qrc import app_bg
 
-from frontend.abstract_main_window import AMainWindow
+
 import sys
 
-class UI(AMainWindow):
+class Lab_Orders_Window(QMainWindow):
     def __init__(self):
-        super(UI, self).__init__()
 
-        uic.loadUi("frontend/ui/LabOrdersWindow.ui", self)
-
-        self.load_nav()
+        uic.loadUi("frontend/ui/mainWindow.ui", self)
 
         # define widgets
-        self.submitPushButton = self.findChild(QPushButton, "pushButton_ClearLabOrders")
-        self.clearPushbutton = self.findChild(QPushButton, "pushButton_SubmitLabOrder")
+        self.submitPushButton = self.findChild(QPushButton, "pushButton_SubmitLabOrder")
+        self.clearPushbutton = self.findChild(QPushButton, "pushButton_ClearLabOrder")
         self.enterFirstName = self.findChild(QLineEdit, "LineEdit_PatientFirstName")
         self.enterLastName = self.findChild(QLineEdit, "LineEdit_PatientLastName")
         self.selectDateOfBirth = self.findChild(QDateEdit, "dateEdit_DOB")
@@ -35,6 +32,7 @@ class UI(AMainWindow):
         
 
     def submitInformation(self):
+        print("Hello")
         pass
 
 
@@ -42,8 +40,9 @@ class UI(AMainWindow):
 
 
 #initializing app
-app = QApplication(sys.argv)
-UIWindow = UI()
+
 if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    UIWindow = Lab_Orders_Window()
     UIWindow.show()
     app.exec_()

@@ -15,7 +15,7 @@ import sys
 class UI(Appointments_AMW):
     def __init__(self):
 
-
+        
         super(UI, self).__init__()
 
         uic.loadUi("frontend/ui/SchedulingAppointmentsWindow.ui", self)

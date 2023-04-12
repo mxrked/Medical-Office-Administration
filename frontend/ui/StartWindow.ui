@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Forsyth Family Practice Center - MOA</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="assets/qrc/logo.qrc">
+    <normaloff>:/newPrefix/imgs/logo.png</normaloff>:/newPrefix/imgs/logo.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">border-image: url(:/newPrefix/imgs/app-bg.png);</string>
   </property>
@@ -363,10 +367,10 @@ QPushButton::hover {
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>190</y>
-      <width>221</width>
-      <height>211</height>
+      <x>370</x>
+      <y>210</y>
+      <width>171</width>
+      <height>171</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -379,7 +383,7 @@ QPushButton::hover {
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="assets/qrc/doctor.qrc">:/newPrefix/imgs/doctor.png</pixmap>
+     <pixmap resource="assets/qrc/logo.qrc">:/newPrefix/imgs/logo.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -493,6 +497,7 @@ QPushButton::hover {
  </widget>
  <resources>
   <include location="assets/qrc/app-bg.qrc"/>
+  <include location="assets/qrc/logo.qrc"/>
   <include location="assets/qrc/hide.qrc"/>
   <include location="assets/qrc/show.qrc"/>
   <include location="assets/qrc/doctor.qrc"/>

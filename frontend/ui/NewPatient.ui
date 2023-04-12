@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Forsyth Family Practice Center - Scheduling Appointments</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>assets/imgs/logo.png</normaloff>assets/imgs/logo.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QFrame {
 	border-image: none;

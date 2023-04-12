@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Forsyth Family Practice Center - Scheduling Appointments</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="assets/qrc/logo.qrc">
+    <normaloff>:/newPrefix/imgs/logo.png</normaloff>:/newPrefix/imgs/logo.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QFrame" name="MainFrame">
     <property name="geometry">
@@ -3269,6 +3273,7 @@ QPushButton::hover {
  </widget>
  <resources>
   <include location="assets/qrc/app-bg.qrc"/>
+  <include location="assets/qrc/logo.qrc"/>
  </resources>
  <connections/>
 </ui>

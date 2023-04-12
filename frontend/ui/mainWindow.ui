@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Forsyth Family Practice Center - [ TEMPLATE ]</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="assets/qrc/logo.qrc">
+    <normaloff>:/newPrefix/imgs/logo.png</normaloff>:/newPrefix/imgs/logo.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">border-image: url(:/newPrefix/imgs/app-bg.png);
 
@@ -426,7 +430,7 @@ QPushButton::hover {
 border-image: transparent;</string>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="Appointments">
       <widget class="QWidget" name="layoutWidget">
@@ -6548,6 +6552,7 @@ QPushButton::hover {
  </widget>
  <resources>
   <include location="assets/qrc/app-bg.qrc"/>
+  <include location="assets/qrc/logo.qrc"/>
  </resources>
  <connections/>
 </ui>

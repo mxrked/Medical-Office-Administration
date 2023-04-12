@@ -1,5 +1,5 @@
 """
-ApptRequest.py - Window to handle appointment requests from the web portal.
+approve_appt.py - Window to handle appointment requests from the web portal.
 UI Designed by: Christian Fortin
 Authors: 
 """

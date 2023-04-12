@@ -430,7 +430,7 @@ QPushButton::hover {
 border-image: transparent;</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="Appointments">
       <widget class="QWidget" name="layoutWidget">
@@ -4265,7 +4265,7 @@ QPushButton::hover {
             </widget>
            </item>
            <item>
-            <widget class="QDateEdit" name="dateEdit"/>
+            <widget class="QDateEdit" name="p_dob_dateEdit"/>
            </item>
           </layout>
          </item>
@@ -4290,7 +4290,7 @@ QPushButton::hover {
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="ssn_lineEdit_3">
+            <widget class="QLineEdit" name="p_ssn">
              <property name="maximumSize">
               <size>
                <width>325</width>
@@ -4334,7 +4334,7 @@ QPushButton::hover {
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="street_address_lineEdit_3">
+            <widget class="QLineEdit" name="p_street_address">
              <property name="maximumSize">
               <size>
                <width>325</width>
@@ -6520,7 +6520,7 @@ QPushButton::hover {
 </string>
           </property>
           <property name="text">
-           <string>Reefresh</string>
+           <string>Refresh</string>
           </property>
          </widget>
         </widget>

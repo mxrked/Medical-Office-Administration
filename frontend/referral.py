@@ -1,7 +1,7 @@
 """
 Referrals.py - A window to submit referrals for a clinic
 UI Designed by: Matthew Burrus
-Authors: Jessica Weeks
+Authors:
 """
 
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QPushButton

@@ -28,6 +28,7 @@ class Lab(Referral):
 
         # Do something
         self.submitPushButton.clicked.connect(self.submitInformation)
+        self.clearPushbutton.clicked.connect(self.clearInputs)
 
 
     def submitInformation(self):

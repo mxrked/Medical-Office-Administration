@@ -27,6 +27,7 @@ class Nav(QMainWindow):
         # Define needed labels
         #self.currentUserLabel = self.findChild(QLabel, "currentUserLabel")
 
+        # Corresponds to QStackedWidget's pages
         self.windows_indexes = {
 
             "Appointment" : 0,
@@ -36,6 +37,10 @@ class Nav(QMainWindow):
             "Lab" : 4,
             "Approve" : 5
         }
+
+        # For Navigation Permissions
+        self.can_schedule = True
+        self.can_physician = True
 
         # Connect Nav Buttons
         self.appointmentsPushButton.mousePressEvent = lambda event: self.enterSchedulingAppointmentsWindow()
@@ -65,8 +70,6 @@ class Nav(QMainWindow):
         self.makeSchedulePushButton.clicked.connect(self.displayInputsFrame)
         self.cancelPushButton.clicked.connect(self.displayCancelAppointmentFrame)
 
-        # Starting Window
-        self.enterSchedulingAppointmentsWindow()
     
     def logout(self):
         from frontend.StartWindow import UI
@@ -136,8 +139,7 @@ class Nav(QMainWindow):
         btn.setStyleSheet(disableFrameBtn_Style)
         btn.setEnabled(False)
 
-    def enable_all(self):
-
+    def disable_all_nav(self):
         nav_buttons = [
             self.appointmentsPushButton,
             self.checkinPushButton,
@@ -146,6 +148,35 @@ class Nav(QMainWindow):
             self.labOrdersPushButton,
             self.approveAppointmentsPushButton
         ]
+
+        for btn in nav_buttons:
+            self.disable_nav(btn)
+
+    def enable_all_nav_with_access(self):
+        """
+        Enables all buttons in which the user has permission for
+        """
+        # Somehow get permissions info
+
+        scheduling_nav =[
+            self.appointmentsPushButton,
+            self.checkinPushButton,
+            self.checkoutPushButton,
+            self.approveAppointmentsPushButton
+        ]
+
+        physician_nav =[
+            self.makeReferralPushButton,
+            self.labOrdersPushButton,
+        ]
+
+        nav_buttons = []
+
+        if self.can_schedule:
+            nav_buttons.extend(scheduling_nav)
+
+        if self.can_physician:
+            nav_buttons.extend(physician_nav)
 
         for btn in nav_buttons:
             self.enable_nav(btn)
@@ -158,44 +189,57 @@ class Nav(QMainWindow):
         self.main_stacked_widget.setCurrentIndex(
             self.windows_indexes["Appointment"]
         )
-        self.enable_all()
+        self.enable_all_nav_with_access()
         self.disable_nav(self.appointmentsPushButton)
+
+        self.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments")
 
 
     def enterCheckInWindow(self):
         self.main_stacked_widget.setCurrentIndex(
             self.windows_indexes["CheckIn"]
         )
-        self.enable_all()
+        self.enable_all_nav_with_access()
         self.disable_nav(self.checkinPushButton)
+
+        self.setWindowTitle("Forsyth Family Practice Center - Check In")
 
     def enterCheckOutWindow(self):
         self.main_stacked_widget.setCurrentIndex(
             self.windows_indexes["CheckOut"]
         )
-        self.enable_all()
+        self.enable_all_nav_with_access()
         self.disable_nav(self.checkoutPushButton)
+
+        self.setWindowTitle("Forsyth Family Practice Center - Check Out")
+
     
     def enterMakeReferralWindow(self):
         self.main_stacked_widget.setCurrentIndex(
             self.windows_indexes["Referral"]
         )
-        self.enable_all()
+        self.enable_all_nav_with_access()
         self.disable_nav(self.makeReferralPushButton)
+
+        self.setWindowTitle("Forsyth Family Practice Center - Referrals")
 
     def enterLabOrdersWindow(self):
         self.main_stacked_widget.setCurrentIndex(
             self.windows_indexes["Lab"]
         )
-        self.enable_all()
+        self.enable_all_nav_with_access()
         self.disable_nav(self.labOrdersPushButton)
+
+        self.setWindowTitle("Forsyth Family Practice Center - Lab Orders")
 
     def enterAppointmentApproveViaPortalWindow(self):
         self.main_stacked_widget.setCurrentIndex(
             self.windows_indexes["Approve"]
         )
-        self.enable_all()
+        self.enable_all_nav_with_access()
         self.disable_nav(self.approveAppointmentsPushButton)
+
+        self.setWindowTitle("Forsyth Family Practice Center - Approve Appointments")
 
     def clearInputs(self):
         """

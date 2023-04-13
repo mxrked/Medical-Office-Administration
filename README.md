@@ -10,11 +10,24 @@
  - Make Referrals
  - Make Lab Orders
 
-## Installation 
- - Pending project completion
+## Building From Source
+ In Powershell
+ ```powershell
+  git clone https://github.com/mxrked/Medical-Office-Administration/
+ ```
+ ```powershell
+  cd .\Medical-Office-Administration\
+ ```
+ ```
+ .\build.bat
+ ```
+ A link is created in Medical Office Administration.
 
-## How to Use
- - Pending project completion
+## Installer
+ Alternatively you can use our setup installer that will be avaliable at project completion
+ 
+## How to use
+ Pending Project completion
 
 ## Credits
  - Parker Phelps (Project Owner)

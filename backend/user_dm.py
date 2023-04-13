@@ -1,8 +1,14 @@
 from datetime import date
+
+from typing import List
+
 from backend.private.data_manager import DataManager
-from backend.models import Employee, User, EmployeeType, Patient, EmpGroupCross,\
-Group,GroupRoleCross,Role
+
+from backend.models import AppointmentType, Employee, User, EmployeeType, Patient, EmpGroupCross, Group, Role, \
+    GroupRoleCross
+ 
 from sqlalchemy.orm import joinedload
+
 
 class UserDM(DataManager):
 
@@ -32,7 +38,8 @@ class UserDM(DataManager):
         else:
             return False
 
-    def check_user_group(self, current_employee: Employee) -> list[int]:
+
+    def check_user_group(self, current_employee: Employee) -> List[int]:
         # check if user type id is associated with a group
         groups = self.session.query(Group.GroupID) \
             .join(EmpGroupCross.GroupID) \
@@ -42,11 +49,12 @@ class UserDM(DataManager):
 
     def get_physicians(self) -> list[Employee]:
         valid_types = ["physcian"]
-        physicians = self.session.query(Employee)\
-            .join(EmployeeType)\
-            .options(joinedload(Employee.EmployeeType))\
-            .filter(EmployeeType.Type.in_(valid_types))\
-            .order_by(Employee.Last_Name, Employee.First_Name)\
+
+        physicians = self.session.query(Employee) \
+            .join(EmployeeType) \
+            .options(joinedload(Employee.EmployeeType)) \
+            .filter(EmployeeType.TypeDescription.in_(valid_types)) \
+            .order_by(Employee.LastName, Employee.FirstName) \
             .all()
         return physicians
 
@@ -61,8 +69,9 @@ class UserDM(DataManager):
         :return: A list of Patient objects.
         """
 
-        patients = self.session.query(Patient)\
-            .where(dob == Patient.DateOfBirth, first_name == Patient.First_Name, last_name == Patient.Last_Name)\
+
+        patients = self.session.query(Patient) \
+            .where(dob == Patient.DateOfBirth, first_name == Patient.FirstName, last_name == Patient.LastName) \
             .all()
 
         return patients

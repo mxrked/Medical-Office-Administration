@@ -11,6 +11,7 @@ from frontend.ui.assets.files.GLOBALS import teamMembers
 from frontend.ui.assets.files.STYLING import *
 from backend.private.data_manager import DataManager
 import sys
+import json
 
 
 class UI(QMainWindow):
@@ -32,7 +33,7 @@ class UI(QMainWindow):
         self.infoPushButton = self.findChild(QPushButton, "startWindow_InfoBtn")
 
 
-        #Do something
+        # Setting Events
         self.loginErrorLabel.hide()
         self.showPasswordLabel.mousePressEvent = lambda event: self.showPassword()
         self.hidePasswordLabel.mousePressEvent = lambda event: self.hidePassword()
@@ -40,7 +41,32 @@ class UI(QMainWindow):
         self.exitPushButton.clicked.connect(self.closeEvent)
         self.infoPushButton.clicked.connect(self.displayInfoDialog)
 
-        #Show the app
+        # Makes It so we can hit enter to login instead
+        self.enterUsernameLineEdit.returnPressed.connect(self.loginUser)
+        self.enterPasswordLineEdit.returnPressed.connect(self.loginUser)
+
+        # Load Last used Username
+        try:
+            with open("frontend/ui/assets/files/Settings.json") as settings_file:
+                file_contents = settings_file.read()
+        
+            self.settings_json = json.loads(file_contents)
+
+
+            last_user = self.settings_json["last_entered_user"]
+            if last_user != "":
+                self.enterUsernameLineEdit.setText(last_user)
+                self.enterPasswordLineEdit.setFocus()
+
+        except FileNotFoundError:
+            print("Settings not found")
+            self.settings_json = {
+                "default_location_ID" : "1",
+                "last_entered_user" : ""
+            }
+            with open("frontend/ui/assets/files/Settings.json", "w") as file:
+                json.dump(self.settings_json, file)
+
 
     def displayInfoDialog(self):
         ' This is used to display a dialog popup listing the different team members and their roles'
@@ -132,6 +158,11 @@ class UI(QMainWindow):
         # This is used to check if the user is available and will move the user to the scheduling window or not
         if user:
             
+            # Save Last User
+            self.settings_json["last_entered_user"] = userName_Text
+            with open("frontend/ui/assets/files/Settings.json", "w") as file:
+                json.dump(self.settings_json, file)
+    
             # Apply Permissions
 
             # Hiding login error label
@@ -144,11 +175,15 @@ class UI(QMainWindow):
             self.enterUsernameLineEdit.setStyleSheet(validEnterLE_Style)
             self.enterPasswordLineEdit.setStyleSheet(validEnterLE_Style)
 
+            # Get Permissions, with user_dm
+            can_physician = True
+            can_schedule = False
+
             from frontend.main import MainWindow
 
             self.hide()
-
-            main_window = MainWindow()
+        
+            main_window = MainWindow(can_physician, can_schedule)
             main_window.show()
 
         else:

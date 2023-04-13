@@ -6,11 +6,16 @@ import sys
 from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QWidget,\
     QLineEdit, QStackedWidget, QFrame, QDialog, QVBoxLayout, QLabel, QDateEdit, QTimeEdit
 from PyQt5 import QtCore, QtGui, uic
+
 from frontend.ui.assets.files.STYLING import disableFrameBtn_Style, infoDialog_Style, \
     infoDialogCloseBtn_Style, infoDialogName_Style, enableFrameBtn_Style
-from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo
+
+from frontend.StartWindow import Start
+
+# These qrc are used by pyqt 5
+from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo # pylint: disable=unused-import
 from backend.private.data_manager import DataManager
-from frontend.StartWindow import UI
+
 
 class Nav(QMainWindow):
     """
@@ -23,7 +28,7 @@ class Nav(QMainWindow):
 
         uic.loadUi("frontend/ui/mainWindow.ui", self)
 
-        self.main_stacked_widget = self.findChild(QStackedWidget, "main_stacked_widget")
+        self.stacked_widget = self.findChild(QStackedWidget, "main_stacked_widget")
 
         # Define Main Nav
         self.logout_btn = self.findChild(QPushButton, "Nav_LogoutBtn")
@@ -77,22 +82,31 @@ class Nav(QMainWindow):
         self.patient_frame = self.findChild(QFrame, "PatientFrame")
 
         # Events for buttons
-        self.new_patient_btn.mousePressEvent = lambda event: self.display_patient_frame()
+        self.new_patient_btn.slicked.connect(self.display_patient_frame)
         self.rescheduling_btn.clicked.connect(self.display_reschedule_frame)
         self.make_schedule_btn.clicked.connect(self.display_inputs_frame)
         self.cancel_btn.clicked.connect(self.display_canceled_frame)
 
 
     def logout(self):
-        # UI from frontend
-        new_window = UI()
+        """
+            Shows the start window and closes the current one
+        """
+        # From the frontend
+        new_window = Start()
 
         new_window.show()
 
         self.hide()
 
     def hide_all_frames(self):
+        """
+            We used QStacked Widget for most our nav
 
+            But, the Appointments window was build differently so we
+                must modify the hights, this clears the screen 
+                for moving to another screen
+        """
         # All frames have a height of 681
         self.inputs_frame.setFixedHeight(0)
         self.cancel_appt_frame.setFixedHeight(0)
@@ -107,7 +121,7 @@ class Nav(QMainWindow):
 
 
     def display_inputs_frame(self):
-
+        """ Opens 'Scheduling' Screen """
         self.hide_all_frames()
         self.inputs_frame.setFixedHeight(681)
         self.inputs_frame.setFixedWidth(1171)
@@ -117,7 +131,7 @@ class Nav(QMainWindow):
 
 
     def display_canceled_frame(self):
-
+        """ Opens 'Cancel' Screen """
         self.hide_all_frames()
         self.cancel_appt_frame.setFixedHeight(681)
         self.cancel_appt_frame.setFixedWidth(1171)
@@ -128,7 +142,7 @@ class Nav(QMainWindow):
 
 
     def display_reschedule_frame(self):
-
+        """ Opens 'Reschedule' Screen """ 
         self.hide_all_frames()
         self.reschedule_appt_frame.setFixedHeight(681)
         self.reschedule_appt_frame.setFixedWidth(1171)
@@ -137,6 +151,7 @@ class Nav(QMainWindow):
         self.disable_nav(self.DisplayReschedule_Btn)
 
     def display_patient_frame(self):
+        """ Opens 'New Patient' Screen """
         self.hide_all_frames()
         self.patient_frame.setFixedHeight(681)
         self.patient_frame.setFixedWidth(1171)
@@ -144,13 +159,19 @@ class Nav(QMainWindow):
         self.disable_nav(self.new_patient_btn)
 
 
-
-
-    def disable_nav(self, btn):
+    def disable_nav(self, btn: QPushButton):
+        """ Disables & Grey's out a particular nav button """
         btn.setStyleSheet(disableFrameBtn_Style)
         btn.setEnabled(False)
 
     def disable_all_nav(self):
+        """
+            Disables all navigation
+
+            This is used at the start of the program so
+                we can enable only those we have access to
+                (Access is determined by superclasses params)
+        """
         nav_buttons = [
             self.appointments_btn,
             self.checkin_btn,
@@ -165,7 +186,9 @@ class Nav(QMainWindow):
 
     def enable_all_nav_with_access(self):
         """
-        Enables all buttons in which the user has permission for
+            Enables all buttons in which the user has permission for
+
+            All others are left disabled
         """
         # Somehow get permissions info
 
@@ -193,11 +216,18 @@ class Nav(QMainWindow):
             self.enable_nav(btn)
 
     def enable_nav(self, btn):
+        """ Enables & ungreys a particular nav button """
         btn.setStyleSheet(enableFrameBtn_Style)
         btn.setEnabled(True)
 
     def enterSchedulingAppointmentsWindow(self):
-        self.main_stacked_widget.setCurrentIndex(
+        """
+            Enters the scheduling appointment screen
+
+            By default on Schedule appointment screen, but
+                if window changed this persists
+        """
+        self.stacked_widget.setCurrentIndex(
             self.windows_indexes["Appointment"]
         )
         self.enable_all_nav_with_access()
@@ -207,7 +237,8 @@ class Nav(QMainWindow):
 
 
     def enterCheckInWindow(self):
-        self.main_stacked_widget.setCurrentIndex(
+        """ Enters the checkin screen """
+        self.stacked_widget.setCurrentIndex(
             self.windows_indexes["CheckIn"]
         )
         self.enable_all_nav_with_access()
@@ -216,7 +247,8 @@ class Nav(QMainWindow):
         self.setWindowTitle("Forsyth Family Practice Center - Check In")
 
     def enterCheckOutWindow(self):
-        self.main_stacked_widget.setCurrentIndex(
+        """ Eneters the check out screen """
+        self.stacked_widget.setCurrentIndex(
             self.windows_indexes["CheckOut"]
         )
         self.enable_all_nav_with_access()
@@ -226,7 +258,8 @@ class Nav(QMainWindow):
 
     
     def enterMakeReferralWindow(self):
-        self.main_stacked_widget.setCurrentIndex(
+        """ Enters the refferal screen """
+        self.stacked_widget.setCurrentIndex(
             self.windows_indexes["Referral"]
         )
         self.enable_all_nav_with_access()
@@ -235,7 +268,8 @@ class Nav(QMainWindow):
         self.setWindowTitle("Forsyth Family Practice Center - Referrals")
 
     def enterLabOrdersWindow(self):
-        self.main_stacked_widget.setCurrentIndex(
+        """ Enters the Lab Order Screen """
+        self.stacked_widget.setCurrentIndex(
             self.windows_indexes["Lab"]
         )
         self.enable_all_nav_with_access()
@@ -244,7 +278,8 @@ class Nav(QMainWindow):
         self.setWindowTitle("Forsyth Family Practice Center - Lab Orders")
 
     def enterAppointmentApproveViaPortalWindow(self):
-        self.main_stacked_widget.setCurrentIndex(
+        """ Enters the Approve Appointment Screen """
+        self.stacked_widget.setCurrentIndex(
             self.windows_indexes["Approve"]
         )
         self.enable_all_nav_with_access()
@@ -279,6 +314,7 @@ class Nav(QMainWindow):
             if isinstance( getattr(self, var_name), DataManager):
                 delattr(self, var_name)
 
+        super().closeEvent(event)
         sys.exit()
     
     def load_error(self, error_text: str):
@@ -295,31 +331,31 @@ class Nav(QMainWindow):
             
             :param error_text: str to be displayed as errors 
         """
-        infoDialog = QDialog()
-        infoDialog.setStyleSheet(infoDialog_Style)
+        info_dialog = QDialog()
+        info_dialog.setStyleSheet(infoDialog_Style)
 
         # Dialog settings
-        infoDialog.setWindowFlags(QtCore.Qt.FramelessWindowHint) # Hides the title bar
-        infoDialog.setFixedSize(400, 400)
+        info_dialog.setWindowFlags(QtCore.Qt.FramelessWindowHint) # Hides the title bar
+        info_dialog.setFixedSize(400, 400)
 
-        infoDialogLayout = QVBoxLayout()
-        infoDialogCloseBtn = QPushButton("CLOSE", infoDialog)
-        infoDialogCloseBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        info_layout = QVBoxLayout()
+        info_close_btn = QPushButton("CLOSE", info_dialog)
+        info_close_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
 
-        infoDialogCloseBtn.setStyleSheet(infoDialogCloseBtn_Style)
-        infoDialogCloseBtn.setFont(QtGui.QFont("Lato", 12))
-        infoDialogCloseBtn.clicked.connect(infoDialog.close) # Closes the dialog box
+        info_close_btn.setStyleSheet(infoDialogCloseBtn_Style)
+        info_close_btn.setFont(QtGui.QFont("Lato", 12))
+        info_close_btn.clicked.connect(info_dialog.close) # Closes the dialog box
 
-        infoDialogName = QLabel(error_text)
-        infoDialogName.setStyleSheet(infoDialogName_Style)
-        infoDialogName.setFont(QtGui.QFont("Lato", 13))
-        infoDialogLayout.addWidget(infoDialogName, alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
-        infoDialogLayout.addWidget(infoDialogCloseBtn, alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
+        info_label = QLabel(error_text)
+        info_label.setStyleSheet(infoDialogName_Style)
+        info_label.setFont(QtGui.QFont("Lato", 13))
+        info_layout.addWidget(info_label, alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
+        info_layout.addWidget(info_close_btn, alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
 
-        infoDialog.setLayout(infoDialogLayout)
+        info_dialog.setLayout(info_layout)
 
         # Displaying the dialog
-        infoDialog.exec_()
+        info_dialog.exec_()
 
 #initializing app
 app = QApplication(sys.argv)

@@ -11,7 +11,10 @@ class Referral(Nav):
         Creates a referral using the Referral object
 
         Uses a the misc_dm & user_dm 
-    
+
+        Use the data handler 
+            get_locations_into/get_physicians_into
+        to load up combo_boxes by default
     """
     def __init__(self):
         super(Referral, self).__init__()
@@ -33,10 +36,10 @@ class Referral(Nav):
 
     def create_referral(self):
         """
-            Creates a referral and puts it into the db
+            Creates a referral and adds it into the db
 
             Makes sure all QLineEdits, RadioButtons and ComboBoxes are selected
-                and corresponds to data
+                and corresponds to data (with data handlers)
 
             First get the Patient from the relevant data using the 
                 user_dm

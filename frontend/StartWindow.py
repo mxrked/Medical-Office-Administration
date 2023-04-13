@@ -3,19 +3,22 @@ StarWindow.py - Window for the login screen of the db
 UI Designer: Parker Phelps
 Authors: Parker Phelps, Jessica Weeks
 """
-from PyQt5.QtWidgets import QApplication, QLineEdit, QLabel, QPushButton, QDialog, QVBoxLayout, QFrame
+from PyQt5.QtWidgets import QApplication, QLineEdit, QLabel, QPushButton, QDialog, QVBoxLayout, QFrame, QMainWindow
 from PyQt5 import uic, QtCore, QtGui
 
-from frontend.ui.assets.qrc import app_bg, doctor, show, hide
-from frontend.abstract_main_window import AMainWindow
+from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo
 from frontend.ui.assets.files.GLOBALS import teamMembers
 from frontend.ui.assets.files.STYLING import *
+from backend.private.data_manager import DataManager
 import sys
+import json
 
 
-class UI(AMainWindow):
+class UI(QMainWindow):
     def __init__(self):
         super(UI, self).__init__()
+
+        self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 
         uic.loadUi("frontend/ui/StartWindow.ui", self)
 
@@ -30,7 +33,7 @@ class UI(AMainWindow):
         self.infoPushButton = self.findChild(QPushButton, "startWindow_InfoBtn")
 
 
-        #Do something
+        # Setting Events
         self.loginErrorLabel.hide()
         self.showPasswordLabel.mousePressEvent = lambda event: self.showPassword()
         self.hidePasswordLabel.mousePressEvent = lambda event: self.hidePassword()
@@ -38,8 +41,32 @@ class UI(AMainWindow):
         self.exitPushButton.clicked.connect(self.closeEvent)
         self.infoPushButton.clicked.connect(self.displayInfoDialog)
 
-        #Show the app
-        self.show()
+        # Makes It so we can hit enter to login instead
+        self.enterUsernameLineEdit.returnPressed.connect(self.loginUser)
+        self.enterPasswordLineEdit.returnPressed.connect(self.loginUser)
+
+        # Load Last used Username
+        try:
+            with open("frontend/ui/assets/files/Settings.json") as settings_file:
+                file_contents = settings_file.read()
+        
+            self.settings_json = json.loads(file_contents)
+
+
+            last_user = self.settings_json["last_entered_user"]
+            if last_user != "":
+                self.enterUsernameLineEdit.setText(last_user)
+                self.enterPasswordLineEdit.setFocus()
+
+        except FileNotFoundError:
+            print("Settings not found")
+            self.settings_json = {
+                "default_location_ID" : "1",
+                "last_entered_user" : ""
+            }
+            with open("frontend/ui/assets/files/Settings.json", "w") as file:
+                json.dump(self.settings_json, file)
+
 
     def displayInfoDialog(self):
         ' This is used to display a dialog popup listing the different team members and their roles'
@@ -85,6 +112,18 @@ class UI(AMainWindow):
 
         # Displaying the dialog
         infoDialog.exec_()
+    
+    def closeEvent(self, event):
+        """
+            Closes all data managers before exiting the program
+        """
+
+        for var_name in vars(self):
+
+            if isinstance( getattr(self, var_name), DataManager):
+                delattr(self, var_name)
+
+        sys.exit()
 
 
     def showPassword(self):
@@ -118,6 +157,13 @@ class UI(AMainWindow):
 
         # This is used to check if the user is available and will move the user to the scheduling window or not
         if user:
+            
+            # Save Last User
+            self.settings_json["last_entered_user"] = userName_Text
+            with open("frontend/ui/assets/files/Settings.json", "w") as file:
+                json.dump(self.settings_json, file)
+    
+            # Apply Permissions
 
             # Hiding login error label
             self.loginErrorLabel.hide()
@@ -129,8 +175,16 @@ class UI(AMainWindow):
             self.enterUsernameLineEdit.setStyleSheet(validEnterLE_Style)
             self.enterPasswordLineEdit.setStyleSheet(validEnterLE_Style)
 
+            # Get Permissions, with user_dm
+            can_physician = True
+            can_schedule = True
+
+            from frontend.main import MainWindow
+
             self.hide()
-            self.enterSchedulingAppointmentsWindow()
+        
+            main_window = MainWindow(can_physician, can_schedule)
+            main_window.show()
 
         else:
 

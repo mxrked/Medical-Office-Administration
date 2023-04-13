@@ -3,7 +3,7 @@ misc_data_manger.py - Handles miscellaneous tasks for interacting with the DB
 Author: Christian Fortin
 """
 from backend.private.data_manager import DataManager
-from backend.models import Referrals, LabOrder, Lab, Patient, HospitalLocation
+from backend.models import Referral, LabOrder, Lab, Patient, Location
 
 class MiscDM(DataManager):
     """
@@ -19,7 +19,7 @@ class MiscDM(DataManager):
     def __init__(self):
         super().__init__()
 
-    def add_referral(self, referral: Referrals):
+    def add_referral(self, referral: Referral):
         """ Adds a referral to the DB """
         self.session.add(referral)
         self.session.commit()
@@ -41,9 +41,9 @@ class MiscDM(DataManager):
             .all()
         return labs
 
-    def get_locations(self) -> list[HospitalLocation]:
+    def get_locations(self) -> list[Location]:
         """ Returns list of all locations """
-        locations = self.session.query(HospitalLocation)\
-            .order_by(HospitalLocation.LocationName)\
+        locations = self.session.query(Location)\
+            .order_by(Location.Location_Name)\
             .all()
         return locations

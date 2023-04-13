@@ -6,7 +6,7 @@ import datetime
 from sqlalchemy.orm import joinedload
 import sqlalchemy as sa
 from backend.models import HospitalHours, AppointmentType, Appointment,\
-                    Employee, HospitalLocation, Event, Patient
+                    Employee, Location, Event, Patient
 from backend.private.appointment_status_data_manger import AppointmentStatusDataManger
 
 
@@ -20,18 +20,20 @@ class AppointmentDM(AppointmentStatusDataManger):
     def get_avaliable_appointments(self,
                                appt_date: date,
                                provider: Employee,
-                               location: HospitalLocation,
+                               location: Location,
                                appt_type: AppointmentType,
+                               appt_length: timedelta,
                                patient: Patient,
-                               visit_reason: str) -> list[Appointment]:
+                               appt_reason: str) -> list[Appointment]:
         """
             Returns a list of available appointment times for the given 
             date, provider, location, appointment type, patient, and visit reason.
 
             :param appt_date: A date object from the datetime library represetning the appt date
             :param provider: A Employee object represetning the provider
-            :param location: A HospitalLocation object, where the appt will be
+            :param location: A Location object, where the appt will be
             :param appt_type: A AppointmentType object, what type of appointment
+            :param appt_length: The Appointments Length
             :param patient: A Patient object, who will have the appointment
             :param visit_reason: A str representing the reason for the appointment.
 
@@ -71,7 +73,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             .filter(
             sa.and_(
                 Appointment.AppDate == appt_date,
-                Appointment.EmployeeID == provider,
+                Appointment.ProviderID == provider,
                 Appointment.ApptStatus.in_(taken_appointment_statuses)
                 )
             ).all()
@@ -82,7 +84,7 @@ class AppointmentDM(AppointmentStatusDataManger):
         for taken_appt in taken_appointments:
 
             taken_appt_start = taken_appt.ApptTime
-            taken_appt_length = taken_appt.AppointmentType.ApptLength
+            taken_appt_length = taken_appt.ApptLength
 
             taken_appointment_times_dict[
                 datetime.time(taken_appt_start)] = timedelta(taken_appt_length)
@@ -109,22 +111,19 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         avaliable_appointments_times = []
 
-        # For readability
-        appointment_length = appt_type.ApptLength
-
         while search_datetime < end_search_datetime:
 
             # For readability
             appt_start = search_datetime
-            appt_end = appt_start + appointment_length
+            appt_end = appt_start + appt_length
 
             # We loop through our list of taken appointment times
-            for taken_appointment, appt_length in taken_appointment_times_dict.items():
+            for taken_appointment, taken_appt_length in taken_appointment_times_dict.items():
                 # Converting appointment to datetime so we can compare using timedelta
                 taken_appt_start = datetime.datetime.combine(
                     datetime.datetime.today(), taken_appointment)
                 # Our discionary contains timedeltas as the apopintment length
-                taken_appt_end = taken_appt_start + appt_length
+                taken_appt_end = taken_appt_start + taken_appt_length
 
 
                 # We first check if the appt_start is inbetween this taken_appointment
@@ -141,7 +140,7 @@ class AppointmentDM(AppointmentStatusDataManger):
                 # This means our search_datetime didn't interfer with any appointments!
                 avaliable_appointments_times.append(search_datetime)
                 # Now we must skip ahead to look for more times!
-                search_datetime += appointment_length
+                search_datetime += appt_length
 
 
         # Alrighty! Now we have a list of appointment times that are free!
@@ -152,12 +151,18 @@ class AppointmentDM(AppointmentStatusDataManger):
                 Appointment(
                     ApptDate=appt_date,
                     ApptTime=appt_time,
-                    ApptTypeID=appt_type.ApptTypeID,
                     PatientID=patient.PatientID,
                     ApptStatus="Scheduled",
-                    EmployeeID=provider.EmployeeID,
-                    VisitReason=visit_reason,
-                    LocationID = location.LocationID
+                    ApptLength=appt_length,
+                    PhysicianID=provider.EmployeeID,
+                    ApptTypeID=appt_type.ApptTypeID,
+                    LocationID = location.LocationID,
+                    ApptReason=appt_reason,
+
+                    Patient=patient,
+                    AppointmentType=appt_type,
+                    Employee=provider,
+                    Location=location
                 )
             )
 
@@ -246,11 +251,10 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         ### First We check if there are any taken appointments ###
 
-        appt_end_time = appt.ApptTime + timedelta(minutes= appt.AppointmentType.ApptLength)
+        appt_end_time = appt.ApptTime + timedelta(minutes= appt.ApptLength)
 
         # Used to finding the end time of a appointment in the DB
-        appointment_end_time = Appointment.ApptTime+\
-              timedelta(minutes=Appointment.AppointmentType.ApptLength)
+        appointment_end_time = Appointment.ApptLength
 
         is_appointment_time_conflicted = (
              # Check if the appointment start time is in between an existing appointment
@@ -265,7 +269,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             filter(
                 sa.and_(
                     Appointment.ApptDate == appt.ApptDate,
-                    Appointment.Physician == appt.EmployeeID,
+                    Appointment.Physician == appt.PhysicianID,
                     Appointment.ApptStatus.in_(taken_appointment_statuses),
                     is_appointment_time_conflicted
                 )
@@ -276,7 +280,7 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         ### Then We pull the hours for the location and day ###
 
-        hours = self.__get_hours_for(appt.ApptDate, appt.HospitalLocation)
+        hours = self.__get_hours_for(appt.ApptDate, appt.Location)
 
         ### Then we tell if the location is closed ###
 
@@ -292,7 +296,7 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         if events is not None:
 
-            if events.EmployeeID == appt.EmployeeID: # The employee is out is out
+            if events.EmployeeID == appt.PhysicianID: # The employee is out is out
                 raise AssertionError("This Physician is out on this day")
             else:
                 raise AssertionError("This clinic is closed for: ", events.EventName)
@@ -302,7 +306,7 @@ class AppointmentDM(AppointmentStatusDataManger):
         # Everything above is asserted. We wont get here without errors unless its true
         return True
 
-    def __get_hours_for(self, check_date: date, location: HospitalLocation) -> HospitalHours:
+    def __get_hours_for(self, check_date: date, location: Location) -> HospitalHours:
         """ Gets hours for a given check_date & location object """
         # In the DB its either "Week1" or "Week2"
         week_number = "Week"

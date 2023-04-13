@@ -3,8 +3,10 @@ from datetime import date
 from typing import List
 
 from backend.private.data_manager import DataManager
+
 from backend.models import AppointmentType, Employee, User, EmployeeType, Patient, EmpGroupCross, Group, Role, \
     GroupRoleCross
+ 
 from sqlalchemy.orm import joinedload
 
 
@@ -36,6 +38,7 @@ class UserDM(DataManager):
         else:
             return False
 
+
     def check_user_group(self, current_employee: Employee) -> List[int]:
         # check if user type id is associated with a group
         groups = self.session.query(Group.GroupID) \
@@ -46,6 +49,7 @@ class UserDM(DataManager):
 
     def get_physicians(self) -> list[Employee]:
         valid_types = ["physcian"]
+
         physicians = self.session.query(Employee) \
             .join(EmployeeType) \
             .options(joinedload(Employee.EmployeeType)) \
@@ -64,6 +68,7 @@ class UserDM(DataManager):
         :param last_name: a String representing a LastName
         :return: A list of Patient objects.
         """
+
 
         patients = self.session.query(Patient) \
             .where(dob == Patient.DateOfBirth, first_name == Patient.FirstName, last_name == Patient.LastName) \

@@ -96,57 +96,17 @@ class RescheduleAppt_AMW(ScheduleAppt_AMW):
         
 
     def load_RA(self):
-        self.RA_OfficeLocationsComboBox = self.findChild(QComboBox, "ComboBox_OfficeLocations_RA")
-        self.RA_PhysicianNamesComboBox = self.findChild(QComboBox, "ComboBox_PhysicianNames_RA")
-        self.RA_AppointmentDateDateEdit = self.findChild(QDateEdit, "DateEdit_AppDate_RA")
-        self.RA_RescheduleDateDateEdit = self.findChild(QDateEdit, "DateEdit_RescheduleDate_RA")
-        self.RA_SearchedAppointmentsListWidget = self.findChild(QListWidget, "ListWidget_SearchedAppointments_RA")
-        self.RA_CurrentAvailableTimesListWidget = self.findChild(QListWidget, "ListWidget_CurrentAvailableTimes_RA")
-        self.RA_DisplayTimesAppointmentsPushButton = self.findChild(QPushButton, "DisplayCurrentTimes_Btn_RA")
-        self.RA_RescheduleAppointmentPushButton = self.findChild(QPushButton, "RescheduleAppointment_Btn_RA")
-        self.RA_ClearInputsPushButton = self.findChild(QPushButton, "RA_ClearInputsBtn")
-
-        self.RA_AppointmentDateDateEdit.setDate(QDate.currentDate())
-        self.RA_AppointmentDateDateEdit.setMinimumDate(QDate.currentDate())
-        self.RA_RescheduleDateDateEdit.setDate(QDate.currentDate())
-        self.RA_RescheduleDateDateEdit.setMinimumDate(QDate.currentDate())
-        self.RA_ClearInputsPushButton.mousePressEvent = lambda event: self.clearInputs()
-        self.RA_DisplayTimesAppointmentsPushButton.mousePressEvent = lambda event: self.displayTimesApps()
-        self.RA_RescheduleAppointmentPushButton.mousePressEvent = lambda event: self.rescheduleAppointment()
 
 
-    def displayTimesApps(self):
-        pass
 
-    def rescheduleAppointment(self):
-        pass
+
 
 class CancelAppt_AMW(RescheduleAppt_AMW):
     def __init__(self):
         super(CancelAppt_AMW, self).__init__()
 
 
-    def load_CA(self):  
-        self.CA_OfficeLocationsComboBox = self.findChild(QComboBox, "ComboBox_OfficeLocations_CA")
-        self.CA_PhysicianNamesComboBox = self.findChild(QComboBox, "ComboBox_PhysicianNames_CA")
-        self.CA_AppointmentDateDateEdit = self.findChild(QDateEdit, "DateEdit_AppDate_CA")
-        self.CA_SearchedAppointmentsListWidget = self.findChild(QListWidget, "ListWidget_SearchedAppointments_CA")
-        self.CA_SearchForAppointmentsPushButton = self.findChild(QPushButton, "SearchForAppointments_Btn_CA")
-        self.CA_CancelAppointmentPushButton = self.findChild(QPushButton, "CancelAppointment_Btn_CA")
-        self.CA_ClearInputsPushButton = self.findChild(QPushButton, "CA_ClearInputsBtn")
 
-
-        self.CA_AppointmentDateDateEdit.setDate(QDate.currentDate())
-        self.CA_AppointmentDateDateEdit.setMinimumDate(QDate.currentDate())
-        self.CA_ClearInputsPushButton.mousePressEvent = lambda event: self.clearInputs()
-        self.CA_SearchForAppointmentsPushButton.mousePressEvent = lambda event: self.search_CA()
-        self.CA_CancelAppointmentPushButton.mousePressEvent = lambda event: self.cancelAppointment()
-
-    def search_CA(self):
-        pass
-
-    def cancelAppointment(self):
-        pass
 
 class Appointments_AMW(CancelAppt_AMW):
     """

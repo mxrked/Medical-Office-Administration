@@ -17,21 +17,21 @@ class Referral(Nav):
         super(Referral, self).__init__()
 
         # Initalized Input Widgets
-        self.FName = self.findChild(QLineEdit, "LineEdit_PatientFirstName")
-        self.LName = self.findChild(QLineEdit, "LineEdit_PatientLastName")
+        self.ref_fname = self.findChild(QLineEdit, "LineEdit_PatientFirstName")
+        self.ref_lname = self.findChild(QLineEdit, "LineEdit_PatientLastName")
         self.dob = self.findChild(QDateEdit, "DateEdit_DOB")
-        self.Practitioner = self.findChild(QComboBox, "ComboBox_DoctorPractitioner")
-        self.CreationDate = self.findChild(QDateEdit, "DateEdit_CreationDate")
-        self.Reason = self.findChild(QLineEdit, "LineEdit_Reason")
+        self.ref_practitioners = self.findChild(QComboBox, "ComboBox_DoctorPractitioner")
+        self.ref_creation_date = self.findChild(QDateEdit, "DateEdit_CreationDate")
+        self.ref_reason = self.findChild(QLineEdit, "LineEdit_Reason")
 
         # Initalized Buttons
-        self.CreateReferral = self.findChild(QPushButton, "Btn_CreateReferral")
+        self.create_referral_btn = self.findChild(QPushButton, "Btn_CreateReferral")
 
         # Button Listeners
-        self.CreateReferral.mousePressEvent = self.create_referral
+        self.create_referral_btn.clicked.connect(self.create_referral)
 
 
-    def create_referral(self, event):
+    def create_referral(self):
         """
             Creates a referral and puts it into the db
 

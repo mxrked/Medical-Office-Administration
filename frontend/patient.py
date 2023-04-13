@@ -6,7 +6,7 @@ Authors:
 
 from PyQt5.QtWidgets import QComboBox, QLineEdit, QRadioButton, QDateEdit, QPushButton
 from frontend.main_nav import Nav
-class New_Patient(Nav):
+class NewPatient(Nav):
     """
         Handes creating a new Patient using 
             a patient object
@@ -14,7 +14,7 @@ class New_Patient(Nav):
         Uses misc_dm
     """
     def __init__(self):
-        super(New_Patient, self).__init__()
+        super(NewPatient, self).__init__()
 
         self.appartment_num = self.findChild(QLineEdit,"Patient_appart_num")
         self.city = self.findChild(QLineEdit,"city_lineEdit")
@@ -48,10 +48,10 @@ class New_Patient(Nav):
         self.p_submit_btn = self.findChild(QPushButton, "btnSubmitNewPatient")
 
         # Connect buttons
-        self.p_submit_btn.mousePressEvent = self.submit_patient
+        self.p_submit_btn.clicked.connect(self.submit_patient)
 
 
-    def submit_patient(self, event):
+    def submit_patient(self):
         """
             Creates a patient and enters it into the database    
 
@@ -69,7 +69,3 @@ class New_Patient(Nav):
             Then run self.clear_inputs()
         """
         print(self.submit_patient.__doc__)
-        
-
-
-

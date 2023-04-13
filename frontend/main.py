@@ -11,10 +11,10 @@ from frontend.check_in import CheckIn
 from frontend.check_out import CheckOut
 from frontend.referral import Referral
 from frontend.lab import Lab
-from frontend.patient import New_Patient
+from frontend.patient import NewPatient
 
 class MainWindow(Schedule, Reschedule, Cancel,
-                 New_Patient,
+                 NewPatient,
                  CheckIn,
                  CheckOut,
                  Referral,

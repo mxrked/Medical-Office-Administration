@@ -4,9 +4,8 @@ UI Designed by: Destan Hutcherson
 Authors: 
 """
 from PyQt5.QtWidgets import QPushButton, QLineEdit, QDateEdit, QComboBox, QMainWindow
-from frontend.referral import Referral
-
-class Lab(Referral):
+from frontend.main_nav import Nav
+class Lab(Nav):
     """
     Creates a lab using Lab object
     

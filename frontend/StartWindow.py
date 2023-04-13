@@ -177,7 +177,7 @@ class UI(QMainWindow):
 
             # Get Permissions, with user_dm
             can_physician = True
-            can_schedule = False
+            can_schedule = True
 
             from frontend.main import MainWindow
 

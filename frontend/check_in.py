@@ -4,9 +4,8 @@ UI Designed by: Jessica Weeks
 Authors: Jessica Weeks
 """
 from PyQt5.QtWidgets import QComboBox, QListWidget, QPushButton
-from frontend.patient import New_Patient
-
-class CheckIn(New_Patient):
+from frontend.main_nav import Nav
+class CheckIn(Nav):
     """
         Handles the Check In Page
         

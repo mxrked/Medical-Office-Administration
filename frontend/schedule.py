@@ -64,7 +64,7 @@ class Schedule(Nav):
         print("Schedule Appointment")
         pass
 
-class Reschedule(Schedule):
+class Reschedule(Nav):
     def __init__(self):
         super(Reschedule, self).__init__()
 
@@ -94,7 +94,7 @@ class Reschedule(Schedule):
         print("RescheduleAppointments")
         pass
 
-class Cancel(Reschedule):
+class Cancel(Nav):
     def __init__(self):
         super(Cancel, self).__init__()
 

@@ -5,9 +5,8 @@ Authors: Jessica Weeks
 """
 
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QPushButton
-from frontend.check_out import CheckOut
-
-class Referral(CheckOut):
+from frontend.main_nav import Nav
+class Referral(Nav):
     """
         Creates a referral using the Referral object
 

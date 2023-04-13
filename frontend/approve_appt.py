@@ -5,8 +5,8 @@ Authors:
 """
 from PyQt5.QtWidgets import QListWidget, QPushButton, QComboBox
 from frontend.lab import Lab
-
-class Approve(Lab):
+from frontend.main_nav import Nav
+class Approve(Nav):
     """
         Handles the Approve Appointment Buttons/Functions
 

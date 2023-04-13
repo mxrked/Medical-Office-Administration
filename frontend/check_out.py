@@ -4,9 +4,8 @@ UI Designed by: Jessica Weeks
 Authors: Parker Phelps
 """
 from PyQt5.QtWidgets import QListWidget, QComboBox, QPushButton
-from frontend.check_in import CheckIn
-
-class CheckOut(CheckIn):
+from frontend.main_nav import Nav
+class CheckOut(Nav):
     """
         Handles checkout page
 
@@ -45,7 +44,7 @@ class CheckOut(CheckIn):
         self.refreshPushButton.mousePressEvent = self.checkOut_refresh
         self.downloadSummaryPushButton.mousePressEvent = self.downloadSummary
 
-    def checkOut(self):
+    def checkOut(self, event):
         """
             Checks out the selected appointment    
         
@@ -62,7 +61,7 @@ class CheckOut(CheckIn):
         """
         print(self.checkOut.__doc__)
 
-    def checkOut_refresh(self):
+    def checkOut_refresh(self, event):
         """
             Refreshes self.checkOutListWidget with appointments that can
                 be checked out
@@ -72,7 +71,7 @@ class CheckOut(CheckIn):
         """
         print(self.checkOut_refresh.__doc__)
 
-    def downloadSummary(self):
+    def downloadSummary(self, event):
         """
         I'm not sure what to do here.
 

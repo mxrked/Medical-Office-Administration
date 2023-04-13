@@ -244,8 +244,7 @@ class Nav(QMainWindow):
     def clearInputs(self):
         """
             Clears all widgets on the screen no matter what!
-            Use with caution and feel free to redefine if needed in your
-            class declarations
+            Use with caution
         """
         for widget in self.findChildren(QLineEdit):
             widget.clear()

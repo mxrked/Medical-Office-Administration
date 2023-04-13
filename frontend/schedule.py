@@ -2,7 +2,7 @@
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QListWidget, QTimeEdit, QPushButton
 from PyQt5.QtCore import QDate
 from frontend.main_nav import Nav
-from frontend.ui.assets.files.STYLING import *
+from frontend.ui.assets.files.STYLING import disableCustomTime_Style, enableCustomTime_Style
 
 class Schedule(Nav):
     def __init__(self):
@@ -59,24 +59,6 @@ class Schedule(Nav):
     def search_SA(self, event):
         print("Search_SA")
         return
-        lines_to_check = [self.SA_PatientFNLineEdit,
-            self.SA_PatientLNLineEdit,
-            self.SA_PatientDOBDateEdit,
-            self.SA_AppointmentReasonLineEdit]
-        entered_inputs = self.checkInputs(lines_to_check)
-
-        # Check if combo_boxes correspond to object:
-        if (get_selected_combo_box_object(self.SA_OfficeLocationsComboBox) and
-            get_selected_combo_box_object(self.SA_PhysicianNamesComboBox) and
-            get_selected_combo_box_object(self.SA_AppointmentTypesComboBox)):
-
-            combo_boxes_entered = True
-        else:
-            combo_boxes_entered = False
-
-        if (not entered_inputs) or (not combo_boxes_entered):
-            self.load_error("Please Enter in all inputs")
-            return
 
     def scheduleAppointment(self, event):
         print("Schedule Appointment")

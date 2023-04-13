@@ -8,6 +8,12 @@ from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QPushButton
 from frontend.check_out import CheckOut
 
 class Referral(CheckOut):
+    """
+        Creates a referral using the Referral object
+
+        Uses a the misc_dm & user_dm 
+    
+    """
     def __init__(self):
         super(Referral, self).__init__()
 
@@ -27,5 +33,14 @@ class Referral(CheckOut):
 
 
     def create_referral(self, event):
-        print("Create Referral")
+        """
+            Creates a referral and puts it into the db
+
+            First get the Patient from the relevant data using the 
+                user_dm
+
+            Then create a Referral([Data]) using the QLineEdits/QComboBoxes
+
+            For the Comboboxes use a data_handler find the selected box
+        """
         pass

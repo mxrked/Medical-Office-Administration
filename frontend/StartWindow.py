@@ -6,7 +6,7 @@ Authors: Parker Phelps, Jessica Weeks
 from PyQt5.QtWidgets import QApplication, QLineEdit, QLabel, QPushButton, QDialog, QVBoxLayout, QFrame, QMainWindow
 from PyQt5 import uic, QtCore, QtGui
 
-from frontend.ui.assets.qrc import app_bg, doctor, show, hide
+from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo
 from frontend.ui.assets.files.GLOBALS import teamMembers
 from frontend.ui.assets.files.STYLING import *
 from backend.private.data_manager import DataManager
@@ -16,6 +16,8 @@ import sys
 class UI(QMainWindow):
     def __init__(self):
         super(UI, self).__init__()
+
+        self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 
         uic.loadUi("frontend/ui/StartWindow.ui", self)
 

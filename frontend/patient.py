@@ -7,10 +7,15 @@ Authors:
 from PyQt5.QtWidgets import QComboBox, QLineEdit, QRadioButton, QDateEdit, QPushButton
 from frontend.schedule import Cancel
 
-class Patient(Cancel):
+class New_Patient(Cancel):
+    """
+        Handes creating a new Patient using 
+            a patient object
 
+        Uses misc_dm
+    """
     def __init__(self):
-        super(Patient, self).__init__()
+        super(New_Patient, self).__init__()
 
         self.appartment_num = self.findChild(QLineEdit,"Patient_appart_num")
         self.city = self.findChild(QLineEdit,"city_lineEdit")
@@ -44,11 +49,25 @@ class Patient(Cancel):
         self.p_submit_btn = self.findChild(QPushButton, "btnSubmitNewPatient")
 
         # Connect buttons
-        self.p_submit_btn.mousePressEvent = self.submit
+        self.p_submit_btn.mousePressEvent = self.submit_patient
 
 
-    def submit(self, event):
-        pass
+    def submit_patient(self, event):
+        """
+            Creates a patient and enters it into the database    
+        
+            Pulls all relevant data from the QLineEdits and QRadioButtons
+
+            For the Comboboxes use a data_handler find the selected box
+
+            to make a Patient([data])
+
+            Then add it to the db using the self.misc_dm
+
+            Then run self.clear_inputs()
+        """
+        print(self.submit_patient.__doc__)
+        
 
 
 

@@ -12,7 +12,7 @@ class Approve(Lab):
 
         First initalizes widgets
 
-        Then loads the
+        Uses The
             self.appointment_dm
             self.user_dm
             self.misc_dm

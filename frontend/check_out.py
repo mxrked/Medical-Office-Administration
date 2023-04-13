@@ -12,7 +12,7 @@ class CheckOut(CheckIn):
 
         First initalizes widgets 
 
-        Then loads the
+        Uses
             self.appointment_dm
             self.user_dm
 

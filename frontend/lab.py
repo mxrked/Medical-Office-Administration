@@ -7,6 +7,11 @@ from PyQt5.QtWidgets import QPushButton, QLineEdit, QDateEdit, QComboBox, QMainW
 from frontend.referral import Referral
 
 class Lab(Referral):
+    """
+    Creates a lab using Lab object
+    
+    Uses the misc_dm & user_dm
+    """
     def __init__(self):
         super(Lab, self).__init__()
         # define widgets
@@ -23,8 +28,18 @@ class Lab(Referral):
 
         # Do something
         self.submitPushButton.clicked.connect(self.submitInformation)
-        
+
 
     def submitInformation(self):
-        print("Submit Information")
-        pass
+        """
+            First get the Patient from user_dm
+                using the inputs
+            
+            Then creates Lab in the db
+            using Lab([Data])
+            
+            Uses the misc_dm
+            
+            Then run self.clear_inputs()
+        """
+        print(self.submitInformation.__doc__)

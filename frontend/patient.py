@@ -55,7 +55,10 @@ class New_Patient(Cancel):
     def submit_patient(self, event):
         """
             Creates a patient and enters it into the database    
-        
+
+            Makes sure all QLineEdits, RadioButtons and ComboBoxes are selected
+                and corresponds to data
+
             Pulls all relevant data from the QLineEdits and QRadioButtons
 
             For the Comboboxes use a data_handler find the selected box

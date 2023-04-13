@@ -36,6 +36,9 @@ class Referral(CheckOut):
         """
             Creates a referral and puts it into the db
 
+            Makes sure all QLineEdits, RadioButtons and ComboBoxes are selected
+                and corresponds to data
+
             First get the Patient from the relevant data using the 
                 user_dm
 
@@ -43,4 +46,4 @@ class Referral(CheckOut):
 
             For the Comboboxes use a data_handler find the selected box
         """
-        pass
+        print(self.create_referral.__doc__)

@@ -29,22 +29,22 @@ class CheckOut(Nav):
         super(CheckOut, self).__init__()
 
         # Load list widgets
-        self.checkOutListWidget = self.findChild(QListWidget, "Checkout_List")
+        self.check_out_list = self.findChild(QListWidget, "Checkout_List")
 
         # Load combo box widgets
-        self.locationsComboBox = self.findChild(QComboBox, "comboBox_Locations")
+        self.locations_combobox = self.findChild(QComboBox, "comboBox_Locations")
 
         # Load button widgets
-        self.checkOutPushButton = self.findChild(QPushButton, "Checkout_Btn_Checkout")
-        self.refreshPushButton = self.findChild(QPushButton, "Checkout_Btn_Refresh")
-        self.downloadSummaryPushButton = self.findChild(QPushButton, "Checkout_Btn_Download")
+        self.check_out_btn = self.findChild(QPushButton, "Checkout_Btn_Checkout")
+        self.check_out_refresh_btn = self.findChild(QPushButton, "Checkout_Btn_Refresh")
+        self.download_summary_btn = self.findChild(QPushButton, "Checkout_Btn_Download")
 
         # Connect buttons
-        self.checkOutPushButton.mousePressEvent = self.checkOut
-        self.refreshPushButton.mousePressEvent = self.checkOut_refresh
-        self.downloadSummaryPushButton.mousePressEvent = self.downloadSummary
+        self.check_out_btn.mousePressEvent = self.check_out
+        self.check_out_refresh_btn.mousePressEvent = self.check_out_refresh
+        self.download_summary_btn.mousePressEvent = self.download_summary
 
-    def checkOut(self, event):
+    def check_out(self, event):
         """
             Checks out the selected appointment    
         
@@ -59,9 +59,9 @@ class CheckOut(Nav):
 
             Then calls self.checkOut_refresh        
         """
-        print(self.checkOut.__doc__)
+        print(self.check_out.__doc__)
 
-    def checkOut_refresh(self, event):
+    def check_out_refresh(self, event):
         """
             Refreshes self.checkOutListWidget with appointments that can
                 be checked out
@@ -69,12 +69,12 @@ class CheckOut(Nav):
             Get list of appointments using Appointment_Data_Manager
             Then use the data handler to set_objects_to_list(appointments, QListWidget) 
         """
-        print(self.checkOut_refresh.__doc__)
+        print(self.check_out_refresh.__doc__)
 
-    def downloadSummary(self, event):
+    def download_summary(self, event):
         """
         I'm not sure what to do here.
 
         Something about views in the DB, I don't know
         """
-        print(self.downloadSummary.__doc__)
+        print(self.download_summary.__doc__)

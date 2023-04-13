@@ -4,7 +4,6 @@ UI Designed by: Christian Fortin
 Authors: 
 """
 from PyQt5.QtWidgets import QListWidget, QPushButton, QComboBox
-from frontend.lab import Lab
 from frontend.main_nav import Nav
 class Approve(Nav):
     """
@@ -40,7 +39,7 @@ class Approve(Nav):
         self.a_btn_deny.mousePressEvent = self.deny
         self.a_btn_refresh.mousePressEvent = self.a_refresh
 
-    
+
     def approve(self, event):
         """
             Gets the selected item from self.approve_list

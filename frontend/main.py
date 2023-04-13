@@ -48,8 +48,8 @@ class MainWindow(Schedule, Reschedule, Cancel,
     def __init__(self, can_physician:bool=True, can_schedule:bool=True):
         super(MainWindow, self).__init__()
 
+        # Stop QBasicTimer Spam (Maybe)
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
-
 
         self.can_physician = can_physician
         self.can_schedule = can_schedule

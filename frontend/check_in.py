@@ -33,18 +33,18 @@ class CheckIn(Nav):
         self.check_in_location = self.findChild(QComboBox, "CheckIn_Location")
         self.providers = self.findChild(QComboBox, "CheckIn_Provider")
         self.check_ins_list = self.findChild(QListWidget, "CheckIn_ListWidget")
-        
+
         # Load Buttons
         self.check_in_btn = self.findChild(QPushButton, "CheckIn_CheckIn")
         self.no_show_btn = self.findChild(QPushButton, "CheckIn_NoShow")
         self.refresh_btn = self.findChild(QPushButton, "CheckIn_Refresh")
 
         # Connect buttons
-        self.check_in_btn.mousePressEvent = self.checkIn
-        self.no_show_btn.mousePressEvent = self.noShow
+        self.check_in_btn.mousePressEvent = self.check_in
+        self.no_show_btn.mousePressEvent = self.no_show
         self.refresh_btn.mousePressEvent = self.check_in_refresh
 
-    def checkIn(self, event):
+    def check_in(self, event):
         """
             Checks in the selected appointment    
         
@@ -59,9 +59,9 @@ class CheckIn(Nav):
 
             Then calls self.check_in_refresh
         """
-        print(self.checkIn.__doc__)
+        print(self.check_in.__doc__)
 
-    def noShow(self, event):
+    def no_show(self, event):
         """
             Marks selected appointment as "No Show"
 
@@ -76,7 +76,7 @@ class CheckIn(Nav):
 
             Then calls self.check_in_refresh
         """
-        print(self.noShow.__doc__)
+        print(self.no_show.__doc__)
 
     def check_in_refresh(self, event):
         """

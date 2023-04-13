@@ -30,15 +30,14 @@ class Schedule(Nav):
         self.SA_AppointmentDateDateEdit.setMinimumDate(QDate.currentDate())
         self.SA_ClearInputsPushButton.mousePressEvent = lambda event: self.clearInputs()
         self.SA_NoCustomTimePushButton.setVisible(False)
-        self.SA_NoCustomTimePushButton.mousePressEvent = self.disableCustomTime
-        self.SA_YesCustomTimePushButton.mousePressEvent = self.enableCustomTime
-        self.SA_SearchPushButton.mousePressEvent = self.search_SA
-        self.SA_ScheduleAppointmentPushButton.mousePressEvent = self.scheduleAppointment
+        self.SA_NoCustomTimePushButton.clicked.connect(self.disableCustomTime)
+        self.SA_YesCustomTimePushButton.clicked.connect(self.enableCustomTime)
+        self.SA_SearchPushButton.clicked.connect(self.search_SA)
+        self.SA_ScheduleAppointmentPushButton.clicked.connect(self.scheduleAppointment)
 
         self.custom_time = False
     
-    def disableCustomTime(self, event):
-
+    def disableCustomTime(self):
         # Appending false to customTime
         self.custom_time = False
 
@@ -47,8 +46,8 @@ class Schedule(Nav):
         self.SA_CustomTimeTimeEdit.setEnabled(False)
         self.SA_CustomTimeTimeEdit.setStyleSheet(disableCustomTime_Style)
 
-    def enableCustomTime(self, event):
-        
+    def enableCustomTime(self):
+
         # Appending true to customTime
         self.custom_time = True
 
@@ -58,11 +57,11 @@ class Schedule(Nav):
         self.SA_CustomTimeTimeEdit.setEnabled(True)
         self.SA_CustomTimeTimeEdit.setStyleSheet(enableCustomTime_Style)
 
-    def search_SA(self, event):
+    def search_SA(self):
         print("Search_SA")
         return
 
-    def scheduleAppointment(self, event):
+    def scheduleAppointment(self):
         print("Schedule Appointment")
         pass
 

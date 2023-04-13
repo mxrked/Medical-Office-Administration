@@ -80,7 +80,6 @@ disableCustomTime_Style = "QTimeEdit {\n" \
               "    border: none;\n" \
               "    font-size: 15;\n" \
               "    padding-left: 10px;\n" \
-              "    padding-right: 10px;\n" \
               "}\n"
 enableCustomTime_Style = "QTimeEdit {\n" \
               "    border-image: none;\n" \
@@ -90,7 +89,6 @@ enableCustomTime_Style = "QTimeEdit {\n" \
               "    border: none;\n" \
               "    font-size: 15;\n" \
               "    padding-left: 10px;\n" \
-              "    padding-right: 10px;\n" \
               "}\n"
 enableFrameBtn_Style = "QPushButton {\n" \
               "    border-image: none;\n" \

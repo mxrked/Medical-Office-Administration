@@ -1,7 +1,7 @@
 """
 check_in.py - A window to handle in checking in appointments for the clinic
 UI Designed by: Jessica Weeks
-Authors: Jessica Weeks
+Authors:
 """
 from PyQt5.QtWidgets import QComboBox, QListWidget, QPushButton
 from frontend.main_nav import Nav
@@ -40,11 +40,11 @@ class CheckIn(Nav):
         self.refresh_btn = self.findChild(QPushButton, "CheckIn_Refresh")
 
         # Connect buttons
-        self.check_in_btn.mousePressEvent = self.check_in
-        self.no_show_btn.mousePressEvent = self.no_show
-        self.refresh_btn.mousePressEvent = self.check_in_refresh
+        self.check_in_btn.clicked.connect(self.check_in)
+        self.no_show_btn.clicked.connect(self.no_show)
+        self.refresh_btn.clicked.connect(self.check_in_refresh)
 
-    def check_in(self, event):
+    def check_in(self):
         """
             Checks in the selected appointment    
         
@@ -61,7 +61,7 @@ class CheckIn(Nav):
         """
         print(self.check_in.__doc__)
 
-    def no_show(self, event):
+    def no_show(self):
         """
             Marks selected appointment as "No Show"
 
@@ -78,7 +78,7 @@ class CheckIn(Nav):
         """
         print(self.no_show.__doc__)
 
-    def check_in_refresh(self, event):
+    def check_in_refresh(self):
         """
             Refreshes self.check_ins_list with appointments that can
                 be checked in

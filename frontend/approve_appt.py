@@ -35,12 +35,12 @@ class Approve(Nav):
         self.a_location = self.findChild(QComboBox, "Approve_Combo_Location")
         self.a_provider = self.findChild(QComboBox, "Approve_Combo_Provider")
 
-        self.a_btn_approve.mousePressEvent = self.approve
-        self.a_btn_deny.mousePressEvent = self.deny
-        self.a_btn_refresh.mousePressEvent = self.a_refresh
+        self.a_btn_approve.clicked.connect(self.approve)
+        self.a_btn_deny.clicked.connect(self.deny)
+        self.a_btn_refresh.clicked.connect(self.a_refresh)
 
 
-    def approve(self, event):
+    def approve(self):
         """
             Gets the selected item from self.approve_list
                 Using the data_handler
@@ -62,7 +62,7 @@ class Approve(Nav):
         """
         print(self.approve.__doc__)
 
-    def deny(self, event):
+    def deny(self):
         """
             Sets the status of the given appointment to deny
 
@@ -78,7 +78,7 @@ class Approve(Nav):
         """
         print(self.deny.__doc__)
 
-    def a_refresh(self, event):
+    def a_refresh(self):
         """
             Refreshes self.a_list with pending appointments
 

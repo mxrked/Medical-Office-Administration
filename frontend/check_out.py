@@ -1,7 +1,7 @@
 """
 Checkout.py - A window to handle in checking out appointments for the clinic
 UI Designed by: Jessica Weeks
-Authors: Parker Phelps
+Authors:
 """
 from PyQt5.QtWidgets import QListWidget, QComboBox, QPushButton
 from frontend.main_nav import Nav
@@ -40,11 +40,11 @@ class CheckOut(Nav):
         self.download_summary_btn = self.findChild(QPushButton, "Checkout_Btn_Download")
 
         # Connect buttons
-        self.check_out_btn.mousePressEvent = self.check_out
-        self.check_out_refresh_btn.mousePressEvent = self.check_out_refresh
-        self.download_summary_btn.mousePressEvent = self.download_summary
+        self.check_out_btn.clicked.connect(self.check_out)
+        self.check_out_refresh_btn.clicked.connect(self.check_out_refresh)
+        self.download_summary_btn.clicked.connect(self.download_summary)
 
-    def check_out(self, event):
+    def check_out(self):
         """
             Checks out the selected appointment    
         
@@ -61,7 +61,7 @@ class CheckOut(Nav):
         """
         print(self.check_out.__doc__)
 
-    def check_out_refresh(self, event):
+    def check_out_refresh(self):
         """
             Refreshes self.checkOutListWidget with appointments that can
                 be checked out
@@ -71,7 +71,7 @@ class CheckOut(Nav):
         """
         print(self.check_out_refresh.__doc__)
 
-    def download_summary(self, event):
+    def download_summary(self):
         """
         I'm not sure what to do here.
 

@@ -12,6 +12,11 @@ class Approve(Lab):
 
         First initalizes widgets
 
+        Then loads the
+            self.appointment_dm
+            self.user_dm
+            self.misc_dm
+
         Then grabs locations from the misc_dm 
         and providers from the user_dm
 
@@ -53,6 +58,8 @@ class Approve(Lab):
                 add_appointment()
             catch AssertionError as e:
                 self.load_error(e)
+
+            Then call self.a_refresh
         """
         print(self.approve.__doc__)
 
@@ -67,6 +74,8 @@ class Approve(Lab):
                 If it doesn't use self.load_error()
             
             Then uses appointment_data_manager to set_appointment_canceled
+
+            Then call self.a_refresh
         """
         print(self.deny.__doc__)
 

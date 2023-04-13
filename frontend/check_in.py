@@ -1,5 +1,5 @@
 """
-CheckIn.py - A window to handle in checking in appointments for the clinic
+check_in.py - A window to handle in checking in appointments for the clinic
 UI Designed by: Jessica Weeks
 Authors: Jessica Weeks
 """
@@ -7,11 +7,31 @@ from PyQt5.QtWidgets import QComboBox, QListWidget, QPushButton
 from frontend.patient import Patient
 
 class CheckIn(Patient):
+    """
+        Handles the Check In Page
+        
+        First initalizes widgets
+
+        Then loads the
+            self.appointment_dm
+            self.user_dm
+            self.misc_dm
+
+        Then grabs locations from the misc_dm 
+        and providers from the user_dm
+        and get_appointments_for_date from the appointment_dm
+
+        then uses the data_handlers to 
+            set_objects_to_combo_box(locations, self.check_in_location)
+        does this for both
+        
+        lastly it runs self.check_in_refresh
+    """
     def __init__(self):
         super(CheckIn, self).__init__()
 
         # Load Input Widgets
-        self.location = self.findChild(QComboBox, "CheckIn_Location")
+        self.check_in_location = self.findChild(QComboBox, "CheckIn_Location")
         self.providers = self.findChild(QComboBox, "CheckIn_Provider")
         self.check_ins_list = self.findChild(QListWidget, "CheckIn_ListWidget")
         
@@ -23,16 +43,48 @@ class CheckIn(Patient):
         # Connect buttons
         self.check_in_btn.mousePressEvent = self.checkIn
         self.no_show_btn.mousePressEvent = self.noShow
-        self.refresh_btn.mousePressEvent = self.refresh
+        self.refresh_btn.mousePressEvent = self.check_in_refresh
 
     def checkIn(self, event):
-        print("Check In")
-        pass
+        """
+            Checks in the selected appointment    
+        
+            Gets the selected item from self.check_ins_list
+                Using the data_handler
+
+            NOTE: Check if that data corresponds to data.
+                If it doesn't use self.load_error()
+
+            Uses the appointment_data_manager to
+                set_appointment_in_progress(appointment)
+
+            Then calls self.check_in_refresh
+        """
+        print(self.checkIn.__doc__)
 
     def noShow(self, event):
-        print("No Show")
-        pass
+        """
+            Marks selected appointment as "No Show"
 
-    def refresh(self, event):
-        print("Refresh Checkin")
-        pass
+            Gets the selected item from self.approve_list
+                Using the data_handler
+
+            NOTE: Check if that data corresponds to data.
+                If it doesn't use self.load_error()
+
+            Uses the appointment_data_manager to
+                set_appointment_no_show(appointment)
+
+            Then calls self.check_in_refresh
+        """
+        print(self.noShow.__doc__)
+
+    def check_in_refresh(self, event):
+        """
+            Refreshes self.check_ins_list with appointments that can
+                be checked in
+
+            Get list of appointments using Appointment_Data_Manager
+            Then use the data handler to set_objects_to_list(appointments, self.check_ins_list) 
+        """
+        print(self.check_in_refresh.__doc__)

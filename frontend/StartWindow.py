@@ -129,6 +129,8 @@ class UI(QMainWindow):
 
         # This is used to check if the user is available and will move the user to the scheduling window or not
         if user:
+            
+            # Apply Permissions
 
             # Hiding login error label
             self.loginErrorLabel.hide()

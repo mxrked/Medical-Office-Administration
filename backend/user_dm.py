@@ -1,6 +1,6 @@
 from datetime import date
 from backend.private.data_manager import DataManager
-from backend.models import AppointmentType, Employee, User, EmployeeType, Patient, EmpGroupCross,\
+from backend.models import Employee, User, EmployeeType, Patient, EmpGroupCross,\
 Group,GroupRoleCross,Role
 from sqlalchemy.orm import joinedload
 
@@ -9,14 +9,14 @@ class UserDM(DataManager):
     def __init__(self):
         super().__init__()
 
-        def check_username_password(self, usertypeID: int, username: str, password: str) -> bool:
+    def check_username_password(self, usertypeID: int, username: str, password: str) -> bool:
 
-            validated = self.session.query(User) \
-                .where(usertypeID == 1, username == User.Username, password == User.Password)
+        validated = self.session.query(User) \
+            .where(usertypeID == 1, username == User.Username, password == User.Password)
 
-            # Besure to global the CURRENT_USER as a User Object
-            # will need to validate group for screen access
-            return validated
+        # Besure to global the CURRENT_USER as a User Object
+        # will need to validate group for screen access
+        return validated
 
     def check_group_role(self, current_employee: Employee, search_role_id) -> bool:
         groups = self.check_user_group(current_employee)
@@ -32,7 +32,7 @@ class UserDM(DataManager):
         else:
             return False
 
-    def check_user_group(self, current_employee: Employee) -> List[int]:
+    def check_user_group(self, current_employee: Employee) -> list[int]:
         # check if user type id is associated with a group
         groups = self.session.query(Group.GroupID) \
             .join(EmpGroupCross.GroupID) \

@@ -1,6 +1,6 @@
-from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QLineEdit, QStackedWidget, QFrame, QDialog, QVBoxLayout, QLabel
-from PyQt5 import QtCore, QtGui
+from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QWidget,\
+    QLineEdit, QStackedWidget, QFrame, QDialog, QVBoxLayout, QLabel, QDateEdit, QTimeEdit
+from PyQt5 import QtCore, QtGui, uic
 import sys
 from frontend.ui.assets.files.STYLING import *
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo
@@ -243,12 +243,21 @@ class Nav(QMainWindow):
 
     def clearInputs(self):
         """
-            Clears all widgets on the screen no matter what!
+            Resets all widgets everywhere!
             Use with caution
         """
-        for widget in self.findChildren(QLineEdit):
-            widget.clear()
+        for widget in self.findChildren(QWidget):
+            # Clears Line Edits
+            if isinstance(widget, QLineEdit) and not isinstance(widget, (QDateEdit, QTimeEdit)):
+                widget.clear()
+                # Otherwise Certain widgets are selected, for some reason
+                widget.selectAll()
+                widget.deselect()
 
+            # Clears DateEdits
+            if isinstance(widget, QDateEdit) and not isinstance(widget, (QTimeEdit, QLineEdit)):
+                widget.setDate(QtCore.QDate.currentDate())
+    
     def closeEvent(self, event):
         """
             Closes all data managers before exiting the program

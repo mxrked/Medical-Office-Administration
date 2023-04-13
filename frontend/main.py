@@ -1,5 +1,5 @@
 import sys
-from PyQt5 import uic, QtCore
+from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication
 from frontend.schedule import Schedule, Reschedule, Cancel
 from frontend.approve_appt import Approve
@@ -22,7 +22,7 @@ class MainWindow(Schedule, Reschedule, Cancel,
     :param can_physician: bool, if they can use phsycian screens
     :param can_schedule: bool, if they can use scheduling screens
 
-    Subclass Chain:
+    Subclasses:
 
         Nav(QMainWindow)
         │ 

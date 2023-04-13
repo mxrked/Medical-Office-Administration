@@ -30,7 +30,7 @@ validEnterLE_Style = """
                     font-family: "MS Shell Dlg 2";
                     font-size: 11;
                     padding-left: 10px;
-                    paddding-right: 10px;
+                    
                 }
             
             """
@@ -46,7 +46,7 @@ invalidEnterLE_Style = """
                     font-family: "MS Shell Dlg 2";
                     font-size: 11;
                     padding-left: 10px;
-                    paddding-right: 10px;
+                    
                 }
             
             """

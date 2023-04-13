@@ -145,7 +145,7 @@
 	font-family: &quot;MS Shell Dlg 2&quot;;
 	font-size: 11;
 	padding-left: 10px;
-	paddding-right: 10px;
+	
 }</string>
     </property>
     <property name="placeholderText">
@@ -178,7 +178,7 @@
 	font-family: &quot;MS Shell Dlg 2&quot;;
 	font-size: 11;
 	padding-left: 10px;
-	paddding-right: 10px;
+	
 }</string>
     </property>
     <property name="echoMode">

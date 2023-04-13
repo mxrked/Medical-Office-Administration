@@ -1,3 +1,7 @@
+"""
+main.py - Runs all the main windows except StartWindow
+Author: Jessica Weeks
+"""
 import sys
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication

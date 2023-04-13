@@ -321,7 +321,7 @@ class Location(Base):
     Email = Column(VARCHAR(50), nullable=False)
 
     def __str__(self) -> str:
-        return f"{self.LocationName}"
+        return f"{self.Location_Name}"
 
 class Role(Base):
     __tablename__ = "Role"

@@ -34,6 +34,8 @@ class Schedule(Nav):
         self.SA_YesCustomTimePushButton.mousePressEvent = self.enableCustomTime
         self.SA_SearchPushButton.mousePressEvent = self.search_SA
         self.SA_ScheduleAppointmentPushButton.mousePressEvent = self.scheduleAppointment
+
+        self.custom_time = False
     
     def disableCustomTime(self, event):
 

@@ -3,7 +3,8 @@ data_handler.py - A data handler for placing backend models into front end widge
 Authors: Jessica Weeks
 """
 from PyQt5.QtWidgets import QListWidget, QListWidgetItem, QComboBox
-
+from backend.misc_dm import MiscDM
+from backend.user_dm import UserDM
 class __QlistWidgetObject(QListWidgetItem):
     """
         Used for ListWidgets to present a str to the GUI
@@ -67,3 +68,15 @@ def get_selected_combo_box_object(combo_box: QComboBox) -> object:
         :returns: The relevant object placed using our object box setters
     """
     return combo_box.currentData()
+
+def get_locations_into(misc_dm: MiscDM, combo_box: QComboBox):
+
+    combo_box.clear()
+    locations = misc_dm.get_locations()
+    set_objects_to_combo_box(locations, combo_box)
+
+
+def get_physicians_into(user_dm: UserDM, combo_box: QComboBox):
+    combo_box.clear()
+    physicians = user_dm.get_physicians()
+    set_objects_to_combo_box(physicians, combo_box)

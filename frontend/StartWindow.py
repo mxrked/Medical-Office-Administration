@@ -14,9 +14,9 @@ import sys
 import json
 
 
-class UI(QMainWindow):
+class Start(QMainWindow):
     def __init__(self):
-        super(UI, self).__init__()
+        super(Start, self).__init__()
 
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 
@@ -38,7 +38,7 @@ class UI(QMainWindow):
         self.showPasswordLabel.mousePressEvent = lambda event: self.showPassword()
         self.hidePasswordLabel.mousePressEvent = lambda event: self.hidePassword()
         self.loginPushButton.clicked.connect(self.loginUser)
-        self.exitPushButton.clicked.connect(self.closeEvent)
+        self.exitPushButton.clicked.connect(self.close_app)
         self.infoPushButton.clicked.connect(self.displayInfoDialog)
 
         # Makes It so we can hit enter to login instead
@@ -113,7 +113,7 @@ class UI(QMainWindow):
         # Displaying the dialog
         infoDialog.exec_()
     
-    def closeEvent(self, event):
+    def close_app(self, event):
         """
             Closes all data managers before exiting the program
         """
@@ -202,7 +202,7 @@ class UI(QMainWindow):
 
 
 app = QApplication(sys.argv)
-UIWindow = UI()
+UIWindow = Start()
 
 def main():
     UIWindow.show()

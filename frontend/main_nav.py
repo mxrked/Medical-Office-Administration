@@ -82,7 +82,7 @@ class Nav(QMainWindow):
         self.patient_frame = self.findChild(QFrame, "PatientFrame")
 
         # Events for buttons
-        self.new_patient_btn.slicked.connect(self.display_patient_frame)
+        self.new_patient_btn.clicked.connect(self.display_patient_frame)
         self.rescheduling_btn.clicked.connect(self.display_reschedule_frame)
         self.make_schedule_btn.clicked.connect(self.display_inputs_frame)
         self.cancel_btn.clicked.connect(self.display_canceled_frame)

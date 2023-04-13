@@ -63,7 +63,7 @@ class Schedule(Nav):
 
     def scheduleAppointment(self):
         print("Schedule Appointment")
-        pass
+        
 
 class Reschedule(Nav):
     def __init__(self):
@@ -89,11 +89,11 @@ class Reschedule(Nav):
 
     def displayTimesApps(self):
         print("DisplayTimesApps")
-        pass
+        
 
     def rescheduleAppointment(self):
         print("RescheduleAppointments")
-        pass
+        
 
 class Cancel(Nav):
     def __init__(self):
@@ -116,8 +116,8 @@ class Cancel(Nav):
 
     def search_CA(self):
         print("Search SA")
-        pass
+        
 
     def cancelAppointment(self):
         print("Cancel Appointment")
-        pass
+        

@@ -1,4 +1,7 @@
+"""
+Holds Global Variables
 
+"""
 # Arrays
 teamMembers = ["Parker Phelps - Product Owner", 
                "Christian Fortin - Scrum Master", 
@@ -7,7 +10,4 @@ teamMembers = ["Parker Phelps - Product Owner",
                "Destan Hutcherson - Program Analyst", 
                "Flora Cherotich - Database Technician", 
                "Adia Chue - Web Developer"]
-
-# This is used to store certain values and make use of them later
-prevWindowCoords = [0, 0]
 

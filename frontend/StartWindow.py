@@ -3,12 +3,14 @@ StarWindow.py - Window for the login screen of the db
 UI Designer: Parker Phelps
 Authors: Parker Phelps, Jessica Weeks
 """
-from PyQt5.QtWidgets import QApplication, QLineEdit, QLabel, QPushButton, QDialog, QVBoxLayout, QFrame, QMainWindow
+from PyQt5.QtWidgets import QApplication, QLineEdit, QLabel, QPushButton, QDialog, \
+    QVBoxLayout, QFrame, QMainWindow
 from PyQt5 import uic, QtCore, QtGui
 
-from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo
+from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo # pylint: disable=unused-import
 from frontend.ui.assets.files.GLOBALS import teamMembers
-from frontend.ui.assets.files.STYLING import *
+from frontend.ui.assets.files.STYLING import infoDialog_Style, infoDialogCloseBtn_Style, infoDialogName_Style,\
+    validEnterLE_Style, invalidEnterLE_Style
 from backend.private.data_manager import DataManager
 import sys
 import json
@@ -38,7 +40,7 @@ class Start(QMainWindow):
         self.showPasswordLabel.mousePressEvent = lambda event: self.showPassword()
         self.hidePasswordLabel.mousePressEvent = lambda event: self.hidePassword()
         self.loginPushButton.clicked.connect(self.loginUser)
-        self.exitPushButton.clicked.connect(self.close_app)
+        self.exitPushButton.clicked.connect(self.closeEvent)
         self.infoPushButton.clicked.connect(self.displayInfoDialog)
 
         # Makes It so we can hit enter to login instead
@@ -47,7 +49,8 @@ class Start(QMainWindow):
 
         # Load Last used Username
         try:
-            with open("frontend/ui/assets/files/Settings.json") as settings_file:
+            with open("frontend/ui/assets/files/Settings.json", "r", 
+                      encoding='UTF-8') as settings_file:
                 file_contents = settings_file.read()
         
             self.settings_json = json.loads(file_contents)
@@ -64,7 +67,8 @@ class Start(QMainWindow):
                 "default_location_ID" : "1",
                 "last_entered_user" : ""
             }
-            with open("frontend/ui/assets/files/Settings.json", "w") as file:
+            with open("frontend/ui/assets/files/Settings.json", "w",
+                      encoding='UTF-8') as file:
                 json.dump(self.settings_json, file)
 
 
@@ -113,11 +117,10 @@ class Start(QMainWindow):
         # Displaying the dialog
         infoDialog.exec_()
     
-    def close_app(self, event):
+    def closeEvent(self, event): # pylint: disable=unused-argument
         """
             Closes all data managers before exiting the program
         """
-
         for var_name in vars(self):
 
             if isinstance( getattr(self, var_name), DataManager):
@@ -160,7 +163,7 @@ class Start(QMainWindow):
             
             # Save Last User
             self.settings_json["last_entered_user"] = userName_Text
-            with open("frontend/ui/assets/files/Settings.json", "w") as file:
+            with open("frontend/ui/assets/files/Settings.json", "w", encoding='UTF-8') as file:
                 json.dump(self.settings_json, file)
     
             # Apply Permissions

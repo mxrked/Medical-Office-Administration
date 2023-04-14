@@ -15,35 +15,35 @@ class UserDM(DataManager):
     def __init__(self):
         super().__init__()
 
-    def check_username_password(self, usertypeID: int, username: str, password: str) -> bool:
+    def check_username_password(self, username: str, password: str) -> Employee:
 
-        validated = self.session.query(User) \
-            .where(usertypeID == 1, username == User.Username, password == User.Password)
+        employee = self.session.query(Employee) \
+            .join(User) \
+            .filter(User.UserTypeID == 1, User.UserName == username, User.Password == password) \
+            .first()
 
-        # Besure to global the CURRENT_USER as a User Object
-        # will need to validate group for screen access
-        return validated
+        if (employee is None):
+            return False
 
-    def check_group_role(self, current_employee: Employee, search_role_id) -> bool:
-        groups = self.check_user_group(current_employee)
+        return employee
+
+    def check_employee_role(self, current_employee: Employee, search_role_id) -> bool:
+        groups = self.__check_employee_group(current_employee)
         roles = []
         for group in groups:
             roles.extend(self.session.query(Role.RoleID)
                          .join(GroupRoleCross.RoleID)
-                         .where(group == GroupRoleCross.GroupID)
+                         .where(group == GroupRoleCross.GroupID).all()
                          )
 
-        if search_role_id in roles:
-            return True
-        else:
-            return False
+        return search_role_id in roles
 
 
-    def check_user_group(self, current_employee: Employee) -> List[int]:
+    def __check_employee_group(self, current_employee: Employee) -> List[int]:
         # check if user type id is associated with a group
         groups = self.session.query(Group.GroupID) \
             .join(EmpGroupCross.GroupID) \
-            .where(current_employee.EmployeeTypeID == EmpGroupCross.EmployeeTypeID)
+            .where(current_employee.EmployeeTypeID == EmpGroupCross.EmployeeTypeID).all()
 
         return groups
 

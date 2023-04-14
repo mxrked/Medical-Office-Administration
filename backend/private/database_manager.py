@@ -404,15 +404,72 @@ def populate_employee(session):
 
     session.commit()
 
+def populate_appointment_types(session):
+
     
+    appointment_types = ['Primary Care Visit', 'Physical Exam', 'Follow-up Visit', 'Ear, Nose and Throat', 'Emergency Visit', 'Initial Visit', "Women's Health/ Family Planning", 'Injections/Labs']
 
+    for appt_type in appointment_types:
+        session.add(
+            AppointmentType(
+                ApptName=appt_type
+            )
+        )
+    
+    session.commit()
 
+def populate_role(session):
 
+    roles = ['Log into Employee System', 'Edit Make Referrals Tab/Edit Order Labs Tab', 'Edit Appointments Tab/Edit CheckIn Tab/Edit CheckO']
+
+    for role in roles:
+        session.add(
+            Role(
+                Role=role
+            )
+        )
+
+    session.commit()
+
+def populate_group(session):
+
+    groups = ["Admin", "Physician", "Receptionist"]
+
+    for group in groups:
+        session.add(
+            Group(
+                Group=group
+            )
+        )
+    
+    session.commit()
+
+def populate_group_role_cross(session):
+    """
+        I just did this in sql
+
+        Admin Group has Roles 1,2,3
+
+        Physicians Group has Roles 1 & 2 (Login and LabOrder/Referral)
+
+        Receptionists Group has Roles 1 & 3 (Login and Schedule)
+    """
+    pass
+
+def populate_emp_group_cross(session):
+    """
+        I just did this in sql
+
+        Admin User (emp25) has Group 1 (Admin)
+        Scheduler User (emp24) has group 3 (Receptionist)
+        Phsysican User (emp23) has group 2 (Physician)
+    """
+    pass
 
 if __name__ == "__main__":
     # Make sure its not already done!
-
     pass
+    
 
 session.close()
 engine.dispose()

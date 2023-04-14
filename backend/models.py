@@ -8,7 +8,6 @@ from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy import Column, Table, Integer, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, CHAR
 from backend.connection_string import DB
 
-from private.data_manager import DataManager
 
 Base = declarative_base()
 
@@ -351,6 +350,8 @@ class User(Base):
     Password = Column(NVARCHAR(50), nullable=False)
     Email = Column(VARCHAR(50), nullable=False)
 
+    UserType = relationship("UserType", backref="UUserType")
+
     def __str__(self) -> str:
         return f"{self.Username}"
 
@@ -390,10 +391,4 @@ class UserType(Base):
     UserTypeID = Column(Integer, primary_key=True, nullable=False)
 
     UserType = Column(VARCHAR(50), nullable=False)
-
-
-if __name__ == "__main__":
-
-    engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
-    Base.metadata.create_all(engine)
 

@@ -3,8 +3,12 @@ models.py - a set of sqlalchemy models for working with the clinics Database.
 Author: Jessica Weeks, Christian Fortin
 Author: Jessica Weeks, Christina Fortin
 """
+import sqlalchemy as sa
 from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy import Column, Table, Integer, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, CHAR
+from backend.connection_string import DB
+
+from private.data_manager import DataManager
 
 Base = declarative_base()
 
@@ -46,7 +50,7 @@ class Appointment(Base):
     PhysicianID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     ApptTypeID = Column(Integer, ForeignKey("AppointmentType.ApptTypeID")) 
     LocationID = Column(Integer, ForeignKey("Location.LocationID"))
-    ApptReason = Column(VARCHAR(65535))
+    ApptReason = Column(VARCHAR(500))
 
     AppointmentType = relationship("AppointmentType", backref="ApptAppointmentType")
     Patient = relationship("Patient", backref="ApptPatient")
@@ -67,7 +71,7 @@ class AppointmentType(Base):
     """
     __tablename__ = "AppointmentType"
 
-    ApptTypeID = Column(NVARCHAR(50), primary_key=True)
+    ApptTypeID = Column(Integer, primary_key=True)
 
     ApptName = Column(VARCHAR(50))
 
@@ -81,8 +85,8 @@ EmpUserRoleCross = Table(
     Column('DummyID', Integer, primary_key=True),
     Column('EmployeeID', Integer, ForeignKey("Employee.EmployeeID")),
     Column('RoleID', Integer, ForeignKey("Role.RoleID")),
-    Column('DepartmentID', Integer, ForeignKey("Departments.DepartmentID")),
-    Column('OfficeID', Integer, ForeignKey("Offices.OfficeID"))
+    # Column('DepartmentID', Integer, ForeignKey("Departments.DepartmentID")),
+    Column('LocationID', Integer, ForeignKey("Location.LocationID"))
 )
 
 EmpGroupCross = Table(
@@ -97,7 +101,7 @@ EmpLocReferralCross = Table(
     'EmpLocReferralCross',
     Base.metadata,
     Column('DummyID', Integer, primary_key=True),
-    Column('EmployeeID', Integer, ForeignKey("Employee.EmployeeID ")),
+    Column('EmployeeID', Integer, ForeignKey("Employee.EmployeeID")),
     Column('LocationID', Integer, ForeignKey("Location.LocationID")),
     Column('ReferralID', Integer, ForeignKey("Referral.ReferralID"))
 )
@@ -328,7 +332,7 @@ class Role(Base):
 
     RoleID = Column(Integer, primary_key=True)
 
-    Role = Column(VARCHAR(65535), nullable=False)
+    Role = Column(VARCHAR(500), nullable=False)
 
 class User(Base):
     """
@@ -371,7 +375,7 @@ class Referral(Base):
     PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
     PhysicianID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     ReferralDate = Column(Date)
-    PatientCondition = Column(VARCHAR(65535))
+    PatientCondition = Column(VARCHAR(200))
 
     Patient = relationship("Patient", backref="RePatient")
     Employee = relationship("Employee", backref="ReEmployee")
@@ -386,3 +390,10 @@ class UserType(Base):
     UserTypeID = Column(Integer, primary_key=True, nullable=False)
 
     UserType = Column(VARCHAR(50), nullable=False)
+
+
+if __name__ == "__main__":
+
+    engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
+    Base.metadata.create_all(engine)
+

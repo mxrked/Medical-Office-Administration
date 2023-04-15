@@ -13,7 +13,8 @@ class MiscDM(DataManager):
            • Adding Lab Orders
            • Add Patients
            • Get Locations
-    
+           • Gettings Labs (Types of Lab Orders)
+
     Uses self.session (From DataManger Superclass) to handle SQL Queries
     """
     def __init__(self):

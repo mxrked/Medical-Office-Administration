@@ -6,6 +6,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QWidget,\
     QLineEdit, QStackedWidget, QFrame, QDialog, QVBoxLayout, QLabel, QDateEdit, QTimeEdit, QComboBox
 from PyQt5 import QtCore, QtGui, uic
+import datetime
 
 from frontend.ui.assets.files.STYLING import disableFrameBtn_Style, infoDialog_Style, \
     infoDialogCloseBtn_Style, infoDialogName_Style, enableFrameBtn_Style
@@ -19,6 +20,7 @@ from backend.misc_dm import MiscDM
 from backend.appointment_dm import AppointmentDM
 from backend.data_handler import set_objects_to_combo_box
 import json
+
 class Nav(QMainWindow):
     """
     Handles Navigation for all windows but StartWindow
@@ -31,11 +33,11 @@ class Nav(QMainWindow):
         uic.loadUi("frontend/ui/mainWindow.ui", self)
 
         # Data Managers
-
         self.user_dm = UserDM()
         self.misc_dm = MiscDM()
         self.appointment_dm = AppointmentDM()
 
+        # Load Settings
         try:
             with open("frontend/ui/assets/files/Settings.json", "r",
                       encoding='UTF-8') as settings_file:
@@ -53,7 +55,8 @@ class Nav(QMainWindow):
                       encoding='UTF-8') as file:
                 json.dump(self.settings_json, file)
 
-
+        # Used for debugging certain dates
+        self.todays_date = datetime.datetime.now().date()
 
         self.stacked_widget = self.findChild(QStackedWidget, "main_stacked_widget")
 
@@ -121,6 +124,8 @@ class Nav(QMainWindow):
         """
         # From the frontend
         new_window = Start()
+
+        print(self.todays_date)
 
         new_window.show()
 

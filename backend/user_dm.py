@@ -10,7 +10,18 @@ from sqlalchemy.orm import joinedload
 import sqlalchemy as sa
 
 class UserDM(DataManager):
+    """
+        A Data Manager for managing users and employees
 
+        • Check Username Password
+        • Check Employee Role
+        • Get Physicians
+        • Get Patient
+
+        NOTE: We did not design the DB and we couldn't get everything how we wanted
+        We wanted a User-Group-Role System but we got a
+        Employee-Group-Role System with Users addtionally
+    """
     def __init__(self):
         super().__init__()
 

@@ -3,6 +3,7 @@ main.py - Runs all the main windows except StartWindow
 Author: Jessica Weeks
 """
 import sys
+from datetime import datetime, date
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication
 from frontend.schedule import Schedule, Reschedule, Cancel
@@ -49,7 +50,7 @@ class MainWindow(Schedule, Reschedule, Cancel,
     None of these subclasses will run standalone, sorry! Run this instead
     """
 
-    def __init__(self, can_physician:bool=True, can_schedule:bool=True):
+    def __init__(self, can_physician:bool=True, can_schedule:bool=True, debug=False, today=datetime.now().date()):
         super(MainWindow, self).__init__()
 
         # Stop QBasicTimer Spam (Maybe)
@@ -57,6 +58,12 @@ class MainWindow(Schedule, Reschedule, Cancel,
 
         self.can_physician = can_physician
         self.can_schedule = can_schedule
+
+        self.debug = debug
+
+        # Used for tricking the program what day it is for testing purposes 
+        if self.debug:
+            self.todays_date = today
 
         # They will only be able to select btns they have access too
         self.disable_all_nav()

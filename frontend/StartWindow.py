@@ -18,7 +18,7 @@ import json
 
 
 class Start(QMainWindow):
-    def __init__(self, debug):
+    def __init__(self, debug=False):
         super(Start, self).__init__()
 
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)

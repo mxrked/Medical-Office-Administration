@@ -5,4 +5,4 @@ from frontend.ui.assets.qrc import logo
 from frontend.StartWindow import main
 
 if __name__ == "__main__":
-    main()
+    main(debug=True)

@@ -18,11 +18,12 @@ import json
 
 
 class Start(QMainWindow):
-    def __init__(self):
+    def __init__(self, debug):
         super(Start, self).__init__()
 
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
-
+        self.debug = debug
+        
         # Datamanager
         self.user_dm = UserDM()
 
@@ -163,16 +164,23 @@ class Start(QMainWindow):
         # Returns none if no employee
         employee = self.user_dm.check_username_password(userName_Text, password_Text)
 
-        if employee:
+        if employee or self.debug:
             
-            # Get Permissions, with user_dm
-            can_login = self.user_dm.check_employee_role(employee, 1) 
-            if not can_login:
-                self.loginOutputLabel.show()
-                return
+            if self.debug:
+                can_login = True
+                can_physician = True
+                can_schedule = True
+            else:
+                # Get Permissions, with user_dm
+                can_login = self.user_dm.check_employee_role(employee, 1)
+                can_physician = self.user_dm.check_employee_role(employee, 2)
+                can_schedule = self.user_dm.check_employee_role(employee, 3)
+            
+                if not can_login:
+                    self.loginOutputLabel.show()
+                    return None
 
-            can_physician = self.user_dm.check_employee_role(employee, 2)
-            can_schedule = self.user_dm.check_employee_role(employee, 3)
+
 
             # Save Last User
             self.settings_json["last_entered_user"] = userName_Text
@@ -213,10 +221,11 @@ class Start(QMainWindow):
 #initializing app
 
 
-app = QApplication(sys.argv)
-UIWindow = Start()
 
-def main():
+
+def main(debug=False):
+    app = QApplication(sys.argv)
+    UIWindow = Start(debug=debug)
     UIWindow.show()
     app.exec_()
 

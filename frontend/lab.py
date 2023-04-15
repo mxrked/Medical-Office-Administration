@@ -21,8 +21,6 @@ class Lab(Nav):
     def __init__(self):
         super(Lab, self).__init__()
 
-<<<<<<< HEAD
-=======
         self.lab_MainAppointmentDM = AppointmentDM()
         self.lab_MainMiscDM = MiscDM()
         self.lab_MainUserDM = UserDM()
@@ -31,7 +29,6 @@ class Lab(Nav):
         self.lab_Labs = self.lab_MainMiscDM.get_lab_tests()
 
 
->>>>>>> 4c7d5a396df631dabda2366152fa715eea01fcbe
         # define widgets
         self.lab_submit_btn = self.findChild(QPushButton, "pushButton_SubmitLabOrder")
         self.lab_clear_btn = self.findChild(QPushButton, "pushButton_ClearLabOrder")

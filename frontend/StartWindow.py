@@ -3,6 +3,9 @@ StarWindow.py - Window for the login screen of the db
 UI Designer: Parker Phelps
 Authors: Parker Phelps, Jessica Weeks
 """
+import sys
+import json
+from datetime import datetime, date
 from PyQt5.QtWidgets import QApplication, QLineEdit, QLabel, QPushButton, QDialog, \
     QVBoxLayout, QFrame, QMainWindow
 from PyQt5 import uic, QtCore, QtGui
@@ -13,17 +16,20 @@ from frontend.ui.assets.files.STYLING import infoDialog_Style, infoDialogCloseBt
     validEnterLE_Style, invalidEnterLE_Style
 from backend.user_dm import UserDM
 from backend.private.data_manager import DataManager
-import sys
-import json
+
 
 
 class Start(QMainWindow):
-    def __init__(self, debug=False):
+    def __init__(self, debug=False, today=datetime.today().date()):
         super(Start, self).__init__()
 
+        # Used so program shuts down properly
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
+
+        # used for Debugging
         self.debug = debug
-        
+        self.today= today
+
         # Datamanager
         self.user_dm = UserDM()
 
@@ -82,7 +88,7 @@ class Start(QMainWindow):
 
         infoDialog = QDialog()
         infoDialog.setStyleSheet(infoDialog_Style)
-
+  
         # Dialog settings
         infoDialog.setWindowFlags(QtCore.Qt.FramelessWindowHint) # Hides the title bar
         infoDialog.setFixedSize(400, 400)
@@ -203,7 +209,7 @@ class Start(QMainWindow):
 
             self.hide()
 
-            main_window = MainWindow(can_physician, can_schedule)
+            main_window = MainWindow(can_physician, can_schedule, self.debug, self.today)
             main_window.show()
 
         else:
@@ -223,9 +229,9 @@ class Start(QMainWindow):
 
 
 
-def main(debug=False):
+def main(debug=False, today=datetime.today().date()):
     app = QApplication(sys.argv)
-    UIWindow = Start(debug=debug)
+    UIWindow = Start(debug=debug, today=today)
     UIWindow.show()
     app.exec_()
 

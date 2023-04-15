@@ -18,6 +18,7 @@ class AppointmentDM(AppointmentStatusDataManger):
         • Set Appointment Time
         • Add Appointment
         • Get Appointment Types
+        • Get Appointments for date
     """
     def __init__(self):
         super().__init__()
@@ -250,8 +251,12 @@ class AppointmentDM(AppointmentStatusDataManger):
 
             :return: True if the appointment is available, raises AssertionError otherwise.
         """
-        appt.ApptTime = new_time
-        appt.ApptDate = new_date
+        if new_time:
+            appt.ApptTime = new_time
+
+        if new_date:
+            appt.ApptDate = new_date
+
 
 
         ### First We check if there are any taken appointments ###
@@ -363,3 +368,50 @@ class AppointmentDM(AppointmentStatusDataManger):
         week_number = weeks_since_2015 % number_of_weeks + 1
 
         return week_number
+
+
+
+if __name__ == "__main__":
+    from backend.user_dm import UserDM
+    from backend.misc_dm import MiscDM
+
+    appt_dm = AppointmentDM()
+    user_dm = UserDM()
+    misc_dm = MiscDM()
+
+    me = user_dm.get_patient("Jessica", "Weeks", date(2000,2,17))
+    my_physician = user_dm.get_physicians()
+    my_appointment_type = appt_dm.get_appointment_types()
+    my_location = misc_dm.get_locations()
+
+    me = me[0]
+    my_physician= my_physician[0]
+    my_appointment_type = my_appointment_type[0]
+    my_location = my_location[0]
+
+    appt = Appointment(
+        ApptDate=datetime.datetime.now().date(),
+        ApptTime=time(13,30),
+        PatientID=me.PatientID,
+        ApptStatus="Scheduled",
+        ApptLength=15,
+        PhysicianID = my_physician.EmployeeID,
+        ApptTypeID=my_appointment_type.ApptTypeID,
+        LocationID=my_location.LocationID,
+        ApptReason="Can't Stop Dancing!",
+
+        Patient = me,
+        Employee = my_physician,
+        AppointmentType = my_appointment_type,
+        Location = my_location
+    )
+    
+    appt_dm.add_appointment(
+        appt
+    )
+
+    list_of_obj = appt_dm.get_appointments_for_date(datetime.datetime.now().date())
+    
+    for i in list_of_obj:
+        print(i)
+

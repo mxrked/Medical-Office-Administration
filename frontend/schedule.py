@@ -57,19 +57,6 @@ class Schedule(Nav):
 
         self.custom_time = False
 
-        self.SA_patientFN = self.SA_PatientFNLineEdit.text()
-        self.SA_patientLN = self.SA_PatientLNLineEdit.text()
-        self.SA_patientDOB = self.SA_PatientDOBDateEdit.date().toPyDate()
-        self.SA_officeLocation = get_selected_combo_box_object(self.SA_OfficeLocationsComboBox)
-        self.SA_appointmentReason = self.SA_AppointmentReasonLineEdit.text()
-        self.SA_appointmentType = get_selected_combo_box_object(self.SA_AppointmentTypesComboBox)
-        self.SA_appointmentLength = self.SA_AppointmentLengthLineEdit.text()
-        self.SA_physicianName = get_selected_combo_box_object(self.SA_PhysicianNamesComboBox)
-        self.SA_appointmentDate = self.SA_AppointmentDateDateEdit.date()
-        self.SA_availableTime = get_selected_list_object(self.SA_CurrentAvailableTimesListWidget)
-
-        #makeAppointment = Appointment(ApptDate=self.SA_appointmentDate, ApptTime=self.SA_availableTime, PatientID=Patient.PatientID, "", ApptLength=self.SA_appointmentLength, PhysicianID=Employee.EmployeeID, ApptTypeID=AppointmentType.ApptTypeID, LocationID=Location.LocationID, ApptReason=self.SA_appointmentReason, AppointmentType=self.SA_appointmentType, Patient=self.currentPatient, Employee=self.SA_physicianName, Location=self.SA_officeLocation)
-
 
     def disableCustomTime(self):
         # Appending false to customTime
@@ -92,19 +79,43 @@ class Schedule(Nav):
         self.SA_CustomTimeTimeEdit.setStyleSheet(enableCustomTime_Style)
 
     def search_SA(self):
-        print("Search_SA")
+        
+        SA_patientFN = self.SA_PatientFNLineEdit.text()
+        SA_patientLN = self.SA_PatientLNLineEdit.text()
+        SA_patientDOB = self.SA_PatientDOBDateEdit.date().toPyDate()
+        SA_officeLocation = get_selected_combo_box_object(self.SA_OfficeLocationsComboBox)
+        SA_appointmentReason = self.SA_AppointmentReasonLineEdit.text()
+        SA_appointmentType = get_selected_combo_box_object(self.SA_AppointmentTypesComboBox)
+        SA_appointmentLength = self.SA_AppointmentLengthLineEdit.text()
+        SA_physicianName = get_selected_combo_box_object(self.SA_PhysicianNamesComboBox)
+        SA_appointmentDate = self.SA_AppointmentDateDateEdit.date()
+        SA_availableTime = get_selected_list_object(self.SA_CurrentAvailableTimesListWidget)
 
-        self.currentPatient = self.user_dm.get_patient(first_name=self.SA_patientFN, last_name=self.SA_patientLN, dob=self.SA_patientDOB)
-        self.SA_availableTimes = AppointmentDM.get_avaliable_appointments(self,
-                                                                          appt_date=self.SA_appointmentDate,
-                                                                          provider=self.SA_physicianName,
-                                                                          location=self.SA_officeLocation,
-                                                                          appt_type=self.SA_appointmentType,
-                                                                          appt_length=self.SA_appointmentLength,
-                                                                          patient=self.currentPatient,
-                                                                          appt_reason=self.SA_appointmentReason)
+ 
 
-        print(self.SA_availableTimes)
+        current_patients = self.user_dm.get_patient(first_name=SA_patientFN,
+                                                    last_name=SA_patientLN,
+                                                    dob=SA_patientDOB)
+
+        if len(current_patients) == 0:
+            self.load_error("No Patients")
+            return
+
+        print( current_patients[0])
+
+        
+        
+        availableTimes = self.appointment_dm.get_avaliable_appointments(
+            appt_date=self.SA_appointmentDate,
+            provider=self.SA_physicianName,
+            location=self.SA_officeLocation,
+            appt_type=self.SA_appointmentType,
+            appt_length=self.SA_appointmentLength,
+            patient=self.currentPatient,
+            appt_reason=self.SA_appointmentReason
+            )
+        
+        # print(self.SA_availableTimes)
 
     def scheduleAppointment(self):
         print("Schedule Appointment")
@@ -150,7 +161,6 @@ class Reschedule(Nav):
 class Cancel(Nav):
     def __init__(self):
         super(Cancel, self).__init__()
-
 
         CA_Locations = MiscDM().get_locations()
         CA_Physicians = UserDM().get_physicians()

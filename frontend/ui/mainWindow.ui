@@ -640,7 +640,7 @@ QPushButton::hover {
         <rect>
          <x>130</x>
          <y>100</y>
-         <width>0</width>
+         <width>1000</width>
          <height>0</height>
         </rect>
        </property>
@@ -905,7 +905,7 @@ QPushButton::hover {
           <x>660</x>
           <y>220</y>
           <width>391</width>
-          <height>361</height>
+          <height>681</height>
          </rect>
         </property>
         <property name="frameShape">
@@ -1957,7 +1957,7 @@ QCalendarWidget QTableView QLabel {
 }</string>
                </property>
                <property name="text">
-                <string>Appointment Length:</string>
+                <string>Appt Length:</string>
                </property>
               </widget>
              </item>
@@ -2585,7 +2585,7 @@ QPushButton::hover {
         <rect>
          <x>130</x>
          <y>100</y>
-         <width>0</width>
+         <width>1200</width>
          <height>0</height>
         </rect>
        </property>
@@ -3358,8 +3358,8 @@ QPushButton::hover {
         <rect>
          <x>130</x>
          <y>100</y>
-         <width>0</width>
-         <height>681</height>
+         <width>1200</width>
+         <height>0</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -3371,13 +3371,13 @@ QPushButton::hover {
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>681</height>
+         <height>0</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
          <width>16777215</width>
-         <height>630</height>
+         <height>0</height>
         </size>
        </property>
        <property name="styleSheet">
@@ -3414,7 +3414,7 @@ QLabel {
          <rect>
           <x>620</x>
           <y>120</y>
-          <width>353</width>
+          <width>410</width>
           <height>501</height>
          </rect>
         </property>
@@ -4079,7 +4079,7 @@ QPushButton::hover {
          <rect>
           <x>190</x>
           <y>120</y>
-          <width>349</width>
+          <width>389</width>
           <height>501</height>
          </rect>
         </property>

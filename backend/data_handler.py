@@ -69,31 +69,3 @@ def get_selected_combo_box_object(combo_box: QComboBox) -> object:
     """
     return combo_box.currentData()
 
-def get_locations_into(misc_dm: MiscDM, combo_box: QComboBox):
-    """
-        Loads all locations into the combo_box,
-            just provide the elevant data_manager
-
-        :param misc_dm: use self.misc_dm
-        :param combo_box: The combo box you wanna add stuff too
-        
-        We do this several times in the frontend. 
-            This prevents duplicate code
-    """
-    locations = misc_dm.get_locations()
-    set_objects_to_combo_box(locations, combo_box)
-
-
-def get_physicians_into(user_dm: UserDM, combo_box: QComboBox):
-    """
-        Loads all physicians into the combo_box,
-            just provide the elevant data_manager
-
-        :param misc_dm: use self.misc_dm
-        :param combo_box: The combo box you wanna add stuff too
-        
-        We do this several times in the frontend. 
-            This prevents duplicate code
-    """
-    physicians = user_dm.get_physicians()
-    set_objects_to_combo_box(physicians, combo_box)

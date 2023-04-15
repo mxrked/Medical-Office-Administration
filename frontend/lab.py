@@ -1,7 +1,7 @@
 """
 LabOrders.py - A window to submit lab orders for a clinic
 UI Designed by: Destan Hutcherson
-Authors: 
+Authors: Destan Hutcherson, 
 """
 from PyQt5.QtWidgets import QPushButton, QLineEdit, QDateEdit, QComboBox
 
@@ -82,3 +82,5 @@ class Lab(Nav):
         print(" Selected Employee Is:", selected_emp)
         print(" We have the access to the whole object: ")
         print(" Position:", selected_emp.Position)
+    def clearInputs(self):
+        pass

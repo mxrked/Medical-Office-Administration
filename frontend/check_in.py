@@ -5,7 +5,7 @@ Authors:
 """
 from PyQt5.QtWidgets import QComboBox, QListWidget, QPushButton
 from frontend.main_nav import Nav
-from backend.data_handler import get_selected_combo_box_object
+from backend.data_handler import get_selected_combo_box_object, set_objects_to_combo_box
 class CheckIn(Nav):
     """
         Handles the Check In Page
@@ -91,4 +91,11 @@ class CheckIn(Nav):
             Get list of appointments using Appointment_Data_Manager
             Then use the data handler to set_objects_to_list(appointments, self.check_ins_list) 
         """
+
+        getLocations = get_selected_combo_box_object(self.check_in_location)
+        getProviders = get_selected_combo_box_object(self.check_in_providers)
+
+        listOfAppointments = self.appointment_dm.get_todays_appointments(getLocations, getProviders)
+        set_objects_to_combo_box(listOfAppointments, self.check_ins_list)
+
         print(self.check_in_refresh.__doc__)

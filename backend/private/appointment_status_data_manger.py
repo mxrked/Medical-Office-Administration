@@ -110,5 +110,5 @@ class AppointmentStatusDataManger(DataManager):
             Appointment.ApptStatus.in_(["Scheduled", "Rescheduled"]),
             Appointment.ApptDate == date.today(),
             Appointment.LocationID == location.LocationID if location else True,
-            Appointment.ProviderID == provider.EmployeeID if provider else True
+            Appointment.PhysicianID == provider.EmployeeID if provider else True
             ).all()

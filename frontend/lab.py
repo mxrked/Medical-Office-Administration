@@ -48,8 +48,6 @@ class Lab(Nav):
         self.get_physicians_into(self.lab_practitioner_combo)
         self.get_locations_into(self.lab_locations_combo)
 
-        set_objects_to_combo_box(self.lab_Locations, self.lab_locations_combo)
-        set_objects_to_combo_box(self.lab_Labs, self.lab_locations_combo)
 
 
     def submit_information(self):

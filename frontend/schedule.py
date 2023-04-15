@@ -14,9 +14,9 @@ class Schedule(Nav):
     def __init__(self):
         super(Schedule, self).__init__()
 
-        SA_AppointmentTypes = AppointmentDM().get_appointment_types()
-        SA_Locations = MiscDM().get_locations()
-        SA_Physicians = UserDM().get_physicians()
+        # SA_AppointmentTypes = AppointmentDM().get_appointment_types()
+        # SA_Locations = MiscDM().get_locations()
+        # SA_Physicians = UserDM().get_physicians()
 
         self.SA_PatientFNLineEdit = self.findChild(QLineEdit, "LineEdit_PatientFirstName_SA")
         self.SA_PatientLNLineEdit = self.findChild(QLineEdit, "LineEdit_PatientLastName_SA")
@@ -51,16 +51,11 @@ class Schedule(Nav):
         self.SA_SearchPushButton.clicked.connect(self.search_SA)
         self.SA_ScheduleAppointmentPushButton.clicked.connect(self.scheduleAppointment)
 
-        set_objects_to_combo_box(SA_AppointmentTypes, self.SA_AppointmentTypesComboBox)
-        set_objects_to_combo_box(SA_Locations, self.SA_OfficeLocationsComboBox)
-        set_objects_to_combo_box(SA_Physicians, self.SA_PhysicianNamesComboBox)
+        set_objects_to_combo_box(self.appointment_dm.get_appointment_types(), self.SA_AppointmentTypesComboBox)
+        self.get_locations_into(self.SA_OfficeLocationsComboBox)
+        self.get_physicians_into(self.SA_PhysicianNamesComboBox)
 
         self.custom_time = False
-
-
-        #
-        #makeAppointment = Appointment(ApptDate=self.SA_appointmentDate, ApptTime=self.SA_availableTime, PatientID=Patient.PatientID, ApptStatus="Scheduled", ApptLength=self.SA_appointmentLength, PhysicianID=Employee.EmployeeID, ApptTypeID=AppointmentType.ApptTypeID, LocationID=Location.LocationID, ApptReason=self.SA_appointmentReason, AppointmentType=self.SA_appointmentType, Patient=self.currentPatient, Employee=self.SA_physicianName, Location=self.SA_officeLocation)
-        
 
 
     def disableCustomTime(self):
@@ -84,7 +79,6 @@ class Schedule(Nav):
         self.SA_CustomTimeTimeEdit.setStyleSheet(enableCustomTime_Style)
 
     def search_SA(self):
-
         
         SA_patientFN = self.SA_PatientFNLineEdit.text()
         SA_patientLN = self.SA_PatientLNLineEdit.text()

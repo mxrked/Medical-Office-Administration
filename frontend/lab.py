@@ -4,8 +4,14 @@ UI Designed by: Destan Hutcherson
 Authors: 
 """
 from PyQt5.QtWidgets import QPushButton, QLineEdit, QDateEdit, QComboBox
+
+from backend.appointment_dm import AppointmentDM
+from backend.misc_dm import MiscDM
+from backend.user_dm import UserDM
 from frontend.main_nav import Nav
-from backend.data_handler import get_selected_combo_box_object
+from backend.data_handler import get_selected_combo_box_object, set_objects_to_combo_box
+
+
 class Lab(Nav):
     """
     Creates a lab using Lab object
@@ -14,25 +20,36 @@ class Lab(Nav):
     """
     def __init__(self):
         super(Lab, self).__init__()
+
+        self.lab_MainAppointmentDM = AppointmentDM()
+        self.lab_MainMiscDM = MiscDM()
+        self.lab_MainUserDM = UserDM()
+
+        self.lab_Locations = self.RA_MainMiscDM.get_locations()
+        self.lab_Labs = self.RA_MainMiscDM.get_lab_tests()
+
+
         # define widgets
         self.lab_submit_btn = self.findChild(QPushButton, "pushButton_SubmitLabOrder")
         self.lab_clear_btn = self.findChild(QPushButton, "pushButton_ClearLabOrder")
-        self.lab_fname = self.findChild(QLineEdit, "LineEdit_PatientFirstName")
-        self.lab_lname = self.findChild(QLineEdit, "LineEdit_PatientLastName")
-        self.lab_dob = self.findChild(QDateEdit, "dateEdit_DOB")
+        self.lab_fname = self.findChild(QLineEdit, "Lab_Fname")
+        self.lab_lname = self.findChild(QLineEdit, "Lab_Lname")
+        self.lab_dob = self.findChild(QDateEdit, "Lab_DOB")
         self.lab_practitioner_combo = self.findChild(QComboBox, "Lab_Combo_Practitioner")
         self.lab_locations_combo = self.findChild(QComboBox, "Lab_Combo_Location")
-        self.lab_lab_date_edit = self.findChild(QDateEdit, "dateEdit_LabDate")
-        self.lab_lab_combo = self.findChild(QComboBox, "comboBox_PossibleLabs")
-        self.lab_order_name = self.findChild(QLineEdit, "LineEdit_LabOrderName")
+        self.lab_lab_date_edit = self.findChild(QDateEdit, "Lab_Date")
+        self.lab_lab_combo = self.findChild(QComboBox, "Lab_Combo_Labs")
+        self.lab_order_name = self.findChild(QLineEdit, "Lab_Order")
 
         # Do something
         self.lab_submit_btn.clicked.connect(self.submit_information)
         self.lab_clear_btn.clicked.connect(self.clearInputs)
 
         self.get_physicians_into(self.lab_practitioner_combo)
-
         self.get_locations_into(self.lab_locations_combo)
+
+        set_objects_to_combo_box(self.lab_Locations, self.lab_locations_combo)
+        set_objects_to_combo_box(self.lab_Labs, self.lab_locations_combo)
 
 
     def submit_information(self):

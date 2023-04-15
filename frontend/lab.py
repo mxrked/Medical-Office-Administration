@@ -22,7 +22,7 @@ class Lab(Nav):
         super(Lab, self).__init__()
 
 
-        Lab_LabLocation = MiscDM().get_locations()
+        lab_LabLocation = MiscDM().get_locations()
         lab_LabPract = UserDM().get_physicians()
         lab_TestLab = MiscDM.get_lab_tests()
 
@@ -46,7 +46,7 @@ class Lab(Nav):
         self.lab_submit_btn.clicked.connect(self.submit_information)
         self.lab_clear_btn.clicked.connect(self.clearInputs)
 
-        set_objects_to_combo_box(Lab_LabLocation, self.lab_locations_combo)
+        set_objects_to_combo_box(lab_LabLocation, self.lab_locations_combo)
         set_objects_to_combo_box(lab_LabPract, self.lab_practitioner_combo)
         set_objects_to_combo_box(lab_TestLab, self.lab_lab_combo)
 

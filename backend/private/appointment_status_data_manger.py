@@ -73,7 +73,7 @@ class AppointmentStatusDataManger(DataManager):
             Appointment.ApptStatus == "In Progress",
             Appointment.ApptDate == date.today(),
             Appointment.LocationID == location.LocationID if location else True,
-            Appointment.ProviderID == provider.EmployeeID if provider else True,
+            Appointment.PhysicianID == provider.EmployeeID if provider else True,
         )
 
 
@@ -91,7 +91,7 @@ class AppointmentStatusDataManger(DataManager):
         return self.session.query(Appointment).filter(
             Appointment.ApptStatus == "Pending",
             Appointment.LocationID == location.LocationID if location else True,
-            Appointment.ProviderID == provider.EmployeeID if provider else True,
+            Appointment.PhysicianID == provider.EmployeeID if provider else True,
         ).all()
 
     def get_todays_appointments(self,

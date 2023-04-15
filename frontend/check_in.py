@@ -5,7 +5,7 @@ Authors:
 """
 from PyQt5.QtWidgets import QComboBox, QListWidget, QPushButton
 from frontend.main_nav import Nav
-from backend.data_handler import get_selected_combo_box_object, set_objects_to_combo_box
+from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, set_objects_to_combo_box
 class CheckIn(Nav):
     """
         Handles the Check In Page
@@ -66,6 +66,16 @@ class CheckIn(Nav):
         """
         print(self.check_in.__doc__)
 
+        getSelectedAppt = get_selected_list_object(self.check_ins_list)
+
+        if not getSelectedAppt:
+            self.load_error("Not selecting appointment.")
+            return
+
+        self.appointment_dm.set_appointment_in_progress(getSelectedAppt)
+
+        self.check_in_refresh() # Refreshes the list
+
     def no_show(self):
         """
             Marks selected appointment as "No Show"
@@ -82,6 +92,16 @@ class CheckIn(Nav):
             Then calls self.check_in_refresh
         """
         print(self.no_show.__doc__)
+
+        getSelectedAppt = get_selected_list_object(self.check_ins_list)
+
+        if not getSelectedAppt:
+            self.load_error("Not selecting appointment.")
+            return
+
+        self.appointment_dm.set_appointment_no_show(getSelectedAppt)
+
+        self.check_in_refresh() # Refreshes the list
 
     def check_in_refresh(self):
         """

@@ -5,7 +5,7 @@ Authors:
 """
 from PyQt5.QtWidgets import QListWidget, QComboBox, QPushButton
 from frontend.main_nav import Nav
-from backend.data_handler import get_selected_combo_box_object
+from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, set_objects_to_combo_box
 
 class CheckOut(Nav):
     """
@@ -67,6 +67,16 @@ class CheckOut(Nav):
         """
         print(self.check_out.__doc__)
 
+        getSelectedAppt = get_selected_list_object(self.check_ins_list)
+
+        if not getSelectedAppt:
+            self.load_error("Not selecting appointment.")
+            return
+
+        self.appointment_dm.set_appointment_canceled(getSelectedAppt)
+
+        self.check_in_refresh() # Refreshes the list
+
     def check_out_refresh(self):
         """
             Refreshes self.checkOutListWidget with appointments that can
@@ -77,6 +87,11 @@ class CheckOut(Nav):
         """
         print(self.check_out_refresh.__doc__)
 
+        getLocations = get_selected_combo_box_object(self.check_in_location)
+
+        listOfAppointments = self.appointment_dm.get_todays_appointments(getLocations, None)
+        set_objects_to_combo_box(listOfAppointments, self.check_ins_list)
+
     def download_summary(self):
         """
         I'm not sure what to do here.
@@ -84,3 +99,4 @@ class CheckOut(Nav):
         Something about views in the DB, I don't know
         """
         print(self.download_summary.__doc__)
+

@@ -50,7 +50,7 @@ invalidEnterLE_Style = """
                 }
             
             """
-infoDialog_Style = "QDialog {background-color: #344D67}"
+infoDialog_Style = "QDialog {background-color: #344D67; border: 2px solid white}"
 infoDialogName_Style = "QLabel {color: white}"
 infoDialogCloseBtn_Style = """
         

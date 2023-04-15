@@ -430,7 +430,7 @@ QPushButton::hover {
 border-image: transparent;</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="Appointments">
       <widget class="QWidget" name="layoutWidget">
@@ -640,7 +640,7 @@ QPushButton::hover {
         <rect>
          <x>130</x>
          <y>100</y>
-         <width>0</width>
+         <width>1000</width>
          <height>0</height>
         </rect>
        </property>
@@ -905,7 +905,7 @@ QPushButton::hover {
           <x>660</x>
           <y>220</y>
           <width>391</width>
-          <height>361</height>
+          <height>681</height>
          </rect>
         </property>
         <property name="frameShape">
@@ -1957,7 +1957,7 @@ QCalendarWidget QTableView QLabel {
 }</string>
                </property>
                <property name="text">
-                <string>Appointment Length:</string>
+                <string>Appt Length:</string>
                </property>
               </widget>
              </item>
@@ -2585,7 +2585,7 @@ QPushButton::hover {
         <rect>
          <x>130</x>
          <y>100</y>
-         <width>0</width>
+         <width>1200</width>
          <height>0</height>
         </rect>
        </property>
@@ -3358,8 +3358,8 @@ QPushButton::hover {
         <rect>
          <x>130</x>
          <y>100</y>
-         <width>0</width>
-         <height>681</height>
+         <width>1200</width>
+         <height>0</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -3371,13 +3371,13 @@ QPushButton::hover {
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>681</height>
+         <height>0</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
          <width>16777215</width>
-         <height>630</height>
+         <height>0</height>
         </size>
        </property>
        <property name="styleSheet">
@@ -3414,7 +3414,7 @@ QLabel {
          <rect>
           <x>620</x>
           <y>120</y>
-          <width>353</width>
+          <width>410</width>
           <height>501</height>
          </rect>
         </property>
@@ -4079,7 +4079,7 @@ QPushButton::hover {
          <rect>
           <x>190</x>
           <y>120</y>
-          <width>349</width>
+          <width>389</width>
           <height>501</height>
          </rect>
         </property>
@@ -4651,8 +4651,8 @@ QLabel {
          <widget class="QPushButton" name="CheckIn_CheckIn">
           <property name="geometry">
            <rect>
-            <x>60</x>
-            <y>670</y>
+            <x>50</x>
+            <y>620</y>
             <width>181</width>
             <height>51</height>
            </rect>
@@ -4690,8 +4690,8 @@ QPushButton::hover {
          <widget class="QPushButton" name="CheckIn_NoShow">
           <property name="geometry">
            <rect>
-            <x>250</x>
-            <y>670</y>
+            <x>240</x>
+            <y>620</y>
             <width>181</width>
             <height>51</height>
            </rect>
@@ -4729,8 +4729,8 @@ QPushButton::hover {
          <widget class="QListWidget" name="CheckIn_ListWidget">
           <property name="geometry">
            <rect>
-            <x>60</x>
-            <y>190</y>
+            <x>50</x>
+            <y>140</y>
             <width>561</width>
             <height>471</height>
            </rect>
@@ -4841,8 +4841,8 @@ QPushButton::hover {
          <widget class="QPushButton" name="CheckIn_Refresh">
           <property name="geometry">
            <rect>
-            <x>440</x>
-            <y>670</y>
+            <x>430</x>
+            <y>620</y>
             <width>181</width>
             <height>51</height>
            </rect>
@@ -5001,8 +5001,8 @@ QLabel {
         <widget class="QPushButton" name="Checkout_Btn_Checkout">
          <property name="geometry">
           <rect>
-           <x>90</x>
-           <y>670</y>
+           <x>70</x>
+           <y>640</y>
            <width>181</width>
            <height>51</height>
           </rect>
@@ -5040,8 +5040,8 @@ QPushButton::hover {
         <widget class="QPushButton" name="Checkout_Btn_Refresh">
          <property name="geometry">
           <rect>
-           <x>410</x>
-           <y>670</y>
+           <x>390</x>
+           <y>640</y>
            <width>181</width>
            <height>51</height>
           </rect>
@@ -5079,8 +5079,8 @@ QPushButton::hover {
         <widget class="QListWidget" name="Checkout_List">
          <property name="geometry">
           <rect>
-           <x>60</x>
-           <y>190</y>
+           <x>40</x>
+           <y>160</y>
            <width>561</width>
            <height>471</height>
           </rect>

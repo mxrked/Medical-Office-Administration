@@ -5,10 +5,8 @@ Authors:
 """
 from PyQt5.QtWidgets import QListWidget, QPushButton, QComboBox
 from frontend.main_nav import Nav
-from backend.data_handler import set_objects_to_combo_box
-from backend.misc_dm import MiscDM
-from backend.user_dm import UserDM
-from backend.appointment_dm import AppointmentDM
+from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, set_objects_to_combo_box
+
 
 class Approve(Nav):
     """
@@ -45,6 +43,8 @@ class Approve(Nav):
         self.a_btn_deny.clicked.connect(self.deny)
         self.a_btn_refresh.clicked.connect(self.a_refresh)
 
+        self.get_locations_into(self.a_location)
+        self.get_physicians_into(self.a_provider)
 
     def approve(self):
         """
@@ -68,6 +68,19 @@ class Approve(Nav):
         """
         print(self.approve.__doc__)
 
+        getSelectedAppt = get_selected_list_object(self.a_list)
+
+        if not getSelectedAppt:
+            self.load_error("Not selecting appointment.")
+            return
+
+        try:
+            self.appointment_dm.add_appointment(getSelectedAppt)
+        except AssertionError as e:
+            self.load_error(e)
+
+        self.a_refresh() # Refreshes the list
+
     def deny(self):
         """
             Sets the status of the given appointment to deny
@@ -84,6 +97,16 @@ class Approve(Nav):
         """
         print(self.deny.__doc__)
 
+        getSelectedAppt = get_selected_list_object(self.a_list)
+
+        if not getSelectedAppt:
+            self.load_error("Not selecting appointment.")
+            return
+
+        self.appointment_dm.set_appointment_canceled(getSelectedAppt)
+
+        self.a_refresh()
+
     def a_refresh(self):
         """
             Refreshes self.a_list with pending appointments
@@ -91,4 +114,11 @@ class Approve(Nav):
             Get list of appointments using Appointment_Data_Manager
             Then use the data handler to set_objects_to_list(appointments, self.a_list) 
         """
+        getLocations = get_selected_combo_box_object(self.a_location)
+        getProviders = get_selected_combo_box_object(self.a_provider)
+
+        listOfAppointments = self.appointment_dm.get_pending_appointments(getLocations, getProviders)
+        set_objects_to_combo_box(listOfAppointments, self.a_list)
+
         print(self.a_refresh.__doc__)
+

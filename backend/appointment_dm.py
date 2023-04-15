@@ -261,7 +261,7 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         ### First We check if there are any taken appointments ###
 
-        appt_end_time = appt.ApptTime + timedelta(minutes= appt.ApptLength)
+        appt_end_time = datetime.datetime(date= appt.ApptDate, time=appt.ApptTime) + timedelta(minutes= appt.ApptLength)
 
         # Used to finding the end time of a appointment in the DB
         appointment_end_time = Appointment.ApptLength

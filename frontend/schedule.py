@@ -1,24 +1,22 @@
 
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QListWidget, QTimeEdit, QPushButton
 from PyQt5.QtCore import QDate
+from PyQt5.QtGui import QIntValidator
 from frontend.main_nav import Nav
 from frontend.ui.assets.files.STYLING import disableCustomTime_Style, enableCustomTime_Style
-from backend.data_handler import set_objects_to_combo_box
+from backend.data_handler import set_objects_to_combo_box, get_selected_combo_box_object, get_selected_list_object
 from backend.appointment_dm import AppointmentDM
 from backend.misc_dm import MiscDM
 from backend.user_dm import UserDM
+from backend.models import Appointment, Employee, Location, AppointmentType, Patient
 
 class Schedule(Nav):
     def __init__(self):
         super(Schedule, self).__init__()
 
-        self.SA_MainAppointmentDM = AppointmentDM()
-        self.SA_MainMiscDM = MiscDM()
-        self.SA_MainUserDM = UserDM()
-
-        self.SA_AppointmentTypes = self.SA_MainAppointmentDM.get_appointment_types()
-        self.SA_Locations = self.SA_MainMiscDM.get_locations()
-        self.SA_Physicians = self.SA_MainUserDM.get_physicians()
+        SA_AppointmentTypes = AppointmentDM().get_appointment_types()
+        SA_Locations = MiscDM().get_locations()
+        SA_Physicians = UserDM().get_physicians()
 
         self.SA_PatientFNLineEdit = self.findChild(QLineEdit, "LineEdit_PatientFirstName_SA")
         self.SA_PatientLNLineEdit = self.findChild(QLineEdit, "LineEdit_PatientLastName_SA")
@@ -27,11 +25,17 @@ class Schedule(Nav):
         self.SA_AppointmentReasonLineEdit = self.findChild(QLineEdit, "LineEdit_AppointmentReason_SA")
         self.SA_PhysicianNamesComboBox = self.findChild(QComboBox, "ComboBox_PhysicianNames_SA")
         self.SA_AppointmentTypesComboBox = self.findChild(QComboBox, "ComboBox_AppointmentTypes_SA")
+        self.SA_AppointmentLengthLineEdit = self.findChild(QLineEdit, "LineEdit_ApptLength_SA")
         self.SA_AppointmentDateDateEdit = self.findChild(QDateEdit, "DateEdit_AppDate_SA")
         self.SA_CurrentAvailableTimesListWidget = self.findChild(QListWidget, "ListWidget_AvailableTimes_SA")
         self.SA_CustomTimeTimeEdit = self.findChild(QTimeEdit, "timeEdit_CustomTime_SA")
         self.SA_YesCustomTimePushButton = self.findChild(QPushButton, "yesCustomTimePushButton_SA")
         self.SA_NoCustomTimePushButton = self.findChild(QPushButton, "noCustomTimePushButton_SA")
+
+        # Making the appointment lenght be only numbers
+        self.SA_ApptLengthValidator = QIntValidator()
+
+        self.SA_AppointmentLengthLineEdit.setValidator(self.SA_ApptLengthValidator)
 
         self.SA_SearchPushButton = self.findChild(QPushButton, "Search_Btn_SA")
         self.SA_ClearInputsPushButton = self.findChild(QPushButton, "ClearInputsBtn")
@@ -47,12 +51,27 @@ class Schedule(Nav):
         self.SA_SearchPushButton.clicked.connect(self.search_SA)
         self.SA_ScheduleAppointmentPushButton.clicked.connect(self.scheduleAppointment)
 
-        set_objects_to_combo_box(self.SA_AppointmentTypes, self.SA_AppointmentTypesComboBox)
-        set_objects_to_combo_box(self.SA_Locations, self.SA_OfficeLocationsComboBox)
-        set_objects_to_combo_box(self.SA_Physicians, self.SA_PhysicianNamesComboBox)
+        set_objects_to_combo_box(SA_AppointmentTypes, self.SA_AppointmentTypesComboBox)
+        set_objects_to_combo_box(SA_Locations, self.SA_OfficeLocationsComboBox)
+        set_objects_to_combo_box(SA_Physicians, self.SA_PhysicianNamesComboBox)
 
         self.custom_time = False
-    
+
+        self.SA_patientFN = self.SA_PatientFNLineEdit.text()
+        self.SA_patientLN = self.SA_PatientLNLineEdit.text()
+        self.SA_patientDOB = self.SA_PatientDOBDateEdit.date()
+        self.SA_officeLocation = get_selected_combo_box_object(self.SA_OfficeLocationsComboBox)
+        self.SA_appointmentReason = self.SA_AppointmentReasonLineEdit.text()
+        self.SA_appointmentType = get_selected_combo_box_object(self.SA_AppointmentTypesComboBox)
+        self.SA_appointmentLength = self.SA_AppointmentLengthLineEdit.text()
+        self.SA_physicianName = get_selected_combo_box_object(self.SA_PhysicianNamesComboBox)
+        self.SA_appointmentDate = self.SA_AppointmentDateDateEdit.date()
+        self.SA_availableTime = get_selected_list_object(self.SA_CurrentAvailableTimesListWidget)
+
+        #self.currentPatient = self.SA_MainUserDM.get_patient(first_name=self.SA_patientFN, last_name=self.SA_patientLN, dob=self.SA_patientDOB)
+        #makeAppointment = Appointment(ApptDate=self.SA_appointmentDate, ApptTime=self.SA_availableTime, PatientID=Patient.PatientID, "", ApptLength=self.SA_appointmentLength, PhysicianID=Employee.EmployeeID, ApptTypeID=AppointmentType.ApptTypeID, LocationID=Location.LocationID, ApptReason=self.SA_appointmentReason, AppointmentType=self.SA_appointmentType, Patient=self.currentPatient, Employee=self.SA_physicianName, Location=self.SA_officeLocation)
+
+
     def disableCustomTime(self):
         # Appending false to customTime
         self.custom_time = False
@@ -75,23 +94,22 @@ class Schedule(Nav):
 
     def search_SA(self):
         print("Search_SA")
-        return
+
+        #self.SA_availableTimes = AppointmentDM.get_avaliable_appointments(appt_date=self.SA_appointmentDate, provider=self.SA_physicianName, location=self.SA_officeLocation, appt_type=self.SA_appointmentType, appt_length=self.SA_appointmentLength, patient=self.currentPatient, appt_reason=self.SA_appointmentReason)
+
+        # print(self.SA_availableTimes)
 
     def scheduleAppointment(self):
         print("Schedule Appointment")
-        
+
+
 
 class Reschedule(Nav):
     def __init__(self):
         super(Reschedule, self).__init__()
 
-
-        self.RA_MainAppointmentDM = AppointmentDM()
-        self.RA_MainMiscDM = MiscDM()
-        self.RA_MainUserDM = UserDM()
-
-        self.RA_Locations = self.RA_MainMiscDM.get_locations()
-        self.RA_Physicians = self.RA_MainUserDM.get_physicians()
+        RA_Locations = MiscDM().get_locations()
+        RA_Physicians = UserDM().get_physicians()
 
         self.RA_OfficeLocationsComboBox = self.findChild(QComboBox, "ComboBox_OfficeLocations_RA")
         self.RA_PhysicianNamesComboBox = self.findChild(QComboBox, "ComboBox_PhysicianNames_RA")
@@ -111,8 +129,8 @@ class Reschedule(Nav):
         self.RA_DisplayTimesAppointmentsPushButton.mousePressEvent = lambda event: self.displayTimesApps()
         self.RA_RescheduleAppointmentPushButton.mousePressEvent = lambda event: self.rescheduleAppointment()
 
-        set_objects_to_combo_box(self.RA_Locations, self.RA_OfficeLocationsComboBox)
-        set_objects_to_combo_box(self.RA_Physicians, self.RA_PhysicianNamesComboBox)
+        set_objects_to_combo_box(RA_Locations, self.RA_OfficeLocationsComboBox)
+        set_objects_to_combo_box(RA_Physicians, self.RA_PhysicianNamesComboBox)
 
     def displayTimesApps(self):
         print("DisplayTimesApps")
@@ -126,12 +144,9 @@ class Cancel(Nav):
     def __init__(self):
         super(Cancel, self).__init__()
 
-        self.CA_MainAppointmentDM = AppointmentDM()
-        self.CA_MainMiscDM = MiscDM()
-        self.CA_MainUserDM = UserDM()
 
-        self.CA_Locations = self.CA_MainMiscDM.get_locations()
-        self.CA_Physicians = self.CA_MainUserDM.get_physicians()
+        CA_Locations = MiscDM().get_locations()
+        CA_Physicians = UserDM().get_physicians()
 
         self.CA_OfficeLocationsComboBox = self.findChild(QComboBox, "ComboBox_OfficeLocations_CA")
         self.CA_PhysicianNamesComboBox = self.findChild(QComboBox, "ComboBox_PhysicianNames_CA")
@@ -148,8 +163,8 @@ class Cancel(Nav):
         self.CA_SearchForAppointmentsPushButton.mousePressEvent = lambda event: self.search_CA()
         self.CA_CancelAppointmentPushButton.mousePressEvent = lambda event: self.cancelAppointment()
 
-        set_objects_to_combo_box(self.CA_Locations, self.CA_OfficeLocationsComboBox)
-        set_objects_to_combo_box(self.CA_Physicians, self.CA_PhysicianNamesComboBox)
+        set_objects_to_combo_box(CA_Locations, self.CA_OfficeLocationsComboBox)
+        set_objects_to_combo_box(CA_Physicians, self.CA_PhysicianNamesComboBox)
 
     def search_CA(self):
         print("Search SA")

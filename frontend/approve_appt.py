@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QListWidget, QPushButton, QComboBox
 from frontend.main_nav import Nav
 from backend.data_handler import set_objects_to_combo_box
 from backend.misc_dm import MiscDM
+from backend.user_dm import UserDM
 
 class Approve(Nav):
     """
@@ -32,6 +33,7 @@ class Approve(Nav):
         super(Approve, self).__init__()
 
         ApptRequest_Locations = MiscDM().get_locations()
+        ApptRequest_Providers = UserDM().get_physicians()
 
         self.a_list = self.findChild(QListWidget, "Approve_List")
         self.a_btn_approve = self.findChild(QPushButton, "Approve_Btn_Approve")
@@ -45,6 +47,7 @@ class Approve(Nav):
         self.a_btn_refresh.clicked.connect(self.a_refresh)
 
         set_objects_to_combo_box(ApptRequest_Locations, self.a_location)
+        set_objects_to_combo_box(ApptRequest_Providers, self.a_provider)
 
     def approve(self):
         """

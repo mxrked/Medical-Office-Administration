@@ -11,6 +11,7 @@ session = Session()
 
 
 def create_database():
+
     engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
     Base.metadata.create_all(engine)
 
@@ -466,8 +467,32 @@ def populate_emp_group_cross(session):
     """
     pass
 
+def populate_test_patient(session):
+    """
+        Here I just made one patient for testing purposes
+    """
+
+    jessica = Patient(
+        Last_Name="Weeks",
+        First_Name="Jessica",
+        Address="3464 None of your bussiness Dr.",
+        City="Winston-Salem",
+        State="NC",
+        ZipCode="27101",
+        Gender="Gender",
+        DateOfBirth= date(2000,2,17),
+        Race="White",
+        UserID=None,
+        Phone="336-755-0047",
+        Email="Weeksjessica@pm.me",
+
+        User=None)
+    
+    session.add(jessica)
+    session.commit()
+
+
 if __name__ == "__main__":
-    # Make sure its not already done!
     pass
     
 

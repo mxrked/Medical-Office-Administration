@@ -6,9 +6,8 @@ from backend.private.data_manager import DataManager
 
 from backend.models import AppointmentType, Employee, User, EmployeeType, Patient, EmpGroupCross, Group, Role, \
     GroupRoleCross
- 
 from sqlalchemy.orm import joinedload
-
+import sqlalchemy as sa
 
 class UserDM(DataManager):
 
@@ -28,34 +27,32 @@ class UserDM(DataManager):
         return employee
 
     def check_employee_role(self, current_employee: Employee, search_role_id) -> bool:
-        groups = self.__check_employee_group(current_employee)
+        
+        groups = self.session.query(EmpGroupCross)\
+            .filter_by(EmployeeID = current_employee.EmployeeID).all()
+        
         roles = []
         for group in groups:
-            roles.extend(self.session.query(Role.RoleID)
-                         .join(GroupRoleCross.RoleID)
-                         .where(group == GroupRoleCross.GroupID).all()
-                         )
+            roles = self.session.query(Role.RoleID)\
+                    .join(GroupRoleCross)\
+                    .where(sa.text(f"GroupRoleCross.GroupID = {group.GroupID}")
+                ).all()
+            
+            for role in roles: # Roles are returned as a tuple
+                if search_role_id in role:
+                    return True
 
-        return search_role_id in roles
+        return False
 
-
-    def __check_employee_group(self, current_employee: Employee) -> List[int]:
-        # check if user type id is associated with a group
-        groups = self.session.query(Group.GroupID) \
-            .join(EmpGroupCross.GroupID) \
-            .where(current_employee.EmployeeTypeID == EmpGroupCross.EmployeeTypeID).all()
-
-        return groups
 
     def get_physicians(self) -> list[Employee]:
-        valid_types = ["physcian"]
+        valid_types = ["General Practitioner", "Internal Medicine", "Ear, Nose & Throat", "Womens Medicine"]
 
         physicians = self.session.query(Employee) \
-            .join(EmployeeType) \
-            .options(joinedload(Employee.EmployeeType)) \
-            .filter(EmployeeType.TypeDescription.in_(valid_types)) \
-            .order_by(Employee.LastName, Employee.FirstName) \
+            .where(Employee.Position.in_(valid_types)) \
+            .order_by(Employee.Position.asc(), Employee.FirstName.asc()) \
             .all()
+        print
         return physicians
 
     def get_patient(self, first_name: str, last_name: str, dob: date) -> list[Patient]:
@@ -71,7 +68,7 @@ class UserDM(DataManager):
 
 
         patients = self.session.query(Patient) \
-            .where(dob == Patient.DateOfBirth, first_name == Patient.FirstName, last_name == Patient.LastName) \
+            .where(dob == Patient.DateOfBirth, first_name == Patient.First_Name, last_name == Patient.Last_Name) \
             .all()
 
         return patients

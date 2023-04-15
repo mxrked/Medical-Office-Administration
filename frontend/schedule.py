@@ -88,36 +88,38 @@ class Schedule(Nav):
         SA_appointmentType = get_selected_combo_box_object(self.SA_AppointmentTypesComboBox)
         SA_appointmentLength = self.SA_AppointmentLengthLineEdit.text()
         SA_physicianName = get_selected_combo_box_object(self.SA_PhysicianNamesComboBox)
-        SA_appointmentDate = self.SA_AppointmentDateDateEdit.date()
-        SA_availableTime = get_selected_list_object(self.SA_CurrentAvailableTimesListWidget)
+        SA_appointmentDate = self.SA_AppointmentDateDateEdit.date().toPyDate()
 
- 
-
-        current_patients = self.user_dm.get_patient(first_name=SA_patientFN,
+        patients = self.user_dm.get_patient(first_name=SA_patientFN,
                                                     last_name=SA_patientLN,
                                                     dob=SA_patientDOB)
 
-        if len(current_patients) == 0:
+        if len(patients) == 0:
             self.load_error("No Patients")
             return
+        if len(patients) > 1:
+            self.load_error("More than one patient")
+            return
 
-        print( current_patients[0])
+        patient = patients[0]
 
         
         
         availableTimes = self.appointment_dm.get_avaliable_appointments(
-            appt_date=self.SA_appointmentDate,
-            provider=self.SA_physicianName,
-            location=self.SA_officeLocation,
-            appt_type=self.SA_appointmentType,
-            appt_length=self.SA_appointmentLength,
-            patient=self.currentPatient,
-            appt_reason=self.SA_appointmentReason
+            appt_date=SA_appointmentDate,
+            provider=SA_physicianName,
+            location=SA_officeLocation,
+            appt_type=SA_appointmentType,
+            appt_length=SA_appointmentLength,
+            patient=patient,
+            appt_reason=SA_appointmentReason
             )
         
         # print(self.SA_availableTimes)
 
     def scheduleAppointment(self):
+
+        SA_availableTime = get_selected_list_object(self.SA_CurrentAvailableTimesListWidget)
         print("Schedule Appointment")
 
 

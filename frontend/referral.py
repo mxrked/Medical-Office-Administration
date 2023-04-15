@@ -7,6 +7,8 @@ Authors:
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QPushButton
 from frontend.main_nav import Nav
 from backend.data_handler import set_objects_to_combo_box
+from backend.appointment_dm import AppointmentDM
+from backend.misc_dm import MiscDM
 from backend.user_dm import UserDM
 
 class Referral(Nav):
@@ -22,7 +24,12 @@ class Referral(Nav):
     def __init__(self):
         super(Referral, self).__init__()
 
-        Referral_Physicians = UserDM().get_physicians()
+
+        self.Referral_MainAppointmentDM = AppointmentDM()
+        self.Referral_MainMiscDM = MiscDM()
+        self.Referral_MainUserDM = UserDM()
+
+        self.Referral_Physicians = self.Referral_MainUserDM.get_physicians()
 
         # Initalized Input Widgets
         self.ref_fname = self.findChild(QLineEdit, "LineEdit_PatientFirstName")
@@ -38,7 +45,7 @@ class Referral(Nav):
         # Button Listeners
         self.create_referral_btn.clicked.connect(self.create_referral)
 
-        set_objects_to_combo_box(Referral_Physicians, self.ref_practitioners)
+        set_objects_to_combo_box(self.Referral_Physicians, self.ref_practitioners)
 
 
     def create_referral(self):

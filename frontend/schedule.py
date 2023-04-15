@@ -12,9 +12,13 @@ class Schedule(Nav):
     def __init__(self):
         super(Schedule, self).__init__()
 
-        SA_AppointmentTypes = AppointmentDM().get_appointment_types()
-        SA_Locations = MiscDM().get_locations()
-        SA_Physicians = UserDM().get_physicians()
+        self.SA_MainAppointmentDM = AppointmentDM()
+        self.SA_MainMiscDM = MiscDM()
+        self.SA_MainUserDM = UserDM()
+
+        self.SA_AppointmentTypes = self.SA_MainAppointmentDM.get_appointment_types()
+        self.SA_Locations = self.SA_MainMiscDM.get_locations()
+        self.SA_Physicians = self.SA_MainUserDM.get_physicians()
 
         self.SA_PatientFNLineEdit = self.findChild(QLineEdit, "LineEdit_PatientFirstName_SA")
         self.SA_PatientLNLineEdit = self.findChild(QLineEdit, "LineEdit_PatientLastName_SA")
@@ -43,9 +47,9 @@ class Schedule(Nav):
         self.SA_SearchPushButton.clicked.connect(self.search_SA)
         self.SA_ScheduleAppointmentPushButton.clicked.connect(self.scheduleAppointment)
 
-        set_objects_to_combo_box(SA_AppointmentTypes, self.SA_AppointmentTypesComboBox)
-        set_objects_to_combo_box(SA_Locations, self.SA_OfficeLocationsComboBox)
-        set_objects_to_combo_box(SA_Physicians, self.SA_PhysicianNamesComboBox)
+        set_objects_to_combo_box(self.SA_AppointmentTypes, self.SA_AppointmentTypesComboBox)
+        set_objects_to_combo_box(self.SA_Locations, self.SA_OfficeLocationsComboBox)
+        set_objects_to_combo_box(self.SA_Physicians, self.SA_PhysicianNamesComboBox)
 
         self.custom_time = False
     
@@ -81,8 +85,13 @@ class Reschedule(Nav):
     def __init__(self):
         super(Reschedule, self).__init__()
 
-        RA_Locations = MiscDM().get_locations()
-        RA_Physicians = UserDM().get_physicians()
+
+        self.RA_MainAppointmentDM = AppointmentDM()
+        self.RA_MainMiscDM = MiscDM()
+        self.RA_MainUserDM = UserDM()
+
+        self.RA_Locations = self.RA_MainMiscDM.get_locations()
+        self.RA_Physicians = self.RA_MainUserDM.get_physicians()
 
         self.RA_OfficeLocationsComboBox = self.findChild(QComboBox, "ComboBox_OfficeLocations_RA")
         self.RA_PhysicianNamesComboBox = self.findChild(QComboBox, "ComboBox_PhysicianNames_RA")
@@ -102,8 +111,8 @@ class Reschedule(Nav):
         self.RA_DisplayTimesAppointmentsPushButton.mousePressEvent = lambda event: self.displayTimesApps()
         self.RA_RescheduleAppointmentPushButton.mousePressEvent = lambda event: self.rescheduleAppointment()
 
-        set_objects_to_combo_box(RA_Locations, self.RA_OfficeLocationsComboBox)
-        set_objects_to_combo_box(RA_Physicians, self.RA_PhysicianNamesComboBox)
+        set_objects_to_combo_box(self.RA_Locations, self.RA_OfficeLocationsComboBox)
+        set_objects_to_combo_box(self.RA_Physicians, self.RA_PhysicianNamesComboBox)
 
     def displayTimesApps(self):
         print("DisplayTimesApps")
@@ -117,8 +126,12 @@ class Cancel(Nav):
     def __init__(self):
         super(Cancel, self).__init__()
 
-        CA_Locations = MiscDM().get_locations()
-        CA_Physicians = UserDM().get_physicians()
+        self.CA_MainAppointmentDM = AppointmentDM()
+        self.CA_MainMiscDM = MiscDM()
+        self.CA_MainUserDM = UserDM()
+
+        self.CA_Locations = self.CA_MainMiscDM.get_locations()
+        self.CA_Physicians = self.CA_MainUserDM.get_physicians()
 
         self.CA_OfficeLocationsComboBox = self.findChild(QComboBox, "ComboBox_OfficeLocations_CA")
         self.CA_PhysicianNamesComboBox = self.findChild(QComboBox, "ComboBox_PhysicianNames_CA")
@@ -135,8 +148,8 @@ class Cancel(Nav):
         self.CA_SearchForAppointmentsPushButton.mousePressEvent = lambda event: self.search_CA()
         self.CA_CancelAppointmentPushButton.mousePressEvent = lambda event: self.cancelAppointment()
 
-        set_objects_to_combo_box(CA_Locations, self.CA_OfficeLocationsComboBox)
-        set_objects_to_combo_box(CA_Physicians, self.CA_PhysicianNamesComboBox)
+        set_objects_to_combo_box(self.CA_Locations, self.CA_OfficeLocationsComboBox)
+        set_objects_to_combo_box(self.CA_Physicians, self.CA_PhysicianNamesComboBox)
 
     def search_CA(self):
         print("Search SA")

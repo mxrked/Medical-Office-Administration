@@ -8,6 +8,7 @@ from frontend.main_nav import Nav
 from backend.data_handler import set_objects_to_combo_box
 from backend.misc_dm import MiscDM
 from backend.user_dm import UserDM
+from backend.appointment_dm import AppointmentDM
 
 class Approve(Nav):
     """
@@ -32,8 +33,13 @@ class Approve(Nav):
     def __init__(self):
         super(Approve, self).__init__()
 
-        ApptRequest_Locations = MiscDM().get_locations()
-        ApptRequest_Providers = UserDM().get_physicians()
+
+        self.ApptRequest_MainAppointmentDM = AppointmentDM()
+        self.ApptRequest_MainMiscDM = MiscDM()
+        self.ApptRequest_MainUserDM = UserDM()
+
+        self.ApptRequest_Locations = self.ApptRequest_MainMiscDM.get_locations()
+        self.ApptRequest_Providers = self.ApptRequest_MainUserDM.get_physicians()
 
         self.a_list = self.findChild(QListWidget, "Approve_List")
         self.a_btn_approve = self.findChild(QPushButton, "Approve_Btn_Approve")
@@ -46,8 +52,8 @@ class Approve(Nav):
         self.a_btn_deny.clicked.connect(self.deny)
         self.a_btn_refresh.clicked.connect(self.a_refresh)
 
-        set_objects_to_combo_box(ApptRequest_Locations, self.a_location)
-        set_objects_to_combo_box(ApptRequest_Providers, self.a_provider)
+        set_objects_to_combo_box(self.ApptRequest_Locations, self.a_location)
+        set_objects_to_combo_box(self.ApptRequest_Providers, self.a_provider)
 
     def approve(self):
         """

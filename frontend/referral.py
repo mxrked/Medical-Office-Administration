@@ -24,13 +24,6 @@ class Referral(Nav):
     def __init__(self):
         super(Referral, self).__init__()
 
-
-        self.Referral_MainAppointmentDM = AppointmentDM()
-        self.Referral_MainMiscDM = MiscDM()
-        self.Referral_MainUserDM = UserDM()
-
-        self.Referral_Physicians = self.Referral_MainUserDM.get_physicians()
-
         # Initalized Input Widgets
         self.ref_fname = self.findChild(QLineEdit, "LineEdit_PatientFirstName")
         self.ref_lname = self.findChild(QLineEdit, "LineEdit_PatientLastName")
@@ -44,8 +37,6 @@ class Referral(Nav):
 
         # Button Listeners
         self.create_referral_btn.clicked.connect(self.create_referral)
-
-        set_objects_to_combo_box(self.Referral_Physicians, self.ref_practitioners)
 
 
     def create_referral(self):

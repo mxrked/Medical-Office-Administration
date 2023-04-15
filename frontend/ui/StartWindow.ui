@@ -487,7 +487,7 @@ QPushButton::hover {
 }</string>
     </property>
     <property name="text">
-     <string>Login Error: That user does not exist..</string>
+     <string>Login Error: Username/Password does not exsist</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

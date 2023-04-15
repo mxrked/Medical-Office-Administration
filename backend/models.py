@@ -96,16 +96,6 @@ EmpGroupCross = Table(
     Column('GroupID', Integer, ForeignKey("Group.GroupID"))
 )
 
-EmpLocReferralCross = Table(
-    'EmpLocReferralCross',
-    Base.metadata,
-    Column('DummyID', Integer, primary_key=True),
-    Column('EmployeeID', Integer, ForeignKey("Employee.EmployeeID")),
-    Column('LocationID', Integer, ForeignKey("Location.LocationID")),
-    Column('ReferralID', Integer, ForeignKey("Referral.ReferralID"))
-)
-
-
 class Employee(Base):
     """
         A sqlalchemy ORM for the Employee Table
@@ -142,7 +132,7 @@ class Employee(Base):
     User = relationship("User", backref="EmpUser")
 
     def __str__(self) -> str:
-        return f"{self.FirstName}, {self.Last_Name}"
+        return f"{self.Title} {self.FirstName}, {self.Last_Name} ({self.Position})"
 
 class EmployeeType(Base):
     __tablename__ = "EmployeeType"

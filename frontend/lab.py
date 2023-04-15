@@ -21,9 +21,10 @@ class Lab(Nav):
     def __init__(self):
         super(Lab, self).__init__()
 
-        self.lab_MainAppointmentDM = AppointmentDM()
-        self.lab_MainMiscDM = MiscDM()
-        self.lab_MainUserDM = UserDM()
+
+        Lab_LabLocation = MiscDM().get_locations()
+        lab_LabPract = UserDM().get_physicians()
+        lab_TestLab = MiscDM.get_lab_tests()
 
         self.lab_Locations = self.lab_MainMiscDM.get_locations()
         self.lab_Labs = self.lab_MainMiscDM.get_lab_tests()
@@ -45,8 +46,10 @@ class Lab(Nav):
         self.lab_submit_btn.clicked.connect(self.submit_information)
         self.lab_clear_btn.clicked.connect(self.clearInputs)
 
-        self.get_physicians_into(self.lab_practitioner_combo)
-        self.get_locations_into(self.lab_locations_combo)
+        set_objects_to_combo_box(Lab_LabLocation, self.lab_locations_combo)
+        set_objects_to_combo_box(lab_LabPract, self.lab_practitioner_combo)
+        set_objects_to_combo_box(lab_TestLab, self.lab_lab_combo)
+
 
 
 
@@ -63,6 +66,16 @@ class Lab(Nav):
             Then run self.clear_inputs()
         """
         #print(self.submit_information.__doc__)
+
+        lab_PatientFN = self.lab_fname.text()
+        lab_PatientLN = self.lab_lname.text()
+        lab_PatientDOB = self.lab_dob.date().toPyDate()
+        lab_Practitioner = get_selected_combo_box_object(self.lab_practitioner_combo)
+        lab_Location = get_selected_combo_box_object(self.lab_locations_combo)
+        lab_LabDate = self.lab_lab_date_edit.date.date().toPyDate()
+        lab_Lab = get_selected_combo_box_object(self.lab_lab_combo)
+        lab_Order = self.lab_order_name.text()
+
 
         selected_emp = get_selected_combo_box_object(self.lab_practitioner_combo)
 

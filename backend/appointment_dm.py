@@ -13,6 +13,11 @@ from backend.private.appointment_status_data_manger import AppointmentStatusData
 class AppointmentDM(AppointmentStatusDataManger):
     """
         A DataManager for modifying, adding and reading appointments. 
+
+        • Get Avaliable Appointments
+        • Set Appointment Time
+        • Add Appointment
+        • Get Appointment Types
     """
     def __init__(self):
         super().__init__()

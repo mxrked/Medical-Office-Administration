@@ -5,6 +5,9 @@ Authors:
 """
 from PyQt5.QtWidgets import QListWidget, QPushButton, QComboBox
 from frontend.main_nav import Nav
+from backend.data_handler import set_objects_to_combo_box
+from backend.misc_dm import MiscDM
+
 class Approve(Nav):
     """
         Handles the Approve Appointment Buttons/Functions
@@ -28,6 +31,8 @@ class Approve(Nav):
     def __init__(self):
         super(Approve, self).__init__()
 
+        ApptRequest_Locations = MiscDM().get_locations()
+
         self.a_list = self.findChild(QListWidget, "Approve_List")
         self.a_btn_approve = self.findChild(QPushButton, "Approve_Btn_Approve")
         self.a_btn_deny = self.findChild(QPushButton, "Approve_Btn_Deny")
@@ -39,6 +44,7 @@ class Approve(Nav):
         self.a_btn_deny.clicked.connect(self.deny)
         self.a_btn_refresh.clicked.connect(self.a_refresh)
 
+        set_objects_to_combo_box(ApptRequest_Locations, self.a_location)
 
     def approve(self):
         """

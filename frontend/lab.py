@@ -5,8 +5,7 @@ Authors:
 """
 from PyQt5.QtWidgets import QPushButton, QLineEdit, QDateEdit, QComboBox
 from frontend.main_nav import Nav
-from backend.sample_data import *
-from backend.data_handler import set_objects_to_combo_box, get_selected_combo_box_object
+from backend.data_handler import get_selected_combo_box_object
 class Lab(Nav):
     """
     Creates a lab using Lab object
@@ -31,14 +30,9 @@ class Lab(Nav):
         self.lab_submit_btn.clicked.connect(self.submit_information)
         self.lab_clear_btn.clicked.connect(self.clearInputs)
 
-        # SAMPLE DATA STUFF
-        set_objects_to_combo_box(
-            locations, self.lab_locations_combo
-        )
+        self.get_physicians_into(self.lab_practitioner_combo)
 
-        set_objects_to_combo_box(
-            employees, self.lab_practitioner_combo
-        )
+        self.get_locations_into(self.lab_locations_combo)
 
 
     def submit_information(self):
@@ -55,9 +49,7 @@ class Lab(Nav):
         """
         #print(self.submit_information.__doc__)
 
-        selected_emp = get_selected_combo_box_object(
-            self.lab_practitioner_combo
-        )
+        selected_emp = get_selected_combo_box_object(self.lab_practitioner_combo)
 
         print(" Selected Employee Is:", selected_emp)
         print(" We have the access to the whole object: ")

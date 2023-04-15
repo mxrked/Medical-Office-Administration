@@ -5,6 +5,8 @@ Authors:
 """
 from PyQt5.QtWidgets import QListWidget, QComboBox, QPushButton
 from frontend.main_nav import Nav
+from backend.data_handler import get_selected_combo_box_object
+
 class CheckOut(Nav):
     """
         Handles checkout page
@@ -32,7 +34,7 @@ class CheckOut(Nav):
         self.check_out_list = self.findChild(QListWidget, "Checkout_List")
 
         # Load combo box widgets
-        self.locations_combobox = self.findChild(QComboBox, "comboBox_Locations")
+        self.locations_combobox = self.findChild(QComboBox, "CheckOut_ComboBox_Location")
 
         # Load button widgets
         self.check_out_btn = self.findChild(QPushButton, "Checkout_Btn_Checkout")
@@ -43,6 +45,10 @@ class CheckOut(Nav):
         self.check_out_btn.clicked.connect(self.check_out)
         self.check_out_refresh_btn.clicked.connect(self.check_out_refresh)
         self.download_summary_btn.clicked.connect(self.download_summary)
+
+        
+        # Populate Combo Boxes
+        self.get_locations_into(self.locations_combobox)
 
     def check_out(self):
         """

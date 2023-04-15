@@ -14,9 +14,9 @@ class Schedule(Nav):
     def __init__(self):
         super(Schedule, self).__init__()
 
-        SA_AppointmentTypes = AppointmentDM().get_appointment_types()
-        SA_Locations = MiscDM().get_locations()
-        SA_Physicians = UserDM().get_physicians()
+        # SA_AppointmentTypes = AppointmentDM().get_appointment_types()
+        # SA_Locations = MiscDM().get_locations()
+        # SA_Physicians = UserDM().get_physicians()
 
         self.SA_PatientFNLineEdit = self.findChild(QLineEdit, "LineEdit_PatientFirstName_SA")
         self.SA_PatientLNLineEdit = self.findChild(QLineEdit, "LineEdit_PatientLastName_SA")
@@ -51,15 +51,15 @@ class Schedule(Nav):
         self.SA_SearchPushButton.clicked.connect(self.search_SA)
         self.SA_ScheduleAppointmentPushButton.clicked.connect(self.scheduleAppointment)
 
-        set_objects_to_combo_box(SA_AppointmentTypes, self.SA_AppointmentTypesComboBox)
-        set_objects_to_combo_box(SA_Locations, self.SA_OfficeLocationsComboBox)
-        set_objects_to_combo_box(SA_Physicians, self.SA_PhysicianNamesComboBox)
+        set_objects_to_combo_box(self.appointment_dm.get_appointment_types(), self.SA_AppointmentTypesComboBox)
+        self.get_locations_into(self.SA_OfficeLocationsComboBox)
+        self.get_physicians_into(self.SA_PhysicianNamesComboBox)
 
         self.custom_time = False
 
         self.SA_patientFN = self.SA_PatientFNLineEdit.text()
         self.SA_patientLN = self.SA_PatientLNLineEdit.text()
-        self.SA_patientDOB = self.SA_PatientDOBDateEdit.date()
+        self.SA_patientDOB = self.SA_PatientDOBDateEdit.date().toPyDate()
         self.SA_officeLocation = get_selected_combo_box_object(self.SA_OfficeLocationsComboBox)
         self.SA_appointmentReason = self.SA_AppointmentReasonLineEdit.text()
         self.SA_appointmentType = get_selected_combo_box_object(self.SA_AppointmentTypesComboBox)
@@ -68,7 +68,6 @@ class Schedule(Nav):
         self.SA_appointmentDate = self.SA_AppointmentDateDateEdit.date()
         self.SA_availableTime = get_selected_list_object(self.SA_CurrentAvailableTimesListWidget)
 
-        #self.currentPatient = self.SA_MainUserDM.get_patient(first_name=self.SA_patientFN, last_name=self.SA_patientLN, dob=self.SA_patientDOB)
         #makeAppointment = Appointment(ApptDate=self.SA_appointmentDate, ApptTime=self.SA_availableTime, PatientID=Patient.PatientID, "", ApptLength=self.SA_appointmentLength, PhysicianID=Employee.EmployeeID, ApptTypeID=AppointmentType.ApptTypeID, LocationID=Location.LocationID, ApptReason=self.SA_appointmentReason, AppointmentType=self.SA_appointmentType, Patient=self.currentPatient, Employee=self.SA_physicianName, Location=self.SA_officeLocation)
 
 
@@ -95,9 +94,17 @@ class Schedule(Nav):
     def search_SA(self):
         print("Search_SA")
 
-        #self.SA_availableTimes = AppointmentDM.get_avaliable_appointments(appt_date=self.SA_appointmentDate, provider=self.SA_physicianName, location=self.SA_officeLocation, appt_type=self.SA_appointmentType, appt_length=self.SA_appointmentLength, patient=self.currentPatient, appt_reason=self.SA_appointmentReason)
+        self.currentPatient = self.user_dm.get_patient(first_name=self.SA_patientFN, last_name=self.SA_patientLN, dob=self.SA_patientDOB)
+        self.SA_availableTimes = AppointmentDM.get_avaliable_appointments(self,
+                                                                          appt_date=self.SA_appointmentDate,
+                                                                          provider=self.SA_physicianName,
+                                                                          location=self.SA_officeLocation,
+                                                                          appt_type=self.SA_appointmentType,
+                                                                          appt_length=self.SA_appointmentLength,
+                                                                          patient=self.currentPatient,
+                                                                          appt_reason=self.SA_appointmentReason)
 
-        # print(self.SA_availableTimes)
+        print(self.SA_availableTimes)
 
     def scheduleAppointment(self):
         print("Schedule Appointment")

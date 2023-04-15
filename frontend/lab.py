@@ -25,8 +25,8 @@ class Lab(Nav):
         self.lab_MainMiscDM = MiscDM()
         self.lab_MainUserDM = UserDM()
 
-        self.lab_Locations = self.RA_MainMiscDM.get_locations()
-        self.lab_Labs = self.RA_MainMiscDM.get_lab_tests()
+        self.lab_Locations = self.lab_MainMiscDM.get_locations()
+        self.lab_Labs = self.lab_MainMiscDM.get_lab_tests()
 
 
         # define widgets

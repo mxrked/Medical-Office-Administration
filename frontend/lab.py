@@ -21,14 +21,6 @@ class Lab(Nav):
     def __init__(self):
         super(Lab, self).__init__()
 
-        self.lab_MainAppointmentDM = AppointmentDM()
-        self.lab_MainMiscDM = MiscDM()
-        self.lab_MainUserDM = UserDM()
-
-        self.lab_Locations = self.RA_MainMiscDM.get_locations()
-        self.lab_Labs = self.RA_MainMiscDM.get_lab_tests()
-
-
         # define widgets
         self.lab_submit_btn = self.findChild(QPushButton, "pushButton_SubmitLabOrder")
         self.lab_clear_btn = self.findChild(QPushButton, "pushButton_ClearLabOrder")
@@ -48,8 +40,6 @@ class Lab(Nav):
         self.get_physicians_into(self.lab_practitioner_combo)
         self.get_locations_into(self.lab_locations_combo)
 
-        set_objects_to_combo_box(self.lab_Locations, self.lab_locations_combo)
-        set_objects_to_combo_box(self.lab_Labs, self.lab_locations_combo)
 
 
     def submit_information(self):

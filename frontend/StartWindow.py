@@ -11,6 +11,7 @@ from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo # pylint: di
 from frontend.ui.assets.files.GLOBALS import teamMembers
 from frontend.ui.assets.files.STYLING import infoDialog_Style, infoDialogCloseBtn_Style, infoDialogName_Style,\
     validEnterLE_Style, invalidEnterLE_Style
+from backend.user_dm import UserDM
 from backend.private.data_manager import DataManager
 import sys
 import json
@@ -22,6 +23,9 @@ class Start(QMainWindow):
 
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 
+        # Datamanager
+        self.user_dm = UserDM()
+
         uic.loadUi("frontend/ui/StartWindow.ui", self)
 
         #define widgets
@@ -29,14 +33,14 @@ class Start(QMainWindow):
         self.enterPasswordLineEdit = self.findChild(QLineEdit, "startWindow_PasswordLineEdit")
         self.showPasswordLabel = self.findChild(QLabel, "ShowPassword_Label")
         self.hidePasswordLabel = self.findChild(QLabel, "HidePassword_Label")
-        self.loginErrorLabel = self.findChild(QLabel, "loginErrorLabel")
+        self.loginOutputLabel = self.findChild(QLabel, "loginErrorLabel")
         self.loginPushButton = self.findChild(QPushButton, "startWindow_LoginBtn")
         self.exitPushButton = self.findChild(QPushButton, "startWindow_ExitBtn")
         self.infoPushButton = self.findChild(QPushButton, "startWindow_InfoBtn")
 
 
         # Setting Events
-        self.loginErrorLabel.hide()
+        self.loginOutputLabel.hide()
         self.showPasswordLabel.mousePressEvent = lambda event: self.showPassword()
         self.hidePasswordLabel.mousePressEvent = lambda event: self.hidePassword()
         self.loginPushButton.clicked.connect(self.loginUser)
@@ -121,10 +125,11 @@ class Start(QMainWindow):
         """
             Closes all data managers before exiting the program
         """
-        for var_name in vars(self):
+        
+        data_managers = [self.user_dm]
 
-            if isinstance( getattr(self, var_name), DataManager):
-                delattr(self, var_name)
+        for dm in data_managers:
+            dm.__del__
 
         sys.exit()
 
@@ -154,22 +159,27 @@ class Start(QMainWindow):
 
         userName_Text = self.startWindow_UsernameLineEdit.text()
         password_Text = self.startWindow_PasswordLineEdit.text()
+        
+        # Returns none if no employee
+        employee = self.user_dm.check_username_password(userName_Text, password_Text)
 
-        user = True
-
-
-        # This is used to check if the user is available and will move the user to the scheduling window or not
-        if user:
+        if employee:
             
+            # Get Permissions, with user_dm
+            can_login = self.user_dm.check_employee_role(employee, 1) 
+            if not can_login:
+                self.loginOutputLabel.show()
+                return
+
+            can_physician = self.user_dm.check_employee_role(employee, 2)
+            can_schedule = self.user_dm.check_employee_role(employee, 3)
+
             # Save Last User
             self.settings_json["last_entered_user"] = userName_Text
             with open("frontend/ui/assets/files/Settings.json", "w", encoding='UTF-8') as file:
                 json.dump(self.settings_json, file)
     
-            # Apply Permissions
-
             # Hiding login error label
-            self.loginErrorLabel.hide()
 
             # Resetting inputs
             self.enterUsernameLineEdit.setText("")
@@ -178,21 +188,20 @@ class Start(QMainWindow):
             self.enterUsernameLineEdit.setStyleSheet(validEnterLE_Style)
             self.enterPasswordLineEdit.setStyleSheet(validEnterLE_Style)
 
-            # Get Permissions, with user_dm
-            can_physician = True
-            can_schedule = True
+
+
 
             from frontend.main import MainWindow
 
             self.hide()
-        
+
             main_window = MainWindow(can_physician, can_schedule)
             main_window.show()
 
         else:
 
             # Displaying login error label
-            self.loginErrorLabel.show()
+            self.loginOutputLabel.show()
 
             # Adding red border to invalid inputs
             self.enterUsernameLineEdit.setStyleSheet(invalidEnterLE_Style)

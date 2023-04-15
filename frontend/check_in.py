@@ -5,6 +5,7 @@ Authors:
 """
 from PyQt5.QtWidgets import QComboBox, QListWidget, QPushButton
 from frontend.main_nav import Nav
+from backend.data_handler import get_selected_combo_box_object
 class CheckIn(Nav):
     """
         Handles the Check In Page
@@ -31,7 +32,7 @@ class CheckIn(Nav):
 
         # Load Input Widgets
         self.check_in_location = self.findChild(QComboBox, "CheckIn_Location")
-        self.providers = self.findChild(QComboBox, "CheckIn_Provider")
+        self.check_in_providers = self.findChild(QComboBox, "CheckIn_Provider")
         self.check_ins_list = self.findChild(QListWidget, "CheckIn_ListWidget")
 
         # Load Buttons
@@ -43,6 +44,10 @@ class CheckIn(Nav):
         self.check_in_btn.clicked.connect(self.check_in)
         self.no_show_btn.clicked.connect(self.no_show)
         self.refresh_btn.clicked.connect(self.check_in_refresh)
+
+        # Populate Combo Boxes
+        self.get_locations_into(self.check_in_location)
+        self.get_physicians_into(self.check_in_providers)
 
     def check_in(self):
         """

@@ -6,56 +6,53 @@ from backend.private.data_manager import DataManager
 
 from backend.models import AppointmentType, Employee, User, EmployeeType, Patient, EmpGroupCross, Group, Role, \
     GroupRoleCross
- 
 from sqlalchemy.orm import joinedload
-
+import sqlalchemy as sa
 
 class UserDM(DataManager):
 
     def __init__(self):
         super().__init__()
 
-    def check_username_password(self, usertypeID: int, username: str, password: str) -> bool:
+    def check_username_password(self, username: str, password: str) -> Employee:
 
-        validated = self.session.query(User) \
-            .where(usertypeID == 1, username == User.Username, password == User.Password)
+        employee = self.session.query(Employee) \
+            .join(User) \
+            .filter(User.UserTypeID == 1, User.UserName == username, User.Password == password) \
+            .first()
 
-        # Besure to global the CURRENT_USER as a User Object
-        # will need to validate group for screen access
-        return validated
-
-    def check_group_role(self, current_employee: Employee, search_role_id) -> bool:
-        groups = self.check_user_group(current_employee)
-        roles = []
-        for group in groups:
-            roles.extend(self.session.query(Role.RoleID)
-                         .join(GroupRoleCross.RoleID)
-                         .where(group == GroupRoleCross.GroupID)
-                         )
-
-        if search_role_id in roles:
-            return True
-        else:
+        if (employee is None):
             return False
 
+        return employee
 
-    def check_user_group(self, current_employee: Employee) -> List[int]:
-        # check if user type id is associated with a group
-        groups = self.session.query(Group.GroupID) \
-            .join(EmpGroupCross.GroupID) \
-            .where(current_employee.EmployeeTypeID == EmpGroupCross.EmployeeTypeID)
+    def check_employee_role(self, current_employee: Employee, search_role_id) -> bool:
+        
+        groups = self.session.query(EmpGroupCross)\
+            .filter_by(EmployeeID = current_employee.EmployeeID).all()
+        
+        roles = []
+        for group in groups:
+            roles = self.session.query(Role.RoleID)\
+                    .join(GroupRoleCross)\
+                    .where(sa.text(f"GroupRoleCross.GroupID = {group.GroupID}")
+                ).all()
+            
+            for role in roles: # Roles are returned as a tuple
+                if search_role_id in role:
+                    return True
 
-        return groups
+        return False
+
 
     def get_physicians(self) -> list[Employee]:
-        valid_types = ["physcian"]
+        valid_types = ["General Practitioner", "Internal Medicine", "Ear, Nose & Throat", "Womens Medicine"]
 
         physicians = self.session.query(Employee) \
-            .join(EmployeeType) \
-            .options(joinedload(Employee.EmployeeType)) \
-            .filter(EmployeeType.TypeDescription.in_(valid_types)) \
-            .order_by(Employee.LastName, Employee.FirstName) \
+            .where(Employee.Position.in_(valid_types)) \
+            .order_by(Employee.Position.asc(), Employee.FirstName.asc()) \
             .all()
+        print
         return physicians
 
     def get_patient(self, first_name: str, last_name: str, dob: date) -> list[Patient]:
@@ -71,7 +68,7 @@ class UserDM(DataManager):
 
 
         patients = self.session.query(Patient) \
-            .where(dob == Patient.DateOfBirth, first_name == Patient.FirstName, last_name == Patient.LastName) \
+            .where(dob == Patient.DateOfBirth, first_name == Patient.First_Name, last_name == Patient.Last_Name) \
             .all()
 
         return patients

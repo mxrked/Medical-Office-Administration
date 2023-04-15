@@ -73,6 +73,10 @@ class MainWindow(Schedule, Reschedule, Cancel,
 
             self.close()
 
+        # Resets everything so no starting data
+        # And everything is today
+        self.clearInputs()
+
 
 #initializing app
 app = QApplication(sys.argv)

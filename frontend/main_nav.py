@@ -4,7 +4,7 @@ Author: Jessica Weeks, Parker Phelps
 """
 import sys
 from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QWidget,\
-    QLineEdit, QStackedWidget, QFrame, QDialog, QVBoxLayout, QLabel, QDateEdit, QTimeEdit
+    QLineEdit, QStackedWidget, QFrame, QDialog, QVBoxLayout, QLabel, QDateEdit, QTimeEdit, QComboBox
 from PyQt5 import QtCore, QtGui, uic
 
 from frontend.ui.assets.files.STYLING import disableFrameBtn_Style, infoDialog_Style, \
@@ -14,9 +14,11 @@ from frontend.StartWindow import Start
 
 # These qrc are used by pyqt 5
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo # pylint: disable=unused-import
-from backend.private.data_manager import DataManager
-
-
+from backend.user_dm import UserDM, DataManager
+from backend.misc_dm import MiscDM
+from backend.appointment_dm import AppointmentDM
+from backend.data_handler import set_objects_to_combo_box
+import json
 class Nav(QMainWindow):
     """
     Handles Navigation for all windows but StartWindow
@@ -27,6 +29,31 @@ class Nav(QMainWindow):
         super(Nav, self).__init__()
 
         uic.loadUi("frontend/ui/mainWindow.ui", self)
+
+        # Data Managers
+
+        self.user_dm = UserDM()
+        self.misc_dm = MiscDM()
+        self.appointment_dm = AppointmentDM()
+
+        try:
+            with open("frontend/ui/assets/files/Settings.json", "r",
+                      encoding='UTF-8') as settings_file:
+                file_contents = settings_file.read()
+        
+            self.settings_json = json.loads(file_contents)
+
+        except FileNotFoundError:
+            print("Settings not found")
+            self.settings_json = {
+                "default_location_ID" : "1",
+                "last_entered_user" : ""
+            }
+            with open("frontend/ui/assets/files/Settings.json", "w",
+                      encoding='UTF-8') as file:
+                json.dump(self.settings_json, file)
+
+
 
         self.stacked_widget = self.findChild(QStackedWidget, "main_stacked_widget")
 
@@ -87,7 +114,7 @@ class Nav(QMainWindow):
         self.make_schedule_btn.clicked.connect(self.display_inputs_frame)
         self.cancel_btn.clicked.connect(self.display_canceled_frame)
 
-
+    
     def logout(self):
         """
             Shows the start window and closes the current one
@@ -309,12 +336,11 @@ class Nav(QMainWindow):
             Closes all data managers before exiting the program
         """
 
-        for var_name in vars(self):
+        data_managers = [self.user_dm, self.appointment_dm, self.misc_dm]
 
-            if isinstance( getattr(self, var_name), DataManager):
-                delattr(self, var_name)
+        for dm in data_managers:
+            dm.close()
 
-        super().closeEvent(event)
         sys.exit()
     
     def load_error(self, error_text: str):
@@ -356,6 +382,41 @@ class Nav(QMainWindow):
 
         # Displaying the dialog
         info_dialog.exec_()
+
+    def get_locations_into(self, combo_box: QComboBox):
+        """
+            Loads all locations into the combo_box,
+                just provide the elevant data_manager
+
+            :param misc_dm: use self.misc_dm
+            :param combo_box: The combo box you wanna add stuff too
+            
+            We do this several times in the frontend. 
+                This prevents duplicate code
+        """
+        
+        default_location = self.settings_json["default_location_ID"]
+
+        locations = self.misc_dm.get_locations()
+        set_objects_to_combo_box(locations, combo_box)
+        combo_box.setCurrentIndex(int(default_location))
+
+
+    def get_physicians_into(self, combo_box: QComboBox):
+        """
+            Loads all physicians into the combo_box,
+                just provide the elevant data_manager
+
+            :param misc_dm: use self.misc_dm
+            :param combo_box: The combo box you wanna add stuff too
+            
+            We do this several times in the frontend. 
+                This prevents duplicate code
+        """
+        physicians = self.user_dm.get_physicians()
+        set_objects_to_combo_box(physicians, combo_box)
+
+
 
 #initializing app
 app = QApplication(sys.argv)

@@ -45,7 +45,7 @@ class Appointment(Base):
     ApptTime = Column(Time)
     PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
     ApptStatus = Column(VARCHAR(50))
-    ApptLength = Column(Numeric(18,0), nullable=True)
+    ApptLength = Column(Time)
     PhysicianID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     ApptTypeID = Column(Integer, ForeignKey("AppointmentType.ApptTypeID")) 
     LocationID = Column(Integer, ForeignKey("Location.LocationID"))
@@ -58,7 +58,6 @@ class Appointment(Base):
 
     def __str__(self) -> str:
         return f"Appointment on {self.ApptDate} at {self.ApptTime} for {self.Patient}"
-
 
 class AppointmentType(Base):
     """

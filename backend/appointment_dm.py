@@ -5,6 +5,7 @@ from datetime import timedelta, date, time
 import datetime
 from sqlalchemy.orm import joinedload
 import sqlalchemy as sa
+from sqlalchemy.sql.expression import bindparam
 from backend.models import HospitalHours, AppointmentType, Appointment,\
                     Employee, Location, Event, Patient
 from backend.private.appointment_status_data_manger import AppointmentStatusDataManger
@@ -261,17 +262,9 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         ### First We check if there are any taken appointments ###
 
-        appt_end_time = datetime.datetime(date= appt.ApptDate, time=appt.ApptTime) + timedelta(minutes= appt.ApptLength)
+        appt_end_time = (datetime.datetime.combine(date=appt.ApptDate, time=appt.ApptTime) + timedelta(minutes= appt.ApptLength)).time()
 
-        # Used to finding the end time of a appointment in the DB
-        appointment_end_time = Appointment.ApptLength
-
-        is_appointment_time_conflicted = (
-             # Check if the appointment start time is in between an existing appointment
-            (Appointment.ApptTime <= appt.ApptTime and appointment_end_time > appt.ApptTime) or
-            # Check if the existing appointment start time is in between the new appointment
-            (Appointment.ApptTime >= appt.ApptTime and appt_end_time > Appointment.ApptTime)
-        )
+        appt.ApptLength = time(0, appt.ApptLength)
 
         taken_appointment_statuses = ["Scheduled", "In Progress"]
         taken_appointments = self.session.query(Appointment).\
@@ -279,14 +272,19 @@ class AppointmentDM(AppointmentStatusDataManger):
             filter(
                 sa.and_(
                     Appointment.ApptDate == appt.ApptDate,
-                    Appointment.Physician == appt.PhysicianID,
+                    Appointment.PhysicianID == appt.PhysicianID,
                     Appointment.ApptStatus.in_(taken_appointment_statuses),
-                    is_appointment_time_conflicted
+                    sa.or_( 
+                        # Check if the appointment start time is in between an existing appointment
+                        sa.and_(Appointment.ApptTime <= appt.ApptTime, Appointment.EndTime(self=Appointment, date=Appointment.ApptDate, time=Appointment.ApptTime) > appt.ApptTime),
+                        # Check if the existing Boolean value of this clause is not definedappointment start time is in between the new appointment
+                        sa.and_(Appointment.ApptTime >= appt.ApptTime, appt_end_time > Appointment.ApptTime)
+                    )
                 )
-            ).first()
+            ).all()
 
         assert taken_appointments is None, "Appointment Already Taken!"
-
+        print("No Taken Appointments")
 
         ### Then We pull the hours for the location and day ###
 
@@ -299,7 +297,6 @@ class AppointmentDM(AppointmentStatusDataManger):
         # Checks if its outside the hours of the location
         if (hours.OpenTime > appt.ApptTime or hours.CloseTime < appt.ApptTime):
             assert custom_time, "Outside this locations hours. Use custom time"
-
 
         ### Then we check if the physician is out, or if the entire clinic is out ###
         events = self.__get_events_for(appt.Employee, appt.ApptDate)
@@ -319,9 +316,9 @@ class AppointmentDM(AppointmentStatusDataManger):
     def __get_hours_for(self, check_date: date, location: Location) -> HospitalHours:
         """ Gets hours for a given check_date & location object """
         # In the DB its either "Week1" or "Week2"
-        week_number = "Week"
-        week_number += self.__get_week_number(check_date)
+        week_number = self.__get_week_number(check_date)
 
+        print(week_number)
         hours =  self.session.query(HospitalHours).filter(
             sa.and_(
                 HospitalHours.LocationID == location.LocationID,
@@ -346,7 +343,7 @@ class AppointmentDM(AppointmentStatusDataManger):
                     ).first()
         return events
 
-    def __get_week_number(self, check_date:date =datetime.datetime.now()):
+    def __get_week_number(self, check_date:date):
         """ 
         A private method to get what week number it is 
         
@@ -358,10 +355,11 @@ class AppointmentDM(AppointmentStatusDataManger):
         If clinic ever chooses to add more weeks to their repeating schedule, chagne the constant
         """
 
+
         number_of_weeks = 2
 
         start_date = datetime.datetime(2015, 1, 4)
-        end_date = check_date
+        end_date = datetime.datetime.combine(check_date, time(0,0,0))
 
         weeks_since_2015 = (end_date - start_date).days // 7
 

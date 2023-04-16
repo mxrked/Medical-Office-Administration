@@ -5,9 +5,6 @@ Authors: Destan Hutcherson,
 """
 from PyQt5.QtWidgets import QPushButton, QLineEdit, QDateEdit, QComboBox
 
-from backend.appointment_dm import AppointmentDM
-from backend.misc_dm import MiscDM
-from backend.user_dm import UserDM
 from frontend.main_nav import Nav
 from backend.data_handler import get_selected_combo_box_object, set_objects_to_combo_box
 
@@ -40,9 +37,9 @@ class Lab(Nav):
         self.lab_clear_btn.clicked.connect(self.clearInputs)
 
         # fill combo boxes
-        set_objects_to_combo_box(self.UserDM.get_physicians(), self.lab_practitioner_combo)
-        set_objects_to_combo_box(self.MiscDM.get_locations(), self.lab_locations_combo)
-        set_objects_to_combo_box(self.MiscDM.get_lab_tests(), self.lab_lab_combo)
+        set_objects_to_combo_box(self.user_dm.get_physicians(), self.lab_practitioner_combo)
+        set_objects_to_combo_box(self.misc_dm.get_locations(), self.lab_locations_combo)
+        set_objects_to_combo_box(self.misc_dm.get_lab_tests(), self.lab_lab_combo)
 
 
 

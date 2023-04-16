@@ -64,7 +64,7 @@ class Lab(Nav):
         lab_PatientDOB = self.lab_dob.date().toPyDate()
         lab_Practitioner = get_selected_combo_box_object(self.lab_practitioner_combo)
         lab_Location = get_selected_combo_box_object(self.lab_locations_combo)
-        lab_LabDate = self.lab_lab_date_edit.date.date().toPyDate()
+        lab_LabDate = self.lab_lab_date_edit.date().toPyDate()
         lab_Lab = get_selected_combo_box_object(self.lab_lab_combo)
         lab_Order = self.lab_order_name.text()
 

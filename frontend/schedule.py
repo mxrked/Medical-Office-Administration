@@ -27,22 +27,7 @@ class Schedule(Nav):
         self.SA_CustomTimeTimeEdit = self.findChild(QTimeEdit, "timeEdit_CustomTime_SA")
         self.SA_YesCustomTimePushButton = self.findChild(QPushButton, "yesCustomTimePushButton_SA")
         self.SA_NoCustomTimePushButton = self.findChild(QPushButton, "noCustomTimePushButton_SA")
-        
-
-        # Calanders
-        self.SA_AppDate_cal = self.findChild(QCalendarWidget, "SA_AppDate_Cal")
-        self.SA_App_Date_Label = self.findChild(QLabel, "SA_App_Date_Cal")
-        self.SA_DOB_Cal = self.findChild(QCalendarWidget, "SA_DOB_Cal")
-        self.SA_Patient_DOB_Cal = self.findChild(QLabel, "SA_Patient_DOB_Cal")
-
-        self.SA_App_Date_Label.mousePressEvent = lambda event: \
-            self.toggle_widget(self.SA_AppDate_cal)
-
-        self.SA_Patient_DOB_Cal.mousePressEvent = lambda event: \
-            self.toggle_widget(self.SA_DOB_Cal)
-        
-        self.SA_AppDate_cal.setVisible(False)
-        self.SA_DOB_Cal.setVisible(False)
+    
 
         # Making the appointment lenght be only numbers
         self.SA_ApptLengthValidator = QIntValidator()
@@ -141,8 +126,8 @@ class Schedule(Nav):
 
     def scheduleAppointment(self):
 
-        SA_availableTime = get_selected_list_object(self.SA_CurrentAvailableTimesListWidget)
-        print("Schedule Appointment")
+        appt = get_selected_list_object(self.SA_CurrentAvailableTimesListWidget)
+        self.appointment_dm.add_appointment(appt)
 
 
 

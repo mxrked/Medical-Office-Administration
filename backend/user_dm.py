@@ -26,45 +26,52 @@ class UserDM(DataManager):
         super().__init__()
 
     def check_username_password(self, username: str, password: str) -> Employee:
+        
+        with self.session_scope() as session:
+            employee = session.query(Employee) \
+                .join(User) \
+                .filter(User.UserTypeID == 1, User.UserName == username, User.Password == password) \
+                .first()
 
-        employee = self.session.query(Employee) \
-            .join(User) \
-            .filter(User.UserTypeID == 1, User.UserName == username, User.Password == password) \
-            .first()
+            if (employee is None):
+                return False
 
-        if (employee is None):
-            return False
-
-        return employee
+            session.expunge(employee)
+            return employee
 
     def check_employee_role(self, current_employee: Employee, search_role_id) -> bool:
         
-        groups = self.session.query(EmpGroupCross)\
-            .filter_by(EmployeeID = current_employee.EmployeeID).all()
-        
-        roles = []
-        for group in groups:
-            roles = self.session.query(Role.RoleID)\
-                    .join(GroupRoleCross)\
-                    .where(sa.text(f"GroupRoleCross.GroupID = {group.GroupID}")
-                ).all()
-            
-            for role in roles: # Roles are returned as a tuple
-                if search_role_id in role:
-                    return True
 
-        return False
+        with self.session_scope() as session:
+            groups = session.query(EmpGroupCross)\
+                .filter_by(EmployeeID = current_employee.EmployeeID).all()
+            
+            roles = []
+            for group in groups:
+                roles = session.query(Role.RoleID)\
+                        .join(GroupRoleCross)\
+                        .where(sa.text(f"GroupRoleCross.GroupID = {group.GroupID}")
+                    ).all()
+                
+                for role in roles: # Roles are returned as a tuple
+                    if search_role_id in role:
+                        return True
+
+            return False
 
 
     def get_physicians(self) -> list[Employee]:
+        
         valid_types = ["General Practitioner", "Internal Medicine", "Ear, Nose & Throat", "Womens Medicine"]
 
-        physicians = self.session.query(Employee) \
-            .where(Employee.Position.in_(valid_types)) \
-            .order_by(Employee.Position.asc(), Employee.FirstName.asc()) \
-            .all()
-        print
-        return physicians
+        with self.session_scope() as session:
+            physicians = session.query(Employee) \
+                .where(Employee.Position.in_(valid_types)) \
+                .order_by(Employee.Position.asc(), Employee.FirstName.asc()) \
+                .all()
+
+            [session.expunge(physician) for physician in physicians]
+            return physicians
 
     def get_patient(self, first_name: str, last_name: str, dob: date) -> list[Patient]:
         """
@@ -77,9 +84,11 @@ class UserDM(DataManager):
         :return: A list of Patient objects.
         """
 
-
-        patients = self.session.query(Patient) \
-            .where(dob == Patient.DateOfBirth, first_name == Patient.First_Name, last_name == Patient.Last_Name) \
-            .all()
-
-        return patients
+        with self.session_scope() as session:
+            
+            patients = session.query(Patient) \
+                .where(dob == Patient.DateOfBirth, first_name == Patient.First_Name, last_name == Patient.Last_Name) \
+                .all()
+            
+            [session.expunge(patient) for patient in patients]
+            return patients

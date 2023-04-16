@@ -5,7 +5,7 @@ Author: Jessica Weeks, Christian Fortin
 """
 from sqlalchemy.orm import sessionmaker
 import sqlalchemy as sa
-
+from contextlib import contextmanager
 class DataManager():
 
     def __init__(self):
@@ -19,15 +19,26 @@ class DataManager():
             except ImportError:
                 assert False, "connection_string.py not found!"
 
-        engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
+        self.__engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
 
-        session_maker = sessionmaker(bind=engine)
 
-        self.session = session_maker()
+        self.session_maker = sessionmaker(bind=self.__engine)
+
+    @contextmanager
+    def session_scope(self):
+        session = self.session_maker()
+        try:
+            yield session
+            session.commit()
+        except:
+            session.rollback()
+            assert False, "Something is deeply wrong"
+        finally:
+            session.close()
+
 
     def close(self):
-        self.session.close()
-        self.session.bind.dispose()
+        self.__engine.dispose()
 
     def __del__(self):
         self.close()

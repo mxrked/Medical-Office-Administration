@@ -23,7 +23,7 @@ class Appointment(Base):
         :param PatientID: Corresponds to patient. Use Patient.PatientID
         :param ApptStatus: A string, frontend should not be using this.
             Must be a set of statues in appointment_status_dm
-        :param ApptLength: A appointment length in minutes (int)
+        :param ApptEndTime: The time the appointment ends
         :param PhysicianID: Correspond to a Physician, Use Employee.EmployeeID
         :param ApptTypeID: Corresponds to a Appointment Type, Use AppointmentType.AppointmentTypeID
         :param LocationID: Corresponds to a Location, use Location.LocationID
@@ -45,9 +45,9 @@ class Appointment(Base):
     ApptTime = Column(Time)
     PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
     ApptStatus = Column(VARCHAR(50))
-    ApptLength = Column(Time)
+    ApptEndtime = Column(Time)
     PhysicianID = Column(Integer, ForeignKey("Employee.EmployeeID"))
-    ApptTypeID = Column(Integer, ForeignKey("AppointmentType.ApptTypeID")) 
+    ApptTypeID = Column(Integer, ForeignKey("AppointmentType.ApptTypeID"))
     LocationID = Column(Integer, ForeignKey("Location.LocationID"))
     ApptReason = Column(VARCHAR(500))
 
@@ -57,7 +57,9 @@ class Appointment(Base):
     Location = relationship("Location", backref="ApptLocation")
 
     def __str__(self) -> str:
-        return f"Appointment on {self.ApptDate} at {self.ApptTime} for {self.Patient}"
+
+        formated_time = self.ApptTime.strftime("%I:%M:%S %p")
+        return f"{formated_time} for {self.Patient}"
 
 class AppointmentType(Base):
     """

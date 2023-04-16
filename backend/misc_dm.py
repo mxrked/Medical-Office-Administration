@@ -22,29 +22,39 @@ class MiscDM(DataManager):
 
     def add_referral(self, referral: Referral):
         """ Adds a referral to the DB """
-        self.session.add(referral)
-        self.session.commit()
+        with self.session_scope() as session:
+            session.add(referral)
+            session.commit()
 
     def add_lab_order(self, lab_order: LabOrder):
         """ Adds a lab order to the DB """
-        self.session.add(lab_order)
-        self.session.commit()
+        with self.session_scope() as session:
+            session.add(lab_order)
+            session.commit()
 
     def add_patient(self, patient: Patient):
         """ Adds a patient to the DB """
-        self.session.add(patient)
-        self.session.commit()
+        with self.session_scope() as session:
+            session.add(patient)
+            session.commit()
 
     def get_lab_tests(self) -> list[Lab]:
         """ Returns list of lab tests """
-        labs = self.session.query(Lab)\
-            .order_by(Lab.LabTest)\
-            .all()
-        return labs
+        
+        with self.session_scope() as session:
+            labs = session.query(Lab)\
+                .order_by(Lab.LabTest)\
+                .all()
+            
+            [session.expunge(lab) for lab in labs]
+            return labs
 
     def get_locations(self) -> list[Location]:
         """ Returns list of all locations """
-        locations = self.session.query(Location)\
-            .order_by(Location.Location_Name)\
-            .all()
-        return locations
+        
+        with self.session_scope() as session:
+            locations = session.query(Location)\
+                .order_by(Location.Location_Name)\
+                .all()
+            [session.expunge(location) for location in locations]
+            return locations

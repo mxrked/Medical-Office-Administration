@@ -1,22 +1,18 @@
 
-from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QListWidget, QTimeEdit, QPushButton
+from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QLabel, QListWidget, QTimeEdit, QPushButton, QCalendarWidget
 from PyQt5.QtCore import QDate
 from PyQt5.QtGui import QIntValidator
 from frontend.main_nav import Nav
 from frontend.ui.assets.files.STYLING import disableCustomTime_Style, enableCustomTime_Style
-from backend.data_handler import set_objects_to_combo_box, get_selected_combo_box_object, get_selected_list_object
+from backend.data_handler import set_objects_to_combo_box, get_selected_combo_box_object, get_selected_list_object, set_objects_to_list
 from backend.appointment_dm import AppointmentDM
 from backend.misc_dm import MiscDM
 from backend.user_dm import UserDM
-from backend.models import Appointment, Employee, Location, AppointmentType, Patient
+from datetime import timedelta
 
 class Schedule(Nav):
     def __init__(self):
         super(Schedule, self).__init__()
-
-        # SA_AppointmentTypes = AppointmentDM().get_appointment_types()
-        # SA_Locations = MiscDM().get_locations()
-        # SA_Physicians = UserDM().get_physicians()
 
         self.SA_PatientFNLineEdit = self.findChild(QLineEdit, "LineEdit_PatientFirstName_SA")
         self.SA_PatientLNLineEdit = self.findChild(QLineEdit, "LineEdit_PatientLastName_SA")
@@ -31,6 +27,22 @@ class Schedule(Nav):
         self.SA_CustomTimeTimeEdit = self.findChild(QTimeEdit, "timeEdit_CustomTime_SA")
         self.SA_YesCustomTimePushButton = self.findChild(QPushButton, "yesCustomTimePushButton_SA")
         self.SA_NoCustomTimePushButton = self.findChild(QPushButton, "noCustomTimePushButton_SA")
+        
+
+        # Calanders
+        self.SA_AppDate_cal = self.findChild(QCalendarWidget, "SA_AppDate_Cal")
+        self.SA_App_Date_Label = self.findChild(QLabel, "SA_App_Date_Cal")
+        self.SA_DOB_Cal = self.findChild(QCalendarWidget, "SA_DOB_Cal")
+        self.SA_Patient_DOB_Cal = self.findChild(QLabel, "SA_Patient_DOB_Cal")
+
+        self.SA_App_Date_Label.mousePressEvent = lambda event: \
+            self.toggle_widget(self.SA_AppDate_cal)
+
+        self.SA_Patient_DOB_Cal.mousePressEvent = lambda event: \
+            self.toggle_widget(self.SA_DOB_Cal)
+        
+        self.SA_AppDate_cal.setVisible(False)
+        self.SA_DOB_Cal.setVisible(False)
 
         # Making the appointment lenght be only numbers
         self.SA_ApptLengthValidator = QIntValidator()
@@ -51,7 +63,10 @@ class Schedule(Nav):
         self.SA_SearchPushButton.clicked.connect(self.search_SA)
         self.SA_ScheduleAppointmentPushButton.clicked.connect(self.scheduleAppointment)
 
+        
+
         set_objects_to_combo_box(self.appointment_dm.get_appointment_types(), self.SA_AppointmentTypesComboBox)
+
         self.get_locations_into(self.SA_OfficeLocationsComboBox)
         self.get_physicians_into(self.SA_PhysicianNamesComboBox)
 
@@ -103,19 +118,26 @@ class Schedule(Nav):
 
         patient = patients[0]
 
-        
-        
+        try:
+            assert SA_appointmentReason != "", "Appointment Reason"
+            assert SA_appointmentLength.isdigit(), "Appointment Length"
+
+        except AssertionError as error:
+            self.load_error("Invalid:" + str(error))
+            return
+
+        appt_length = timedelta(minutes=int(SA_appointmentLength))
         availableTimes = self.appointment_dm.get_avaliable_appointments(
             appt_date=SA_appointmentDate,
             provider=SA_physicianName,
             location=SA_officeLocation,
             appt_type=SA_appointmentType,
-            appt_length=SA_appointmentLength,
+            appt_length=appt_length,
             patient=patient,
             appt_reason=SA_appointmentReason
             )
         
-        # print(self.SA_availableTimes)
+        set_objects_to_list(availableTimes, self.SA_CurrentAvailableTimesListWidget)
 
     def scheduleAppointment(self):
 

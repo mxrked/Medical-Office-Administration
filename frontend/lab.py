@@ -96,6 +96,3 @@ class Lab(Nav):
 
         self.misc_dm.add_lab_order(labToAdd)
 
-
-    def clearInputs(self):
-        pass

@@ -66,7 +66,6 @@ class Approve(Nav):
 
             Then call self.a_refresh
         """
-        print(self.approve.__doc__)
 
         getSelectedAppt = get_selected_list_object(self.a_list)
 

@@ -47,7 +47,6 @@ class Schedule(Nav):
         self.SA_YesCustomTimePushButton.clicked.connect(self.enableCustomTime)
         self.SA_SearchPushButton.clicked.connect(self.search_SA)
         self.SA_ScheduleAppointmentPushButton.clicked.connect(self.scheduleAppointment)
-
         
 
         set_objects_to_combo_box(self.appointment_dm.get_appointment_types(), self.SA_AppointmentTypesComboBox)

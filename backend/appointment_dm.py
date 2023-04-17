@@ -49,12 +49,11 @@ class AppointmentDM(AppointmentStatusDataManger):
             :return: A list of Appointment objects representing the available appointment times.
         """
 
-        ### Make sure appt_date is not before today
-
-        if appt_date < datetime.datetime.now().date():
-            raise ValueError("Appoinment date cannot be before today's date")
-
         avaliable_appointments = []
+
+        ### Make sure appt_date is not before today
+        assert appt_date >= datetime.datetime.now().date(), ("Appoinment date cannot be before today's date")
+        
 
         ### First We Check if the Location is open ###
 

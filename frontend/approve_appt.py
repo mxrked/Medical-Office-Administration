@@ -50,21 +50,6 @@ class Approve(Nav):
         """
             Gets the selected item from self.approve_list
                 Using the data_handler
-
-            NOTE: Check if that data corresponds to data.
-                If it doesn't use self.load_error()
-            
-            Then uses the Appointment_Data_Manager To add_appointment
-
-            NOTE: Put this in a try catch, if the appointment is taken
-                it will give you a Assertion error
-
-            try:
-                add_appointment()
-            catch AssertionError as e:
-                self.load_error(e)
-
-            Then call self.a_refresh
         """
 
         getSelectedAppt = get_selected_list_object(self.a_list)
@@ -94,8 +79,6 @@ class Approve(Nav):
 
             Then call self.a_refresh
         """
-        print(self.deny.__doc__)
-
         getSelectedAppt = get_selected_list_object(self.a_list)
 
         if not getSelectedAppt:

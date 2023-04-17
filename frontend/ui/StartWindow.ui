@@ -338,7 +338,7 @@
    <widget class="QPushButton" name="startWindow_ExitBtn">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>360</x>
       <y>690</y>
       <width>71</width>
       <height>51</height>
@@ -443,7 +443,7 @@ QPushButton::hover {
    <widget class="QPushButton" name="startWindow_LoginBtn">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>450</x>
       <y>690</y>
       <width>81</width>
       <height>51</height>
@@ -511,17 +511,42 @@ QPushButton::hover {
      <string>🛈</string>
     </property>
    </widget>
+   <widget class="QLabel" name="StartWindow_SettingsLabel">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>20</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border-image: none;
+	background-color: white;
+	padding: 5px;
+	border-radius: 10px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="assets/qrc/gears.qrc">:/newPrefix/imgs/gears.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources>
   <include location="assets/qrc/app-bg.qrc"/>
+  <include location="assets/qrc/gears.qrc"/>
   <include location="assets/qrc/logo.qrc"/>
   <include location="assets/qrc/hide.qrc"/>
   <include location="assets/qrc/show.qrc"/>
   <include location="assets/qrc/doctor.qrc"/>
-  <include location="assets/qrc/app-bg.qrc"/>
-  <include location="assets/qrc/hide.qrc"/>
-  <include location="assets/qrc/show.qrc"/>
   <include location="../../../../Capstone 2023 Stuff/Medical-Office-Administration_BU_4/frontend/ui/assets/qrc/show.qrc"/>
   <include location="../../../../Capstone 2023 Stuff/Medical-Office-Administration_BU_4/frontend/ui/assets/qrc/hide.qrc"/>
   <include location="../../../../Capstone 2023 Stuff/Medical-Office-Administration_BU_4/frontend/ui/assets/qrc/doctor.qrc"/>

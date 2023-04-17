@@ -5,6 +5,7 @@ Authors: Destan Hutcherson,
 """
 from PyQt5.QtWidgets import QPushButton, QLineEdit, QDateEdit, QComboBox
 
+from backend.models import LabOrder
 from frontend.main_nav import Nav
 from backend.data_handler import get_selected_combo_box_object, set_objects_to_combo_box
 
@@ -67,12 +68,34 @@ class Lab(Nav):
         lab_LabDate = self.lab_lab_date_edit.date().toPyDate()
         lab_Lab = get_selected_combo_box_object(self.lab_lab_combo)
         lab_Order = self.lab_order_name.text()
+        patients = self.user_dm.get_patient(first_name=lab_PatientFN,
+                                            last_name=lab_PatientLN,
+                                            dob=lab_PatientDOB)
+        if len(patients) == 0:
+            self.load_error("No Patients")
+            return
+        if len(patients) > 1:
+            self.load_error("More than one patient")
+            return
+
+        patient = patients[0]
 
 
-        selected_emp = get_selected_combo_box_object(self.lab_practitioner_combo)
+        labToAdd = LabOrder(
+            OrderName = lab_Order,
+            PatientID =  patient.PatientID,
+            PhysicianID = lab_Practitioner.EmployeeID,
+            LabDate = lab_LabDate,
+            LabID = lab_Lab.LabID,
+            LocationID = lab_Location.LocationID,
+            Employee = lab_Practitioner,
+            Patient = patient,
+            Location = lab_Location
+        )
 
-        print(" Selected Employee Is:", selected_emp)
-        print(" We have the access to the whole object: ")
-        print(" Position:", selected_emp.Position)
+
+        self.misc_dm.add_lab_order(labToAdd)
+
+
     def clearInputs(self):
         pass

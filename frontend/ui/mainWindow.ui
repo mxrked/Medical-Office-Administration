@@ -430,7 +430,7 @@ QPushButton::hover {
 border-image: transparent;</string>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="Appointments">
       <widget class="QWidget" name="layoutWidget">
@@ -4855,7 +4855,7 @@ QListWidget::item:selected {
               <widget class="QComboBox" name="CheckIn_Location">
                <property name="minimumSize">
                 <size>
-                 <width>240</width>
+                 <width>200</width>
                  <height>0</height>
                 </size>
                </property>
@@ -4864,6 +4864,12 @@ QListWidget::item:selected {
                  <width>240</width>
                  <height>16777215</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -4918,7 +4924,7 @@ QListWidget::item:selected {
               <widget class="QComboBox" name="CheckIn_Provider">
                <property name="minimumSize">
                 <size>
-                 <width>240</width>
+                 <width>200</width>
                  <height>0</height>
                 </size>
                </property>
@@ -4927,6 +4933,12 @@ QListWidget::item:selected {
                  <width>240</width>
                  <height>16777215</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -5251,6 +5263,12 @@ QListWidget::item:selected {
             </item>
             <item>
              <widget class="QComboBox" name="CheckOut_ComboBox_Location">
+              <property name="font">
+               <font>
+                <family>MS Shell Dlg 2</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true"/>
               </property>
@@ -6833,7 +6851,7 @@ QListWidget::item:selected {
               <widget class="QComboBox" name="Approve_Combo_Location">
                <property name="minimumSize">
                 <size>
-                 <width>240</width>
+                 <width>200</width>
                  <height>0</height>
                 </size>
                </property>
@@ -6842,6 +6860,12 @@ QListWidget::item:selected {
                  <width>240</width>
                  <height>16777215</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -6896,7 +6920,7 @@ QListWidget::item:selected {
               <widget class="QComboBox" name="Approve_Combo_Provider">
                <property name="minimumSize">
                 <size>
-                 <width>240</width>
+                 <width>200</width>
                  <height>0</height>
                 </size>
                </property>
@@ -6905,6 +6929,12 @@ QListWidget::item:selected {
                  <width>240</width>
                  <height>16777215</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>

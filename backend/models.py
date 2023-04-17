@@ -37,6 +37,7 @@ class Appointment(Base):
             Has a str method if needed
     """
     __tablename__ = "Appointment"
+    patient_name = ""
 
     AppointmentID = Column(Integer, primary_key=True)
 
@@ -59,7 +60,14 @@ class Appointment(Base):
     def __str__(self) -> str:
 
         formated_time = self.ApptTime.strftime("%I:%M:%S %p")
-        return f"{formated_time} for {self.Patient}"
+        try: # Sometimes the patient name is decoupled
+            return f"{formated_time} for {self.Patient}"
+        except:
+            return f"{formated_time} for {self.patient_name}"
+             
+            
+       
+        
 
 class AppointmentType(Base):
     """

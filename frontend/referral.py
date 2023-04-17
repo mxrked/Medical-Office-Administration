@@ -54,9 +54,7 @@ class Referral(Nav):
 
             For the Comboboxes use a data_handler find the selected box
         """
-        print(self.create_referral.__doc__)
 
-    def searchRef(self):
         REF_patientFN = self.ref_fname.text()
         REF_patientLN = self.ref_lname.text()
         REF_patientDOB = self.ref_dob.date().toPyDate()

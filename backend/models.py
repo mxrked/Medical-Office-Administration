@@ -136,9 +136,11 @@ class Employee(Base):
     Position = Column(VARCHAR(50))
     UserID = Column(Integer, ForeignKey("User.UserID"))
     Email = Column(VARCHAR(50))
+    LocationID = Column(Integer, ForeignKey("Location.LocationID"))
 
     EmployeeType = relationship("EmployeeType", backref="EmpEmployeeType")
     User = relationship("User", backref="EmpUser")
+    Location = relationship("Location", backref="EmpLocation")
 
     def __str__(self) -> str:
         return f"{self.Title} {self.FirstName}, {self.Last_Name} ({self.Position})"
@@ -390,4 +392,3 @@ class UserType(Base):
     UserTypeID = Column(Integer, primary_key=True, nullable=False)
 
     UserType = Column(VARCHAR(50), nullable=False)
-

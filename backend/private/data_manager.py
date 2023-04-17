@@ -32,7 +32,7 @@ class DataManager():
             session.commit()
         except AssertionError as error:
         
-            assert False, "Assertion Error Happened"
+            assert False, str(error)
 
         except Exception as error:        
             session.rollback()

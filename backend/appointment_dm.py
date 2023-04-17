@@ -49,12 +49,11 @@ class AppointmentDM(AppointmentStatusDataManger):
             :return: A list of Appointment objects representing the available appointment times.
         """
 
-        ### Make sure appt_date is not before today
-
-        if appt_date < datetime.datetime.now().date():
-            raise ValueError("Appoinment date cannot be before today's date")
-
         avaliable_appointments = []
+
+        ### Make sure appt_date is not before today
+        assert appt_date >= datetime.datetime.now().date(), ("Appoinment date cannot be before today's date")
+        
 
         ### First We Check if the Location is open ###
 
@@ -257,7 +256,8 @@ class AppointmentDM(AppointmentStatusDataManger):
     def __check_appointment_available(self, appt: Appointment,
                                             new_time:time=None,
                                             new_date:date=None,
-                                            custom_time:bool=None) -> bool:
+                                            custom_time:bool=None,
+                                            length: timedelta=None) -> bool:
         """
             Check if a given appointment is available at a specific time and date.
             Will output a AssertionError if there is a issue with the check
@@ -272,16 +272,17 @@ class AppointmentDM(AppointmentStatusDataManger):
         """
         if new_time:
             appt.ApptTime = new_time
+            
+            new_time_delta = datetime.datetime.combine( date.today(), new_time)
+            appt.ApptEndtime = new_time + length
 
         if new_date:
             appt.ApptDate = new_date
 
+
         with self.session_scope() as session:
 
             ### First We check if there are any taken appointments ###
-
-            appt_end_time = appt.ApptEndtime
-
 
 
             taken_appointment_statuses = ["Scheduled", "In Progress"]
@@ -362,7 +363,8 @@ class AppointmentDM(AppointmentStatusDataManger):
                         Event.StartDate <= check_date, # Check if its after start date
                         Event.EndDate >= check_date, # Check if its before end date
                         ).first()
-            session.expunge(events)
+            if events is not None:
+                session.expunge(events)
             return events
 
     def __get_week_number(self, check_date:date):
@@ -389,60 +391,5 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         return week_number
 
-    def __subtract_times(self, time1:time, time2:time) -> time:
-        
-        today = datetime.datetime.today()
-        datetime1 = datetime.datetime.combine(today, time1)
-        datetime2 = datetime.datetime.combine(today, time2)
-
-        return (datetime1 - datetime2 + timedelta(days=1)) 
-
 if __name__ == "__main__":
-    from backend.user_dm import UserDM
-    from backend.misc_dm import MiscDM
-
-    appt_dm = AppointmentDM()
-    user_dm = UserDM()
-    misc_dm = MiscDM()
-
-    me = user_dm.get_patient("Jessica", "Weeks", date(2000,2,17))[0]
-    my_physician = user_dm.get_physicians()[0]
-    my_appointment_type = appt_dm.get_appointment_types()[0]
-    my_location = misc_dm.get_locations()[0]
-    
-    print(me.Gender)
-    my_physician= my_physician
-    my_appointment_type = my_appointment_type
-    my_location = my_location
-
-    appt = Appointment(
-        ApptDate=date(2023,4,17),
-        ApptTime=time(16,00),
-        PatientID=me.PatientID,
-        ApptStatus="Scheduled",
-        ApptEndtime=time(17,00),
-        PhysicianID = my_physician.EmployeeID,
-        ApptTypeID=my_appointment_type.ApptTypeID,
-        LocationID=my_location.LocationID,
-        ApptReason="Can't Stop Dancing!",
-
-        Patient = me,
-        Employee = my_physician,
-        AppointmentType = my_appointment_type,
-        Location = my_location
-    )
-    
-    
-    list_of_obj = appt_dm.get_avaliable_appointments(
-        appt_date=date(2023,4,17),
-        provider=my_physician,
-        location=my_location,
-        appt_type=my_appointment_type,
-        appt_length=timedelta(minutes=15),
-        patient=me,
-        appt_reason="We Jammin"
-    )
-    
-    for i in list_of_obj:
-        print(i)
-
+   pass

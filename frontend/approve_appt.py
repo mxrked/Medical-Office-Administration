@@ -46,6 +46,8 @@ class Approve(Nav):
         self.get_locations_into(self.a_location)
         self.get_physicians_into(self.a_provider)
 
+        self.a_location.currentIndexChanged.connect(self.a_location_chagne)
+
     def approve(self):
         """
             Gets the selected item from self.approve_list
@@ -104,3 +106,6 @@ class Approve(Nav):
 
         print(self.a_refresh.__doc__)
 
+    def a_location_chagne(self):
+        location = get_selected_combo_box_object(self.a_location)
+        self.get_physicians_into(self.a_provider, location_id=location.LocationID)

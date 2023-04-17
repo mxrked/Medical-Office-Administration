@@ -50,6 +50,8 @@ class CheckIn(Nav):
         self.get_locations_into(self.check_in_location)
         self.get_physicians_into(self.check_in_providers)
 
+        self.check_in_location.currentIndexChanged.connect(self.check_in_location_change)
+
         self.check_in_refresh(in_init=True)
 
     def check_in(self):
@@ -131,4 +133,6 @@ class CheckIn(Nav):
         set_objects_to_list(listOfAppointments, self.check_ins_list)
 
 
-
+    def check_in_location_change(self):
+        location = get_selected_combo_box_object(self.check_in_location)
+        self.get_physicians_into(self.check_in_providers, location_id=location.LocationID)

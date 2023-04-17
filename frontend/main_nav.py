@@ -407,7 +407,7 @@ class Nav(QMainWindow):
         combo_box.setCurrentIndex(int(default_location))
 
 
-    def get_physicians_into(self, combo_box: QComboBox):
+    def get_physicians_into(self, combo_box: QComboBox, location_id=None):
         """
             Loads all physicians into the combo_box,
                 just provide the elevant data_manager
@@ -418,7 +418,11 @@ class Nav(QMainWindow):
             We do this several times in the frontend. 
                 This prevents duplicate code
         """
-        physicians = self.user_dm.get_physicians()
+
+        if location_id is None:
+            location_id = int(self.settings_json["default_location_ID"])
+
+        physicians = self.user_dm.get_physicians(location_id)
         set_objects_to_combo_box(physicians, combo_box)
 
 

@@ -8,7 +8,8 @@ from backend.data_handler import set_objects_to_combo_box, get_selected_combo_bo
 from backend.appointment_dm import AppointmentDM
 from backend.misc_dm import MiscDM
 from backend.user_dm import UserDM
-from datetime import timedelta
+from backend.models import Location
+from datetime import timedelta, datetime, date
 
 class Schedule(Nav):
     def __init__(self):
@@ -47,13 +48,14 @@ class Schedule(Nav):
         self.SA_YesCustomTimePushButton.clicked.connect(self.enableCustomTime)
         self.SA_SearchPushButton.clicked.connect(self.search_SA)
         self.SA_ScheduleAppointmentPushButton.clicked.connect(self.scheduleAppointment)
-
         
 
         set_objects_to_combo_box(self.appointment_dm.get_appointment_types(), self.SA_AppointmentTypesComboBox)
 
         self.get_locations_into(self.SA_OfficeLocationsComboBox)
         self.get_physicians_into(self.SA_PhysicianNamesComboBox)
+
+        self.SA_OfficeLocationsComboBox.currentIndexChanged.connect(self.change_location_sa)
 
         self.custom_time = False
 
@@ -77,6 +79,10 @@ class Schedule(Nav):
         self.SA_CurrentAvailableTimesListWidget.clearSelection()
         self.SA_CustomTimeTimeEdit.setEnabled(True)
         self.SA_CustomTimeTimeEdit.setStyleSheet(enableCustomTime_Style)
+    
+    def change_location_sa(self):
+        location = get_selected_combo_box_object(self.SA_OfficeLocationsComboBox)
+        self.get_physicians_into(self.SA_PhysicianNamesComboBox, location_id=location.LocationID)
 
     def search_SA(self):
         
@@ -90,12 +96,12 @@ class Schedule(Nav):
         SA_physicianName = get_selected_combo_box_object(self.SA_PhysicianNamesComboBox)
         SA_appointmentDate = self.SA_AppointmentDateDateEdit.date().toPyDate()
 
-        patients = self.user_dm.get_patient(first_name=SA_patientFN,
+        patients = self.user_dm.get_patients(first_name=SA_patientFN,
                                                     last_name=SA_patientLN,
                                                     dob=SA_patientDOB)
 
         if len(patients) == 0:
-            self.load_error("No Patients")
+            self.load_error("No Patients found")
             return
         if len(patients) > 1:
             self.load_error("More than one patient")
@@ -112,7 +118,7 @@ class Schedule(Nav):
             return
 
         appt_length = timedelta(minutes=int(SA_appointmentLength))
-        
+
         try:
             availableTimes = self.appointment_dm.get_avaliable_appointments(
                 appt_date=SA_appointmentDate,
@@ -126,22 +132,46 @@ class Schedule(Nav):
         except AssertionError as error:
             self.load_error(str(error))
             return
-        
+
         set_objects_to_list(availableTimes, self.SA_CurrentAvailableTimesListWidget)
 
     def scheduleAppointment(self):
 
+        first_item = self.SA_CurrentAvailableTimesListWidget.item(0)
+        
+        if first_item is None:
+            self.load_error("Please Search for Appointments First")
+            return
+        
         appt = get_selected_list_object(self.SA_CurrentAvailableTimesListWidget)
-        self.appointment_dm.add_appointment(appt)
+        
+        if (appt is None) and self.custom_time:
+            # A reminder from data_handlers we store classes of objects to the list
+            appt = first_item.obj
 
+            # We pull the custom time, covnert it for adding later
+            start_time = self.SA_CustomTimeTimeEdit.time().toPyTime()
+            start_datetime = datetime.combine(date.today(), start_time)
+
+            # Pull the length
+            SA_appointmentLength = self.SA_AppointmentLengthLineEdit.text()
+            length = timedelta(minutes=int(SA_appointmentLength))
+            
+            # Modify it with custom time
+            appt.ApptTime = start_time
+            appt.ApptEndTime = start_datetime + length
+        else:
+            self.load_error("No Item Selected")
+            return
+        try:
+            self.appointment_dm.add_appointment(appt, self.custom_time)
+        except AssertionError as error:
+            self.load_error(str(error))
 
 
 class Reschedule(Nav):
     def __init__(self):
         super(Reschedule, self).__init__()
-
-        RA_Locations = MiscDM().get_locations()
-        RA_Physicians = UserDM().get_physicians()
 
         self.RA_OfficeLocationsComboBox = self.findChild(QComboBox, "ComboBox_OfficeLocations_RA")
         self.RA_PhysicianNamesComboBox = self.findChild(QComboBox, "ComboBox_PhysicianNames_RA")
@@ -161,8 +191,8 @@ class Reschedule(Nav):
         self.RA_DisplayTimesAppointmentsPushButton.mousePressEvent = lambda event: self.displayTimesApps()
         self.RA_RescheduleAppointmentPushButton.mousePressEvent = lambda event: self.rescheduleAppointment()
 
-        set_objects_to_combo_box(RA_Locations, self.RA_OfficeLocationsComboBox)
-        set_objects_to_combo_box(RA_Physicians, self.RA_PhysicianNamesComboBox)
+        self.get_locations_into(self.RA_OfficeLocationsComboBox)
+        self.get_physicians_into(self.RA_PhysicianNamesComboBox)
 
     def displayTimesApps(self):
         print("DisplayTimesApps")
@@ -175,9 +205,6 @@ class Reschedule(Nav):
 class Cancel(Nav):
     def __init__(self):
         super(Cancel, self).__init__()
-
-        CA_Locations = MiscDM().get_locations()
-        CA_Physicians = UserDM().get_physicians()
 
         self.CA_OfficeLocationsComboBox = self.findChild(QComboBox, "ComboBox_OfficeLocations_CA")
         self.CA_PhysicianNamesComboBox = self.findChild(QComboBox, "ComboBox_PhysicianNames_CA")
@@ -194,8 +221,8 @@ class Cancel(Nav):
         self.CA_SearchForAppointmentsPushButton.mousePressEvent = lambda event: self.search_CA()
         self.CA_CancelAppointmentPushButton.mousePressEvent = lambda event: self.cancelAppointment()
 
-        set_objects_to_combo_box(CA_Locations, self.CA_OfficeLocationsComboBox)
-        set_objects_to_combo_box(CA_Physicians, self.CA_PhysicianNamesComboBox)
+        self.get_locations_into(self.CA_OfficeLocationsComboBox)
+        self.get_physicians_into(self.CA_PhysicianNamesComboBox)
 
     def search_CA(self):
         print("Search SA")

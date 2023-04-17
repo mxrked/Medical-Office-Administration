@@ -4,7 +4,7 @@ from typing import List
 
 from backend.private.data_manager import DataManager
 
-from backend.models import AppointmentType, Employee, User, EmployeeType, Patient, EmpGroupCross, Group, Role, \
+from backend.models import Location, Employee, User, Patient, EmpGroupCross, Group, Role, \
     GroupRoleCross
 from sqlalchemy.orm import joinedload
 import sqlalchemy as sa
@@ -60,20 +60,35 @@ class UserDM(DataManager):
             return False
 
 
-    def get_physicians(self) -> list[Employee]:
+    def get_physicians(self, location_id=None) -> list[Employee]:
+        """
         
+        :param: location_id : Corresponds to a LocationID -1 (So it matches up with JSON)
+            Certain physicians only work at certain locations
+            if location is -1, it will search all locations
+
+        """
         valid_types = ["General Practitioner", "Internal Medicine", "Ear, Nose & Throat", "Womens Medicine"]
 
         with self.session_scope() as session:
-            physicians = session.query(Employee) \
-                .where(Employee.Position.in_(valid_types)) \
-                .order_by(Employee.Position.asc(), Employee.FirstName.asc()) \
-                .all()
+            
+            if location_id is None:
+                #Search all locations instead
+                physicians = session.query(Employee) \
+                    .where(Employee.Position.in_(valid_types)) \
+                    .order_by(Employee.Position.asc(), Employee.FirstName.asc()) \
+                    .all()
+            else:
+                physicians = session.query(Employee) \
+                    .where(Employee.Position.in_(valid_types),
+                        Employee.LocationID == location_id) \
+                    .order_by(Employee.Position.asc(), Employee.FirstName.asc()) \
+                    .all()
 
             [session.expunge(physician) for physician in physicians]
             return physicians
 
-    def get_patient(self, first_name: str, last_name: str, dob: date) -> list[Patient]:
+    def get_patients(self, first_name: str, last_name: str, dob: date) -> list[Patient]:
         """
         Returns a list of patients whose name contains the search text.
         NOTE TO FRONTEND: THERE CAN BE MULTIPLE PATIENTS THAT ARE RETURNED. BE SURE TO HANDLE THIS.
@@ -85,7 +100,7 @@ class UserDM(DataManager):
         """
 
         with self.session_scope() as session:
-            
+        
             patients = session.query(Patient) \
                 .where(dob == Patient.DateOfBirth, first_name == Patient.First_Name, last_name == Patient.Last_Name) \
                 .all()

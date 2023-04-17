@@ -38,8 +38,8 @@ class Lab(Nav):
         self.lab_clear_btn.clicked.connect(self.clearInputs)
 
         # fill combo boxes
-        set_objects_to_combo_box(self.user_dm.get_physicians(), self.lab_practitioner_combo)
-        set_objects_to_combo_box(self.misc_dm.get_locations(), self.lab_locations_combo)
+        self.get_physicians_into(self.lab_practitioner_combo)
+        self.get_locations_into(self.lab_locations_combo)
         set_objects_to_combo_box(self.misc_dm.get_lab_tests(), self.lab_lab_combo)
 
 
@@ -58,19 +58,19 @@ class Lab(Nav):
             
             Then run self.clear_inputs()
         """
-        #print(self.submit_information.__doc__)
 
-        lab_PatientFN = self.lab_fname.text()
-        lab_PatientLN = self.lab_lname.text()
-        lab_PatientDOB = self.lab_dob.date().toPyDate()
-        lab_Practitioner = get_selected_combo_box_object(self.lab_practitioner_combo)
-        lab_Location = get_selected_combo_box_object(self.lab_locations_combo)
-        lab_LabDate = self.lab_lab_date_edit.date().toPyDate()
-        lab_Lab = get_selected_combo_box_object(self.lab_lab_combo)
-        lab_Order = self.lab_order_name.text()
-        patients = self.user_dm.get_patient(first_name=lab_PatientFN,
-                                            last_name=lab_PatientLN,
-                                            dob=lab_PatientDOB)
+
+        patient_fn = self.lab_fname.text()
+        patient_ln = self.lab_lname.text()
+        patient_dob = self.lab_dob.date().toPyDate()
+        physician = get_selected_combo_box_object(self.lab_practitioner_combo)
+        location = get_selected_combo_box_object(self.lab_locations_combo)
+        lab_date = self.lab_lab_date_edit.date().toPyDate()
+        lab_lab = get_selected_combo_box_object(self.lab_lab_combo)
+        lab_order = self.lab_order_name.text()
+        patients = self.user_dm.get_patients(first_name=patient_fn,
+                                            last_name=patient_ln,
+                                            dob=patient_dob)
         if len(patients) == 0:
             self.load_error("No Patients")
             return
@@ -82,20 +82,17 @@ class Lab(Nav):
 
 
         labToAdd = LabOrder(
-            OrderName = lab_Order,
+            OrderName = lab_order,
             PatientID =  patient.PatientID,
-            PhysicianID = lab_Practitioner.EmployeeID,
-            LabDate = lab_LabDate,
-            LabID = lab_Lab.LabID,
-            LocationID = lab_Location.LocationID,
-            Employee = lab_Practitioner,
+            PhysicianID = physician.EmployeeID,
+            LabDate = lab_date,
+            LabID = lab_lab.LabID,
+            LocationID = location.LocationID,
+            Employee = physician,
             Patient = patient,
-            Location = lab_Location
+            Location = location
         )
 
 
         self.misc_dm.add_lab_order(labToAdd)
 
-
-    def clearInputs(self):
-        pass

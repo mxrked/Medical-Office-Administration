@@ -3,7 +3,7 @@ main.py - Runs all the main windows except StartWindow
 Author: Jessica Weeks
 """
 import sys
-from datetime import datetime, date
+from datetime import datetime
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication
 from frontend.schedule import Schedule, Reschedule, Cancel

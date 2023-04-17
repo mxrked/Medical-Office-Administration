@@ -9,7 +9,7 @@ from backend.appointment_dm import AppointmentDM
 from backend.misc_dm import MiscDM
 from backend.user_dm import UserDM
 from backend.models import Location
-from datetime import timedelta
+from datetime import timedelta, datetime, date
 
 class Schedule(Nav):
     def __init__(self):
@@ -101,7 +101,7 @@ class Schedule(Nav):
                                                     dob=SA_patientDOB)
 
         if len(patients) == 0:
-            self.load_error("No Patients")
+            self.load_error("No Patients found")
             return
         if len(patients) > 1:
             self.load_error("More than one patient")
@@ -118,7 +118,7 @@ class Schedule(Nav):
             return
 
         appt_length = timedelta(minutes=int(SA_appointmentLength))
-        
+
         try:
             availableTimes = self.appointment_dm.get_avaliable_appointments(
                 appt_date=SA_appointmentDate,
@@ -132,14 +132,41 @@ class Schedule(Nav):
         except AssertionError as error:
             self.load_error(str(error))
             return
-        
+
         set_objects_to_list(availableTimes, self.SA_CurrentAvailableTimesListWidget)
 
     def scheduleAppointment(self):
 
+        first_item = self.SA_CurrentAvailableTimesListWidget.item(0)
+        
+        if first_item is None:
+            self.load_error("Please Search for Appointments First")
+            return
+        
         appt = get_selected_list_object(self.SA_CurrentAvailableTimesListWidget)
-        self.appointment_dm.add_appointment(appt)
+        
+        if (appt is None) and self.custom_time:
+            # A reminder from data_handlers we store classes of objects to the list
+            appt = first_item.obj
 
+            # We pull the custom time, covnert it for adding later
+            start_time = self.SA_CustomTimeTimeEdit.time().toPyTime()
+            start_datetime = datetime.combine(date.today(), start_time)
+
+            # Pull the length
+            SA_appointmentLength = self.SA_AppointmentLengthLineEdit.text()
+            length = timedelta(minutes=int(SA_appointmentLength))
+            
+            # Modify it with custom time
+            appt.ApptTime = start_time
+            appt.ApptEndTime = start_datetime + length
+        else:
+            self.load_error("No Item Selected")
+            return
+        try:
+            self.appointment_dm.add_appointment(appt, self.custom_time)
+        except AssertionError as error:
+            self.load_error(str(error))
 
 
 class Reschedule(Nav):

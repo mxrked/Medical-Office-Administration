@@ -2,8 +2,9 @@
 appointment_status_data_manager.py - A data manager for interacting with appointment status
 Author: Jessica Weeks
 """
-from datetime import date
+from datetime import date, datetime
 import sqlalchemy as sa
+from sqlalchemy.orm import make_transient
 from backend.private.data_manager import DataManager
 from backend.models import Appointment, Location, Employee
 
@@ -103,7 +104,8 @@ class AppointmentStatusDataManger(DataManager):
 
     def get_todays_appointments(self,
                                 location: Location=None,
-                                provider: Employee=None) -> list[Appointment]:
+                                provider: Employee=None,
+                                check_date=date.today()) -> list[Appointment]:
         """
             Get appointments that are for today. 
             You can use either Location or Employee to search
@@ -113,13 +115,22 @@ class AppointmentStatusDataManger(DataManager):
             :param provider: Use for searching this particular Employee (Usually a provider)
             :return: A list of appointments for today
         """
+
+
         with self.session_scope() as session:
-            todays_appointments = session.query(Appointment).filter(
+
+            todays_appointments = session.query(Appointment).where(
                 Appointment.ApptStatus.in_(["Scheduled", "Rescheduled"]),
-                Appointment.ApptDate == date.today(),
-                Appointment.LocationID == location.LocationID if location else True,
-                Appointment.PhysicianID == provider.EmployeeID if provider else True
+                Appointment.ApptDate == check_date,
+                Appointment.LocationID == location.LocationID,
+                Appointment.PhysicianID == provider.EmployeeID
                 ).all()
-            
-            [session.expunge(today) for today in todays_appointments]
+    
+            for appt in todays_appointments:
+                patient_name = str(appt.Patient)
+                session.expunge(appt) # Detached Parent Tables
+                appt.patient_name = patient_name
+
+
+            #[session.expunge(today) for today in todays_appointments]
             return todays_appointments

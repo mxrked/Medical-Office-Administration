@@ -61,16 +61,15 @@ class AppointmentDM(AppointmentStatusDataManger):
         hours = self.__get_hours_for(appt_date, location)
 
         # This means they are closed
-        if hours.OpenTime is None:
-            return avaliable_appointments
+        assert hours.OpenTime is not None, "Clinic is closed on this day"
+
 
         ### Then We check if the employee is out ###
 
         events = self.__get_events_for(provider, appt_date)
 
         # This means they are out!
-        if events is not None:
-            return avaliable_appointments
+        assert events is None, "Provider is out on this day"
 
 
         ### Next we get every appointment and place them into a dictionary with their length ###
@@ -94,7 +93,7 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         for taken_appt in taken_appointments:
 
-            taken_appt_start = taken_appt.ApptTime
+            taken_start = taken_appt.ApptTime
             
             start = taken_appt.ApptTime
             end = taken_appt.ApptEndtime
@@ -105,7 +104,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             
             taken_appt_length = datetime.datetime.combine(datetime.datetime.min, end) -\
             datetime.datetime.combine(datetime.datetime.min, start)
-            taken_appointment_times_dict[taken_appt_start] = taken_appt_length
+            taken_appointment_times_dict[taken_start] = taken_appt_length
 
 
 
@@ -138,18 +137,19 @@ class AppointmentDM(AppointmentStatusDataManger):
             # We loop through our list of taken appointment times
             for taken_appointment, taken_appt_length in taken_appointment_times_dict.items():
                 # Converting appointment to datetime so we can compare using timedelta
-                taken_appt_start = datetime.datetime.combine(datetime.datetime.today(), taken_appointment)
+                taken_start = datetime.datetime.combine(datetime.datetime.today(), taken_appointment)
                 # Our discionary contains timedeltas as the apopintment length
-                taken_appt_end = taken_appt_start + taken_appt_length
+                taken_end = taken_start + taken_appt_length
 
 
-                # We first check if the appt_start is inbetween this taken_appointment
-                # Then we check if the appt_end is inbetween this taken_appointment
-                if (((appt_start >= taken_appt_start) and (appt_start < taken_appt_end)) or
-                    ((appt_end > taken_appt_end) and (appt_end < taken_appt_end))):
+
+                # Check if there is a intersection
+                if ((appt_start < taken_end and appt_end > taken_start) or 
+                    (taken_start < appt_end and taken_end > appt_start)):
+
                     # If it is in between it means we can't use this time!
                     # We must skip ahead to the end of this appointment to look for more times!
-                    search_datetime = taken_appt_end
+                    search_datetime = taken_end
                     break
 
             else:
@@ -161,13 +161,12 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         # Alrighty! Now we have a list of appointment times that are free!
         # Now to just make a bunch of objects using them
-
         for appt_time in avaliable_appointments_times:
             appt_endtime = (appt_time + appt_length).time()
-            
+
             appt_time = appt_time.time()
-            avaliable_appointments.append(
-                Appointment(
+            
+            avaliable_appointments.append(Appointment(
                     ApptDate=appt_date,
                     ApptTime=appt_time,
                     PatientID=patient.PatientID,
@@ -185,7 +184,9 @@ class AppointmentDM(AppointmentStatusDataManger):
                 )
             )
 
-        return avaliable_appointments
+        assert len(avaliable_appointments) > 0, "No appointments Avaliable on" + appt_date.strftime("%m/%d/%Y")
+
+        return  avaliable_appointments
 
 
     def set_appointment_time(self, appt:Appointment,
@@ -211,7 +212,7 @@ class AppointmentDM(AppointmentStatusDataManger):
                 .where(Appointment.AppointmentID == appt.AppointmentID)\
                 .values(ApptTime=new_time, ApptDate=new_date)
             session.execute(stmt)
-            session.commit()
+
 
     def add_appointment(self, appt: Appointment, custom_time=None):
         """
@@ -298,15 +299,11 @@ class AppointmentDM(AppointmentStatusDataManger):
                             # Check if the existing Boolean value of this clause is not definedappointment start time is in between the new appointment
                             sa.and_(Appointment.ApptTime >= appt.ApptTime,
                                     appt.ApptEndtime > Appointment.ApptTime)
-                
-                
-                
                         )
                     )
                 ).all()
 
             assert len(taken_appointments) == 0, "Appointment Already Taken!"
-            print("No Taken Appointments")
 
             ### Then We pull the hours for the location and day ###
 
@@ -365,7 +362,7 @@ class AppointmentDM(AppointmentStatusDataManger):
                         Event.StartDate <= check_date, # Check if its after start date
                         Event.EndDate >= check_date, # Check if its before end date
                         ).first()
-            events
+            session.expunge(events)
             return events
 
     def __get_week_number(self, check_date:date):

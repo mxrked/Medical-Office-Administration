@@ -30,9 +30,14 @@ class DataManager():
         try:
             yield session
             session.commit()
-        except:
+        except AssertionError as error:
+        
+            assert False, "Assertion Error Happened"
+
+        except Exception as error:        
             session.rollback()
-            assert False, "Something is deeply wrong"
+            raise error
+
         finally:
             session.close()
 

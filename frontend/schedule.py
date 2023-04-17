@@ -104,23 +104,28 @@ class Schedule(Nav):
         patient = patients[0]
 
         try:
-            assert SA_appointmentReason != "", "Appointment Reason"
-            assert SA_appointmentLength.isdigit(), "Appointment Length"
+            assert SA_appointmentReason != "", "No appointment Reason"
+            assert SA_appointmentLength.isdigit(), "Invalid appointment Length"
 
         except AssertionError as error:
-            self.load_error("Invalid:" + str(error))
+            self.load_error(str(error))
             return
 
         appt_length = timedelta(minutes=int(SA_appointmentLength))
-        availableTimes = self.appointment_dm.get_avaliable_appointments(
-            appt_date=SA_appointmentDate,
-            provider=SA_physicianName,
-            location=SA_officeLocation,
-            appt_type=SA_appointmentType,
-            appt_length=appt_length,
-            patient=patient,
-            appt_reason=SA_appointmentReason
-            )
+        
+        try:
+            availableTimes = self.appointment_dm.get_avaliable_appointments(
+                appt_date=SA_appointmentDate,
+                provider=SA_physicianName,
+                location=SA_officeLocation,
+                appt_type=SA_appointmentType,
+                appt_length=appt_length,
+                patient=patient,
+                appt_reason=SA_appointmentReason
+                )
+        except AssertionError as error:
+            self.load_error(str(error))
+            return
         
         set_objects_to_list(availableTimes, self.SA_CurrentAvailableTimesListWidget)
 

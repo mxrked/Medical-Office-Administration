@@ -422,7 +422,7 @@ QPushButton::hover {
        <x>0</x>
        <y>0</y>
        <width>1450</width>
-       <height>795</height>
+       <height>811</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -640,7 +640,7 @@ QPushButton::hover {
         <rect>
          <x>130</x>
          <y>100</y>
-         <width>1000</width>
+         <width>1171</width>
          <height>0</height>
         </rect>
        </property>
@@ -3412,10 +3412,10 @@ QLabel {
        <widget class="QWidget" name="verticalLayoutWidget">
         <property name="geometry">
          <rect>
-          <x>620</x>
+          <x>609</x>
           <y>120</y>
-          <width>410</width>
-          <height>501</height>
+          <width>411</width>
+          <height>451</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -3436,7 +3436,7 @@ color: rgb(255, 255, 255);</string>
               <string>Apt. #:</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -3444,7 +3444,7 @@ color: rgb(255, 255, 255);</string>
             <widget class="QLineEdit" name="new_patient_apt_lineEdit_3">
              <property name="maximumSize">
               <size>
-               <width>325</width>
+               <width>240</width>
                <height>16777215</height>
               </size>
              </property>
@@ -3480,7 +3480,7 @@ color: rgb(255, 255, 255);</string>
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;City:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -3488,7 +3488,7 @@ color: rgb(255, 255, 255);</string>
             <widget class="QLineEdit" name="city_lineEdit">
              <property name="maximumSize">
               <size>
-               <width>325</width>
+               <width>240</width>
                <height>16777215</height>
               </size>
              </property>
@@ -3523,7 +3523,7 @@ color: rgb(255, 255, 255);</string>
             <widget class="QLabel" name="state_label">
              <property name="maximumSize">
               <size>
-               <width>145</width>
+               <width>160</width>
                <height>16777215</height>
               </size>
              </property>
@@ -3539,7 +3539,7 @@ color: rgb(255, 255, 255);</string>
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;State:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -3553,7 +3553,7 @@ color: rgb(255, 255, 255);</string>
              </property>
              <property name="maximumSize">
               <size>
-               <width>325</width>
+               <width>240</width>
                <height>35</height>
               </size>
              </property>
@@ -3835,7 +3835,7 @@ color: rgb(255, 255, 255);</string>
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Zip Code:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -3843,7 +3843,7 @@ color: rgb(255, 255, 255);</string>
             <widget class="QLineEdit" name="zip_code_lineEdit">
              <property name="maximumSize">
               <size>
-               <width>325</width>
+               <width>240</width>
                <height>16777215</height>
               </size>
              </property>
@@ -3879,7 +3879,7 @@ color: rgb(255, 255, 255);</string>
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Phone Number:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -3887,7 +3887,7 @@ color: rgb(255, 255, 255);</string>
             <widget class="QLineEdit" name="phone_number_lineEdit">
              <property name="maximumSize">
               <size>
-               <width>325</width>
+               <width>240</width>
                <height>16777215</height>
               </size>
              </property>
@@ -3923,7 +3923,7 @@ color: rgb(255, 255, 255);</string>
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Email:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -3931,7 +3931,7 @@ color: rgb(255, 255, 255);</string>
             <widget class="QLineEdit" name="email_lineEdit">
              <property name="maximumSize">
               <size>
-               <width>325</width>
+               <width>240</width>
                <height>16777215</height>
               </size>
              </property>
@@ -3967,7 +3967,7 @@ color: rgb(255, 255, 255);</string>
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Sex:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -4026,10 +4026,10 @@ color: rgb(255, 255, 255);</string>
         </property>
         <property name="geometry">
          <rect>
-          <x>1040</x>
-          <y>620</y>
+          <x>550</x>
+          <y>590</y>
           <width>100</width>
-          <height>40</height>
+          <height>51</height>
          </rect>
         </property>
         <property name="minimumSize">
@@ -4077,10 +4077,10 @@ QPushButton::hover {
        <widget class="QWidget" name="verticalLayoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>190</x>
+          <x>180</x>
           <y>120</y>
-          <width>389</width>
-          <height>501</height>
+          <width>411</width>
+          <height>451</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
@@ -4088,6 +4088,12 @@ QPushButton::hover {
           <layout class="QHBoxLayout" name="horizontalLayout_FirstName_3">
            <item>
             <widget class="QLabel" name="first_name_label_3">
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <pointsize>14</pointsize>
@@ -4100,7 +4106,7 @@ QPushButton::hover {
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;First Name:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -4108,7 +4114,7 @@ QPushButton::hover {
             <widget class="QLineEdit" name="p_fname">
              <property name="maximumSize">
               <size>
-               <width>325</width>
+               <width>240</width>
                <height>16777215</height>
               </size>
              </property>
@@ -4135,6 +4141,12 @@ QPushButton::hover {
           <layout class="QHBoxLayout" name="horizontalLayout_MiddleName_3">
            <item>
             <widget class="QLabel" name="middle_name_label_3">
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <pointsize>14</pointsize>
@@ -4147,7 +4159,7 @@ QPushButton::hover {
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Middle Name:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -4155,7 +4167,7 @@ QPushButton::hover {
             <widget class="QLineEdit" name="p_mname">
              <property name="maximumSize">
               <size>
-               <width>325</width>
+               <width>240</width>
                <height>16777215</height>
               </size>
              </property>
@@ -4182,6 +4194,12 @@ QPushButton::hover {
           <layout class="QHBoxLayout" name="horizontalLayout_LastName_3">
            <item>
             <widget class="QLabel" name="last_name_label_3">
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <pointsize>14</pointsize>
@@ -4194,7 +4212,7 @@ QPushButton::hover {
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Last Name:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -4202,7 +4220,7 @@ QPushButton::hover {
             <widget class="QLineEdit" name="p_lname">
              <property name="maximumSize">
               <size>
-               <width>325</width>
+               <width>240</width>
                <height>16777215</height>
               </size>
              </property>
@@ -4226,6 +4244,12 @@ QPushButton::hover {
           <layout class="QHBoxLayout" name="horizontalLayout_Suffeix_3">
            <item>
             <widget class="QLabel" name="suffix_label_3">
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <pointsize>14</pointsize>
@@ -4238,7 +4262,7 @@ QPushButton::hover {
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Suffix:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -4344,6 +4368,12 @@ QPushButton::hover {
           <layout class="QHBoxLayout" name="horizontalLayout_DOB_3">
            <item>
             <widget class="QLabel" name="date_of_birth_label_3">
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <pointsize>14</pointsize>
@@ -4356,12 +4386,19 @@ QPushButton::hover {
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Date of Birth:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QDateEdit" name="p_dob_dateEdit"/>
+            <widget class="QDateEdit" name="p_dob_dateEdit">
+             <property name="maximumSize">
+              <size>
+               <width>240</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -4369,6 +4406,12 @@ QPushButton::hover {
           <layout class="QHBoxLayout" name="horizontalLayout_SSN_3">
            <item>
             <widget class="QLabel" name="ssn_label_3">
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <pointsize>14</pointsize>
@@ -4381,7 +4424,7 @@ QPushButton::hover {
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;SSN:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -4389,7 +4432,7 @@ QPushButton::hover {
             <widget class="QLineEdit" name="p_ssn">
              <property name="maximumSize">
               <size>
-               <width>325</width>
+               <width>240</width>
                <height>16777215</height>
               </size>
              </property>
@@ -4413,6 +4456,12 @@ QPushButton::hover {
           <layout class="QHBoxLayout" name="horizontalLayout_StreetAdress_3">
            <item>
             <widget class="QLabel" name="street_address_label_3">
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <pointsize>14</pointsize>
@@ -4425,7 +4474,7 @@ QPushButton::hover {
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Street Address:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -4433,7 +4482,7 @@ QPushButton::hover {
             <widget class="QLineEdit" name="p_street_address">
              <property name="maximumSize">
               <size>
-               <width>325</width>
+               <width>240</width>
                <height>16777215</height>
               </size>
              </property>
@@ -4458,9 +4507,9 @@ QPushButton::hover {
        <widget class="QLabel" name="Lable_CheckIns">
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>-10</x>
           <y>30</y>
-          <width>1171</width>
+          <width>1221</width>
           <height>50</height>
          </rect>
         </property>
@@ -4606,7 +4655,7 @@ QLabel {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>1121</width>
+            <width>1171</width>
             <height>161</height>
            </rect>
           </property>
@@ -4730,9 +4779,9 @@ QPushButton::hover {
           <property name="geometry">
            <rect>
             <x>50</x>
-            <y>140</y>
+            <y>210</y>
             <width>561</width>
-            <height>471</height>
+            <height>401</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -4763,9 +4812,9 @@ QListWidget::item:selected {
          <widget class="QWidget" name="layoutWidget_17">
           <property name="geometry">
            <rect>
-            <x>630</x>
-            <y>230</y>
-            <width>340</width>
+            <x>679</x>
+            <y>360</y>
+            <width>411</width>
             <height>73</height>
            </rect>
           </property>
@@ -4774,6 +4823,18 @@ QListWidget::item:selected {
             <layout class="QHBoxLayout" name="horizontalLayout_14">
              <item>
               <widget class="QLabel" name="Label_Location_5">
+               <property name="minimumSize">
+                <size>
+                 <width>120</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>120</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>Lato</family>
@@ -4792,6 +4853,24 @@ QListWidget::item:selected {
              </item>
              <item>
               <widget class="QComboBox" name="CheckIn_Location">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -4813,6 +4892,18 @@ QListWidget::item:selected {
             <layout class="QHBoxLayout" name="horizontalLayout_63">
              <item>
               <widget class="QLabel" name="Label_Doctor_5">
+               <property name="minimumSize">
+                <size>
+                 <width>120</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>120</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>Lato</family>
@@ -4831,6 +4922,24 @@ QListWidget::item:selected {
              </item>
              <item>
               <widget class="QComboBox" name="CheckIn_Provider">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -4968,7 +5077,7 @@ QLabel {
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>1121</width>
+           <width>1171</width>
            <height>161</height>
           </rect>
          </property>
@@ -5013,7 +5122,7 @@ QLabel {
         <widget class="QPushButton" name="Checkout_Btn_Checkout">
          <property name="geometry">
           <rect>
-           <x>70</x>
+           <x>130</x>
            <y>640</y>
            <width>181</width>
            <height>51</height>
@@ -5052,7 +5161,7 @@ QPushButton::hover {
         <widget class="QPushButton" name="Checkout_Btn_Refresh">
          <property name="geometry">
           <rect>
-           <x>390</x>
+           <x>350</x>
            <y>640</y>
            <width>181</width>
            <height>51</height>
@@ -5091,10 +5200,10 @@ QPushButton::hover {
         <widget class="QListWidget" name="Checkout_List">
          <property name="geometry">
           <rect>
-           <x>40</x>
-           <y>160</y>
-           <width>561</width>
-           <height>471</height>
+           <x>70</x>
+           <y>200</y>
+           <width>501</width>
+           <height>421</height>
           </rect>
          </property>
          <property name="minimumSize">
@@ -5125,8 +5234,8 @@ QListWidget::item:selected {
         <widget class="QWidget" name="layoutWidget_18">
          <property name="geometry">
           <rect>
-           <x>630</x>
-           <y>230</y>
+           <x>690</x>
+           <y>340</y>
            <width>340</width>
            <height>73</height>
           </rect>
@@ -5154,6 +5263,12 @@ QListWidget::item:selected {
             </item>
             <item>
              <widget class="QComboBox" name="CheckOut_ComboBox_Location">
+              <property name="font">
+               <font>
+                <family>MS Shell Dlg 2</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true"/>
               </property>
@@ -5176,9 +5291,9 @@ QListWidget::item:selected {
         <widget class="QPushButton" name="Checkout_Btn_Download">
          <property name="geometry">
           <rect>
-           <x>670</x>
-           <y>320</y>
-           <width>241</width>
+           <x>750</x>
+           <y>430</y>
+           <width>221</width>
            <height>51</height>
           </rect>
          </property>
@@ -5291,7 +5406,7 @@ QLabel {
            <x>0</x>
            <y>20</y>
            <width>1251</width>
-           <height>561</height>
+           <height>671</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -5307,8 +5422,8 @@ QLabel {
          <widget class="QWidget" name="layoutWidget_30">
           <property name="geometry">
            <rect>
-            <x>110</x>
-            <y>130</y>
+            <x>390</x>
+            <y>110</y>
             <width>411</width>
             <height>41</height>
            </rect>
@@ -5321,6 +5436,12 @@ QLabel {
              </property>
              <item>
               <widget class="QLabel" name="Label_PatientFirstName_3">
+               <property name="maximumSize">
+                <size>
+                 <width>150</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>Lato</family>
@@ -5339,6 +5460,12 @@ QLabel {
              </item>
              <item>
               <widget class="QLineEdit" name="Referral_Edit_Fname">
+               <property name="maximumSize">
+                <size>
+                 <width>230</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>MS Shell Dlg 2</family>
@@ -5363,15 +5490,21 @@ QLabel {
          <widget class="QWidget" name="layoutWidget_31">
           <property name="geometry">
            <rect>
-            <x>630</x>
-            <y>130</y>
-            <width>456</width>
+            <x>390</x>
+            <y>290</y>
+            <width>411</width>
             <height>38</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="Layout_DocOrPrac_3">
            <item>
             <widget class="QLabel" name="Label_DoctorPractitioner_3">
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>Lato</family>
@@ -5390,6 +5523,18 @@ QLabel {
            </item>
            <item>
             <widget class="QComboBox" name="Referral_Practitoner">
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>230</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>MS Shell Dlg 2</family>
@@ -5413,15 +5558,21 @@ QLabel {
          <widget class="QWidget" name="layoutWidget_32">
           <property name="geometry">
            <rect>
-            <x>630</x>
-            <y>190</y>
-            <width>456</width>
+            <x>390</x>
+            <y>350</y>
+            <width>411</width>
             <height>38</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="Layout_comboBox_Creation_Date_3">
            <item>
             <widget class="QLabel" name="Label_CreationDate_3">
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>Lato</family>
@@ -5440,6 +5591,18 @@ QLabel {
            </item>
            <item>
             <widget class="QDateEdit" name="Referral_CreationDate">
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>230</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>MS Shell Dlg 2</family>
@@ -5450,60 +5613,11 @@ QLabel {
            </item>
           </layout>
          </widget>
-         <widget class="QPushButton" name="Btn_CreateReferral">
-          <property name="geometry">
-           <rect>
-            <x>110</x>
-            <y>400</y>
-            <width>411</width>
-            <height>61</height>
-           </rect>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>110</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Lato</family>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-	border-image: none;
-	background-color: #6ECCAF;
-	color: black;
-	border: 2px solid black;
-}
-
-QPushButton::hover {
-	background-color: rgb(139, 231, 100);
-	color: white;
-}</string>
-          </property>
-          <property name="text">
-           <string>Create Referral</string>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-         </widget>
          <widget class="QWidget" name="layoutWidget_33">
           <property name="geometry">
            <rect>
-            <x>110</x>
-            <y>190</y>
+            <x>390</x>
+            <y>170</y>
             <width>411</width>
             <height>41</height>
            </rect>
@@ -5514,6 +5628,12 @@ QPushButton::hover {
            </property>
            <item>
             <widget class="QLabel" name="Label_PatientLastName_3">
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>Lato</family>
@@ -5532,6 +5652,12 @@ QPushButton::hover {
            </item>
            <item>
             <widget class="QLineEdit" name="Referral_Edit_Lname">
+             <property name="maximumSize">
+              <size>
+               <width>230</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>MS Shell Dlg 2</family>
@@ -5554,10 +5680,10 @@ QPushButton::hover {
          <widget class="QWidget" name="layoutWidget_34">
           <property name="geometry">
            <rect>
-            <x>110</x>
-            <y>260</y>
+            <x>390</x>
+            <y>230</y>
             <width>411</width>
-            <height>51</height>
+            <height>41</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="Layout_DateOfBirth_3">
@@ -5566,6 +5692,12 @@ QPushButton::hover {
            </property>
            <item>
             <widget class="QLabel" name="Label_DOB_3">
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>Lato</family>
@@ -5584,6 +5716,12 @@ QPushButton::hover {
            </item>
            <item>
             <widget class="QDateEdit" name="Referral_DOB">
+             <property name="maximumSize">
+              <size>
+               <width>230</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>MS Shell Dlg 2</family>
@@ -5597,10 +5735,10 @@ QPushButton::hover {
          <widget class="QWidget" name="layoutWidget_35">
           <property name="geometry">
            <rect>
-            <x>630</x>
-            <y>260</y>
-            <width>451</width>
-            <height>201</height>
+            <x>400</x>
+            <y>410</y>
+            <width>391</width>
+            <height>161</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="ReferralReason_3">
@@ -5658,7 +5796,7 @@ QPushButton::hover {
           <property name="geometry">
            <rect>
             <x>-30</x>
-            <y>20</y>
+            <y>30</y>
             <width>1221</width>
             <height>50</height>
            </rect>
@@ -5693,6 +5831,55 @@ QPushButton::hover {
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Btn_CreateReferral">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>590</y>
+            <width>131</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>110</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Lato</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	border-image: none;
+	background-color: #6ECCAF;
+	color: black;
+	border: 2px solid black;
+}
+
+QPushButton::hover {
+	background-color: rgb(139, 231, 100);
+	color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>Create Referral</string>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>25</width>
+            <height>25</height>
+           </size>
           </property>
          </widget>
         </widget>
@@ -5775,7 +5962,7 @@ QLabel {
            <x>0</x>
            <y>0</y>
            <width>1251</width>
-           <height>561</height>
+           <height>751</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -5788,390 +5975,11 @@ QLabel {
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <widget class="QWidget" name="verticalLayoutWidget_6">
-          <property name="geometry">
-           <rect>
-            <x>200</x>
-            <y>100</y>
-            <width>801</width>
-            <height>311</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_Top_3">
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_18">
-             <item>
-              <layout class="QHBoxLayout" name="Layout_PatientFirstName_6">
-               <item>
-                <widget class="QLabel" name="Label_PatientFirstName_6">
-                 <property name="font">
-                  <font>
-                   <family>Lato</family>
-                   <pointsize>12</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>Patient First Name:</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="Lab_Fname">
-                 <property name="minimumSize">
-                  <size>
-                   <width>200</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>394</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>MS Shell Dlg 2</family>
-                   <pointsize>11</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                 </property>
-                 <property name="placeholderText">
-                  <string>Enter First Name</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QHBoxLayout" name="Layout_PatientLastName_4">
-               <item>
-                <widget class="QLabel" name="Label_PatientLastName_6">
-                 <property name="font">
-                  <font>
-                   <family>Lato</family>
-                   <pointsize>12</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>Patient Last Name:</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="Lab_Lname">
-                 <property name="minimumSize">
-                  <size>
-                   <width>200</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>394</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>MS Shell Dlg 2</family>
-                   <pointsize>11</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="placeholderText">
-                  <string>Enter Last Name</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QHBoxLayout" name="Layout_DOB_4">
-               <item>
-                <widget class="QLabel" name="Label_DOB_6">
-                 <property name="font">
-                  <font>
-                   <family>Lato</family>
-                   <pointsize>12</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>DOB:</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QDateEdit" name="Lab_DOB">
-                 <property name="font">
-                  <font>
-                   <family>MS Shell Dlg 2</family>
-                   <pointsize>11</pointsize>
-                  </font>
-                 </property>
-                 <property name="date">
-                  <date>
-                   <year>2000</year>
-                   <month>2</month>
-                   <day>1</day>
-                  </date>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_23">
-               <item>
-                <layout class="QHBoxLayout" name="Layout_Practitioner_2">
-                 <item>
-                  <widget class="QLabel" name="Label_Practitioner_2">
-                   <property name="font">
-                    <font>
-                     <family>Lato</family>
-                     <pointsize>12</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true"/>
-                   </property>
-                   <property name="text">
-                    <string>Practitioner:</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="Lab_Combo_Practitioner">
-                   <property name="font">
-                    <font>
-                     <family>MS Shell Dlg 2</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>-- SELECT PRACTITIONER --</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="Layout_LocationID_2">
-                 <item>
-                  <widget class="QLabel" name="Label_LocationID_2">
-                   <property name="font">
-                    <font>
-                     <family>Lato</family>
-                     <pointsize>12</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true"/>
-                   </property>
-                   <property name="text">
-                    <string>Location:</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="Lab_Combo_Location">
-                   <property name="font">
-                    <font>
-                     <family>MS Shell Dlg 2</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>-- SELECT LOCATION --</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_24">
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_25">
-               <item>
-                <layout class="QHBoxLayout" name="Layout_LabDate_2">
-                 <item>
-                  <widget class="QLabel" name="Label_LabDate_2">
-                   <property name="font">
-                    <font>
-                     <family>Lato</family>
-                     <pointsize>12</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true"/>
-                   </property>
-                   <property name="text">
-                    <string>Lab Date:</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDateEdit" name="Lab_Date">
-                   <property name="font">
-                    <font>
-                     <family>MS Shell Dlg 2</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="date">
-                    <date>
-                     <year>2000</year>
-                     <month>2</month>
-                     <day>1</day>
-                    </date>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QHBoxLayout" name="Layout_PossibleLabs_2">
-               <item>
-                <widget class="QLabel" name="Label_PossibleLabs_2">
-                 <property name="font">
-                  <font>
-                   <family>Lato</family>
-                   <pointsize>12</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>Labs:</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="Lab_Combo_Labs">
-                 <property name="minimumSize">
-                  <size>
-                   <width>200</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>MS Shell Dlg 2</family>
-                   <pointsize>11</pointsize>
-                  </font>
-                 </property>
-                 <item>
-                  <property name="text">
-                   <string>-- SELECT LAB --</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QHBoxLayout" name="Layout_LabOrderName_2">
-               <item>
-                <widget class="QLabel" name="Label_LabOrderName_2">
-                 <property name="font">
-                  <font>
-                   <family>Lato</family>
-                   <pointsize>12</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>Order Name:</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="Lab_Order">
-                 <property name="maximumSize">
-                  <size>
-                   <width>394</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>MS Shell Dlg 2</family>
-                   <pointsize>11</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="placeholderText">
-                  <string>Enter Order Name</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </widget>
          <widget class="QPushButton" name="pushButton_SubmitLabOrder">
           <property name="geometry">
            <rect>
-            <x>470</x>
-            <y>460</y>
+            <x>452</x>
+            <y>550</y>
             <width>91</width>
             <height>61</height>
            </rect>
@@ -6203,8 +6011,8 @@ QPushButton::hover {
          <widget class="QPushButton" name="pushButton_ClearLabOrder">
           <property name="geometry">
            <rect>
-            <x>620</x>
-            <y>460</y>
+            <x>602</x>
+            <y>550</y>
             <width>141</width>
             <height>61</height>
            </rect>
@@ -6236,9 +6044,9 @@ QPushButton::hover {
          <widget class="QLabel" name="Lable_CheckIns_10">
           <property name="geometry">
            <rect>
-            <x>-12</x>
-            <y>20</y>
-            <width>1241</width>
+            <x>-30</x>
+            <y>70</y>
+            <width>1231</width>
             <height>50</height>
            </rect>
           </property>
@@ -6273,6 +6081,477 @@ QPushButton::hover {
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
+         </widget>
+         <widget class="QWidget" name="layoutWidget_3">
+          <property name="geometry">
+           <rect>
+            <x>302</x>
+            <y>140</y>
+            <width>611</width>
+            <height>371</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_18">
+           <item>
+            <layout class="QHBoxLayout" name="Layout_PatientFirstName_6">
+             <item>
+              <widget class="QLabel" name="Label_PatientFirstName_6">
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Lato</family>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Patient First Name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="Lab_Fname">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>340</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>Enter First Name</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="Layout_PatientLastName_4">
+             <item>
+              <widget class="QLabel" name="Label_PatientLastName_6">
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Lato</family>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Patient Last Name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="Lab_Lname">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>340</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="placeholderText">
+                <string>Enter Last Name</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="Layout_DOB_4">
+             <item>
+              <widget class="QLabel" name="Label_DOB_6">
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Lato</family>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>DOB:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDateEdit" name="Lab_DOB">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>340</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="date">
+                <date>
+                 <year>2000</year>
+                 <month>2</month>
+                 <day>1</day>
+                </date>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="Layout_Practitioner_2">
+             <item>
+              <widget class="QLabel" name="Label_Practitioner_2">
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Lato</family>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Practitioner:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="Lab_Combo_Practitioner">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>340</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <item>
+                <property name="text">
+                 <string>-- SELECT PRACTITIONER --</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="Layout_LocationID_2">
+             <item>
+              <widget class="QLabel" name="Label_LocationID_2">
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Lato</family>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Location:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="Lab_Combo_Location">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>340</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <item>
+                <property name="text">
+                 <string>-- SELECT LOCATION --</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="Layout_LabOrderName_2">
+             <item>
+              <widget class="QLabel" name="Label_LabOrderName_2">
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Lato</family>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Order Name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="Lab_Order">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>340</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="placeholderText">
+                <string>Enter Order Name</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="Layout_PossibleLabs_2">
+             <item>
+              <widget class="QLabel" name="Label_PossibleLabs_2">
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Lato</family>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Labs:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="Lab_Combo_Labs">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>340</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <item>
+                <property name="text">
+                 <string>-- SELECT LAB --</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="Layout_LabDate_2">
+             <item>
+              <widget class="QLabel" name="Label_LabDate_2">
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Lato</family>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Lab Date:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDateEdit" name="Lab_Date">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>340</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="date">
+                <date>
+                 <year>2000</year>
+                 <month>2</month>
+                 <day>1</day>
+                </date>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
          </widget>
         </widget>
        </widget>
@@ -6372,7 +6651,7 @@ QLabel {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>1121</width>
+            <width>1171</width>
             <height>171</height>
            </rect>
           </property>
@@ -6418,7 +6697,7 @@ QLabel {
           <property name="geometry">
            <rect>
             <x>60</x>
-            <y>670</y>
+            <y>610</y>
             <width>181</width>
             <height>51</height>
            </rect>
@@ -6457,7 +6736,7 @@ QPushButton::hover {
           <property name="geometry">
            <rect>
             <x>250</x>
-            <y>670</y>
+            <y>610</y>
             <width>181</width>
             <height>51</height>
            </rect>
@@ -6498,7 +6777,7 @@ QPushButton::hover {
             <x>60</x>
             <y>190</y>
             <width>561</width>
-            <height>471</height>
+            <height>411</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -6529,9 +6808,9 @@ QListWidget::item:selected {
          <widget class="QWidget" name="layoutWidget_19">
           <property name="geometry">
            <rect>
-            <x>630</x>
-            <y>230</y>
-            <width>340</width>
+            <x>684</x>
+            <y>350</y>
+            <width>451</width>
             <height>73</height>
            </rect>
           </property>
@@ -6540,6 +6819,18 @@ QListWidget::item:selected {
             <layout class="QHBoxLayout" name="horizontalLayout_248">
              <item>
               <widget class="QLabel" name="Label_Location_7">
+               <property name="minimumSize">
+                <size>
+                 <width>120</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>120</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>Lato</family>
@@ -6558,6 +6849,24 @@ QListWidget::item:selected {
              </item>
              <item>
               <widget class="QComboBox" name="Approve_Combo_Location">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -6579,6 +6888,18 @@ QListWidget::item:selected {
             <layout class="QHBoxLayout" name="horizontalLayout_249">
              <item>
               <widget class="QLabel" name="Label_Doctor_6">
+               <property name="minimumSize">
+                <size>
+                 <width>120</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>120</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>Lato</family>
@@ -6597,6 +6918,24 @@ QListWidget::item:selected {
              </item>
              <item>
               <widget class="QComboBox" name="Approve_Combo_Provider">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -6620,7 +6959,7 @@ QListWidget::item:selected {
           <property name="geometry">
            <rect>
             <x>440</x>
-            <y>670</y>
+            <y>610</y>
             <width>181</width>
             <height>51</height>
            </rect>

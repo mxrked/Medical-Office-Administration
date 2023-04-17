@@ -12,7 +12,7 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>450</width>
+    <width>900</width>
     <height>900</height>
    </size>
   </property>
@@ -33,227 +33,200 @@
    <string notr="true">border-image: url(:/newPrefix/imgs/app-bg.png);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-     <widget class="QFrame" name="frame">
-      <property name="minimumSize">
-       <size>
-        <width>400</width>
-        <height>500</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>400</width>
-        <height>600</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QFrame {
+   <widget class="QLabel" name="HidePassword_Label">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>570</y>
+      <width>30</width>
+      <height>0</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>30</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>30</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border-image: none;
+	border-radius: 5px;
+	background-color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="assets/qrc/hide.qrc">:/newPrefix/imgs/hide.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>190</y>
+      <width>191</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
 	border-image: none;
 	background-color: none;
 }</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item alignment="Qt::AlignHCenter">
-        <widget class="QLabel" name="startWindow_Heading1">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>12</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>MS Shell Dlg 2</family>
-           <pointsize>28</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel {
-	border-image: none;
-	color: white;
-}</string>
-         </property>
-         <property name="text">
-          <string>Medical Office</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item alignment="Qt::AlignHCenter">
-        <widget class="QLabel" name="startWindow_Heading2">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>MS Shell Dlg 2</family>
-           <pointsize>28</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel {
-	border-image: none;
-	color: white;
-}</string>
-         </property>
-         <property name="text">
-          <string>Administration</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QLabel" name="label">
-           <property name="minimumSize">
-            <size>
-             <width>150</width>
-             <height>200</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>200</width>
-             <height>200</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="assets/qrc/logo.qrc">:/newPrefix/imgs/logo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="loginErrorLabel">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>620</y>
+      <width>401</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
 	border-image: none;
 	background-color: none;
+	color: white;
 }</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="pixmap">
-            <pixmap resource="assets/qrc/logo.qrc">:/newPrefix/imgs/logo.png</pixmap>
-           </property>
-           <property name="scaledContents">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item alignment="Qt::AlignHCenter">
-        <widget class="QLabel" name="startWindow_SubHeading">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Lato</family>
-           <pointsize>18</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel {
+    </property>
+    <property name="text">
+     <string>Login Error: Username/Password does not exsist</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ShowPassword_Label">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>570</y>
+      <width>30</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>30</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>30</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border-image: none;
+	border-radius: 5px;
+	background-color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="assets/qrc/show.qrc">:/newPrefix/imgs/show.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="startWindow_SubHeading">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>370</y>
+      <width>901</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>22</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
 	border-image: none;
 	color: white;
 }</string>
-         </property>
-         <property name="text">
-          <string>Forsyth Family Practice Center</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item alignment="Qt::AlignHCenter">
-     <widget class="QFrame" name="frame_2">
-      <property name="minimumSize">
-       <size>
-        <width>350</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>500</width>
-        <height>120</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QFrame {
-	border-image: none;
-	background-color: none;
-}</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_4">
-           <item>
-            <widget class="QLineEdit" name="startWindow_UsernameLineEdit">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>270</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLineEdit {
+    </property>
+    <property name="text">
+     <string>Forsyth Family Practice Center</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="startWindow_UsernameLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>480</y>
+      <width>321</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
 	border-image: none;
     border: none;
 	min-width: 200px;
@@ -263,279 +236,127 @@
 	font-family: &quot;MS Shell Dlg 2&quot;;
 	font-size: 11;
 	padding-left: 10px;
-	
+	paddding-right: 10px;
 }</string>
-             </property>
-             <property name="placeholderText">
-              <string>Enter Username</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="startWindow_PasswordLineEdit">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>270</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLineEdit {
+    </property>
+    <property name="placeholderText">
+     <string>Enter Username</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="startWindow_Heading1">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>901</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>28</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
 	border-image: none;
-    border: none;
-	min-width: 200px;
-	height: 30px;
-	background-color: #F3ECB0;
-	color: #344D67;
-	font-family: &quot;MS Shell Dlg 2&quot;;
-	font-size: 11;
-	padding-left: 10px;
-	
-}</string>
-             </property>
-             <property name="echoMode">
-              <enum>QLineEdit::Password</enum>
-             </property>
-             <property name="placeholderText">
-              <string>Enter Password</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_7">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <property name="sizeConstraint">
-            <enum>QLayout::SetFixedSize</enum>
-           </property>
-           <item>
-            <widget class="QLabel" name="ShowPassword_Label">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>30</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="cursor">
-              <cursorShape>PointingHandCursor</cursorShape>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-	border-image: none;
-	border-radius: 5px;
-	background-color: white;
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="assets/qrc/show.qrc">:/newPrefix/imgs/show.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignBottom|Qt::AlignHCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="HidePassword_Label">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="cursor">
-              <cursorShape>PointingHandCursor</cursorShape>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-	border-image: none;
-	border-radius: 5px;
-	background-color: white;
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="assets/qrc/hide.qrc">:/newPrefix/imgs/hide.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item alignment="Qt::AlignHCenter">
-     <widget class="QFrame" name="frame_3">
-      <property name="minimumSize">
-       <size>
-        <width>450</width>
-        <height>120</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>450</width>
-        <height>120</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QFrame {
-	border-image: none;
-	background-color: none;
-}</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_8">
-       <item>
-        <widget class="QLabel" name="loginErrorLabel">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel {
-	border-image: none;
-	background-color: none;
 	color: white;
 }</string>
-         </property>
-         <property name="text">
-          <string>Login Error: Username/Password does not exsist</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QPushButton" name="startWindow_LoginBtn">
-           <property name="minimumSize">
-            <size>
-             <width>90</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>90</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Lato</family>
-             <pointsize>11</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+    </property>
+    <property name="text">
+     <string>Medical Office</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="startWindow_InvalidPasswordLabel">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>680</y>
+      <width>0</width>
+      <height>0</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>11</pointsize>
+      <italic>false</italic>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
 	border-image: none;
-	background-color: #6ECCAF;
-	color: black;
-	border: 2px solid black;
-}
-
-QPushButton::hover {
-	background-color: rgb(139, 231, 100);
+	color: rgb(0, 255, 127);
+}</string>
+    </property>
+    <property name="text">
+     <string>INVALID PASSWORD</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="startWindow_Heading2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>90</y>
+      <width>901</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>28</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border-image: none;
 	color: white;
 }</string>
-           </property>
-           <property name="text">
-            <string>LOGIN</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="startWindow_ExitBtn">
-           <property name="minimumSize">
-            <size>
-             <width>90</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>90</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Lato</family>
-             <pointsize>11</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+    </property>
+    <property name="text">
+     <string>Administration</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="startWindow_ExitBtn">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>690</y>
+      <width>71</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
 	border-image: none;
 	background-color: rgb(30, 147, 143);
 	color: black;
@@ -546,45 +367,136 @@ QPushButton::hover {
 	background-color: rgb(14, 81, 85);
 	color: white;
 }</string>
-           </property>
-           <property name="text">
-            <string>EXIT</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QFrame" name="frame_4">
-      <property name="styleSheet">
-       <string notr="true">QFrame {
+    </property>
+    <property name="text">
+     <string>EXIT</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="startWindow_InvalidUsernameLabel">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>580</y>
+      <width>0</width>
+      <height>0</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>11</pointsize>
+      <italic>false</italic>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
 	border-image: none;
-	background-color: none;
+	color: rgb(0, 255, 127);
 }</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_9">
-       <item>
-        <widget class="QPushButton" name="startWindow_InfoBtn">
-         <property name="font">
-          <font>
-           <family>Lato</family>
-           <pointsize>28</pointsize>
-          </font>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
+    </property>
+    <property name="text">
+     <string>INVALID USERNAME</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="startWindow_PasswordLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>560</y>
+      <width>281</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+	border-image: none;
+    border: none;
+	min-width: 200px;
+	height: 30px;
+	background-color: #F3ECB0;
+	color: #344D67;
+	font-family: &quot;MS Shell Dlg 2&quot;;
+	font-size: 11;
+	padding-left: 10px;
+	paddding-right: 10px;
+}</string>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+    <property name="placeholderText">
+     <string>Enter Password</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="startWindow_LoginBtn">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>690</y>
+      <width>81</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	border-image: none;
+	background-color: #6ECCAF;
+	color: black;
+	border: 2px solid black;
+}
+
+QPushButton::hover {
+	background-color: rgb(139, 231, 100);
+	color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>LOGIN</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="startWindow_InfoBtn">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>810</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lato</family>
+      <pointsize>28</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
 	border-image: none;
 	color: #F3ECB0;
 	background-color: transparent;
@@ -594,27 +506,50 @@ QPushButton::hover {
 QPushButton::hover {
 	color: rgb(241, 243, 103);
 }</string>
-         </property>
-         <property name="text">
-          <string>🛈</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-   </layout>
+    </property>
+    <property name="text">
+     <string>🛈</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="StartWindow_SettingsLabel">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>20</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border-image: none;
+	background-color: white;
+	padding: 5px;
+	border-radius: 10px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="assets/qrc/gears.qrc">:/newPrefix/imgs/gears.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources>
   <include location="assets/qrc/app-bg.qrc"/>
+  <include location="assets/qrc/gears.qrc"/>
   <include location="assets/qrc/logo.qrc"/>
   <include location="assets/qrc/hide.qrc"/>
   <include location="assets/qrc/show.qrc"/>
   <include location="assets/qrc/doctor.qrc"/>
-  <include location="../../../../../Users/27par/Desktop/Github Repos/Medical-Office-Administration/frontend/ui/assets/qrc/logo.qrc"/>
-  <include location="../../../../../Users/27par/Desktop/Github Repos/Medical-Office-Administration/frontend/ui/assets/qrc/hide.qrc"/>
-  <include location="../../../../../Users/27par/Desktop/Github Repos/Medical-Office-Administration/frontend/ui/assets/qrc/show.qrc"/>
+  <include location="../../../../Capstone 2023 Stuff/Medical-Office-Administration_BU_4/frontend/ui/assets/qrc/show.qrc"/>
+  <include location="../../../../Capstone 2023 Stuff/Medical-Office-Administration_BU_4/frontend/ui/assets/qrc/hide.qrc"/>
+  <include location="../../../../Capstone 2023 Stuff/Medical-Office-Administration_BU_4/frontend/ui/assets/qrc/doctor.qrc"/>
  </resources>
  <connections/>
 </ui>

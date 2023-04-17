@@ -430,7 +430,7 @@ QPushButton::hover {
 border-image: transparent;</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="Appointments">
       <widget class="QWidget" name="layoutWidget">
@@ -4812,9 +4812,9 @@ QListWidget::item:selected {
          <widget class="QWidget" name="layoutWidget_17">
           <property name="geometry">
            <rect>
-            <x>720</x>
+            <x>679</x>
             <y>360</y>
-            <width>340</width>
+            <width>411</width>
             <height>73</height>
            </rect>
           </property>
@@ -4823,6 +4823,18 @@ QListWidget::item:selected {
             <layout class="QHBoxLayout" name="horizontalLayout_14">
              <item>
               <widget class="QLabel" name="Label_Location_5">
+               <property name="minimumSize">
+                <size>
+                 <width>120</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>120</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>Lato</family>
@@ -4841,6 +4853,18 @@ QListWidget::item:selected {
              </item>
              <item>
               <widget class="QComboBox" name="CheckIn_Location">
+               <property name="minimumSize">
+                <size>
+                 <width>240</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -4862,6 +4886,18 @@ QListWidget::item:selected {
             <layout class="QHBoxLayout" name="horizontalLayout_63">
              <item>
               <widget class="QLabel" name="Label_Doctor_5">
+               <property name="minimumSize">
+                <size>
+                 <width>120</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>120</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>Lato</family>
@@ -4880,6 +4916,18 @@ QListWidget::item:selected {
              </item>
              <item>
               <widget class="QComboBox" name="CheckIn_Provider">
+               <property name="minimumSize">
+                <size>
+                 <width>240</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -5459,7 +5507,7 @@ QLabel {
             <widget class="QComboBox" name="Referral_Practitoner">
              <property name="minimumSize">
               <size>
-               <width>230</width>
+               <width>200</width>
                <height>0</height>
               </size>
              </property>
@@ -5527,7 +5575,7 @@ QLabel {
             <widget class="QDateEdit" name="Referral_CreationDate">
              <property name="minimumSize">
               <size>
-               <width>230</width>
+               <width>200</width>
                <height>0</height>
               </size>
              </property>
@@ -6742,9 +6790,9 @@ QListWidget::item:selected {
          <widget class="QWidget" name="layoutWidget_19">
           <property name="geometry">
            <rect>
-            <x>710</x>
+            <x>684</x>
             <y>350</y>
-            <width>341</width>
+            <width>451</width>
             <height>73</height>
            </rect>
           </property>
@@ -6753,6 +6801,18 @@ QListWidget::item:selected {
             <layout class="QHBoxLayout" name="horizontalLayout_248">
              <item>
               <widget class="QLabel" name="Label_Location_7">
+               <property name="minimumSize">
+                <size>
+                 <width>120</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>120</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>Lato</family>
@@ -6771,6 +6831,18 @@ QListWidget::item:selected {
              </item>
              <item>
               <widget class="QComboBox" name="Approve_Combo_Location">
+               <property name="minimumSize">
+                <size>
+                 <width>240</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -6792,6 +6864,18 @@ QListWidget::item:selected {
             <layout class="QHBoxLayout" name="horizontalLayout_249">
              <item>
               <widget class="QLabel" name="Label_Doctor_6">
+               <property name="minimumSize">
+                <size>
+                 <width>120</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>120</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>Lato</family>
@@ -6810,6 +6894,18 @@ QListWidget::item:selected {
              </item>
              <item>
               <widget class="QComboBox" name="Approve_Combo_Provider">
+               <property name="minimumSize">
+                <size>
+                 <width>240</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>

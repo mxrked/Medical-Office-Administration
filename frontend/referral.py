@@ -7,9 +7,11 @@ Authors:
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QPushButton
 from frontend.main_nav import Nav
 from backend.data_handler import set_objects_to_combo_box
+from backend.data_handler import get_selected_combo_box_object
 from backend.appointment_dm import AppointmentDM
 from backend.misc_dm import MiscDM
 from backend.user_dm import UserDM
+
 
 class Referral(Nav):
     """
@@ -27,8 +29,8 @@ class Referral(Nav):
         # Initalized Input Widgets
         self.ref_fname = self.findChild(QLineEdit, "LineEdit_PatientFirstName")
         self.ref_lname = self.findChild(QLineEdit, "LineEdit_PatientLastName")
-        self.dob = self.findChild(QDateEdit, "DateEdit_DOB")
-        self.ref_practitioners = self.findChild(QComboBox, "Referral_Practitoner")
+        self.ref_dob = self.findChild(QDateEdit, "DateEdit_DOB")
+        self.ref_practitioners = self.findChild(QComboBox, "ComboBox_DoctorPractitioner")
         self.ref_creation_date = self.findChild(QDateEdit, "DateEdit_CreationDate")
         self.ref_reason = self.findChild(QLineEdit, "LineEdit_Reason")
 
@@ -37,7 +39,6 @@ class Referral(Nav):
 
         # Button Listeners
         self.create_referral_btn.clicked.connect(self.create_referral)
-
 
     def create_referral(self):
         """
@@ -54,3 +55,22 @@ class Referral(Nav):
             For the Comboboxes use a data_handler find the selected box
         """
         print(self.create_referral.__doc__)
+
+    def searchRef(self):
+        REF_patientFN = self.ref_fname.text()
+        REF_patientLN = self.ref_lname.text()
+        REF_patientDOB = self.ref_dob.date().toPyDate()
+        REF_practitioner = get_selected_combo_box_object(self.ref_practitioners)
+        REF_creation_date = self.ref_creation_date
+        REF_reason = self.ref_reason.text()
+
+        try:
+            assert REF_patientFN != "", "Please enter patients' first name."
+            assert REF_patientLN != "", "Please enter patients' last name."
+            assert REF_reason != "", "Please enter the reason for this referral."
+
+        except AssertionError as error:
+            self.load_error(str(error))
+            return
+
+

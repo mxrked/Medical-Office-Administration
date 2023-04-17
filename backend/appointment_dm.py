@@ -256,7 +256,8 @@ class AppointmentDM(AppointmentStatusDataManger):
     def __check_appointment_available(self, appt: Appointment,
                                             new_time:time=None,
                                             new_date:date=None,
-                                            custom_time:bool=None) -> bool:
+                                            custom_time:bool=None,
+                                            length: timedelta=None) -> bool:
         """
             Check if a given appointment is available at a specific time and date.
             Will output a AssertionError if there is a issue with the check
@@ -271,16 +272,17 @@ class AppointmentDM(AppointmentStatusDataManger):
         """
         if new_time:
             appt.ApptTime = new_time
+            
+            new_time_delta = datetime.datetime.combine( date.today(), new_time)
+            appt.ApptEndtime = new_time + length
 
         if new_date:
             appt.ApptDate = new_date
 
+
         with self.session_scope() as session:
 
             ### First We check if there are any taken appointments ###
-
-            appt_end_time = appt.ApptEndtime
-
 
 
             taken_appointment_statuses = ["Scheduled", "In Progress"]
@@ -361,7 +363,8 @@ class AppointmentDM(AppointmentStatusDataManger):
                         Event.StartDate <= check_date, # Check if its after start date
                         Event.EndDate >= check_date, # Check if its before end date
                         ).first()
-            session.expunge(events)
+            if events is not None:
+                session.expunge(events)
             return events
 
     def __get_week_number(self, check_date:date):

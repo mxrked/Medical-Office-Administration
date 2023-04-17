@@ -8,6 +8,7 @@ from backend.data_handler import set_objects_to_combo_box, get_selected_combo_bo
 from backend.appointment_dm import AppointmentDM
 from backend.misc_dm import MiscDM
 from backend.user_dm import UserDM
+from backend.models import Location
 from datetime import timedelta
 
 class Schedule(Nav):
@@ -54,6 +55,8 @@ class Schedule(Nav):
         self.get_locations_into(self.SA_OfficeLocationsComboBox)
         self.get_physicians_into(self.SA_PhysicianNamesComboBox)
 
+        self.SA_OfficeLocationsComboBox.currentIndexChanged.connect(self.change_location_sa)
+
         self.custom_time = False
 
 
@@ -76,6 +79,10 @@ class Schedule(Nav):
         self.SA_CurrentAvailableTimesListWidget.clearSelection()
         self.SA_CustomTimeTimeEdit.setEnabled(True)
         self.SA_CustomTimeTimeEdit.setStyleSheet(enableCustomTime_Style)
+    
+    def change_location_sa(self):
+        location = get_selected_combo_box_object(self.SA_OfficeLocationsComboBox)
+        self.get_physicians_into(self.SA_PhysicianNamesComboBox, location_id=location.LocationID)
 
     def search_SA(self):
         
@@ -89,7 +96,7 @@ class Schedule(Nav):
         SA_physicianName = get_selected_combo_box_object(self.SA_PhysicianNamesComboBox)
         SA_appointmentDate = self.SA_AppointmentDateDateEdit.date().toPyDate()
 
-        patients = self.user_dm.get_patient(first_name=SA_patientFN,
+        patients = self.user_dm.get_patients(first_name=SA_patientFN,
                                                     last_name=SA_patientLN,
                                                     dob=SA_patientDOB)
 
@@ -139,9 +146,6 @@ class Reschedule(Nav):
     def __init__(self):
         super(Reschedule, self).__init__()
 
-        RA_Locations = MiscDM().get_locations()
-        RA_Physicians = UserDM().get_physicians()
-
         self.RA_OfficeLocationsComboBox = self.findChild(QComboBox, "ComboBox_OfficeLocations_RA")
         self.RA_PhysicianNamesComboBox = self.findChild(QComboBox, "ComboBox_PhysicianNames_RA")
         self.RA_AppointmentDateDateEdit = self.findChild(QDateEdit, "DateEdit_AppDate_RA")
@@ -160,8 +164,8 @@ class Reschedule(Nav):
         self.RA_DisplayTimesAppointmentsPushButton.mousePressEvent = lambda event: self.displayTimesApps()
         self.RA_RescheduleAppointmentPushButton.mousePressEvent = lambda event: self.rescheduleAppointment()
 
-        set_objects_to_combo_box(RA_Locations, self.RA_OfficeLocationsComboBox)
-        set_objects_to_combo_box(RA_Physicians, self.RA_PhysicianNamesComboBox)
+        self.get_locations_into(self.RA_OfficeLocationsComboBox)
+        self.get_physicians_into(self.RA_PhysicianNamesComboBox)
 
     def displayTimesApps(self):
         print("DisplayTimesApps")
@@ -174,9 +178,6 @@ class Reschedule(Nav):
 class Cancel(Nav):
     def __init__(self):
         super(Cancel, self).__init__()
-
-        CA_Locations = MiscDM().get_locations()
-        CA_Physicians = UserDM().get_physicians()
 
         self.CA_OfficeLocationsComboBox = self.findChild(QComboBox, "ComboBox_OfficeLocations_CA")
         self.CA_PhysicianNamesComboBox = self.findChild(QComboBox, "ComboBox_PhysicianNames_CA")
@@ -193,8 +194,8 @@ class Cancel(Nav):
         self.CA_SearchForAppointmentsPushButton.mousePressEvent = lambda event: self.search_CA()
         self.CA_CancelAppointmentPushButton.mousePressEvent = lambda event: self.cancelAppointment()
 
-        set_objects_to_combo_box(CA_Locations, self.CA_OfficeLocationsComboBox)
-        set_objects_to_combo_box(CA_Physicians, self.CA_PhysicianNamesComboBox)
+        self.get_locations_into(self.CA_OfficeLocationsComboBox)
+        self.get_physicians_into(self.CA_PhysicianNamesComboBox)
 
     def search_CA(self):
         print("Search SA")

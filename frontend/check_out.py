@@ -98,4 +98,3 @@ class CheckOut(Nav):
         Something about views in the DB, I don't know
         """
         print(self.download_summary.__doc__)
-

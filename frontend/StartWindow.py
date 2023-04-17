@@ -10,10 +10,11 @@ from PyQt5.QtWidgets import QApplication, QLineEdit, QLabel, QPushButton, QDialo
     QVBoxLayout, QFrame, QMainWindow
 from PyQt5 import uic, QtCore, QtGui
 
-from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo # pylint: disable=unused-import
+from frontend.ui.assets.qrc import app_bg, doctor, show, hide, gears, logo # pylint: disable=unused-import
 from frontend.ui.assets.files.GLOBALS import teamMembers
 from frontend.ui.assets.files.STYLING import infoDialog_Style, infoDialogCloseBtn_Style, infoDialogName_Style,\
     validEnterLE_Style, invalidEnterLE_Style
+from frontend import SettingsDialog
 from backend.user_dm import UserDM
 from backend.private.data_manager import DataManager
 
@@ -44,6 +45,7 @@ class Start(QMainWindow):
         self.loginPushButton = self.findChild(QPushButton, "startWindow_LoginBtn")
         self.exitPushButton = self.findChild(QPushButton, "startWindow_ExitBtn")
         self.infoPushButton = self.findChild(QPushButton, "startWindow_InfoBtn")
+        self.settingsPushButton = self.findChild(QLabel, "StartWindow_SettingsLabel")
 
 
         # Setting Events
@@ -53,6 +55,7 @@ class Start(QMainWindow):
         self.loginPushButton.clicked.connect(self.loginUser)
         self.exitPushButton.clicked.connect(self.closeEvent)
         self.infoPushButton.clicked.connect(self.displayInfoDialog)
+        self.settingsPushButton.mousePressEvent = lambda event: self.displaySettingsDialog()
 
         # Makes It so we can hit enter to login instead
         self.enterUsernameLineEdit.returnPressed.connect(self.loginUser)
@@ -127,7 +130,13 @@ class Start(QMainWindow):
 
         # Displaying the dialog
         infoDialog.exec_()
-    
+
+    def displaySettingsDialog(self):
+        print(SettingsDialog)
+        dialog = uic.loadUi("frontend/ui/SettingsDialog.ui")
+        dialog.exec_()
+
+
     def closeEvent(self, event): # pylint: disable=unused-argument
         """
             Closes all data managers before exiting the program

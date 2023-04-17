@@ -44,6 +44,9 @@ class AppointmentStatusDataManger(DataManager):
         """ Changes the appointment status of the given appointment to 'No Show' """
         self.__set_appointment_status(appt, "No Show")
 
+    def set_appointment_checked_out(self, appt: Appointment):
+        """ Changes the appointment status of the given appointment to 'Checked Out' """
+        self.__set_appointment_status(appt, "Checked Out")
 
     def set_appointment_canceled(self, appt: Appointment):
         """ Changes the appointment status of the given appointment to 'Canceled' """
@@ -60,7 +63,8 @@ class AppointmentStatusDataManger(DataManager):
 
     def get_in_progress_appointments(self,
                                      location: Location=None,
-                                     provider: Employee=None) -> list[Appointment]:
+                                     provider: Employee=None,
+                                     check_date=date.today()) -> list[Appointment]:
         """
             Get appointments that are currently in progress, for today. 
             You can use either Location or Employee to search
@@ -70,14 +74,18 @@ class AppointmentStatusDataManger(DataManager):
             :return: A list of appointments that are currently in progress.
         """
         with self.session_scope() as session:
-            in_progress = session.query(Appointment).filter(
+            in_progress = session.query(Appointment).where(
                 Appointment.ApptStatus == "In Progress",
-                Appointment.ApptDate == date.today(),
+                Appointment.ApptDate == check_date,
                 Appointment.LocationID == location.LocationID if location else True,
                 Appointment.PhysicianID == provider.EmployeeID if provider else True,
             )
 
-            [session.expunge(appt) for appt in in_progress]
+            for appt in in_progress:
+                patient_name = str(appt.Patient)
+                session.expunge(appt) # Detached Parent Tables
+                appt.patient_name = patient_name
+
             return in_progress
 
     def get_pending_appointments(self,
@@ -98,7 +106,11 @@ class AppointmentStatusDataManger(DataManager):
                 Appointment.PhysicianID == provider.EmployeeID if provider else True,
             ).all()
 
-            [session.expunge(appt) for appt in pending]
+            for appt in pending:
+                patient_name = str(appt.Patient)
+                session.expunge(appt) # Detached Parent Tables
+                appt.patient_name = patient_name
+
             return pending
 
 

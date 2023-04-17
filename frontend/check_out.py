@@ -5,7 +5,7 @@ Authors:
 """
 from PyQt5.QtWidgets import QListWidget, QComboBox, QPushButton
 from frontend.main_nav import Nav
-from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, set_objects_to_combo_box
+from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, set_objects_to_list
 
 class CheckOut(Nav):
     """
@@ -67,15 +67,15 @@ class CheckOut(Nav):
         """
         print(self.check_out.__doc__)
 
-        getSelectedAppt = get_selected_list_object(self.check_ins_list)
+        getSelectedAppt = get_selected_list_object(self.check_out_list)
 
         if not getSelectedAppt:
             self.load_error("Not selecting appointment.")
             return
 
-        self.appointment_dm.set_appointment_canceled(getSelectedAppt)
+        self.appointment_dm.set_appointment_checked_out(getSelectedAppt)
 
-        self.check_in_refresh() # Refreshes the list
+        self.check_out_refresh() # Refreshes the list
 
     def check_out_refresh(self):
         """
@@ -85,12 +85,11 @@ class CheckOut(Nav):
             Get list of appointments using Appointment_Data_Manager
             Then use the data handler to set_objects_to_list(appointments, QListWidget) 
         """
-        print(self.check_out_refresh.__doc__)
 
-        getLocations = get_selected_combo_box_object(self.check_in_location)
+        location = get_selected_combo_box_object(self.locations_combobox)
 
-        listOfAppointments = self.appointment_dm.get_todays_appointments(getLocations, None)
-        set_objects_to_combo_box(listOfAppointments, self.check_ins_list)
+        listOfAppointments = self.appointment_dm.get_in_progress_appointments(location=location)
+        set_objects_to_list(listOfAppointments, self.check_out_list)
 
     def download_summary(self):
         """

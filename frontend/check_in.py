@@ -50,6 +50,8 @@ class CheckIn(Nav):
         self.get_locations_into(self.check_in_location)
         self.get_physicians_into(self.check_in_providers)
 
+        self.check_in_refresh(in_init=True)
+
     def check_in(self):
         """
             Checks in the selected appointment    
@@ -104,7 +106,7 @@ class CheckIn(Nav):
 
         self.check_in_refresh() # Refreshes the list
 
-    def check_in_refresh(self):
+    def check_in_refresh(self, in_init=False):
         """
             Refreshes self.check_ins_list with appointments that can
                 be checked in
@@ -122,5 +124,11 @@ class CheckIn(Nav):
             appt.Location = location
             appt.Employee = provider
 
+        if len(listOfAppointments) < 0 and (not in_init):
+            self.load_error("No Avaliable Appointments")
+            return
+
         set_objects_to_list(listOfAppointments, self.check_ins_list)
+
+
 

@@ -10,7 +10,7 @@ from frontend.schedule import Schedule, Reschedule, Cancel
 from frontend.approve_appt import Approve
 from frontend.check_in import CheckIn
 from frontend.check_out import CheckOut
-from frontend.referral import Referral
+from frontend.referral import Referral_Screen
 from frontend.lab import Lab
 from frontend.patient import NewPatient
 
@@ -18,7 +18,7 @@ class MainWindow(Schedule, Reschedule, Cancel,
                  NewPatient,
                  CheckIn,
                  CheckOut,
-                 Referral,
+                 Referral_Screen,
                  Lab,
                  Approve):
     """

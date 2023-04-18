@@ -4,11 +4,11 @@ UI Designed by: Christian Fortin
 Authors: 
 """
 from PyQt5.QtWidgets import QListWidget, QPushButton, QComboBox
-from frontend.main_nav import Nav
+from frontend.utility import Utility
 from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, set_objects_to_combo_box
 
 
-class Approve(Nav):
+class Approve(Utility):
     """
         Handles the Approve Appointment Buttons/Functions
 

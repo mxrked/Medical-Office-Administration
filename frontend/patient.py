@@ -5,8 +5,8 @@ Authors:
 """
 
 from PyQt5.QtWidgets import QComboBox, QLineEdit, QRadioButton, QDateEdit, QPushButton
-from frontend.main_nav import Nav
-class NewPatient(Nav):
+from frontend.utility import Utility
+class NewPatient(Utility):
     """
         Handes creating a new Patient using 
             a patient object

@@ -3,39 +3,25 @@ main_nav - Handles Main Window Navigation
 Author: Jessica Weeks, Parker Phelps
 """
 import sys
-from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QWidget,\
-    QLineEdit, QStackedWidget, QFrame, QDialog, QVBoxLayout, QLabel, QDateEdit, QTimeEdit, QComboBox
-from PyQt5 import QtCore, QtGui, uic
-import datetime
-
-from frontend.ui.assets.files.STYLING import disableFrameBtn_Style, infoDialog_Style, \
-    infoDialogCloseBtn_Style, infoDialogName_Style, enableFrameBtn_Style
-
+from datetime import date
+from PyQt5 import uic
+from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QStackedWidget, QFrame
+from frontend.ui.assets.files.STYLING import disableFrameBtn_Style, enableFrameBtn_Style
 from frontend.StartWindow import Start
 
 # These qrc are used by pyqt 5
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo # pylint: disable=unused-import
-from backend.user_dm import UserDM, DataManager
-from backend.misc_dm import MiscDM
-from backend.appointment_dm import AppointmentDM
-from backend.data_handler import set_objects_to_combo_box
+
 import json
 
 class Nav(QMainWindow):
     """
     Handles Navigation for all windows but StartWindow
-
-    Also has some basic helper functions like self.clearInputs
     """
     def __init__(self):
         super(Nav, self).__init__()
 
         uic.loadUi("frontend/ui/mainWindow.ui", self)
-
-        # Data Managers
-        self.user_dm = UserDM()
-        self.misc_dm = MiscDM()
-        self.appointment_dm = AppointmentDM()
 
         # Load Settings
         try:
@@ -56,7 +42,8 @@ class Nav(QMainWindow):
                 json.dump(self.settings_json, file)
 
         # Used for debugging certain dates
-        self.todays_date = datetime.datetime.now().date()
+        # Gets chagned later on if needed
+        self.todays_date = date.today()
 
         self.stacked_widget = self.findChild(QStackedWidget, "main_stacked_widget")
 
@@ -69,8 +56,6 @@ class Nav(QMainWindow):
         self.lab_orders_btn = self.findChild(QPushButton, "Nav_LabOrdersBtn")
         self.approve_appointment_btn = self.findChild(QPushButton, "Nav_ApproveAppointmentsBtn")
 
-        # Define needed labels
-        #self.currentUserLabel = self.findChild(QLabel, "currentUserLabel")
 
         # Corresponds to QStackedWidget's pages
         self.windows_indexes = {
@@ -98,26 +83,163 @@ class Nav(QMainWindow):
             self.enterAppointmentApproveViaPortalWindow()
         self.logout_btn.mousePressEvent = lambda event: self.logout()
 
-        # Appointment Nav
+        # Appointment Screen Nav
         self.new_patient_btn = self.findChild(QPushButton, "NewPatient_Btn")
         self.rescheduling_btn = self.findChild(QPushButton, "DisplayReschedule_Btn")
         self.make_schedule_btn = self.findChild(QPushButton, "DisplaySchedule_Btn")
         self.cancel_btn = self.findChild(QPushButton, "DisplayCancel_Btn")
 
         # Nav Frames
-
         self.inputs_frame = self.findChild(QFrame, "InputsFrame")
         self.cancel_appt_frame = self.findChild(QFrame, "CancelAppointment_Frame")
         self.reschedule_appt_frame = self.findChild(QFrame, "RescheduleAppointment_Frame")
         self.patient_frame = self.findChild(QFrame, "PatientFrame")
 
-        # Events for buttons
+        # Nav buttons listeners
         self.new_patient_btn.clicked.connect(self.display_patient_frame)
         self.rescheduling_btn.clicked.connect(self.display_reschedule_frame)
         self.make_schedule_btn.clicked.connect(self.display_inputs_frame)
         self.cancel_btn.clicked.connect(self.display_canceled_frame)
 
     
+
+
+    ### NAVIGATION FUNCTIONS ###
+
+    def disable_nav(self, btn: QPushButton):
+        """ Disables & Grey's out a particular nav button """
+        btn.setStyleSheet(disableFrameBtn_Style)
+        btn.setEnabled(False)
+
+
+    def disable_all_nav(self):
+        """
+            Disables all navigation
+
+            This is used at the start of the program so
+                we can enable only those we have access to
+                (Access is determined by superclasses params)
+        """
+        nav_buttons = [
+            self.appointments_btn,
+            self.checkin_btn,
+            self.checkout_btn,
+            self.referral_btn,
+            self.lab_orders_btn,
+            self.approve_appointment_btn
+        ]
+
+        for btn in nav_buttons:
+            self.disable_nav(btn)
+
+
+    def enable_all_nav_with_access(self):
+        """
+            Enables all buttons in which the user has permission for
+
+            All others are left disabled
+        """
+        # Somehow get permissions info
+
+        scheduling_nav =[
+            self.appointments_btn,
+            self.checkin_btn,
+            self.checkout_btn,
+            self.approve_appointment_btn
+        ]
+
+        physician_nav =[
+            self.referral_btn,
+            self.lab_orders_btn,
+        ]
+
+        nav_buttons = []
+
+        if self.can_schedule:
+            nav_buttons.extend(scheduling_nav)
+
+        if self.can_physician:
+            nav_buttons.extend(physician_nav)
+
+        for btn in nav_buttons:
+            self.enable_nav(btn)
+
+
+    def enable_nav(self, btn):
+        """ Enables & ungreys a particular nav button """
+        btn.setStyleSheet(enableFrameBtn_Style)
+        btn.setEnabled(True)
+
+    ### NAVIGATION LISTENERS ### 
+
+    def enterSchedulingAppointmentsWindow(self):
+        """
+            Enters the scheduling appointment screen
+
+            By default on Schedule appointment screen, but
+                if window changed this persists
+        """
+        self.stacked_widget.setCurrentIndex(
+            self.windows_indexes["Appointment"]
+        )
+        self.enable_all_nav_with_access()
+        self.disable_nav(self.appointments_btn)
+
+        self.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments")
+
+
+    def enterCheckInWindow(self):
+        """ Enters the checkin screen """
+        self.stacked_widget.setCurrentIndex(
+            self.windows_indexes["CheckIn"]
+        )
+        self.enable_all_nav_with_access()
+        self.disable_nav(self.checkin_btn)
+
+        self.setWindowTitle("Forsyth Family Practice Center - Check In")
+
+
+    def enterCheckOutWindow(self):
+        """ Eneters the check out screen """
+        self.stacked_widget.setCurrentIndex(
+            self.windows_indexes["CheckOut"]
+        )
+        self.enable_all_nav_with_access()
+        self.disable_nav(self.checkout_btn)
+
+        self.setWindowTitle("Forsyth Family Practice Center - Check Out")
+
+    
+    def enterMakeReferralWindow(self):
+        """ Enters the refferal screen """
+        self.stacked_widget.setCurrentIndex(
+            self.windows_indexes["Referral"]
+        )
+        self.enable_all_nav_with_access()
+        self.disable_nav(self.referral_btn)
+
+        self.setWindowTitle("Forsyth Family Practice Center - Referrals")
+
+    def enterLabOrdersWindow(self):
+        """ Enters the Lab Order Screen """
+        self.stacked_widget.setCurrentIndex(
+            self.windows_indexes["Lab"]
+        )
+        self.enable_all_nav_with_access()
+        self.disable_nav(self.lab_orders_btn)
+
+        self.setWindowTitle("Forsyth Family Practice Center - Lab Orders")
+
+    def enterAppointmentApproveViaPortalWindow(self):
+        """ Enters the Approve Appointment Screen """
+        self.stacked_widget.setCurrentIndex(
+            self.windows_indexes["Approve"]
+        )
+        self.enable_all_nav_with_access()
+        self.disable_nav(self.approve_appointment_btn)
+
+        self.setWindowTitle("Forsyth Family Practice Center - Approve Appointments")
+
     def logout(self):
         """
             Shows the start window and closes the current one
@@ -130,6 +252,12 @@ class Nav(QMainWindow):
         new_window.show()
 
         self.hide()
+
+    ### APPOINTMENT SCREEN NAV ###
+    # The Appointment Screen is a little weird and was designed
+    # Without qstackedwidgets in mind. instead we use frames we
+    # Can change the size of to hide/show
+
 
     def hide_all_frames(self):
         """
@@ -182,6 +310,7 @@ class Nav(QMainWindow):
         # Disabling the toggler btn
         self.disable_nav(self.DisplayReschedule_Btn)
 
+
     def display_patient_frame(self):
         """ Opens 'New Patient' Screen """
         self.hide_all_frames()
@@ -189,241 +318,6 @@ class Nav(QMainWindow):
         self.patient_frame.setFixedWidth(1171)
 
         self.disable_nav(self.new_patient_btn)
-
-
-    def disable_nav(self, btn: QPushButton):
-        """ Disables & Grey's out a particular nav button """
-        btn.setStyleSheet(disableFrameBtn_Style)
-        btn.setEnabled(False)
-
-    def disable_all_nav(self):
-        """
-            Disables all navigation
-
-            This is used at the start of the program so
-                we can enable only those we have access to
-                (Access is determined by superclasses params)
-        """
-        nav_buttons = [
-            self.appointments_btn,
-            self.checkin_btn,
-            self.checkout_btn,
-            self.referral_btn,
-            self.lab_orders_btn,
-            self.approve_appointment_btn
-        ]
-
-        for btn in nav_buttons:
-            self.disable_nav(btn)
-
-    def enable_all_nav_with_access(self):
-        """
-            Enables all buttons in which the user has permission for
-
-            All others are left disabled
-        """
-        # Somehow get permissions info
-
-        scheduling_nav =[
-            self.appointments_btn,
-            self.checkin_btn,
-            self.checkout_btn,
-            self.approve_appointment_btn
-        ]
-
-        physician_nav =[
-            self.referral_btn,
-            self.lab_orders_btn,
-        ]
-
-        nav_buttons = []
-
-        if self.can_schedule:
-            nav_buttons.extend(scheduling_nav)
-
-        if self.can_physician:
-            nav_buttons.extend(physician_nav)
-
-        for btn in nav_buttons:
-            self.enable_nav(btn)
-
-    def enable_nav(self, btn):
-        """ Enables & ungreys a particular nav button """
-        btn.setStyleSheet(enableFrameBtn_Style)
-        btn.setEnabled(True)
-
-    def enterSchedulingAppointmentsWindow(self):
-        """
-            Enters the scheduling appointment screen
-
-            By default on Schedule appointment screen, but
-                if window changed this persists
-        """
-        self.stacked_widget.setCurrentIndex(
-            self.windows_indexes["Appointment"]
-        )
-        self.enable_all_nav_with_access()
-        self.disable_nav(self.appointments_btn)
-
-        self.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments")
-
-
-    def enterCheckInWindow(self):
-        """ Enters the checkin screen """
-        self.stacked_widget.setCurrentIndex(
-            self.windows_indexes["CheckIn"]
-        )
-        self.enable_all_nav_with_access()
-        self.disable_nav(self.checkin_btn)
-
-        self.setWindowTitle("Forsyth Family Practice Center - Check In")
-
-    def enterCheckOutWindow(self):
-        """ Eneters the check out screen """
-        self.stacked_widget.setCurrentIndex(
-            self.windows_indexes["CheckOut"]
-        )
-        self.enable_all_nav_with_access()
-        self.disable_nav(self.checkout_btn)
-
-        self.setWindowTitle("Forsyth Family Practice Center - Check Out")
-
-    
-    def enterMakeReferralWindow(self):
-        """ Enters the refferal screen """
-        self.stacked_widget.setCurrentIndex(
-            self.windows_indexes["Referral"]
-        )
-        self.enable_all_nav_with_access()
-        self.disable_nav(self.referral_btn)
-
-        self.setWindowTitle("Forsyth Family Practice Center - Referrals")
-
-    def enterLabOrdersWindow(self):
-        """ Enters the Lab Order Screen """
-        self.stacked_widget.setCurrentIndex(
-            self.windows_indexes["Lab"]
-        )
-        self.enable_all_nav_with_access()
-        self.disable_nav(self.lab_orders_btn)
-
-        self.setWindowTitle("Forsyth Family Practice Center - Lab Orders")
-
-    def enterAppointmentApproveViaPortalWindow(self):
-        """ Enters the Approve Appointment Screen """
-        self.stacked_widget.setCurrentIndex(
-            self.windows_indexes["Approve"]
-        )
-        self.enable_all_nav_with_access()
-        self.disable_nav(self.approve_appointment_btn)
-
-        self.setWindowTitle("Forsyth Family Practice Center - Approve Appointments")
-
-    def clearInputs(self):
-        """
-            Resets all widgets everywhere!
-            Use with caution
-        """
-        for widget in self.findChildren(QWidget):
-            # Clears Line Edits
-            if isinstance(widget, QLineEdit) and not isinstance(widget, (QDateEdit, QTimeEdit)):
-                widget.clear()
-                # Otherwise Certain widgets are selected, for some reason
-                widget.selectAll()
-                widget.deselect()
-
-            # Clears DateEdits
-            if isinstance(widget, QDateEdit) and not isinstance(widget, (QTimeEdit, QLineEdit)):
-                widget.setDate(QtCore.QDate.currentDate())
-    
-    def closeEvent(self, event):
-        """
-            Closes all data managers before exiting the program
-        """
-
-        data_managers = [self.user_dm, self.appointment_dm, self.misc_dm]
-
-        for dm in data_managers:
-            dm.close()
-
-        sys.exit()
-    
-    def load_error(self, error_text: str):
-        """
-            Loads simple error text box popup with the error_text and a
-            close button
-
-            This can be used for db calls that may return error:
-            try: 
-                add_appointment(appointment)
-            except AssertionError as e: 
-                load_error(error_text=e)
-                return
-            
-            :param error_text: str to be displayed as errors 
-        """
-        info_dialog = QDialog()
-        info_dialog.setStyleSheet(infoDialog_Style)
-
-        # Dialog settings
-        info_dialog.setWindowFlags(QtCore.Qt.FramelessWindowHint) # Hides the title bar
-        info_dialog.setFixedSize(400, 400)
-
-        info_layout = QVBoxLayout()
-        info_close_btn = QPushButton("CLOSE", info_dialog)
-        info_close_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-
-        info_close_btn.setStyleSheet(infoDialogCloseBtn_Style)
-        info_close_btn.setFont(QtGui.QFont("Lato", 12))
-        info_close_btn.clicked.connect(info_dialog.close) # Closes the dialog box
-
-        info_label = QLabel(error_text)
-        info_label.setStyleSheet(infoDialogName_Style)
-        info_label.setFont(QtGui.QFont("Lato", 13))
-        info_layout.addWidget(info_label, alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
-        info_layout.addWidget(info_close_btn, alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
-
-        info_dialog.setLayout(info_layout)
-
-        # Displaying the dialog
-        info_dialog.exec_()
-
-    def get_locations_into(self, combo_box: QComboBox):
-        """
-            Loads all locations into the combo_box,
-                just provide the elevant data_manager
-
-            :param misc_dm: use self.misc_dm
-            :param combo_box: The combo box you wanna add stuff too
-            
-            We do this several times in the frontend. 
-                This prevents duplicate code
-        """
-        
-        default_location = self.settings_json["default_location_ID"]
-
-        locations = self.misc_dm.get_locations()
-        set_objects_to_combo_box(locations, combo_box)
-        combo_box.setCurrentIndex(int(default_location))
-
-
-    def get_physicians_into(self, combo_box: QComboBox, location_id=None):
-        """
-            Loads all physicians into the combo_box,
-                just provide the elevant data_manager
-
-            :param misc_dm: use self.misc_dm
-            :param combo_box: The combo box you wanna add stuff too
-            
-            We do this several times in the frontend. 
-                This prevents duplicate code
-        """
-
-        if location_id is None:
-            location_id = int(self.settings_json["default_location_ID"])
-
-        physicians = self.user_dm.get_physicians(location_id)
-        set_objects_to_combo_box(physicians, combo_box)
 
 
 

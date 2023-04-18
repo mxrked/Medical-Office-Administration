@@ -4,13 +4,12 @@ UI Designed by: Destan Hutcherson
 Authors: Destan Hutcherson, 
 """
 from PyQt5.QtWidgets import QPushButton, QLineEdit, QDateEdit, QComboBox
-
+from frontend.utility import Utility
 from backend.models import LabOrder
-from frontend.main_nav import Nav
 from backend.data_handler import get_selected_combo_box_object, set_objects_to_combo_box
 
 
-class Lab(Nav):
+class Lab(Utility):
     """
     Creates a lab using Lab object
     

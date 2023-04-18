@@ -9,11 +9,8 @@ from frontend.main_nav import Nav
 from backend.data_handler import set_objects_to_combo_box
 from backend.data_handler import get_selected_combo_box_object
 from backend.appointment_dm import AppointmentDM
-from backend.misc_dm import MiscDM
-from backend.user_dm import UserDM
-
-
-class Referral(Nav):
+from frontend.utility import Utility
+class Referral_Screen(Utility):
     """
         Creates a referral using the Referral object
 
@@ -24,7 +21,7 @@ class Referral(Nav):
         to load up combo_boxes by default
     """
     def __init__(self):
-        super(Referral, self).__init__()
+        super(Referral_Screen, self).__init__()
 
         # Initalized Input Widgets
         self.ref_fname = self.findChild(QLineEdit, "LineEdit_PatientFirstName")
@@ -70,5 +67,6 @@ class Referral(Nav):
         except AssertionError as error:
             self.load_error(str(error))
             return
+
 
 

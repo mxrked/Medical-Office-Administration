@@ -4,10 +4,10 @@ UI Designed by: Jessica Weeks
 Authors:
 """
 from PyQt5.QtWidgets import QComboBox, QListWidget, QPushButton
-from frontend.main_nav import Nav
+from frontend.utility import Utility
 from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, \
       set_objects_to_list
-class CheckIn(Nav):
+class CheckIn(Utility):
     """
         Handles the Check In Page
         

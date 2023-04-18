@@ -2,16 +2,12 @@
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QLabel, QListWidget, QTimeEdit, QPushButton, QCalendarWidget
 from PyQt5.QtCore import QDate
 from PyQt5.QtGui import QIntValidator
-from frontend.main_nav import Nav
 from frontend.ui.assets.files.STYLING import disableCustomTime_Style, enableCustomTime_Style
 from backend.data_handler import set_objects_to_combo_box, get_selected_combo_box_object, get_selected_list_object, set_objects_to_list
-from backend.appointment_dm import AppointmentDM
-from backend.misc_dm import MiscDM
-from backend.user_dm import UserDM
-from backend.models import Location
+from frontend.utility import Utility
 from datetime import timedelta, datetime, date
 
-class Schedule(Nav):
+class Schedule(Utility):
     def __init__(self):
         super(Schedule, self).__init__()
 
@@ -144,7 +140,8 @@ class Schedule(Nav):
             return
         
         appt = get_selected_list_object(self.SA_CurrentAvailableTimesListWidget)
-        
+
+        # They dont have to select a time if custom tmie
         if (appt is None) and self.custom_time:
             # A reminder from data_handlers we store classes of objects to the list
             appt = first_item.obj
@@ -160,16 +157,22 @@ class Schedule(Nav):
             # Modify it with custom time
             appt.ApptTime = start_time
             appt.ApptEndTime = start_datetime + length
-        else:
+        
+        elif appt is None:
             self.load_error("No Item Selected")
             return
+        
         try:
             self.appointment_dm.add_appointment(appt, self.custom_time)
         except AssertionError as error:
             self.load_error(str(error))
+            return
+
+        self.clearInputs()
+        self.SA_CurrentAvailableTimesListWidget.clear()
 
 
-class Reschedule(Nav):
+class Reschedule(Utility):
     def __init__(self):
         super(Reschedule, self).__init__()
 
@@ -202,7 +205,7 @@ class Reschedule(Nav):
         print("RescheduleAppointments")
         
 
-class Cancel(Nav):
+class Cancel(Utility):
     def __init__(self):
         super(Cancel, self).__init__()
 

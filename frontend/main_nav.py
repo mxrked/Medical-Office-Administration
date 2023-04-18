@@ -11,7 +11,7 @@ import datetime
 from frontend.ui.assets.files.STYLING import disableFrameBtn_Style, infoDialog_Style, \
     infoDialogCloseBtn_Style, infoDialogName_Style, enableFrameBtn_Style
 
-from frontend.StartWindow import Start
+
 
 # These qrc are used by pyqt 5
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo # pylint: disable=unused-import
@@ -122,6 +122,9 @@ class Nav(QMainWindow):
         """
             Shows the start window and closes the current one
         """
+
+        from frontend.StartWindow import Start
+
         # From the frontend
         new_window = Start()
 

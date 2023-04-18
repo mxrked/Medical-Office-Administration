@@ -244,6 +244,9 @@ class Nav(QMainWindow):
         """
             Shows the start window and closes the current one
         """
+
+        from frontend.StartWindow import Start
+
         # From the frontend
         new_window = Start()
 

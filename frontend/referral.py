@@ -59,7 +59,7 @@ class Referral(Nav):
         REF_patientLN = self.ref_lname.text()
         REF_patientDOB = self.ref_dob.date().toPyDate()
         REF_practitioner = get_selected_combo_box_object(self.ref_practitioners)
-        REF_creation_date = self.ref_creation_date
+        REF_creation_date = self.ref_creation_date.date().toPyDate()
         REF_reason = self.ref_reason.text()
 
         patients = self.user_dm.get_patients(first_name=REF_patientFN,

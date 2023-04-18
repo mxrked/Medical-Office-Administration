@@ -59,6 +59,15 @@ class Referral_Screen(Utility):
         REF_creation_date = self.ref_creation_date
         REF_reason = self.ref_reason.text()
 
+        patients = self.user_dm.get_patients(first_name=REF_patientFN,
+                                                    last_name=REF_patientLN,
+                                                    dob=REF_patientDOB)
+
+        if len(patients) == 0:
+            self.load_error("No Patients")
+            return
+
+
         try:
             assert REF_patientFN != "", "Please enter patients' first name."
             assert REF_patientLN != "", "Please enter patients' last name."

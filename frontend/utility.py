@@ -3,6 +3,7 @@ utility.py - A bunch of utlity functions that are used by every screen.
 Author: Jessica Weeks
 """
 import sys 
+from datetime import date
 from PyQt5.QtWidgets import QWidget, QLineEdit, QDateEdit, QTimeEdit, QDialog, \
     QVBoxLayout, QLabel, QDateEdit, QTimeEdit, QComboBox, QPushButton
 from PyQt5.QtCore import QDate, Qt
@@ -11,6 +12,7 @@ from backend.user_dm import UserDM
 from backend.misc_dm import MiscDM
 from backend.appointment_dm import AppointmentDM
 from backend.data_handler import set_objects_to_combo_box
+from backend.models import Patient
 from frontend.main_nav import Nav
 from frontend.ui.assets.files.STYLING import infoDialog_Style, infoDialogCloseBtn_Style, infoDialogName_Style
 
@@ -133,3 +135,12 @@ class Utility(Nav):
 
         physicians = self.user_dm.get_physicians(location_id)
         set_objects_to_combo_box(physicians, combo_box)
+
+    def get_verified_patient(self, f_name: str, l_name: str, dob: date) -> Patient:
+        patients = self.user_dm.get_patients(first_name=f_name,
+                                                    last_name=l_name,
+                                                    dob=dob)
+
+        assert len(patients) == 1, "No Patients Found"
+        
+        return patients[0]

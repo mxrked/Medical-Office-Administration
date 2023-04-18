@@ -57,7 +57,7 @@ class Appointment(Base):
     Employee = relationship("Employee", backref="ApptEmployee")
     Location = relationship("Location", backref="ApptLocation")
 
-    def __str__(self) -> str:
+    def __str__(self) ->  str:
 
         formated_time = self.ApptTime.strftime("%I:%M:%S %p")
         try: # Sometimes the patient name is decoupled

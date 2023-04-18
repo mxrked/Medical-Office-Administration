@@ -92,20 +92,12 @@ class Schedule(Utility):
         SA_physicianName = get_selected_combo_box_object(self.SA_PhysicianNamesComboBox)
         SA_appointmentDate = self.SA_AppointmentDateDateEdit.date().toPyDate()
 
-        patients = self.user_dm.get_patients(first_name=SA_patientFN,
-                                                    last_name=SA_patientLN,
-                                                    dob=SA_patientDOB)
-
-        if len(patients) == 0:
-            self.load_error("No Patients found")
-            return
-        if len(patients) > 1:
-            self.load_error("More than one patient")
-            return
-
-        patient = patients[0]
+        
 
         try:
+            patient = self.get_verified_patient(SA_patientFN,
+                                                SA_patientLN,
+                                                SA_patientDOB)
             assert SA_appointmentReason != "", "No appointment Reason"
             assert SA_appointmentLength.isdigit(), "Invalid appointment Length"
 

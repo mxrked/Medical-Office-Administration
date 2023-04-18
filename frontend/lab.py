@@ -67,18 +67,15 @@ class Lab(Utility):
         lab_date = self.lab_lab_date_edit.date().toPyDate()
         lab_lab = get_selected_combo_box_object(self.lab_lab_combo)
         lab_order = self.lab_order_name.text()
-        patients = self.user_dm.get_patients(first_name=patient_fn,
-                                            last_name=patient_ln,
-                                            dob=patient_dob)
-        if len(patients) == 0:
-            self.load_error("No Patients")
-            return
-        if len(patients) > 1:
-            self.load_error("More than one patient")
-            return
+        
 
-        patient = patients[0]
-
+        try:
+            patient = self.get_verified_patient(patient_fn,
+                                                patient_ln,
+                                                patient_dob)
+        except AssertionError as error:
+            self.load_error(str(error))
+            return
 
         labToAdd = LabOrder(
             OrderName = lab_order,

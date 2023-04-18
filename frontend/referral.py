@@ -5,11 +5,11 @@ Authors:
 """
 
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QPushButton
-from frontend.main_nav import Nav
+from frontend.utility import Utility
 from backend.data_handler import set_objects_to_combo_box
 from backend.data_handler import get_selected_combo_box_object
-from backend.appointment_dm import AppointmentDM
-from frontend.utility import Utility
+from backend.models import Referral
+
 class Referral_Screen(Utility):
     """
         Creates a referral using the Referral object
@@ -56,21 +56,11 @@ class Referral_Screen(Utility):
         REF_patientLN = self.ref_lname.text()
         REF_patientDOB = self.ref_dob.date().toPyDate()
         REF_practitioner = get_selected_combo_box_object(self.ref_practitioners)
-        REF_creation_date = self.ref_creation_date.date().toPyDate()
+        REF_creation_date = self.ref_creation_date
         REF_reason = self.ref_reason.text()
 
-        patients = self.user_dm.get_patients(first_name=REF_patientFN,
-                                                    last_name=REF_patientLN,
-                                                    dob=REF_patientDOB)
-
-        if len(patients) == 0:
-            self.load_error("No Patients")
-            return
-
-
         try:
-            assert REF_patientFN != "", "Please enter patients' first name."
-            assert REF_patientLN != "", "Please enter patients' last name."
+            patient = self.get_verified_patient(REF_patientFN, REF_patientLN, REF_patientDOB)
             assert REF_reason != "", "Please enter the reason for this referral."
 
         except AssertionError as error:

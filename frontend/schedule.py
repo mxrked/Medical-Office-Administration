@@ -199,6 +199,12 @@ class Reschedule(Nav):
         
 
     def rescheduleAppointment(self):
+
+        RA_officeLocations = get_selected_combo_box_object(self.RA_OfficeLocationsComboBox)
+        RA_physicianNames = get_selected_combo_box_object(self.RA_PhysicianNamesComboBox)
+        RA_appointmentDate = self.RA_AppointmentDateDateEdit.date().toPyDate()
+        RA_rescheduleDate = self.RA_RescheduleDateDateEdit.date().toPyDate()
+
         print("RescheduleAppointments")
         
 
@@ -225,7 +231,12 @@ class Cancel(Nav):
         self.get_physicians_into(self.CA_PhysicianNamesComboBox)
 
     def search_CA(self):
-        print("Search SA")
+
+        CA_officecLocations = get_selected_combo_box_object(self.CA_OfficeLocationsComboBox)
+        CA_physicianNames = get_selected_combo_box_object(self.CA_PhysicianNamesComboBox)
+        CA_appointmentDate = self.CA_AppointmentDateDateEdit.date().toPyDate()
+
+        print("Search CA")
         
 
     def cancelAppointment(self):

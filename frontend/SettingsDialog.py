@@ -2,10 +2,11 @@
 
 from PyQt5.QtWidgets import QDateEdit, QComboBox, QDialog, QApplication
 from PyQt5 import uic
-from frontend.main_nav import Nav
 from backend.data_handler import set_objects_to_combo_box, get_selected_combo_box_object, get_selected_list_object, set_objects_to_list
-
+from backend.misc_dm import MiscDM
+from backend.models import Location
 import sys
+from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo # pylint: disable=unused-import
 
 class SettingsDialog(QDialog):
     def __init__(self):
@@ -21,17 +22,9 @@ class SettingsDialog(QDialog):
 
         self.todaysDate = self.todaysDateDateEdit.date().toPyDate()
 
-        set_objects_to_combo_box(self.misc_dm.get_locations(), self.locationsCombobox) # This didnt work
-        self.get_locations_into(self.locationsCombobox) # Nor did this .-. - I switched from Nav to QDialog again
+        set_objects_to_combo_box(MiscDM().get_locations(), self.locationsCombobox)
 
 
-def main():
-    app = QApplication(sys.argv)
-    UIWindow = SettingsDialog()
-    UIWindow.show()
-    app.exec()
+        def selected_location(self) -> Location:
+            pass
 
-
-
-if __name__ == "__main__":
-    main()

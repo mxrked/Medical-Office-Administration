@@ -14,7 +14,6 @@ from frontend.ui.assets.qrc import app_bg, doctor, show, hide, gears, logo # pyl
 from frontend.ui.assets.files.GLOBALS import teamMembers
 from frontend.ui.assets.files.STYLING import infoDialog_Style, infoDialogCloseBtn_Style, infoDialogName_Style,\
     validEnterLE_Style, invalidEnterLE_Style
-from frontend import SettingsDialog
 from backend.user_dm import UserDM
 from backend.private.data_manager import DataManager
 
@@ -132,10 +131,13 @@ class Start(QMainWindow):
         infoDialog.exec_()
 
     def displaySettingsDialog(self):
-        print(SettingsDialog)
-        dialog = uic.loadUi("frontend/ui/SettingsDialog.ui")
+        
+        from frontend.SettingsDialog import SettingsDialog
+
+        dialog = SettingsDialog()
         dialog.exec_()
 
+        # Restart?
 
     def closeEvent(self, event): # pylint: disable=unused-argument
         """

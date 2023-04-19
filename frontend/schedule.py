@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QLabel, QListWidget
 from PyQt5.QtCore import QDate
 from PyQt5.QtGui import QIntValidator
 from frontend.ui.assets.files.STYLING import disableCustomTime_Style, enableCustomTime_Style
-from backend.data_handler import set_objects_to_combo_box, get_selected_combo_box_object, get_selected_list_object, set_objects_to_list
+from backend.data_handler import load_objects_to_combo_box, get_selected_combo_box_object, get_selected_list_object, load_objects_to_list
 from frontend.utility import Utility
 from datetime import timedelta, datetime, date
 
@@ -46,10 +46,10 @@ class Schedule(Utility):
         self.SA_ScheduleAppointmentPushButton.clicked.connect(self.scheduleAppointment)
         
 
-        set_objects_to_combo_box(self.appointment_dm.get_appointment_types(), self.SA_AppointmentTypesComboBox)
+        load_objects_to_combo_box(self.appointment_dm.get_appointment_types(), self.SA_AppointmentTypesComboBox)
 
-        self.get_locations_into(self.SA_OfficeLocationsComboBox)
-        self.get_physicians_into(self.SA_PhysicianNamesComboBox)
+        self.load_locations(self.SA_OfficeLocationsComboBox)
+        self.load_physicians(self.SA_PhysicianNamesComboBox)
 
         self.SA_OfficeLocationsComboBox.currentIndexChanged.connect(self.change_location_sa)
 
@@ -78,7 +78,7 @@ class Schedule(Utility):
     
     def change_location_sa(self):
         location = get_selected_combo_box_object(self.SA_OfficeLocationsComboBox)
-        self.get_physicians_into(self.SA_PhysicianNamesComboBox, location_id=location.LocationID)
+        self.load_physicians(self.SA_PhysicianNamesComboBox, location_id=location.LocationID)
 
     def search_SA(self):
         
@@ -121,7 +121,7 @@ class Schedule(Utility):
             self.load_error(str(error))
             return
 
-        set_objects_to_list(availableTimes, self.SA_CurrentAvailableTimesListWidget)
+        load_objects_to_list(availableTimes, self.SA_CurrentAvailableTimesListWidget)
 
     def scheduleAppointment(self):
 
@@ -177,6 +177,7 @@ class Reschedule(Utility):
         self.RA_DisplayTimesAppointmentsPushButton = self.findChild(QPushButton, "DisplayCurrentTimes_Btn_RA")
         self.RA_RescheduleAppointmentPushButton = self.findChild(QPushButton, "RescheduleAppointment_Btn_RA")
         self.RA_ClearInputsPushButton = self.findChild(QPushButton, "RA_ClearInputsBtn")
+        self.RA_DisplayNewTimes = self.findChild(QPushButton, "DisplayNewTimes_Btn_RA")
 
         self.RA_AppointmentDateDateEdit.setDate(QDate.currentDate())
         self.RA_AppointmentDateDateEdit.setMinimumDate(QDate.currentDate())
@@ -184,24 +185,75 @@ class Reschedule(Utility):
         self.RA_RescheduleDateDateEdit.setMinimumDate(QDate.currentDate())
         self.RA_ClearInputsPushButton.mousePressEvent = lambda event: self.clearInputs()
         self.RA_DisplayTimesAppointmentsPushButton.mousePressEvent = lambda event: self.displayTimesApps()
+        self.RA_DisplayNewTimes.mousePressEvent = lambda event: self.displayRescheduleAppointment()
         self.RA_RescheduleAppointmentPushButton.mousePressEvent = lambda event: self.rescheduleAppointment()
 
-        self.get_locations_into(self.RA_OfficeLocationsComboBox)
-        self.get_physicians_into(self.RA_PhysicianNamesComboBox)
+        self.load_locations(self.RA_OfficeLocationsComboBox)
+        self.load_physicians(self.RA_PhysicianNamesComboBox)
+
+        self.RA_OfficeLocationsComboBox.currentIndexChanged.connect(self.ra_switch_locations)
+
+    def ra_switch_locations(self):
+        
+        location = get_selected_combo_box_object(self.RA_OfficeLocationsComboBox) # Location ID starts with 1
+
+        self.load_physicians(
+            self.RA_PhysicianNamesComboBox,
+            location_id = location.LocationID
+        ) 
 
     def displayTimesApps(self):
-        print("DisplayTimesApps")
         
+        old_date = self.RA_AppointmentDateDateEdit.date().toPyDate()
+        physician = get_selected_combo_box_object(self.RA_PhysicianNamesComboBox)
+
+        old_appointments = self.appointment_dm.get_appointments_for_date(old_date, physician)
+
+        load_objects_to_list(old_appointments, self.RA_SearchedAppointmentsListWidget)
+
+
+    def displayRescheduleAppointment(self):
+        
+        new_date = self.RA_RescheduleDateDateEdit.date().toPyDate()
+
+        appt = get_selected_list_object(self.RA_SearchedAppointmentsListWidget)
+
+        try:
+            assert appt is not None, "Appointment Not Selected"
+
+        except AssertionError as error:
+            self.load_error(str(error))
+            return
+
+        available_times = self.appointment_dm.get_appointments_for_reschedule(
+            appt = appt,
+            check_date = new_date
+        )
+
+        load_objects_to_list(available_times, self.RA_CurrentAvailableTimesListWidget)
+
+        # Used so we could tell the old appointment time
+        # The person is able to date the old appointment so we just 
+        # Wanna make sure its the correct one
+        self.ra_old_appointment = appt
 
     def rescheduleAppointment(self):
-
-        RA_officeLocations = get_selected_combo_box_object(self.RA_OfficeLocationsComboBox)
-        RA_physicianNames = get_selected_combo_box_object(self.RA_PhysicianNamesComboBox)
-        RA_appointmentDate = self.RA_AppointmentDateDateEdit.date().toPyDate()
-        RA_rescheduleDate = self.RA_RescheduleDateDateEdit.date().toPyDate()
-
-        print("RescheduleAppointments")
         
+        appt = get_selected_list_object(self.RA_CurrentAvailableTimesListWidget)
+
+        try:
+            assert appt is not None, "No New Appointment Selected"
+        except AssertionError as error:
+            self.load_error(str(error))
+            return
+
+        self.appointment_dm.add_appointment(appt)
+        self.appointment_dm.remove_appointment(self.ra_old_appointment)
+
+        self.clearInputs()
+        self.RA_CurrentAvailableTimesListWidget.clear()
+        self.RA_SearchedAppointmentsListWidget.clear()
+
 
 class Cancel(Utility):
     def __init__(self):
@@ -222,8 +274,8 @@ class Cancel(Utility):
         self.CA_SearchForAppointmentsPushButton.mousePressEvent = lambda event: self.search_CA()
         self.CA_CancelAppointmentPushButton.mousePressEvent = lambda event: self.cancelAppointment()
 
-        self.get_locations_into(self.CA_OfficeLocationsComboBox)
-        self.get_physicians_into(self.CA_PhysicianNamesComboBox)
+        self.load_locations(self.CA_OfficeLocationsComboBox)
+        self.load_physicians(self.CA_PhysicianNamesComboBox)
 
     def search_CA(self):
 

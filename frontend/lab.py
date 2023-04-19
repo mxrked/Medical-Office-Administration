@@ -6,7 +6,7 @@ Authors: Destan Hutcherson,
 from PyQt5.QtWidgets import QPushButton, QLineEdit, QDateEdit, QComboBox
 from frontend.utility import Utility
 from backend.models import LabOrder
-from backend.data_handler import get_selected_combo_box_object, set_objects_to_combo_box
+from backend.data_handler import get_selected_combo_box_object, load_objects_to_combo_box
 
 
 class Lab(Utility):
@@ -37,9 +37,9 @@ class Lab(Utility):
         self.lab_clear_btn.clicked.connect(self.clearInputs)
 
         # fill combo boxes
-        self.get_physicians_into(self.lab_practitioner_combo)
-        self.get_locations_into(self.lab_locations_combo)
-        set_objects_to_combo_box(self.misc_dm.get_lab_tests(), self.lab_lab_combo)
+        self.load_physicians(self.lab_practitioner_combo)
+        self.load_locations(self.lab_locations_combo)
+        load_objects_to_combo_box(self.misc_dm.get_lab_tests(), self.lab_lab_combo)
 
 
 

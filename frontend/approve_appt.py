@@ -5,7 +5,7 @@ Authors:
 """
 from PyQt5.QtWidgets import QListWidget, QPushButton, QComboBox
 from frontend.utility import Utility
-from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, set_objects_to_combo_box
+from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, load_objects_to_combo_box
 
 
 class Approve(Utility):
@@ -43,8 +43,8 @@ class Approve(Utility):
         self.a_btn_deny.clicked.connect(self.deny)
         self.a_btn_refresh.clicked.connect(self.a_refresh)
 
-        self.get_locations_into(self.a_location)
-        self.get_physicians_into(self.a_provider)
+        self.load_locations(self.a_location)
+        self.load_physicians(self.a_provider)
 
         self.a_location.currentIndexChanged.connect(self.a_location_chagne)
 
@@ -102,10 +102,10 @@ class Approve(Utility):
         getProviders = get_selected_combo_box_object(self.a_provider)
 
         listOfAppointments = self.appointment_dm.get_pending_appointments(getLocations, getProviders)
-        set_objects_to_combo_box(listOfAppointments, self.a_list)
+        load_objects_to_combo_box(listOfAppointments, self.a_list)
 
         print(self.a_refresh.__doc__)
 
     def a_location_chagne(self):
         location = get_selected_combo_box_object(self.a_location)
-        self.get_physicians_into(self.a_provider, location_id=location.LocationID)
+        self.load_physicians(self.a_provider, location_id=location.LocationID)

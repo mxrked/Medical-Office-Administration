@@ -430,7 +430,7 @@ QPushButton::hover {
 border-image: transparent;</string>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="Appointments">
       <property name="styleSheet">
@@ -2619,19 +2619,19 @@ QPushButton::hover {
          <x>130</x>
          <y>100</y>
          <width>1200</width>
-         <height>0</height>
+         <height>681</height>
         </rect>
        </property>
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>0</height>
+         <height>681</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
          <width>16777215</width>
-         <height>0</height>
+         <height>681</height>
         </size>
        </property>
        <property name="styleSheet">
@@ -3261,7 +3261,7 @@ QPushButton::hover {
 </string>
         </property>
         <property name="text">
-         <string>Display Times/Apps.</string>
+         <string>Search Appointments</string>
         </property>
        </widget>
        <widget class="QFrame" name="Frame_SelectDoctor_RA_3">
@@ -3384,6 +3384,45 @@ QPushButton::hover {
          <string>Clear Inputs</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="DisplayNewTimes_Btn_RA">
+        <property name="geometry">
+         <rect>
+          <x>390</x>
+          <y>430</y>
+          <width>211</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>MS Shell Dlg 2</family>
+          <pointsize>9</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	border-image: none;
+	background-color: #6ECCAF;
+	color: black;
+	border: 2px solid black;
+}
+
+QPushButton::hover {
+	background-color: rgb(139, 231, 100);
+	color: white;
+}
+
+</string>
+        </property>
+        <property name="text">
+         <string>Search New Appointment</string>
+        </property>
+       </widget>
        <zorder>RescheduleAppointment_HeadingLabel</zorder>
        <zorder>UnderHeadingTextLabel_RA_2</zorder>
        <zorder>Frame_SelectDoctor_RA</zorder>
@@ -3397,6 +3436,7 @@ QPushButton::hover {
        <zorder>Frame_SelectDoctor_RA_3</zorder>
        <zorder>RA_ClearInputsBtn</zorder>
        <zorder>UnderHeadingTextLabel_RA_1</zorder>
+       <zorder>DisplayNewTimes_Btn_RA</zorder>
       </widget>
       <widget class="QFrame" name="PatientFrame">
        <property name="geometry">
@@ -3404,7 +3444,7 @@ QPushButton::hover {
          <x>130</x>
          <y>100</y>
          <width>1200</width>
-         <height>681</height>
+         <height>0</height>
         </rect>
        </property>
        <property name="sizePolicy">

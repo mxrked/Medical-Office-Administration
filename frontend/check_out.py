@@ -5,7 +5,7 @@ Authors:
 """
 from PyQt5.QtWidgets import QListWidget, QComboBox, QPushButton
 from frontend.utility import Utility
-from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, set_objects_to_list
+from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, load_objects_to_list
 
 class CheckOut(Utility):
     """
@@ -48,7 +48,7 @@ class CheckOut(Utility):
 
         
         # Populate Combo Boxes
-        self.get_locations_into(self.locations_combobox)
+        self.load_locations(self.locations_combobox)
 
     def check_out(self):
         """
@@ -89,7 +89,7 @@ class CheckOut(Utility):
         location = get_selected_combo_box_object(self.locations_combobox)
 
         listOfAppointments = self.appointment_dm.get_in_progress_appointments(location=location)
-        set_objects_to_list(listOfAppointments, self.check_out_list)
+        load_objects_to_list(listOfAppointments, self.check_out_list)
 
     def download_summary(self):
         """

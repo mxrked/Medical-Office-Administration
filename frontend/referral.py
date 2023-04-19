@@ -5,8 +5,9 @@ Authors:
 """
 
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QPushButton
+from PyQt5.QtCore import QDate
 from frontend.utility import Utility
-from backend.data_handler import set_objects_to_combo_box
+from backend.data_handler import load_objects_to_combo_box
 from backend.data_handler import get_selected_combo_box_object
 from backend.models import Referral
 
@@ -24,18 +25,22 @@ class Referral_Screen(Utility):
         super(Referral_Screen, self).__init__()
 
         # Initalized Input Widgets
-        self.ref_fname = self.findChild(QLineEdit, "LineEdit_PatientFirstName")
-        self.ref_lname = self.findChild(QLineEdit, "LineEdit_PatientLastName")
-        self.ref_dob = self.findChild(QDateEdit, "DateEdit_DOB")
-        self.ref_practitioners = self.findChild(QComboBox, "ComboBox_DoctorPractitioner")
-        self.ref_creation_date = self.findChild(QDateEdit, "DateEdit_CreationDate")
-        self.ref_reason = self.findChild(QLineEdit, "LineEdit_Reason")
+        self.ref_fname = self.findChild(QLineEdit, "Referral_Edit_Fname")
+        self.ref_lname = self.findChild(QLineEdit, "Referral_Edit_Lname")
+        self.ref_dob = self.findChild(QDateEdit, "Referral_DOB")
+        self.ref_practitioners = self.findChild(QComboBox, "Referral_Practitoner")
+        self.ref_creation_date = self.findChild(QDateEdit, "Referral_CreationDate")
+        self.ref_reason = self.findChild(QLineEdit, "Referral_Reason")
 
         # Initalized Buttons
         self.create_referral_btn = self.findChild(QPushButton, "Btn_CreateReferral")
 
         # Button Listeners
         self.create_referral_btn.clicked.connect(self.create_referral)
+
+        # Load up values
+        self.load_physicians(self.ref_practitioners, "All")
+        self.ref_creation_date.setMinimumDate(QDate.currentDate())
 
     def create_referral(self):
         """
@@ -52,20 +57,33 @@ class Referral_Screen(Utility):
             For the Comboboxes use a data_handler find the selected box
         """
 
-        REF_patientFN = self.ref_fname.text()
-        REF_patientLN = self.ref_lname.text()
-        REF_patientDOB = self.ref_dob.date().toPyDate()
-        REF_practitioner = get_selected_combo_box_object(self.ref_practitioners)
-        REF_creation_date = self.ref_creation_date
-        REF_reason = self.ref_reason.text()
+        patient_fn = self.ref_fname.text()
+        patient_ln = self.ref_lname.text()
+        patient_dob = self.ref_dob.date().toPyDate()
+        physician = get_selected_combo_box_object(self.ref_practitioners)
+        creation_date = self.ref_creation_date.date().toPyDate()
+        reason = self.ref_reason.text()
 
         try:
-            patient = self.get_verified_patient(REF_patientFN, REF_patientLN, REF_patientDOB)
-            assert REF_reason != "", "Please enter the reason for this referral."
+            patient = self.get_verified_patient(patient_fn, patient_ln, patient_dob)
+            assert reason != "", "Please enter the reason for this referral."
 
         except AssertionError as error:
             self.load_error(str(error))
             return
 
 
+        referral = Referral(
+            PatientID = patient.PatientID,
+            PhysicianID = physician.EmployeeID,
+            ReferralReason = reason,
+            ReferralDate = creation_date,
+
+            Patient = patient,
+            Employee = physician
+        )
+
+        self.misc_dm.add_referral(referral)
+
+        self.clearInputs()
 

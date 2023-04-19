@@ -6,7 +6,7 @@ Authors:
 from PyQt5.QtWidgets import QComboBox, QListWidget, QPushButton
 from frontend.utility import Utility
 from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, \
-      set_objects_to_list
+      load_objects_to_list
 class CheckIn(Utility):
     """
         Handles the Check In Page
@@ -47,8 +47,8 @@ class CheckIn(Utility):
         self.refresh_btn.clicked.connect(self.check_in_refresh)
 
         # Populate Combo Boxes
-        self.get_locations_into(self.check_in_location)
-        self.get_physicians_into(self.check_in_providers)
+        self.load_locations(self.check_in_location)
+        self.load_physicians(self.check_in_providers)
 
         self.check_in_location.currentIndexChanged.connect(self.check_in_location_change)
 
@@ -130,9 +130,9 @@ class CheckIn(Utility):
             self.load_error("No Avaliable Appointments")
             return
 
-        set_objects_to_list(listOfAppointments, self.check_ins_list)
+        load_objects_to_list(listOfAppointments, self.check_ins_list)
 
 
     def check_in_location_change(self):
         location = get_selected_combo_box_object(self.check_in_location)
-        self.get_physicians_into(self.check_in_providers, location_id=location.LocationID)
+        self.load_physicians(self.check_in_providers, location_id=location.LocationID)

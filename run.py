@@ -1,4 +1,4 @@
-from datetime import datetime, date
+from datetime import date
 from frontend.StartWindow import main
 
 if __name__ == "__main__":

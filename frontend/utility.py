@@ -11,7 +11,7 @@ from PyQt5 import QtGui
 from backend.user_dm import UserDM
 from backend.misc_dm import MiscDM
 from backend.appointment_dm import AppointmentDM
-from backend.data_handler import set_objects_to_combo_box
+from backend.data_handler import load_objects_to_combo_box
 from backend.models import Patient
 from frontend.main_nav import Nav
 from frontend.ui.assets.files.STYLING import infoDialog_Style, infoDialogCloseBtn_Style, infoDialogName_Style
@@ -99,7 +99,7 @@ class Utility(Nav):
         info_dialog.exec_()
 
 
-    def get_locations_into(self, combo_box: QComboBox):
+    def load_locations(self, combo_box: QComboBox):
         """
             Loads all locations into the combo_box,
                 just provide the elevant data_manager
@@ -114,27 +114,29 @@ class Utility(Nav):
         default_location = self.settings_json["default_location_ID"]
 
         locations = self.misc_dm.get_locations()
-        set_objects_to_combo_box(locations, combo_box)
+        load_objects_to_combo_box(locations, combo_box)
         combo_box.setCurrentIndex(int(default_location))
 
 
-    def get_physicians_into(self, combo_box: QComboBox, location_id=None):
+    def load_physicians(self, combo_box: QComboBox, location_id=None):
         """
             Loads all physicians into the combo_box,
-                just provide the elevant data_manager
+                just provide the relevant data_manager
 
-            :param misc_dm: use self.misc_dm
             :param combo_box: The combo box you wanna add stuff too
-            
+            :param location_id: The location ID. Can be "All"
+
             We do this several times in the frontend. 
                 This prevents duplicate code
         """
 
         if location_id is None:
             location_id = int(self.settings_json["default_location_ID"])
+        elif location_id == "All":
+            location_id = None
 
         physicians = self.user_dm.get_physicians(location_id)
-        set_objects_to_combo_box(physicians, combo_box)
+        load_objects_to_combo_box(physicians, combo_box)
 
     def get_verified_patient(self, f_name: str, l_name: str, dob: date) -> Patient:
         patients = self.user_dm.get_patients(first_name=f_name,

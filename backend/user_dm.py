@@ -25,6 +25,9 @@ class UserDM(DataManager):
     def __init__(self):
         super().__init__()
 
+        # Used for very basic cacheing
+        self.physicians_dict = {}
+
     def check_username_password(self, username: str, password: str) -> Employee:
         
         with self.session_scope() as session:
@@ -59,7 +62,7 @@ class UserDM(DataManager):
 
             return False
 
-
+    
     def get_physicians(self, location_id=None) -> list[Employee]:
         """
         
@@ -69,6 +72,10 @@ class UserDM(DataManager):
 
         """
         valid_types = ["General Practitioner", "Internal Medicine", "Ear, Nose & Throat", "Womens Medicine"]
+
+        # Use cache to discourge unneeded db calls
+        if location_id in self.physicians_dict.keys():
+            return self.physicians_dict[location_id]
 
         with self.session_scope() as session:
             
@@ -86,6 +93,10 @@ class UserDM(DataManager):
                     .all()
 
             [session.expunge(physician) for physician in physicians]
+
+            # Loads into cache
+            self.physicians_dict[location_id] = physicians
+
             return physicians
 
     def get_patients(self, first_name: str, last_name: str, dob: date) -> list[Patient]:

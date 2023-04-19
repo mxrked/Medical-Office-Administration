@@ -364,7 +364,6 @@ class Referral(Base):
     :param PatientID: int, Use Patient.PatientID
     :param PhysicianID: int, Use Employee.EmployeeID
     :param ReferralDate: date, Use date from Datetime library
-    :param PatientCondition: str, A patients condition
     
     :param Patient: Patient Object, use Patient
     :param Employee: Employee Object, use Employee
@@ -377,7 +376,6 @@ class Referral(Base):
     PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
     PhysicianID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     ReferralDate = Column(Date)
-    PatientCondition = Column(VARCHAR(200))
 
     Patient = relationship("Patient", backref="RePatient")
     Employee = relationship("Employee", backref="ReEmployee")

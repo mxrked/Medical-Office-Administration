@@ -188,30 +188,14 @@ class AppointmentDM(AppointmentStatusDataManger):
         return  avaliable_appointments
 
 
-    def set_appointment_time(self, appt:Appointment,
-                                   new_time:time,
-                                   new_date:date,
-                                   custom_time:bool=None):
+    def remove_appointment(self, appt:Appointment):
         """
-            Sets the appointment time and date to the given values if they are available.
+            Removes a apopintment 
 
-            :param appt: An Appointment object representing the appointment to update.
-            :param new_time: A time object from the datetime library representing the new appt time
-            :param new_date: A date object from the datetime library represetning the new appt date
-            :param custom_time: A boolean flag if this was a user customized time
-
-            :raises AssertionError: If appt not avaliable, display this to the user
-
-            :return: None
+            :param appt: Appointment model to remove
         """
         with self.session_scope() as session:
-            self.__check_appointment_available(appt, new_time, new_date, custom_time)
-
-            stmt = sa.update(Appointment)\
-                .where(Appointment.AppointmentID == appt.AppointmentID)\
-                .values(ApptTime=new_time, ApptDate=new_date)
-            session.execute(stmt)
-
+            session.delete(appt)
 
     def add_appointment(self, appt: Appointment, custom_time=None):
         """
@@ -239,7 +223,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             [session.expunge(t) for t in types]
             return types
 
-    def get_appointments_for_date(self, check_date: date) -> list[Appointment]:
+    def get_appointments_for_date(self, check_date: date, physician: Employee) -> list[Appointment]:
         """
             Returns a list of appointments scheduled for the given date.
 
@@ -248,10 +232,40 @@ class AppointmentDM(AppointmentStatusDataManger):
             :return: A list of Appointment objects for the given date
         """
         with self.session_scope() as session:
-            return session.query(Appointment)\
-                .filter_by(ApptDate = check_date)\
+            appointments = session.query(Appointment)\
+                .options(joinedload(Appointment.Patient))\
+                .filter(Appointment.ApptDate == check_date,
+                        Appointment.PhysicianID == physician.EmployeeID)\
                 .order_by(Appointment.ApptTime)\
                 .all()
+            
+            for appt in appointments:
+                appt.patient_name = str(appt.Patient)
+                session.expunge(appt)
+            return appointments
+
+    def get_appointments_for_reschedule(self, appt: Appointment, check_date: date):
+        with self.session_scope() as session:
+            # We need to refresh our apopintment data
+            session.add(appt)
+
+            appt_start_datetime = datetime.datetime.combine(date.today(), appt.ApptTime)
+            appt_end_datetime = datetime.datetime.combine(date.today(), appt.ApptEndtime)
+
+            appt_length = appt_end_datetime - appt_start_datetime
+
+            available_times = self.get_avaliable_appointments(
+                appt_date = appt.ApptDate,
+                provider = appt.Employee,
+                location = appt.Location,
+                appt_type = appt.AppointmentType,
+                appt_length = appt_length,
+                appt_reason= appt.ApptReason,
+                patient = appt.Patient
+            )
+
+            session.expunge_all()
+            return available_times
 
     def __check_appointment_available(self, appt: Appointment,
                                             new_time:time=None,

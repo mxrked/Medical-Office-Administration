@@ -34,7 +34,7 @@ class DataManager():
         
             assert False, str(error)
 
-        except Exception as error:        
+        except Exception as error:
             session.rollback()
             raise error
 

@@ -14,7 +14,7 @@ class __QlistWidgetObject(QListWidgetItem):
         super().__init__(str(obj))
         self.obj = obj
 
-def set_objects_to_list(objects: list[object], list_widget: QListWidget):
+def load_objects_to_list(objects: list[object], list_widget: QListWidget):
     """
         Places a list of stringed objects into the list_widget
         i.e list[Appointments], appointments_list_widget
@@ -29,7 +29,7 @@ def set_objects_to_list(objects: list[object], list_widget: QListWidget):
     for obj in objects:
         list_widget.addItem(__QlistWidgetObject(obj))
 
-def set_objects_to_combo_box(objects: list[object], combo_box: QComboBox):
+def load_objects_to_combo_box(objects: list[object], combo_box: QComboBox):
     """
         Places a list of stringed objects into a combo_box
         i.e list[Physisicans], physiscans_comobo_box

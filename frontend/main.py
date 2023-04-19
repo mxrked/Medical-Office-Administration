@@ -26,26 +26,28 @@ class MainWindow(Schedule, Reschedule, Cancel,
 
     :param can_physician: bool, if they can use phsycian screens
     :param can_schedule: bool, if they can use scheduling screens
+    :param debug: bool, makes it so no password is required
+    :param today: date, sets todays date for debuggin purposes
 
     Subclasses:
 
-        Nav(QMainWindow)
-        │ 
-        ├───Schedule
-        ├───Reschedule
-        ├───Cancel 
-        ├───Patient
-        ├───CheckIn
-        ├───CheckOut
-        ├───Referral
-        ├───Lab
-        └───Approve
+    Nav(QMainWindow) (Navigation Functions)
+    │ 
+    └───Utility ( Loads Datamangers & Useful functs for repeated code )
+            │ 
+            │   ( Screens )
+            ├───Schedule
+            ├───Reschedule
+            ├───Cancel 
+            ├───Patient
+            ├───CheckIn
+            ├───CheckOut
+            ├───Referral
+            ├───Lab
+            └───Approve
 
     Scope is a concern but this is inevitable because we have to load
-        it all into one MainWindow
-
-    Subclasses (All but Nav) are based on how our UI screens were originally made
-        before we squeezed them into one big UI file
+        it all into one QMainWindow
 
     None of these subclasses will run standalone, sorry! Run this instead
     """
@@ -73,6 +75,8 @@ class MainWindow(Schedule, Reschedule, Cancel,
         if self.can_schedule:
 
             self.enterSchedulingAppointmentsWindow()
+            self.display_inputs_frame() # Main Scheduling Window
+
         elif self.can_physician:
             self.enterMakeReferralWindow()
         else:

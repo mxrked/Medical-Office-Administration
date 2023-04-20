@@ -12,7 +12,7 @@ import sqlalchemy as sa
 from contextlib import contextmanager
 
 try:
-    from connection_string import DB
+    from backend.connection_string import DB
 except ModuleNotFoundError:
     try:
         from backend.connection_string import DB
@@ -27,7 +27,6 @@ class DataManager():
     """
     def __init__(self):
 
-<<<<<<< HEAD
 
         try:
             from backend.connection_string import DB
@@ -37,8 +36,6 @@ class DataManager():
             except ModuleNotFoundError:
                 assert False, "connection_string.py not found!"
 
-=======
->>>>>>> 16bf09159d18ba9c2057fec11ab2c8e24c1a2620
         self.__engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
         self.session_maker = sessionmaker(bind=self.__engine)
 

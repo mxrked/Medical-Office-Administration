@@ -66,7 +66,7 @@ class Utility(Nav):
             This can be used for db calls that may return error:
             try: 
                 add_appointment(appointment)
-            except AssertionError as e: 
+            except AssertionError as e:
                 load_error(error_text=e)
                 return
             

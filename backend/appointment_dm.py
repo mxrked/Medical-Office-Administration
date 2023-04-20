@@ -381,7 +381,7 @@ class AppointmentDM(AppointmentStatusDataManger):
 
     def __get_week_number(self, check_date:date):
         """ 
-        A private method to get what week number it is 
+        A private method to get what week number it is for the db schedule
         
         It's a little jank.
         It checks how many weeks it has been since the first Sunday of 2015

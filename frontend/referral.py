@@ -1,7 +1,7 @@
 """
 Referrals.py - A window to submit referrals for a clinic
 UI Designed by: Matthew Burrus
-Authors:
+Authors: Matthew Burrus
 """
 
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QPushButton
@@ -34,6 +34,7 @@ class Referral_Screen(Utility):
 
         # Initalized Buttons
         self.create_referral_btn = self.findChild(QPushButton, "Btn_CreateReferral")
+        self.clear_input_btn = self.findChild(QPushButton, "Btn_ClearInputs")
 
         # Button Listeners
         self.create_referral_btn.clicked.connect(self.create_referral)

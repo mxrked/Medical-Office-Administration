@@ -34,7 +34,7 @@ class Referral_Screen(Utility):
 
         # Initalized Buttons
         self.create_referral_btn = self.findChild(QPushButton, "Btn_CreateReferral")
-        self.ref_clear_input_btn = self.findChild(QPushButton, "Btn_ClearInputs")
+        self.ref_clear_input_btn = self.findChild(QPushButton, "Btn_RefClearInputs_2")
 
         # Button Listeners
         self.create_referral_btn.clicked.connect(self.create_referral)

@@ -5590,7 +5590,7 @@ QLabel {
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <widget class="QFrame" name="Btn_ClearInputs">
+        <widget class="QFrame" name="Balls">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -6088,7 +6088,7 @@ QPushButton::hover {
            </size>
           </property>
          </widget>
-         <widget class="QPushButton" name="Btn_CreateReferral_2">
+         <widget class="QPushButton" name="Btn_RefClearInputs_2">
           <property name="geometry">
            <rect>
             <x>610</x>

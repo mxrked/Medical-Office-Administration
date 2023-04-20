@@ -146,3 +146,13 @@ class Utility(Nav):
         assert len(patients) == 1, "No Patients Found"
         
         return patients[0]
+
+
+    def displaySettingsDialog(self):
+
+        from frontend.ListOfPatientsDialog import ListOfPatientsDialog
+
+        dialog = ListOfPatientsDialog()
+        dialog.exec_()
+
+        # Restart?

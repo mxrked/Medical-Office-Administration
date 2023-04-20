@@ -1,7 +1,7 @@
 """
 LabOrders.py - A window to submit lab orders for a clinic
 UI Designed by: Destan Hutcherson
-Authors: Destan Hutcherson, 
+Authors: Destan Hutcherson, Jessica Weeks
 """
 from PyQt5.QtWidgets import QPushButton, QLineEdit, QDateEdit, QComboBox
 from frontend.utility import Utility

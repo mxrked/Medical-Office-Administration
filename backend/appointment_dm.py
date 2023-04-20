@@ -253,7 +253,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             appt_length = appt_end_datetime - appt_start_datetime
 
             available_times = self.get_avaliable_appointments(
-                appt_date = appt.check_date,
+                appt_date = check_date,
                 provider = appt.Employee,
                 location = appt.Location,
                 appt_type = appt.AppointmentType,

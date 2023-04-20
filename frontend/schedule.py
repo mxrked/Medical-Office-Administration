@@ -311,4 +311,4 @@ class Cancel(Utility):
         appointment = get_selected_list_object(self.CA_SearchedAppointmentsListWidget)
 
         self.appointment_dm.set_appointment_canceled(appointment)
-
+        self.clearInputs()

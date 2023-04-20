@@ -5,9 +5,6 @@ from datetime import timedelta, date, time
 import datetime
 from sqlalchemy.orm import joinedload
 import sqlalchemy as sa
-from sqlalchemy.sql.expression import bindparam
-from sqlalchemy import Interval
-from sqlalchemy.sql import func
 from backend.models import HospitalHours, AppointmentType, Appointment,\
                     Employee, Location, Event, Patient
 from backend.private.appointment_status_data_manger import AppointmentStatusDataManger
@@ -85,7 +82,7 @@ class AppointmentDM(AppointmentStatusDataManger):
                     Appointment.ApptStatus.in_(taken_appointment_statuses)
                     )
                 ).all()
-            [session.expunge(ta) for ta in taken_appointments]
+            session.expunge_all()
 
         # Will be appointment_start_time, appointment_length (time delta)
         taken_appointment_times_dict = {}
@@ -220,7 +217,7 @@ class AppointmentDM(AppointmentStatusDataManger):
         """
         with self.session_scope() as session:
             types = session.query(AppointmentType).all()
-            [session.expunge(t) for t in types]
+            session.expunge_all()
             return types
 
     def get_appointments_for_date(self, check_date: date, physician: Employee) -> list[Appointment]:
@@ -235,7 +232,8 @@ class AppointmentDM(AppointmentStatusDataManger):
             appointments = session.query(Appointment)\
                 .options(joinedload(Appointment.Patient))\
                 .filter(Appointment.ApptDate == check_date,
-                        Appointment.PhysicianID == physician.EmployeeID)\
+                        Appointment.PhysicianID == physician.EmployeeID,
+                        Appointment.ApptStatus.in_(["Scheduled", "Rescheduled"]))\
                 .order_by(Appointment.ApptTime)\
                 .all()
             
@@ -255,7 +253,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             appt_length = appt_end_datetime - appt_start_datetime
 
             available_times = self.get_avaliable_appointments(
-                appt_date = appt.ApptDate,
+                appt_date = appt.check_date,
                 provider = appt.Employee,
                 location = appt.Location,
                 appt_type = appt.AppointmentType,
@@ -288,7 +286,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             appt.ApptTime = new_time
             
             new_time_delta = datetime.datetime.combine( date.today(), new_time)
-            appt.ApptEndtime = new_time + length
+            appt.ApptEndtime = new_time_delta + length
 
         if new_date:
             appt.ApptDate = new_date

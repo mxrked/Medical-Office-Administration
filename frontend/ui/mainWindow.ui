@@ -442,7 +442,7 @@ QPushButton::hover {
 border-image: transparent;</string>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="Appointments">
       <property name="minimumSize">
@@ -5598,6 +5598,12 @@ QLabel {
            <width>1251</width>
            <height>671</height>
           </rect>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
          </property>
          <property name="styleSheet">
           <string notr="true">border-image: none;

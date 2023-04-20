@@ -92,3 +92,4 @@ class Lab(Utility):
 
         self.misc_dm.add_lab_order(labToAdd)
 
+        self.clearInputs()

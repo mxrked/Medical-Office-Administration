@@ -117,10 +117,12 @@ class Schedule(Utility):
                 patient=patient,
                 appt_reason=SA_appointmentReason
                 )
+            
+            assert len(availableTimes > 0), "No Appointments Found"
         except AssertionError as error:
             self.load_error(str(error))
             return
-
+        
         load_objects_to_list(availableTimes, self.SA_CurrentAvailableTimesListWidget)
 
     def scheduleAppointment(self):
@@ -209,11 +211,16 @@ class Reschedule(Utility):
 
         old_appointments = self.appointment_dm.get_appointments_for_date(old_date, physician)
 
+        try:
+            assert len(old_appointments) > 0, "No Appointments Found"
+        except AssertionError as error:
+            self.load_error(str(error))
+
         load_objects_to_list(old_appointments, self.RA_SearchedAppointmentsListWidget)
 
 
     def displayRescheduleAppointment(self):
-        
+
         new_date = self.RA_RescheduleDateDateEdit.date().toPyDate()
 
         appt = get_selected_list_object(self.RA_SearchedAppointmentsListWidget)
@@ -238,7 +245,7 @@ class Reschedule(Utility):
         self.ra_old_appointment = appt
 
     def rescheduleAppointment(self):
-        
+
         appt = get_selected_list_object(self.RA_CurrentAvailableTimesListWidget)
 
         try:
@@ -277,15 +284,31 @@ class Cancel(Utility):
         self.load_locations(self.CA_OfficeLocationsComboBox)
         self.load_physicians(self.CA_PhysicianNamesComboBox)
 
+        self.CA_OfficeLocationsComboBox.currentIndexChanged.connect(self.ca_switch_location)
+
+    def ca_switch_location(self):
+
+        location = get_selected_combo_box_object(self.CA_OfficeLocationsComboBox)
+        self.load_physicians(combo_box = self.CA_PhysicianNamesComboBox, location_id = location.LocationID)
+
     def search_CA(self):
 
-        CA_officecLocations = get_selected_combo_box_object(self.CA_OfficeLocationsComboBox)
         CA_physicianNames = get_selected_combo_box_object(self.CA_PhysicianNamesComboBox)
         CA_appointmentDate = self.CA_AppointmentDateDateEdit.date().toPyDate()
 
-        print("Search CA")
-        
+        appointments = self.appointment_dm.get_appointments_for_date(CA_appointmentDate, CA_physicianNames)
+
+        try:
+            assert len(appointments) > 0, "No Appointments Found"
+        except AssertionError as error:
+            self.load_error(str(error))
+
+        load_objects_to_list(appointments, self.CA_SearchedAppointmentsListWidget)
+
 
     def cancelAppointment(self):
-        print("Cancel Appointment")
-        
+
+        appointment = get_selected_list_object(self.CA_SearchedAppointmentsListWidget)
+
+        self.appointment_dm.set_appointment_canceled(appointment)
+

@@ -4,7 +4,7 @@ Holds Global Variables
 """
 # Arrays
 teamMembers = ["Parker Phelps - Product Owner", 
-               "Christian Fortin - Scrum Master", 
+               "Christina Fortin - Scrum Master",
                "Matthew Burrus - Program Analyst", 
                "Jessica Weeks - QA Developer", 
                "Destan Hutcherson - Program Analyst", 

@@ -13,10 +13,10 @@ class DataManager():
 
         try:
             from connection_string import DB
-        except ImportError:
+        except ModuleNotFoundError:
             try:
                 from backend.connection_string import DB
-            except ImportError:
+            except ModuleNotFoundError:
                 assert False, "connection_string.py not found!"
 
         self.__engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")

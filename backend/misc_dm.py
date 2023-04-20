@@ -1,6 +1,6 @@
 """
 misc_data_manger.py - Handles miscellaneous tasks for interacting with the DB
-Author: Christian Fortin
+Author: Christina Fortin
 """
 from backend.private.data_manager import DataManager
 from backend.models import Referral, LabOrder, Lab, Patient, Location

@@ -1,6 +1,6 @@
 """
 models.py - a set of sqlalchemy models for working with the clinics Database.
-Author: Jessica Weeks, Christian Fortin
+Author: Jessica Weeks, Christina Fortin
 Author: Jessica Weeks, Christina Fortin
 """
 import sqlalchemy as sa

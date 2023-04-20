@@ -1231,7 +1231,7 @@ QPushButton::hover {
         <rect>
          <x>130</x>
          <y>100</y>
-         <width>1171</width>
+         <width>0</width>
          <height>681</height>
         </rect>
        </property>
@@ -2618,7 +2618,7 @@ QPushButton::hover {
         <rect>
          <x>130</x>
          <y>100</y>
-         <width>1200</width>
+         <width>0</width>
          <height>681</height>
         </rect>
        </property>
@@ -3443,8 +3443,8 @@ QPushButton::hover {
         <rect>
          <x>130</x>
          <y>100</y>
-         <width>1200</width>
-         <height>0</height>
+         <width>0</width>
+         <height>680</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -3456,7 +3456,7 @@ QPushButton::hover {
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>0</height>
+         <height>680</height>
         </size>
        </property>
        <property name="maximumSize">
@@ -3561,45 +3561,41 @@ color: rgb(255, 255, 255);</string>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <item>
-            <widget class="QLabel" name="city_label">
-             <property name="font">
-              <font>
-               <pointsize>14</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(52, 77, 103);</string>
-             </property>
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;City:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="city_lineEdit">
-             <property name="maximumSize">
-              <size>
-               <width>240</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="baseSize">
-              <size>
-               <width>200</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLineEdit {
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLabel" name="city_label">
+               <property name="font">
+                <font>
+                 <pointsize>14</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(52, 77, 103);</string>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;City:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="patient_city">
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit {
 	border-image: none;
     border: none;
 	background-color: #F3ECB0;
@@ -3609,14 +3605,13 @@ color: rgb(255, 255, 255);</string>
 	padding-left: 10px;
 	
 }</string>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="placeholderText">
-              <string>Enter City Name</string>
-             </property>
-            </widget>
+               </property>
+               <property name="placeholderText">
+                <string>Enter City Name</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </item>
@@ -3647,7 +3642,7 @@ color: rgb(255, 255, 255);</string>
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="new_patient_state_comboBox_3">
+            <widget class="QComboBox" name="Patient_State_Combo">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -3687,7 +3682,7 @@ QComboBox QAbstractItemView {
              </property>
              <item>
               <property name="text">
-               <string>-- SELECT STATE --</string>
+               <string>North Carolina</string>
               </property>
              </item>
              <item>
@@ -3852,11 +3847,6 @@ QComboBox QAbstractItemView {
              </item>
              <item>
               <property name="text">
-               <string>North Carolina</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
                <string>North Dakota</string>
               </property>
              </item>
@@ -3940,6 +3930,11 @@ QComboBox QAbstractItemView {
                <string>Wyoming</string>
               </property>
              </item>
+             <item>
+              <property name="text">
+               <string>Other</string>
+              </property>
+             </item>
             </widget>
            </item>
           </layout>
@@ -3947,39 +3942,41 @@ QComboBox QAbstractItemView {
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_ZipCode">
            <item>
-            <widget class="QLabel" name="zip_code_label">
-             <property name="font">
-              <font>
-               <pointsize>14</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(52, 77, 103);</string>
-             </property>
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Zip Code:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="zip_code_lineEdit">
-             <property name="maximumSize">
-              <size>
-               <width>240</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLineEdit {
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QLabel" name="zip_code_label">
+               <property name="font">
+                <font>
+                 <pointsize>14</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(52, 77, 103);</string>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Zip Code:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="patient_zipcode">
+               <property name="maximumSize">
+                <size>
+                 <width>240</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit {
 	border-image: none;
     border: none;
 	background-color: #F3ECB0;
@@ -3989,11 +3986,16 @@ QComboBox QAbstractItemView {
 	padding-left: 10px;
 	
 }</string>
-             </property>
-             <property name="placeholderText">
-              <string>Enter Zip Code</string>
-             </property>
-            </widget>
+               </property>
+               <property name="inputMask">
+                <string>00000</string>
+               </property>
+               <property name="placeholderText">
+                <string>Enter Zip Code</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </item>
@@ -4042,6 +4044,9 @@ QComboBox QAbstractItemView {
 	padding-left: 10px;
 	
 }</string>
+             </property>
+             <property name="inputMask">
+              <string>(000) 000-0000</string>
              </property>
              <property name="placeholderText">
               <string>Enter Phone Number</string>
@@ -4299,68 +4304,6 @@ QPushButton::hover {
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_MiddleName_3">
-           <item>
-            <widget class="QLabel" name="middle_name_label_3">
-             <property name="maximumSize">
-              <size>
-               <width>150</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>14</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(52, 77, 103);</string>
-             </property>
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Middle Name:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="p_mname">
-             <property name="maximumSize">
-              <size>
-               <width>240</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>MS Shell Dlg 2</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLineEdit {
-	border-image: none;
-    border: none;
-	background-color: #F3ECB0;
-	color: #344D67;
-	font-family: &quot;MS Shell Dlg 2&quot;;
-	font-size: 11;
-	padding-left: 10px;
-	
-}</string>
-             </property>
-             <property name="readOnly">
-              <bool>false</bool>
-             </property>
-             <property name="placeholderText">
-              <string>Enter Middle Name</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
           <layout class="QHBoxLayout" name="horizontalLayout_LastName_3">
            <item>
             <widget class="QLabel" name="last_name_label_3">
@@ -4414,130 +4357,6 @@ QPushButton::hover {
              </property>
              <property name="placeholderText">
               <string>Enter Last Name</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_Suffeix_3">
-           <item>
-            <widget class="QLabel" name="suffix_label_3">
-             <property name="maximumSize">
-              <size>
-               <width>150</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>14</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(52, 77, 103);</string>
-             </property>
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Suffix:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_10">
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>N/A</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="jr_radioButton_5">
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Jr</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="I_radioButton_5">
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>I</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="II_radioButton_5">
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>II</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="III_radioButton_5">
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>III</string>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="checked">
-              <bool>false</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="sr_radioButton_5">
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Sr</string>
              </property>
             </widget>
            </item>
@@ -4600,6 +4419,68 @@ QPushButton::hover {
           </layout>
          </item>
          <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLabel" name="first_name_label_4">
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(52, 77, 103);</string>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Race:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="p_race">
+             <item>
+              <property name="text">
+               <string>American Indian or Alaska Native</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Asian</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Black or African American</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Native Hawaiian or Other Pacific Islander</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>White</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Other</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
           <layout class="QHBoxLayout" name="horizontalLayout_SSN_3">
            <item>
             <widget class="QLabel" name="ssn_label_3">
@@ -4650,6 +4531,15 @@ QPushButton::hover {
 	padding-left: 10px;
 	
 }</string>
+             </property>
+             <property name="inputMask">
+              <string>000-00-0000</string>
+             </property>
+             <property name="text">
+              <string>--</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="placeholderText">
               <string>Enter Social Security Number</string>

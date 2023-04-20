@@ -12,7 +12,7 @@ class DataManager():
 
 
         try:
-            from connection_string import DB
+            from backend.connection_string import DB
         except ModuleNotFoundError:
             try:
                 from backend.connection_string import DB

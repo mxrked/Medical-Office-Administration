@@ -118,7 +118,7 @@ class Schedule(Utility):
                 appt_reason=SA_appointmentReason
                 )
             
-            assert len(availableTimes > 0), "No Appointments Found"
+            assert len(availableTimes) > 0, "No Appointments Found"
         except AssertionError as error:
             self.load_error(str(error))
             return

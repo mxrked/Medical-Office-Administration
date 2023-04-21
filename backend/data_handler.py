@@ -5,7 +5,7 @@ Authors: Jessica Weeks
 from PyQt5.QtWidgets import QListWidget, QListWidgetItem, QComboBox
 from backend.misc_dm import MiscDM
 from backend.user_dm import UserDM
-class __QlistWidgetObject(QListWidgetItem):
+class __QListWidgetObject(QListWidgetItem):
     """
         Used for ListWidgets to present a str to the GUI
         but when we call .selectedItems() we can get the data (the obj) back
@@ -27,7 +27,7 @@ def load_objects_to_list(objects: list[object], list_widget: QListWidget):
     """
     list_widget.clear()
     for obj in objects:
-        list_widget.addItem(__QlistWidgetObject(obj))
+        list_widget.addItem(__QListWidgetObject(obj))
 
 def load_objects_to_combo_box(objects: list[object], combo_box: QComboBox):
     """

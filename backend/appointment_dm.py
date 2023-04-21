@@ -66,10 +66,10 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         # This means they are out!
         if events:
-                if events.EmployeeID == provider.EmployeeID: # The employee is out is out
-                    raise AssertionError("This Physician is out on this day")
-                else: # Whole office is out
-                    raise AssertionError(f"This clinic is closed for {events.EventName}")
+            if events.EmployeeID == provider.EmployeeID: # The employee is out is out
+                raise AssertionError("This Physician is out on this day")
+            else: # Whole office is out
+                raise AssertionError(f"This clinic is closed for {events.EventName}")
 
         ### Next we get every appointment and place them into a dictionary with their length ###
 

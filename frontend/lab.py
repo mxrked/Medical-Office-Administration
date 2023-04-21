@@ -34,7 +34,7 @@ class Lab(Utility):
 
         # Do something
         self.lab_submit_btn.clicked.connect(self.submit_information)
-        self.lab_clear_btn.clicked.connect(self.clearInputs)
+        self.lab_clear_btn.clicked.connect(self.clear_inputs)
 
         # fill combo boxes
         self.load_physicians(self.lab_practitioner_combo)
@@ -92,4 +92,4 @@ class Lab(Utility):
 
         self.misc_dm.add_lab_order(labToAdd)
 
-        self.clearInputs()
+        self.clear_inputs()

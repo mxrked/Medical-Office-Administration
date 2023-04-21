@@ -112,6 +112,6 @@ class NewPatient(Utility):
 
         self.misc_dm.add_patient(patient)
 
-        self.clearInputs()
+        self.clear_inputs()
 
 

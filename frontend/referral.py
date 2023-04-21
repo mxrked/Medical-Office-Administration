@@ -38,7 +38,7 @@ class Referral_Screen(Utility):
 
         # Button Listeners
         self.create_referral_btn.clicked.connect(self.create_referral)
-        self.ref_clear_input_btn.clicked.connect(self.clearInputs)
+        self.ref_clear_input_btn.clicked.connect(self.clear_inputs)
 
         # Load up values
         self.load_physicians(self.ref_practitioners, "All")
@@ -87,5 +87,5 @@ class Referral_Screen(Utility):
 
         self.misc_dm.add_referral(referral)
 
-        self.clearInputs()
+        self.clear_inputs()
 

@@ -86,7 +86,7 @@ class MainWindow(Schedule, Reschedule, Cancel,
 
         # Resets everything so no starting data
         # And everything is today
-        self.clearInputs()
+        self.clear_inputs()
 
 
 #initializing app

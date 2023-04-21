@@ -112,4 +112,13 @@ disableFrameBtn_Style = "QPushButton {\n" \
               "    background-color: rgb(139, 231, 100);\n" \
               "    color: white;\n" \
               "}"
+selectedBtn_Style = """
 
+QPushButton { 
+    border-image: none;
+    background-color: #344D67;
+    color: black;
+    border: 2px solid black;
+    color: white;
+    }
+"""

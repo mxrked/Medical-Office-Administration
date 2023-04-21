@@ -404,6 +404,5 @@ class AppointmentDM(AppointmentStatusDataManger):
         return week_number
 
 if __name__ == "__main__":
-   pass
     # Used for debugging
     pass

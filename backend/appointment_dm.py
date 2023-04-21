@@ -72,7 +72,8 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         taken_appointment_statuses = ["Scheduled", "In Progress"]
 
-        with self.session_scope() as session: 
+        with self.session_scope() as session:
+            session.add(provider)
             taken_appointments = session.query(Appointment)\
                 .options(joinedload(Appointment.AppointmentType))\
                 .filter(
@@ -157,28 +158,40 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         # Alrighty! Now we have a list of appointment times that are free!
         # Now to just make a bunch of objects using them
-        for appt_time in avaliable_appointments_times:
-            appt_endtime = (appt_time + appt_length).time()
+        with self.session_scope() as session:
+            for appt_time in avaliable_appointments_times:
+                appt_endtime = (appt_time + appt_length).time()
 
-            appt_time = appt_time.time()
-            
-            avaliable_appointments.append(Appointment(
-                    ApptDate=appt_date,
-                    ApptTime=appt_time,
-                    PatientID=patient.PatientID,
-                    ApptStatus="Scheduled",
-                    ApptEndtime=appt_endtime,
-                    PhysicianID=provider.EmployeeID,
-                    ApptTypeID=appt_type.ApptTypeID,
-                    LocationID = location.LocationID,
-                    ApptReason=appt_reason,
+                appt_time = appt_time.time()
+                
+                session.add(provider)
+                session.add(location)
+                session.add(patient)
+                session.add(appt_type)
+                avaliable_appointments.append(Appointment(
+                        ApptDate=appt_date,
+                        ApptTime=appt_time,
+                        PatientID=patient.PatientID,
+                        ApptStatus="Scheduled",
+                        ApptEndtime=appt_endtime,
+                        PhysicianID=provider.EmployeeID,
+                        ApptTypeID=appt_type.ApptTypeID,
+                        LocationID = location.LocationID,
+                        ApptReason=appt_reason,
 
-                    Patient=patient,
-                    AppointmentType=appt_type,
-                    Employee=provider,
-                    Location=location
+                        Patient=patient,
+                        AppointmentType=appt_type,
+                        Employee=provider,
+                        Location=location
+                    )
                 )
-            )
+
+            patient_name = str(patient)
+
+            for appt in avaliable_appointments:
+                appt.patient_name = patient_name
+
+            session.expunge_all()
 
         assert len(avaliable_appointments) > 0, "No appointments Avaliable on" + appt_date.strftime("%m/%d/%Y")
 
@@ -351,6 +364,7 @@ class AppointmentDM(AppointmentStatusDataManger):
         week_number = self.__get_week_number(check_date)
 
         with self.session_scope() as session:
+            session.add(location)
             hours =  session.query(HospitalHours).filter(
                 sa.and_(
                     HospitalHours.LocationID == location.LocationID,
@@ -369,6 +383,7 @@ class AppointmentDM(AppointmentStatusDataManger):
         """ Get if an employee has an event on a certain date """
         
         with self.session_scope() as session:
+            session.add(employee)
             events = session.query(Event)\
                         .filter(
                         sa.or_(Event.EmployeeID == employee.EmployeeID, Event.EmployeeID.is_(None)),

@@ -6,12 +6,12 @@ Authors: Matthew Burrus
 
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QPushButton
 from PyQt5.QtCore import QDate
-from frontend.utility import Utility
+from frontend.private.utility import Utility
 from backend.data_handler import load_objects_to_combo_box
 from backend.data_handler import get_selected_combo_box_object
 from backend.models import Referral
 
-class Referral_Screen(Utility):
+class ReferralScreen(Utility):
     """
         Creates a referral using the Referral object
 
@@ -22,7 +22,7 @@ class Referral_Screen(Utility):
         to load up combo_boxes by default
     """
     def __init__(self):
-        super(Referral_Screen, self).__init__()
+        super(ReferralScreen, self).__init__()
 
         # Initalized Input Widgets
         self.ref_fname = self.findChild(QLineEdit, "Referral_Edit_Fname")

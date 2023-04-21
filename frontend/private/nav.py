@@ -6,8 +6,8 @@ import sys
 from datetime import date
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QStackedWidget, QFrame
-from frontend.ui.assets.files.STYLING import disableFrameBtn_Style, enableFrameBtn_Style
-from frontend.StartWindow import Start
+from frontend.ui.assets.files.styling import disableFrameBtn_Style, enableFrameBtn_Style
+from frontend.start_window import Start
 
 # These qrc are used by pyqt 5
 from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo # pylint: disable=unused-import
@@ -74,10 +74,10 @@ class Nav(QMainWindow):
 
         # Connect Nav Buttons
         self.appointments_btn.mousePressEvent = lambda event: \
-            self.enterSchedulingAppointmentsWindow()
+            self.enter_appointments_window()
         self.checkin_btn.mousePressEvent = lambda event: self.enterCheckInWindow()
         self.checkout_btn.mousePressEvent = lambda event: self.enterCheckOutWindow()
-        self.referral_btn.mousePressEvent = lambda event: self.enterMakeReferralWindow()
+        self.referral_btn.mousePressEvent = lambda event: self.enter_referral_window()
         self.lab_orders_btn.mousePressEvent = lambda event: self.enterLabOrdersWindow()
         self.approve_appointment_btn.mousePressEvent = lambda event: \
             self.enterAppointmentApproveViaPortalWindow()
@@ -172,7 +172,7 @@ class Nav(QMainWindow):
 
     ### NAVIGATION LISTENERS ### 
 
-    def enterSchedulingAppointmentsWindow(self):
+    def enter_appointments_window(self):
         """
             Enters the scheduling appointment screen
 
@@ -210,7 +210,7 @@ class Nav(QMainWindow):
         self.setWindowTitle("Forsyth Family Practice Center - Check Out")
 
     
-    def enterMakeReferralWindow(self):
+    def enter_referral_window(self):
         """ Enters the refferal screen """
         self.stacked_widget.setCurrentIndex(
             self.windows_indexes["Referral"]
@@ -244,8 +244,6 @@ class Nav(QMainWindow):
         """
             Shows the start window and closes the current one
         """
-
-        from frontend.StartWindow import Start
 
         # From the frontend
         new_window = Start()

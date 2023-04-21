@@ -4,7 +4,7 @@ UI Designed by: Jessica Weeks
 Authors:
 """
 from PyQt5.QtWidgets import QListWidget, QComboBox, QPushButton
-from frontend.utility import Utility
+from frontend.private.utility import Utility
 from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, load_objects_to_list
 
 class CheckOut(Utility):

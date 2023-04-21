@@ -4,7 +4,7 @@ UI Designed by: Destan Hutcherson
 Authors: Destan Hutcherson, Jessica Weeks
 """
 from PyQt5.QtWidgets import QPushButton, QLineEdit, QDateEdit, QComboBox
-from frontend.utility import Utility
+from frontend.private.utility import Utility
 from backend.models import LabOrder
 from backend.data_handler import get_selected_combo_box_object, load_objects_to_combo_box
 

@@ -13,9 +13,11 @@ from backend.misc_dm import MiscDM
 from backend.appointment_dm import AppointmentDM
 from backend.data_handler import load_objects_to_combo_box
 from backend.models import Patient
-from frontend.main_nav import Nav
-from frontend.ui.assets.files.STYLING import infoDialog_Style, infoDialogCloseBtn_Style, infoDialogName_Style
-from frontend.ListOfPatientsDialog import ListOfPatientsDialog
+from frontend.private.nav import Nav
+from frontend.ui.assets.files.styling import infoDialog_Style, infoDialogCloseBtn_Style, infoDialogName_Style
+from frontend.dialog.patients_dialog import ListOfPatientsDialog
+
+
 class Utility(Nav):
     """
         Handles general utility that all screens use

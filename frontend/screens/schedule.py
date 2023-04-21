@@ -2,9 +2,9 @@
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QLabel, QListWidget, QTimeEdit, QPushButton, QCalendarWidget
 from PyQt5.QtCore import QDate
 from PyQt5.QtGui import QIntValidator
-from frontend.ui.assets.files.STYLING import disableCustomTime_Style, enableCustomTime_Style
+from frontend.ui.assets.files.styling import disableCustomTime_Style, enableCustomTime_Style
 from backend.data_handler import load_objects_to_combo_box, get_selected_combo_box_object, get_selected_list_object, load_objects_to_list
-from frontend.utility import Utility
+from frontend.private.utility import Utility
 from datetime import timedelta, datetime, date
 
 class Schedule(Utility):
@@ -81,7 +81,8 @@ class Schedule(Utility):
         self.load_physicians(self.SA_PhysicianNamesComboBox, location_id=location.LocationID)
 
     def search_SA(self):
-        
+
+
         SA_patientFN = self.SA_PatientFNLineEdit.text()
         SA_patientLN = self.SA_PatientLNLineEdit.text()
         SA_patientDOB = self.SA_PatientDOBDateEdit.date().toPyDate()
@@ -92,7 +93,8 @@ class Schedule(Utility):
         SA_physicianName = get_selected_combo_box_object(self.SA_PhysicianNamesComboBox)
         SA_appointmentDate = self.SA_AppointmentDateDateEdit.date().toPyDate()
 
-        
+        # So list data matches the current state of the feilds no matter what
+        self.SA_CurrentAvailableTimesListWidget.clear()
 
         try:
             patient = self.get_verified_patient(SA_patientFN,

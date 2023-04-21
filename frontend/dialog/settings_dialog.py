@@ -1,8 +1,8 @@
 
 
-from PyQt5.QtWidgets import QDateEdit, QComboBox, QDialog, QApplication,
-from PyQt5 import uic
-from backend.data_handler import load_objects_to_combo_box, get_selected_combo_box_object, get_selected_list_object, load_objects_to_list
+from PyQt5.QtWidgets import QDateEdit, QComboBox, QDialog
+from PyQt5 import uic, QtCore
+from backend.data_handler import load_objects_to_combo_box
 from backend.misc_dm import MiscDM
 from backend.models import Location
 import sys
@@ -14,7 +14,7 @@ class SettingsDialog(QDialog):
 
         uic.loadUi("frontend/ui/SettingsDialog.ui", self)
 
-        # Functions
+        self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 
         # Widgets
         self.locationsCombobox = self.findChild(QComboBox, "settingsLocationsComboBox")
@@ -25,6 +25,6 @@ class SettingsDialog(QDialog):
         load_objects_to_combo_box(MiscDM().get_locations(), self.locationsCombobox)
 
 
-        def selected_location(self) -> Location:
-            pass
+    def selected_location(self) -> Location:
+        pass
 

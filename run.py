@@ -1,8 +1,12 @@
-from datetime import date
-from frontend.StartWindow import main
+"""
+run.py - The main file for running the Medical Office Administration program for Forsyth Family Center
+
+Project Structure:
+
+
+
+"""
+from frontend.start_window import main
 
 if __name__ == "__main__":
-    main(
-        debug=True,
-        today=date(2023,4,17)
-    )
+    main(debug=True)

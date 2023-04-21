@@ -1,8 +1,6 @@
 """
 Holds Global Variables
-
 """
-# Arrays
 teamMembers = ["Parker Phelps - Product Owner", 
                "Christina Fortin - Scrum Master",
                "Matthew Burrus - Program Analyst", 
@@ -10,4 +8,3 @@ teamMembers = ["Parker Phelps - Product Owner",
                "Destan Hutcherson - Program Analyst", 
                "Flora Cherotich - Database Technician", 
                "Adia Chue - Web Developer"]
-

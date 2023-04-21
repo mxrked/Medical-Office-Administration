@@ -1,7 +1,7 @@
 
 
 from PyQt5.QtWidgets import QPushButton, QListWidget, QListWidgetItem, QDialog
-from PyQt5 import uic
+from PyQt5 import uic, QtCore
 from backend.data_handler import get_selected_list_object, load_objects_to_list
 from backend.misc_dm import MiscDM
 from backend.models import Location
@@ -18,7 +18,7 @@ class ListOfPatientsDialog(QDialog):
 
         uic.loadUi("frontend/ui/ListOfPatientsDialog.ui", self)
 
-        # Functions
+        self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
         
         # Widgets
         self.listOfPatientsLW = self.findChild(QListWidget, "listOfPatientsListWidget")

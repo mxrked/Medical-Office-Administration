@@ -39,6 +39,8 @@ class AppointmentStatusDataManger(DataManager):
         """ Changes the appointment status of the given appointment to 'In Progress' """
         self.__set_appointment_status(appt, "In Progress")
 
+    def set_appointment_pending(self, appt: Appointment):
+        self.__set_appointment_status(appt, "Pending")
 
     def set_appointment_no_show(self, appt: Appointment):
         """ Changes the appointment status of the given appointment to 'No Show' """

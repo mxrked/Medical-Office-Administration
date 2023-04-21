@@ -40,7 +40,7 @@
 }</string>
    </property>
    <property name="text">
-    <string>List of Patients</string>
+    <string>Please select a patient before closing</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

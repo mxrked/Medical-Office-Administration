@@ -6,7 +6,7 @@ import sys
 from datetime import date
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QStackedWidget, QFrame
-from frontend.ui.assets.files.styling import disableFrameBtn_Style, enableFrameBtn_Style
+from frontend.ui.assets.files.styling import disableFrameBtn_Style, enableFrameBtn_Style, selectedBtn_Style
 from frontend.start_window import Start
 
 # These qrc are used by pyqt 5
@@ -101,7 +101,7 @@ class Nav(QMainWindow):
         self.make_schedule_btn.clicked.connect(self.display_inputs_frame)
         self.cancel_btn.clicked.connect(self.display_canceled_frame)
 
-    
+
 
 
     ### NAVIGATION FUNCTIONS ###
@@ -157,18 +157,29 @@ class Nav(QMainWindow):
 
         if self.can_schedule:
             nav_buttons.extend(scheduling_nav)
+        else:
+            for btn in scheduling_nav:
+                btn.hide()
 
         if self.can_physician:
             nav_buttons.extend(physician_nav)
+        else:
+            for btn in physician_nav:
+                btn.hide
 
         for btn in nav_buttons:
             self.enable_nav(btn)
 
 
-    def enable_nav(self, btn):
+    def enable_nav(self, btn: QPushButton):
         """ Enables & ungreys a particular nav button """
         btn.setStyleSheet(enableFrameBtn_Style)
         btn.setEnabled(True)
+
+    def select_nav(self, btn: QPushButton):
+        """ Disables and selects a particular nav button """
+        btn.setStyleSheet(selectedBtn_Style)
+        btn.setEnabled(False)
 
     ### NAVIGATION LISTENERS ### 
 
@@ -183,7 +194,7 @@ class Nav(QMainWindow):
             self.windows_indexes["Appointment"]
         )
         self.enable_all_nav_with_access()
-        self.disable_nav(self.appointments_btn)
+        self.select_nav(self.appointments_btn)
 
         self.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments")
 
@@ -194,7 +205,7 @@ class Nav(QMainWindow):
             self.windows_indexes["CheckIn"]
         )
         self.enable_all_nav_with_access()
-        self.disable_nav(self.checkin_btn)
+        self.select_nav(self.checkin_btn)
 
         self.setWindowTitle("Forsyth Family Practice Center - Check In")
 
@@ -205,7 +216,7 @@ class Nav(QMainWindow):
             self.windows_indexes["CheckOut"]
         )
         self.enable_all_nav_with_access()
-        self.disable_nav(self.checkout_btn)
+        self.select_nav(self.checkout_btn)
 
         self.setWindowTitle("Forsyth Family Practice Center - Check Out")
 
@@ -216,7 +227,7 @@ class Nav(QMainWindow):
             self.windows_indexes["Referral"]
         )
         self.enable_all_nav_with_access()
-        self.disable_nav(self.referral_btn)
+        self.select_nav(self.referral_btn)
 
         self.setWindowTitle("Forsyth Family Practice Center - Referrals")
 
@@ -226,7 +237,7 @@ class Nav(QMainWindow):
             self.windows_indexes["Lab"]
         )
         self.enable_all_nav_with_access()
-        self.disable_nav(self.lab_orders_btn)
+        self.select_nav(self.lab_orders_btn)
 
         self.setWindowTitle("Forsyth Family Practice Center - Lab Orders")
 
@@ -236,7 +247,7 @@ class Nav(QMainWindow):
             self.windows_indexes["Approve"]
         )
         self.enable_all_nav_with_access()
-        self.disable_nav(self.approve_appointment_btn)
+        self.select_nav(self.approve_appointment_btn)
 
         self.setWindowTitle("Forsyth Family Practice Center - Approve Appointments")
 
@@ -288,7 +299,7 @@ class Nav(QMainWindow):
         self.inputs_frame.setFixedWidth(1171)
 
         # Disabling the toggler btn
-        self.disable_nav(self.DisplaySchedule_Btn)
+        self.select_nav(self.DisplaySchedule_Btn)
 
 
     def display_canceled_frame(self):
@@ -298,7 +309,7 @@ class Nav(QMainWindow):
         self.cancel_appt_frame.setFixedWidth(1171)
 
          # Disabling the toggler btn
-        self.disable_nav(self.DisplayCancel_Btn)
+        self.select_nav(self.DisplayCancel_Btn)
 
 
 
@@ -309,7 +320,7 @@ class Nav(QMainWindow):
         self.reschedule_appt_frame.setFixedWidth(1171)
 
         # Disabling the toggler btn
-        self.disable_nav(self.DisplayReschedule_Btn)
+        self.select_nav(self.DisplayReschedule_Btn)
 
 
     def display_patient_frame(self):
@@ -318,7 +329,7 @@ class Nav(QMainWindow):
         self.patient_frame.setFixedHeight(681)
         self.patient_frame.setFixedWidth(1171)
 
-        self.disable_nav(self.new_patient_btn)
+        self.select_nav(self.new_patient_btn)
 
 
 

@@ -51,6 +51,7 @@ class CheckIn(Utility):
         self.load_physicians(self.check_in_providers)
 
         self.check_in_location.currentIndexChanged.connect(self.check_in_location_change)
+        self.check_in_providers.currentIndexChanged.connect(self.check_in_refresh)
 
         self.check_in_refresh(in_init=True)
 
@@ -96,7 +97,6 @@ class CheckIn(Utility):
 
             Then calls self.check_in_refresh
         """
-        print(self.no_show.__doc__)
 
         getSelectedAppt = get_selected_list_object(self.check_ins_list)
 

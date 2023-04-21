@@ -65,8 +65,11 @@ class AppointmentDM(AppointmentStatusDataManger):
         events = self.__get_events_for(provider, appt_date)
 
         # This means they are out!
-        assert events is None, "Provider is out on this day"
-
+        if events:
+                if events.EmployeeID == provider.EmployeeID: # The employee is out is out
+                    raise AssertionError("This Physician is out on this day")
+                else: # Whole office is out
+                    raise AssertionError(f"This clinic is closed for {events.EventName}")
 
         ### Next we get every appointment and place them into a dictionary with their length ###
 
@@ -311,7 +314,6 @@ class AppointmentDM(AppointmentStatusDataManger):
 
 
         with self.session_scope() as session:
-            session.add(appt)
             ### First We check if there are any taken appointments ###
 
 
@@ -369,7 +371,6 @@ class AppointmentDM(AppointmentStatusDataManger):
         week_number = self.__get_week_number(check_date)
 
         with self.session_scope() as session:
-            session.add(location)
             hours =  session.query(HospitalHours).filter(
                 sa.and_(
                     HospitalHours.LocationID == location.LocationID,
@@ -388,7 +389,6 @@ class AppointmentDM(AppointmentStatusDataManger):
         """ Get if an employee has an event on a certain date """
         
         with self.session_scope() as session:
-            session.add(employee)
             events = session.query(Event)\
                         .filter(
                         sa.or_(Event.EmployeeID == employee.EmployeeID, Event.EmployeeID.is_(None)),

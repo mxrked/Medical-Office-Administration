@@ -293,7 +293,7 @@ class AppointmentDM(AppointmentStatusDataManger):
 
 
         with self.session_scope() as session:
-
+            session.add(appt)
             ### First We check if there are any taken appointments ###
 
 
@@ -405,3 +405,5 @@ class AppointmentDM(AppointmentStatusDataManger):
 
 if __name__ == "__main__":
    pass
+    # Used for debugging
+    pass

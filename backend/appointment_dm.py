@@ -159,15 +159,18 @@ class AppointmentDM(AppointmentStatusDataManger):
         # Alrighty! Now we have a list of appointment times that are free!
         # Now to just make a bunch of objects using them
         with self.session_scope() as session:
+            
+            session.add(provider)
+            session.add(location)
+            session.add(patient)
+            session.add(appt_type)
+            
             for appt_time in avaliable_appointments_times:
                 appt_endtime = (appt_time + appt_length).time()
 
                 appt_time = appt_time.time()
                 
-                session.add(provider)
-                session.add(location)
-                session.add(patient)
-                session.add(appt_type)
+
                 avaliable_appointments.append(Appointment(
                         ApptDate=appt_date,
                         ApptTime=appt_time,
@@ -205,6 +208,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             :param appt: Appointment model to remove
         """
         with self.session_scope() as session:
+            session.add(appt)
             session.delete(appt)
 
     def add_appointment(self, appt: Appointment, custom_time=None):
@@ -242,6 +246,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             :return: A list of Appointment objects for the given date
         """
         with self.session_scope() as session:
+            session.add(Employee)
             appointments = session.query(Appointment)\
                 .options(joinedload(Appointment.Patient))\
                 .filter(Appointment.ApptDate == check_date,
@@ -405,8 +410,6 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         If clinic ever chooses to add more weeks to their repeating schedule, chagne the constant
         """
-
-
         number_of_weeks = 2
 
         start_date = datetime.datetime(2015, 1, 4)

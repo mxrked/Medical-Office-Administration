@@ -46,6 +46,7 @@ class UserDM(DataManager):
         
 
         with self.session_scope() as session:
+            session.add(current_employee)
             groups = session.query(EmpGroupCross)\
                 .filter_by(EmployeeID = current_employee.EmployeeID).all()
             

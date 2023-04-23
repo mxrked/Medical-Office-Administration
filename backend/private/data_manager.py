@@ -36,7 +36,7 @@ class DataManager():
             except ModuleNotFoundError:
                 assert False, "connection_string.py not found!"
 
-        self.__engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}")
+        self.__engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}", pool_pre_ping=True)
         self.session_maker = sessionmaker(bind=self.__engine)
 
     @contextmanager

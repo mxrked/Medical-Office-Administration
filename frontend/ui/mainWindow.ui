@@ -442,7 +442,7 @@ QPushButton::hover {
 border-image: transparent;</string>
      </property>
      <property name="currentIndex">
-      <number>5</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="Appointments">
       <property name="minimumSize">
@@ -3467,7 +3467,7 @@ QPushButton::hover {
         <rect>
          <x>110</x>
          <y>100</y>
-         <width>0</width>
+         <width>1000</width>
          <height>680</height>
         </rect>
        </property>
@@ -3479,7 +3479,7 @@ QPushButton::hover {
        </property>
        <property name="minimumSize">
         <size>
-         <width>0</width>
+         <width>1000</width>
          <height>680</height>
         </size>
        </property>
@@ -4494,6 +4494,21 @@ QComboBox QAbstractItemView {
              </property>
              <item>
               <property name="text">
+               <string>Other</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>White</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>African American</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
                <string>American Indian or Alaska Native</string>
               </property>
              </item>
@@ -4504,22 +4519,12 @@ QComboBox QAbstractItemView {
              </item>
              <item>
               <property name="text">
-               <string>Black or African American</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
                <string>Native Hawaiian or Other Pacific Islander</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>White</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Other</string>
+               <string>Two or more races</string>
               </property>
              </item>
             </widget>

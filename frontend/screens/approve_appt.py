@@ -32,8 +32,7 @@ class Approve(Utility):
         self.load_locations(self.a_location)
         self.load_physicians(self.a_provider)
 
-        self.a_location.currentIndexChanged.connect(self.a_location_chagne)
-        self.a_provider.currentIndexChanged.connect(self.a_refresh)
+        self.a_location.currentIndexChanged.connect(self.a_location_change)
 
     def approve(self):
         """
@@ -73,13 +72,12 @@ class Approve(Utility):
             Get list of appointments using Appointment_Data_Manager
             Then use the data handler to set_objects_to_list(appointments, self.a_list) 
         """
-        locations = get_selected_combo_box_object(self.a_location)
         providers = get_selected_combo_box_object(self.a_provider)
 
-        appointments = self.appointment_dm.get_pending_appointments(locations, providers)
+        appointments = self.appointment_dm.get_pending_appointments(providers)
         load_objects_to_list(appointments, self.a_list)
 
 
-    def a_location_chagne(self):
+    def a_location_change(self):
         location = get_selected_combo_box_object(self.a_location)
         self.load_physicians(self.a_provider, location_id=location.LocationID)

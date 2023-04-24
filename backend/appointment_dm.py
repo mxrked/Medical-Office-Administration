@@ -3,7 +3,7 @@ Author: Jessica Weeks
 """
 from datetime import timedelta, date, time
 import datetime
-from sqlalchemy.orm import joinedload
+from sqlalchemy.orm import joinedload, object_session
 import sqlalchemy as sa
 from backend.models import HospitalHours, AppointmentType, Appointment,\
                     Employee, Location, Event, Patient
@@ -67,7 +67,7 @@ class AppointmentDM(AppointmentStatusDataManger):
         # This means they are out!
         if events:
             if events.EmployeeID == provider.EmployeeID: # The employee is out is out
-                raise AssertionError("This Physician is out on this day")
+                raise AssertionError(f"This Physician is out for {events.EventName}")
             else: # Whole office is out
                 raise AssertionError(f"This clinic is closed for {events.EventName}")
 
@@ -76,7 +76,8 @@ class AppointmentDM(AppointmentStatusDataManger):
         taken_appointment_statuses = ["Scheduled", "In Progress"]
 
         with self.session_scope() as session:
-            session.add(provider)
+            if object_session(provider) is None: # The provider is not in a session
+                session.add(provider)
             taken_appointments = session.query(Appointment)\
                 .options(joinedload(Appointment.AppointmentType))\
                 .filter(
@@ -163,10 +164,11 @@ class AppointmentDM(AppointmentStatusDataManger):
         # Now to just make a bunch of objects using them
         with self.session_scope() as session:
             
-            session.add(provider)
-            session.add(location)
-            session.add(patient)
-            session.add(appt_type)
+            if object_session(provider) is None: # The provider is not in a session
+                session.add(provider)
+                session.add(location)
+                session.add(patient)
+                session.add(appt_type)
             
             for appt_time in avaliable_appointments_times:
                 appt_endtime = (appt_time + appt_length).time()
@@ -199,9 +201,9 @@ class AppointmentDM(AppointmentStatusDataManger):
 
             session.expunge_all()
 
-        assert len(avaliable_appointments) > 0, "No appointments Avaliable on" + appt_date.strftime("%m/%d/%Y")
+            assert len(avaliable_appointments) > 0, "No appointments Avaliable on" + appt_date.strftime("%m/%d/%Y")
 
-        return  avaliable_appointments
+            return  avaliable_appointments
 
 
     def remove_appointment(self, appt:Appointment):
@@ -249,7 +251,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             :return: A list of Appointment objects for the given date
         """
         with self.session_scope() as session:
-            session.add(Employee)
+            session.add(physician)
             appointments = session.query(Appointment)\
                 .options(joinedload(Appointment.Patient))\
                 .filter(Appointment.ApptDate == check_date,
@@ -371,6 +373,8 @@ class AppointmentDM(AppointmentStatusDataManger):
         week_number = self.__get_week_number(check_date)
 
         with self.session_scope() as session:
+            if object_session(location) is None:
+                session.add(location)
             hours =  session.query(HospitalHours).filter(
                 sa.and_(
                     HospitalHours.LocationID == location.LocationID,
@@ -382,21 +386,21 @@ class AppointmentDM(AppointmentStatusDataManger):
                     sa.or_(HospitalHours.WeekNumber == week_number,(HospitalHours.WeekNumber.is_(None)))
                 )
             ).first()
-            session.expunge(hours)
+            session.expunge_all()
             return hours
 
     def __get_events_for(self, employee: Employee, check_date: date) -> Event:
         """ Get if an employee has an event on a certain date """
         
         with self.session_scope() as session:
+            if object_session(employee) is None:
+                session.add(employee)
             events = session.query(Event)\
                         .filter(
                         sa.or_(Event.EmployeeID == employee.EmployeeID, Event.EmployeeID.is_(None)),
                         Event.StartDate <= check_date, # Check if its after start date
                         Event.EndDate >= check_date, # Check if its before end date
                         ).first()
-            if events is not None:
-                session.expunge(events)
             return events
 
     def __get_week_number(self, check_date:date):

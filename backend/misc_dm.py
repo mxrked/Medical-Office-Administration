@@ -20,9 +20,6 @@ class MiscDM(DataManager):
     def __init__(self):
         super().__init__()
 
-        # Used for cacheing to save on sql queries
-        self.locations = []
-
     def add_referral(self, referral: Referral):
         """ Adds a referral to the DB """
         with self.session_scope() as session:
@@ -49,23 +46,17 @@ class MiscDM(DataManager):
                 .order_by(Lab.LabTest)\
                 .all()
             
-            [session.expunge(lab) for lab in labs]
+            session.expunge_all()
             return labs
 
     def get_locations(self) -> list[Location]:
         """ Returns list of all locations """
         
-        # Checks to see if its in our cache
-        if len(self.locations) > 0:
-            return self.locations
-
         with self.session_scope() as session:
             locations = session.query(Location)\
                 .order_by(Location.Location_Name)\
                 .all()
-            [session.expunge(location) for location in locations]
-            
-            # Set our cache
-            self.locations = locations
+            session.expunge_all()
+
 
             return locations

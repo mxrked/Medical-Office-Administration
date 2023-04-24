@@ -7,9 +7,10 @@ data_manager.py - A abstract class that handles listeners for other DM's to
 
 Author: Jessica Weeks, Christian Fortin
 """
+from contextlib import contextmanager
 from sqlalchemy.orm import sessionmaker
 import sqlalchemy as sa
-from contextlib import contextmanager
+
 
 try:
     from backend.connection_string import DB
@@ -62,8 +63,3 @@ class DataManager():
     def __del__(self):
         """ Disposes of all db connections"""
         self.close()
-
-
-
-
-

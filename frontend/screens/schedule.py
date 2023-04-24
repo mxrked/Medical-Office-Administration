@@ -217,6 +217,7 @@ class Reschedule(Utility):
             assert len(old_appointments) > 0, "No Appointments Found"
         except AssertionError as error:
             self.load_error(str(error))
+            return
 
         load_objects_to_list(old_appointments, self.RA_SearchedAppointmentsListWidget)
 
@@ -304,6 +305,7 @@ class Cancel(Utility):
             assert len(appointments) > 0, "No Appointments Found"
         except AssertionError as error:
             self.load_error(str(error))
+            return
 
         load_objects_to_list(appointments, self.CA_SearchedAppointmentsListWidget)
 
@@ -312,5 +314,12 @@ class Cancel(Utility):
 
         appointment = get_selected_list_object(self.CA_SearchedAppointmentsListWidget)
 
+        try:
+            assert appointment is not None, "Appointment Not Selected"
+        except AssertionError as error:
+            self.load_error(str(error))
+            return
+
         self.appointment_dm.set_appointment_canceled(appointment)
         self.clear_inputs()
+        self.search_CA()

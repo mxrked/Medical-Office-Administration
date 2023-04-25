@@ -5,13 +5,10 @@ Project Structure:
 
 C:.. run.py, requirements.txt, build.bat
 │
-│
 ├───backend (Contains Models, Data managers & handlers)
 │   └───private (Contains abstract and subclasses)
-│
 │   
 └───frontend (Our main frontend screens)
-    │
     │.. main_window.py, start_window.py
     │ 
     ├───dialog  (Simple dialog windows)

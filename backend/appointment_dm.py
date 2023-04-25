@@ -73,7 +73,7 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         ### Next we get every appointment and place them into a dictionary with their length ###
 
-        taken_appointment_statuses = ["Scheduled", "In Progress"]
+        taken_appointment_statuses = ["Scheduled", "In Progress", "Rescheduled"]
 
         with self.session_scope() as session:
             if object_session(provider) is None: # The provider is not in a session
@@ -319,7 +319,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             ### First We check if there are any taken appointments ###
 
 
-            taken_appointment_statuses = ["Scheduled", "In Progress"]
+            taken_appointment_statuses = ["Scheduled", "In Progress", "Rescheduled"]
             taken_appointments = session.query(Appointment).\
                 options(joinedload(Appointment.AppointmentType)).\
                 filter(

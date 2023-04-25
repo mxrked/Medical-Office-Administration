@@ -33,13 +33,13 @@ class MainWindow(Schedule, Reschedule, Cancel,
 
     Nav(QMainWindow) (Navigation Functions)
     │ 
-    └─── Utility ( Loads Datamangers & Useful functs for repeated code )
+    └─── Utility ( Loads Datamangers & Useful functionss for repeated code )
             │ 
             │   ( Screens )
             ├─── Schedule
             ├─── Reschedule
-            ├─── Cancel 
-            ├─── Patient
+            ├─── Cancel              (All Inherited)
+            ├─── Patient               main_window
             ├─── CheckIn
             ├─── CheckOut
             ├─── Referral

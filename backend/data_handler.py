@@ -31,8 +31,8 @@ def load_objects_to_list(objects: list[object], list_widget: QListWidget):
 
 def load_objects_to_combo_box(objects: list[object], combo_box: QComboBox):
     """
-        Places a list of stringed objects into a combo_box
-        i.e list[Physisicans], physiscans_comobo_box
+        Stores a list of stringed objects into a combo_box
+        i.e list[appointment_types], appointment_types_combo_box
 
         :param objects: put the list of Object (Models) you want to enter in here
         :param combo_box: put the QComboBox you want to modify here

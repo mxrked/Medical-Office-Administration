@@ -80,7 +80,7 @@ class AppointmentStatusDataManger(DataManager):
                 Appointment.ApptStatus == "In Progress",
                 Appointment.ApptDate == check_date,
                 Appointment.LocationID == location.LocationID if location else True,
-            )
+            ).order_by(Appointment.ApptTime).all()
 
             for appt in in_progress:
                 patient_name = str(appt.Patient)
@@ -104,7 +104,7 @@ class AppointmentStatusDataManger(DataManager):
             pending = session.query(Appointment).filter(
                 Appointment.ApptStatus == "Pending",
                 Appointment.PhysicianID == provider.EmployeeID if provider else True,
-            ).all()
+            ).order_by(Appointment.ApptTime).all()
 
             for appt in pending:
                 patient_name = str(appt.Patient)
@@ -138,7 +138,7 @@ class AppointmentStatusDataManger(DataManager):
                 Appointment.ApptDate == check_date,
                 Appointment.LocationID == location.LocationID,
                 Appointment.PhysicianID == provider.EmployeeID
-                ).all()
+                ).order_by(Appointment.ApptTime).all()
     
             for appt in todays_appointments:
                 patient_name = str(appt.Patient)

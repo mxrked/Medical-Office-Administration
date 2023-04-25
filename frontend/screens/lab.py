@@ -1,10 +1,10 @@
 """
 LabOrders.py - A window to submit lab orders for a clinic
 UI Designed by: Destan Hutcherson
-Authors: Destan Hutcherson, 
+Authors: Destan Hutcherson, Jessica Weeks
 """
 from PyQt5.QtWidgets import QPushButton, QLineEdit, QDateEdit, QComboBox
-from frontend.utility import Utility
+from frontend.private.utility import Utility
 from backend.models import LabOrder
 from backend.data_handler import get_selected_combo_box_object, load_objects_to_combo_box
 
@@ -34,7 +34,7 @@ class Lab(Utility):
 
         # Do something
         self.lab_submit_btn.clicked.connect(self.submit_information)
-        self.lab_clear_btn.clicked.connect(self.clearInputs)
+        self.lab_clear_btn.clicked.connect(self.clear_inputs)
 
         # fill combo boxes
         self.load_physicians(self.lab_practitioner_combo)
@@ -92,3 +92,4 @@ class Lab(Utility):
 
         self.misc_dm.add_lab_order(labToAdd)
 
+        self.clear_inputs()

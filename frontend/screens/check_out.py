@@ -4,7 +4,7 @@ UI Designed by: Jessica Weeks
 Authors:
 """
 from PyQt5.QtWidgets import QListWidget, QComboBox, QPushButton
-from frontend.utility import Utility
+from frontend.private.utility import Utility
 from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, load_objects_to_list
 
 class CheckOut(Utility):
@@ -46,9 +46,11 @@ class CheckOut(Utility):
         self.check_out_refresh_btn.clicked.connect(self.check_out_refresh)
         self.download_summary_btn.clicked.connect(self.download_summary)
 
-        
         # Populate Combo Boxes
         self.load_locations(self.locations_combobox)
+        
+        # Used for automatic refreshing
+        self.locations_combobox.currentIndexChanged.connect(self.check_out_refresh)
 
     def check_out(self):
         """

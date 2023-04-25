@@ -39,6 +39,8 @@ class AppointmentStatusDataManger(DataManager):
         """ Changes the appointment status of the given appointment to 'In Progress' """
         self.__set_appointment_status(appt, "In Progress")
 
+    def set_appointment_pending(self, appt: Appointment):
+        self.__set_appointment_status(appt, "Pending")
 
     def set_appointment_no_show(self, appt: Appointment):
         """ Changes the appointment status of the given appointment to 'No Show' """
@@ -63,7 +65,6 @@ class AppointmentStatusDataManger(DataManager):
 
     def get_in_progress_appointments(self,
                                      location: Location=None,
-                                     provider: Employee=None,
                                      check_date=date.today()) -> list[Appointment]:
         """
             Get appointments that are currently in progress, for today. 
@@ -74,11 +75,11 @@ class AppointmentStatusDataManger(DataManager):
             :return: A list of appointments that are currently in progress.
         """
         with self.session_scope() as session:
+            session.add(location)
             in_progress = session.query(Appointment).where(
                 Appointment.ApptStatus == "In Progress",
                 Appointment.ApptDate == check_date,
                 Appointment.LocationID == location.LocationID if location else True,
-                Appointment.PhysicianID == provider.EmployeeID if provider else True,
             )
 
             for appt in in_progress:
@@ -89,7 +90,6 @@ class AppointmentStatusDataManger(DataManager):
             return in_progress
 
     def get_pending_appointments(self,
-                                 location: Location=None,
                                  provider: Employee=None) -> list[Appointment]:
         """
             Get appointments that are currently pending.
@@ -100,9 +100,9 @@ class AppointmentStatusDataManger(DataManager):
             :return: A list of appointments that are currently pending.
         """
         with self.session_scope() as session:
+            if provider: session.add(provider)
             pending = session.query(Appointment).filter(
                 Appointment.ApptStatus == "Pending",
-                Appointment.LocationID == location.LocationID if location else True,
                 Appointment.PhysicianID == provider.EmployeeID if provider else True,
             ).all()
 
@@ -130,7 +130,9 @@ class AppointmentStatusDataManger(DataManager):
 
 
         with self.session_scope() as session:
-
+            
+            if location: session.add(location)
+            if provider: session.add(provider)
             todays_appointments = session.query(Appointment).where(
                 Appointment.ApptStatus.in_(["Scheduled", "Rescheduled"]),
                 Appointment.ApptDate == check_date,

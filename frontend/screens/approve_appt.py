@@ -4,27 +4,13 @@ UI Designed by: Christian Fortin
 Authors: 
 """
 from PyQt5.QtWidgets import QListWidget, QPushButton, QComboBox
-from frontend.utility import Utility
-from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, load_objects_to_combo_box
+from frontend.private.utility import Utility
+from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, load_objects_to_list
 
 
 class Approve(Utility):
     """
         Handles the Approve Appointment Buttons/Functions
-
-        First initalizes widgets
-
-        Uses The
-            self.appointment_dm
-            self.user_dm
-            self.misc_dm
-
-        Then grabs locations from the misc_dm 
-        and providers from the user_dm
-
-        then uses the data_handlers to 
-            set_objects_to_combo_box(locations, self.a_location)
-        does this for both
         
         lastly it runs self.a_refresh to fill up list
     """
@@ -46,7 +32,7 @@ class Approve(Utility):
         self.load_locations(self.a_location)
         self.load_physicians(self.a_provider)
 
-        self.a_location.currentIndexChanged.connect(self.a_location_chagne)
+        self.a_location.currentIndexChanged.connect(self.a_location_change)
 
     def approve(self):
         """
@@ -54,40 +40,28 @@ class Approve(Utility):
                 Using the data_handler
         """
 
-        getSelectedAppt = get_selected_list_object(self.a_list)
+        selected_appointment = get_selected_list_object(self.a_list)
 
-        if not getSelectedAppt:
+        if not selected_appointment:
             self.load_error("Not selecting appointment.")
             return
 
-        try:
-            self.appointment_dm.add_appointment(getSelectedAppt)
-        except AssertionError as e:
-            self.load_error(e)
+        self.appointment_dm.set_appointment_scheduled(selected_appointment)
 
         self.a_refresh() # Refreshes the list
 
     def deny(self):
         """
             Sets the status of the given appointment to deny
-
-            Gets the selected item from self.approve_list
-                Using the data_handler
-
-            NOTE: Check if that data corresponds to data.
-                If it doesn't use self.load_error()
-            
-            Then uses appointment_data_manager to set_appointment_canceled
-
             Then call self.a_refresh
         """
-        getSelectedAppt = get_selected_list_object(self.a_list)
+        selected_appointment = get_selected_list_object(self.a_list)
 
-        if not getSelectedAppt:
+        if not selected_appointment:
             self.load_error("Not selecting appointment.")
             return
 
-        self.appointment_dm.set_appointment_canceled(getSelectedAppt)
+        self.appointment_dm.set_appointment_canceled(selected_appointment)
 
         self.a_refresh()
 
@@ -98,14 +72,12 @@ class Approve(Utility):
             Get list of appointments using Appointment_Data_Manager
             Then use the data handler to set_objects_to_list(appointments, self.a_list) 
         """
-        getLocations = get_selected_combo_box_object(self.a_location)
-        getProviders = get_selected_combo_box_object(self.a_provider)
+        providers = get_selected_combo_box_object(self.a_provider)
 
-        listOfAppointments = self.appointment_dm.get_pending_appointments(getLocations, getProviders)
-        load_objects_to_combo_box(listOfAppointments, self.a_list)
+        appointments = self.appointment_dm.get_pending_appointments(providers)
+        load_objects_to_list(appointments, self.a_list)
 
-        print(self.a_refresh.__doc__)
 
-    def a_location_chagne(self):
+    def a_location_change(self):
         location = get_selected_combo_box_object(self.a_location)
         self.load_physicians(self.a_provider, location_id=location.LocationID)

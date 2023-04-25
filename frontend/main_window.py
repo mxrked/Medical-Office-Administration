@@ -6,19 +6,19 @@ import sys
 from datetime import datetime
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication
-from frontend.schedule import Schedule, Reschedule, Cancel
-from frontend.approve_appt import Approve
-from frontend.check_in import CheckIn
-from frontend.check_out import CheckOut
-from frontend.referral import Referral_Screen
-from frontend.lab import Lab
-from frontend.patient import NewPatient
+from frontend.screens.schedule import Schedule, Reschedule, Cancel
+from frontend.screens.approve_appt import Approve
+from frontend.screens.check_in import CheckIn
+from frontend.screens.check_out import CheckOut
+from frontend.screens.referral import ReferralScreen
+from frontend.screens.lab import Lab
+from frontend.screens.patient import NewPatient
 
 class MainWindow(Schedule, Reschedule, Cancel,
                  NewPatient,
                  CheckIn,
                  CheckOut,
-                 Referral_Screen,
+                 ReferralScreen,
                  Lab,
                  Approve):
     """
@@ -33,18 +33,18 @@ class MainWindow(Schedule, Reschedule, Cancel,
 
     Nav(QMainWindow) (Navigation Functions)
     │ 
-    └───Utility ( Loads Datamangers & Useful functs for repeated code )
+    └─── Utility ( Loads Datamangers & Useful functs for repeated code )
             │ 
             │   ( Screens )
-            ├───Schedule
-            ├───Reschedule
-            ├───Cancel 
-            ├───Patient
-            ├───CheckIn
-            ├───CheckOut
-            ├───Referral
-            ├───Lab
-            └───Approve
+            ├─── Schedule
+            ├─── Reschedule
+            ├─── Cancel 
+            ├─── Patient
+            ├─── CheckIn
+            ├─── CheckOut
+            ├─── Referral
+            ├─── Lab
+            └─── Approve
 
     Scope is a concern but this is inevitable because we have to load
         it all into one QMainWindow
@@ -52,10 +52,15 @@ class MainWindow(Schedule, Reschedule, Cancel,
     None of these subclasses will run standalone, sorry! Run this instead
     """
 
-    def __init__(self, can_physician:bool=True, can_schedule:bool=True, debug=False, today=datetime.now().date()):
+    def __init__(self,
+                 can_physician:bool=True,
+                 can_schedule:bool=True,
+                 debug=False,
+                 today=datetime.now().date()):
+
         super(MainWindow, self).__init__()
 
-        # Stop QBasicTimer Spam (Maybe)
+        # Stop QBasicTimer Spam
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 
         self.can_physician = can_physician
@@ -63,7 +68,7 @@ class MainWindow(Schedule, Reschedule, Cancel,
 
         self.debug = debug
 
-        # Used for tricking the program what day it is for testing purposes 
+        # Used for tricking the program what day it is for testing purposes
         if self.debug:
             self.todays_date = today
 
@@ -74,11 +79,11 @@ class MainWindow(Schedule, Reschedule, Cancel,
         # Sets Starting Window
         if self.can_schedule:
 
-            self.enterSchedulingAppointmentsWindow()
+            self.enter_appointments_window()
             self.display_inputs_frame() # Main Scheduling Window
 
         elif self.can_physician:
-            self.enterMakeReferralWindow()
+            self.enter_referral_window()
         else:
             self.load_error("No Permissions!")
 
@@ -86,7 +91,7 @@ class MainWindow(Schedule, Reschedule, Cancel,
 
         # Resets everything so no starting data
         # And everything is today
-        self.clearInputs()
+        self.clear_inputs()
 
 
 #initializing app

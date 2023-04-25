@@ -1,12 +1,12 @@
 """
 NewPatient.py - A window to add a new patient to the database
 UI Designed by: Destan Hutcherson
-Authors: 
+Authors: Destan Hutcherson, Jessica Weeks
 """
 
 from PyQt5.QtWidgets import QComboBox, QLineEdit, QRadioButton, QDateEdit, QPushButton
 from backend.models import Patient
-from frontend.utility import Utility
+from frontend.private.utility import Utility
 from backend.data_handler import get_selected_combo_box_object
 class NewPatient(Utility):
     """
@@ -112,4 +112,6 @@ class NewPatient(Utility):
 
         self.misc_dm.add_patient(patient)
 
-        self.clearInputs()
+        self.clear_inputs()
+
+

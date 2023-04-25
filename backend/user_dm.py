@@ -46,6 +46,7 @@ class UserDM(DataManager):
         
 
         with self.session_scope() as session:
+            session.add(current_employee)
             groups = session.query(EmpGroupCross)\
                 .filter_by(EmployeeID = current_employee.EmployeeID).all()
             
@@ -66,16 +67,12 @@ class UserDM(DataManager):
     def get_physicians(self, location_id=None) -> list[Employee]:
         """
         
-        :param: location_id : Corresponds to a LocationID -1 (So it matches up with JSON)
+        :param: location_id : Corresponds to a LocationID (So it matches up with JSON)
             Certain physicians only work at certain locations
-            if location is -1, it will search all locations
+            if location is None, it will search all locations
 
         """
         valid_types = ["General Practitioner", "Internal Medicine", "Ear, Nose & Throat", "Womens Medicine"]
-
-        # Use cache to discourge unneeded db calls
-        if location_id in self.physicians_dict.keys():
-            return self.physicians_dict[location_id]
 
         with self.session_scope() as session:
             
@@ -92,10 +89,7 @@ class UserDM(DataManager):
                     .order_by(Employee.Position.asc(), Employee.FirstName.asc()) \
                     .all()
 
-            [session.expunge(physician) for physician in physicians]
-
-            # Loads into cache
-            self.physicians_dict[location_id] = physicians
+            session.expunge_all()
 
             return physicians
 
@@ -116,5 +110,5 @@ class UserDM(DataManager):
                 .where(dob == Patient.DateOfBirth, first_name == Patient.First_Name, last_name == Patient.Last_Name) \
                 .all()
             
-            [session.expunge(patient) for patient in patients]
+            session.expunge_all()
             return patients

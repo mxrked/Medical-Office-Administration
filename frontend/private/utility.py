@@ -13,11 +13,21 @@ from backend.misc_dm import MiscDM
 from backend.appointment_dm import AppointmentDM
 from backend.data_handler import load_objects_to_combo_box
 from backend.models import Patient
-from frontend.main_nav import Nav
-from frontend.ui.assets.files.STYLING import infoDialog_Style, infoDialogCloseBtn_Style, infoDialogName_Style
+from frontend.private.nav import Nav
+from frontend.ui.assets.files.styling import infoDialog_Style, infoDialogCloseBtn_Style, infoDialogName_Style
+from frontend.dialog.patients_dialog import ListOfPatientsDialog
+
 
 class Utility(Nav):
+    """
+        Handles general utility that all screens use
 
+        • Initalizing data handlers
+        • clearInputs (Clears ALL inputs)
+        • closeEvent (What happens when program closes)
+        • 
+    
+    """
     def __init__(self):
         super(Utility, self).__init__()
 
@@ -27,7 +37,7 @@ class Utility(Nav):
         self.appointment_dm = AppointmentDM()
 
     
-    def clearInputs(self):
+    def clear_inputs(self):
         """
             Resets all widgets everywhere!
             Use with caution
@@ -45,7 +55,7 @@ class Utility(Nav):
                 widget.setDate(QDate.currentDate())
         
     
-    def closeEvent(self, event):
+    def closeEvent(self, event): # Do not change name, needs to be the same as QMainWindow's
         """
             Closes all data managers before exiting the program
         """
@@ -66,8 +76,8 @@ class Utility(Nav):
             This can be used for db calls that may return error:
             try: 
                 add_appointment(appointment)
-            except AssertionError as e: 
-                load_error(error_text=e)
+            except AssertionError as e:
+                load_error(error_text = str(e))
                 return
             
             :param error_text: str to be displayed as errors 
@@ -139,10 +149,43 @@ class Utility(Nav):
         load_objects_to_combo_box(physicians, combo_box)
 
     def get_verified_patient(self, f_name: str, l_name: str, dob: date) -> Patient:
+        """
+            In multiple sections we need to get a patient and verify (with a assert)
+                that one was found. This handles that
+
+            This also handles if more than 2 patients are found
+
+            :param f_name: Patients first name
+            :param l_name: Patients last name
+            :param dob: Patients dob using a datatime date object
+        """
+        
         patients = self.user_dm.get_patients(first_name=f_name,
                                                     last_name=l_name,
                                                     dob=dob)
 
-        assert len(patients) == 1, "No Patients Found"
+        assert len(patients) != 0 , "No Patients Found"
+        if len(patients) > 1:
+            # Removes all but the selected item from the dialog
+            patients = [self.display_settings_dialog(patients)]
         
+        assert patients[0] is not None, "No Patient Selected"
+
         return patients[0]
+
+
+    def display_settings_dialog(self, patients: list[Patient]):
+        """
+            Pops up a dialog window for the soul purpose of resolving mutltiple patients
+                User not allowed to leave until a patient is selected
+
+            :param patients: list of Patient Objects
+
+            :returns patient: The resolved patient
+        """
+
+        subwindow = ListOfPatientsDialog(patients)
+        subwindow.setWindowModality(Qt.ApplicationModal)
+
+        if subwindow.exec_() == QDialog.Accepted:
+            return subwindow.get_patient()

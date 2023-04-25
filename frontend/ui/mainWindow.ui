@@ -422,8 +422,20 @@ QPushButton::hover {
        <x>0</x>
        <y>0</y>
        <width>1450</width>
-       <height>811</height>
+       <height>900</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>900</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>900</height>
+      </size>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: transparent;
@@ -433,6 +445,18 @@ border-image: transparent;</string>
       <number>0</number>
      </property>
      <widget class="QWidget" name="Appointments">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>900</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>900</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
@@ -3441,9 +3465,9 @@ QPushButton::hover {
       <widget class="QFrame" name="PatientFrame">
        <property name="geometry">
         <rect>
-         <x>130</x>
+         <x>110</x>
          <y>100</y>
-         <width>0</width>
+         <width>1000</width>
          <height>680</height>
         </rect>
        </property>
@@ -3455,14 +3479,14 @@ QPushButton::hover {
        </property>
        <property name="minimumSize">
         <size>
-         <width>0</width>
+         <width>1000</width>
          <height>680</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>16777215</width>
-         <height>0</height>
+         <width>0</width>
+         <height>680</height>
         </size>
        </property>
        <property name="styleSheet">
@@ -4446,6 +4470,43 @@ QPushButton::hover {
            </item>
            <item>
             <widget class="QComboBox" name="p_race">
+             <property name="font">
+              <font>
+               <family>MS Shell Dlg 2</family>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QComboBox {	
+	border-image: none;
+    border: none;
+	background-color: #F3ECB0;
+	color: #344D67;
+	font-family: &quot;MS Shell Dlg 2&quot;;
+	font-size: 11;
+}
+
+QComboBox QAbstractItemView {
+    background-color: rgb(65, 131, 197);
+	color: white;
+}
+</string>
+             </property>
+             <item>
+              <property name="text">
+               <string>Other</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>White</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>African American</string>
+              </property>
+             </item>
              <item>
               <property name="text">
                <string>American Indian or Alaska Native</string>
@@ -4458,22 +4519,12 @@ QPushButton::hover {
              </item>
              <item>
               <property name="text">
-               <string>Black or African American</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
                <string>Native Hawaiian or Other Pacific Islander</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>White</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Other</string>
+               <string>Two or more races</string>
               </property>
              </item>
             </widget>
@@ -5544,7 +5595,7 @@ QLabel {
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <widget class="QFrame" name="InputFrame_6">
+        <widget class="QFrame" name="Balls">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -5552,6 +5603,12 @@ QLabel {
            <width>1251</width>
            <height>671</height>
           </rect>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
          </property>
          <property name="styleSheet">
           <string notr="true">border-image: none;
@@ -5996,9 +6053,9 @@ QComboBox QAbstractItemView {
          <widget class="QPushButton" name="Btn_CreateReferral">
           <property name="geometry">
            <rect>
-            <x>530</x>
+            <x>430</x>
             <y>590</y>
-            <width>131</width>
+            <width>161</width>
             <height>61</height>
            </rect>
           </property>
@@ -6034,6 +6091,55 @@ QPushButton::hover {
           </property>
           <property name="text">
            <string>Create Referral</string>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>25</width>
+            <height>25</height>
+           </size>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Btn_RefClearInputs_2">
+          <property name="geometry">
+           <rect>
+            <x>610</x>
+            <y>590</y>
+            <width>141</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>110</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Lato</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	border-image: none;
+	background-color: #6ECCAF;
+	color: black;
+	border: 2px solid black;
+}
+
+QPushButton::hover {
+	background-color: rgb(139, 231, 100);
+	color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>Clear Inputs</string>
           </property>
           <property name="iconSize">
            <size>

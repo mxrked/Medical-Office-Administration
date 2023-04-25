@@ -3,7 +3,7 @@ Author: Jessica Weeks
 """
 from datetime import timedelta, date, time
 import datetime
-from sqlalchemy.orm import joinedload
+from sqlalchemy.orm import joinedload, object_session
 import sqlalchemy as sa
 from backend.models import HospitalHours, AppointmentType, Appointment,\
                     Employee, Location, Event, Patient
@@ -65,14 +65,19 @@ class AppointmentDM(AppointmentStatusDataManger):
         events = self.__get_events_for(provider, appt_date)
 
         # This means they are out!
-        assert events is None, "Provider is out on this day"
-
+        if events:
+            if events.EmployeeID == provider.EmployeeID: # The employee is out is out
+                raise AssertionError(f"This Physician is out for {events.EventName}")
+            else: # Whole office is out
+                raise AssertionError(f"This clinic is closed for {events.EventName}")
 
         ### Next we get every appointment and place them into a dictionary with their length ###
 
         taken_appointment_statuses = ["Scheduled", "In Progress"]
 
-        with self.session_scope() as session: 
+        with self.session_scope() as session:
+            if object_session(provider) is None: # The provider is not in a session
+                session.add(provider)
             taken_appointments = session.query(Appointment)\
                 .options(joinedload(Appointment.AppointmentType))\
                 .filter(
@@ -157,32 +162,48 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         # Alrighty! Now we have a list of appointment times that are free!
         # Now to just make a bunch of objects using them
-        for appt_time in avaliable_appointments_times:
-            appt_endtime = (appt_time + appt_length).time()
-
-            appt_time = appt_time.time()
+        with self.session_scope() as session:
             
-            avaliable_appointments.append(Appointment(
-                    ApptDate=appt_date,
-                    ApptTime=appt_time,
-                    PatientID=patient.PatientID,
-                    ApptStatus="Scheduled",
-                    ApptEndtime=appt_endtime,
-                    PhysicianID=provider.EmployeeID,
-                    ApptTypeID=appt_type.ApptTypeID,
-                    LocationID = location.LocationID,
-                    ApptReason=appt_reason,
+            if object_session(provider) is None: # The provider is not in a session
+                session.add(provider)
+                session.add(location)
+                session.add(patient)
+                session.add(appt_type)
+            
+            for appt_time in avaliable_appointments_times:
+                appt_endtime = (appt_time + appt_length).time()
 
-                    Patient=patient,
-                    AppointmentType=appt_type,
-                    Employee=provider,
-                    Location=location
+                appt_time = appt_time.time()
+                
+
+                avaliable_appointments.append(Appointment(
+                        ApptDate=appt_date,
+                        ApptTime=appt_time,
+                        PatientID=patient.PatientID,
+                        ApptStatus="Scheduled",
+                        ApptEndtime=appt_endtime,
+                        PhysicianID=provider.EmployeeID,
+                        ApptTypeID=appt_type.ApptTypeID,
+                        LocationID = location.LocationID,
+                        ApptReason=appt_reason,
+
+                        Patient=patient,
+                        AppointmentType=appt_type,
+                        Employee=provider,
+                        Location=location
+                    )
                 )
-            )
 
-        assert len(avaliable_appointments) > 0, "No appointments Avaliable on" + appt_date.strftime("%m/%d/%Y")
+            patient_name = str(patient)
 
-        return  avaliable_appointments
+            for appt in avaliable_appointments:
+                appt.patient_name = patient_name
+
+            session.expunge_all()
+
+            assert len(avaliable_appointments) > 0, "No appointments Avaliable on" + appt_date.strftime("%m/%d/%Y")
+
+            return  avaliable_appointments
 
 
     def remove_appointment(self, appt:Appointment):
@@ -192,6 +213,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             :param appt: Appointment model to remove
         """
         with self.session_scope() as session:
+            session.add(appt)
             session.delete(appt)
 
     def add_appointment(self, appt: Appointment, custom_time=None):
@@ -229,6 +251,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             :return: A list of Appointment objects for the given date
         """
         with self.session_scope() as session:
+            session.add(physician)
             appointments = session.query(Appointment)\
                 .options(joinedload(Appointment.Patient))\
                 .filter(Appointment.ApptDate == check_date,
@@ -253,7 +276,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             appt_length = appt_end_datetime - appt_start_datetime
 
             available_times = self.get_avaliable_appointments(
-                appt_date = appt.check_date,
+                appt_date = check_date,
                 provider = appt.Employee,
                 location = appt.Location,
                 appt_type = appt.AppointmentType,
@@ -293,7 +316,6 @@ class AppointmentDM(AppointmentStatusDataManger):
 
 
         with self.session_scope() as session:
-
             ### First We check if there are any taken appointments ###
 
 
@@ -351,6 +373,8 @@ class AppointmentDM(AppointmentStatusDataManger):
         week_number = self.__get_week_number(check_date)
 
         with self.session_scope() as session:
+            if object_session(location) is None:
+                session.add(location)
             hours =  session.query(HospitalHours).filter(
                 sa.and_(
                     HospitalHours.LocationID == location.LocationID,
@@ -362,26 +386,26 @@ class AppointmentDM(AppointmentStatusDataManger):
                     sa.or_(HospitalHours.WeekNumber == week_number,(HospitalHours.WeekNumber.is_(None)))
                 )
             ).first()
-            session.expunge(hours)
+            session.expunge_all()
             return hours
 
     def __get_events_for(self, employee: Employee, check_date: date) -> Event:
         """ Get if an employee has an event on a certain date """
         
         with self.session_scope() as session:
+            if object_session(employee) is None:
+                session.add(employee)
             events = session.query(Event)\
                         .filter(
                         sa.or_(Event.EmployeeID == employee.EmployeeID, Event.EmployeeID.is_(None)),
                         Event.StartDate <= check_date, # Check if its after start date
                         Event.EndDate >= check_date, # Check if its before end date
                         ).first()
-            if events is not None:
-                session.expunge(events)
             return events
 
     def __get_week_number(self, check_date:date):
         """ 
-        A private method to get what week number it is 
+        A private method to get what week number it is for the db schedule
         
         It's a little jank.
         It checks how many weeks it has been since the first Sunday of 2015
@@ -390,8 +414,6 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         If clinic ever chooses to add more weeks to their repeating schedule, chagne the constant
         """
-
-
         number_of_weeks = 2
 
         start_date = datetime.datetime(2015, 1, 4)
@@ -404,4 +426,5 @@ class AppointmentDM(AppointmentStatusDataManger):
         return week_number
 
 if __name__ == "__main__":
-   pass
+    # Used for debugging
+    pass

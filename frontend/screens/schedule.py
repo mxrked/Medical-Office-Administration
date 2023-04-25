@@ -2,9 +2,9 @@
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QLabel, QListWidget, QTimeEdit, QPushButton, QCalendarWidget
 from PyQt5.QtCore import QDate
 from PyQt5.QtGui import QIntValidator
-from frontend.ui.assets.files.STYLING import disableCustomTime_Style, enableCustomTime_Style
+from frontend.ui.assets.files.styling import disableCustomTime_Style, enableCustomTime_Style
 from backend.data_handler import load_objects_to_combo_box, get_selected_combo_box_object, get_selected_list_object, load_objects_to_list
-from frontend.utility import Utility
+from frontend.private.utility import Utility
 from datetime import timedelta, datetime, date
 
 class Schedule(Utility):
@@ -38,7 +38,7 @@ class Schedule(Utility):
         self.SA_PatientDOBDateEdit.setDate(QDate.currentDate())
         self.SA_AppointmentDateDateEdit.setDate(QDate.currentDate())
         self.SA_AppointmentDateDateEdit.setMinimumDate(QDate.currentDate())
-        self.SA_ClearInputsPushButton.mousePressEvent = lambda event: self.clearInputs()
+        self.SA_ClearInputsPushButton.mousePressEvent = lambda event: self.clear_inputs()
         self.SA_NoCustomTimePushButton.setVisible(False)
         self.SA_NoCustomTimePushButton.clicked.connect(self.disableCustomTime)
         self.SA_YesCustomTimePushButton.clicked.connect(self.enableCustomTime)
@@ -81,7 +81,8 @@ class Schedule(Utility):
         self.load_physicians(self.SA_PhysicianNamesComboBox, location_id=location.LocationID)
 
     def search_SA(self):
-        
+
+
         SA_patientFN = self.SA_PatientFNLineEdit.text()
         SA_patientLN = self.SA_PatientLNLineEdit.text()
         SA_patientDOB = self.SA_PatientDOBDateEdit.date().toPyDate()
@@ -92,7 +93,8 @@ class Schedule(Utility):
         SA_physicianName = get_selected_combo_box_object(self.SA_PhysicianNamesComboBox)
         SA_appointmentDate = self.SA_AppointmentDateDateEdit.date().toPyDate()
 
-        
+        # So list data matches the current state of the feilds no matter what
+        self.SA_CurrentAvailableTimesListWidget.clear()
 
         try:
             patient = self.get_verified_patient(SA_patientFN,
@@ -162,7 +164,7 @@ class Schedule(Utility):
             self.load_error(str(error))
             return
 
-        self.clearInputs()
+        self.clear_inputs()
         self.SA_CurrentAvailableTimesListWidget.clear()
 
 
@@ -185,7 +187,7 @@ class Reschedule(Utility):
         self.RA_AppointmentDateDateEdit.setMinimumDate(QDate.currentDate())
         self.RA_RescheduleDateDateEdit.setDate(QDate.currentDate())
         self.RA_RescheduleDateDateEdit.setMinimumDate(QDate.currentDate())
-        self.RA_ClearInputsPushButton.mousePressEvent = lambda event: self.clearInputs()
+        self.RA_ClearInputsPushButton.mousePressEvent = lambda event: self.clear_inputs()
         self.RA_DisplayTimesAppointmentsPushButton.mousePressEvent = lambda event: self.displayTimesApps()
         self.RA_DisplayNewTimes.mousePressEvent = lambda event: self.displayRescheduleAppointment()
         self.RA_RescheduleAppointmentPushButton.mousePressEvent = lambda event: self.rescheduleAppointment()
@@ -215,6 +217,7 @@ class Reschedule(Utility):
             assert len(old_appointments) > 0, "No Appointments Found"
         except AssertionError as error:
             self.load_error(str(error))
+            return
 
         load_objects_to_list(old_appointments, self.RA_SearchedAppointmentsListWidget)
 
@@ -257,7 +260,7 @@ class Reschedule(Utility):
         self.appointment_dm.add_appointment(appt)
         self.appointment_dm.remove_appointment(self.ra_old_appointment)
 
-        self.clearInputs()
+        self.clear_inputs()
         self.RA_CurrentAvailableTimesListWidget.clear()
         self.RA_SearchedAppointmentsListWidget.clear()
 
@@ -277,7 +280,7 @@ class Cancel(Utility):
 
         self.CA_AppointmentDateDateEdit.setDate(QDate.currentDate())
         self.CA_AppointmentDateDateEdit.setMinimumDate(QDate.currentDate())
-        self.CA_ClearInputsPushButton.mousePressEvent = lambda event: self.clearInputs()
+        self.CA_ClearInputsPushButton.mousePressEvent = lambda event: self.clear_inputs()
         self.CA_SearchForAppointmentsPushButton.mousePressEvent = lambda event: self.search_CA()
         self.CA_CancelAppointmentPushButton.mousePressEvent = lambda event: self.cancelAppointment()
 
@@ -302,6 +305,7 @@ class Cancel(Utility):
             assert len(appointments) > 0, "No Appointments Found"
         except AssertionError as error:
             self.load_error(str(error))
+            return
 
         load_objects_to_list(appointments, self.CA_SearchedAppointmentsListWidget)
 
@@ -310,5 +314,12 @@ class Cancel(Utility):
 
         appointment = get_selected_list_object(self.CA_SearchedAppointmentsListWidget)
 
-        self.appointment_dm.set_appointment_canceled(appointment)
+        try:
+            assert appointment is not None, "Appointment Not Selected"
+        except AssertionError as error:
+            self.load_error(str(error))
+            return
 
+        self.appointment_dm.set_appointment_canceled(appointment)
+        self.clear_inputs()
+        self.search_CA()

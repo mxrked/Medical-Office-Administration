@@ -4,7 +4,7 @@ UI Designed by: Jessica Weeks
 Authors:
 """
 from PyQt5.QtWidgets import QComboBox, QListWidget, QPushButton
-from frontend.utility import Utility
+from frontend.private.utility import Utility
 from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, \
       load_objects_to_list
 class CheckIn(Utility):
@@ -52,8 +52,6 @@ class CheckIn(Utility):
 
         self.check_in_location.currentIndexChanged.connect(self.check_in_location_change)
 
-        self.check_in_refresh(in_init=True)
-
     def check_in(self):
         """
             Checks in the selected appointment    
@@ -69,7 +67,6 @@ class CheckIn(Utility):
 
             Then calls self.check_in_refresh
         """
-        print(self.check_in.__doc__)
 
         getSelectedAppt = get_selected_list_object(self.check_ins_list)
 
@@ -79,7 +76,8 @@ class CheckIn(Utility):
 
         self.appointment_dm.set_appointment_in_progress(getSelectedAppt)
 
-        self.check_in_refresh() # Refreshes the list
+        self.check_in_refresh()
+
 
     def no_show(self):
         """
@@ -96,7 +94,6 @@ class CheckIn(Utility):
 
             Then calls self.check_in_refresh
         """
-        print(self.no_show.__doc__)
 
         getSelectedAppt = get_selected_list_object(self.check_ins_list)
 
@@ -105,10 +102,10 @@ class CheckIn(Utility):
             return
 
         self.appointment_dm.set_appointment_no_show(getSelectedAppt)
+        
+        self.check_in_refresh()
 
-        self.check_in_refresh() # Refreshes the list
-
-    def check_in_refresh(self, in_init=False):
+    def check_in_refresh(self):
         """
             Refreshes self.check_ins_list with appointments that can
                 be checked in
@@ -126,7 +123,7 @@ class CheckIn(Utility):
             appt.Location = location
             appt.Employee = provider
 
-        if len(listOfAppointments) < 0 and (not in_init):
+        if len(listOfAppointments) < 0:
             self.load_error("No Avaliable Appointments")
             return
 

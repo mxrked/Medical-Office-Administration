@@ -1,17 +1,17 @@
 """
 Referrals.py - A window to submit referrals for a clinic
 UI Designed by: Matthew Burrus
-Authors:
+Authors: Matthew Burrus
 """
 
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QPushButton
 from PyQt5.QtCore import QDate
-from frontend.utility import Utility
+from frontend.private.utility import Utility
 from backend.data_handler import load_objects_to_combo_box
 from backend.data_handler import get_selected_combo_box_object
 from backend.models import Referral
 
-class Referral_Screen(Utility):
+class ReferralScreen(Utility):
     """
         Creates a referral using the Referral object
 
@@ -22,7 +22,7 @@ class Referral_Screen(Utility):
         to load up combo_boxes by default
     """
     def __init__(self):
-        super(Referral_Screen, self).__init__()
+        super(ReferralScreen, self).__init__()
 
         # Initalized Input Widgets
         self.ref_fname = self.findChild(QLineEdit, "Referral_Edit_Fname")
@@ -34,9 +34,11 @@ class Referral_Screen(Utility):
 
         # Initalized Buttons
         self.create_referral_btn = self.findChild(QPushButton, "Btn_CreateReferral")
+        self.ref_clear_input_btn = self.findChild(QPushButton, "Btn_RefClearInputs_2")
 
         # Button Listeners
         self.create_referral_btn.clicked.connect(self.create_referral)
+        self.ref_clear_input_btn.clicked.connect(self.clear_inputs)
 
         # Load up values
         self.load_physicians(self.ref_practitioners, "All")
@@ -85,5 +87,5 @@ class Referral_Screen(Utility):
 
         self.misc_dm.add_referral(referral)
 
-        self.clearInputs()
+        self.clear_inputs()
 

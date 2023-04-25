@@ -67,15 +67,13 @@ class CheckOut(Utility):
 
             Then calls self.checkOut_refresh        
         """
-        print(self.check_out.__doc__)
+        appointment = get_selected_list_object(self.check_out_list)
 
-        getSelectedAppt = get_selected_list_object(self.check_out_list)
-
-        if not getSelectedAppt:
+        if not appointment:
             self.load_error("Not selecting appointment.")
             return
 
-        self.appointment_dm.set_appointment_checked_out(getSelectedAppt)
+        self.appointment_dm.set_appointment_checked_out(appointment)
 
         self.check_out_refresh() # Refreshes the list
 

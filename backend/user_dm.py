@@ -64,7 +64,7 @@ class UserDM(DataManager):
             return False
 
     
-    def get_physicians(self, location_id=None) -> list[Employee]:
+    def get_physicians(self, location:Location=None) -> list[Employee]:
         """
         
         :param: location_id : Corresponds to a LocationID (So it matches up with JSON)
@@ -76,16 +76,17 @@ class UserDM(DataManager):
 
         with self.session_scope() as session:
             
-            if location_id is None:
+            if location is None:
                 #Search all locations instead
                 physicians = session.query(Employee) \
                     .where(Employee.Position.in_(valid_types)) \
                     .order_by(Employee.Position.asc(), Employee.FirstName.asc()) \
                     .all()
             else:
+                session.add(location)
                 physicians = session.query(Employee) \
                     .where(Employee.Position.in_(valid_types),
-                        Employee.LocationID == location_id) \
+                        Employee.LocationID == location.LocationID) \
                     .order_by(Employee.Position.asc(), Employee.FirstName.asc()) \
                     .all()
 

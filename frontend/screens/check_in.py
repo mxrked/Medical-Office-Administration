@@ -79,6 +79,8 @@ class CheckIn(Utility):
         self.check_in_refresh()
 
 
+
+
     def no_show(self):
         """
             Marks selected appointment as "No Show"
@@ -132,4 +134,4 @@ class CheckIn(Utility):
 
     def check_in_location_change(self):
         location = get_selected_combo_box_object(self.check_in_location)
-        self.load_physicians(self.check_in_providers, location_id=location.LocationID)
+        self.load_physicians(self.check_in_providers, location=location)

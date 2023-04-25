@@ -60,3 +60,12 @@ class MiscDM(DataManager):
 
 
             return locations
+    
+    def get_location_with_id(self, id:int) -> Location:
+        """ Returns location with given id """
+        with self.session_scope() as session:
+            location = session.query(Location)\
+               .filter(Location.LocationID == id)\
+               .first()
+            session.expunge_all()
+            return location

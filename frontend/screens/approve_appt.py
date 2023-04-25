@@ -80,4 +80,4 @@ class Approve(Utility):
 
     def a_location_change(self):
         location = get_selected_combo_box_object(self.a_location)
-        self.load_physicians(self.a_provider, location_id=location.LocationID)
+        self.load_physicians(self.a_provider, location)

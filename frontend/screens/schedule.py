@@ -78,7 +78,7 @@ class Schedule(Utility):
     
     def change_location_sa(self):
         location = get_selected_combo_box_object(self.SA_OfficeLocationsComboBox)
-        self.load_physicians(self.SA_PhysicianNamesComboBox, location_id=location.LocationID)
+        self.load_physicians(self.SA_PhysicianNamesComboBox, location=location)
 
     def search_SA(self):
 
@@ -203,7 +203,7 @@ class Reschedule(Utility):
 
         self.load_physicians(
             self.RA_PhysicianNamesComboBox,
-            location_id = location.LocationID
+            location = location
         ) 
 
     def displayTimesApps(self):
@@ -292,7 +292,7 @@ class Cancel(Utility):
     def ca_switch_location(self):
 
         location = get_selected_combo_box_object(self.CA_OfficeLocationsComboBox)
-        self.load_physicians(combo_box = self.CA_PhysicianNamesComboBox, location_id = location.LocationID)
+        self.load_physicians(combo_box = self.CA_PhysicianNamesComboBox, location = location)
 
     def search_CA(self):
 

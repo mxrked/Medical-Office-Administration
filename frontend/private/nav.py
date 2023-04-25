@@ -157,15 +157,10 @@ class Nav(QMainWindow):
 
         if self.can_schedule:
             nav_buttons.extend(scheduling_nav)
-        else:
-            for btn in scheduling_nav:
-                btn.hide()
+
 
         if self.can_physician:
             nav_buttons.extend(physician_nav)
-        else:
-            for btn in physician_nav:
-                btn.hide
 
         for btn in nav_buttons:
             self.enable_nav(btn)

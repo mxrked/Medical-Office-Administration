@@ -50,34 +50,34 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         ### Make sure appt_date is not before today
         assert appt_date >= datetime.datetime.now().date(), ("Appoinment date cannot be before today's date")
-        
-
-        ### First We Check if the Location is open ###
 
         hours = self.__get_hours_for(appt_date, location)
 
-        # This means they are closed
-        assert hours.OpenTime is not None, "Clinic is closed on this day"
-
-
-        ### Then We check if the employee is out ###
-
         events = self.__get_events_for(provider, appt_date)
 
-        # This means they are out!
-        if events:
-            if events.EmployeeID == provider.EmployeeID: # The employee is out is out
-                raise AssertionError(f"This Physician is out for {events.EventName}")
-            else: # Whole office is out
-                raise AssertionError(f"This clinic is closed for {events.EventName}")
-
-        ### Next we get every appointment and place them into a dictionary with their length ###
-
-        taken_appointment_statuses = ["Scheduled", "In Progress", "Rescheduled"]
+        ### Now we need to do some db queries ###
 
         with self.session_scope() as session:
+                        
+            ### First We Check if the Location is open ###
+
+            session.add(hours)
+            assert hours.OpenTime is not None, "Clinic is closed on this day"
+
+            ### Then We check if the employee is out ###
+            
             if object_session(provider) is None: # The provider is not in a session
-                session.add(provider)
+                session.add(provider) # Sometimes when this is run the provider is already in a session
+
+            if events:
+                session.add(events)
+                if events.EmployeeID == provider.EmployeeID: # The employee is out is out
+                    raise AssertionError(f"This Physician is out for {events.EventName}")
+                else: # Whole office is out
+                    raise AssertionError(f"This clinic is closed for {events.EventName}")
+
+            taken_appointment_statuses = ["Scheduled", "In Progress", "Rescheduled"]
+
             taken_appointments = session.query(Appointment)\
                 .options(joinedload(Appointment.AppointmentType))\
                 .filter(
@@ -89,79 +89,79 @@ class AppointmentDM(AppointmentStatusDataManger):
                 ).all()
             session.expunge_all()
 
-        # Will be appointment_start_time, appointment_length (time delta)
-        taken_appointment_times_dict = {}
+            # Will be appointment_start_time, appointment_length (time delta)
+            taken_appointment_times_dict = {}
 
-        for taken_appt in taken_appointments:
+            for taken_appt in taken_appointments:
 
-            taken_start = taken_appt.ApptTime
-            
-            start = taken_appt.ApptTime
-            end = taken_appt.ApptEndtime
-            
-            # If goes over midnight
-            if end < start:
-                end += timedelta(days=1)
-            
-            taken_appt_length = datetime.datetime.combine(datetime.datetime.min, end) -\
-            datetime.datetime.combine(datetime.datetime.min, start)
-            taken_appointment_times_dict[taken_start] = taken_appt_length
-
-
-
-        ### Now we have everything we need ###
+                taken_start = taken_appt.ApptTime
+                
+                start = taken_appt.ApptTime
+                end = taken_appt.ApptEndtime
+                
+                # If goes over midnight
+                if end < start:
+                    end += timedelta(days=1)
+                
+                taken_appt_length = datetime.datetime.combine(datetime.datetime.min, end) -\
+                datetime.datetime.combine(datetime.datetime.min, start)
+                taken_appointment_times_dict[taken_start] = taken_appt_length
 
 
 
-        # Ok, This is the hard part.
-        # We use a counter (search_datetime) to loop through our start and end time
-        # Think of search_datetime as a time, 9:00
-        # First we check if a appointment intersects with our search_datetime and the end_time
-        # Think of the search_datetime as a appointment, i.e 9:00 - 9:15
-        # If thre is appointment intersects with that range, i.e 9:10-9:20, we can't use it
-        # Our counter would then skip to 9:20, and check if we can make an appointment there
-        # If we can make an appointment at 9:20, then we add that to our avaliable_appointments!
-        # The counter would then skip from 9:20 to 9:35 (It would add the appt_length)
-
-        # datetimes are required to add and subtract times
-        search_datetime = datetime.datetime.combine(datetime.datetime.today(), hours.OpenTime)
-        end_search_datetime = datetime.datetime.combine(datetime.datetime.today(), hours.CloseTime)
-
-        avaliable_appointments_times = []
-
-        while search_datetime < end_search_datetime:
-
-            # For readability
-            appt_start = search_datetime
-            appt_end = appt_start + appt_length
-
-            # We loop through our list of taken appointment times
-            for taken_appointment, taken_appt_length in taken_appointment_times_dict.items():
-                # Converting appointment to datetime so we can compare using timedelta
-                taken_start = datetime.datetime.combine(datetime.datetime.today(), taken_appointment)
-                # Our discionary contains timedeltas as the apopintment length
-                taken_end = taken_start + taken_appt_length
+            ### Now we have everything we need ###
 
 
 
-                # Check if there is a intersection
-                if ((appt_start < taken_end and appt_end > taken_start) or 
-                    (taken_start < appt_end and taken_end > appt_start)):
+            # Ok, This is the hard part.
+            # We use a counter (search_datetime) to loop through our start and end time
+            # Think of search_datetime as a time, 9:00
+            # First we check if a appointment intersects with our search_datetime and the end_time
+            # Think of the search_datetime as a appointment, i.e 9:00 - 9:15
+            # If thre is appointment intersects with that range, i.e 9:10-9:20, we can't use it
+            # Our counter would then skip to 9:20, and check if we can make an appointment there
+            # If we can make an appointment at 9:20, then we add that to our avaliable_appointments!
+            # The counter would then skip from 9:20 to 9:35 (It would add the appt_length)
 
-                    # If it is in between it means we can't use this time!
-                    # We must skip ahead to the end of this appointment to look for more times!
-                    search_datetime = taken_end
-                    break
+            # datetimes are required to add and subtract times
+            search_datetime = datetime.datetime.combine(datetime.datetime.today(), hours.OpenTime)
+            end_search_datetime = datetime.datetime.combine(datetime.datetime.today(), hours.CloseTime)
 
-            else:
-                # This activates if the for loop doesn't break!
-                # This means our search_datetime didn't interfer with any appointments!
-                avaliable_appointments_times.append(search_datetime)
-                # Now we must skip ahead to look for more times!
-                search_datetime += appt_length
+            avaliable_appointments_times = []
 
-        # Alrighty! Now we have a list of appointment times that are free!
-        # Now to just make a bunch of objects using them
+            while search_datetime < end_search_datetime:
+
+                # For readability
+                appt_start = search_datetime
+                appt_end = appt_start + appt_length
+
+                # We loop through our list of taken appointment times
+                for taken_appointment, taken_appt_length in taken_appointment_times_dict.items():
+                    # Converting appointment to datetime so we can compare using timedelta
+                    taken_start = datetime.datetime.combine(datetime.datetime.today(), taken_appointment)
+                    # Our discionary contains timedeltas as the apopintment length
+                    taken_end = taken_start + taken_appt_length
+
+
+
+                    # Check if there is a intersection
+                    if ((appt_start < taken_end and appt_end > taken_start) or 
+                        (taken_start < appt_end and taken_end > appt_start)):
+
+                        # If it is in between it means we can't use this time!
+                        # We must skip ahead to the end of this appointment to look for more times!
+                        search_datetime = taken_end
+                        break
+
+                else:
+                    # This activates if the for loop doesn't break!
+                    # This means our search_datetime didn't interfer with any appointments!
+                    avaliable_appointments_times.append(search_datetime)
+                    # Now we must skip ahead to look for more times!
+                    search_datetime += appt_length
+
+            # Alrighty! Now we have a list of appointment times that are free!
+            # Now to just make a bunch of objects using them
         with self.session_scope() as session:
             
             if object_session(provider) is None: # The provider is not in a session

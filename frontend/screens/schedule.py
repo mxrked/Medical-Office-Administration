@@ -46,7 +46,10 @@ class Schedule(Utility):
         self.SA_ScheduleAppointmentPushButton.clicked.connect(self.scheduleAppointment)
         
 
-        load_objects_to_combo_box(self.appointment_dm.get_appointment_types(), self.SA_AppointmentTypesComboBox)
+        appointment_types = self.appointment_dm.get_appointment_types()
+        load_objects_to_combo_box(
+            objects = appointment_types,
+            combo_box = self.SA_AppointmentTypesComboBox)
 
         self.load_locations(self.SA_OfficeLocationsComboBox)
         self.load_physicians(self.SA_PhysicianNamesComboBox)
@@ -86,12 +89,17 @@ class Schedule(Utility):
         SA_patientFN = self.SA_PatientFNLineEdit.text()
         SA_patientLN = self.SA_PatientLNLineEdit.text()
         SA_patientDOB = self.SA_PatientDOBDateEdit.date().toPyDate()
-        SA_officeLocation = get_selected_combo_box_object(self.SA_OfficeLocationsComboBox)
-        SA_appointmentReason = self.SA_AppointmentReasonLineEdit.text()
-        SA_appointmentType = get_selected_combo_box_object(self.SA_AppointmentTypesComboBox)
+        location = get_selected_combo_box_object(self.SA_OfficeLocationsComboBox)
+        reason = self.SA_AppointmentReasonLineEdit.text()
+
+        appointment_type = get_selected_combo_box_object(
+            self.SA_AppointmentTypesComboBox
+            )
+        
+
         SA_appointmentLength = self.SA_AppointmentLengthLineEdit.text()
-        SA_physicianName = get_selected_combo_box_object(self.SA_PhysicianNamesComboBox)
-        SA_appointmentDate = self.SA_AppointmentDateDateEdit.date().toPyDate()
+        provider = get_selected_combo_box_object(self.SA_PhysicianNamesComboBox)
+        appointment_date = self.SA_AppointmentDateDateEdit.date().toPyDate()
 
         # So list data matches the current state of the feilds no matter what
         self.SA_CurrentAvailableTimesListWidget.clear()
@@ -100,32 +108,32 @@ class Schedule(Utility):
             patient = self.get_verified_patient(SA_patientFN,
                                                 SA_patientLN,
                                                 SA_patientDOB)
-            assert SA_appointmentReason != "", "No appointment Reason"
+            assert reason != "", "No appointment Reason"
             assert SA_appointmentLength.isdigit(), "Invalid appointment Length"
 
         except AssertionError as error:
             self.load_error(str(error))
             return
 
-        appt_length = timedelta(minutes=int(SA_appointmentLength))
+        appointment_length = timedelta(minutes=int(SA_appointmentLength))
 
         try:
-            availableTimes = self.appointment_dm.get_avaliable_appointments(
-                appt_date=SA_appointmentDate,
-                provider=SA_physicianName,
-                location=SA_officeLocation,
-                appt_type=SA_appointmentType,
-                appt_length=appt_length,
-                patient=patient,
-                appt_reason=SA_appointmentReason
+            available_times = self.appointment_dm.get_avaliable_appointments(
+                appt_date = appointment_date,
+                provider = provider,
+                location = location,
+                appt_type = appointment_type,                                                  
+                appt_length = appointment_length,
+                patient = patient,
+                appt_reason = reason
                 )
-            
-            assert len(availableTimes) > 0, "No Appointments Found"
+
+            assert len(available_times) > 0, "No Appointments Found"
         except AssertionError as error:
             self.load_error(str(error))
             return
-        
-        load_objects_to_list(availableTimes, self.SA_CurrentAvailableTimesListWidget)
+
+        load_objects_to_list(available_times, self.SA_CurrentAvailableTimesListWidget)
 
     def scheduleAppointment(self):
 

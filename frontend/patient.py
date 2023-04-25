@@ -84,7 +84,7 @@ class NewPatient(Utility):
                 #email is not required
 
             # Special Cases with input masks
-            assert ssn != "--", "Please enter in a zipcode"
+            assert ssn != "--", "Please enter in a Social Security Number"
             assert phone != "() -", "Please enter in a phone"
 
             assert len(zipcode) == 5, "Zipcode is invalid"

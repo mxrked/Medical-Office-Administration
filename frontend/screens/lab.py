@@ -41,8 +41,15 @@ class Lab(Utility):
         self.load_locations(self.lab_locations_combo)
         load_objects_to_combo_box(self.misc_dm.get_lab_tests(), self.lab_lab_combo)
 
+        # Add listener for location change
+        self.lab_locations_combo.currentIndexChanged.connect(self.change_lab_location)
 
-
+    def change_lab_location(self):
+        """
+            Change the location of the lab
+        """
+        location = get_selected_combo_box_object(self.lab_locations_combo)
+        self.load_physicians(self.lab_practitioner_combo, location=location)
 
 
     def submit_information(self):

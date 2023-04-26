@@ -1,6 +1,6 @@
 
 
-from PyQt5.QtWidgets import QDateEdit, QComboBox, QDialog
+from PyQt5.QtWidgets import QDateEdit, QComboBox, QDialog, QPushButton
 from PyQt5 import uic, QtCore
 from backend.data_handler import load_objects_to_combo_box
 from backend.misc_dm import MiscDM
@@ -16,13 +16,21 @@ class SettingsDialog(QDialog):
 
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 
+        def closeSettings():
+            self.hide()
+
         # Widgets
+        self.saveBtn = self.findChild(QPushButton, "settingsDialog_SaveBtn")
         self.locationsCombobox = self.findChild(QComboBox, "settingsLocationsComboBox")
         self.todaysDateDateEdit = self.findChild(QDateEdit, "settingsTodaysDateDateEdit")
 
         self.todaysDate = self.todaysDateDateEdit.date().toPyDate()
 
+        self.saveBtn.clicked.connect(closeSettings)
+
         load_objects_to_combo_box(MiscDM().get_locations(), self.locationsCombobox)
+
+        self.setWindowFlags(QtCore.Qt.FramelessWindowHint) # Hides the title bar
 
 
     def selected_location(self) -> Location:

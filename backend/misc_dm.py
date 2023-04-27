@@ -3,8 +3,8 @@ misc_data_manger.py - Handles miscellaneous tasks for interacting with the DB
 Author: Christina Fortin
 """
 from backend.private.data_manager import DataManager
-from backend.models import Referral, LabOrder, Lab, Patient, Location
-
+from backend.models import Referral, LabOrder, Lab, Patient, Location, Employee
+from datetime import date
 class MiscDM(DataManager):
     """
     Handles miscellaneous tasks for interacting with the DB
@@ -80,8 +80,52 @@ class MiscDM(DataManager):
         """
         with self.session_scope() as session:
             session.add(location)
-            location_id = session.query(Location.LocationID)\
-              .filter(Location.LocationID == location.LocationID)\
+            location_id = session.query(location.LocationID)\
+              .filter(location.LocationID == location.LocationID)\
               .first()
             session.expunge_all()
             return location_id
+
+    def create_referral(self, creation_date: date, referral_reason:str, patient: Patient, employee: Employee) -> Referral:
+        
+        with self.session_scope() as session:
+            session.add(patient)
+            session.add(employee)
+            referral = Referral(
+                PatientID = patient.PatientID,
+                PhysicianID = employee.EmployeeID,
+                ReferralReason = referral_reason,
+                ReferralDate = creation_date,
+
+                Patient = patient,
+                Employee = employee
+            )
+
+            session.expunge_all()
+
+            return referral
+    
+    def create_lab_order(self, order_name: str,
+                         patient: Patient,
+                         employee: Employee,
+                         lab_date: date,
+                         lab: Lab,
+                         location: Location) -> LabOrder:
+
+        with self.session_scope() as session:
+            session.add(patient)
+            session.add(employee)
+            session.add(lab)
+            session.add(location)
+            lab_order = LabOrder(
+                OrderName = order_name,
+                PatientID = patient.PatientID,
+                PhysicianID = employee.EmployeeID,
+                LabDate = lab_date,
+                Lab = lab,
+                Location = location
+            )
+        
+            session.expunge_all()
+
+            return lab

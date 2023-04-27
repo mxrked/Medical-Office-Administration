@@ -319,7 +319,7 @@ class AppointmentDM(AppointmentStatusDataManger):
 
             location = appt.Location
             employee = appt.Employee
-            session.purge_all()
+            session.expunge_all()
 
         with self.session_scope() as session:
             ### First We check if there are any taken appointments ###

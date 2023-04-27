@@ -305,18 +305,20 @@ class AppointmentDM(AppointmentStatusDataManger):
 
             :return: True if the appointment is available, raises AssertionError otherwise.
         """
-        if new_time:
-            appt.ApptTime = new_time
-            
-            new_time_delta = datetime.datetime.combine( date.today(), new_time)
-            appt.ApptEndtime = new_time_delta + length
-
-        if new_date:
-            appt.ApptDate = new_date
+        
 
         with self.session_scope() as session:
             session.add(appt)
 
+            if new_time:
+                appt.ApptTime = new_time
+            
+            new_time_delta = datetime.datetime.combine( date.today(), new_time)
+            appt.ApptEndtime = new_time_delta + length
+
+            if new_date:
+                appt.ApptDate = new_date
+            
             location = appt.Location
             employee = appt.Employee
             session.expunge_all()
@@ -401,12 +403,14 @@ class AppointmentDM(AppointmentStatusDataManger):
         with self.session_scope() as session:
             if object_session(employee) is None:
                 session.add(employee)
+            
             events = session.query(Event)\
                         .filter(
                         sa.or_(Event.EmployeeID == employee.EmployeeID, Event.EmployeeID.is_(None)),
                         Event.StartDate <= check_date, # Check if its after start date
                         Event.EndDate >= check_date, # Check if its before end date
                         ).first()
+            
             return events
 
     def __get_week_number(self, check_date:date):

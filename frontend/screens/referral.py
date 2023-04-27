@@ -75,14 +75,11 @@ class ReferralScreen(Utility):
             return
 
 
-        referral = Referral(
-            PatientID = patient.PatientID,
-            PhysicianID = physician.EmployeeID,
-            ReferralReason = reason,
-            ReferralDate = creation_date,
-
-            Patient = patient,
-            Employee = physician
+        referral = self.misc_dm.create_referral(
+            creation_date = creation_date,
+            referral_reason = reason,
+            patient = patient,
+            employee = physician
         )
 
         self.misc_dm.add_referral(referral)

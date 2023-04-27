@@ -4,7 +4,7 @@ UI Designed by: Matthew Burrus
 Authors: Matthew Burrus
 """
 
-from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QPushButton
+from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QPushButton, QTextEdit
 from PyQt5.QtCore import QDate
 from frontend.private.utility import Utility
 from backend.data_handler import load_objects_to_combo_box
@@ -30,7 +30,7 @@ class ReferralScreen(Utility):
         self.ref_dob = self.findChild(QDateEdit, "Referral_DOB")
         self.ref_practitioners = self.findChild(QComboBox, "Referral_Practitoner")
         self.ref_creation_date = self.findChild(QDateEdit, "Referral_CreationDate")
-        self.ref_reason = self.findChild(QLineEdit, "Referral_Reason")
+        self.ref_reason = self.findChild(QTextEdit, "Referral_Reason")
 
         # Initalized Buttons
         self.create_referral_btn = self.findChild(QPushButton, "Btn_CreateReferral")
@@ -88,4 +88,5 @@ class ReferralScreen(Utility):
         self.misc_dm.add_referral(referral)
 
         self.clear_inputs()
+        self.ref_reason.clear()
 

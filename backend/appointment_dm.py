@@ -318,8 +318,6 @@ class AppointmentDM(AppointmentStatusDataManger):
         with self.session_scope() as session:
             ### First We check if there are any taken appointments ###
 
-            session.add(appt)
-
             taken_appointment_statuses = ["Scheduled", "In Progress", "Rescheduled"]
             taken_appointments = session.query(Appointment).\
                 options(joinedload(Appointment.AppointmentType)).\

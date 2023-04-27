@@ -122,7 +122,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -547,9 +547,8 @@ QPushButton::hover {
   <include location="assets/qrc/hide.qrc"/>
   <include location="assets/qrc/show.qrc"/>
   <include location="assets/qrc/doctor.qrc"/>
-  <include location="../../../../Capstone 2023 Stuff/Medical-Office-Administration_BU_4/frontend/ui/assets/qrc/show.qrc"/>
-  <include location="../../../../Capstone 2023 Stuff/Medical-Office-Administration_BU_4/frontend/ui/assets/qrc/hide.qrc"/>
-  <include location="../../../../Capstone 2023 Stuff/Medical-Office-Administration_BU_4/frontend/ui/assets/qrc/doctor.qrc"/>
+  <include location="assets/qrc/show.qrc"/>
+  <include location="assets/qrc/hide.qrc"/>
  </resources>
  <connections/>
 </ui>

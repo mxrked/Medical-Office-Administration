@@ -129,7 +129,7 @@ class CheckIn(Utility):
             self.load_error("No Avaliable Appointments")
             return
 
-        load_objects_to_list(listOfAppointments, self.check_ins_list)
+        load_objects_to_list(listOfAppointments, self.check_ins_list, long_str=True)
 
 
     def check_in_location_change(self):

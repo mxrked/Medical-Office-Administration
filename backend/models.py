@@ -70,9 +70,9 @@ class Appointment(Base):
         formated_endtime = self.ApptEndtime.strftime("%I:%M:%S %p")
         formated_date = self.ApptDate.strftime("%d/%m/%Y")
         try: # Sometimes the patient name is decoupled
-            return f"{self.Patient} : {formated_time} till {formated_endtime} for {self.ApptReason}"
+            return f"{self.Patient} : {formated_time} till {formated_endtime} \n Reason: {self.ApptReason} \n Date: {formated_date}"
         except Exception:
-            return f"{self.patient_name} : {formated_time} till {formated_endtime} \n Reason: {self.ApptReason} Date: {self.ApptDate}"
+            return f"{self.patient_name} : {formated_time} till {formated_endtime} \n Reason: {self.ApptReason} \n Date: {formated_date}"
         
              
             

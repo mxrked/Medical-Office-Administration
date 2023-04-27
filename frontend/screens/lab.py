@@ -84,18 +84,12 @@ class Lab(Utility):
             self.load_error(str(error))
             return
 
-        labToAdd = LabOrder(
-            OrderName = lab_order,
-            PatientID =  patient.PatientID,
-            PhysicianID = physician.EmployeeID,
-            LabDate = lab_date,
-            LabID = lab_lab.LabID,
-            LocationID = location.LocationID,
-            Employee = physician,
-            Patient = patient,
-            Location = location
-        )
-
+        labToAdd = self.misc_dm.create_lab_order(order_name = lab_order,
+                                                 patient=patient,
+                                                 employee=physician,
+                                                 lab_date=lab_date,
+                                                 lab = lab_lab,
+                                                 location=location)
 
         self.misc_dm.add_lab_order(labToAdd)
 

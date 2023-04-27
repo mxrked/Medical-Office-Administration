@@ -69,3 +69,19 @@ class MiscDM(DataManager):
                .first()
             session.expunge_all()
             return location
+    
+    def get_location_id(self, location:Location) -> int:
+        """ 
+        Returns location id with a location
+        
+        For the soul purpose of settings_dalog.py
+            Accessing Location.LocationID outside of a session can lead to errors
+            So this is just a safety procaution
+        """
+        with self.session_scope() as session:
+            session.add(location)
+            location_id = session.query(Location.LocationID)\
+              .filter(Location.LocationID == location.LocationID)\
+              .first()
+            session.expunge_all()
+            return location_id

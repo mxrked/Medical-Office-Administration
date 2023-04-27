@@ -314,6 +314,12 @@ class AppointmentDM(AppointmentStatusDataManger):
         if new_date:
             appt.ApptDate = new_date
 
+        with self.session_scope() as session:
+            session.add(appt)
+
+            location = appt.Location
+            employee = appt.Employee
+            session.expunge_all()
 
         with self.session_scope() as session:
             ### First We check if there are any taken appointments ###
@@ -340,8 +346,8 @@ class AppointmentDM(AppointmentStatusDataManger):
             assert len(taken_appointments) == 0, "Appointment Already Taken!"
 
             ### Then We pull the hours for the location and day ###
-
-            hours = self.__get_hours_for(appt.ApptDate, appt.Location)
+            session.add(location)
+            hours = self.__get_hours_for(appt.ApptDate, location)
 
             ### Then we tell if the location is closed ###
 
@@ -352,6 +358,8 @@ class AppointmentDM(AppointmentStatusDataManger):
                 assert custom_time, "Outside this locations hours. Use custom time"
 
             ### Then we check if the physician is out, or if the entire clinic is out ###
+
+            session.add(employee)
             events = self.__get_events_for(appt.Employee, appt.ApptDate)
 
             if events is not None:
@@ -360,7 +368,6 @@ class AppointmentDM(AppointmentStatusDataManger):
                     raise AssertionError("This Physician is out on this day")
                 else:
                     raise AssertionError("This clinic is closed for: ", events.EventName)
-
 
 
             # Everything above is asserted. We wont get here without errors unless its true

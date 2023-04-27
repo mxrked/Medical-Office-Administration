@@ -62,8 +62,18 @@ class Appointment(Base):
         formated_time = self.ApptTime.strftime("%I:%M:%S %p")
         try: # Sometimes the patient name is decoupled
             return f"{formated_time} for {self.Patient}"
-        except:
+        except Exception:
             return f"{formated_time} for {self.patient_name}"
+        
+    def long_str(self) -> str:
+        formated_time = self.ApptTime.strftime("%I:%M:%S %p")
+        formated_endtime = self.ApptEndtime.strftime("%I:%M:%S %p")
+        formated_date = self.ApptDate.strftime("%d/%m/%Y")
+        try: # Sometimes the patient name is decoupled
+            return f"{self.Patient} : {formated_time} till {formated_endtime} for {self.ApptReason}"
+        except Exception:
+            return f"{self.patient_name} : {formated_time} till {formated_endtime} \n Reason: {self.ApptReason} Date: {self.ApptDate}"
+        
              
             
        

@@ -122,3 +122,11 @@ QPushButton {
     color: white;
     }
 """
+
+unavaliable_appointment = """
+background-color: rgb(227, 93, 96);
+"""
+
+avaliable_appointment = """ 
+background-color: rgb(0, 255, 128);
+"""

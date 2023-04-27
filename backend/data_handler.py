@@ -9,25 +9,36 @@ class __QListWidgetObject(QListWidgetItem):
     """
         Used for ListWidgets to present a str to the GUI
         but when we call .selectedItems() we can get the data (the obj) back
+
+        :param obj: any stringable object
+        :param long_str: if the object has a long string you want to use. This is a 
+            little jank, but the object is supposed to have a method called "long_str"
     """
-    def __init__(self, obj):
-        super().__init__(str(obj))
+    def __init__(self, obj, long_str: bool=False):
+        
+        if long_str and obj.long_str: # We check if it has the method long_str
+            super().__init__(obj.long_str())
+        else:
+            super().__init__(str(obj))
         self.obj = obj
 
-def load_objects_to_list(objects: list[object], list_widget: QListWidget):
+
+def load_objects_to_list(objects: list[object], list_widget: QListWidget, long_str: bool=False):
     """
         Places a list of stringed objects into the list_widget
         i.e list[Appointments], appointments_list_widget
     
         :param objects: put the list of Object (Models) you want to enter in here
         :param list_widget: put the QListWidget you want to modify here
+        :param long_str: if the object has a long string you want to use. This is a 
+            little jank, but the object is supposed to have a method called "long_str"
 
         We use the private class QListWidgetObject based off QlistWidgetItem to
         handle the relationship between data and string
     """
     list_widget.clear()
     for obj in objects:
-        list_widget.addItem(__QListWidgetObject(obj))
+        list_widget.addItem(__QListWidgetObject(obj, long_str))
 
 def load_objects_to_combo_box(objects: list[object], combo_box: QComboBox):
     """

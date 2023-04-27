@@ -225,7 +225,7 @@ class AppointmentDM(AppointmentStatusDataManger):
 
             :raises AssertionError: If appt not avaliable, display this to the user
         """
-        self.__check_appointment_available(appt, custom_time=custom_time)
+        self.check_appointment_available(appt, custom_time=custom_time)
         
         with self.session_scope() as session:
             session.merge(appt)
@@ -288,7 +288,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             session.expunge_all()
             return available_times
 
-    def __check_appointment_available(self, appt: Appointment,
+    def check_appointment_available(self, appt: Appointment,
                                             new_time:time=None,
                                             new_date:date=None,
                                             custom_time:bool=None,
@@ -318,6 +318,7 @@ class AppointmentDM(AppointmentStatusDataManger):
         with self.session_scope() as session:
             ### First We check if there are any taken appointments ###
 
+            session.add(appt)
 
             taken_appointment_statuses = ["Scheduled", "In Progress", "Rescheduled"]
             taken_appointments = session.query(Appointment).\

@@ -5986,7 +5986,7 @@ QComboBox QAbstractItemView {
             </widget>
            </item>
            <item>
-            <widget class="QTextEdit" name="Referral_Reason_2">
+            <widget class="QTextEdit" name="Referral_Reason">
              <property name="font">
               <font>
                <family>MS Shell Dlg 2</family>

@@ -224,7 +224,7 @@ class LabOrder(Base):
 
     LabOrderID = Column(Integer, primary_key=True)
 
-    OrderName = Column(VARCHAR(50))
+    OrderName = Column(VARCHAR('MAX'))
     PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
     PhysicianID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     LabDate = Column(Date, nullable=False)

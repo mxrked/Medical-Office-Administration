@@ -64,7 +64,7 @@ class ReferralScreen(Utility):
         patient_dob = self.ref_dob.date().toPyDate()
         physician = get_selected_combo_box_object(self.ref_practitioners)
         creation_date = self.ref_creation_date.date().toPyDate()
-        reason = self.ref_reason.text()
+        reason = self.ref_reason.toPlainText()
 
         try:
             patient = self.get_verified_patient(patient_fn, patient_ln, patient_dob)
@@ -88,5 +88,4 @@ class ReferralScreen(Utility):
         self.misc_dm.add_referral(referral)
 
         self.clear_inputs()
-        self.ref_reason.clear()
 

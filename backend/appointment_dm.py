@@ -49,7 +49,7 @@ class AppointmentDM(AppointmentStatusDataManger):
         avaliable_appointments = []
 
         ### Make sure appt_date is not before today
-        assert appt_date >= datetime.datetime.now().date(), ("Appoinment date cannot be before today's date")
+        assert appt_date >= datetime.datetime.now().date(), ("Appointment date cannot be before today's date")
 
         hours = self.__get_hours_for(appt_date, location)
 

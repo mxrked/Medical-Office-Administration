@@ -31,4 +31,4 @@ All import paths are relative to the root of the project.
 from frontend.start_window import main
 
 if __name__ == "__main__":
-    main()
+    main(debug=True)

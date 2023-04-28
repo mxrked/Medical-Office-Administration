@@ -175,7 +175,7 @@ class Event(Base):
 
     EventID = Column(Integer, primary_key=True)
 
-    EventName = Column(VARCHAR(50), nullable=False)
+    EventName = Column(VARCHAR('MAX'), nullable=False)
     StartDate = Column(Date, nullable=False)
     EndDate = Column(Date, nullable=False)
     EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"), nullable=True)
@@ -382,7 +382,7 @@ class Referral(Base):
 
     ReferralID = Column(Integer, primary_key=True)
 
-    ReferralReason = Column(VARCHAR(50))
+    ReferralReason = Column(VARCHAR('MAX'))
     PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
     PhysicianID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     ReferralDate = Column(Date)

@@ -5,7 +5,7 @@ Author: Jessica Weeks
 import sys 
 from datetime import date
 from PyQt5.QtWidgets import QWidget, QLineEdit, QDateEdit, QTimeEdit, QDialog, \
-    QVBoxLayout, QLabel, QDateEdit, QTimeEdit, QComboBox, QPushButton
+    QVBoxLayout, QLabel, QDateEdit, QTimeEdit, QComboBox, QPushButton, QTextEdit
 from PyQt5.QtCore import QDate, Qt
 from PyQt5 import QtGui
 from backend.user_dm import UserDM
@@ -53,7 +53,10 @@ class Utility(Nav):
             # Clears DateEdits
             if isinstance(widget, QDateEdit) and not isinstance(widget, (QTimeEdit, QLineEdit)):
                 widget.setDate(QDate.currentDate())
-        
+
+            # Clear Text Edit
+            if isinstance(widget, QTextEdit) and not isinstance(widget, (QTimeEdit, QDateEdit, QLineEdit)):
+                widget.clear()
     
     def closeEvent(self, event): # Do not change name, needs to be the same as QMainWindow's
         """

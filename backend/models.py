@@ -50,7 +50,7 @@ class Appointment(Base):
     PhysicianID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     ApptTypeID = Column(Integer, ForeignKey("AppointmentType.ApptTypeID"))
     LocationID = Column(Integer, ForeignKey("Location.LocationID"))
-    ApptReason = Column(VARCHAR('MAX'))
+    ApptReason = Column(VARCHAR(500))
 
     AppointmentType = relationship("AppointmentType", backref="ApptAppointmentType")
     Patient = relationship("Patient", backref="ApptPatient")

@@ -313,8 +313,8 @@ class AppointmentDM(AppointmentStatusDataManger):
             if new_time:
                 appt.ApptTime = new_time
             
-            new_time_delta = datetime.datetime.combine( date.today(), new_time)
-            appt.ApptEndtime = new_time_delta + length
+                new_time_delta = datetime.datetime.combine( date.today(), new_time)
+                appt.ApptEndtime = new_time_delta + length
 
             if new_date:
                 appt.ApptDate = new_date

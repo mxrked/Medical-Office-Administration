@@ -3,8 +3,9 @@ data_handler.py - A data handler for placing backend models into front end widge
 Authors: Jessica Weeks
 """
 from PyQt5.QtWidgets import QListWidget, QListWidgetItem, QComboBox
-from backend.misc_dm import MiscDM
-from backend.user_dm import UserDM
+from PyQt5.QtGui import QBrush, QColor
+from backend.appointment_dm import AppointmentDM
+from backend.models import Appointment
 class __QListWidgetObject(QListWidgetItem):
     """
         Used for ListWidgets to present a str to the GUI
@@ -14,12 +15,11 @@ class __QListWidgetObject(QListWidgetItem):
         :param long_str: if the object has a long string you want to use. This is a 
             little jank, but the object is supposed to have a method called "long_str"
     """
-    def __init__(self, obj, long_str: bool=False):
-        
-        if long_str and obj.long_str: # We check if it has the method long_str
-            super().__init__(obj.long_str())
+    def __init__(self, obj, long_str: bool=False, extra_info: str=""):
+        if long_str and hasattr(obj, "long_str"):
+            super().__init__(str(obj.long_str() + extra_info))
         else:
-            super().__init__(str(obj))
+            super().__init__(str(obj) + extra_info)
         self.obj = obj
 
 
@@ -55,6 +55,31 @@ def load_objects_to_combo_box(objects: list[object], combo_box: QComboBox):
 
     for obj in objects:
         combo_box.addItem(str(obj), obj)
+
+def load_pending_appts_to_list(appointments: list[Appointment], list_widget: QListWidget):
+    """
+        Places a list of stringed objects into the list_widget
+        i.e list[Appointments], appointments_list_widget
+            Will color red or green depending on if the appointment is available or not.
+    
+        :param objects: put the list of Object (Models) you want to enter in here
+        :param list_widget: put the QListWidget you want to modify here
+    """
+    appt_dm = AppointmentDM()
+    list_widget.clear()
+
+    for appointment in appointments:
+        try:
+            appt_dm.check_appointment_available(appt=appointment)
+            extra_info = " (available)"
+
+        except AssertionError: # Not available
+            extra_info = " (not available)"
+        
+        item = __QListWidgetObject(obj=appointment, long_str=True, extra_info=extra_info)
+        list_widget.addItem(item)
+
+    appt_dm.close()
 
 def get_selected_list_object(list_widget: QListWidget) -> object:
     """

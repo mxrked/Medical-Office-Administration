@@ -5,7 +5,7 @@ Authors:
 """
 from PyQt5.QtWidgets import QListWidget, QPushButton, QComboBox
 from frontend.private.utility import Utility
-from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, load_objects_to_list
+from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, load_pending_appts_to_list
 from frontend.ui.assets.files import styling
 
 class Approve(Utility):
@@ -76,7 +76,7 @@ class Approve(Utility):
 
         appointments = self.appointment_dm.get_pending_appointments(providers)
 
-        load_objects_to_list(appointments, self.a_list, long_str=True)
+        load_pending_appts_to_list(appointments, self.a_list)
 
 
     def a_location_change(self):

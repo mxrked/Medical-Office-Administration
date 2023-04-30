@@ -353,6 +353,7 @@ class AppointmentDM(AppointmentStatusDataManger):
 
             ### Then we tell if the location is closed ###
 
+            session.add(hours)
             assert hours.OpenTime is not None, "This Location is closed that day!"
 
             # Checks if its outside the hours of the location
@@ -365,6 +366,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             events = self.__get_events_for(appt.Employee, appt.ApptDate)
 
             if events is not None:
+                session.add(events)
 
                 if events.EmployeeID == appt.PhysicianID: # The employee is out is out
                     raise AssertionError("This Physician is out on this day")

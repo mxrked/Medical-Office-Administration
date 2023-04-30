@@ -28,7 +28,8 @@ C:.. run.py, requirements.txt, build.bat
                 
 All import paths are relative to the root of the project.
 """
+from datetime import date
 from frontend.start_window import main
 
 if __name__ == "__main__":
-    main(debug=True)
+    main(debug=True, today = date(2023, 5, 4))

@@ -239,14 +239,13 @@ class Reschedule(Utility):
         try:
             assert appt is not None, "Appointment Not Selected"
 
+            available_times = self.appointment_dm.get_appointments_for_reschedule(
+                appt = appt,
+                check_date = new_date
+            )
         except AssertionError as error:
             self.load_error(str(error))
             return
-
-        available_times = self.appointment_dm.get_appointments_for_reschedule(
-            appt = appt,
-            check_date = new_date
-        )
 
         load_objects_to_list(available_times, self.RA_CurrentAvailableTimesListWidget)
 

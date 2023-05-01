@@ -5547,6 +5547,9 @@ QPushButton::hover {
          <height>16777215</height>
         </size>
        </property>
+       <property name="statusTip">
+        <string/>
+       </property>
        <property name="styleSheet">
         <string notr="true">QFrame {
 	border-image: none;
@@ -5673,14 +5676,20 @@ QLabel {
                  <pointsize>11</pointsize>
                 </font>
                </property>
+               <property name="statusTip">
+                <string/>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
                <property name="text">
-                <string>Example</string>
+                <string/>
                </property>
                <property name="alignment">
                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>Enter First Name</string>
                </property>
               </widget>
              </item>
@@ -5885,10 +5894,13 @@ QComboBox QAbstractItemView {
               <string notr="true"/>
              </property>
              <property name="text">
-              <string>Example</string>
+              <string/>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+             <property name="placeholderText">
+              <string>Enter Last Name</string>
              </property>
             </widget>
            </item>
@@ -6006,6 +6018,9 @@ QComboBox QAbstractItemView {
 	padding-right: 10px;
 	padding-bottom: 10px;
 }</string>
+             </property>
+             <property name="placeholderText">
+              <string>Enter Reason for Referral</string>
              </property>
             </widget>
            </item>

@@ -6020,7 +6020,7 @@ QComboBox QAbstractItemView {
 }</string>
              </property>
              <property name="placeholderText">
-              <string>Enter Reason for Referral</string>
+              <string>IE: PT for Back Pain</string>
              </property>
             </widget>
            </item>

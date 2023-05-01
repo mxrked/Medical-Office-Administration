@@ -68,7 +68,7 @@ class Appointment(Base):
     def long_str(self) -> str:
         formated_time = self.ApptTime.strftime("%I:%M:%S %p")
         formated_endtime = self.ApptEndtime.strftime("%I:%M:%S %p")
-        formated_date = self.ApptDate.strftime("%d/%m/%Y")
+        formated_date = self.ApptDate.strftime("%m/%d/%Y")
         try: # Sometimes the patient name is decoupled
             return f"{self.Patient} : {formated_time} till {formated_endtime} \n Reason: {self.ApptReason} Date: {formated_date}"
         except Exception:

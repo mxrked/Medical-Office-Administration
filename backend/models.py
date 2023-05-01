@@ -50,7 +50,7 @@ class Appointment(Base):
     PhysicianID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     ApptTypeID = Column(Integer, ForeignKey("AppointmentType.ApptTypeID"))
     LocationID = Column(Integer, ForeignKey("Location.LocationID"))
-    ApptReason = Column(VARCHAR(500))
+    ApptReason = Column(VARCHAR(8000))
 
     AppointmentType = relationship("AppointmentType", backref="ApptAppointmentType")
     Patient = relationship("Patient", backref="ApptPatient")
@@ -175,7 +175,7 @@ class Event(Base):
 
     EventID = Column(Integer, primary_key=True)
 
-    EventName = Column(VARCHAR('MAX'), nullable=False)
+    EventName = Column(VARCHAR(8000), nullable=False)
     StartDate = Column(Date, nullable=False)
     EndDate = Column(Date, nullable=False)
     EmployeeID = Column(Integer, ForeignKey("Employee.EmployeeID"), nullable=True)
@@ -224,7 +224,7 @@ class LabOrder(Base):
 
     LabOrderID = Column(Integer, primary_key=True)
 
-    OrderName = Column(VARCHAR('MAX'))
+    OrderName = Column(VARCHAR(8000))
     PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
     PhysicianID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     LabDate = Column(Date, nullable=False)
@@ -382,7 +382,7 @@ class Referral(Base):
 
     ReferralID = Column(Integer, primary_key=True)
 
-    ReferralReason = Column(VARCHAR('MAX'))
+    ReferralReason = Column(VARCHAR(8000))
     PatientID = Column(Integer, ForeignKey("Patient.PatientID"))
     PhysicianID = Column(Integer, ForeignKey("Employee.EmployeeID"))
     ReferralDate = Column(Date)

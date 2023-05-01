@@ -128,4 +128,4 @@ class MiscDM(DataManager):
         
             session.expunge_all()
 
-            return lab
+            return lab_order

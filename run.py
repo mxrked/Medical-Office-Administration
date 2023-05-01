@@ -32,4 +32,4 @@ from datetime import date
 from frontend.start_window import main
 
 if __name__ == "__main__":
-    main(debug=False)
+    main(debug=False, today=date(2023, 5, 4))

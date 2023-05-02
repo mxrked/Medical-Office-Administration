@@ -2,9 +2,8 @@
 appointment_status_data_manager.py - A data manager for interacting with appointment status
 Author: Jessica Weeks
 """
-from datetime import date, datetime
+from datetime import date
 import sqlalchemy as sa
-from sqlalchemy.orm import make_transient
 from backend.private.data_manager import DataManager
 from backend.models import Appointment, Location, Employee
 
@@ -33,7 +32,6 @@ class AppointmentStatusDataManger(DataManager):
     def set_appointment_scheduled(self, appt: Appointment):
         """ Changes the appointment status of the given appointment to 'Scheduled' """
         self.__set_appointment_status(appt, "Scheduled")
-
 
     def set_appointment_in_progress(self, appt: Appointment):
         """ Changes the appointment status of the given appointment to 'In Progress' """
@@ -64,14 +62,14 @@ class AppointmentStatusDataManger(DataManager):
             session.commit()
 
     def get_in_progress_appointments(self,
-                                     location: Location=None,
+                                     location: Location = None,
                                      check_date=date.today()) -> list[Appointment]:
         """
             Get appointments that are currently in progress, for today. 
             You can use either Location or Employee to search
 
             :param location: Use for searching this particular Location
-            :param provider: Use for searching this particular Employee (Usually a provider)
+            :param check_date: Use for searching this particular date
             :return: A list of appointments that are currently in progress.
         """
         with self.session_scope() as session:
@@ -84,13 +82,13 @@ class AppointmentStatusDataManger(DataManager):
 
             for appt in in_progress:
                 patient_name = str(appt.Patient)
-                session.expunge(appt) # Detached Parent Tables
+                session.expunge(appt)  # Detached Parent Tables
                 appt.patient_name = patient_name
 
             return in_progress
 
     def get_pending_appointments(self,
-                                 provider: Employee=None) -> list[Appointment]:
+                                 provider: Employee = None) -> list[Appointment]:
         """
             Get appointments that are currently pending.
             You can use either Location or Employee to search
@@ -108,15 +106,14 @@ class AppointmentStatusDataManger(DataManager):
 
             for appt in pending:
                 patient_name = str(appt.Patient)
-                session.expunge(appt) # Detached Parent Tables
+                session.expunge(appt)  # Detached Parent Tables
                 appt.patient_name = patient_name
 
             return pending
 
-
     def get_todays_appointments(self,
-                                location: Location=None,
-                                provider: Employee=None,
+                                location: Location = None,
+                                provider: Employee = None,
                                 check_date=date.today()) -> list[Appointment]:
         """
             Get appointments that are for today. 
@@ -125,9 +122,9 @@ class AppointmentStatusDataManger(DataManager):
 
             :param location: Use for searching this particular Location
             :param provider: Use for searching this particular Employee (Usually a provider)
+            :param check_date: Use for searching this particular Date
             :return: A list of appointments for today
         """
-
 
         with self.session_scope() as session:
             
@@ -142,9 +139,8 @@ class AppointmentStatusDataManger(DataManager):
     
             for appt in todays_appointments:
                 patient_name = str(appt.Patient)
-                session.expunge(appt) # Detached Parent Tables
+                session.expunge(appt)  # Detached Parent Tables
                 appt.patient_name = patient_name
 
-
-            #[session.expunge(today) for today in todays_appointments]
+            # [session.expunge(today) for today in todays_appointments]
             return todays_appointments

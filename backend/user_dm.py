@@ -1,13 +1,11 @@
 from datetime import date
 
-from typing import List
-
 from backend.private.data_manager import DataManager
 
-from backend.models import Location, Employee, User, Patient, EmpGroupCross, Group, Role, \
+from backend.models import Location, Employee, User, Patient, EmpGroupCross, Role, \
     GroupRoleCross
-from sqlalchemy.orm import joinedload
 import sqlalchemy as sa
+
 
 class UserDM(DataManager):
     """
@@ -43,28 +41,25 @@ class UserDM(DataManager):
             return employee
 
     def check_employee_role(self, current_employee: Employee, search_role_id) -> bool:
-        
 
         with self.session_scope() as session:
             session.add(current_employee)
             groups = session.query(EmpGroupCross)\
-                .filter_by(EmployeeID = current_employee.EmployeeID).all()
+                .filter_by(EmployeeID=current_employee.EmployeeID).all()
             
             roles = []
             for group in groups:
                 roles = session.query(Role.RoleID)\
                         .join(GroupRoleCross)\
-                        .where(sa.text(f"GroupRoleCross.GroupID = {group.GroupID}")
-                    ).all()
+                        .where(sa.text(f"GroupRoleCross.GroupID = {group.GroupID}")).all()
                 
-                for role in roles: # Roles are returned as a tuple
+                for role in roles:  # Roles are returned as a tuple
                     if search_role_id in role:
                         return True
 
             return False
 
-    
-    def get_physicians(self, location:Location=None) -> list[Employee]:
+    def get_physicians(self, location: Location = None) -> list[Employee]:
         """
         
         :param: location_id : Corresponds to a LocationID (So it matches up with JSON)
@@ -77,7 +72,7 @@ class UserDM(DataManager):
         with self.session_scope() as session:
             
             if location is None:
-                #Search all locations instead
+                # Search all locations instead
                 physicians = session.query(Employee) \
                     .where(Employee.Position.in_(valid_types)) \
                     .order_by(Employee.Position.asc(), Employee.FirstName.asc()) \
@@ -86,7 +81,7 @@ class UserDM(DataManager):
                 session.add(location)
                 physicians = session.query(Employee) \
                     .where(Employee.Position.in_(valid_types),
-                        Employee.LocationID == location.LocationID) \
+                           Employee.LocationID == location.LocationID) \
                     .order_by(Employee.Position.asc(), Employee.FirstName.asc()) \
                     .all()
 

@@ -131,4 +131,3 @@ class MiscDM(DataManager):
             session.expunge_all()
 
             return lab_order
-        

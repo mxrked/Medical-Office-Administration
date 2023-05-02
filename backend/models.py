@@ -3,13 +3,12 @@ models.py - a set of sqlalchemy models for working with the clinics Database.
 Author: Jessica Weeks, Christina Fortin
 Author: Jessica Weeks, Christina Fortin
 """
-import sqlalchemy as sa
 from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy import Column, Table, Integer, VARCHAR, Date, Time, ForeignKey, Numeric, NVARCHAR, CHAR
-from backend.connection_string import DB
+from sqlalchemy import Column, Table, Integer, VARCHAR, Date, Time, ForeignKey, NVARCHAR, CHAR
 
 
 Base = declarative_base()
+
 
 class Appointment(Base):
     """
@@ -57,10 +56,10 @@ class Appointment(Base):
     Employee = relationship("Employee", backref="ApptEmployee")
     Location = relationship("Location", backref="ApptLocation")
 
-    def __str__(self) ->  str:
+    def __str__(self) -> str:
 
         formated_time = self.ApptTime.strftime("%I:%M:%S %p")
-        try: # Sometimes the patient name is decoupled
+        try:  # Sometimes the patient name is decoupled
             return f"{formated_time} for {self.Patient}"
         except Exception:
             return f"{formated_time} for {self.patient_name}"
@@ -69,15 +68,13 @@ class Appointment(Base):
         formated_time = self.ApptTime.strftime("%I:%M:%S %p")
         formated_endtime = self.ApptEndtime.strftime("%I:%M:%S %p")
         formated_date = self.ApptDate.strftime("%m/%d/%Y")
-        try: # Sometimes the patient name is decoupled
-            return f"{self.Patient} : {formated_time} till {formated_endtime} \n Reason: {self.ApptReason} Date: {formated_date}"
+        try:  # Sometimes the patient name is decoupled
+            return f"{self.Patient} : {formated_time} till {formated_endtime} \n Reason: {self.ApptReason} " \
+                   f"Date: {formated_date}"
         except Exception:
-            return f"{self.patient_name} : {formated_time} till {formated_endtime} \n Reason: {self.ApptReason} Date: {formated_date}"
-        
-             
-            
-       
-        
+            return f"{self.patient_name} : {formated_time} till {formated_endtime} \n Reason: {self.ApptReason} " \
+                   f"Date: {formated_date}"
+
 
 class AppointmentType(Base):
     """
@@ -114,6 +111,7 @@ EmpGroupCross = Table(
     Column('EmployeeID', Integer, ForeignKey("Employee.EmployeeID")),
     Column('GroupID', Integer, ForeignKey("Group.GroupID"))
 )
+
 
 class Employee(Base):
     """
@@ -155,12 +153,14 @@ class Employee(Base):
     def __str__(self) -> str:
         return f"{self.Title} {self.FirstName}, {self.Last_Name} ({self.Position})"
 
+
 class EmployeeType(Base):
     __tablename__ = "EmployeeType"
 
     EmployeeTypeID = Column(Integer, primary_key=True)
 
     Type = Column(VARCHAR(50))
+
 
 EmployeeRoleCross = Table(
     "EmployeeRoleCross",
@@ -185,6 +185,7 @@ class Event(Base):
 
     def __str__(self) -> str:
         return self.EventName
+
 
 class Lab(Base):
     """
@@ -235,6 +236,7 @@ class LabOrder(Base):
     Patient = relationship("Patient", backref="LOPatient")
     Location = relationship("Location", backref="LOLocation")
     Lab = relationship("Lab", backref="LOLab")
+
 
 class Patient(Base):
     """
@@ -306,7 +308,6 @@ class HospitalHours(Base):
     OpenTime = Column(Time, nullable=True)
     CloseTime = Column(Time, nullable=True)
 
-
     Location = relationship("Location", backref="HHLocation")
 
 
@@ -337,12 +338,14 @@ class Location(Base):
     def __str__(self) -> str:
         return f"{self.Location_Name}"
 
+
 class Role(Base):
     __tablename__ = "Role"
 
     RoleID = Column(Integer, primary_key=True)
 
     Role = Column(VARCHAR(500), nullable=False)
+
 
 class User(Base):
     """
@@ -365,6 +368,7 @@ class User(Base):
 
     def __str__(self) -> str:
         return f"{self.Username}"
+
 
 class Referral(Base):
     """

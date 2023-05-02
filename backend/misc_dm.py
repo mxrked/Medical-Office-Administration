@@ -5,6 +5,8 @@ Author: Christina Fortin
 from backend.private.data_manager import DataManager
 from backend.models import Referral, LabOrder, Lab, Patient, Location, Employee
 from datetime import date
+
+
 class MiscDM(DataManager):
     """
     Handles miscellaneous tasks for interacting with the DB
@@ -13,7 +15,7 @@ class MiscDM(DataManager):
            • Adding Lab Orders
            • Add Patients
            • Get Locations
-           • Gettings Labs (Types of Lab Orders)
+           • Getting Labs (Types of Lab Orders)
 
     Uses self.session (From DataManger Superclass) to handle SQL Queries
     """
@@ -58,10 +60,9 @@ class MiscDM(DataManager):
                 .all()
             session.expunge_all()
 
-
             return locations
     
-    def get_location_with_id(self, id:int) -> Location:
+    def get_location_with_id(self, id: int) -> Location:
         """ Returns location with given id """
         with self.session_scope() as session:
             location = session.query(Location)\
@@ -70,7 +71,7 @@ class MiscDM(DataManager):
             session.expunge_all()
             return location
     
-    def get_location_id(self, location:Location) -> int:
+    def get_location_id(self, location: Location) -> int:
         """ 
         Returns location id with a location
         
@@ -81,24 +82,25 @@ class MiscDM(DataManager):
         with self.session_scope() as session:
             session.add(location)
             location_id = session.query(location.LocationID)\
-              .filter(location.LocationID == location.LocationID)\
-              .first()
+                .filter(location.LocationID == location.LocationID)\
+                .first()
             session.expunge_all()
             return location_id
 
-    def create_referral(self, creation_date: date, referral_reason:str, patient: Patient, employee: Employee) -> Referral:
+    def create_referral(self, creation_date: date, referral_reason: str, patient: Patient, employee: Employee) -> \
+            Referral:
         
         with self.session_scope() as session:
             session.add(patient)
             session.add(employee)
             referral = Referral(
-                PatientID = patient.PatientID,
-                PhysicianID = employee.EmployeeID,
-                ReferralReason = referral_reason,
-                ReferralDate = creation_date,
+                PatientID=patient.PatientID,
+                PhysicianID=employee.EmployeeID,
+                ReferralReason=referral_reason,
+                ReferralDate=creation_date,
 
-                Patient = patient,
-                Employee = employee
+                Patient=patient,
+                Employee=employee
             )
 
             session.expunge_all()
@@ -118,14 +120,15 @@ class MiscDM(DataManager):
             session.add(lab)
             session.add(location)
             lab_order = LabOrder(
-                OrderName = order_name,
-                PatientID = patient.PatientID,
-                PhysicianID = employee.EmployeeID,
-                LabDate = lab_date,
-                Lab = lab,
-                Location = location
+                OrderName=order_name,
+                PatientID=patient.PatientID,
+                PhysicianID=employee.EmployeeID,
+                LabDate=lab_date,
+                Lab=lab,
+                Location=location
             )
         
             session.expunge_all()
 
             return lab_order
+        

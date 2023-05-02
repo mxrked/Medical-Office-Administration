@@ -5,7 +5,7 @@ Author: Jessica Weeks
 import sys 
 from datetime import date
 from PyQt5.QtWidgets import QWidget, QLineEdit, QDateEdit, QTimeEdit, QDialog, \
-    QVBoxLayout, QLabel, QDateEdit, QTimeEdit, QComboBox, QPushButton, QTextEdit
+    QVBoxLayout, QLabel, QDateEdit, QTimeEdit, QComboBox, QPushButton, QTextEdit, QRadioButton, QListWidget
 from PyQt5.QtCore import QDate, Qt
 from PyQt5 import QtGui
 from backend.user_dm import UserDM
@@ -44,18 +44,26 @@ class Utility(Nav):
         """
         for widget in self.findChildren(QWidget):
             # Clears Line Edits
-            if isinstance(widget, QLineEdit) and not isinstance(widget, (QDateEdit, QTimeEdit)):
+            if isinstance(widget, QLineEdit) and not isinstance(widget, (QTimeEdit, QDateEdit, QRadioButton, QTextEdit, QListWidget)):
                 widget.clear()
                 # Otherwise Certain widgets are selected, for some reason
                 widget.selectAll()
                 widget.deselect()
 
             # Clears DateEdits
-            if isinstance(widget, QDateEdit) and not isinstance(widget, (QTimeEdit, QLineEdit)):
+            if isinstance(widget, QDateEdit) and not isinstance(widget, (QTimeEdit, QTextEdit, QLineEdit, QListWidget, QRadioButton)):
                 widget.setDate(QDate.currentDate())
 
             # Clear Text Edit
-            if isinstance(widget, QTextEdit) and not isinstance(widget, (QTimeEdit, QDateEdit, QLineEdit)):
+            if isinstance(widget, QTextEdit) and not isinstance(widget, (QTimeEdit, QDateEdit, QLineEdit, QListWidget, QRadioButton)):
+                widget.clear()
+
+            # Clear Radio Btn
+            if isinstance(widget, QRadioButton) and not isinstance(widget, (QTimeEdit, QDateEdit, QLineEdit, QTextEdit, QListWidget)):
+                widget.setChecked(False)
+
+            # Clear List Widgets
+            if isinstance(widget, QListWidget) and not isinstance(widget, (QTimeEdit, QDateEdit, QLineEdit, QTextEdit, QRadioButton)):
                 widget.clear()
     
     def closeEvent(self, event): # Do not change name, needs to be the same as QMainWindow's

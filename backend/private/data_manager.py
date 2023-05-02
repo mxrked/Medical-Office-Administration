@@ -19,7 +19,9 @@ except ModuleNotFoundError:
         from backend.connection_string import DB
     except ModuleNotFoundError:
         assert False, "connection_string.py not found!"
-class DataManager():
+
+
+class DataManager:
     """
         The superclass of all Data Managers that handle interactions with the database
         
@@ -27,7 +29,6 @@ class DataManager():
         we use a session_maker() that generates a session to handle DB interactions
     """
     def __init__(self):
-
 
         # pool_pre_ping prevents errors from disconect
         self.__engine = sa.create_engine(f"mssql+pyodbc:///?odbc_connect={DB}", pool_pre_ping=True)
@@ -54,7 +55,6 @@ class DataManager():
 
         finally:
             session.close()
-
 
     def close(self):
         """ Disposes of all db connections """

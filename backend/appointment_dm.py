@@ -14,7 +14,7 @@ class AppointmentDM(AppointmentStatusDataManger):
     """
         A DataManager for modifying, adding and reading appointments. 
 
-        • Get Avaliable Appointments
+        • Get Available Appointments
         • Set Appointment Time
         • Add Appointment
         • Get Appointment Types
@@ -24,13 +24,13 @@ class AppointmentDM(AppointmentStatusDataManger):
         super().__init__()
 
     def get_avaliable_appointments(self,
-                               appt_date: date,
-                               provider: Employee,
-                               location: Location,
-                               appt_type: AppointmentType,
-                               appt_length: timedelta,
-                               patient: Patient,
-                               appt_reason: str) -> list[Appointment]:
+                                   appt_date: date,
+                                   provider: Employee,
+                                   location: Location,
+                                   appt_type: AppointmentType,
+                                   appt_length: timedelta,
+                                   patient: Patient,
+                                   appt_reason: str) -> list[Appointment]:
         """
             Returns a list of available appointment times for the given 
             date, provider, location, appointment type, patient, and visit reason.
@@ -41,39 +41,39 @@ class AppointmentDM(AppointmentStatusDataManger):
             :param appt_type: A AppointmentType object, what type of appointment
             :param appt_length: The Appointments Length
             :param patient: A Patient object, who will have the appointment
-            :param visit_reason: A str representing the reason for the appointment.
+            :param appt_reason: A str representing the reason for the appointment.
 
             :return: A list of Appointment objects representing the available appointment times.
         """
 
         avaliable_appointments = []
 
-        ### Make sure appt_date is not before today
-        assert appt_date >= datetime.datetime.now().date(), ("Appointment date cannot be before today's date")
+        # Make sure appt_date is not before today
+        assert appt_date >= datetime.datetime.now().date(), "Appointment date cannot be before today's date"
 
         hours = self.__get_hours_for(appt_date, location)
 
         events = self.__get_events_for(provider, appt_date)
 
-        ### Now we need to do some db queries ###
+        # Now we need to do some db queries ###
 
         with self.session_scope() as session:
                         
-            ### First We Check if the Location is open ###
+            # First We Check if the Location is open ###
 
             session.add(hours)
             assert hours.OpenTime is not None, "Clinic is closed on this day"
 
-            ### Then We check if the employee is out ###
+            # Then We check if the employee is out ###
             
-            if object_session(provider) is None: # The provider is not in a session
-                session.add(provider) # Sometimes when this is run the provider is already in a session
+            if object_session(provider) is None:  # The provider is not in a session
+                session.add(provider)  # Sometimes when this is run the provider is already in a session
 
             if events:
                 session.add(events)
-                if events.EmployeeID == provider.EmployeeID: # The employee is out is out
+                if events.EmployeeID == provider.EmployeeID:  # The employee is out
                     raise AssertionError(f"This Physician is out for {events.EventName}")
-                else: # Whole office is out
+                else:  # Whole office is out
                     raise AssertionError(f"This clinic is closed for {events.EventName}")
 
             taken_appointment_statuses = ["Scheduled", "In Progress", "Rescheduled"]
@@ -104,21 +104,17 @@ class AppointmentDM(AppointmentStatusDataManger):
                     end += timedelta(days=1)
                 
                 taken_appt_length = datetime.datetime.combine(datetime.datetime.min, end) -\
-                datetime.datetime.combine(datetime.datetime.min, start)
+                    datetime.datetime.combine(datetime.datetime.min, start)
                 taken_appointment_times_dict[taken_start] = taken_appt_length
 
-
-
-            ### Now we have everything we need ###
-
-
+            # Now we have everything we need ###
 
             # Ok, This is the hard part.
             # We use a counter (search_datetime) to loop through our start and end time
             # Think of search_datetime as a time, 9:00
             # First we check if a appointment intersects with our search_datetime and the end_time
             # Think of the search_datetime as a appointment, i.e 9:00 - 9:15
-            # If thre is appointment intersects with that range, i.e 9:10-9:20, we can't use it
+            # If there is appointment intersects with that range, i.e 9:10-9:20, we can't use it
             # Our counter would then skip to 9:20, and check if we can make an appointment there
             # If we can make an appointment at 9:20, then we add that to our avaliable_appointments!
             # The counter would then skip from 9:20 to 9:35 (It would add the appt_length)
@@ -142,11 +138,9 @@ class AppointmentDM(AppointmentStatusDataManger):
                     # Our discionary contains timedeltas as the apopintment length
                     taken_end = taken_start + taken_appt_length
 
-
-
                     # Check if there is a intersection
                     if ((appt_start < taken_end and appt_end > taken_start) or 
-                        (taken_start < appt_end and taken_end > appt_start)):
+                            (taken_start < appt_end and taken_end > appt_start)):
 
                         # If it is in between it means we can't use this time!
                         # We must skip ahead to the end of this appointment to look for more times!
@@ -164,7 +158,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             # Now to just make a bunch of objects using them
         with self.session_scope() as session:
             
-            if object_session(provider) is None: # The provider is not in a session
+            if object_session(provider) is None:  # The provider is not in a session
                 session.add(provider)
                 session.add(location)
                 session.add(patient)
@@ -174,7 +168,6 @@ class AppointmentDM(AppointmentStatusDataManger):
                 appt_endtime = (appt_time + appt_length).time()
 
                 appt_time = appt_time.time()
-                
 
                 avaliable_appointments.append(Appointment(
                         ApptDate=appt_date,
@@ -184,7 +177,7 @@ class AppointmentDM(AppointmentStatusDataManger):
                         ApptEndtime=appt_endtime,
                         PhysicianID=provider.EmployeeID,
                         ApptTypeID=appt_type.ApptTypeID,
-                        LocationID = location.LocationID,
+                        LocationID=location.LocationID,
                         ApptReason=appt_reason,
 
                         Patient=patient,
@@ -203,10 +196,9 @@ class AppointmentDM(AppointmentStatusDataManger):
 
             assert len(avaliable_appointments) > 0, "No appointments Avaliable on" + appt_date.strftime("%m/%d/%Y")
 
-            return  avaliable_appointments
+            return avaliable_appointments
 
-
-    def remove_appointment(self, appt:Appointment):
+    def remove_appointment(self, appt: Appointment):
         """
             Removes a apopintment 
 
@@ -247,6 +239,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             Returns a list of appointments scheduled for the given date.
 
             :param check_date: date object from the datetime library representing the date to check
+            :param physician: gives a specific physician for the appts
 
             :return: A list of Appointment objects for the given date
         """
@@ -276,23 +269,23 @@ class AppointmentDM(AppointmentStatusDataManger):
             appt_length = appt_end_datetime - appt_start_datetime
 
             available_times = self.get_avaliable_appointments(
-                appt_date = check_date,
-                provider = appt.Employee,
-                location = appt.Location,
-                appt_type = appt.AppointmentType,
-                appt_length = appt_length,
-                appt_reason= appt.ApptReason,
-                patient = appt.Patient
+                appt_date=check_date,
+                provider=appt.Employee,
+                location=appt.Location,
+                appt_type=appt.AppointmentType,
+                appt_length=appt_length,
+                appt_reason=appt.ApptReason,
+                patient=appt.Patient
             )
 
             session.expunge_all()
             return available_times
 
     def check_appointment_available(self, appt: Appointment,
-                                            new_time:time=None,
-                                            new_date:date=None,
-                                            custom_time:bool=None,
-                                            length: timedelta=None) -> bool:
+                                    new_time: time = None,
+                                    new_date: date = None,
+                                    custom_time: bool = None,
+                                    length: timedelta = None) -> bool:
         """
             Check if a given appointment is available at a specific time and date.
             Will output a AssertionError if there is a issue with the check
@@ -302,10 +295,10 @@ class AppointmentDM(AppointmentStatusDataManger):
             :param new_time: The time to check availability for (by default its ApptTime)
             :param new_date: The date to check availability for (by default its ApptDate)
             :param custom_time: If True, the appointment time can be outside business hours
+            :param length: The length of the appointment in minutes
 
             :return: True if the appointment is available, raises AssertionError otherwise.
         """
-        
 
         with self.session_scope() as session:
             session.add(appt)
@@ -313,7 +306,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             if new_time:
                 appt.ApptTime = new_time
             
-                new_time_delta = datetime.datetime.combine( date.today(), new_time)
+                new_time_delta = datetime.datetime.combine(date.today(), new_time)
                 appt.ApptEndtime = new_time_delta + length
 
             if new_date:
@@ -324,7 +317,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             session.expunge_all()
 
         with self.session_scope() as session:
-            ### First We check if there are any taken appointments ###
+            # First We check if there are any taken appointments ###
 
             taken_appointment_statuses = ["Scheduled", "In Progress", "Rescheduled"]
             taken_appointments = session.query(Appointment).\
@@ -338,7 +331,8 @@ class AppointmentDM(AppointmentStatusDataManger):
                             # Check if the appointment start time is in between an existing appointment
                             sa.and_(Appointment.ApptTime <= appt.ApptTime,
                                     Appointment.ApptEndtime > appt.ApptTime),
-                            # Check if the existing Boolean value of this clause is not definedappointment start time is in between the new appointment
+                            # Check if the existing Boolean value of this clause is not defined
+                            # appointment start time is in between the new appointment
                             sa.and_(Appointment.ApptTime >= appt.ApptTime,
                                     appt.ApptEndtime > Appointment.ApptTime)
                         )
@@ -347,11 +341,11 @@ class AppointmentDM(AppointmentStatusDataManger):
 
             assert len(taken_appointments) == 0, "Appointment Already Taken!"
 
-            ### Then We pull the hours for the location and day ###
+            # Then We pull the hours for the location and day ###
             session.add(location)
             hours = self.__get_hours_for(appt.ApptDate, location)
 
-            ### Then we tell if the location is closed ###
+            # Then we tell if the location is closed ###
 
             session.add(hours)
             assert hours.OpenTime is not None, "This Location is closed that day!"
@@ -360,7 +354,7 @@ class AppointmentDM(AppointmentStatusDataManger):
             if (hours.OpenTime > appt.ApptTime or hours.CloseTime < appt.ApptTime):
                 assert custom_time, "Outside this locations hours. Use custom time"
 
-            ### Then we check if the physician is out, or if the entire clinic is out ###
+            # Then we check if the physician is out, or if the entire clinic is out ###
 
             session.add(employee)
             events = self.__get_events_for(appt.Employee, appt.ApptDate)
@@ -368,11 +362,10 @@ class AppointmentDM(AppointmentStatusDataManger):
             if events is not None:
                 session.add(events)
 
-                if events.EmployeeID == appt.PhysicianID: # The employee is out is out
+                if events.EmployeeID == appt.PhysicianID:  # The employee is out is out
                     raise AssertionError("This Physician is out on this day")
                 else:
                     raise AssertionError("This clinic is closed for: ", events.EventName)
-
 
             # Everything above is asserted. We wont get here without errors unless its true
             return True
@@ -385,7 +378,7 @@ class AppointmentDM(AppointmentStatusDataManger):
         with self.session_scope() as session:
             if object_session(location) is None:
                 session.add(location)
-            hours =  session.query(HospitalHours).filter(
+            hours = session.query(HospitalHours).filter(
                 sa.and_(
                     HospitalHours.LocationID == location.LocationID,
 
@@ -393,7 +386,7 @@ class AppointmentDM(AppointmentStatusDataManger):
                     HospitalHours.DayOfWeek == check_date.strftime("%A"),
 
                     # Check if the week_number matches, if needed
-                    sa.or_(HospitalHours.WeekNumber == week_number,(HospitalHours.WeekNumber.is_(None)))
+                    sa.or_(HospitalHours.WeekNumber == week_number, (HospitalHours.WeekNumber.is_(None)))
                 )
             ).first()
             session.expunge_all()
@@ -407,15 +400,15 @@ class AppointmentDM(AppointmentStatusDataManger):
                 session.add(employee)
             
             events = session.query(Event)\
-                        .filter(
+                            .filter(
                         sa.or_(Event.EmployeeID == employee.EmployeeID, Event.EmployeeID.is_(None)),
-                        Event.StartDate <= check_date, # Check if its after start date
-                        Event.EndDate >= check_date, # Check if its before end date
+                        Event.StartDate <= check_date,  # Check if its after start date
+                        Event.EndDate >= check_date,  # Check if its before end date
                         ).first()
             
             return events
 
-    def __get_week_number(self, check_date:date):
+    def __get_week_number(self, check_date: date):
         """ 
         A private method to get what week number it is for the db schedule
         
@@ -429,7 +422,7 @@ class AppointmentDM(AppointmentStatusDataManger):
         number_of_weeks = 2
 
         start_date = datetime.datetime(2015, 1, 4)
-        end_date = datetime.datetime.combine(check_date, time(0,0,0))
+        end_date = datetime.datetime.combine(check_date, time(0, 0, 0))
 
         weeks_since_2015 = (end_date - start_date).days // 7
 
@@ -437,6 +430,8 @@ class AppointmentDM(AppointmentStatusDataManger):
 
         return week_number
 
+
 if __name__ == "__main__":
+
     # Used for debugging
     pass

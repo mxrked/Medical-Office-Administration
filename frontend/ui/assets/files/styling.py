@@ -1,8 +1,8 @@
-'''
+"""
 
     This holds all the different styling variables
 
-'''
+"""
 
 # Navigation
 greyOutBtn_Style = "QPushButton {\n" \

@@ -1,10 +1,10 @@
-from datetime import date
 
+from datetime import date
+import sqlalchemy as sa
 from backend.private.data_manager import DataManager
 
 from backend.models import Location, Employee, User, Patient, EmpGroupCross, Role, \
     GroupRoleCross
-import sqlalchemy as sa
 
 
 class UserDM(DataManager):
@@ -27,11 +27,21 @@ class UserDM(DataManager):
         self.physicians_dict = {}
 
     def check_username_password(self, username: str, password: str) -> Employee:
-        
+        """
+            Checks if username and password are valid and returns
+             the employee if they are valid
+
+            :param username: str, The username to check
+            :param password: str, The password to check
+
+            returns: Employee, SQL ORM object
+        """
         with self.session_scope() as session:
             employee = session.query(Employee) \
                 .join(User) \
-                .filter(User.UserTypeID == 1, User.UserName == username, User.Password == password) \
+                .filter(User.UserTypeID == 1,
+                        User.UserName == username,
+                        User.Password == password) \
                 .first()
 
             if (employee is None):
@@ -41,7 +51,14 @@ class UserDM(DataManager):
             return employee
 
     def check_employee_role(self, current_employee: Employee, search_role_id) -> bool:
+        """
+            Checks db if a employee's group or themselves has a given role id
 
+            :param current_employee: Employee, SQL ORM object
+            :param search_role_id: int, The role id to check
+
+            :returns: bool, True if the employee has the role, False otherwise        
+        """
         with self.session_scope() as session:
             session.add(current_employee)
             groups = session.query(EmpGroupCross)\

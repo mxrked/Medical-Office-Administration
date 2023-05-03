@@ -2,11 +2,8 @@
 
 from PyQt5.QtWidgets import QPushButton, QListWidget, QListWidgetItem, QDialog
 from PyQt5 import uic, QtCore
-from backend.data_handler import get_selected_list_object, load_objects_to_list
-from backend.misc_dm import MiscDM
-from backend.models import Location
-import sys
-from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo # pylint: disable=unused-import
+from backend.data_handler import get_selected_list_object
+
 
 class ListOfPatientsDialog(QDialog):
     """
@@ -35,7 +32,6 @@ class ListOfPatientsDialog(QDialog):
             self.listOfPatientsLW.addItem(
                 QLongListWidgtObject(patient, patient_str))
 
-
         self.closeBtn.clicked.connect(self.close)
 
     def close(self):
@@ -48,7 +44,6 @@ class ListOfPatientsDialog(QDialog):
         self.listOfPatientsLW = self.findChild(QListWidget, "listOfPatientsListWidget")
 
         return get_selected_list_object(self.listOfPatientsLW)
-
 
 
 class QLongListWidgtObject(QListWidgetItem):

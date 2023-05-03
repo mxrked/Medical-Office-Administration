@@ -4,9 +4,8 @@ from PyQt5.QtWidgets import QDateEdit, QComboBox, QDialog, QPushButton
 from PyQt5 import uic, QtCore
 from backend.data_handler import load_objects_to_combo_box, get_selected_combo_box_object
 from backend.misc_dm import MiscDM
-from backend.models import Location
 import json
-from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo # pylint: disable=unused-import
+
 
 class SettingsDialog(QDialog):
     def __init__(self):
@@ -15,7 +14,6 @@ class SettingsDialog(QDialog):
         uic.loadUi("frontend/ui/SettingsDialog.ui", self)
 
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
-
 
         # Widgets
         self.save_btn = self.findChild(QPushButton, "settingsDialog_SaveBtn")
@@ -27,7 +25,6 @@ class SettingsDialog(QDialog):
         self.save_btn.clicked.connect(self.save_settigns)
 
         load_objects_to_combo_box(MiscDM().get_locations(), self.locationsCombobox)
-        
 
         self.save_btn.clicked.connect(self.save_settigns)
 
@@ -35,7 +32,7 @@ class SettingsDialog(QDialog):
 
     def save_settigns(self):
 
-        # We see if the file exsists
+        # We see if the file exists
         try:
             with open("frontend/ui/assets/files/Settings.json", "r",
                       encoding='UTF-8') as settings_file:
@@ -47,18 +44,18 @@ class SettingsDialog(QDialog):
         except FileNotFoundError:
             print("Settings not found")
             settings_json = {
-                "default_location_ID" : "1",
-                "last_entered_user" : ""
+                "default_location_ID": "1",
+                "last_entered_user": ""
             }
 
-        # Make chagnes
+        # Make changes
         location = get_selected_combo_box_object(self.locationsCombobox)
         location_id = MiscDM().get_location_id(location)
         settings_json["default_location_ID"] = location_id[0]
 
         # Here we either create the file or modify the already existing file
         with open("frontend/ui/assets/files/Settings.json", "w",
-                    encoding='UTF-8') as file:
+                  encoding='UTF-8') as file:
             json.dump(settings_json, file)
 
         self.hide()

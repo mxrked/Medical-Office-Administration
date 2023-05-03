@@ -442,7 +442,7 @@ QPushButton::hover {
 border-image: transparent;</string>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="Appointments">
       <property name="minimumSize">
@@ -3465,7 +3465,7 @@ QPushButton::hover {
       <widget class="QFrame" name="PatientFrame">
        <property name="geometry">
         <rect>
-         <x>110</x>
+         <x>130</x>
          <y>100</y>
          <width>1000</width>
          <height>680</height>

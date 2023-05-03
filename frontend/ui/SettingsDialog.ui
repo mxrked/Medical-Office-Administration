@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>200</height>
+    <width>462</width>
+    <height>231</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -18,7 +18,7 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>400</width>
+    <width>600</width>
     <height>300</height>
    </size>
   </property>
@@ -30,57 +30,12 @@
 	border-image: url(:/newPrefix/imgs/app-bg.png);
 }</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>41</x>
-     <y>120</y>
-     <width>121</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLabel {
-	color: white;
-}</string>
-   </property>
-   <property name="text">
-    <string>Locations:</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="settingsLocationsComboBox">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>120</y>
-     <width>200</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QComboBox {
-	border-image: none;
-    border: none;
-	min-width: 200px;
-	height: 30px;
-	background-color: #F3ECB0;
-	color: #344D67;
-	font-family: &quot;MS Shell Dlg 2&quot;;
-	font-size: 11;
-}</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="settingsLabel">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>190</x>
      <y>20</y>
-     <width>161</width>
+     <width>91</width>
      <height>41</height>
     </rect>
    </property>
@@ -100,25 +55,69 @@
     <string>Settings</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="settingsDialog_SaveBtn">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>30</y>
-     <width>51</width>
-     <height>31</height>
+     <x>40</x>
+     <y>80</y>
+     <width>401</width>
+     <height>131</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <family>Lato</family>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton {
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: white;
+}</string>
+        </property>
+        <property name="text">
+         <string>Locations:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="settingsLocationsComboBox">
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+	border-image: none;
+    border: none;
+	min-width: 200px;
+	height: 30px;
+	background-color: #F3ECB0;
+	color: #344D67;
+	font-family: &quot;MS Shell Dlg 2&quot;;
+	font-size: 11;
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="settingsDialog_SaveBtn">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Lato</family>
+          <pointsize>9</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
 	border-image: none;
 	background-color: rgb(30, 147, 143);
 	color: black;
@@ -129,10 +128,70 @@ QPushButton::hover {
 	background-color: rgb(14, 81, 85);
 	color: white;
 }</string>
-   </property>
-   <property name="text">
-    <string>SAVE</string>
-   </property>
+        </property>
+        <property name="text">
+         <string>SAVE</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: white;
+}</string>
+        </property>
+        <property name="text">
+         <string>Visit Summary File:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="file_select">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Lato</family>
+          <pointsize>9</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	border-image: none;
+	background-color: rgb(30, 147, 143);
+	color: black;
+	border: 2px solid black;
+}
+
+QPushButton::hover {
+	background-color: rgb(14, 81, 85);
+	color: white;
+}</string>
+        </property>
+        <property name="text">
+         <string>Select</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources>

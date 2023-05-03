@@ -36,7 +36,8 @@ class Nav(QMainWindow):
             print("Settings not found")
             self.settings_json = {
                 "default_location_ID": "1",
-                "last_entered_user": ""
+                "last_entered_user": "",
+                "summary_filepath": "C:/Users/Public/Desktop",
             }
             with open("frontend/ui/assets/files/Settings.json", "w",
                       encoding='UTF-8') as file:

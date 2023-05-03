@@ -6,17 +6,16 @@ Authors:
 from PyQt5.QtWidgets import QListWidget, QPushButton, QComboBox
 from frontend.private.utility import Utility
 from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, load_pending_appts_to_list
-from frontend.ui.assets.files import styling
+
 
 class Approve(Utility):
     """
-        Handles the Approve Appointment Buttons/Functions
+        Handles Approve Appointment Buttons/Functions
         
         lastly it runs self.a_refresh to fill up list
     """
     def __init__(self):
         super(Approve, self).__init__()
-
 
         self.a_list = self.findChild(QListWidget, "Approve_List")
         self.a_btn_approve = self.findChild(QPushButton, "Approve_Btn_Approve")
@@ -48,7 +47,7 @@ class Approve(Utility):
 
         self.appointment_dm.set_appointment_scheduled(selected_appointment)
 
-        self.a_refresh() # Refreshes the list
+        self.a_refresh()  # Refreshes the list
 
     def deny(self):
         """
@@ -77,7 +76,6 @@ class Approve(Utility):
         appointments = self.appointment_dm.get_pending_appointments(providers)
 
         load_pending_appts_to_list(appointments, self.a_list)
-
 
     def a_location_change(self):
         location = get_selected_combo_box_object(self.a_location)

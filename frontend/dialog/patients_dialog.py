@@ -15,8 +15,6 @@ class ListOfPatientsDialog(QDialog):
 
         uic.loadUi("frontend/ui/ListOfPatientsDialog.ui", self)
 
-        self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
-        
         # Widgets
         self.listOfPatientsLW = self.findChild(QListWidget, "listOfPatientsListWidget")
         self.closeBtn = self.findChild(QPushButton, "closeListOfPatientsBtn")

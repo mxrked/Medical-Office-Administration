@@ -89,7 +89,7 @@ class CheckOut(Utility):
 
         location = get_selected_combo_box_object(self.locations_combobox)
 
-        listOfAppointments = self.appointment_dm.get_in_progress_appointments(location=location)
+        listOfAppointments = self.appointment_dm.get_in_progress_appointments(location=location, check_date = self.todays_date)
         load_objects_to_list(listOfAppointments, self.check_out_list, long_str=True)
 
     def download_summary(self):

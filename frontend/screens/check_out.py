@@ -110,7 +110,7 @@ class CheckOut(Utility):
         filepath = self.settings_json["summary_filepath"]
         
         if path.exists(filepath):
-            pdf.output(f"{filepath}/summmary.pdf")
+            pdf.output(f"{filepath}/summary.pdf")
             self.load_error("File Downloaded to \n %s" % self.settings_json["summary_filepath"])
         else:
             self.load_error("Summary Folder not found.")

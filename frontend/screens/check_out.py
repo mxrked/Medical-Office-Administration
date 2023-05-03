@@ -7,11 +7,12 @@ from PyQt5.QtWidgets import QListWidget, QComboBox, QPushButton
 from frontend.private.utility import Utility
 from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, load_objects_to_list
 
+
 class CheckOut(Utility):
     """
         Handles checkout page
 
-        First initalizes widgets 
+        First initializes widgets
 
         Uses
             self.appointment_dm
@@ -75,7 +76,7 @@ class CheckOut(Utility):
 
         self.appointment_dm.set_appointment_checked_out(appointment)
 
-        self.check_out_refresh() # Refreshes the list
+        self.check_out_refresh()  # Refreshes the list
 
     def check_out_refresh(self):
         """

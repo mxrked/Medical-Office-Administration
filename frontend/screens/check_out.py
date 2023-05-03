@@ -98,4 +98,15 @@ class CheckOut(Utility):
 
         Something about views in the DB, I don't know
         """
-        print(self.download_summary.__doc__)
+        appointment = get_selected_list_object(self.check_out_list)
+
+        if not appointment:
+            self.load_error("Not selecting appointment.")
+            return
+        
+        pdf = self.user_dm.get_summary_info(appointment)
+
+        filepath = self.settings_json["summary_filepath"]
+        pdf.output(f"{filepath}/summmary.pdf")
+
+        self.load_error("File Downloaded to \n %s" % self.settings_json["summary_filepath"])

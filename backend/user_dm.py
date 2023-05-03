@@ -1,10 +1,10 @@
-
 from datetime import date
 import sqlalchemy as sa
+from fpdf.fpdf import FPDF
 from backend.private.data_manager import DataManager
 
 from backend.models import Location, Employee, User, Patient, EmpGroupCross, Role, \
-    GroupRoleCross
+    GroupRoleCross, Appointment
 
 
 class UserDM(DataManager):
@@ -125,3 +125,32 @@ class UserDM(DataManager):
             
             session.expunge_all()
             return patients
+
+
+    def get_summary_info(self, appt: Appointment) -> FPDF:
+        with self.session_scope() as session:
+            session.add(appt)
+
+            pdf = FPDF()
+            pdf.add_page()
+            pdf.image("frontend/ui/assets/imgs/logo.png", 170, 8, 33)
+            pdf.set_font('Arial', 'B', 12)
+            formated_time = appt.ApptTime.strftime("%I:%M:%S %p")
+            formated_endtime = appt.ApptEndtime.strftime("%I:%M:%S %p")
+            formated_date = appt.ApptDate.strftime("%m/%d/%Y")
+
+            text = \
+            f"""
+Appointment Summary:
+    Patient: {appt.Patient}
+    Physician: {appt.Employee}
+    Date: {formated_date}
+    Time: {formated_time} till {formated_endtime}
+    Apppointment Type: {appt.AppointmentType}
+    Appointment Reason: {appt.ApptReason}
+"""
+            pdf.multi_cell(200, 10, txt=text, align='L')
+            session.expunge_all()
+
+            return pdf
+

@@ -9,6 +9,7 @@ from datetime import datetime
 from PyQt5.QtWidgets import QApplication, QLineEdit, QLabel, QPushButton, QDialog, \
     QVBoxLayout, QFrame, QMainWindow
 from PyQt5 import uic, QtCore, QtGui
+from frontend.ui.assets.qrc import app_bg, doctor, gears, logo, hide, show # These are used by PyQt5
 from frontend.ui.assets.files.globals import teamMembers
 from frontend.ui.assets.files.styling import infoDialog_Style, infoDialogCloseBtn_Style, infoDialogName_Style,\
     validEnterLE_Style, invalidEnterLE_Style

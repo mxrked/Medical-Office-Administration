@@ -7,10 +7,11 @@ Authors: Destan Hutcherson, Jessica Weeks
 from PyQt5.QtWidgets import QComboBox, QLineEdit, QRadioButton, QDateEdit, QPushButton
 from backend.models import Patient
 from frontend.private.utility import Utility
-from backend.data_handler import get_selected_combo_box_object
+
+
 class NewPatient(Utility):
     """
-        Handes creating a new Patient using 
+        Handles creating a new Patient using
             a patient object
 
         Uses misc_dm
@@ -44,12 +45,10 @@ class NewPatient(Utility):
         # Connect buttons
         self.p_submit_btn.clicked.connect(self.submit_patient)
 
-
     def submit_patient(self):
         """
             Creates a patient and enters it into the database    
         """
-
 
         if self.gender_female.isChecked():
             gender = "Female"
@@ -69,7 +68,7 @@ class NewPatient(Utility):
         dob = self.p_dob.date().toPyDate()
         ssn = self.p_snn.text()
         street = self.p_street.text()
-        state =  self.p_state.currentText()
+        state = self.p_state.currentText()
         race = self.p_race.currentText()
      
         try:
@@ -81,7 +80,7 @@ class NewPatient(Utility):
             assert city, "Please enter in a city"
             assert street, "Please enter in a street"
             assert zipcode, "Please enter in a zipcode"
-                #email is not required
+            # email is not required
 
             # Special Cases with input masks
             assert ssn != "--", "Please enter in a Social Security Number"
@@ -95,23 +94,20 @@ class NewPatient(Utility):
             self.load_error(str(error))
             return
 
-        
         patient = Patient(
-            Last_Name = lname,
-            First_Name = fname,
-            Address = street,
-            City = city,
-            State = state,
-            ZipCode = zipcode,
-            Gender = gender,
-            DateOfBirth = dob,
-            Email = email,
-            Phone = phone,
-            Race = race
+            Last_Name=lname,
+            First_Name=fname,
+            Address=street,
+            City=city,
+            State=state,
+            ZipCode=zipcode,
+            Gender=gender,
+            DateOfBirth=dob,
+            Email=email,
+            Phone=phone,
+            Race=race
         )
 
         self.misc_dm.add_patient(patient)
 
         self.clear_inputs()
-
-

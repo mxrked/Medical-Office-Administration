@@ -7,15 +7,14 @@ Authors: Matthew Burrus
 from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QPushButton, QTextEdit
 from PyQt5.QtCore import QDate
 from frontend.private.utility import Utility
-from backend.data_handler import load_objects_to_combo_box
 from backend.data_handler import get_selected_combo_box_object
-from backend.models import Referral
+
 
 class ReferralScreen(Utility):
     """
         Creates a referral using the Referral object
 
-        Uses a the misc_dm & user_dm 
+        Uses the misc_dm & user_dm
 
         Use the data handler 
             get_locations_into/get_physicians_into
@@ -24,15 +23,15 @@ class ReferralScreen(Utility):
     def __init__(self):
         super(ReferralScreen, self).__init__()
 
-        # Initalized Input Widgets
+        # Initialized Input Widgets
         self.ref_fname = self.findChild(QLineEdit, "Referral_Edit_Fname")
         self.ref_lname = self.findChild(QLineEdit, "Referral_Edit_Lname")
         self.ref_dob = self.findChild(QDateEdit, "Referral_DOB")
-        self.ref_practitioners = self.findChild(QComboBox, "Referral_Practitoner")
+        self.ref_practitioners = self.findChild(QComboBox, "Referral_Practitioner")
         self.ref_creation_date = self.findChild(QDateEdit, "Referral_CreationDate")
         self.ref_reason = self.findChild(QTextEdit, "Referral_Reason")
 
-        # Initalized Buttons
+        # Initialized Buttons
         self.create_referral_btn = self.findChild(QPushButton, "Btn_CreateReferral")
         self.ref_clear_input_btn = self.findChild(QPushButton, "Btn_RefClearInputs_2")
 
@@ -74,15 +73,13 @@ class ReferralScreen(Utility):
             self.load_error(str(error))
             return
 
-
         referral = self.misc_dm.create_referral(
-            creation_date = creation_date,
-            referral_reason = reason,
-            patient = patient,
-            employee = physician
+            creation_date=creation_date,
+            referral_reason=reason,
+            patient=patient,
+            employee=physician
         )
 
         self.misc_dm.add_referral(referral)
 
         self.clear_inputs()
-

@@ -5,7 +5,6 @@ Authors: Destan Hutcherson, Jessica Weeks
 """
 from PyQt5.QtWidgets import QPushButton, QLineEdit, QDateEdit, QComboBox
 from frontend.private.utility import Utility
-from backend.models import LabOrder
 from backend.data_handler import get_selected_combo_box_object, load_objects_to_combo_box
 
 
@@ -17,8 +16,6 @@ class Lab(Utility):
     """
     def __init__(self):
         super(Lab, self).__init__()
-
-
 
         # define widgets
         self.lab_submit_btn = self.findChild(QPushButton, "pushButton_SubmitLabOrder")
@@ -51,7 +48,6 @@ class Lab(Utility):
         location = get_selected_combo_box_object(self.lab_locations_combo)
         self.load_physicians(self.lab_practitioner_combo, location=location)
 
-
     def submit_information(self):
         """
             First get the Patient from user_dm
@@ -65,7 +61,6 @@ class Lab(Utility):
             Then run self.clear_inputs()
         """
 
-
         patient_fn = self.lab_fname.text()
         patient_ln = self.lab_lname.text()
         patient_dob = self.lab_dob.date().toPyDate()
@@ -74,7 +69,6 @@ class Lab(Utility):
         lab_date = self.lab_lab_date_edit.date().toPyDate()
         lab_lab = get_selected_combo_box_object(self.lab_lab_combo)
         lab_order = self.lab_order_name.text()
-        
 
         try:
             patient = self.get_verified_patient(patient_fn,
@@ -84,11 +78,11 @@ class Lab(Utility):
             self.load_error(str(error))
             return
 
-        labToAdd = self.misc_dm.create_lab_order(order_name = lab_order,
+        labToAdd = self.misc_dm.create_lab_order(order_name=lab_order,
                                                  patient=patient,
                                                  employee=physician,
                                                  lab_date=lab_date,
-                                                 lab = lab_lab,
+                                                 lab=lab_lab,
                                                  location=location)
 
         self.misc_dm.add_lab_order(labToAdd)

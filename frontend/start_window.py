@@ -9,14 +9,11 @@ from datetime import datetime
 from PyQt5.QtWidgets import QApplication, QLineEdit, QLabel, QPushButton, QDialog, \
     QVBoxLayout, QFrame, QMainWindow
 from PyQt5 import uic, QtCore, QtGui
-
-from frontend.ui.assets.qrc import app_bg, doctor, show, hide, gears, logo # pylint: disable=unused-import
 from frontend.ui.assets.files.globals import teamMembers
 from frontend.ui.assets.files.styling import infoDialog_Style, infoDialogCloseBtn_Style, infoDialogName_Style,\
     validEnterLE_Style, invalidEnterLE_Style
 from frontend.dialog.settings_dialog import SettingsDialog
 from backend.user_dm import UserDM
-from backend.private.data_manager import DataManager
 
 
 class Start(QMainWindow):
@@ -28,14 +25,14 @@ class Start(QMainWindow):
 
         # used for Debugging
         self.debug = debug
-        self.today= today
+        self.today = today
 
         # Datamanager
         self.user_dm = UserDM()
 
         uic.loadUi("frontend/ui/StartWindow.ui", self)
 
-        #define widgets
+        # define widgets
         self.enterUsernameLineEdit = self.findChild(QLineEdit, "startWindow_UsernameLineEdit")
         self.enterPasswordLineEdit = self.findChild(QLineEdit, "startWindow_PasswordLineEdit")
         self.showPasswordLabel = self.findChild(QLabel, "ShowPassword_Label")
@@ -46,7 +43,6 @@ class Start(QMainWindow):
         self.infoPushButton = self.findChild(QPushButton, "startWindow_InfoBtn")
         self.settingsPushButton = self.findChild(QLabel, "StartWindow_SettingsLabel")
 
-
         # Setting Events
         self.loginOutputLabel.hide()
         self.showPasswordLabel.mousePressEvent = lambda event: self.showPassword()
@@ -56,7 +52,7 @@ class Start(QMainWindow):
         self.infoPushButton.clicked.connect(self.displayInfoDialog)
         self.settingsPushButton.mousePressEvent = lambda event: self.displaySettingsDialog()
 
-        # Makes It so we can hit enter to login instead
+        # Allows user to hit 'Enter' to log in
         self.enterUsernameLineEdit.returnPressed.connect(self.loginUser)
         self.enterPasswordLineEdit.returnPressed.connect(self.loginUser)
 
@@ -68,7 +64,6 @@ class Start(QMainWindow):
         
             self.settings_json = json.loads(file_contents)
 
-
             last_user = self.settings_json["last_entered_user"]
             if last_user != "":
                 self.enterUsernameLineEdit.setText(last_user)
@@ -77,22 +72,21 @@ class Start(QMainWindow):
         except FileNotFoundError:
             print("Settings not found")
             self.settings_json = {
-                "default_location_ID" : "1",
-                "last_entered_user" : ""
+                "default_location_ID": "1",
+                "last_entered_user": ""
             }
             with open("frontend/ui/assets/files/Settings.json", "w",
                       encoding='UTF-8') as file:
                 json.dump(self.settings_json, file)
 
-
     def displayInfoDialog(self):
-        ' This is used to display a dialog popup listing the different team members and their roles'
+        """ This is used to display a dialog popup listing the different team members and their roles """
 
         infoDialog = QDialog()
         infoDialog.setStyleSheet(infoDialog_Style)
   
         # Dialog settings
-        infoDialog.setWindowFlags(QtCore.Qt.FramelessWindowHint) # Hides the title bar
+        infoDialog.setWindowFlags(QtCore.Qt.FramelessWindowHint)  # Hides the title bar
         infoDialog.setFixedSize(400, 400)
 
         # Dialog widgets
@@ -102,12 +96,11 @@ class Start(QMainWindow):
 
         infoDialogCloseBtn.setStyleSheet(infoDialogCloseBtn_Style)
         infoDialogCloseBtn.setFont(QtGui.QFont("Lato", 12))
-        infoDialogCloseBtn.clicked.connect(infoDialog.close) # Closes the dialog box
+        infoDialogCloseBtn.clicked.connect(infoDialog.close)  # Closes the dialog box
 
         # Creating the team member names
         infoDialogNames = QFrame()
         infoDialogNamesLayout = QVBoxLayout()
-
 
         for name in teamMembers:
 
@@ -118,12 +111,10 @@ class Start(QMainWindow):
             infoDialogName.setFont(QtGui.QFont("Lato", 13))
             infoDialogLayout.addWidget(infoDialogName, alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
 
-
         infoDialogNames.setLayout(infoDialogNamesLayout)
 
         infoDialogLayout.addWidget(infoDialogNames, alignment=QtCore.Qt.AlignmentFlag.AlignBottom)
         infoDialogLayout.addWidget(infoDialogCloseBtn, alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
-
 
         infoDialog.setLayout(infoDialogLayout)
 
@@ -137,7 +128,7 @@ class Start(QMainWindow):
 
         # Restart?
 
-    def closeEvent(self, event): # pylint: disable=unused-argument
+    def closeEvent(self, event):  # pylint: disable=unused-argument
         """
             Closes all data managers before exiting the program
         """
@@ -149,10 +140,9 @@ class Start(QMainWindow):
 
         sys.exit()
 
-
     def showPassword(self):
-        ' This is used to show the password '
-        # Hiding/Showing btns
+        """ This is used to show the password """
+        # Hiding/Showing buttons
         self.ShowPassword_Label.setFixedHeight(0)
         self.HidePassword_Label.setFixedHeight(31)
 
@@ -160,18 +150,17 @@ class Start(QMainWindow):
         self.startWindow_PasswordLineEdit.setEchoMode(QLineEdit.Normal)
     
     def hidePassword(self):
-        ' This is used to hide the password '
+        """ This is used to hide the password """
 
-        # Hiding/Showing btns
+        # Hiding/Showing buttons
         self.ShowPassword_Label.setFixedHeight(31)
         self.HidePassword_Label.setFixedHeight(0)
 
         # Changing echomode
         self.startWindow_PasswordLineEdit.setEchoMode(QLineEdit.Password)
 
-
     def loginUser(self):
-        """ This is used to login the user """
+        """ This is used to log in the user """
 
         userName_Text = self.startWindow_UsernameLineEdit.text()
         password_Text = self.startWindow_PasswordLineEdit.text()
@@ -194,8 +183,6 @@ class Start(QMainWindow):
                 if not can_login:
                     self.loginOutputLabel.show()
                     return None
-
-
 
             # Save Last User
             self.settings_json["last_entered_user"] = userName_Text
@@ -231,16 +218,14 @@ class Start(QMainWindow):
             print("That user does not exist..")
 
 
-#initializing app
-
-
-
+# initializing app
 
 def main(debug=False, today=datetime.today().date()):
     app = QApplication(sys.argv)
     UIWindow = Start(debug=debug, today=today)
     UIWindow.show()
     app.exec_()
+
 
 if __name__ == "__main__":
     main()

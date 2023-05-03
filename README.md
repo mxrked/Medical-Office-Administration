@@ -37,14 +37,14 @@ You should either source all your files from run.py or use this to test everythi
 
 
 ## Installer
- Alternatively you can use our setup installer that will be avaliable at project completion
+ Alternatively you can use our setup installer that will be available at project completion
  
 ## How to use
  Pending Project completion
 
 ## Credits
  - Parker Phelps (Project Owner)
- - Christina Folin (Scrum Master)
+ - Christina Fortin (Scrum Master)
  - Jessica Weeks (QA Developer)
  - Flora Cherotich (Database Technician)
  - Destan Hutcherson, Matthew Burrus (Program Analyst)

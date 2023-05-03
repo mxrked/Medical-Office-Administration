@@ -18,9 +18,6 @@ class SettingsDialog(QDialog):
         # Widgets
         self.save_btn = self.findChild(QPushButton, "settingsDialog_SaveBtn")
         self.locationsCombobox = self.findChild(QComboBox, "settingsLocationsComboBox")
-        self.todays_date_edit = self.findChild(QDateEdit, "settingsTodaysDateDateEdit")
-
-        self.todays_date = self.todays_date_edit.date().toPyDate()
 
         self.save_btn.clicked.connect(self.save_settigns)
 

@@ -1,11 +1,13 @@
 
-from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QLabel, QListWidget, QTimeEdit, QPushButton, QCalendarWidget
+from PyQt5.QtWidgets import QLineEdit, QDateEdit, QComboBox, QListWidget, QTimeEdit, QPushButton
 from PyQt5.QtCore import QDate
 from PyQt5.QtGui import QIntValidator
 from frontend.ui.assets.files.styling import disableCustomTime_Style, enableCustomTime_Style
-from backend.data_handler import load_objects_to_combo_box, get_selected_combo_box_object, get_selected_list_object, load_objects_to_list
+from backend.data_handler import load_objects_to_combo_box, get_selected_combo_box_object, get_selected_list_object, \
+    load_objects_to_list
 from frontend.private.utility import Utility
 from datetime import timedelta, datetime, date
+
 
 class Schedule(Utility):
     def __init__(self):
@@ -24,9 +26,8 @@ class Schedule(Utility):
         self.SA_CustomTimeTimeEdit = self.findChild(QTimeEdit, "timeEdit_CustomTime_SA")
         self.SA_YesCustomTimePushButton = self.findChild(QPushButton, "yesCustomTimePushButton_SA")
         self.SA_NoCustomTimePushButton = self.findChild(QPushButton, "noCustomTimePushButton_SA")
-    
 
-        # Making the appointment lenght be only numbers
+        # Making the appointment length be only numbers
         self.SA_ApptLengthValidator = QIntValidator()
 
         self.SA_AppointmentLengthLineEdit.setValidator(self.SA_ApptLengthValidator)
@@ -44,12 +45,11 @@ class Schedule(Utility):
         self.SA_YesCustomTimePushButton.clicked.connect(self.enableCustomTime)
         self.SA_SearchPushButton.clicked.connect(self.search_SA)
         self.SA_ScheduleAppointmentPushButton.clicked.connect(self.scheduleAppointment)
-        
 
         appointment_types = self.appointment_dm.get_appointment_types()
         load_objects_to_combo_box(
-            objects = appointment_types,
-            combo_box = self.SA_AppointmentTypesComboBox)
+            objects=appointment_types,
+            combo_box=self.SA_AppointmentTypesComboBox)
 
         self.load_locations(self.SA_OfficeLocationsComboBox)
         self.load_physicians(self.SA_PhysicianNamesComboBox)
@@ -57,7 +57,6 @@ class Schedule(Utility):
         self.SA_OfficeLocationsComboBox.currentIndexChanged.connect(self.change_location_sa)
 
         self.custom_time = False
-
 
     def disableCustomTime(self):
         # Appending false to customTime
@@ -85,7 +84,6 @@ class Schedule(Utility):
 
     def search_SA(self):
 
-
         SA_patientFN = self.SA_PatientFNLineEdit.text()
         SA_patientLN = self.SA_PatientLNLineEdit.text()
         SA_patientDOB = self.SA_PatientDOBDateEdit.date().toPyDate()
@@ -95,13 +93,12 @@ class Schedule(Utility):
         appointment_type = get_selected_combo_box_object(
             self.SA_AppointmentTypesComboBox
             )
-        
 
         SA_appointmentLength = self.SA_AppointmentLengthLineEdit.text()
         provider = get_selected_combo_box_object(self.SA_PhysicianNamesComboBox)
         appointment_date = self.SA_AppointmentDateDateEdit.date().toPyDate()
 
-        # So list data matches the current state of the feilds no matter what
+        # So list data matches the current state of the fields no matter what
         self.SA_CurrentAvailableTimesListWidget.clear()
 
         try:
@@ -119,13 +116,13 @@ class Schedule(Utility):
 
         try:
             available_times = self.appointment_dm.get_avaliable_appointments(
-                appt_date = appointment_date,
-                provider = provider,
-                location = location,
-                appt_type = appointment_type,                                                  
-                appt_length = appointment_length,
-                patient = patient,
-                appt_reason = reason
+                appt_date=appointment_date,
+                provider=provider,
+                location=location,
+                appt_type=appointment_type,
+                appt_length=appointment_length,
+                patient=patient,
+                appt_reason=reason
                 )
 
             assert len(available_times) > 0, "No Appointments Found"
@@ -145,12 +142,12 @@ class Schedule(Utility):
         
         appt = get_selected_list_object(self.SA_CurrentAvailableTimesListWidget)
 
-        # They dont have to select a time if custom tmie
+        # They don't have to select a time if custom tmie
         if (appt is None) and self.custom_time:
             # A reminder from data_handlers we store classes of objects to the list
             appt = first_item.obj
 
-            # We pull the custom time, covnert it for adding later
+            # We pull the custom time, convert it for adding later
             start_time = self.SA_CustomTimeTimeEdit.time().toPyTime()
             start_datetime = datetime.combine(date.today(), start_time)
 
@@ -211,7 +208,7 @@ class Reschedule(Utility):
 
         self.load_physicians(
             self.RA_PhysicianNamesComboBox,
-            location = location
+            location=location
         ) 
 
     def displayTimesApps(self):
@@ -229,7 +226,6 @@ class Reschedule(Utility):
 
         load_objects_to_list(old_appointments, self.RA_SearchedAppointmentsListWidget)
 
-
     def displayRescheduleAppointment(self):
 
         new_date = self.RA_RescheduleDateDateEdit.date().toPyDate()
@@ -240,8 +236,8 @@ class Reschedule(Utility):
             assert appt is not None, "Appointment Not Selected"
 
             available_times = self.appointment_dm.get_appointments_for_reschedule(
-                appt = appt,
-                check_date = new_date
+                appt=appt,
+                check_date=new_date
             )
         except AssertionError as error:
             self.load_error(str(error))
@@ -250,8 +246,8 @@ class Reschedule(Utility):
         load_objects_to_list(available_times, self.RA_CurrentAvailableTimesListWidget)
 
         # Used so we could tell the old appointment time
-        # The person is able to date the old appointment so we just 
-        # Wanna make sure its the correct one
+        # The person is able to date the old appointment, so we just
+        # Want to make sure it's the correct one
         self.ra_old_appointment = appt
 
     def rescheduleAppointment(self):
@@ -284,7 +280,6 @@ class Cancel(Utility):
         self.CA_CancelAppointmentPushButton = self.findChild(QPushButton, "CancelAppointment_Btn_CA")
         self.CA_ClearInputsPushButton = self.findChild(QPushButton, "CA_ClearInputsBtn")
 
-
         self.CA_AppointmentDateDateEdit.setDate(QDate.currentDate())
         self.CA_AppointmentDateDateEdit.setMinimumDate(QDate.currentDate())
         self.CA_ClearInputsPushButton.mousePressEvent = lambda event: self.clear_inputs()
@@ -299,7 +294,7 @@ class Cancel(Utility):
     def ca_switch_location(self):
 
         location = get_selected_combo_box_object(self.CA_OfficeLocationsComboBox)
-        self.load_physicians(combo_box = self.CA_PhysicianNamesComboBox, location = location)
+        self.load_physicians(combo_box=self.CA_PhysicianNamesComboBox, location=location)
 
     def search_CA(self):
 
@@ -315,7 +310,6 @@ class Cancel(Utility):
             return
 
         load_objects_to_list(appointments, self.CA_SearchedAppointmentsListWidget)
-
 
     def cancelAppointment(self):
 

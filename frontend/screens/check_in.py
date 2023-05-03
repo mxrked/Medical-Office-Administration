@@ -7,11 +7,13 @@ from PyQt5.QtWidgets import QComboBox, QListWidget, QPushButton
 from frontend.private.utility import Utility
 from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, \
       load_objects_to_list
+
+
 class CheckIn(Utility):
     """
         Handles the Check In Page
         
-        First initalizes widgets
+        First initializes widgets
 
         Uses
             self.appointment_dm
@@ -78,9 +80,6 @@ class CheckIn(Utility):
 
         self.check_in_refresh()
 
-
-
-
     def no_show(self):
         """
             Marks selected appointment as "No Show"
@@ -126,11 +125,10 @@ class CheckIn(Utility):
             appt.Employee = provider
 
         if len(listOfAppointments) < 0:
-            self.load_error("No Avaliable Appointments")
+            self.load_error("No Available Appointments")
             return
 
         load_objects_to_list(listOfAppointments, self.check_ins_list, long_str=True)
-
 
     def check_in_location_change(self):
         location = get_selected_combo_box_object(self.check_in_location)

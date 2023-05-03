@@ -63,7 +63,7 @@ class SettingsDialog(QDialog):
     def summary_dialog(self):
         dialog = QFileDialog()
         dialog.setFileMode(QFileDialog.Directory)
-        dialog.setDirectory(self.settings_json["summary_filepath"])
+        dialog.setDirectory("C:/Users/Public/Desktop")
         dialog.setOption(QFileDialog.ShowDirsOnly, True)
 
         if dialog.exec() == QFileDialog.Accepted:

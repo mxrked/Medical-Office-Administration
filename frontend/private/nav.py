@@ -10,9 +10,10 @@ from frontend.ui.assets.files.styling import disableFrameBtn_Style, enableFrameB
 from frontend.start_window import Start
 
 # These qrc are used by pyqt 5
-from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo # pylint: disable=unused-import
+from frontend.ui.assets.qrc import app_bg, doctor, show, hide, logo  # pylint: disable=unused-import
 
 import json
+
 
 class Nav(QMainWindow):
     """
@@ -34,15 +35,15 @@ class Nav(QMainWindow):
         except FileNotFoundError:
             print("Settings not found")
             self.settings_json = {
-                "default_location_ID" : "1",
-                "last_entered_user" : ""
+                "default_location_ID": "1",
+                "last_entered_user": ""
             }
             with open("frontend/ui/assets/files/Settings.json", "w",
                       encoding='UTF-8') as file:
                 json.dump(self.settings_json, file)
 
         # Used for debugging certain dates
-        # Gets chagned later on if needed
+        # Gets changed later on if needed
         self.todays_date = date.today()
 
         self.stacked_widget = self.findChild(QStackedWidget, "main_stacked_widget")
@@ -56,16 +57,15 @@ class Nav(QMainWindow):
         self.lab_orders_btn = self.findChild(QPushButton, "Nav_LabOrdersBtn")
         self.approve_appointment_btn = self.findChild(QPushButton, "Nav_ApproveAppointmentsBtn")
 
-
         # Corresponds to QStackedWidget's pages
         self.windows_indexes = {
 
-            "Appointment" : 0,
-            "CheckIn" : 1,
-            "CheckOut" : 2,
-            "Referral" : 3,
-            "Lab" : 4,
-            "Approve" : 5
+            "Appointment": 0,
+            "CheckIn": 1,
+            "CheckOut": 2,
+            "Referral": 3,
+            "Lab": 4,
+            "Approve": 5
         }
 
         # For Navigation Permissions
@@ -101,22 +101,18 @@ class Nav(QMainWindow):
         self.make_schedule_btn.clicked.connect(self.display_inputs_frame)
         self.cancel_btn.clicked.connect(self.display_canceled_frame)
 
-
-
-
-    ### NAVIGATION FUNCTIONS ###
+    # NAVIGATION FUNCTIONS ###
 
     def disable_nav(self, btn: QPushButton):
         """ Disables & Grey's out a particular nav button """
         btn.setStyleSheet(disableFrameBtn_Style)
         btn.setEnabled(False)
 
-
     def disable_all_nav(self):
         """
             Disables all navigation
 
-            This is used at the start of the program so
+            This is used at the start of the program, so
                 we can enable only those we have access to
                 (Access is determined by superclasses params)
         """
@@ -132,7 +128,6 @@ class Nav(QMainWindow):
         for btn in nav_buttons:
             self.disable_nav(btn)
 
-
     def enable_all_nav_with_access(self):
         """
             Enables all buttons in which the user has permission for
@@ -141,14 +136,14 @@ class Nav(QMainWindow):
         """
         # Somehow get permissions info
 
-        scheduling_nav =[
+        scheduling_nav = [
             self.appointments_btn,
             self.checkin_btn,
             self.checkout_btn,
             self.approve_appointment_btn
         ]
 
-        physician_nav =[
+        physician_nav = [
             self.referral_btn,
             self.lab_orders_btn,
         ]
@@ -158,16 +153,14 @@ class Nav(QMainWindow):
         if self.can_schedule:
             nav_buttons.extend(scheduling_nav)
 
-
         if self.can_physician:
             nav_buttons.extend(physician_nav)
 
         for btn in nav_buttons:
             self.enable_nav(btn)
 
-
     def enable_nav(self, btn: QPushButton):
-        """ Enables & ungreys a particular nav button """
+        """ Enables & un-greys a particular nav button """
         btn.setStyleSheet(enableFrameBtn_Style)
         btn.setEnabled(True)
 
@@ -176,13 +169,13 @@ class Nav(QMainWindow):
         btn.setStyleSheet(selectedBtn_Style)
         btn.setEnabled(False)
 
-    ### NAVIGATION LISTENERS ### 
+    # NAVIGATION LISTENERS ###
 
     def enter_appointments_window(self):
         """
             Enters the scheduling appointment screen
 
-            By default on Schedule appointment screen, but
+            By default, on Schedule appointment screen, but
                 if window changed this persists
         """
         self.stacked_widget.setCurrentIndex(
@@ -192,7 +185,6 @@ class Nav(QMainWindow):
         self.select_nav(self.appointments_btn)
 
         self.setWindowTitle("Forsyth Family Practice Center - Scheduling Appointments")
-
 
     def enterCheckInWindow(self):
         """ Enters the checkin screen """
@@ -204,9 +196,8 @@ class Nav(QMainWindow):
 
         self.setWindowTitle("Forsyth Family Practice Center - Check In")
 
-
     def enterCheckOutWindow(self):
-        """ Eneters the check out screen """
+        """ Enters the check-out screen """
         self.stacked_widget.setCurrentIndex(
             self.windows_indexes["CheckOut"]
         )
@@ -215,9 +206,8 @@ class Nav(QMainWindow):
 
         self.setWindowTitle("Forsyth Family Practice Center - Check Out")
 
-    
     def enter_referral_window(self):
-        """ Enters the refferal screen """
+        """ Enters the referral screen """
         self.stacked_widget.setCurrentIndex(
             self.windows_indexes["Referral"]
         )
@@ -237,7 +227,7 @@ class Nav(QMainWindow):
         self.setWindowTitle("Forsyth Family Practice Center - Lab Orders")
 
     def enterAppointmentApproveViaPortalWindow(self):
-        """ Enters the Approve Appointment Screen """
+        """ Enters Approve Appointment Screen """
         self.stacked_widget.setCurrentIndex(
             self.windows_indexes["Approve"]
         )
@@ -260,18 +250,17 @@ class Nav(QMainWindow):
 
         self.hide()
 
-    ### APPOINTMENT SCREEN NAV ###
+    # APPOINTMENT SCREEN NAV ###
     # The Appointment Screen is a little weird and was designed
     # Without qstackedwidgets in mind. instead we use frames we
     # Can change the size of to hide/show
-
 
     def hide_all_frames(self):
         """
             We used QStacked Widget for most our nav
 
-            But, the Appointments window was build differently so we
-                must modify the hights, this clears the screen 
+            But, the Appointments window was build differently, so we
+                must modify the heights, this clears the screen
                 for moving to another screen
         """
         # All frames have a height of 681
@@ -286,7 +275,6 @@ class Nav(QMainWindow):
         self.enable_nav(self.DisplayReschedule_Btn)
         self.enable_nav(self.new_patient_btn)
 
-
     def display_inputs_frame(self):
         """ Opens 'Scheduling' Screen """
         self.hide_all_frames()
@@ -296,17 +284,14 @@ class Nav(QMainWindow):
         # Disabling the toggler btn
         self.select_nav(self.DisplaySchedule_Btn)
 
-
     def display_canceled_frame(self):
         """ Opens 'Cancel' Screen """
         self.hide_all_frames()
         self.cancel_appt_frame.setFixedHeight(681)
         self.cancel_appt_frame.setFixedWidth(1171)
 
-         # Disabling the toggler btn
+        # Disabling the toggler btn
         self.select_nav(self.DisplayCancel_Btn)
-
-
 
     def display_reschedule_frame(self):
         """ Opens 'Reschedule' Screen """ 
@@ -317,7 +302,6 @@ class Nav(QMainWindow):
         # Disabling the toggler btn
         self.select_nav(self.DisplayReschedule_Btn)
 
-
     def display_patient_frame(self):
         """ Opens 'New Patient' Screen """
         self.hide_all_frames()
@@ -326,9 +310,9 @@ class Nav(QMainWindow):
 
         self.select_nav(self.new_patient_btn)
 
+# initializing app
 
 
-#initializing app
 app = QApplication(sys.argv)
 UIWindow = Nav()
 if __name__ == "__main__":

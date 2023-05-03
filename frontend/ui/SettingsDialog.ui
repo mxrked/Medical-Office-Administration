@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
+ <class>Patient Search</class>
  <widget class="QDialog" name="Patient Search">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>200</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>400</width>
-    <height>300</height>
+    <height>200</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -51,63 +51,6 @@
    </property>
    <property name="text">
     <string>Locations:</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>41</x>
-     <y>190</y>
-     <width>121</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLabel {
-	color: white;
-}</string>
-   </property>
-   <property name="text">
-    <string>Today's Date:</string>
-   </property>
-  </widget>
-  <widget class="QDateEdit" name="settingsTodaysDateDateEdit">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>190</y>
-     <width>200</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QDateEdit {
-	border-image: none;
-    border: none;
-	min-width: 200px;
-	height: 30px;
-	background-color: #F3ECB0;
-	color: #344D67;
-	font-family: &quot;MS Shell Dlg 2&quot;;
-	font-size: 11;
-}</string>
-   </property>
-   <property name="buttonSymbols">
-    <enum>QAbstractSpinBox::UpDownArrows</enum>
-   </property>
-   <property name="keyboardTracking">
-    <bool>true</bool>
-   </property>
-   <property name="currentSection">
-    <enum>QDateTimeEdit::MonthSection</enum>
    </property>
   </widget>
   <widget class="QComboBox" name="settingsLocationsComboBox">

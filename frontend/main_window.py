@@ -14,6 +14,7 @@ from frontend.screens.referral import ReferralScreen
 from frontend.screens.lab import Lab
 from frontend.screens.patient import NewPatient
 
+
 class MainWindow(Schedule, Reschedule, Cancel,
                  NewPatient,
                  CheckIn,
@@ -22,18 +23,18 @@ class MainWindow(Schedule, Reschedule, Cancel,
                  Lab,
                  Approve):
     """
-    A QMainWindow for handeling all windows except StartWindow
+    A QMainWindow for handling all windows except StartWindow
 
-    :param can_physician: bool, if they can use phsycian screens
+    :param can_physician: bool, if they can use physician screens
     :param can_schedule: bool, if they can use scheduling screens
     :param debug: bool, makes it so no password is required
-    :param today: date, sets todays date for debuggin purposes
+    :param today: date, sets today's date for debugging purposes
 
     Subclasses:
 
     Nav(QMainWindow) (Navigation Functions)
     │ 
-    └─── Utility ( Loads Datamangers & Useful functionss for repeated code )
+    └─── Utility ( Loads Datamangers & Useful functions for repeated code )
             │ 
             │   ( Screens )
             ├─── Schedule
@@ -53,8 +54,8 @@ class MainWindow(Schedule, Reschedule, Cancel,
     """
 
     def __init__(self,
-                 can_physician:bool=True,
-                 can_schedule:bool=True,
+                 can_physician: bool = True,
+                 can_schedule: bool = True,
                  debug=False,
                  today=datetime.now().date()):
 
@@ -72,7 +73,7 @@ class MainWindow(Schedule, Reschedule, Cancel,
         if self.debug:
             self.todays_date = today
 
-        # They will only be able to select btns they have access too
+        # They will only be able to select buttons they have access too
         self.disable_all_nav()
         self.enable_all_nav_with_access()
 
@@ -80,7 +81,7 @@ class MainWindow(Schedule, Reschedule, Cancel,
         if self.can_schedule:
 
             self.enter_appointments_window()
-            self.display_inputs_frame() # Main Scheduling Window
+            self.display_inputs_frame()  # Main Scheduling Window
 
         elif self.can_physician:
             self.enter_referral_window()
@@ -94,7 +95,7 @@ class MainWindow(Schedule, Reschedule, Cancel,
         self.clear_inputs()
 
 
-#initializing app
+# initializing app
 app = QApplication(sys.argv)
 UIWindow = MainWindow(True, True)
 if __name__ == "__main__":

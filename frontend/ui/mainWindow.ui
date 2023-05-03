@@ -5732,7 +5732,7 @@ QLabel {
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="Referral_Practitoner">
+            <widget class="QComboBox" name="Referral_Practitioner">
              <property name="minimumSize">
               <size>
                <width>200</width>

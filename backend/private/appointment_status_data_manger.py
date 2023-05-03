@@ -21,7 +21,7 @@ class AppointmentStatusDataManger(DataManager):
             • Get appointments by 
                 • In Progress Status
                 • Pending Status
-                • Todays Appointments (For Checkin)
+                • Today's Appointments (For Checkin)
 
         It uses self.session for DB interactions
     """

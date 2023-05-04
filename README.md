@@ -48,4 +48,3 @@ You should either source all your files from run.py or use this to test everythi
  - Jessica Weeks (QA Developer)
  - Flora Cherotich (Database Technician)
  - Destan Hutcherson, Matthew Burrus (Program Analyst)
- - Adia Chue (Web Developer)

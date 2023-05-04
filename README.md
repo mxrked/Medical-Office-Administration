@@ -1,7 +1,7 @@
 
 # Medical Office Administration Program
 
-![Front Screen of this program](./frontend/ui/assets/imgs/log_in_screen.png)
+![Front Screen of this program](./frontend/ui/assets/imgs/log_in_screen.PNG)
 
 ## Features 
  - Set and Cancel Appointments

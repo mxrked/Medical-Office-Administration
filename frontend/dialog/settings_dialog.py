@@ -1,6 +1,6 @@
 
-
-from PyQt5.QtWidgets import QDateEdit, QComboBox, QDialog, QPushButton
+import sys
+from PyQt5.QtWidgets import QApplication, QComboBox, QDialog, QPushButton, QFileDialog
 from PyQt5 import uic, QtCore
 from backend.data_handler import load_objects_to_combo_box, get_selected_combo_box_object
 from backend.misc_dm import MiscDM
@@ -18,44 +18,64 @@ class SettingsDialog(QDialog):
         # Widgets
         self.save_btn = self.findChild(QPushButton, "settingsDialog_SaveBtn")
         self.locationsCombobox = self.findChild(QComboBox, "settingsLocationsComboBox")
-        self.todays_date_edit = self.findChild(QDateEdit, "settingsTodaysDateDateEdit")
+        self.summary_btn = self.findChild(QPushButton, "file_select")
 
-        self.todays_date = self.todays_date_edit.date().toPyDate()
-
-        self.save_btn.clicked.connect(self.save_settigns)
+        self.save_btn.clicked.connect(self.save_location)
 
         load_objects_to_combo_box(MiscDM().get_locations(), self.locationsCombobox)
 
-        self.save_btn.clicked.connect(self.save_settigns)
+        self.save_btn.clicked.connect(self.save_location)
+        self.summary_btn.clicked.connect(self.summary_dialog)
 
-        self.settings_json = ""
-
-    def save_settigns(self):
-
-        # We see if the file exists
+        # We need to see if the file exists to create self.settings_json
         try:
             with open("frontend/ui/assets/files/Settings.json", "r",
                       encoding='UTF-8') as settings_file:
                 file_contents = settings_file.read()
         
-            settings_json = json.loads(file_contents)
+            self.settings_json = json.loads(file_contents)
 
         # if it doesn't exist, we create a settings_json
         except FileNotFoundError:
             print("Settings not found")
-            settings_json = {
+            self.settings_json = {
                 "default_location_ID": "1",
-                "last_entered_user": ""
+                "last_entered_user": "",
+                "summary_filepath": "C:/Users/Public/Desktop",
             }
+
+
+    def save_location(self):
+
 
         # Make changes
         location = get_selected_combo_box_object(self.locationsCombobox)
         location_id = MiscDM().get_location_id(location)
-        settings_json["default_location_ID"] = location_id[0]
+        self.settings_json["default_location_ID"] = str(location_id[0])
 
         # Here we either create the file or modify the already existing file
         with open("frontend/ui/assets/files/Settings.json", "w",
                   encoding='UTF-8') as file:
-            json.dump(settings_json, file)
+            json.dump(self.settings_json, file)
 
         self.hide()
+
+    def summary_dialog(self):
+        dialog = QFileDialog()
+        dialog.setFileMode(QFileDialog.Directory)
+        dialog.setDirectory("C:/Users/Public/Desktop")
+        dialog.setOption(QFileDialog.ShowDirsOnly, True)
+
+        if dialog.exec() == QFileDialog.Accepted:
+            directory = dialog.selectedFiles()[0]
+            self.settings_json["summary_filepath"] = directory
+
+            with open("frontend/ui/assets/files/Settings.json", "w", encoding='UTF-8') as file:
+                json.dump(self.settings_json, file)
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = SettingsDialog()
+    window.show()
+    sys.exit(app.exec_())

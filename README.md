@@ -1,7 +1,7 @@
 
 # Medical Office Administration Program
 
-![Front Screen of this program](./frontend/ui/assets/imgs/front_screen_new.png)
+![Front Screen of this program](./frontend/ui/assets/imgs/log_in_screen.PNG)
 
 ## Features 
  - Set and Cancel Appointments
@@ -48,4 +48,3 @@ You should either source all your files from run.py or use this to test everythi
  - Jessica Weeks (QA Developer)
  - Flora Cherotich (Database Technician)
  - Destan Hutcherson, Matthew Burrus (Program Analyst)
- - Adia Chue (Web Developer)

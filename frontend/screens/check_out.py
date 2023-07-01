@@ -3,6 +3,7 @@ Checkout.py - A window to handle in checking out appointments for the clinic
 UI Designed by: Jessica Weeks
 Authors:
 """
+from os import path
 from PyQt5.QtWidgets import QListWidget, QComboBox, QPushButton
 from frontend.private.utility import Utility
 from backend.data_handler import get_selected_combo_box_object, get_selected_list_object, load_objects_to_list
@@ -98,4 +99,20 @@ class CheckOut(Utility):
 
         Something about views in the DB, I don't know
         """
-        print(self.download_summary.__doc__)
+        appointment = get_selected_list_object(self.check_out_list)
+
+        if not appointment:
+            self.load_error("Not selecting appointment.")
+            return
+        
+        pdf = self.user_dm.get_summary_info(appointment)
+
+        filepath = self.settings_json["summary_filepath"]
+        
+        if path.exists(filepath):
+            pdf.output(f"{filepath}/summary.pdf")
+            self.load_error("File Downloaded to \n %s" % self.settings_json["summary_filepath"])
+        else:
+            self.load_error("Summary Folder not found.")
+
+        

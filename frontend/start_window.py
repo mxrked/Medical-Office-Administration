@@ -74,11 +74,14 @@ class Start(QMainWindow):
             print("Settings not found")
             self.settings_json = {
                 "default_location_ID": "1",
-                "last_entered_user": ""
+                "last_entered_user": "",
+                "summary_filepath": "C:/Users/Public/Desktop",
             }
             with open("frontend/ui/assets/files/Settings.json", "w",
                       encoding='UTF-8') as file:
                 json.dump(self.settings_json, file)
+
+            self.settings_json = json.loads(file_contents)
 
     def displayInfoDialog(self):
         """ This is used to display a dialog popup listing the different team members and their roles """
@@ -184,6 +187,13 @@ class Start(QMainWindow):
                 if not can_login:
                     self.loginOutputLabel.show()
                     return None
+
+            # We need to reload settings_json incase it was changed
+            with open("frontend/ui/assets/files/Settings.json", "r", 
+                      encoding='UTF-8') as settings_file:
+                file_contents = settings_file.read()
+        
+            self.settings_json = json.loads(file_contents)
 
             # Save Last User
             self.settings_json["last_entered_user"] = userName_Text

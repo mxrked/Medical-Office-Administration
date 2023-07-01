@@ -1,0 +1,3 @@
+('C:\\Users\\27par\\Desktop\\Github '
+ 'Repos\\Medical-Office-Administration\\build\\run\\PYZ-00.pyz',
+ [])

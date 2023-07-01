@@ -1,0 +1,2528 @@
+([('run.exe',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\run.exe',
+   'EXECUTABLE'),
+  ('api-ms-win-crt-math-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-crt-math-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-heap-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-crt-heap-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-locale-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-crt-locale-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-runtime-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-crt-runtime-l1-1-0.dll',
+   'BINARY'),
+  ('python311.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\python311.dll',
+   'BINARY'),
+  ('api-ms-win-crt-stdio-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-crt-stdio-l1-1-0.dll',
+   'BINARY'),
+  ('VCRUNTIME140.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('ucrtbase.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\ucrtbase.dll',
+   'BINARY'),
+  ('api-ms-win-crt-environment-l1-1-0.dll',
+   'C:\\Program '
+   'Files\\Java\\jdk-20\\bin\\api-ms-win-crt-environment-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-time-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-crt-time-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-string-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-crt-string-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-process-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-crt-process-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-convert-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-crt-convert-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-filesystem-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-crt-filesystem-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-conio-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-crt-conio-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-timezone-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-timezone-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-memory-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-memory-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-libraryloader-l1-1-0.dll',
+   'C:\\Program '
+   'Files\\Java\\jdk-20\\bin\\api-ms-win-core-libraryloader-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-synch-l1-2-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-synch-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processenvironment-l1-1-0.dll',
+   'C:\\Program '
+   'Files\\Java\\jdk-20\\bin\\api-ms-win-core-processenvironment-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-console-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-console-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processthreads-l1-1-1.dll',
+   'C:\\Program '
+   'Files\\Java\\jdk-20\\bin\\api-ms-win-core-processthreads-l1-1-1.dll',
+   'BINARY'),
+  ('api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'C:\\Program '
+   'Files\\Java\\jdk-20\\bin\\api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-util-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-util-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-localization-l1-2-0.dll',
+   'C:\\Program '
+   'Files\\Java\\jdk-20\\bin\\api-ms-win-core-localization-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-namedpipe-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-namedpipe-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-handle-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-handle-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-profile-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-profile-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l2-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-file-l2-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-errorhandling-l1-1-0.dll',
+   'C:\\Program '
+   'Files\\Java\\jdk-20\\bin\\api-ms-win-core-errorhandling-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-synch-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-synch-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-sysinfo-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-sysinfo-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-string-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-string-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processthreads-l1-1-0.dll',
+   'C:\\Program '
+   'Files\\Java\\jdk-20\\bin\\api-ms-win-core-processthreads-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-file-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l1-2-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-file-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-interlocked-l1-1-0.dll',
+   'C:\\Program '
+   'Files\\Java\\jdk-20\\bin\\api-ms-win-core-interlocked-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-debug-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-debug-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-datetime-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-datetime-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-heap-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-core-heap-l1-1-0.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\d3dcompiler_47.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\d3dcompiler_47.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\platforms\\qminimal.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\platforms\\qminimal.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\platforms\\qwebgl.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\platforms\\qwebgl.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\imageformats\\qwbmp.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\imageformats\\qwbmp.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\iconengines\\qsvgicon.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\iconengines\\qsvgicon.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\libEGL.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\libEGL.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\imageformats\\qtiff.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\imageformats\\qtiff.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\styles\\qwindowsvistastyle.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\styles\\qwindowsvistastyle.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\imageformats\\qjpeg.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\imageformats\\qjpeg.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\imageformats\\qgif.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\imageformats\\qgif.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\imageformats\\qico.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\imageformats\\qico.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\platformthemes\\qxdgdesktopportal.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\platformthemes\\qxdgdesktopportal.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\imageformats\\qwebp.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\imageformats\\qwebp.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\imageformats\\qsvg.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\imageformats\\qsvg.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\platforms\\qwindows.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\platforms\\qwindows.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\libGLESv2.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\libGLESv2.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\platforms\\qoffscreen.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\platforms\\qoffscreen.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\imageformats\\qtga.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\imageformats\\qtga.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\generic\\qtuiotouchplugin.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\generic\\qtuiotouchplugin.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\plugins\\imageformats\\qicns.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\plugins\\imageformats\\qicns.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\opengl32sw.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\opengl32sw.dll',
+   'BINARY'),
+  ('_multiprocessing.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\_multiprocessing.pyd',
+   'EXTENSION'),
+  ('pyexpat.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\pyexpat.pyd',
+   'EXTENSION'),
+  ('_ssl.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\_ssl.pyd',
+   'EXTENSION'),
+  ('_hashlib.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\_hashlib.pyd',
+   'EXTENSION'),
+  ('_decimal.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\_decimal.pyd',
+   'EXTENSION'),
+  ('_socket.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\_socket.pyd',
+   'EXTENSION'),
+  ('select.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\select.pyd',
+   'EXTENSION'),
+  ('_lzma.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\_lzma.pyd',
+   'EXTENSION'),
+  ('_bz2.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\_bz2.pyd',
+   'EXTENSION'),
+  ('_ctypes.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\_ctypes.pyd',
+   'EXTENSION'),
+  ('_queue.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\_queue.pyd',
+   'EXTENSION'),
+  ('PyQt5\\sip.cp311-win_amd64.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\sip.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('_elementtree.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\_elementtree.pyd',
+   'EXTENSION'),
+  ('PyQt5\\QtWidgets.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\QtWidgets.pyd',
+   'EXTENSION'),
+  ('PyQt5\\QtCore.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\QtCore.pyd',
+   'EXTENSION'),
+  ('PyQt5\\QtGui.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\QtGui.pyd',
+   'EXTENSION'),
+  ('pyodbc.cp311-win_amd64.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\pyodbc.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('greenlet\\_greenlet.cp311-win_amd64.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\greenlet\\_greenlet.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('unicodedata.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\unicodedata.pyd',
+   'EXTENSION'),
+  ('sqlalchemy\\cyextension\\resultproxy.cp311-win_amd64.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\sqlalchemy\\cyextension\\resultproxy.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('sqlalchemy\\cyextension\\util.cp311-win_amd64.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\sqlalchemy\\cyextension\\util.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('sqlalchemy\\cyextension\\processors.cp311-win_amd64.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\sqlalchemy\\cyextension\\processors.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('sqlalchemy\\cyextension\\immutabledict.cp311-win_amd64.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\sqlalchemy\\cyextension\\immutabledict.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('sqlalchemy\\cyextension\\collections.cp311-win_amd64.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\sqlalchemy\\cyextension\\collections.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('_overlapped.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\_overlapped.pyd',
+   'EXTENSION'),
+  ('_asyncio.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\_asyncio.pyd',
+   'EXTENSION'),
+  ('_uuid.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\_uuid.pyd',
+   'EXTENSION'),
+  ('_sqlite3.pyd',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\_sqlite3.pyd',
+   'EXTENSION'),
+  ('api-ms-win-crt-utility-l1-1-0.dll',
+   'C:\\Program Files\\Java\\jdk-20\\bin\\api-ms-win-crt-utility-l1-1-0.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\Qt5Gui.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\Qt5Gui.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\Qt5Core.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\Qt5Core.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\MSVCP140.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\MSVCP140.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\Qt5Network.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\Qt5Network.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\Qt5Quick.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\Qt5Quick.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\Qt5WebSockets.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\Qt5WebSockets.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\Qt5Svg.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\Qt5Svg.dll',
+   'BINARY'),
+  ('VCRUNTIME140_1.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\VCRUNTIME140_1.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\Qt5Widgets.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\Qt5Widgets.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\Qt5DBus.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\Qt5DBus.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\VCRUNTIME140_1.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\VCRUNTIME140_1.dll',
+   'BINARY'),
+  ('libssl-1_1.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\libssl-1_1.dll',
+   'BINARY'),
+  ('libcrypto-1_1.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\libcrypto-1_1.dll',
+   'BINARY'),
+  ('libffi-8.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\libffi-8.dll',
+   'BINARY'),
+  ('python3.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\python3.dll',
+   'BINARY'),
+  ('sqlite3.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\DLLs\\sqlite3.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\MSVCP140_1.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\MSVCP140_1.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\Qt5QmlModels.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\Qt5QmlModels.dll',
+   'BINARY'),
+  ('PyQt5\\Qt5\\bin\\Qt5Qml.dll',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\bin\\Qt5Qml.dll',
+   'BINARY'),
+  ('base_library.zip',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\base_library.zip',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_ca.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_ca.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_hu.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_hu.qm',
+   'DATA'),
+  ('PyQt5\\uic\\widget-plugins\\__pycache__\\qtcharts.cpython-311.pyc',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\uic\\widget-plugins\\__pycache__\\qtcharts.cpython-311.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\widget-plugins\\__pycache__\\qtwebkit.cpython-311.pyc',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\uic\\widget-plugins\\__pycache__\\qtwebkit.cpython-311.pyc',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_de.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_de.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_sk.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_sk.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_es.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_es.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_bg.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_bg.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_ru.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_ru.qm',
+   'DATA'),
+  ('PyQt5\\uic\\widget-plugins\\qtwebkit.py',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\uic\\widget-plugins\\qtwebkit.py',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_zh_TW.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_zh_TW.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_en.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_en.qm',
+   'DATA'),
+  ('PyQt5\\uic\\widget-plugins\\qtwebenginewidgets.py',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\uic\\widget-plugins\\qtwebenginewidgets.py',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_da.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_da.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_pl.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_pl.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_fi.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_fi.qm',
+   'DATA'),
+  ('PyQt5\\uic\\widget-plugins\\qtprintsupport.py',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\uic\\widget-plugins\\qtprintsupport.py',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_lv.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_lv.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_ko.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_ko.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_he.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_he.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_ja.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_ja.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_gd.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_gd.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_fr.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_fr.qm',
+   'DATA'),
+  ('PyQt5\\uic\\widget-plugins\\qscintilla.py',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\uic\\widget-plugins\\qscintilla.py',
+   'DATA'),
+  ('PyQt5\\uic\\widget-plugins\\qtquickwidgets.py',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\uic\\widget-plugins\\qtquickwidgets.py',
+   'DATA'),
+  ('PyQt5\\uic\\widget-plugins\\qtcharts.py',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\uic\\widget-plugins\\qtcharts.py',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_cs.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_cs.qm',
+   'DATA'),
+  ('PyQt5\\uic\\widget-plugins\\qaxcontainer.py',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\uic\\widget-plugins\\qaxcontainer.py',
+   'DATA'),
+  ('PyQt5\\uic\\widget-plugins\\__pycache__\\qtquickwidgets.cpython-311.pyc',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\uic\\widget-plugins\\__pycache__\\qtquickwidgets.cpython-311.pyc',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_ar.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_ar.qm',
+   'DATA'),
+  ('PyQt5\\uic\\widget-plugins\\__pycache__\\qtprintsupport.cpython-311.pyc',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\uic\\widget-plugins\\__pycache__\\qtprintsupport.cpython-311.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\widget-plugins\\__pycache__\\qscintilla.cpython-311.pyc',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\uic\\widget-plugins\\__pycache__\\qscintilla.cpython-311.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\widget-plugins\\__pycache__\\qtwebenginewidgets.cpython-311.pyc',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\uic\\widget-plugins\\__pycache__\\qtwebenginewidgets.cpython-311.pyc',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_tr.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_tr.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_it.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_it.qm',
+   'DATA'),
+  ('PyQt5\\Qt5\\translations\\qtbase_uk.qm',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\Qt5\\translations\\qtbase_uk.qm',
+   'DATA'),
+  ('PyQt5\\uic\\widget-plugins\\__pycache__\\qaxcontainer.cpython-311.pyc',
+   'C:\\Users\\27par\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\PyQt5\\uic\\widget-plugins\\__pycache__\\qaxcontainer.cpython-311.pyc',
+   'DATA'),
+  ('multiprocessing\\popen_spawn_posix.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\popen_spawn_posix.pyc',
+   'DATA'),
+  ('multiprocessing\\resource_tracker.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\resource_tracker.pyc',
+   'DATA'),
+  ('signal.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\signal.pyc',
+   'DATA'),
+  ('multiprocessing\\util.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\util.pyc',
+   'DATA'),
+  ('multiprocessing\\forkserver.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\forkserver.pyc',
+   'DATA'),
+  ('multiprocessing\\connection.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\connection.pyc',
+   'DATA'),
+  ('multiprocessing\\resource_sharer.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\resource_sharer.pyc',
+   'DATA'),
+  ('xmlrpc\\client.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xmlrpc\\client.pyc',
+   'DATA'),
+  ('xmlrpc\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xmlrpc\\__init__.pyc',
+   'DATA'),
+  ('gzip.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\gzip.pyc',
+   'DATA'),
+  ('argparse.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\argparse.pyc',
+   'DATA'),
+  ('textwrap.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\textwrap.pyc',
+   'DATA'),
+  ('copy.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\copy.pyc',
+   'DATA'),
+  ('gettext.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\gettext.pyc',
+   'DATA'),
+  ('_compression.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\_compression.pyc',
+   'DATA'),
+  ('xml\\parsers\\expat.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xml\\parsers\\expat.pyc',
+   'DATA'),
+  ('xml\\parsers\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xml\\parsers\\__init__.pyc',
+   'DATA'),
+  ('xml\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xml\\__init__.pyc',
+   'DATA'),
+  ('xml\\sax\\expatreader.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xml\\sax\\expatreader.pyc',
+   'DATA'),
+  ('xml\\sax\\saxutils.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xml\\sax\\saxutils.pyc',
+   'DATA'),
+  ('xml\\sax\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xml\\sax\\__init__.pyc',
+   'DATA'),
+  ('xml\\sax\\handler.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xml\\sax\\handler.pyc',
+   'DATA'),
+  ('xml\\sax\\_exceptions.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xml\\sax\\_exceptions.pyc',
+   'DATA'),
+  ('xml\\sax\\xmlreader.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xml\\sax\\xmlreader.pyc',
+   'DATA'),
+  ('http\\client.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\http\\client.pyc',
+   'DATA'),
+  ('ssl.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\ssl.pyc',
+   'DATA'),
+  ('calendar.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\calendar.pyc',
+   'DATA'),
+  ('http\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\http\\__init__.pyc',
+   'DATA'),
+  ('email\\message.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\message.pyc',
+   'DATA'),
+  ('email\\policy.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\policy.pyc',
+   'DATA'),
+  ('email\\contentmanager.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\contentmanager.pyc',
+   'DATA'),
+  ('email\\quoprimime.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\quoprimime.pyc',
+   'DATA'),
+  ('string.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\string.pyc',
+   'DATA'),
+  ('email\\headerregistry.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\headerregistry.pyc',
+   'DATA'),
+  ('email\\_header_value_parser.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\_header_value_parser.pyc',
+   'DATA'),
+  ('email\\iterators.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\iterators.pyc',
+   'DATA'),
+  ('email\\generator.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\generator.pyc',
+   'DATA'),
+  ('random.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\random.pyc',
+   'DATA'),
+  ('statistics.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\statistics.pyc',
+   'DATA'),
+  ('fractions.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\fractions.pyc',
+   'DATA'),
+  ('numbers.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\numbers.pyc',
+   'DATA'),
+  ('hashlib.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\hashlib.pyc',
+   'DATA'),
+  ('bisect.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\bisect.pyc',
+   'DATA'),
+  ('email\\_encoded_words.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\_encoded_words.pyc',
+   'DATA'),
+  ('email\\charset.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\charset.pyc',
+   'DATA'),
+  ('email\\encoders.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\encoders.pyc',
+   'DATA'),
+  ('email\\base64mime.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\base64mime.pyc',
+   'DATA'),
+  ('email\\_policybase.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\_policybase.pyc',
+   'DATA'),
+  ('email\\header.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\header.pyc',
+   'DATA'),
+  ('email\\errors.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\errors.pyc',
+   'DATA'),
+  ('email\\utils.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\utils.pyc',
+   'DATA'),
+  ('email\\_parseaddr.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\_parseaddr.pyc',
+   'DATA'),
+  ('email\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\__init__.pyc',
+   'DATA'),
+  ('quopri.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\quopri.pyc',
+   'DATA'),
+  ('getopt.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\getopt.pyc',
+   'DATA'),
+  ('email\\parser.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\parser.pyc',
+   'DATA'),
+  ('email\\feedparser.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\email\\feedparser.pyc',
+   'DATA'),
+  ('decimal.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\decimal.pyc',
+   'DATA'),
+  ('_pydecimal.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\_pydecimal.pyc',
+   'DATA'),
+  ('contextvars.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\contextvars.pyc',
+   'DATA'),
+  ('base64.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\base64.pyc',
+   'DATA'),
+  ('hmac.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\hmac.pyc',
+   'DATA'),
+  ('_strptime.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\_strptime.pyc',
+   'DATA'),
+  ('struct.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\struct.pyc',
+   'DATA'),
+  ('socket.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\socket.pyc',
+   'DATA'),
+  ('selectors.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\selectors.pyc',
+   'DATA'),
+  ('tempfile.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\tempfile.pyc',
+   'DATA'),
+  ('shutil.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\shutil.pyc',
+   'DATA'),
+  ('zipfile.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\zipfile.pyc',
+   'DATA'),
+  ('py_compile.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\py_compile.pyc',
+   'DATA'),
+  ('importlib\\machinery.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\machinery.pyc',
+   'DATA'),
+  ('importlib\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\__init__.pyc',
+   'DATA'),
+  ('importlib\\_bootstrap.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\_bootstrap.pyc',
+   'DATA'),
+  ('importlib\\_bootstrap_external.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\_bootstrap_external.pyc',
+   'DATA'),
+  ('importlib\\metadata\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\metadata\\__init__.pyc',
+   'DATA'),
+  ('typing.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\typing.pyc',
+   'DATA'),
+  ('importlib\\abc.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\abc.pyc',
+   'DATA'),
+  ('importlib\\resources\\abc.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\resources\\abc.pyc',
+   'DATA'),
+  ('importlib\\resources\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\resources\\__init__.pyc',
+   'DATA'),
+  ('importlib\\resources\\_legacy.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\resources\\_legacy.pyc',
+   'DATA'),
+  ('importlib\\resources\\_common.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\resources\\_common.pyc',
+   'DATA'),
+  ('importlib\\resources\\_adapters.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\resources\\_adapters.pyc',
+   'DATA'),
+  ('importlib\\_abc.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\_abc.pyc',
+   'DATA'),
+  ('importlib\\metadata\\_itertools.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\metadata\\_itertools.pyc',
+   'DATA'),
+  ('importlib\\metadata\\_functools.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\metadata\\_functools.pyc',
+   'DATA'),
+  ('importlib\\metadata\\_collections.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\metadata\\_collections.pyc',
+   'DATA'),
+  ('importlib\\metadata\\_meta.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\metadata\\_meta.pyc',
+   'DATA'),
+  ('importlib\\metadata\\_adapters.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\metadata\\_adapters.pyc',
+   'DATA'),
+  ('importlib\\metadata\\_text.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\metadata\\_text.pyc',
+   'DATA'),
+  ('csv.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\csv.pyc',
+   'DATA'),
+  ('importlib\\readers.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\readers.pyc',
+   'DATA'),
+  ('importlib\\resources\\readers.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\resources\\readers.pyc',
+   'DATA'),
+  ('importlib\\resources\\_itertools.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\resources\\_itertools.pyc',
+   'DATA'),
+  ('contextlib.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\contextlib.pyc',
+   'DATA'),
+  ('importlib\\util.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\importlib\\util.pyc',
+   'DATA'),
+  ('tarfile.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\tarfile.pyc',
+   'DATA'),
+  ('lzma.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\lzma.pyc',
+   'DATA'),
+  ('bz2.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\bz2.pyc',
+   'DATA'),
+  ('logging\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\logging\\__init__.pyc',
+   'DATA'),
+  ('pickle.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\pickle.pyc',
+   'DATA'),
+  ('pprint.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\pprint.pyc',
+   'DATA'),
+  ('dataclasses.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\dataclasses.pyc',
+   'DATA'),
+  ('inspect.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\inspect.pyc',
+   'DATA'),
+  ('dis.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\dis.pyc',
+   'DATA'),
+  ('opcode.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\opcode.pyc',
+   'DATA'),
+  ('ast.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\ast.pyc',
+   'DATA'),
+  ('_compat_pickle.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\_compat_pickle.pyc',
+   'DATA'),
+  ('multiprocessing\\process.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\process.pyc',
+   'DATA'),
+  ('multiprocessing\\context.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\context.pyc',
+   'DATA'),
+  ('multiprocessing\\popen_forkserver.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\popen_forkserver.pyc',
+   'DATA'),
+  ('multiprocessing\\sharedctypes.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\sharedctypes.pyc',
+   'DATA'),
+  ('multiprocessing\\heap.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\heap.pyc',
+   'DATA'),
+  ('ctypes\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\ctypes\\__init__.pyc',
+   'DATA'),
+  ('ctypes\\_endian.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\ctypes\\_endian.pyc',
+   'DATA'),
+  ('multiprocessing\\pool.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\pool.pyc',
+   'DATA'),
+  ('multiprocessing\\dummy\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\dummy\\__init__.pyc',
+   'DATA'),
+  ('multiprocessing\\dummy\\connection.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\dummy\\connection.pyc',
+   'DATA'),
+  ('queue.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\queue.pyc',
+   'DATA'),
+  ('multiprocessing\\queues.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\queues.pyc',
+   'DATA'),
+  ('multiprocessing\\synchronize.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\synchronize.pyc',
+   'DATA'),
+  ('multiprocessing\\managers.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\managers.pyc',
+   'DATA'),
+  ('multiprocessing\\shared_memory.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\shared_memory.pyc',
+   'DATA'),
+  ('secrets.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\secrets.pyc',
+   'DATA'),
+  ('multiprocessing\\reduction.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\reduction.pyc',
+   'DATA'),
+  ('multiprocessing\\popen_fork.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\popen_fork.pyc',
+   'DATA'),
+  ('multiprocessing\\popen_spawn_win32.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\popen_spawn_win32.pyc',
+   'DATA'),
+  ('subprocess.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\subprocess.pyc',
+   'DATA'),
+  ('multiprocessing\\spawn.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\spawn.pyc',
+   'DATA'),
+  ('runpy.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\runpy.pyc',
+   'DATA'),
+  ('pkgutil.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\pkgutil.pyc',
+   'DATA'),
+  ('zipimport.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\zipimport.pyc',
+   'DATA'),
+  ('multiprocessing\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\multiprocessing\\__init__.pyc',
+   'DATA'),
+  ('threading.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\threading.pyc',
+   'DATA'),
+  ('_threading_local.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\_threading_local.pyc',
+   'DATA'),
+  ('typing_extensions.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\typing_extensions.pyc',
+   'DATA'),
+  ('PyQt5\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\__init__.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\__init__.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\objcreator.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\objcreator.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\exceptions.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\exceptions.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\Loader\\loader.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\Loader\\loader.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\Loader\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\Loader\\__init__.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\Loader\\qobjectcreator.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\Loader\\qobjectcreator.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\uiparser.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\uiparser.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\properties.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\properties.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\port_v3\\ascii_upper.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\port_v3\\ascii_upper.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\port_v3\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\port_v3\\__init__.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\icon_cache.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\icon_cache.pyc',
+   'DATA'),
+  ('xml\\etree\\ElementTree.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xml\\etree\\ElementTree.pyc',
+   'DATA'),
+  ('xml\\etree\\cElementTree.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xml\\etree\\cElementTree.pyc',
+   'DATA'),
+  ('xml\\etree\\ElementInclude.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xml\\etree\\ElementInclude.pyc',
+   'DATA'),
+  ('xml\\etree\\ElementPath.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xml\\etree\\ElementPath.pyc',
+   'DATA'),
+  ('xml\\etree\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\xml\\etree\\__init__.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\port_v2\\string_io.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\port_v2\\string_io.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\port_v2\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\port_v2\\__init__.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\port_v3\\string_io.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\port_v3\\string_io.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\Compiler\\compiler.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\Compiler\\compiler.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\Compiler\\qobjectcreator.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\Compiler\\qobjectcreator.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\port_v2\\as_string.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\port_v2\\as_string.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\port_v3\\as_string.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\port_v3\\as_string.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\Compiler\\qtproxies.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\Compiler\\qtproxies.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\port_v2\\proxy_base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\port_v2\\proxy_base.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\Compiler\\proxy_metaclass.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\Compiler\\proxy_metaclass.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\port_v3\\proxy_base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\port_v3\\proxy_base.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\Compiler\\misc.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\Compiler\\misc.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\Compiler\\indenter.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\Compiler\\indenter.pyc',
+   'DATA'),
+  ('PyQt5\\uic\\Compiler\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\PyQt5\\uic\\Compiler\\__init__.pyc',
+   'DATA'),
+  ('greenlet\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\greenlet\\__init__.pyc',
+   'DATA'),
+  ('__future__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\__future__.pyc',
+   'DATA'),
+  ('tracemalloc.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\tracemalloc.pyc',
+   'DATA'),
+  ('_py_abc.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\_py_abc.pyc',
+   'DATA'),
+  ('stringprep.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\stringprep.pyc',
+   'DATA'),
+  ('getpass.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\getpass.pyc',
+   'DATA'),
+  ('nturl2path.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\nturl2path.pyc',
+   'DATA'),
+  ('ftplib.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\ftplib.pyc',
+   'DATA'),
+  ('netrc.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\netrc.pyc',
+   'DATA'),
+  ('shlex.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\shlex.pyc',
+   'DATA'),
+  ('mimetypes.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\mimetypes.pyc',
+   'DATA'),
+  ('http\\cookiejar.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\http\\cookiejar.pyc',
+   'DATA'),
+  ('frontend\\start_window.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\start_window.pyc',
+   'DATA'),
+  ('frontend\\main_window.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\main_window.pyc',
+   'DATA'),
+  ('frontend\\screens\\patient.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\screens\\patient.pyc',
+   'DATA'),
+  ('frontend\\private\\utility.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\private\\utility.pyc',
+   'DATA'),
+  ('frontend\\dialog\\patients_dialog.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\dialog\\patients_dialog.pyc',
+   'DATA'),
+  ('frontend\\private\\nav.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\private\\nav.pyc',
+   'DATA'),
+  ('backend\\data_handler.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\backend\\data_handler.pyc',
+   'DATA'),
+  ('backend\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\backend\\__init__.pyc',
+   'DATA'),
+  ('backend\\appointment_dm.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\backend\\appointment_dm.pyc',
+   'DATA'),
+  ('backend\\private\\appointment_status_data_manger.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\backend\\private\\appointment_status_data_manger.pyc',
+   'DATA'),
+  ('backend\\private\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\backend\\private\\__init__.pyc',
+   'DATA'),
+  ('backend\\private\\data_manager.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\backend\\private\\data_manager.pyc',
+   'DATA'),
+  ('backend\\connection_string.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\backend\\connection_string.pyc',
+   'DATA'),
+  ('sqlalchemy\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\sqlite\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\sqlite\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\sqlite\\dml.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\sqlite\\dml.pyc',
+   'DATA'),
+  ('sqlalchemy\\util\\typing.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\util\\typing.pyc',
+   'DATA'),
+  ('sqlalchemy\\util\\compat.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\util\\compat.pyc',
+   'DATA'),
+  ('platform.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\platform.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\elements.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\elements.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\result.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\result.pyc',
+   'DATA'),
+  ('sqlalchemy\\cyextension\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\cyextension\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\_py_row.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\_py_row.pyc',
+   'DATA'),
+  ('sqlalchemy\\util\\_has_cy.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\util\\_has_cy.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\row.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\row.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\util.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\util.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\ddl.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\ddl.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\base.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\url.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\url.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\reflection.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\reflection.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\util.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\util.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\_py_util.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\_py_util.pyc',
+   'DATA'),
+  ('sqlalchemy\\util\\topological.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\util\\topological.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\interfaces.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\interfaces.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\cursor.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\cursor.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\default.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\default.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\characteristics.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\characteristics.pyc',
+   'DATA'),
+  ('sqlalchemy\\util\\concurrency.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\util\\concurrency.pyc',
+   'DATA'),
+  ('sqlalchemy\\util\\_concurrency_py3k.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\util\\_concurrency_py3k.pyc',
+   'DATA'),
+  ('sqlalchemy\\util\\langhelpers.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\util\\langhelpers.pyc',
+   'DATA'),
+  ('sqlalchemy\\util\\_collections.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\util\\_collections.pyc',
+   'DATA'),
+  ('sqlalchemy\\util\\_py_collections.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\util\\_py_collections.pyc',
+   'DATA'),
+  ('asyncio\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\__init__.pyc',
+   'DATA'),
+  ('asyncio\\unix_events.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\unix_events.pyc',
+   'DATA'),
+  ('asyncio\\log.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\log.pyc',
+   'DATA'),
+  ('asyncio\\windows_events.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\windows_events.pyc',
+   'DATA'),
+  ('asyncio\\windows_utils.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\windows_utils.pyc',
+   'DATA'),
+  ('asyncio\\selector_events.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\selector_events.pyc',
+   'DATA'),
+  ('asyncio\\proactor_events.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\proactor_events.pyc',
+   'DATA'),
+  ('asyncio\\base_subprocess.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\base_subprocess.pyc',
+   'DATA'),
+  ('asyncio\\threads.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\threads.pyc',
+   'DATA'),
+  ('asyncio\\timeouts.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\timeouts.pyc',
+   'DATA'),
+  ('asyncio\\taskgroups.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\taskgroups.pyc',
+   'DATA'),
+  ('asyncio\\subprocess.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\subprocess.pyc',
+   'DATA'),
+  ('asyncio\\streams.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\streams.pyc',
+   'DATA'),
+  ('asyncio\\queues.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\queues.pyc',
+   'DATA'),
+  ('asyncio\\runners.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\runners.pyc',
+   'DATA'),
+  ('asyncio\\base_events.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\base_events.pyc',
+   'DATA'),
+  ('concurrent\\futures\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\concurrent\\futures\\__init__.pyc',
+   'DATA'),
+  ('concurrent\\futures\\thread.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\concurrent\\futures\\thread.pyc',
+   'DATA'),
+  ('concurrent\\futures\\process.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\concurrent\\futures\\process.pyc',
+   'DATA'),
+  ('concurrent\\futures\\_base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\concurrent\\futures\\_base.pyc',
+   'DATA'),
+  ('concurrent\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\concurrent\\__init__.pyc',
+   'DATA'),
+  ('asyncio\\trsock.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\trsock.pyc',
+   'DATA'),
+  ('asyncio\\staggered.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\staggered.pyc',
+   'DATA'),
+  ('asyncio\\tasks.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\tasks.pyc',
+   'DATA'),
+  ('asyncio\\locks.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\locks.pyc',
+   'DATA'),
+  ('asyncio\\base_tasks.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\base_tasks.pyc',
+   'DATA'),
+  ('asyncio\\mixins.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\mixins.pyc',
+   'DATA'),
+  ('asyncio\\sslproto.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\sslproto.pyc',
+   'DATA'),
+  ('asyncio\\transports.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\transports.pyc',
+   'DATA'),
+  ('asyncio\\protocols.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\protocols.pyc',
+   'DATA'),
+  ('asyncio\\futures.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\futures.pyc',
+   'DATA'),
+  ('asyncio\\base_futures.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\base_futures.pyc',
+   'DATA'),
+  ('asyncio\\exceptions.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\exceptions.pyc',
+   'DATA'),
+  ('asyncio\\events.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\events.pyc',
+   'DATA'),
+  ('asyncio\\format_helpers.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\format_helpers.pyc',
+   'DATA'),
+  ('asyncio\\coroutines.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\coroutines.pyc',
+   'DATA'),
+  ('asyncio\\constants.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\asyncio\\constants.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\sqltypes.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\sqltypes.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\processors.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\processors.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\_py_processors.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\_py_processors.pyc',
+   'DATA'),
+  ('uuid.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\uuid.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\selectable.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\selectable.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\schema.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\schema.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\mock.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\mock.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\functions.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\functions.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\compiler.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\compiler.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\crud.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\crud.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\visitors.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\visitors.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\_py_util.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\_py_util.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\cache_key.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\cache_key.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\annotation.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\annotation.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\_typing.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\_typing.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\lambdas.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\lambdas.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\type_api.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\type_api.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\traversals.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\traversals.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\operators.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\operators.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\dml.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\dml.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\base.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\_orm_types.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\_orm_types.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\roles.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\roles.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\coercions.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\coercions.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\sqlite\\pysqlite.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\sqlite\\pysqlite.pyc',
+   'DATA'),
+  ('sqlite3\\dbapi2.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlite3\\dbapi2.pyc',
+   'DATA'),
+  ('sqlite3\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlite3\\__init__.pyc',
+   'DATA'),
+  ('sqlite3\\dump.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlite3\\dump.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\sqlite\\pysqlcipher.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\sqlite\\pysqlcipher.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\sqlite\\base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\sqlite\\base.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\sqlite\\json.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\sqlite\\json.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\sqlite\\aiosqlite.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\sqlite\\aiosqlite.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\types.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\types.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\named_types.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\named_types.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\ext.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\ext.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\dml.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\dml.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\array.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\array.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\psycopg2cffi.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\psycopg2cffi.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\psycopg2.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\psycopg2.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\_psycopg_common.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\_psycopg_common.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\psycopg.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\psycopg.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\pg8000.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\pg8000.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\base.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\asyncpg.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\asyncpg.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\pg_catalog.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\pg_catalog.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\hstore.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\hstore.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\ranges.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\ranges.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\postgresql\\json.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\postgresql\\json.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\oracle\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\oracle\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\oracle\\oracledb.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\oracle\\oracledb.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\oracle\\cx_oracle.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\oracle\\cx_oracle.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\oracle\\types.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\oracle\\types.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\oracle\\base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\oracle\\base.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\oracle\\dictionary.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\oracle\\dictionary.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\expression.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\expression.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\dml.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\dml.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\pyodbc.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\pyodbc.pyc',
+   'DATA'),
+  ('sqlalchemy\\connectors\\pyodbc.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\connectors\\pyodbc.pyc',
+   'DATA'),
+  ('sqlalchemy\\connectors\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\connectors\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\types.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\types.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\pymysql.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\pymysql.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\mysqldb.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\mysqldb.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\mysqlconnector.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\mysqlconnector.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\mariadbconnector.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\mariadbconnector.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\cymysql.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\cymysql.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\base.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\reserved_words.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\reserved_words.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\json.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\json.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\enumerated.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\enumerated.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\asyncmy.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\asyncmy.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\aiomysql.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\aiomysql.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mysql\\reflection.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mysql\\reflection.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mssql\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mssql\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mssql\\pyodbc.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mssql\\pyodbc.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mssql\\json.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mssql\\json.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mssql\\pymssql.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mssql\\pymssql.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mssql\\information_schema.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mssql\\information_schema.pyc',
+   'DATA'),
+  ('sqlalchemy\\ext\\compiler.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\ext\\compiler.pyc',
+   'DATA'),
+  ('sqlalchemy\\ext\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\ext\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\mssql\\base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\mssql\\base.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\default_comparator.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\default_comparator.pyc',
+   'DATA'),
+  ('sqlalchemy\\ext\\baked.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\ext\\baked.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\session.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\session.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\path_registry.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\path_registry.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\util.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\util.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\relationships.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\relationships.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\strategies.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\strategies.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\properties.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\properties.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\dependency.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\dependency.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\sync.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\sync.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\decl_base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\decl_base.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\decl_api.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\decl_api.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\_orm_constructors.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\_orm_constructors.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\instrumentation.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\instrumentation.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\events.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\events.pyc',
+   'DATA'),
+  ('sqlalchemy\\event\\base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\event\\base.pyc',
+   'DATA'),
+  ('sqlalchemy\\event\\attr.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\event\\attr.pyc',
+   'DATA'),
+  ('sqlalchemy\\event\\legacy.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\event\\legacy.pyc',
+   'DATA'),
+  ('sqlalchemy\\event\\registry.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\event\\registry.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\scoping.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\scoping.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\collections.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\collections.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\mapped_collection.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\mapped_collection.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\clsregistry.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\clsregistry.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\strategy_options.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\strategy_options.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\mapper.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\mapper.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\interfaces.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\interfaces.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\unitofwork.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\unitofwork.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\state_changes.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\state_changes.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\base.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\writeonly.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\writeonly.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\dynamic.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\dynamic.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\_typing.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\_typing.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\state.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\state.pyc',
+   'DATA'),
+  ('sqlalchemy\\ext\\asyncio\\session.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\ext\\asyncio\\session.pyc',
+   'DATA'),
+  ('sqlalchemy\\ext\\asyncio\\result.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\ext\\asyncio\\result.pyc',
+   'DATA'),
+  ('sqlalchemy\\ext\\asyncio\\exc.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\ext\\asyncio\\exc.pyc',
+   'DATA'),
+  ('sqlalchemy\\ext\\asyncio\\base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\ext\\asyncio\\base.pyc',
+   'DATA'),
+  ('sqlalchemy\\ext\\asyncio\\engine.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\ext\\asyncio\\engine.pyc',
+   'DATA'),
+  ('sqlalchemy\\ext\\asyncio\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\ext\\asyncio\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\ext\\asyncio\\scoping.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\ext\\asyncio\\scoping.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\loading.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\loading.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\identity.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\identity.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\descriptor_props.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\descriptor_props.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\context.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\context.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\bulk_persistence.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\bulk_persistence.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\persistence.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\persistence.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\evaluator.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\evaluator.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\attributes.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\attributes.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\query.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\query.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\exc.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\exc.pyc',
+   'DATA'),
+  ('sqlalchemy\\types.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\types.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\expression.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\expression.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\_selectable_constructors.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\_selectable_constructors.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\_elements_constructors.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\_elements_constructors.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\_dml_constructors.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\_dml_constructors.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\events.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\events.pyc',
+   'DATA'),
+  ('sqlalchemy\\inspection.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\inspection.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\create.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\create.pyc',
+   'DATA'),
+  ('sqlalchemy\\engine\\events.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\engine\\events.pyc',
+   'DATA'),
+  ('sqlalchemy\\future\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\future\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\future\\engine.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\future\\engine.pyc',
+   'DATA'),
+  ('sqlalchemy\\schema.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\schema.pyc',
+   'DATA'),
+  ('sqlalchemy\\sql\\naming.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\sql\\naming.pyc',
+   'DATA'),
+  ('sqlalchemy\\dialects\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\dialects\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\pool\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\pool\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\pool\\impl.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\pool\\impl.pyc',
+   'DATA'),
+  ('sqlalchemy\\util\\queue.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\util\\queue.pyc',
+   'DATA'),
+  ('sqlalchemy\\pool\\base.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\pool\\base.pyc',
+   'DATA'),
+  ('sqlalchemy\\pool\\events.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\pool\\events.pyc',
+   'DATA'),
+  ('sqlalchemy\\log.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\log.pyc',
+   'DATA'),
+  ('sqlalchemy\\event\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\event\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\event\\api.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\event\\api.pyc',
+   'DATA'),
+  ('sqlalchemy\\exc.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\exc.pyc',
+   'DATA'),
+  ('sqlalchemy\\util\\preloaded.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\util\\preloaded.pyc',
+   'DATA'),
+  ('sqlalchemy\\util\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\util\\__init__.pyc',
+   'DATA'),
+  ('sqlalchemy\\util\\deprecations.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\util\\deprecations.pyc',
+   'DATA'),
+  ('sqlalchemy\\orm\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\sqlalchemy\\orm\\__init__.pyc',
+   'DATA'),
+  ('backend\\misc_dm.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\backend\\misc_dm.pyc',
+   'DATA'),
+  ('backend\\models.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\backend\\models.pyc',
+   'DATA'),
+  ('frontend\\screens\\lab.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\screens\\lab.pyc',
+   'DATA'),
+  ('frontend\\screens\\referral.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\screens\\referral.pyc',
+   'DATA'),
+  ('frontend\\screens\\check_out.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\screens\\check_out.pyc',
+   'DATA'),
+  ('frontend\\screens\\check_in.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\screens\\check_in.pyc',
+   'DATA'),
+  ('frontend\\screens\\approve_appt.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\screens\\approve_appt.pyc',
+   'DATA'),
+  ('frontend\\screens\\schedule.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\screens\\schedule.pyc',
+   'DATA'),
+  ('frontend\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\__init__.pyc',
+   'DATA'),
+  ('backend\\user_dm.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\backend\\user_dm.pyc',
+   'DATA'),
+  ('frontend\\dialog\\settings_dialog.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\dialog\\settings_dialog.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\files\\styling.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\ui\\assets\\files\\styling.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\files\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\ui\\assets\\files\\__init__.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\files\\globals.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\ui\\assets\\files\\globals.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\show.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\ui\\assets\\qrc\\show.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\hide.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\ui\\assets\\qrc\\hide.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\logo.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\ui\\assets\\qrc\\logo.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\gears.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\ui\\assets\\qrc\\gears.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\doctor.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\ui\\assets\\qrc\\doctor.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\app_bg.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\frontend\\ui\\assets\\qrc\\app_bg.pyc',
+   'DATA'),
+  ('json\\__init__.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\json\\__init__.pyc',
+   'DATA'),
+  ('json\\encoder.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\json\\encoder.pyc',
+   'DATA'),
+  ('json\\decoder.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\json\\decoder.pyc',
+   'DATA'),
+  ('json\\scanner.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\json\\scanner.pyc',
+   'DATA'),
+  ('datetime.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\build\\run\\localpycs\\datetime.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\__pycache__\\gears.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\__pycache__\\gears.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\screens\\lab.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\screens\\lab.py',
+   'DATA'),
+  ('frontend\\ui\\SettingsDialog.ui',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\SettingsDialog.ui',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\logo.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\logo.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\__pycache__\\show.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\__pycache__\\show.cpython-311.pyc',
+   'DATA'),
+  ('backend\\misc_dm.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\misc_dm.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\imgs\\hide.png',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\imgs\\hide.png',
+   'DATA'),
+  ('backend\\user_dm.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\user_dm.py',
+   'DATA'),
+  ('frontend\\screens\\check_in.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\screens\\check_in.py',
+   'DATA'),
+  ('backend\\__pycache__\\models.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\__pycache__\\models.cpython-311.pyc',
+   'DATA'),
+  ('backend\\private\\__init__.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\private\\__init__.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\__pycache__\\app_bg.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\__pycache__\\app_bg.cpython-311.pyc',
+   'DATA'),
+  ('backend\\private\\__pycache__\\data_manager.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\private\\__pycache__\\data_manager.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\start_window.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\start_window.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\files\\styling.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\files\\styling.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\imgs\\logo.png',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\imgs\\logo.png',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\__pycache__\\logo.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\__pycache__\\logo.cpython-311.pyc',
+   'DATA'),
+  ('backend\\models.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\models.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\imgs\\front_screen.png',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\imgs\\front_screen.png',
+   'DATA'),
+  ('frontend\\dialog\\__pycache__\\settings_dialog.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\dialog\\__pycache__\\settings_dialog.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\files\\__init__.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\files\\__init__.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\files\\Settings.json',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\files\\Settings.json',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\gears.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\gears.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\logo.qrc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\logo.qrc',
+   'DATA'),
+  ('frontend\\main_window.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\main_window.py',
+   'DATA'),
+  ('frontend\\screens\\patient.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\screens\\patient.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\imgs\\doctor.png',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\imgs\\doctor.png',
+   'DATA'),
+  ('frontend\\ui\\mainWindow.ui',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\mainWindow.ui',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\hide.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\hide.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\imgs\\app-bg.png',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\imgs\\app-bg.png',
+   'DATA'),
+  ('backend\\private\\__pycache__\\__init__.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\private\\__pycache__\\__init__.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\__pycache__\\start_window.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\__pycache__\\start_window.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\app_bg.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\app_bg.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\__pycache__\\hide.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\__pycache__\\hide.cpython-311.pyc',
+   'DATA'),
+  ('backend\\private\\__pycache__\\appointment_status_data_manger.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\private\\__pycache__\\appointment_status_data_manger.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\screens\\check_out.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\screens\\check_out.py',
+   'DATA'),
+  ('frontend\\ui\\StartWindow.ui',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\StartWindow.ui',
+   'DATA'),
+  ('backend\\data_handler.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\data_handler.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\show.qrc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\show.qrc',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\doctor.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\doctor.py',
+   'DATA'),
+  ('frontend\\ui\\ListOfPatientsDialog.ui',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\ListOfPatientsDialog.ui',
+   'DATA'),
+  ('backend\\private\\appointment_status_data_manger.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\private\\appointment_status_data_manger.py',
+   'DATA'),
+  ('backend\\__pycache__\\data_handler.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\__pycache__\\data_handler.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\files\\__pycache__\\globals.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\files\\__pycache__\\globals.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\dialog\\patients_dialog.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\dialog\\patients_dialog.py',
+   'DATA'),
+  ('backend\\__pycache__\\misc_dm.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\__pycache__\\misc_dm.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\files\\__pycache__\\__init__.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\files\\__pycache__\\__init__.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\__pycache__\\__init__.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\__pycache__\\__init__.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\imgs\\gears.png',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\imgs\\gears.png',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\__pycache__\\doctor.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\__pycache__\\doctor.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\imgs\\front_screen_new.png',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\imgs\\front_screen_new.png',
+   'DATA'),
+  ('backend\\appointment_dm.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\appointment_dm.py',
+   'DATA'),
+  ('frontend\\private\\utility.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\private\\utility.py',
+   'DATA'),
+  ('backend\\__init__.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\__init__.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\show.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\show.py',
+   'DATA'),
+  ('backend\\private\\data_manager.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\private\\data_manager.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\files\\__pycache__\\styling.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\files\\__pycache__\\styling.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\app-bg.qrc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\app-bg.qrc',
+   'DATA'),
+  ('frontend\\__init__.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\__init__.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\imgs\\show.png',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\imgs\\show.png',
+   'DATA'),
+  ('frontend\\dialog\\settings_dialog.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\dialog\\settings_dialog.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\gears.qrc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\gears.qrc',
+   'DATA'),
+  ('frontend\\ui\\assets\\imgs\\doctor - Copy.png',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\imgs\\doctor - '
+   'Copy.png',
+   'DATA'),
+  ('frontend\\screens\\schedule.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\screens\\schedule.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\doctor.qrc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\doctor.qrc',
+   'DATA'),
+  ('frontend\\screens\\approve_appt.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\screens\\approve_appt.py',
+   'DATA'),
+  ('backend\\__pycache__\\connection_string.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\__pycache__\\connection_string.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\ui\\assets\\qrc\\hide.qrc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\qrc\\hide.qrc',
+   'DATA'),
+  ('frontend\\private\\nav.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\private\\nav.py',
+   'DATA'),
+  ('frontend\\ui\\assets\\files\\globals.PY',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\ui\\assets\\files\\globals.PY',
+   'DATA'),
+  ('backend\\__pycache__\\appointment_dm.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\__pycache__\\appointment_dm.cpython-311.pyc',
+   'DATA'),
+  ('backend\\__pycache__\\__init__.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\__pycache__\\__init__.cpython-311.pyc',
+   'DATA'),
+  ('backend\\connection_string.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\connection_string.py',
+   'DATA'),
+  ('backend\\__pycache__\\user_dm.cpython-311.pyc',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\backend\\__pycache__\\user_dm.cpython-311.pyc',
+   'DATA'),
+  ('frontend\\screens\\referral.py',
+   'C:\\Users\\27par\\Desktop\\Github '
+   'Repos\\Medical-Office-Administration\\frontend\\screens\\referral.py',
+   'DATA')],)

@@ -8,8 +8,6 @@
 **/.env
 **/Medical-Office-Administration.code-workspace
 **/main.lnk
-**/build
-**/dist
 **/main.spec
 **/Output
 Settings.json

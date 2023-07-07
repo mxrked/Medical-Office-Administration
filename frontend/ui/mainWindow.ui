@@ -26,7 +26,7 @@
    <string>Forsyth Family Practice Center - [ TEMPLATE ]</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="assets/qrc/logo.qrc">
+   <iconset>
     <normaloff>:/newPrefix/imgs/logo.png</normaloff>:/newPrefix/imgs/logo.png</iconset>
   </property>
   <property name="styleSheet">
@@ -63,7 +63,6 @@ QGroupBox, QFrame, QStackedWidget {
      <font>
       <family>Lato</family>
       <pointsize>10</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -112,7 +111,6 @@ QPushButton::hover {
      <font>
       <family>Lato</family>
       <pointsize>10</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -161,7 +159,6 @@ QPushButton::hover {
      <font>
       <family>Lato</family>
       <pointsize>10</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -219,7 +216,6 @@ QPushButton::hover {
      <font>
       <family>Lato</family>
       <pointsize>10</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -273,7 +269,6 @@ QPushButton::hover {
      <font>
       <family>Lato</family>
       <pointsize>10</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -324,7 +319,6 @@ QPushButton::hover {
      <font>
       <family>Lato</family>
       <pointsize>10</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -374,7 +368,6 @@ QPushButton::hover {
      <font>
       <family>Lato</family>
       <pointsize>10</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -442,7 +435,7 @@ QPushButton::hover {
 border-image: transparent;</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="Appointments">
       <property name="minimumSize">
@@ -491,7 +484,6 @@ border-image: transparent;</string>
            <font>
             <family>Lato</family>
             <pointsize>11</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -539,7 +531,6 @@ QPushButton::hover {
            <font>
             <family>Lato</family>
             <pointsize>11</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -587,7 +578,6 @@ QPushButton::hover {
            <font>
             <family>Lato</family>
             <pointsize>11</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -633,7 +623,6 @@ QPushButton::hover {
            <font>
             <family>Lato</family>
             <pointsize>11</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -708,7 +697,6 @@ QPushButton::hover {
          <font>
           <family>Lato</family>
           <pointsize>22</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -778,7 +766,6 @@ QPushButton::hover {
               <font>
                <family>Lato</family>
                <pointsize>12</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -870,7 +857,6 @@ QComboBox QAbstractItemView {
               <font>
                <family>Lato</family>
                <pointsize>12</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -1031,7 +1017,6 @@ QListWidget::item:selected {
          <font>
           <family>MS Shell Dlg 2</family>
           <pointsize>9</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -1111,7 +1096,6 @@ QPushButton::hover {
               <font>
                <family>Lato</family>
                <pointsize>12</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -1186,7 +1170,6 @@ QPushButton::hover {
          <font>
           <family>MS Shell Dlg 2</family>
           <pointsize>9</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -1225,7 +1208,6 @@ QPushButton::hover {
          <font>
           <family>MS Shell Dlg 2</family>
           <pointsize>9</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -1308,7 +1290,6 @@ QPushButton::hover {
          <font>
           <family>Lato</family>
           <pointsize>22</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -1389,7 +1370,6 @@ QPushButton::hover {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -1484,7 +1464,6 @@ QPushButton::hover {
                   <font>
                    <family>Lato</family>
                    <pointsize>12</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -1578,7 +1557,6 @@ QPushButton::hover {
                   <font>
                    <family>Lato</family>
                    <pointsize>12</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -1695,7 +1673,6 @@ QCalendarWidget QTableView QLabel {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -1791,7 +1768,6 @@ QComboBox QAbstractItemView {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -1890,7 +1866,6 @@ QComboBox QAbstractItemView {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -1998,7 +1973,6 @@ QComboBox QAbstractItemView {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -2097,7 +2071,6 @@ QComboBox QAbstractItemView {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -2193,7 +2166,6 @@ QComboBox QAbstractItemView {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -2358,7 +2330,6 @@ QListWidget::item:selected {
              <font>
               <family>Lato</family>
               <pointsize>12</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -2423,7 +2394,6 @@ QListWidget::item:selected {
          <font>
           <family>MS Shell Dlg 2</family>
           <pointsize>9</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -2462,7 +2432,6 @@ QPushButton::hover {
          <font>
           <family>MS Shell Dlg 2</family>
           <pointsize>9</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -2502,7 +2471,6 @@ QPushButton::hover {
          <font>
           <family>MS Shell Dlg 2</family>
           <pointsize>9</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -2566,7 +2534,6 @@ QPushButton::hover {
         <property name="font">
          <font>
           <pointsize>9</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -2613,7 +2580,6 @@ QPushButton::hover {
         <property name="font">
          <font>
           <pointsize>9</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -2683,7 +2649,6 @@ QPushButton::hover {
          <font>
           <family>Lato</family>
           <pointsize>22</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -2753,7 +2718,6 @@ QPushButton::hover {
               <font>
                <family>Lato</family>
                <pointsize>12</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -2845,7 +2809,6 @@ QComboBox QAbstractItemView {
               <font>
                <family>Lato</family>
                <pointsize>12</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -2986,7 +2949,6 @@ QComboBox QAbstractItemView {
          <font>
           <family>MS Shell Dlg 2</family>
           <pointsize>9</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -3190,7 +3152,6 @@ QListWidget::item:selected {
               <font>
                <family>Lato</family>
                <pointsize>12</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -3262,7 +3223,6 @@ QListWidget::item:selected {
          <font>
           <family>MS Shell Dlg 2</family>
           <pointsize>9</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -3312,7 +3272,6 @@ QPushButton::hover {
               <font>
                <family>Lato</family>
                <pointsize>12</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -3384,7 +3343,6 @@ QPushButton::hover {
          <font>
           <family>MS Shell Dlg 2</family>
           <pointsize>9</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -3421,7 +3379,6 @@ QPushButton::hover {
          <font>
           <family>MS Shell Dlg 2</family>
           <pointsize>9</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -4229,7 +4186,6 @@ QComboBox QAbstractItemView {
          <font>
           <family>Lato</family>
           <pointsize>11</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -4685,7 +4641,6 @@ QComboBox QAbstractItemView {
          <font>
           <family>Lato</family>
           <pointsize>22</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -4834,7 +4789,6 @@ QLabel {
               <font>
                <family>Lato</family>
                <pointsize>22</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -4866,7 +4820,6 @@ QLabel {
            <font>
             <family>Lato</family>
             <pointsize>11</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -4905,7 +4858,6 @@ QPushButton::hover {
            <font>
             <family>Lato</family>
             <pointsize>11</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -4995,7 +4947,6 @@ QListWidget::item:selected {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -5077,7 +5028,6 @@ QComboBox QAbstractItemView {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -5154,7 +5104,6 @@ QComboBox QAbstractItemView {
            <font>
             <family>Lato</family>
             <pointsize>11</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -5282,7 +5231,6 @@ QLabel {
              <font>
               <family>Lato</family>
               <pointsize>22</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -5314,7 +5262,6 @@ QLabel {
           <font>
            <family>Lato</family>
            <pointsize>11</pointsize>
-           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -5353,7 +5300,6 @@ QPushButton::hover {
           <font>
            <family>Lato</family>
            <pointsize>11</pointsize>
-           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -5431,7 +5377,6 @@ QListWidget::item:selected {
                <font>
                 <family>Lato</family>
                 <pointsize>12</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -5496,7 +5441,6 @@ QComboBox QAbstractItemView {
           <font>
            <family>Lato</family>
            <pointsize>11</pointsize>
-           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -5609,7 +5553,6 @@ QLabel {
          </property>
          <property name="font">
           <font>
-           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -5650,7 +5593,6 @@ QLabel {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -5719,7 +5661,6 @@ QLabel {
               <font>
                <family>Lato</family>
                <pointsize>12</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -5803,7 +5744,6 @@ QComboBox QAbstractItemView {
               <font>
                <family>Lato</family>
                <pointsize>12</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -5864,7 +5804,6 @@ QComboBox QAbstractItemView {
               <font>
                <family>Lato</family>
                <pointsize>12</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -5931,7 +5870,6 @@ QComboBox QAbstractItemView {
               <font>
                <family>Lato</family>
                <pointsize>12</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -5985,7 +5923,6 @@ QComboBox QAbstractItemView {
              <property name="font">
               <font>
                <pointsize>12</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -6051,7 +5988,6 @@ QComboBox QAbstractItemView {
            <font>
             <family>Lato</family>
             <pointsize>22</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -6086,7 +6022,6 @@ QComboBox QAbstractItemView {
            <font>
             <family>Lato</family>
             <pointsize>10</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -6135,7 +6070,6 @@ QPushButton::hover {
            <font>
             <family>Lato</family>
             <pointsize>10</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -6270,7 +6204,6 @@ QLabel {
           <property name="font">
            <font>
             <pointsize>10</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -6303,7 +6236,6 @@ QPushButton::hover {
           <property name="font">
            <font>
             <pointsize>10</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -6349,7 +6281,6 @@ QPushButton::hover {
            <font>
             <family>Lato</family>
             <pointsize>22</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -6389,7 +6320,6 @@ QPushButton::hover {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -6451,7 +6381,6 @@ QPushButton::hover {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -6510,7 +6439,6 @@ QPushButton::hover {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -6567,7 +6495,6 @@ QPushButton::hover {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -6638,7 +6565,6 @@ QComboBox QAbstractItemView {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -6709,7 +6635,6 @@ QComboBox QAbstractItemView {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -6768,7 +6693,6 @@ QComboBox QAbstractItemView {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -6839,7 +6763,6 @@ QComboBox QAbstractItemView {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -7005,7 +6928,6 @@ QLabel {
               <font>
                <family>Lato</family>
                <pointsize>22</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -7037,7 +6959,6 @@ QLabel {
            <font>
             <family>Lato</family>
             <pointsize>11</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -7076,7 +6997,6 @@ QPushButton::hover {
            <font>
             <family>Lato</family>
             <pointsize>11</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -7166,7 +7086,6 @@ QListWidget::item:selected {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -7248,7 +7167,6 @@ QComboBox QAbstractItemView {
                 <font>
                  <family>Lato</family>
                  <pointsize>12</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -7325,7 +7243,6 @@ QComboBox QAbstractItemView {
            <font>
             <family>Lato</family>
             <pointsize>11</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>

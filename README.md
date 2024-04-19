@@ -3,6 +3,9 @@
 
 ![Front Screen of this program](./frontend/ui/assets/imgs/log_in_screen.PNG)
 
+## Warning
+Project is no longer functional due to missing database
+
 ## Features 
  - Set and Cancel Appointments
  - Check-In/Check-Out A Patients Appointment

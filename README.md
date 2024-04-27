@@ -6,6 +6,8 @@
 ## Warning
 Project is no longer functional due to missing database
 
+##
+ This capstone project is a proof of concept for a office scheduling software for a fictional clinic. We completed this project over the course of 15 weeks at Forsyth Techenical College. The projected is no longer fully functioning due to a missing database that was shared between our group and other groups in our capstone. We used QT Designer to create our front-end and SQLAlchemy for our backend. 
 ## Features 
  - Set and Cancel Appointments
  - Check-In/Check-Out A Patients Appointment
@@ -41,9 +43,6 @@ You should either source all your files from run.py or use this to test everythi
 
 ## Installer
  Alternatively you can use our setup installer that will be available at project completion
- 
-## How to use
- Pending Project completion
 
 ## Credits
  - Parker Phelps (Project Owner)
